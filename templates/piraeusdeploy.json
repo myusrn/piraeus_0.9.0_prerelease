@@ -215,8 +215,15 @@
         "description": "DSC configuration function to call"
       }
     },
-	"firewallScriptFileUrl": {
-		"defaultValue": "https://github.com/skunklab/core2/raw/master/templates/firewallrules.ps1",
+	"gatewayFirewallScriptFileUrl": {
+		"defaultValue": "https://github.com/skunklab/core2/raw/master/templates/gatewayfirewall.ps1",
+		"type": "string",
+		"metadata": {
+		  "description": "Filewall rules script URL."
+		}
+	},
+	"orleansFirewallScriptFileUrl": {
+		"defaultValue": "https://github.com/skunklab/core2/raw/master/templates/orleansfirewall.ps1",
 		"type": "string",
 		"metadata": {
 		  "description": "Filewall rules script URL."
@@ -734,8 +741,27 @@
         "typeHandlerVersion": "2.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "fileUris": "[split(parameters('firewallScriptFileUrl'), ' ')]",
-          "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', 'filewallrules.ps1')]"
+          "fileUris": "[split(parameters('gatewayFirewallScriptFileUrl'), ' ')]",
+          "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', 'gatewayfilewall.ps1')]"
+        }
+      }
+    },
+	{
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(parameters('orleansVirtualMachineName'),'/', variables('orleansFirewallExtensionName'))]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('orleansVirtualMachineName'))]"
+      ],
+      "properties": {
+        "publisher": "Microsoft.Azure.Extensions",
+        "type": "CustomScript",
+        "typeHandlerVersion": "2.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "fileUris": "[split(parameters('orleansFirewallScriptFileUrl'), ' ')]",
+          "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', 'orleansfilewall.ps1')]"
         }
       }
     }
