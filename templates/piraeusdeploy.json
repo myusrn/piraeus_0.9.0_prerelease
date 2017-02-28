@@ -625,20 +625,7 @@
       },
       "resources": [],
       "dependsOn": []
-    },
-    {
-      "comments": "Generalized from resource: '/subscriptions/186698ec-bd4e-4af3-a857-4492ae6535fa/resourceGroups/Piraeus/providers/Microsoft.Network/publicIPAddresses/orleanscluster-ip'.",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[parameters('publicIPAddresses_orleanscluster_ip_name')]",
-      "apiVersion": "2016-03-30",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "publicIPAllocationMethod": "Dynamic",
-        "idleTimeoutInMinutes": 4
-      },
-      "resources": [],
-      "dependsOn": []
-    },
+    },    
     {
       "comments": "Generalized from resource: '/subscriptions/186698ec-bd4e-4af3-a857-4492ae6535fa/resourceGroups/Piraeus/providers/Microsoft.Network/virtualNetworks/piraeus-vnet'.",
       "type": "Microsoft.Network/virtualNetworks",
@@ -703,7 +690,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('vmName'),'/', variables('vmExtensionName'))]",
+      "name": "[concat(parameters('gateway_virtualMachine_name'),'/', variables('vmExtensionName'))]",
       "apiVersion": "2015-05-01-preview",
       "location": "[resourceGroup().location]",
       "dependsOn": [
@@ -718,7 +705,7 @@
           "ModulesUrl": "[parameters('modulesUrl')]",
           "ConfigurationFunction": "[parameters('configurationFunction')]",
           "Properties": {
-            "MachineName": "[parameters('vmName')]"
+            "MachineName": "[parameters('gateway_virtualMachine_name')]"
           }
         },
         "protectedSettings": null
