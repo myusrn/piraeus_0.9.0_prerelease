@@ -2,43 +2,43 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "virtualNetwork_name": {
+    "virtualNetworkName": {
       "defaultValue": "piraeus-vnet",
       "type": "String"
     },
-    "gateway_public_ip_addresses_name": {
+    "gatewayPublicIpAddressesName": {
       "defaultValue": "gateway-ip",
       "type": "String"
     },
-    "gateway_network_interfaces_name": {
+    "gatewayNetworkInterfacesName": {
       "defaultValue": "gateway938",
       "type": "String"
     },
-    "orleans_network_interfaces_name": {
+    "orleansNetworkInterfacesName": {
       "defaultValue": "orleanscluster537",
       "type": "String"
     },
-    "gateway_availabilitySet_name": {
+    "gatewayAvailabilitySetName": {
       "defaultValue": "gateway-availibilityset",
       "type": "String"
     },
-    "orleans_availabilitySet_name": {
+    "orleansAvailabilitySetName": {
       "defaultValue": "orleans-availabilityset",
       "type": "String"
     },
-    "gateway_networkSecurityGroups_name": {
+    "gatewayNetworkSecurityGroupsName": {
       "defaultValue": "gateway-nsg",
       "type": "String"
     },
-    "orleans_networkSecurityGroups_name": {
+    "orleansNetworkSecurityGroupsName": {
       "defaultValue": "orleanscluster-nsg",
       "type": "String"
     },
-    "gateway_virtualMachine_name": {
+    "gatewayVirtualMachineName": {
       "defaultValue": "gateway",
       "type": "String"
     },
-    "gateway_virtualMachine_size": {
+    "gatewayVirtualMachineSize": {
       "defaultValue": "Basic_A0",
       "type": "string",
       "allowedValues": [
@@ -99,19 +99,19 @@
         "description": "Gateway VM Size."
       }
     },
-    "gateway_virtualMachine_user_name": {
+    "gatewayVirtualMachineUserName": {
       "defaultValue": null,
       "type": "String"
     },
-    "gateway_virtualMachine_password": {
+    "gatewayVirtualMachinePassword": {
       "defaultValue": null,
       "type": "SecureString"
     },
-    "orleans_virtualMachine_name": {
+    "orleansVirtualMachineName": {
       "defaultValue": "orleanscluster",
       "type": "String"
     },
-    "orleans_virtualMachine_size": {
+    "orleansVirtualMachineSize": {
       "defaultValue": "Basic_A3",
       "type": "string",
       "allowedValues": [
@@ -172,29 +172,29 @@
         "description": "Orleans VM Size."
       }
     },
-    "orleans_virtualMachine_user_name": {
+    "orleansVirtualMachineUserName": {
       "defaultValue": null,
       "type": "String"
     },
-    "orleans_virtualMachine_password": {
+    "orleansVirtualMachinePassword": {
       "defaultValue": null,
       "type": "SecureString"
     },
-    "vm_vhd_storage_account_name": {
+    "vmVhdStorageAccountName": {
       "type": "string",
       "minLength": 3,
       "metadata": {
         "description": "Storage account name for VM VHDs."
       }
     },
-    "vm_diagnostics_storage_account_name": {
+    "vmDiagnosticsStorageAccountName": {
       "type": "string",
       "minLength": 3,
       "metadata": {
         "description": "Diagnostics storage account name for VMs."
       }
     },
-    "orleans_storage_account_name": {
+    "orleansStorageAccountName": {
       "type": "string",
       "minLength": 3,
       "metadata": {
@@ -214,19 +214,27 @@
       "metadata": {
         "description": "DSC configuration function to call"
       }
-    }
+    },
+	"firewallScriptFileUrl": {
+		"defaultValue": "https://github.com/skunklab/core2/raw/master/templates/firewallrules.ps1",
+		"type": "string",
+		"metadata": {
+		  "description": "Filewall rules script URL."
+		}
+	}
   },
   "variables": {
-    "vmstorageAccountid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',resourceGroup().name, '/providers/','Microsoft.Storage/storageAccounts/', parameters('vm_vhd_storage_account_name'))]",
-    "diagnosticsAccountid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',resourceGroup().name, '/providers/','Microsoft.Storage/storageAccounts/', parameters('vm_diagnostics_storage_account_name'))]",
-    "orleansAccountid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',resourceGroup().name, '/providers/','Microsoft.Storage/storageAccounts/', parameters('orleans_storage_account_name'))]",
-    "vmExtensionName": "dscExtension"
+    "vmstorageAccountid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',resourceGroup().name, '/providers/','Microsoft.Storage/storageAccounts/', parameters('vmVhdStorageAccountName'))]",
+    "diagnosticsAccountid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',resourceGroup().name, '/providers/','Microsoft.Storage/storageAccounts/', parameters('vmDiagnosticsStorageAccountName'))]",
+    "orleansAccountid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',resourceGroup().name, '/providers/','Microsoft.Storage/storageAccounts/', parameters('orleansStorageAccountName'))]",
+    "gatewayDscExtensionName": "dscExtension",
+	"gatewayFirewallExtensionName":"CustomScriptExtension"
   },
   "resources": [
     {
       "comments": "Generalized from resource: '/subscriptions/186698ec-bd4e-4af3-a857-4492ae6535fa/resourceGroups/Piraeus/providers/Microsoft.Compute/availabilitySets/gateway-availibilityset'.",
       "type": "Microsoft.Compute/availabilitySets",
-      "name": "[parameters('gateway_availabilitySet_name')]",
+      "name": "[parameters('gatewayAvailabilitySetName')]",
       "apiVersion": "2015-06-15",
       "location": "[resourceGroup().location]",
       "properties": {
@@ -239,7 +247,7 @@
     {
       "comments": "Generalized from resource: '/subscriptions/186698ec-bd4e-4af3-a857-4492ae6535fa/resourceGroups/Piraeus/providers/Microsoft.Compute/availabilitySets/orleans-availabilityset'.",
       "type": "Microsoft.Compute/availabilitySets",
-      "name": "[parameters('orleans_availabilitySet_name')]",
+      "name": "[parameters('orleansAvailabilitySetName')]",
       "apiVersion": "2015-06-15",
       "location": "[resourceGroup().location]",
       "properties": {
@@ -252,12 +260,12 @@
     {
       "comments": "Generalized from resource: '/subscriptions/186698ec-bd4e-4af3-a857-4492ae6535fa/resourceGroups/Piraeus/providers/Microsoft.Compute/virtualMachines/gateway'.",
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[parameters('gateway_virtualMachine_name')]",
+      "name": "[parameters('gatewayVirtualMachineName')]",
       "apiVersion": "2015-06-15",
       "location": "[resourceGroup().location]",
       "properties": {
         "availabilitySet": {
-          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('gateway_availabilitySet_name'))]"
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('gatewayAvailabilitySetName'))]"
         },
         "hardwareProfile": {
           "vmSize": "Basic_A0"
@@ -270,49 +278,49 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "[parameters('gateway_virtualMachine_name')]",
+            "name": "[parameters('gatewayVirtualMachineName')]",
             "createOption": "FromImage",
             "vhd": {
-              "uri": "[concat('https', '://', parameters('vm_vhd_storage_account_name'), '.blob.core.windows.net', concat('/vhds/', parameters('gateway_virtualMachine_name'),'20170225082632.vhd'))]"
+              "uri": "[concat('https', '://', parameters('vmVhdStorageAccountName'), '.blob.core.windows.net', concat('/vhds/', parameters('gatewayVirtualMachineName'),'20170225082632.vhd'))]"
             },
             "caching": "ReadWrite"
           },
           "dataDisks": []
         },
         "osProfile": {
-          "computerName": "[parameters('gateway_virtualMachine_name')]",
+          "computerName": "[parameters('gatewayVirtualMachineName')]",
           "adminUsername": "azureuser",
           "windowsConfiguration": {
             "provisionVMAgent": true,
             "enableAutomaticUpdates": true
           },
           "secrets": [],
-          "adminPassword": "[parameters('gateway_virtualMachine_password')]"
+          "adminPassword": "[parameters('gatewayVirtualMachinePassword')]"
         },
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('gateway_network_interfaces_name'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('gatewayNetworkInterfacesName'))]"
             }
           ]
         }
       },
       "resources": [],
       "dependsOn": [
-        "[resourceId('Microsoft.Compute/availabilitySets', parameters('gateway_availabilitySet_name'))]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('vm_vhd_storage_account_name'))]",
-        "[resourceId('Microsoft.Network/networkInterfaces', parameters('gateway_network_interfaces_name'))]"
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('gatewayAvailabilitySetName'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('vmVhdStorageAccountName'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('gatewayNetworkInterfacesName'))]"
       ]
     },
     {
       "comments": "Generalized from resource: '/subscriptions/186698ec-bd4e-4af3-a857-4492ae6535fa/resourceGroups/Piraeus/providers/Microsoft.Compute/virtualMachines/orleanscluster'.",
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[parameters('orleans_virtualMachine_name')]",
+      "name": "[parameters('orleansVirtualMachineName')]",
       "apiVersion": "2015-06-15",
       "location": "[resourceGroup().location]",
       "properties": {
         "availabilitySet": {
-          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('orleans_availabilitySet_name'))]"
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('orleansAvailabilitySetName'))]"
         },
         "hardwareProfile": {
           "vmSize": "Basic_A3"
@@ -325,44 +333,44 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "[parameters('orleans_virtualMachine_name')]",
+            "name": "[parameters('orleansVirtualMachineName')]",
             "createOption": "FromImage",
             "vhd": {
-              "uri": "[concat('https', '://', parameters('vm_vhd_storage_account_name'), '.blob.core.windows.net', concat('/vhds/', parameters('orleans_virtualMachine_name'),'20170225083418.vhd'))]"
+              "uri": "[concat('https', '://', parameters('vmVhdStorageAccountName'), '.blob.core.windows.net', concat('/vhds/', parameters('orleansVirtualMachineName'),'20170225083418.vhd'))]"
             },
             "caching": "ReadWrite"
           },
           "dataDisks": []
         },
         "osProfile": {
-          "computerName": "[parameters('orleans_virtualMachine_name')]",
+          "computerName": "[parameters('orleansVirtualMachineName')]",
           "adminUsername": "azureuser",
           "windowsConfiguration": {
             "provisionVMAgent": true,
             "enableAutomaticUpdates": true
           },
           "secrets": [],
-          "adminPassword": "[parameters('orleans_virtualMachine_password')]"
+          "adminPassword": "[parameters('orleansVirtualMachinePassword')]"
         },
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('orleans_network_interfaces_name'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('orleansNetworkInterfacesName'))]"
             }
           ]
         }
       },
       "resources": [],
       "dependsOn": [
-        "[resourceId('Microsoft.Compute/availabilitySets', parameters('orleans_availabilitySet_name'))]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('vm_vhd_storage_account_name'))]",
-        "[resourceId('Microsoft.Network/networkInterfaces', parameters('orleans_network_interfaces_name'))]"
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('orleansAvailabilitySetName'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('vmVhdStorageAccountName'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('orleansNetworkInterfacesName'))]"
       ]
     },
     {
       "comments": "Generalized from resource: '/subscriptions/186698ec-bd4e-4af3-a857-4492ae6535fa/resourceGroups/Piraeus/providers/Microsoft.Network/networkInterfaces/gateway938'.",
       "type": "Microsoft.Network/networkInterfaces",
-      "name": "[parameters('gateway_network_interfaces_name')]",
+      "name": "[parameters('gatewayNetworkInterfacesName')]",
       "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "properties": {
@@ -373,10 +381,10 @@
               "privateIPAddress": "10.1.0.4",
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('gateway_public_ip_addresses_name'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('gatewayPublicIpAddressesName'))]"
               },
               "subnet": {
-                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetwork_name')), '/subnets/gateway-subnet')]"
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/gateway-subnet')]"
               }
             }
           }
@@ -386,20 +394,20 @@
         },
         "enableIPForwarding": false,
         "networkSecurityGroup": {
-          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('gateway_networkSecurityGroups_name'))]"
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('gatewayNetworkSecurityGroupsName'))]"
         }
       },
       "resources": [],
       "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('gateway_public_ip_addresses_name'))]",
-        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetwork_name'))]",
-        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('gateway_networkSecurityGroups_name'))]"
+        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('gatewayPublicIpAddressesName'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('gatewayNetworkSecurityGroupsName'))]"
       ]
     },
     {
       "comments": "Generalized from resource: '/subscriptions/186698ec-bd4e-4af3-a857-4492ae6535fa/resourceGroups/Piraeus/providers/Microsoft.Network/networkInterfaces/orleanscluster537'.",
       "type": "Microsoft.Network/networkInterfaces",
-      "name": "[parameters('orleans_network_interfaces_name')]",
+      "name": "[parameters('orleansNetworkInterfacesName')]",
       "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "properties": {
@@ -410,7 +418,7 @@
               "privateIPAddress": "10.1.1.4",
               "privateIPAllocationMethod": "Dynamic",
               "subnet": {
-                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetwork_name')), '/subnets/orleans-subnet')]"
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/orleans-subnet')]"
               }
             }
           }
@@ -420,19 +428,19 @@
         },
         "enableIPForwarding": false,
         "networkSecurityGroup": {
-          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('orleans_networkSecurityGroups_name'))]"
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('orleansNetworkSecurityGroupsName'))]"
         }
       },
       "resources": [],
       "dependsOn": [
-        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetwork_name'))]",
-        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('orleans_networkSecurityGroups_name'))]"
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('orleansNetworkSecurityGroupsName'))]"
       ]
     },
     {
       "comments": "Generalized from resource: '/subscriptions/186698ec-bd4e-4af3-a857-4492ae6535fa/resourceGroups/Piraeus/providers/Microsoft.Network/networkSecurityGroups/gateway-nsg'.",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('gateway_networkSecurityGroups_name')]",
+      "name": "[parameters('gatewayNetworkSecurityGroupsName')]",
       "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "properties": {
@@ -549,7 +557,7 @@
     {
       "comments": "Generalized from resource: '/subscriptions/186698ec-bd4e-4af3-a857-4492ae6535fa/resourceGroups/Piraeus/providers/Microsoft.Network/networkSecurityGroups/orleanscluster-nsg'.",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('orleans_networkSecurityGroups_name')]",
+      "name": "[parameters('orleansNetworkSecurityGroupsName')]",
       "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "properties": {
@@ -614,7 +622,7 @@
     {
       "comments": "Generalized from resource: '/subscriptions/186698ec-bd4e-4af3-a857-4492ae6535fa/resourceGroups/Piraeus/providers/Microsoft.Network/publicIPAddresses/gateway-ip'.",
       "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[parameters('gateway_public_ip_addresses_name')]",
+      "name": "[parameters('gatewayPublicIpAddressesName')]",
       "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "properties": {
@@ -630,7 +638,7 @@
     {
       "comments": "Generalized from resource: '/subscriptions/186698ec-bd4e-4af3-a857-4492ae6535fa/resourceGroups/Piraeus/providers/Microsoft.Network/virtualNetworks/piraeus-vnet'.",
       "type": "Microsoft.Network/virtualNetworks",
-      "name": "[parameters('virtualNetwork_name')]",
+      "name": "[parameters('virtualNetworkName')]",
       "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "properties": {
@@ -665,7 +673,7 @@
         "tier": "Standard"
       },
       "kind": "Storage",
-      "name": "[parameters('vm_diagnostics_storage_account_name')]",
+      "name": "[parameters('vmDiagnosticsStorageAccountName')]",
       "apiVersion": "2016-01-01",
       "location": "[resourceGroup().location]",
       "tags": {},
@@ -681,7 +689,7 @@
         "tier": "Standard"
       },
       "kind": "Storage",
-      "name": "[parameters('vm_vhd_storage_account_name')]",
+      "name": "[parameters('vmVhdStorageAccountName')]",
       "apiVersion": "2016-01-01",
       "location": "[resourceGroup().location]",
       "tags": {},
@@ -691,11 +699,11 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('gateway_virtualMachine_name'),'/', variables('vmExtensionName'))]",
+      "name": "[concat(parameters('gatewayVirtualMachineName'),'/', variables('gatewayDscExtensionName'))]",
       "apiVersion": "2015-05-01-preview",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', parameters('gateway_virtualMachine_name'))]"
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('gatewayVirtualMachineName'))]"
       ],
       "properties": {
         "publisher": "Microsoft.Powershell",
@@ -706,10 +714,29 @@
           "ModulesUrl": "[parameters('modulesUrl')]",
           "ConfigurationFunction": "[parameters('configurationFunction')]",
           "Properties": {
-            "MachineName": "[parameters('gateway_virtualMachine_name')]"
+            "MachineName": "[parameters('gatewayVirtualMachineName')]"
           }
         },
         "protectedSettings": null
+      }
+    },
+	{
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(parameters('gatewayVirtualMachineName'),'/', variables('gatewayFirewallExtensionName'))]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('gatewayVirtualMachineName'))]"
+      ],
+      "properties": {
+        "publisher": "Microsoft.Azure.Extensions",
+        "type": "CustomScript",
+        "typeHandlerVersion": "2.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "fileUris": "[split(parameters('firewallScriptFileUrl'), ' ')]",
+          "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', 'filewallrules.ps1')]"
+        }
       }
     }
   ]
