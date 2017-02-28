@@ -218,11 +218,11 @@
 	"dscExtensionFileName": {
 		"defaultValue": "Main.zip",
 		"type": "string"
-	}
+	},
 	"gatewayFirewallScriptName": {
 		"defaultValue": "gatewayFirewall.ps1",
 		"type": "string"
-	}
+	},
 	"orleansFirewallScriptName": {
 		"defaultValue": "orleansFirewall.ps1",
 		"type": "string"
@@ -311,7 +311,36 @@
           ]
         }
       },
-      "resources": [],
+      "resources": [
+              {
+                  "name": "Microsoft.Powershell.DSC",
+                  "type": "extensions",
+                  "location": "[resourceGroup().location]",
+                  "apiVersion": "2016-03-30",
+                  "dependsOn": [
+                      "[resourceId('Microsoft.Compute/virtualMachines', parameters('gatewayVirtualMachineName'))]"
+                  ],
+                  "tags": {
+                      "displayName": "DscExt"
+                  },
+                  "properties": {
+                      "publisher": "Microsoft.Powershell",
+                      "type": "DSC",
+                      "typeHandlerVersion": "2.9",
+                      "autoUpgradeMinorVersion": true,
+                      "settings": {
+                          "configuration": {
+                              "url": "[concat(parameters('scriptsLocationUrl'), '/', parameters('scriptsFolder'), '/', parameters('dscExtensionFileName'))]",
+                              "script": "Main.ps1",
+                              "function": "Main"
+                          },
+                          "configurationArguments": {
+                              "nodeName": "[parameters('gatewayVirtualMachineName')]"
+                          }
+                      }
+                  }
+              }
+          ],
       "dependsOn": [
         "[resourceId('Microsoft.Compute/availabilitySets', parameters('gatewayAvailabilitySetName'))]",
         "[resourceId('Microsoft.Storage/storageAccounts', parameters('vmVhdStorageAccountName'))]",
@@ -718,82 +747,7 @@
       "properties": {},
       "resources": [],
       "dependsOn": []
-    },
-	{
-		  "name": "Microsoft.Powershell.DSC",
-		  "type": "extensions",
-		  "location": "[resourceGroup().location]",
-		  "apiVersion": "2016-03-30",
-		  "dependsOn": [
-			  "[resourceId('Microsoft.Compute/virtualMachines', parameters('gatewayVirtualMachineName'))]"
-		  ],
-		  "tags": {
-			  "displayName": "DSCWebAndSockets"
-		  },
-		  "properties": {
-			  "publisher": "Microsoft.Powershell",
-			  "type": "DSC",
-			  "typeHandlerVersion": "2.9",
-			  "autoUpgradeMinorVersion": true,
-			  "settings": {
-				  "configuration": {
-					  "url": "[concat(parameters('scriptsLocationUrl'), '/', parameters('scriptsFolder'), '/', parameters('dscExtensionFileName'))]",
-					  "script": "Main.ps1",
-					  "function": "Main"
-				  },
-				  "configurationArguments": {
-					  "nodeName": "[variables('gatewayVirtualMachineName')]"
-				  }
-			  }
-		  }
-	  },
-	  {
-              "name": "GatewayFirewallScript",
-              "type": "extensions",
-              "location": "[resourceGroup().location]",
-              "apiVersion": "2016-03-30",
-              "dependsOn": [
-                  "[resourceId('Microsoft.Compute/virtualMachines', parameters('gatewayVirtualMachineName'))]"
-              ],
-              "tags": {
-                  "displayName": "GatewayFirewallCustomScript"
-              },
-              "properties": {
-                  "publisher": "Microsoft.Compute",
-                  "type": "CustomScriptExtension",
-                  "typeHandlerVersion": "1.4",
-                  "autoUpgradeMinorVersion": true,
-                  "settings": {
-                      "fileUris": [
-                          "[concat(parameters('scriptsLocationUrl'), '/', parameters('scriptsFolder'), '/', parameters('gatewayFirewallScriptName'))]"
-                      ],
-                      "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', parameters('scriptsFolder'), '/', parameters('gatewayFirewallScriptName'))]"
-                  }
-              }
-          },
-		  {
-              "name": "OrleansFirewallScript",
-              "type": "extensions",
-              "location": "[resourceGroup().location]",
-              "apiVersion": "2016-03-30",
-              "dependsOn": [
-                  "[resourceId('Microsoft.Compute/virtualMachines', parameters('orleansVirtualMachineName'))]"
-              ],
-              "tags": {
-                  "displayName": "OrleansFirewallCustomScript"
-              },
-              "properties": {
-                  "publisher": "Microsoft.Compute",
-                  "type": "CustomScriptExtension",
-                  "typeHandlerVersion": "1.4",
-                  "autoUpgradeMinorVersion": true,
-                  "settings": {
-                      "fileUris": [
-                          "[concat(parameters('scriptsLocationUrl'), '/', parameters('scriptsFolder'), '/', parameters('orleansFirewallScriptName'))]"
-                      ],
-                      "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', parameters('scriptsFolder'), '/', parameters('orleansFirewallScriptName'))]"
-                  }
-              }
-          }
+    }
+	
   ]
 }

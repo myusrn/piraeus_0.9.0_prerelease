@@ -12,10 +12,10 @@ Node $nodeName
       Name = "Web-Server"
       Ensure = "Present"
     }
-	WindowsFeature Web-WebSocket
-	{
-		Name = "Web-WebSocket"
-		Ensure = "Present"
+	WindowsFeature Web-WebSockets 
+	{ 
+	  Ensure = 'Present' 
+	  Name = 'Web-WebSockets' 
 	}
     WindowsFeature WebManagementConsole
     {
