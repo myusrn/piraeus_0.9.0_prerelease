@@ -235,7 +235,8 @@
     "diagnosticsAccountid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',resourceGroup().name, '/providers/','Microsoft.Storage/storageAccounts/', parameters('vmDiagnosticsStorageAccountName'))]",
     "orleansAccountid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',resourceGroup().name, '/providers/','Microsoft.Storage/storageAccounts/', parameters('orleansStorageAccountName'))]",
     "gatewayDscExtensionName": "dscExtension",
-	"gatewayFirewallExtensionName":"CustomScriptExtension"
+	"gatewayFirewallExtensionName":"CustomScriptExtension",
+	"orleansFirewallExtensionName":"CustomScriptExtension"
   },
   "resources": [
     {
