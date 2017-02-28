@@ -202,6 +202,7 @@
       }
     },
     "modulesUrl": {
+	  "defaultValue": "https://github.com/skunklab/core2/raw/master/templates/PiraeusWebSite.ps1.zip",
       "type": "string",
       "metadata": {
         "description": "URL for the DSC configuration module. NOTE: Can be a Github url(raw) to the zip file."
