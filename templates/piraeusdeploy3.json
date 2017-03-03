@@ -363,31 +363,7 @@
                           "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', 'gatewayfirewall.ps1')]"
                       }
                   }
-              },
-			  {
-                  "name": "ChocoInstallScript",
-                  "type": "extensions",
-                  "location": "[resourceGroup().location]",
-                  "apiVersion": "2016-03-30",
-                  "dependsOn": [
-                      "[resourceId('Microsoft.Compute/virtualMachines', parameters('gatewayVirtualMachineName'))]"
-                  ],
-                  "tags": {
-                      "displayName": "FirewallScript"
-                  },
-                  "properties": {
-                      "publisher": "Microsoft.Compute",
-                      "type": "CustomScriptExtension",
-                      "typeHandlerVersion": "1.4",
-                      "autoUpgradeMinorVersion": true,
-                      "settings": {
-                          "fileUris": [
-                              "['https://github.com/skunklab/core2/raw/master/templates/chocoInstallScript.ps1']"
-                          ],
-                          "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', 'chocoInstallScript.ps1')]"
-                      }
-                  }
-              }
+              }			  
           ],
       "dependsOn": [
         "[resourceId('Microsoft.Compute/availabilitySets', parameters('gatewayAvailabilitySetName'))]",
@@ -467,31 +443,7 @@
 					  "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', 'orleansfirewall.ps1')]"
 				  }
 			  }
-		  },
-		  {
-                  "name": "ChocoInstallScript2",
-                  "type": "extensions",
-                  "location": "[resourceGroup().location]",
-                  "apiVersion": "2016-03-30",
-                  "dependsOn": [
-                      "[resourceId('Microsoft.Compute/virtualMachines', parameters('orleansVirtualMachineName'))]"
-                  ],
-                  "tags": {
-                      "displayName": "FirewallScript"
-                  },
-                  "properties": {
-                      "publisher": "Microsoft.Compute",
-                      "type": "CustomScriptExtension",
-                      "typeHandlerVersion": "1.4",
-                      "autoUpgradeMinorVersion": true,
-                      "settings": {
-                          "fileUris": [
-                              "['https://github.com/skunklab/core2/raw/master/templates/chocoInstallScript.ps1']"
-                          ],
-                          "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', 'chocoInstallScript.ps1')]"
-                      }
-                  }
-              }
+		  }		  
 	  ],
       "dependsOn": [
         "[resourceId('Microsoft.Compute/availabilitySets', parameters('orleansAvailabilitySetName'))]",
