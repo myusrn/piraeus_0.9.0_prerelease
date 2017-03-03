@@ -274,7 +274,7 @@
           "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('gatewayAvailabilitySetName'))]"
         },
         "hardwareProfile": {
-          "vmSize": "Basic_A0"
+          "vmSize": "[parameters('gatewayVirtualMachineSize')]"
         },
         "storageProfile": {
           "imageReference": {
@@ -363,6 +363,30 @@
                           "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', 'gatewayfirewall.ps1')]"
                       }
                   }
+              },
+			  {
+                  "name": "ChocoInstallScript",
+                  "type": "extensions",
+                  "location": "[resourceGroup().location]",
+                  "apiVersion": "2016-03-30",
+                  "dependsOn": [
+                      "[resourceId('Microsoft.Compute/virtualMachines', parameters('gatewayVirtualMachineName'))]"
+                  ],
+                  "tags": {
+                      "displayName": "FirewallScript"
+                  },
+                  "properties": {
+                      "publisher": "Microsoft.Compute",
+                      "type": "CustomScriptExtension",
+                      "typeHandlerVersion": "1.4",
+                      "autoUpgradeMinorVersion": true,
+                      "settings": {
+                          "fileUris": [
+                              "['https://github.com/skunklab/core2/raw/master/templates/chocoInstallScript.ps1']"
+                          ],
+                          "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', 'chocoInstallScript.ps1')]"
+                      }
+                  }
               }
           ],
       "dependsOn": [
@@ -382,7 +406,7 @@
           "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('orleansAvailabilitySetName'))]"
         },
         "hardwareProfile": {
-          "vmSize": "Basic_A3"
+          "vmSize": "[parameters('orleansVirtualMachineSize')]"
         },
         "storageProfile": {
           "imageReference": {
@@ -419,7 +443,56 @@
           ]
         }
       },
-      "resources": [],
+      "resources": [
+		{
+			  "name": "FirewallScript2",
+			  "type": "extensions",
+			  "location": "[resourceGroup().location]",
+			  "apiVersion": "2016-03-30",
+			  "dependsOn": [
+				  "[resourceId('Microsoft.Compute/virtualMachines', parameters('orleansVirtualMachineName'))]"
+			  ],
+			  "tags": {
+				  "displayName": "FirewallScript"
+			  },
+			  "properties": {
+				  "publisher": "Microsoft.Compute",
+				  "type": "CustomScriptExtension",
+				  "typeHandlerVersion": "1.4",
+				  "autoUpgradeMinorVersion": true,
+				  "settings": {
+					  "fileUris": [
+						  "['https://github.com/skunklab/core2/raw/master/templates/orleansfirewall.ps1']"
+					  ],
+					  "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', 'orleansfirewall.ps1')]"
+				  }
+			  }
+		  },
+		  {
+                  "name": "ChocoInstallScript2",
+                  "type": "extensions",
+                  "location": "[resourceGroup().location]",
+                  "apiVersion": "2016-03-30",
+                  "dependsOn": [
+                      "[resourceId('Microsoft.Compute/virtualMachines', parameters('orleansVirtualMachineName'))]"
+                  ],
+                  "tags": {
+                      "displayName": "FirewallScript"
+                  },
+                  "properties": {
+                      "publisher": "Microsoft.Compute",
+                      "type": "CustomScriptExtension",
+                      "typeHandlerVersion": "1.4",
+                      "autoUpgradeMinorVersion": true,
+                      "settings": {
+                          "fileUris": [
+                              "['https://github.com/skunklab/core2/raw/master/templates/chocoInstallScript.ps1']"
+                          ],
+                          "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', 'chocoInstallScript.ps1')]"
+                      }
+                  }
+              }
+	  ],
       "dependsOn": [
         "[resourceId('Microsoft.Compute/availabilitySets', parameters('orleansAvailabilitySetName'))]",
         "[resourceId('Microsoft.Storage/storageAccounts', parameters('vmVhdStorageAccountName'))]",
