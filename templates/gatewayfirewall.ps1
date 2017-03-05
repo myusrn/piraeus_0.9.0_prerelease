@@ -4,4 +4,4 @@ New-NetFirewallRule -Name "MQTT TCP not secure" -DisplayName "MQTT TCP not secur
 New-NetFirewallRule -Name "MQTT TCP secure" -DisplayName "MQTT TCP secure" -Group Piraues -Enabled True -Direction Inbound -Protocol TCP -RemotePort 8883 -LocalPort 8883
 New-NetFirewallRule -Name "MQTT UDP" -DisplayName "MQTT UDP" -Group Piraues -Enabled True -Direction Inbound -Protocol TCP -RemotePort 5883 -LocalPort 5883
 New-NetFirewallRule -Name "Orleans Gateway" -DisplayName "Orleans Gateway" -Group Piraeus -Enabled True -Direction Outbound -Protocol TCP -RemotePort 11111
-iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+
