@@ -6,3 +6,4 @@ New-NetFirewallRule -Name "MQTT UDP" -DisplayName "MQTT UDP" -Group Piraues -Ena
 New-NetFirewallRule -Name "Orleans Gateway" -DisplayName "Orleans Gateway" -Group Piraeus -Enabled True -Direction Outbound -Protocol TCP -RemotePort 11111
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 iwr https://github.com/skunklab/core2/raw/master/templates/SL-YAMS.0.1.0.nupkg -OutFile "c:\SL-YAMS.0.1.0.nupkg"
+choco cinst -source "c:\SL-YAMS.0.1.0.nupkg"
