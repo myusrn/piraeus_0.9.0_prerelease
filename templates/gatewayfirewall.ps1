@@ -8,8 +8,8 @@ cd\
 mkdir WebDeployment
 iwr https://github.com/skunklab/core2/raw/master/templates/TestWebApp.deploy.cmd -OutFile "c:\WebDeployment\TestWebApp.deploy.cmd"
 iwr https://github.com/skunklab/core2/raw/master/templates/TestWebApp.zip -OutFile "c:\WebDeployment\TestWebApp.zip"
-cd WebDeployment
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 iwr https://github.com/skunklab/core2/raw/master/templates/SL-YAMS.0.1.0.nupkg -OutFile "c:\SL-YAMS.0.1.0.nupkg"
 choco cinst -source "c:\SL-YAMS.0.1.0.nupkg"
+cd WebDeployment
 ./TestWebApp.deploy.cmd /Y
