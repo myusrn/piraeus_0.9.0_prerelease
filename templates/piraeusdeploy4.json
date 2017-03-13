@@ -216,7 +216,7 @@
 		}
 	},
 	"dscExtensionFileName": {
-		"defaultValue": "Main.zip",
+		"defaultValue": "Main2.zip",
 		"type": "string"
 	},
 	"gatewayFirewallScriptName": {
@@ -311,7 +311,35 @@
           ]
         }
       },
-      "resources": [              
+      "resources": [       
+				{
+                  "name": "Microsoft.Powershell.DSC",
+                  "type": "extensions",
+                  "location": "[resourceGroup().location]",
+                  "apiVersion": "2016-03-30",
+                  "dependsOn": [
+                      "[resourceId('Microsoft.Compute/virtualMachines', parameters('gatewayVirtualMachineName'))]"
+                  ],
+                  "tags": {
+                      "displayName": "DscExt"
+                  },
+                  "properties": {
+                      "publisher": "Microsoft.Powershell",
+                      "type": "DSC",
+                      "typeHandlerVersion": "2.9",
+                      "autoUpgradeMinorVersion": true,
+                      "settings": {
+                          "configuration": {
+                              "url": "[concat(parameters('scriptsLocationUrl'), '/', parameters('scriptsFolder'), '/', parameters('dscExtensionFileName'))]",
+                              "script": "Main2.ps1",
+                              "function": "Main"
+                          },
+                          "configurationArguments": {
+                              "nodeName": "[parameters('gatewayVirtualMachineName')]"
+                          }
+                      }
+                  }
+              },	  
 			  {
                   "name": "FirewallScript",
                   "type": "extensions",
