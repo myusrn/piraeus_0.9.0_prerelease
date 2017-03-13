@@ -4,7 +4,7 @@ New-NetFirewallRule -Name "MQTT TCP not secure" -DisplayName "MQTT TCP not secur
 New-NetFirewallRule -Name "MQTT TCP secure" -DisplayName "MQTT TCP secure" -Group Piraues -Enabled True -Direction Inbound -Protocol TCP -RemotePort 8883 -LocalPort 8883
 New-NetFirewallRule -Name "MQTT UDP" -DisplayName "MQTT UDP" -Group Piraues -Enabled True -Direction Inbound -Protocol TCP -RemotePort 5883 -LocalPort 5883
 New-NetFirewallRule -Name "Orleans Gateway" -DisplayName "Orleans Gateway" -Group Piraeus -Enabled True -Direction Outbound -Protocol TCP -RemotePort 11111
-cd
+cd\
 mkdir WebDeployment
 iwr https://github.com/skunklab/core2/raw/master/templates/TestWebApp.deploy.cmd -OutFile "c:\WebDeployment\TestWebApp.deploy.cmd"
 iwr https://github.com/skunklab/core2/raw/master/templates/TestWebApp.zip -OutFile "c:\WebDeployment\TestWebApp.zip"
