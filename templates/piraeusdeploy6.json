@@ -314,7 +314,7 @@
       },
       "resources": [       
 				{
-                  "name": "[variables('dscExtensionName'))]",
+                  "name": "[variables('dscExtensionName')]",
                   "type": "extensions",
                   "location": "[resourceGroup().location]",
                   "apiVersion": "2016-03-30",
