@@ -348,7 +348,7 @@
                   "apiVersion": "2016-03-30",
                   "dependsOn": [
                       "[resourceId('Microsoft.Compute/virtualMachines', parameters('gatewayVirtualMachineName'))]",
-					  "[resourceId('extensions', parameters('gatewayVirtualMachineName'), variables('dscExtensionName'))]"
+					  "[resourceId('Microsoft.Compute/virtualMachines/extensions', parameters('gatewayVirtualMachineName'), variables('dscExtensionName'))]"
                   ],
                   "tags": {
                       "displayName": "FirewallScript"
