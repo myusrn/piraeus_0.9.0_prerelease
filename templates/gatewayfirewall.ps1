@@ -13,6 +13,6 @@ iwr https://github.com/skunklab/core2/raw/master/templates/TestWebApp.zip -OutFi
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 iwr https://github.com/skunklab/core2/raw/master/templates/SL-YAMS.0.1.0.nupkg -OutFile "c:\SL-YAMS.0.1.0.nupkg"
 choco install SL-YAMS -source "c:\SL-YAMS.0.1.0.nupkg"
-Msiexec.exe /i c:\ps\MicrosoftAzureStorageTools.msi /quiet
+Msiexec.exe /i c:\MicrosoftAzureStorageTools.msi /quiet
 cd WebDeployment
 ./TestWebApp.deploy.cmd /Y
