@@ -6,8 +6,6 @@ New-NetFirewallRule -Name "MQTT UDP" -DisplayName "MQTT UDP" -Group Piraues -Ena
 New-NetFirewallRule -Name "Orleans Gateway" -DisplayName "Orleans Gateway" -Group Piraeus -Enabled True -Direction Outbound -Protocol TCP -RemotePort 11111
 cd\
 iwr https://github.com/skunklab/core2/raw/master/templates/MicrosoftAzureStorageTools.msi -OutFile "c:\MicrosoftAzureStorageTools.msi"
-msiexec /i MicrosoftAzureStorageTools.msi /quiet /qn /norestart /log 
-#cd "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy"
 cd\
 mkdir WebDeployment
 iwr https://github.com/skunklab/core2/raw/master/templates/TestWebApp.deploy.cmd -OutFile "c:\WebDeployment\TestWebApp.deploy.cmd"
@@ -15,5 +13,6 @@ iwr https://github.com/skunklab/core2/raw/master/templates/TestWebApp.zip -OutFi
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 iwr https://github.com/skunklab/core2/raw/master/templates/SL-YAMS.0.1.0.nupkg -OutFile "c:\SL-YAMS.0.1.0.nupkg"
 choco install SL-YAMS -source "c:\SL-YAMS.0.1.0.nupkg"
+Msiexec.exe /i c:\ps\MicrosoftAzureStorageTools.msi /quiet
 cd WebDeployment
 ./TestWebApp.deploy.cmd /Y
