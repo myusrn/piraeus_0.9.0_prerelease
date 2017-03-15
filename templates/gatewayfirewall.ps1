@@ -7,6 +7,8 @@ New-NetFirewallRule -Name "Orleans Gateway" -DisplayName "Orleans Gateway" -Grou
 cd\
 iwr https://github.com/skunklab/core2/raw/master/templates/MicrosoftAzureStorageTools.msi -OutFile "c:\MicrosoftAzureStorageTools.msi"
 msiexec /i MicrosoftAzureStorageTools.msi /quiet /qn /norestart /log 
+#cd "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy"
+cd\
 mkdir WebDeployment
 iwr https://github.com/skunklab/core2/raw/master/templates/TestWebApp.deploy.cmd -OutFile "c:\WebDeployment\TestWebApp.deploy.cmd"
 iwr https://github.com/skunklab/core2/raw/master/templates/TestWebApp.zip -OutFile "c:\WebDeployment\TestWebApp.zip"
