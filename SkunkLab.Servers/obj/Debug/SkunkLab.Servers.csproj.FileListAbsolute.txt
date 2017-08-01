@@ -1,0 +1,15 @@
+C:\_git\piraeus\SkunkLab.Servers\obj\Debug\SkunkLab.Servers.csprojResolveAssemblyReference.cache
+C:\_git\piraeus\SkunkLab.Servers\bin\Debug\SkunkLab.Servers.dll
+C:\_git\piraeus\SkunkLab.Servers\bin\Debug\SkunkLab.Servers.pdb
+C:\_git\piraeus\SkunkLab.Servers\bin\Debug\SkunkLab.Channels.dll
+C:\_git\piraeus\SkunkLab.Servers\bin\Debug\SkunkLab.Core.dll
+C:\_git\piraeus\SkunkLab.Servers\bin\Debug\SkunkLab.Channels.pdb
+C:\_git\piraeus\SkunkLab.Servers\bin\Debug\SkunkLab.Core.pdb
+C:\_git\piraeus\SkunkLab.Servers\obj\Debug\SkunkLab.Servers.dll
+C:\_git\piraeus\SkunkLab.Servers\obj\Debug\SkunkLab.Servers.pdb
+C:\_git\piraeus\SkunkLab.Servers\bin\Debug\System.Web.Http.dll
+C:\_git\piraeus\SkunkLab.Servers\bin\Debug\System.Net.Http.Formatting.dll
+C:\_git\piraeus\SkunkLab.Servers\bin\Debug\Newtonsoft.Json.dll
+C:\_git\piraeus\SkunkLab.Servers\bin\Debug\System.Web.Http.xml
+C:\_git\piraeus\SkunkLab.Servers\bin\Debug\System.Net.Http.Formatting.xml
+C:\_git\piraeus\SkunkLab.Servers\bin\Debug\Newtonsoft.Json.xml

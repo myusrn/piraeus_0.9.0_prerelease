@@ -1,0 +1,4 @@
+C:\_git\piraeus\Piraeus.Security\bin\Debug\Piraeus.Security.dll
+C:\_git\piraeus\Piraeus.Security\bin\Debug\Piraeus.Security.pdb
+C:\_git\piraeus\Piraeus.Security\obj\Debug\Piraeus.Security.dll
+C:\_git\piraeus\Piraeus.Security\obj\Debug\Piraeus.Security.pdb

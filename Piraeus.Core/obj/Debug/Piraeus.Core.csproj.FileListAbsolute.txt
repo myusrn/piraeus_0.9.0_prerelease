@@ -1,0 +1,5 @@
+C:\_git\piraeus\Piraeus.Core\bin\Debug\Piraeus.Core.dll
+C:\_git\piraeus\Piraeus.Core\bin\Debug\Piraeus.Core.pdb
+C:\_git\piraeus\Piraeus.Core\obj\Debug\Piraeus.Core.csprojResolveAssemblyReference.cache
+C:\_git\piraeus\Piraeus.Core\obj\Debug\Piraeus.Core.dll
+C:\_git\piraeus\Piraeus.Core\obj\Debug\Piraeus.Core.pdb
