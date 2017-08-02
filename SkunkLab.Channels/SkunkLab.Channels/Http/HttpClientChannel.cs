@@ -36,7 +36,7 @@ namespace SkunkLab.Channels.Http
             this.tokenSource = new CancellationTokenSource();
             this.internalToken = tokenSource.Token;
             this.token.Register(() => this.tokenSource.Cancel());
-            Id = Guid.NewGuid().ToString();
+            Id = "http-" + Guid.NewGuid().ToString();
         }
 
         private IEnumerable<KeyValuePair<string, string>> indexes;
@@ -88,12 +88,12 @@ namespace SkunkLab.Channels.Http
         {            
             await Log.LogInfoAsync("Http client channel cannot add messages to the channel without calling SendAsync method.");
             await TaskDone.Done;
-            throw new NotImplementedException("AddMessageAsync not used with HttpClientChannel.");
         }
 
         public override async Task CloseAsync()
         {
-            await Log.LogInfoAsync("Http client channel is closing.");
+            await Log.LogInfoAsync("Channel '{0}' is closing.", Id);
+
             State = ChannelState.ClosedReceived;
 
            if(!internalToken.IsCancellationRequested)
@@ -111,9 +111,9 @@ namespace SkunkLab.Channels.Http
 
         public override async Task OpenAsync()
         {
+            await Log.LogInfoAsync("Channel {0} is opening", Id);
             OnOpen?.Invoke(this, new ChannelOpenEventArgs(Id, null));
             State = ChannelState.None;
-            await TaskDone.Done;
 
         }
 
@@ -121,7 +121,7 @@ namespace SkunkLab.Channels.Http
         {
             while(!internalToken.IsCancellationRequested)
             {
-                await Log.LogAsync("Http client channel is starting receive loop.");
+                await Log.LogAsync("Channel '{0}' is starting receive loop.", Id);
                 State = ChannelState.Connecting;
                 HttpWebRequest request = GetRequest(HttpMethod.Get);
                 Port = request.RequestUri.Port;
@@ -171,18 +171,18 @@ namespace SkunkLab.Channels.Http
                 catch (OperationCanceledException)
                 {
                     //not an error
-                    await Log.LogInfoAsync("Http client channel {0} receive cancelled.", Id);
+                    await Log.LogInfoAsync("Http client channel '{0}' receive cancelled.", Id);
                     State = ChannelState.Aborted;
                 }
                 catch (AggregateException ae)
                 {
-                    await Log.LogErrorAsync("Http client channel {0} receive error {1}", Id, ae.Flatten().InnerException.Message);
+                    await Log.LogErrorAsync("Http client channel '{0}' receive error '{1}'", Id, ae.Flatten().InnerException.Message);
                     State = ChannelState.Closed;
                     OnError?.Invoke(this, new ChannelErrorEventArgs(Id, ae.Flatten()));
                 }     
                 catch(Exception ex)
                 {
-                    await Log.LogErrorAsync("Http client channel {0} receive error {1}", Id, ex.Message);
+                    await Log.LogErrorAsync("Http client channel '{0}' receive error '{1}'", Id, ex.Message);
                     State = ChannelState.Closed;
                     OnError?.Invoke(this, new ChannelErrorEventArgs(Id, ex));
                 }
@@ -222,6 +222,7 @@ namespace SkunkLab.Channels.Http
             }
             catch(OperationCanceledException oce)
             {
+                await Log.LogWarningAsync("Channel '{0]' cancelled with '{1}'", Id, oce.Message);
                 State = ChannelState.Aborted;
             }
             catch(AggregateException ae)
@@ -231,11 +232,13 @@ namespace SkunkLab.Channels.Http
             }
             catch(WebException we)
             {
+                await Log.LogErrorAsync("Channel '{0]' error with '{1}'", Id, we.Message);
                 State = ChannelState.Aborted;
                 OnError?.Invoke(this, new ChannelErrorEventArgs(Id, we.InnerException));
             }
             catch(Exception ex)
             {
+                await Log.LogErrorAsync("Channel '{0]' error with '{1}'", Id, ex.Message);
                 State = ChannelState.Aborted;
                 OnError?.Invoke(this, new ChannelErrorEventArgs(Id, ex));
             }

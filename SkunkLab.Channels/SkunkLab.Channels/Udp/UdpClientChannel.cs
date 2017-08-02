@@ -19,7 +19,7 @@ namespace SkunkLab.Channels.Udp
             this.hostname = hostname;
             this.port = port;
             this.token = token;
-            Id = Guid.NewGuid().ToString();
+            Id = "udp-" + Guid.NewGuid().ToString();
         }
 
         private CancellationToken token;

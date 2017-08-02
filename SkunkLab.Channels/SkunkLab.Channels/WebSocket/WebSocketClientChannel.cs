@@ -14,7 +14,8 @@ namespace SkunkLab.Channels.WebSocket
         {
             endpoint = endpointUri;
             this.config = config;
-            this.token = token;            
+            this.token = token;
+            Id = "ws-" + Guid.NewGuid().ToString();
         }
 
         public WebSocketClientChannel(Uri endpointUri, string subProtocol, WebSocketConfig config, CancellationToken token)
@@ -23,6 +24,7 @@ namespace SkunkLab.Channels.WebSocket
             this.subProtocol = subProtocol;
             this.config = config;
             this.token = token;
+            Id = "ws-" + Guid.NewGuid().ToString();
         }
 
         public WebSocketClientChannel(Uri endpointUri, string securityToken, string subProtocol, WebSocketConfig config, CancellationToken token)
@@ -32,6 +34,7 @@ namespace SkunkLab.Channels.WebSocket
             this.subProtocol = subProtocol;
             this.config = config;
             this.token = token;
+            Id = "ws-" + Guid.NewGuid().ToString();
         }
 
         public WebSocketClientChannel(Uri endpointUri, X509Certificate2 certificate, string subProtocol, WebSocketConfig config, CancellationToken token)
@@ -41,6 +44,7 @@ namespace SkunkLab.Channels.WebSocket
             this.subProtocol = subProtocol;
             this.config = config;
             this.token = token;
+            Id = "ws-" + Guid.NewGuid().ToString();
         }
 
         #endregion

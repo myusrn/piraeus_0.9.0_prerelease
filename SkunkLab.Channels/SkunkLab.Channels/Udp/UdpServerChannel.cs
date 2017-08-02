@@ -16,7 +16,7 @@ namespace SkunkLab.Channels.Udp
         {
             this.localEP = localEP;
             this.remoteEP = remoteEP;
-            Id = Guid.NewGuid().ToString();
+            Id = "udp-" + Guid.NewGuid().ToString();
             client = new UdpClient();
             client.DontFragment = true;
             client.ExclusiveAddressUse = false;

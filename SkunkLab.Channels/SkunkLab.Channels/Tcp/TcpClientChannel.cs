@@ -59,6 +59,7 @@ namespace SkunkLab.Channels.Tcp
             this.localEP = localEP;
             this.certificate = certificate;
             this.token = token;
+            Id = "tcp-" + Guid.NewGuid().ToString();
             this.token.Register(async () => await CloseAsync());
 
             Port = port;           
@@ -80,6 +81,7 @@ namespace SkunkLab.Channels.Tcp
             this.localEP = localEP;
             this.certificate = certificate;
             this.token = token;
+            Id = "tcp-" + Guid.NewGuid().ToString();
             this.token.Register(async () => await CloseAsync());
 
             if (certificate != null)
@@ -108,6 +110,7 @@ namespace SkunkLab.Channels.Tcp
             this.localEP = localEP;
             this.certificate = certificate;
             this.token = token;
+            Id = "tcp-" + Guid.NewGuid().ToString();
             this.token.Register(async () => await CloseAsync());
 
             if (certificate != null)
@@ -126,6 +129,7 @@ namespace SkunkLab.Channels.Tcp
             this.pskIdentity = pskIdentity;
             this.psk = psk;
             this.token = token;
+            Id = "tcp-" + Guid.NewGuid().ToString();
         }
 
         //public TcpClientChannel(IPEndPoint remoteEndpoint, string pskIdentity, byte[] psk, CancellationToken token)

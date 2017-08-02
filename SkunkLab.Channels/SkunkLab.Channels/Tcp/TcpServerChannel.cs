@@ -21,7 +21,7 @@ namespace SkunkLab.Channels.Tcp
             this.client = client;
             this.token = token;
             this.token.Register(async () => await CloseAsync());
-            Id = Guid.NewGuid().ToString();
+            Id = "tcp-" + Guid.NewGuid().ToString();
             Port = ((IPEndPoint)client.Client.LocalEndPoint).Port;
         }
 
@@ -32,7 +32,7 @@ namespace SkunkLab.Channels.Tcp
             this.clientAuth = clientAuth;
             this.token = token;
             this.token.Register(async () => await CloseAsync());
-            Id = Guid.NewGuid().ToString();
+            Id = "tcp-" + Guid.NewGuid().ToString();
         }
 
         public TcpServerChannel(TcpClient client, string pskIdentity, byte[] psk, CancellationToken token)
@@ -42,7 +42,7 @@ namespace SkunkLab.Channels.Tcp
             this.psk = psk;
             this.token = token;
             this.token.Register(async () => await CloseAsync());
-            Id = Guid.NewGuid().ToString();
+            Id = "tcp-" + Guid.NewGuid().ToString();
         }
 
         private SecureRandom srandom;

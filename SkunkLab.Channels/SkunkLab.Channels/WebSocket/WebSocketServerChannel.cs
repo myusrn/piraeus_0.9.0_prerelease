@@ -15,7 +15,7 @@ namespace SkunkLab.Channels.WebSocket
     {
         public WebSocketServerChannel(HttpRequestMessage request, WebSocketConfig config, CancellationToken token)
         {
-            Id = Guid.NewGuid().ToString();
+            Id = "ws-" + Guid.NewGuid().ToString();
             this.config = config;
             this.token = token;
             HttpContext.Current.AcceptWebSocketRequest(this);

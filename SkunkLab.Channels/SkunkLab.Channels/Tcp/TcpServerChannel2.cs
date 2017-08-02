@@ -22,7 +22,7 @@ namespace SkunkLab.Channels.Tcp
             this.maxBufferSize = maxBufferSize;
             this.token = token;
             this.token.Register(async () => await CloseAsync());
-            Id = Guid.NewGuid().ToString();
+            Id = "tcp-" + Guid.NewGuid().ToString();
             Port = ((IPEndPoint)client.Client.LocalEndPoint).Port;
         }
 
@@ -35,7 +35,7 @@ namespace SkunkLab.Channels.Tcp
             this.maxBufferSize = maxBufferSize;
             this.token = token;
             this.token.Register(async () => await CloseAsync());
-            Id = Guid.NewGuid().ToString();
+            Id = "tcp-" + Guid.NewGuid().ToString();
         }
 
         public TcpServerChannel2(TcpClient client, string pskIdentity, byte[] psk, int blockSize, int maxBufferSize,  CancellationToken token)
@@ -47,7 +47,7 @@ namespace SkunkLab.Channels.Tcp
             this.maxBufferSize = maxBufferSize;
             this.token = token;
             this.token.Register(async () => await CloseAsync());
-            Id = Guid.NewGuid().ToString();
+            Id = "tcp-" + Guid.NewGuid().ToString();
         }
 
         private SecureRandom srandom;

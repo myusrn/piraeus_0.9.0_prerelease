@@ -61,7 +61,7 @@ namespace SkunkLab.Channels.Tcp
             this.maxBufferSize = maxBufferSize;
             this.token = token;
             this.token.Register(async () => await CloseAsync());
-
+            Id = "tcp2-" + Guid.NewGuid().ToString();
             Port = port;
         }
 
@@ -83,6 +83,7 @@ namespace SkunkLab.Channels.Tcp
             this.blockSize = blockSize;
             this.maxBufferSize = maxBufferSize;
             this.token = token;
+            Id = "tcp2-" + Guid.NewGuid().ToString();
             this.token.Register(async () => await CloseAsync());
 
             if (certificate != null)
@@ -113,6 +114,7 @@ namespace SkunkLab.Channels.Tcp
             this.blockSize = blockSize;
             this.maxBufferSize = maxBufferSize;
             this.token = token;
+            Id = "tcp2-" + Guid.NewGuid().ToString();
             this.token.Register(async () => await CloseAsync());
 
             if (certificate != null)
@@ -132,6 +134,7 @@ namespace SkunkLab.Channels.Tcp
             this.blockSize = blockSize;
             this.maxBufferSize = maxBufferSize;
             this.psk = psk;
+            Id = "tcp2-" + Guid.NewGuid().ToString();
             this.token = token;
         }
 

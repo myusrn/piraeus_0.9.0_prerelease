@@ -9,6 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using SkunkLab.Diagnostics.Logging;
 
 namespace SkunkLab.Channels.Http
 {
@@ -21,6 +22,7 @@ namespace SkunkLab.Channels.Http
         /// <param name="request">Http request from client.</param>
         public HttpServerChannel(HttpRequestMessage request)
         {
+            Id = "http-" + Guid.NewGuid().ToString();
             this.request = request;
             //contentType = request.Content.Headers.ContentType.MediaType;
             Port = HttpContext.Current.Request.Url.Port;
@@ -48,6 +50,7 @@ namespace SkunkLab.Channels.Http
             this.endpoint = endpoint;
             this.resource = resourceUriString;
             this.contentType = contentType;
+            Id = "http-" + Guid.NewGuid().ToString();
         }
 
         public HttpServerChannel(string endpoint, string resourceUriString, string contentType, string securityToken)
@@ -56,6 +59,7 @@ namespace SkunkLab.Channels.Http
             this.resource = resourceUriString;
             this.contentType = contentType;
             this.securityToken = securityToken;
+            Id = "http-" + Guid.NewGuid().ToString();
         }
 
         public HttpServerChannel(string endpoint, string resourceUriString, string contentType, X509Certificate2 certificate)
@@ -64,6 +68,7 @@ namespace SkunkLab.Channels.Http
             this.resource = resourceUriString;
             this.contentType = contentType;
             this.certificate = certificate;
+            Id = "http-" + Guid.NewGuid().ToString();
         }
 
         private string endpoint;
@@ -131,6 +136,7 @@ namespace SkunkLab.Channels.Http
                     else
                     {
                         //invalid response code
+                        await Log.LogWarningAsync("Channel '{0}' invalid response code from send operation of {1}", response.StatusCode);
                     }
                 }
             }
