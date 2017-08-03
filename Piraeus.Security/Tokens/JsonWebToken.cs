@@ -4,15 +4,19 @@ namespace Piraeus.Security.Tokens
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Diagnostics;
     using System.IdentityModel.Protocols.WSTrust;
     using System.IdentityModel.Tokens;
     using System.IdentityModel.Tokens.Jwt;
     using System.Net;
     using System.Security.Claims;
+    using System.Threading;
+    using Microsoft.IdentityModel.Tokens;
 
-    public class JsonWebToken : SecurityToken
+    public class JsonWebToken : System.IdentityModel.Tokens.SecurityToken
     {        
 
+        
         public JsonWebToken(Uri address, string securityKey, string issuer, IEnumerable<Claim> claims)
         {
             id = Guid.NewGuid().ToString();
@@ -28,7 +32,7 @@ namespace Piraeus.Security.Tokens
                 IssuedAt = created,
                 NotBefore = created,
                 Audience = address.ToString(),
-                SigningCredentials = new Microsoft.IdentityModel.Tokens.SigningCredentials(new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Convert.FromBase64String(securityKey)), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new Microsoft.IdentityModel.Tokens.SigningCredentials(new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Convert.FromBase64String(securityKey)), Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha256Signature)
             };
             
             JwtSecurityToken jwtToken = jwt.CreateJwtSecurityToken(msstd);
@@ -51,7 +55,7 @@ namespace Piraeus.Security.Tokens
                 IssuedAt = created,
                 NotBefore = created,
                 Audience = audience.ToString(),
-                SigningCredentials = new Microsoft.IdentityModel.Tokens.SigningCredentials(new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Convert.FromBase64String(securityKey)), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new Microsoft.IdentityModel.Tokens.SigningCredentials(new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Convert.FromBase64String(securityKey)), Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha256Signature)
             };
 
             JwtSecurityToken jwtToken = jwt.CreateJwtSecurityToken(msstd);
@@ -79,10 +83,7 @@ namespace Piraeus.Security.Tokens
             get { return this.id; }
         }
 
-        public override ReadOnlyCollection<SecurityKey> SecurityKeys
-        {
-            get { throw new NotImplementedException(); }
-        }
+        
 
         public override DateTime ValidFrom
         {
@@ -93,5 +94,41 @@ namespace Piraeus.Security.Tokens
         {
             get { return expires; }
         }
+
+        public override ReadOnlyCollection<System.IdentityModel.Tokens.SecurityKey> SecurityKeys => throw new NotImplementedException();
+
+        public static void Authenticate(string token, string issuer, string audience, string signingKey)
+        {
+            try
+            {
+                JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+
+                TokenValidationParameters validationParameters = new TokenValidationParameters()
+                {
+                    IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Convert.FromBase64String(signingKey)),
+                    ValidIssuer = issuer,
+                    ValidAudience = audience,
+                    ValidateAudience = true,
+                    ValidateIssuer = true,
+                    ValidateIssuerSigningKey = true
+                };
+
+                Microsoft.IdentityModel.Tokens.SecurityToken stoken = null;
+
+                Thread.CurrentPrincipal = tokenHandler.ValidateToken(token, validationParameters, out stoken);
+
+            }
+            catch (Microsoft.IdentityModel.Tokens.SecurityTokenValidationException e)
+            {
+                Trace.TraceWarning("JWT validation has security token exception.");
+                Trace.TraceError(e.Message);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceWarning("Exception in JWT validation.");
+                Trace.TraceError(ex.Message);
+            }
+        }
+        
     }
 }

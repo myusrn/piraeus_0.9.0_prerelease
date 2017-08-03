@@ -44,7 +44,7 @@ namespace Piraeus.Security
         private static bool TryRetrieveToken(HttpRequestMessage request, out string token)
         {
             token = null;
-            IEnumerable<string> authzHeaders;
+            IEnumerable<string> authzHeaders = null;
             if (!request.Headers.TryGetValues("Authorization", out authzHeaders) || authzHeaders.Count() > 1)
             {
                 return false;
@@ -57,7 +57,7 @@ namespace Piraeus.Security
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             HttpStatusCode statusCode;
-            string token;
+            string token = null;
 
             if (!TryRetrieveToken(request, out token))
             {
