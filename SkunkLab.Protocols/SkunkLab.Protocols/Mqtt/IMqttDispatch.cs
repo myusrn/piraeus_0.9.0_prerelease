@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace SkunkLab.Protocols.Utilities
+namespace SkunkLab.Protocols
 {
-    public interface IDispatch
+    public interface IMqttDispatch
     {
         void Register(string key, Action<string,string,byte[]> action);
         void Unregister(string key);

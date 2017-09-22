@@ -2,11 +2,18 @@
 
 namespace SkunkLab.Protocols.Coap
 {
+    /// <summary>
+    /// CoAP configuration parameters
+    /// </summary>
     public sealed class CoapConfig
     {       
 
-        public CoapConfig(double ackTimeout = 2.0, double ackRandomFactor = 1.5, int maxRetransmit = 4, int nstart = 1, double defaultLeisure = 4.0, double probingRate = 1.0, double maxLatency = 100.0)
+        public CoapConfig(string authority, CoapConfigOptions configOptions, bool autoRetry = false, int keepAliveSeconds = 180, double ackTimeout = 2.0, double ackRandomFactor = 1.5, int maxRetransmit = 4, int nstart = 1, double defaultLeisure = 4.0, double probingRate = 1.0, double maxLatency = 100.0)
         {
+            Authority = authority;
+            ConfigOptions = configOptions;
+            AutoRetry = autoRetry;
+            KeepAlive = keepAliveSeconds;
             AckTimeout = TimeSpan.FromSeconds(ackTimeout);
             AckRandomFactor = ackRandomFactor;
             MaxRetransmit = maxRetransmit;
@@ -16,6 +23,12 @@ namespace SkunkLab.Protocols.Coap
             MaxLatency = TimeSpan.FromSeconds(maxLatency);
         }
 
+        public int? KeepAlive { get; internal set; }
+        public bool AutoRetry { get; internal set; }
+        public string Authority { get; internal set; }
+        public string DoNotRetainNonconfirmableResponse { get; internal set; }
+        public CoapConfigOptions ConfigOptions { get; internal set; }
+        
         public TimeSpan AckTimeout { get; internal set; }
         public double AckRandomFactor { get; internal set; }
 

@@ -12,6 +12,7 @@ namespace SkunkLab.Protocols.Mqtt
         {
             exchangeLifetime = config.MaxTransmitSpan;
             container = new Dictionary<ushort, MqttMessage>();
+            timeContainer = new Dictionary<ushort, DateTime>();
         }
 
         private TimeSpan exchangeLifetime;

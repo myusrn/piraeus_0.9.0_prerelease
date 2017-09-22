@@ -6,7 +6,7 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
 {
     public abstract class MqttMessageHandler
     {
-        public static MqttMessageHandler Create(MqttSession session, MqttMessage message, IDispatch dispatcher = null)
+        public static MqttMessageHandler Create(MqttSession session, MqttMessage message, IMqttDispatch dispatcher = null)
         {
             
             switch(message.MessageType)
@@ -45,14 +45,14 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
             
         }
 
-        protected MqttMessageHandler(MqttSession session, MqttMessage message, IDispatch dispatcher = null)
+        protected MqttMessageHandler(MqttSession session, MqttMessage message, IMqttDispatch dispatcher = null)
         {
             Session = session;            
             Message = message;
             Dispatcher = dispatcher;
         }
 
-        protected IDispatch Dispatcher { get; set; }
+        protected IMqttDispatch Dispatcher { get; set; }
 
         protected MqttSession Session { get; set; }
 

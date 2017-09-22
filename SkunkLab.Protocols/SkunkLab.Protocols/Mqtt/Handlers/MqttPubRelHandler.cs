@@ -9,7 +9,7 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
 {
     public class MqttPubRelHandler : MqttMessageHandler
     {
-        public MqttPubRelHandler(MqttSession session, MqttMessage message, IDispatch dispatcher)
+        public MqttPubRelHandler(MqttSession session, MqttMessage message, IMqttDispatch dispatcher)
             : base(session, message, dispatcher)
         {
 

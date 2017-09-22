@@ -14,8 +14,10 @@ namespace SkunkLab.Protocols.Mqtt
        
         public MqttSession(MqttConfig config)
         {
-            this.config = config;            
+            this.config = config;
+            KeepAliveSeconds = config.KeepAliveSeconds;
             pubContainer = new PublishContainer(config);
+            
             qosLevels = new Dictionary<string, QualityOfServiceLevelType>();
             quarantine = new MqttQuarantineTimer(config);
             quarantine.OnRetry += Quarantine_OnRetry;
@@ -36,7 +38,7 @@ namespace SkunkLab.Protocols.Mqtt
         private PublishContainer pubContainer;      //manages QoS 2 message features
         private MqttConfig config;                  //configuration
         private Timer keepaliveTimer;               //timer for tracking keepalives
-        private int _keepaliveSeconds;              //keepalive time increment
+        private double _keepaliveSeconds;              //keepalive time increment
         private DateTime keepaliveExpiry;           //expiry of the keepalive
         private Dictionary<string, QualityOfServiceLevelType> qosLevels;    //qos levels return from subscriptions
         private ConnectAckCode _code;
@@ -154,17 +156,21 @@ namespace SkunkLab.Protocols.Mqtt
 
         #region keep alive
 
-        internal int KeepAliveSeconds
+        internal double KeepAliveSeconds
         {
             get { return _keepaliveSeconds; }
             set
             {
+                _keepaliveSeconds = value;
+
                 if (keepaliveTimer == null)
                 {
                     keepaliveTimer = new Timer(Convert.ToDouble(value * 1000));
                     keepaliveTimer.Elapsed += KeepaliveTimer_Elapsed;
                     keepaliveTimer.Start();
                 }
+
+               
             }
         }
         internal void IncrementKeepAlive()

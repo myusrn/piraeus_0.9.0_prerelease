@@ -40,9 +40,13 @@ namespace SkunkLab.Protocols.Coap
         }
 
 
-        public static string ConvertFromMediaType(MediaType mediaType)
+        public static string ConvertFromMediaType(MediaType? mediaType)
         {
-            if(mediaType == MediaType.TextPlain)
+            if(!mediaType.HasValue)
+            {
+                return "application/octet-stream";
+            }
+            else if(mediaType == MediaType.TextPlain)
             {
                 return "text/plain";
             }

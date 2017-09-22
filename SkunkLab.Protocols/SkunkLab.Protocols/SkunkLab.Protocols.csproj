@@ -41,27 +41,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coap\CoapNotAuthorizedException.cs" />
     <Compile Include="Coap\CoapAckArgs.cs" />
     <Compile Include="Coap\CoapConfig.cs" />
     <Compile Include="Coap\CoapConstants.cs" />
     <Compile Include="Coap\CoapMessage.cs" />
+    <Compile Include="Coap\CoapMessageEventArgs.cs" />
     <Compile Include="Coap\CoapMessageType.cs" />
     <Compile Include="Coap\CoapOption.cs" />
     <Compile Include="Coap\CoapOptionCollection.cs" />
+    <Compile Include="Coap\CoapConfigOptions.cs" />
     <Compile Include="Coap\CoapRequest.cs" />
     <Compile Include="Coap\CoapResetArgs.cs" />
     <Compile Include="Coap\CoapResponse.cs" />
+    <Compile Include="Coap\CoapRstException.cs" />
     <Compile Include="Coap\CoapServiceType.cs" />
-    <Compile Include="Coap\CoapSession.cs" />
-    <Compile Include="Coap\CoapTimer.cs" />
-    <Compile Include="Coap\CoapTimerArgs.cs" />
     <Compile Include="Coap\CoapToken.cs" />
-    <Compile Include="Coap\CoapUri2.cs" />
     <Compile Include="Coap\CoapVersionMismatchException.cs" />
     <Compile Include="Coap\CodeType.cs" />
     <Compile Include="Coap\DateTimeExtensions.cs" />
+    <Compile Include="Coap\Handlers\CoapDeleteHandler.cs" />
+    <Compile Include="Coap\Handlers\CoapGetHandler.cs" />
+    <Compile Include="Coap\Handlers\CoapPingHandler.cs" />
+    <Compile Include="Coap\Handlers\CoapPostHandler.cs" />
+    <Compile Include="Coap\Handlers\CoapPutHandler.cs" />
+    <Compile Include="Coap\Handlers\CoapResponseHandler.cs" />
+    <Compile Include="Coap\Handlers\CoapMessageHandler.cs" />
+    <Compile Include="Coap\Handlers\CoapObserveHandler.cs" />
+    <Compile Include="Coap\Handlers\CoapRstHandler.cs" />
     <Compile Include="Coap\Handlers\CoapSession.cs" />
-    <Compile Include="Coap\Handlers\RetryTimer.cs" />
+    <Compile Include="Coap\ICoapRequestDispatch.cs" />
+    <Compile Include="Coap\IdManager.cs" />
     <Compile Include="Coap\MediaType.cs" />
     <Compile Include="Coap\MediaTypeConverter.cs" />
     <Compile Include="Coap\MediaTypeExtensions.cs" />
@@ -73,8 +83,11 @@
     <Compile Include="Coap\RequestMessageType.cs" />
     <Compile Include="Coap\ResponseCodeType.cs" />
     <Compile Include="Coap\ResponseMessageType.cs" />
+    <Compile Include="Coap\Receiver.cs" />
+    <Compile Include="Coap\Transmitter.cs" />
     <Compile Include="Coap\UnsupportedMediaTypeException.cs" />
     <Compile Include="Coap\UriExtensions.cs" />
+    <Compile Include="Mqtt\IMqttDispatch.cs" />
     <Compile Include="Mqtt\RetryMessageData.cs" />
     <Compile Include="Mqtt\ByteContainer.cs" />
     <Compile Include="Mqtt\ConnectAckCode.cs" />
@@ -123,12 +136,7 @@
     <Compile Include="Mqtt\UnsubscribeMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Coap\CoapUri.cs" />
-    <Compile Include="Utilities\GenericDispatcher.cs" />
-    <Compile Include="Utilities\IDispatch.cs" />
     <Compile Include="Utilities\QueryStringConstants.cs" />
-    <Compile Include="Utilities\RetryMaxAttemptExceededEventArgs.cs" />
-    <Compile Include="Utilities\RetryMessageEventArgs.cs" />
-    <Compile Include="Utilities\RetryTimer.cs" />
     <Compile Include="Utilities\TaskExtensions.cs" />
   </ItemGroup>
   <ItemGroup />

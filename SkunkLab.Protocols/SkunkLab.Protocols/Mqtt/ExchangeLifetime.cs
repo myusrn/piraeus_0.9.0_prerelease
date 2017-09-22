@@ -11,6 +11,7 @@ namespace SkunkLab.Protocols.Mqtt
         public ExchangeLifetime(TimeSpan interval, TimeSpan lifetime)
         {
             this.lifetime = lifetime;
+            container = new Dictionary<ushort, DateTime>();
             timer = new Timer(interval.TotalMilliseconds);
             timer.Elapsed += Timer_Elapsed;
             timer.Start();
@@ -19,7 +20,7 @@ namespace SkunkLab.Protocols.Mqtt
         public event ExpiredExchangeEventHandler OnExpired;
         private TimeSpan lifetime;
         private Timer timer;
-        Dictionary<ushort, DateTime> container;
+        private Dictionary<ushort, DateTime> container;
 
         public bool IsProcessed(ushort id)
         {

@@ -27,7 +27,6 @@ namespace SkunkLab.Protocols.Coap
             this.ResponseType = type;
             this.ResponseCode = code;
             this.Code = (CodeType)code;
-           
 
             if (token != null)
             {
