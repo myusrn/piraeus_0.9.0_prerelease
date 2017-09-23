@@ -16,6 +16,7 @@ namespace SkunkLab.Protocols.Coap
             timer.Elapsed += Timer_Elapsed;
             retryContainer = new Dictionary<ushort, Tuple<DateTime, int, CoapMessage>>();
             container = new Dictionary<ushort, Tuple<string, DateTime, Action<CodeType, string, byte[]>>>();
+            observeContainer = new Dictionary<string, Action<CodeType, string, byte[]>>();
         }        
 
         private double lifetimeMilliseconds;
@@ -23,12 +24,28 @@ namespace SkunkLab.Protocols.Coap
         private int maxAttempts;
         private ushort currentId;
         private Timer timer;
+        
+        private Dictionary<string, Action<CodeType, string, byte[]>> observeContainer;
         private Dictionary<ushort, Tuple<string, DateTime, Action<CodeType, string, byte[]>>> container;
         private Dictionary<ushort, Tuple<DateTime, int, CoapMessage>> retryContainer;
         public event EventHandler<CoapMessageEventArgs> OnRetry;
 
-        public ushort NewId(byte[] token, Action<CodeType, string, byte[]> action = null)
+        public void Unobserve(byte[] token)
         {
+            string tokenString = Convert.ToBase64String(token);
+            if(observeContainer.ContainsKey(tokenString))
+            {
+                observeContainer.Remove(tokenString);
+            }
+        }
+        
+        public ushort NewId(byte[] token, bool? observe = null, Action<CodeType, string, byte[]> action = null)
+        {
+            if(observe.HasValue && observe.Value && action == null)
+            {
+                throw new ArgumentNullException("action");
+            }
+
             currentId++;
             currentId = currentId == ushort.MaxValue ? (ushort)1 : currentId;
 
@@ -36,6 +53,11 @@ namespace SkunkLab.Protocols.Coap
             {
                 currentId++;
                 currentId = currentId == ushort.MaxValue ? (ushort)1 : currentId;
+            }
+
+            if (observe.HasValue && observe.Value)
+            {
+                observeContainer.Add(Convert.ToBase64String(token), action);
             }
 
             Tuple<string, DateTime, Action<CodeType, string, byte[]>> tuple = new Tuple<string, DateTime, Action<CodeType, string, byte[]>>(Convert.ToBase64String(token), DateTime.UtcNow.AddMilliseconds(lifetimeMilliseconds), action);
@@ -59,11 +81,27 @@ namespace SkunkLab.Protocols.Coap
 
         public void DispatchResponse(CoapMessage message)
         {
+            var observeQuery = observeContainer.Where((c) => c.Key == Convert.ToBase64String(message.Token));
+
+            if(observeQuery != null)
+            {
+                observeQuery.First().Value(message.Code, MediaTypeConverter.ConvertFromMediaType(message.ContentType), message.Payload);
+            }
+
+
             var query = container.Where((c) => c.Value.Item1 == Convert.ToBase64String(message.Token));
 
             if(query != null && query.Count() == 1)
             {
-                query.First().Value.Item3(message.Code, MediaTypeConverter.ConvertFromMediaType(message.ContentType), message.Payload);
+                if (observeQuery == null)
+                {
+                    query.First().Value.Item3(message.Code, MediaTypeConverter.ConvertFromMediaType(message.ContentType), message.Payload);
+                }
+                else
+                {
+                    Remove(query.First().Key);
+                }
+
                 container.Remove(query.First().Key);
             }
 

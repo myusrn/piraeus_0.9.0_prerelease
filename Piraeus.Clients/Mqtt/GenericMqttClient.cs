@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SkunkLab.Channels;
+using SkunkLab.Protocols;
 using SkunkLab.Protocols.Mqtt;
 using SkunkLab.Protocols.Mqtt.Handlers;
 using SkunkLab.Protocols.Utilities;
@@ -10,9 +11,9 @@ namespace Piraeus.Clients.Mqtt
 {
     public class GenericMqttClient
     {
-        public GenericMqttClient(MqttConfig config, IChannel channel, IDispatch dispatcher = null)
+        public GenericMqttClient(MqttConfig config, IChannel channel, IMqttDispatch dispatcher = null)
         {
-            this.dispatcher = dispatcher != null ? dispatcher : new GenericDispatcher();
+            this.dispatcher = dispatcher != null ? dispatcher : new GenericMqttDispatcher();
             timeoutMilliseconds = config.MaxTransmitSpan.TotalMilliseconds;
             session = new MqttSession(config);
             session.OnConnect += Session_OnConnect;
@@ -33,7 +34,7 @@ namespace Piraeus.Clients.Mqtt
         private MqttSession session;
         private ConnectAckCode? code;
         private double timeoutMilliseconds;
-        private IDispatch dispatcher;
+        private IMqttDispatch dispatcher;
 
         public bool ChannelConnected
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
 using SkunkLab.Channels;
+using SkunkLab.Protocols;
 using SkunkLab.Protocols.Mqtt;
 using SkunkLab.Protocols.Mqtt.Handlers;
 using SkunkLab.Protocols.Utilities;
@@ -21,9 +22,9 @@ namespace Piraeus.Clients.Mqtt
         /// <param name="config">MQTT configuration.</param>
         /// <param name="channel">Channel for communications.</param>
         /// <param name="dispatcher">Optional custom dispatcher to receive published messages.</param>
-        public PiraeusMqttClient(MqttConfig config, IChannel channel, IDispatch dispatcher = null)
+        public PiraeusMqttClient(MqttConfig config, IChannel channel, IMqttDispatch dispatcher = null)
         {
-            this.dispatcher = dispatcher != null ? dispatcher : new GenericDispatcher();
+            this.dispatcher = dispatcher != null ? dispatcher : new GenericMqttDispatcher();
             timeoutMilliseconds = config.MaxTransmitSpan.TotalMilliseconds;
             session = new MqttSession(config);
             session.OnConnect += Session_OnConnect;
@@ -46,7 +47,7 @@ namespace Piraeus.Clients.Mqtt
         private MqttSession session;
         private ConnectAckCode? code;
         private double timeoutMilliseconds;
-        private IDispatch dispatcher;
+        private IMqttDispatch dispatcher;
 
         /// <summary>
         /// Register a topic that already has a subscription.

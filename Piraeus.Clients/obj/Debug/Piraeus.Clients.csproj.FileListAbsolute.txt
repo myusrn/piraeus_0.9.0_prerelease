@@ -134,3 +134,4 @@ C:\_git\core\Piraeus.Clients\bin\Debug\zh-Hant\System.Spatial.resources.dll
 C:\_git\core\Piraeus.Clients\obj\Debug\Piraeus.Clients.csprojResolveAssemblyReference.cache
 C:\_git\core\Piraeus.Clients\obj\Debug\Piraeus.Clients.dll
 C:\_git\core\Piraeus.Clients\obj\Debug\Piraeus.Clients.pdb
+C:\_git\core\Piraeus.Clients\obj\Debug\Piraeus.Clients.csproj.CoreCompileInputs.cache

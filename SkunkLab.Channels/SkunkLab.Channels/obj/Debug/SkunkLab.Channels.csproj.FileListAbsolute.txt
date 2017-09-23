@@ -129,3 +129,5 @@ C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\zh-Hans\System.Spatia
 C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\zh-Hant\System.Spatial.resources.dll
 C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.dll
 C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.pdb
+C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csprojResolveAssemblyReference.cache
+C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csproj.CoreCompileInputs.cache
