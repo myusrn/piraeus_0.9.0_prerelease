@@ -18,7 +18,7 @@ namespace SkunkLab.Protocols.Coap.Handlers
         public override async Task<CoapMessage> ProcessAsync()
         {
             Session.CoapSender.Remove(Message.MessageId);
-            return await Task.FromResult<CoapMessage>(null);
+            return await Task.FromResult<CoapMessage>(Message);
         }
     }
 }

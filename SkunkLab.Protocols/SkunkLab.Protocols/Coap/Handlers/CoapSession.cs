@@ -88,7 +88,7 @@ namespace SkunkLab.Protocols.Coap.Handlers
             OnRetry?.Invoke(this, e);
         }
 
-
+       
 
     }
 }

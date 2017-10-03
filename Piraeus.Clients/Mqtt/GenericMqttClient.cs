@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using SkunkLab.Channels;
 using SkunkLab.Protocols;
@@ -57,7 +58,9 @@ namespace Piraeus.Clients.Mqtt
             if (!channel.IsConnected)
             {
                 await channel.OpenAsync();
-                channel.ReceiveAsync();
+                
+                Task task = channel.ReceiveAsync();
+                await Task.WhenAll(task);                
             }
 
 

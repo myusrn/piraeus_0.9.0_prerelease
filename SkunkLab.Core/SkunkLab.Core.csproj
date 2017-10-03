@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SkunkLab.Core</RootNamespace>
     <AssemblyName>SkunkLab.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,17 +56,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoapProtocolAdapter.cs" />
-    <Compile Include="EventMessage.cs" />
+    <Compile Include="Adapters\CoapProtocolAdapter.cs" />
+    <Compile Include="Messaging\EventMessage.cs" />
     <Compile Include="Messaging\HttpChannelConstants.cs" />
     <Compile Include="Messaging\QueryStringConstants.cs" />
-    <Compile Include="ProtocolAdapter.cs" />
+    <Compile Include="Adapters\ProtocolAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProtocolAdapterCloseEventArgs.cs" />
-    <Compile Include="ProtocolAdapterErrorEventArgs.cs" />
-    <Compile Include="ProtocolAdapterFactory.cs" />
-    <Compile Include="ProtocolAdapterPortException.cs" />
-    <Compile Include="ProtocolType.cs" />
+    <Compile Include="Adapters\ProtocolAdapterCloseEventArgs.cs" />
+    <Compile Include="Adapters\ProtocolAdapterErrorEventArgs.cs" />
+    <Compile Include="Adapters\ProtocolAdapterFactory.cs" />
+    <Compile Include="Adapters\ProtocolAdapterPortException.cs" />
+    <Compile Include="Adapters\ProtocolType.cs" />
     <Compile Include="Utilities\HttpHeaderConstants.cs" />
     <Compile Include="Utilities\MessageUri.cs" />
     <Compile Include="Utilities\QueryStringConstants.cs" />
@@ -73,7 +74,20 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SkunkLab.Channels\SkunkLab.Channels\SkunkLab.Channels.csproj">
+      <Project>{7c69a3ca-29dd-4c33-b70f-f998a6e650b9}</Project>
+      <Name>SkunkLab.Channels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkunkLab.Diagnostics\SkunkLab.Diagnostics\SkunkLab.Diagnostics.csproj">
+      <Project>{c6bbc79c-7f29-4385-8b4b-bd73d01ac4e0}</Project>
+      <Name>SkunkLab.Diagnostics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkunkLab.Protocols\SkunkLab.Protocols\SkunkLab.Protocols.csproj">
+      <Project>{7b2c72a0-0dba-4ded-96dc-b6af80a82277}</Project>
+      <Name>SkunkLab.Protocols</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

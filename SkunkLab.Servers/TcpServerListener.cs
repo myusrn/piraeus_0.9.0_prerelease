@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using SkunkLab.Core.Adapters;
 
 namespace SkunkLab.Servers
 {
@@ -17,13 +18,13 @@ namespace SkunkLab.Servers
         public TcpServerListener(IPEndPoint localEP, CancellationToken token)
         {
             listener = new TcpListener(localEP);
-            this.token = token;
+            this.token = token;            
         }
 
         public TcpServerListener(IPAddress address, int port, CancellationToken token)
         {
             listener = new TcpListener(address, port);
-            this.token = token;
+            this.token = token;            
         }
 
         private TcpListener listener;
@@ -55,13 +56,12 @@ namespace SkunkLab.Servers
 
         private async Task ManageConnection(TcpClient client)
         {
-            IChannel channel = ChannelFactory.Create(client, token);
-            //ProtocolAdapter adapter = ProtocolAdapterFactory.Create(channel);
-            //dict.Add(channel.Id, adapter);
-            //adapter.OnError += Adapter_OnError;
-            //adapter.OnClose += Adapter_OnClose;
-            await channel.OpenAsync();
-            await channel.ReceiveAsync();
+            ProtocolAdapter adapter = ProtocolAdapterFactory.Create(client, token);
+            dict.Add(adapter.Channel.Id, adapter);
+            adapter.OnError += Adapter_OnError;
+            adapter.OnClose += Adapter_OnClose;
+            //await channel.OpenAsync();
+            //await channel.ReceiveAsync();
         }
 
         private void Adapter_OnClose(object sender, ProtocolAdapterCloseEventArgs args)

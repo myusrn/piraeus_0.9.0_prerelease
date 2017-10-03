@@ -11,7 +11,9 @@ namespace Piraeus.Clients.Coap
     {
         public PiraeusCoapClient(CoapConfig config, IChannel channel, ICoapRequestDispatch dispatcher = null)
         {
+
             this.config = config;
+            this.pingId = new List<ushort>();
             session = new CoapSession(config);
             
             observers = new Dictionary<string, string>();
@@ -23,19 +25,18 @@ namespace Piraeus.Clients.Coap
             this.channel.OnStateChange += Channel_OnStateChange;
             this.channel.OnReceive += Channel_OnReceive;
             session.OnRetry += Session_OnRetry;
+            session.OnKeepAlive += Session_OnKeepAlive;
         }
 
-        private void Session_OnRetry(object sender, CoapMessageEventArgs args)
-        {
-            Task task = channel.SendAsync(args.Message.Encode());
-            Task.WhenAll(task);
-        }
-
+        
         private Dictionary<string, string> observers;
         private IChannel channel;
         private CoapConfig config;
         private CoapSession session;
         private ICoapRequestDispatch dispatcher;
+        private List<ushort> pingId;
+
+        public event System.EventHandler<CoapMessageEventArgs> OnPingResponse;
         
         public async Task PublishAsync(string resourceUriString, string contentType, byte[] payload, bool confirmable, Action<CodeType, string, byte[]> action)
         {
@@ -50,10 +51,7 @@ namespace Piraeus.Clients.Coap
             await channel.SendAsync(cr.Encode());
         }
 
-        private void CoapSender_OnRetry(object sender, CoapMessageEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public async Task PublishAsync(string resourceUriString, string contentType, byte[] payload, NoResponseType nrt)
         {
@@ -151,8 +149,16 @@ namespace Piraeus.Clients.Coap
         {
             CoapMessage message = CoapMessage.DecodeMessage(args.Message);
             CoapMessageHandler handler = CoapMessageHandler.Create(session, message, dispatcher);
-            Task task = handler.ProcessAsync();
-            Task.WhenAll(task);
+            Task<CoapMessage> task = handler.ProcessAsync();
+            Task<CoapMessage>.WhenAll(task);
+            CoapMessage msg = task.Result;
+            if(msg != null && pingId.Contains(msg.MessageId))
+            {
+                pingId.Remove(msg.MessageId);
+                //ping complete
+                OnPingResponse?.Invoke(this, new CoapMessageEventArgs(msg));
+            }
+            
         }
 
         private void Channel_OnStateChange(object sender, ChannelStateEventArgs args)
@@ -176,6 +182,21 @@ namespace Piraeus.Clients.Coap
         }
 
         #endregion
+
+
+        private void Session_OnRetry(object sender, CoapMessageEventArgs args)
+        {
+            pingId.Add(args.Message.MessageId);
+            Task task = channel.SendAsync(args.Message.Encode());
+            Task.WhenAll(task);
+        }
+
+        private void Session_OnKeepAlive(object sender, CoapMessageEventArgs args)
+        {
+            Task task = channel.SendAsync(args.Message.Encode());
+            Task.WhenAll(task);
+        }
+
 
     }
 }
