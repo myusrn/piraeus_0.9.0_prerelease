@@ -1,0 +1,5 @@
+C:\_git\core\Piraeus\Grains1\bin\Debug\Grains1.dll
+C:\_git\core\Piraeus\Grains1\bin\Debug\Orleans.dll
+C:\_git\core\Piraeus\Grains1\bin\Debug\System.Collections.Immutable.dll
+C:\_git\core\Piraeus\Grains1\bin\Debug\Orleans.xml
+C:\_git\core\Piraeus\Grains1\obj\Debug\Grains1.csproj.CoreCompileInputs.cache

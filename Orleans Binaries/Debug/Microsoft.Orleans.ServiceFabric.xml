@@ -1,0 +1,597 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Orleans.ServiceFabric</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Orleans.ServiceFabric.FabricGatewayProvider">
+            <summary>
+            Gateway provider which reads gateway information from Service Fabric's naming service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricGatewayProvider.#ctor(Microsoft.Orleans.ServiceFabric.IFabricServiceSiloResolver)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Orleans.ServiceFabric.FabricGatewayProvider"/> class.
+            </summary>
+            <param name="siloResolver">The silo resolver.</param>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricGatewayProvider.InitializeGatewayListProvider(Orleans.Runtime.Configuration.ClientConfiguration,Orleans.Runtime.Logger)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricGatewayProvider.GetGateways">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.FabricGatewayProvider.MaxStaleness">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.FabricGatewayProvider.IsUpdatable">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricGatewayProvider.SubscribeToGatewayNotificationEvents(Orleans.Messaging.IGatewayListListener)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricGatewayProvider.UnSubscribeFromGatewayNotificationEvents(Orleans.Messaging.IGatewayListListener)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricGatewayProvider.OnUpdate(Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricGatewayProvider.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricGatewayProvider.Refresh(System.Object)">
+            <summary>
+            Refreshes the gateway list.
+            </summary>
+            <param name="state">The state object.</param>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.IFabricServiceSiloResolver.Subscribe(Microsoft.Orleans.ServiceFabric.IFabricServiceStatusListener)">
+            <summary>
+            Subscribes the provided handler for update notifications.
+            </summary>
+            <param name="handler">The update notification handler.</param>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.IFabricServiceSiloResolver.Unsubscribe(Microsoft.Orleans.ServiceFabric.IFabricServiceStatusListener)">
+            <summary>
+            Unsubscribes the provided handler from update notifications.
+            </summary>
+            <param name="handler">The update notification handler.</param>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.IFabricServiceSiloResolver.Refresh">
+            <summary>
+            Forces a refresh of the partitions.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the work performed.</returns>
+        </member>
+        <member name="T:Microsoft.Orleans.ServiceFabric.IFabricServiceStatusListener">
+            <summary>
+            Listener for partition changes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.IFabricServiceStatusListener.OnUpdate(Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo[])">
+            <summary>
+            Notifies this instance of an update to cluster members.
+            </summary>
+            <param name="silos">The updated set of silos.</param>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.Models.IResolvedServicePartition.Id">
+            <summary>
+            Gets the identifier for this partition.
+            </summary>
+            <remarks>
+            Note that the identifier may change for logically identical partitions if the service is redeployed.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Orleans.ServiceFabric.Models.ServicePartitionSilos">
+            <summary>
+            Represents a Service Fabric service partition and the Orleans silos within it.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.Models.ServicePartitionSilos.Silos">
+            <summary>
+            Gets the collection of silos in this partition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.Models.ServicePartitionSilos.Partition">
+            <summary>
+            Gets the partition metadata.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo">
+            <summary>
+            Represents silo endpoints.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo.#ctor(Orleans.Runtime.Configuration.NodeConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo" /> class.
+            </summary>
+            <param name="config">
+            The node configuration to initialize from.
+            </param>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo" /> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo.Name">
+            <summary>
+            Gets the name of the silo.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo.Silo">
+            <summary>
+            Gets the silo address.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo.Gateway">
+            <summary>
+            Gets the gateway address.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo.SiloAddress">
+            <summary>
+            Gets the parsed silo address.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo.GatewayAddress">
+            <summary>
+            Gets the parsed gateway address.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.ResolvedServicePartitionExtensions.GetPartitionEndpoints(System.Fabric.ResolvedServicePartition)">
+            <summary>
+            Retrieves the active endpoints published by the specified partition.
+            </summary>
+            <param name="partition">The partition.</param>
+            <returns>The active endpoints published by the specified partition.</returns>
+        </member>
+        <member name="T:Microsoft.Orleans.ServiceFabric.Utilities.ResolvedServicePartitionExtensions.ServicePartitionEndpoints">
+            <summary>
+            Represents endpoints returned from <see cref="P:System.Fabric.ResolvedServiceEndpoint.Address"/> in JSON form.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.Utilities.ResolvedServicePartitionExtensions.ServicePartitionEndpoints.Endpoints">
+            <summary>
+            Gets or sets the endpoints dictionary.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.ServiceFabricExtensions.IsSamePartitionAs(System.Fabric.ResolvedServicePartition,System.Fabric.ResolvedServicePartition)">
+            <summary>
+            Returns a value indicating whether or not <paramref name="left"/> is the same partition as <paramref name="right"/>.
+            </summary>
+            <param name="left">One resolved partition.</param>
+            <param name="right">The other resolved partition.</param>
+            <returns>
+            <see langword="true"/> if <paramref name="left"/> is the same partition as <paramref name="right"/>, <see langword="false"/> otherwise.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.ServiceFabricExtensions.IsSamePartitionAs(System.Fabric.ServicePartitionInformation,System.Fabric.ServicePartitionInformation)">
+            <summary>
+            Returns a value indicating whether or not <paramref name="left"/> is the same partition as <paramref name="right"/>.
+            </summary>
+            <param name="left">One partition.</param>
+            <param name="right">The other partition.</param>
+            <returns>
+            <see langword="true"/> if <paramref name="left"/> is the same partition as <paramref name="right"/>, <see langword="false"/> otherwise.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.ServiceFabricExtensions.GetPartitionKey(System.Fabric.ServicePartitionInformation)">
+            <summary>
+            Returns the partition key for the provided partition.
+            </summary>
+            <param name="partitionInformation">The partition.</param>
+            <returns>The partition key for the provided partition.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.ServiceFabricExtensions.ToPartitionString(System.Fabric.ResolvedServicePartition)">
+            <summary>
+            Returns a string representing the provided partition.
+            </summary>
+            <param name="partition">The partition.</param>
+            <returns>A string representing the provided partition.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.ServiceFabricExtensions.ToPartitionString(System.Fabric.ServicePartitionInformation)">
+            <summary>
+            Returns a string representing the provided partition.
+            </summary>
+            <param name="partition">The partition.</param>
+            <returns>A string representing the provided partition.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.FabricQueryManager.UnregisterPartitionChangeHandler(System.Int64)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.FabricQueryManager.RegisterPartitionChangeHandler(System.Uri,Microsoft.Orleans.ServiceFabric.Models.IResolvedServicePartition,Microsoft.Orleans.ServiceFabric.Utilities.FabricPartitionResolutionChangeHandler)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.FabricQueryManager.ResolveSilos(System.Uri)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.FabricQueryManager.ResolvePartition(System.Uri,Microsoft.ServiceFabric.Services.Client.ServicePartitionKey,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.FabricQueryManager.QueryServicePartitions(System.Uri)">
+            <summary>
+            Returns the list of Service Fabric partitions for the given service.
+            </summary>
+            <returns>The list of Service Fabric partitions for the given service.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.IFabricQueryManager.ResolveSilos(System.Uri)">
+            <summary>
+            Returns the silos in the given service.
+            </summary>
+            <param name="serviceName">The service name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.IFabricQueryManager.RegisterPartitionChangeHandler(System.Uri,Microsoft.Orleans.ServiceFabric.Models.IResolvedServicePartition,Microsoft.Orleans.ServiceFabric.Utilities.FabricPartitionResolutionChangeHandler)">
+            <summary>
+            Registers a partition change handler for the provided partition.
+            </summary>
+            <param name="serviceName">The service name.</param>
+            <param name="servicePartition">The partition.</param>
+            <param name="handler">The change handler.</param>
+            <returns>The identifier for the registered handler.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.IFabricQueryManager.UnregisterPartitionChangeHandler(System.Int64)">
+            <summary>
+            Unregisters a partition change handler.
+            </summary>
+            <param name="id">The handler id returned from <see cref="M:Microsoft.Orleans.ServiceFabric.Utilities.IFabricQueryManager.RegisterPartitionChangeHandler(System.Uri,Microsoft.Orleans.ServiceFabric.Models.IResolvedServicePartition,Microsoft.Orleans.ServiceFabric.Utilities.FabricPartitionResolutionChangeHandler)"/>.</param>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.IFabricQueryManager.ResolvePartition(System.Uri,Microsoft.ServiceFabric.Services.Client.ServicePartitionKey,System.Threading.CancellationToken)">
+            <summary>
+            Resolves a partition of the specified service with specified back-off/retry settings on retry-able errors.
+            </summary>
+            <param name="serviceName">Uri of the service to resolve</param>
+            <param name="partitionKey">Key that identifies the partition to resolve</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>
+            The resolved service partition.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Orleans.ServiceFabric.Utilities.FabricPartitionResolutionChangeHandler">
+            <summary>
+            Handles a change in partition resolution.
+            </summary>
+            <param name="handlerId">The handler id.</param>
+            <param name="args">The resolution change.</param>
+        </member>
+        <member name="T:Microsoft.Orleans.ServiceFabric.Utilities.ISiloHost">
+            <summary>
+            Abstraction for silo hosts.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.Utilities.ISiloHost.NodeConfig">
+            <summary>
+            Gets the silo's node configuration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.ISiloHost.Start(System.String,Orleans.Runtime.Configuration.ClusterConfiguration)">
+            <summary>
+            Starts the silo.
+            </summary>
+            <param name="siloName">The silo name.</param>
+            <param name="configuration">The silo configuration.</param>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.Utilities.ISiloHost.Stop">
+            <summary>
+            Stops the silo.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Orleans.ServiceFabric.OrleansServiceFabricExtensions">
+            <summary>
+            Extensions for hosting Orleans on Service Fabric.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.OrleansServiceFabricExtensions.AddServiceFabricSupport(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.ServiceFabric.Services.Runtime.StatefulService)">
+            <summary>
+            Adds Service Fabric support to the provided service collection.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+            <param name="service">The Service Fabric service.</param>
+            <returns>The provided service collection.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.OrleansServiceFabricExtensions.AddServiceFabricSupport(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.ServiceFabric.Services.Runtime.StatelessService)">
+            <summary>
+            Adds Service Fabric support to the provided service collection.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+            <param name="service">The Service Fabric service.</param>
+            <returns>The provided service collection.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.OrleansServiceFabricExtensions.AddServiceFabric(Orleans.IClientBuilder,System.String)">
+            <summary>
+            Adds support for connecting to a cluster hosted in Service Fabric.
+            </summary>
+            <param name="clientBuilder">The client builder.</param>
+            <param name="serviceName">The Service Fabric service name.</param>
+            <returns>The provided client builder.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.OrleansServiceFabricExtensions.AddServiceFabric(Orleans.IClientBuilder,System.Uri)">
+            <summary>
+            Adds support for connecting to a cluster hosted in Service Fabric.
+            </summary>
+            <param name="clientBuilder">The client builder.</param>
+            <param name="serviceName">The Service Fabric service name.</param>
+            <returns>The provided client builder.</returns>
+        </member>
+        <member name="T:Microsoft.Orleans.ServiceFabric.OrleansServiceListener">
+            <summary>
+            Creates Service Fabric listeners for Orleans silos.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Orleans.ServiceFabric.OrleansServiceListener.OrleansServiceFabricEndpointName">
+            <summary>
+            The Service Fabric endpoint name used by Orleans silos.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.OrleansServiceListener.CreateStateless(Orleans.Runtime.Configuration.ClusterConfiguration,System.String)">
+            <summary>
+            Creates a <see cref="T:Microsoft.ServiceFabric.Services.Communication.Runtime.ServiceInstanceListener"/> which manages an Orleans silo for a stateless service.
+            </summary>
+            <param name="configuration">The Orleans cluster configuration.</param>
+            <param name="siloName">The silo name, or <see langword="null"/> to have a name automatically selected.</param>
+            <returns>A <see cref="T:Microsoft.ServiceFabric.Services.Communication.Runtime.ServiceInstanceListener"/> which manages an Orleans silo.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.OrleansServiceListener.CreateStateful(Orleans.Runtime.Configuration.ClusterConfiguration,System.String)">
+            <summary>
+            Creates a <see cref="T:Microsoft.ServiceFabric.Services.Communication.Runtime.ServiceInstanceListener"/> which manages an Orleans silo for a stateless service.
+            </summary>
+            <param name="configuration">The Orleans cluster configuration.</param>
+            <param name="siloName">The silo name, or <see langword="null"/> to have a name automatically selected.</param>
+            <returns>A <see cref="T:Microsoft.ServiceFabric.Services.Communication.Runtime.ServiceInstanceListener"/> which manages an Orleans silo.</returns>
+        </member>
+        <member name="T:Microsoft.Orleans.ServiceFabric.OrleansCommunicationListener">
+            <summary>
+            Service Fabric communication listener which hosts an Orleans silo.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Orleans.ServiceFabric.OrleansCommunicationListener.SiloEndpointName">
+            <summary>
+            The name used to identify the silo-to-silo communication endpoint.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Orleans.ServiceFabric.OrleansCommunicationListener.GatewayEndpointName">
+            <summary>
+            The name used to identify the client-to-silo communication endpoint.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Orleans.ServiceFabric.OrleansCommunicationListener.configuration">
+            <summary>
+            The Orleans cluster configuration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.OrleansCommunicationListener.#ctor(System.Fabric.ServiceContext,Orleans.Runtime.Configuration.ClusterConfiguration,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Orleans.ServiceFabric.OrleansCommunicationListener" /> class.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="configuration">The configuration.</param>
+            <param name="siloName">The silo name, or <see langword="null"/> to have a name automatically selected.</param>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.OrleansCommunicationListener.SiloName">
+            <summary>
+            Gets the silo name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.OrleansCommunicationListener.SiloHost">
+            <summary>
+            Gets or sets the underlying <see cref="T:Microsoft.Orleans.ServiceFabric.Utilities.ISiloHost"/>.
+            </summary>
+            <remarks>Exposed for testability.</remarks>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.OrleansCommunicationListener.OpenAsync(System.Threading.CancellationToken)">
+            <summary>
+            Starts the silo.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The silo endpoints, represented as a <see langword="string"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.OrleansCommunicationListener.CloseAsync(System.Threading.CancellationToken)">
+            <summary>
+            Stops the silo.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the work performed.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.OrleansCommunicationListener.Abort">
+            <summary>
+            Aborts the silo.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.OrleansCommunicationListener.GetEndpoint(System.Collections.ObjectModel.KeyedCollection{System.String,System.Fabric.Description.EndpointResourceDescription},System.String)">
+            <summary>
+            Returns the endpoint description with the provided name, throwing an exception if it is not present.
+            </summary>
+            <param name="endpoints">The endpoint collection.</param>
+            <param name="endpointName">the name of the endpoint to return.</param>
+            <returns>The endpoint with the provided name.</returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">The endpoint with the provided name was not found.</exception>
+        </member>
+        <member name="T:Microsoft.Orleans.ServiceFabric.FabricServiceSiloResolver">
+            <summary>
+            Provides information about an Orleans cluster hosted on Service Fabric.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricServiceSiloResolver.#ctor(System.Uri,Microsoft.Orleans.ServiceFabric.Utilities.IFabricQueryManager,Orleans.Factory{System.String,Orleans.Runtime.Logger})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Orleans.ServiceFabric.FabricServiceSiloResolver"/> class.
+            </summary>
+            <param name="serviceName">The name of the Service Fabric service which this instance will resolve.</param>
+            <param name="queryManager">The fabric query manager.</param>
+            <param name="loggerFactory">The logger factory.</param>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricServiceSiloResolver.Subscribe(Microsoft.Orleans.ServiceFabric.IFabricServiceStatusListener)">
+            <summary>
+            Subscribes the provided handler for update notifications.
+            </summary>
+            <param name="handler">The update notification handler.</param>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricServiceSiloResolver.Unsubscribe(Microsoft.Orleans.ServiceFabric.IFabricServiceStatusListener)">
+            <summary>
+            Unsubscribes the provided handler from update notifications.
+            </summary>
+            <param name="handler">The update notification handler.</param>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricServiceSiloResolver.Refresh">
+            <summary>
+            Forces a refresh of the partitions.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the work performed.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricServiceSiloResolver.OnPartitionChange(System.Int64,Microsoft.Orleans.ServiceFabric.Utilities.FabricPartitionResolutionChange)">
+            <summary>
+            Handler for partition change events.
+            </summary>
+            <param name="handlerId">The handler id.</param>
+            <param name="args">The handler event.</param>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricServiceSiloResolver.NotifySubscribers">
+            <summary>
+            Notifies subscribers of updates.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.#ctor(Orleans.Runtime.ILocalSiloDetails,Orleans.Runtime.Configuration.GlobalConfiguration,Microsoft.Orleans.ServiceFabric.IFabricServiceSiloResolver,Orleans.Factory{System.String,Orleans.Runtime.Logger})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle"/> class.
+            </summary>
+            <param name="localSiloDetails">The silo which this instance will provide membership information for.</param>
+            <param name="globalConfig">The cluster configuration.</param>
+            <param name="fabricServiceSiloResolver">The service resolver which this instance will use.</param>
+            <param name="loggerFactory">The logger factory.</param>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.CurrentStatus">
+            <summary>
+            Status of this silo.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.SiloAddress">
+            <summary>
+            Address of this silo.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.SiloName">
+            <summary>
+            Name of this silo.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.CheckHealth(System.DateTime)">
+            <summary>
+            Returns a value indicating the health of this instance.
+            </summary>
+            <param name="lastCheckTime">The last time which this participant's health was checked.</param>
+            <returns><see langword="true"/> if the participant is healthy, <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.GetApproximateMultiClusterGateways">
+            <summary>
+            Get a list of silos that are designated to function as gateways.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.GetApproximateSiloStatus(Orleans.Runtime.SiloAddress)">
+            <summary>
+            Get the status of a given silo. 
+            This method returns an approximate view on the status of a given silo. 
+            In particular, this oracle may think the given silo is alive, while it may already have failed.
+            If this oracle thinks the given silo is dead, it has been authoritatively told so by ISiloDirectory.
+            </summary>
+            <param name="siloAddress">A silo whose status we are interested in.</param>
+            <returns>The status of a given silo.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.GetApproximateSiloStatuses(System.Boolean)">
+            <summary>
+            Get the statuses of all silo. 
+            This method returns an approximate view on the statuses of all silo.
+            </summary>
+            <param name="onlyActive">Include only silo who are currently considered to be active. If false, include all.</param>
+            <returns>A list of silo statuses.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.IsDeadSilo(Orleans.Runtime.SiloAddress)">
+            <summary>
+            Determine if the current silo is dead.
+            </summary>
+            <returns>The silo so ask about.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.IsFunctionalDirectory(Orleans.Runtime.SiloAddress)">
+            <summary>
+            Determine if the current silo is valid for creating new activations on or for directory lookups.
+            </summary>
+            <returns>The silo so ask about.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.Start">
+            <summary>
+            Start this oracle. Will register this silo in the SiloDirectory with SiloStatus.Starting status.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.BecomeActive">
+            <summary>
+            Turns this oracle into an Active state. Will update this silo in the SiloDirectory with SiloStatus.Active status.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.ShutDown">
+            <summary>
+            ShutDown this oracle. Will update this silo in the SiloDirectory with SiloStatus.ShuttingDown status. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.Stop">
+            <summary>
+            Stop this oracle. Will update this silo in the SiloDirectory with SiloStatus.Stopping status. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.KillMyself">
+            <summary>
+            Completely kill this oracle. Will update this silo in the SiloDirectory with SiloStatus.Dead status. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.TryGetSiloName(Orleans.Runtime.SiloAddress,System.String@)">
+            <summary>
+            Get the name of a silo. 
+            Silo name is assumed to be static and does not change across restarts of the same silo.
+            </summary>
+            <param name="siloAddress">A silo whose name we are interested in.</param>
+            <param name="siloName">A silo name.</param>
+            <returns>TTrue if could return the requested name, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.SubscribeToSiloStatusEvents(Orleans.Runtime.ISiloStatusListener)">
+            <summary>
+            Subscribe to status events about all silos. 
+            </summary>
+            <param name="observer">An observer async interface to receive silo status notifications.</param>
+            <returns>bool value indicating that subscription succeeded or not.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.UnSubscribeFromSiloStatusEvents(Orleans.Runtime.ISiloStatusListener)">
+            <summary>
+            UnSubscribe from status events about all silos. 
+            </summary>
+            <returns>bool value indicating that subscription succeeded or not.</returns>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.OnUpdate(Microsoft.Orleans.ServiceFabric.Models.FabricSiloInfo[])">
+            <summary>
+            Notifies this instance of an update to one or more partitions.
+            </summary>
+            <param name="partitions">The updated set of partitions.</param>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.ClearCaches">
+            <summary>
+            Clears the cached data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.UpdateStatus(Orleans.Runtime.SiloStatus)">
+            <summary>
+            Updates the status of this silo.
+            </summary>
+            <param name="status">The updated status.</param>
+        </member>
+        <member name="M:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.Dispose">
+            <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        </member>
+        <member name="P:Microsoft.Orleans.ServiceFabric.FabricMembershipOracle.SiloEntry.Refreshed">
+            <summary>
+            Gets or sets a value indicating whether this entry was updated.
+            </summary>
+        </member>
+    </members>
+</doc>

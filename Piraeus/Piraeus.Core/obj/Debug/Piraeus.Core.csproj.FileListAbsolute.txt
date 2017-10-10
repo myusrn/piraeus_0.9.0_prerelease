@@ -1,0 +1,7 @@
+C:\_git\core\Piraeus\Piraeus.Core\bin\Debug\Piraeus.Core.dll
+C:\_git\core\Piraeus\Piraeus.Core\bin\Debug\Piraeus.Core.pdb
+C:\_git\core\Piraeus\Piraeus.Core\bin\Debug\Newtonsoft.Json.dll
+C:\_git\core\Piraeus\Piraeus.Core\bin\Debug\Newtonsoft.Json.xml
+C:\_git\core\Piraeus\Piraeus.Core\obj\Debug\Piraeus.Core.csproj.CoreCompileInputs.cache
+C:\_git\core\Piraeus\Piraeus.Core\obj\Debug\Piraeus.Core.dll
+C:\_git\core\Piraeus\Piraeus.Core\obj\Debug\Piraeus.Core.pdb

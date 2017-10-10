@@ -57,8 +57,7 @@ namespace Piraeus.Clients.Mqtt
 
             if (!channel.IsConnected)
             {
-                await channel.OpenAsync();
-                
+                await channel.OpenAsync();                
                 Task task = channel.ReceiveAsync();
                 await Task.WhenAll(task);                
             }

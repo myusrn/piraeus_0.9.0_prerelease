@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OrleansBondUtils</name>
+    </assembly>
+    <members>
+        <member name="T:Orleans.Serialization.BondSerializer">
+            <summary>
+            An implementation of IExternalSerializer for usage with Bond types.
+            </summary>
+        </member>
+        <member name="M:Orleans.Serialization.BondSerializer.IsSupportedType(System.Type)">
+            <summary>
+            Determines whether this serializer has the ability to serialize a particular type.
+            </summary>
+            <param name="itemType">The type of the item to be serialized</param>
+            <returns>A value indicating whether the type can be serialized</returns>
+        </member>
+        <member name="M:Orleans.Serialization.BondSerializer.DeepCopy(System.Object,Orleans.Serialization.ICopyContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Orleans.Serialization.BondSerializer.Deserialize(System.Type,Orleans.Serialization.IDeserializationContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Orleans.Serialization.BondSerializer.Initialize(Orleans.Runtime.Logger)">
+            <inheritdoc />
+        </member>
+        <member name="M:Orleans.Serialization.BondSerializer.Serialize(System.Object,Orleans.Serialization.ISerializationContext,System.Type)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

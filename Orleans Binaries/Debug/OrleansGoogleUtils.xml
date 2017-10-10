@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OrleansGoogleUtils</name>
+    </assembly>
+    <members>
+        <member name="T:Orleans.Serialization.ProtobufSerializer">
+            <summary>
+            An implementation of IExternalSerializer for usage with Protobuf types.
+            </summary>
+        </member>
+        <member name="M:Orleans.Serialization.ProtobufSerializer.Initialize(Orleans.Runtime.Logger)">
+            <summary>
+            Initializes the external serializer
+            </summary>
+            <param name="logger">The logger to use to capture any serialization events</param>
+        </member>
+        <member name="M:Orleans.Serialization.ProtobufSerializer.IsSupportedType(System.Type)">
+            <summary>
+            Determines whether this serializer has the ability to serialize a particular type.
+            </summary>
+            <param name="itemType">The type of the item to be serialized</param>
+            <returns>A value indicating whether the type can be serialized</returns>
+        </member>
+        <member name="M:Orleans.Serialization.ProtobufSerializer.DeepCopy(System.Object,Orleans.Serialization.ICopyContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Orleans.Serialization.ProtobufSerializer.Serialize(System.Object,Orleans.Serialization.ISerializationContext,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Orleans.Serialization.ProtobufSerializer.Deserialize(System.Type,Orleans.Serialization.IDeserializationContext)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

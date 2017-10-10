@@ -34,6 +34,11 @@ namespace CoapServer
             dispatcher = new RequestDispatcher();
            
             WriteHeader();
+
+            TcpServer tcp = new TcpServer(new IPEndPoint(IPAddress.Parse("127.0.0.1"),5684), cts.Token);
+            Task task = tcp.RunAsync();
+            Task.WhenAll(task);
+
             int channelNo = SelectChannel();
             SetChannel(channelNo);
             channel.OnClose += Channel_OnClose;

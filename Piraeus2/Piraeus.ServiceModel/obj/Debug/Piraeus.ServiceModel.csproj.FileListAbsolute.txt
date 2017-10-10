@@ -1,0 +1,9 @@
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Piraeus.ServiceModel.dll
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Orleans.dll
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Collections.Immutable.dll
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Orleans.xml
+C:\_git\core\Piraeus\Piraeus.ServiceModel\obj\Debug\Piraeus.ServiceModel.csproj.CoreCompileInputs.cache
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Piraeus.Grains.dll
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Piraeus.Grains.pdb
+C:\_git\core\Piraeus\Piraeus.ServiceModel\obj\Debug\Piraeus.ServiceModel.csprojResolveAssemblyReference.cache
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Piraeus.ServiceModel.dll.config

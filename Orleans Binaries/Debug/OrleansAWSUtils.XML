@@ -1,0 +1,378 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OrleansAWSUtils</name>
+    </assembly>
+    <members>
+        <member name="T:OrleansAWSUtils.AWSUtils">
+            <summary>
+            Some basic utilities methods for AWS SDK
+            </summary>
+        </member>
+        <member name="M:OrleansAWSUtils.AWSUtils.ValidateDynamoDBPartitionKey(System.String)">
+            <summary>
+            Validate DynamoDB PartitionKey.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OrleansAWSUtils.AWSUtils.ValidateDynamoDBRowKey(System.String)">
+            <summary>
+            Validate DynamoDB RowKey.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:OrleansAWSUtils.Reminders.DynamoDBReminderTable">
+            <summary>
+            Implementation for IReminderTable using DynamoDB as underlying storage.
+            </summary>
+        </member>
+        <member name="M:OrleansAWSUtils.Reminders.DynamoDBReminderTable.#ctor(Orleans.Runtime.IGrainReferenceConverter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OrleansAWSUtils.Reminders.DynamoDBReminderTable"/> class.
+            </summary>
+            <param name="grainReferenceConverter">The grain factory.</param>
+        </member>
+        <member name="M:OrleansAWSUtils.Reminders.DynamoDBReminderTable.Init(Orleans.Runtime.Configuration.GlobalConfiguration,Orleans.Runtime.Logger)">
+            <summary>
+            Initialize current instance with specific global configuration and logger
+            </summary>
+            <param name="config"> Global configuration to initialize with </param>
+            <param name="logger"> Specific logger to use in current instance </param>
+            <returns></returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Reminders.DynamoDBReminderTable.ReadRow(Orleans.Runtime.GrainReference,System.String)">
+            <summary>
+            Reads a reminder for a grain reference by reminder name.
+            Read a row from the remider table
+            </summary>
+            <param name="grainRef"> grain ref to locate the row </param>
+            <param name="reminderName"> remider name to locate the row </param>
+            <returns> Return the RemiderTableData if the rows were read successfully </returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Reminders.DynamoDBReminderTable.ReadRows(Orleans.Runtime.GrainReference)">
+            <summary>
+            Read one row from the remider table
+            </summary>
+            <param name="grainRef">grain ref to locate the row </param>
+            <returns> Return the RemiderTableData if the rows were read successfully </returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Reminders.DynamoDBReminderTable.ReadRows(System.UInt32,System.UInt32)">
+            <summary>
+            Reads reminder table data for a given hash range.
+            </summary>
+            <param name="beginHash"></param>
+            <param name="endHash"></param>
+            <returns> Return the RemiderTableData if the rows were read successfully </returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Reminders.DynamoDBReminderTable.RemoveRow(Orleans.Runtime.GrainReference,System.String,System.String)">
+            <summary>
+            Remove one row from the reminder table 
+            </summary>
+            <param name="grainRef"> specific grain ref to locate the row </param>
+            <param name="reminderName"> remider name to locate the row </param>
+            <param name="eTag"> e tag </param>
+            <returns> Return true if the row was removed </returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Reminders.DynamoDBReminderTable.TestOnlyClearTable">
+            <summary>
+            Test hook to clear reminder table data.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Reminders.DynamoDBReminderTable.UpsertRow(Orleans.ReminderEntry)">
+            <summary>
+            Async method to put an entry into the remider table
+            </summary>
+            <param name="entry"> The entry to put </param>
+            <returns> Return the entry ETag if entry was upsert successfully </returns>
+        </member>
+        <member name="T:OrleansAWSUtils.Storage.DynamoDBStorage">
+            <summary>
+            Wrapper around AWS DynamoDB SDK.
+            </summary>
+        </member>
+        <member name="F:OrleansAWSUtils.Storage.DynamoDBStorage.secretKey">
+            <summary> Secret key for this dynamoDB table </summary>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.DynamoDBStorage.#ctor(System.String,Orleans.Runtime.Logger)">
+            <summary>
+            Create a DynamoDBStorage instance
+            </summary>
+            <param name="dataConnectionString">The connection string to be parsed for DynamoDB connection settings</param>
+            <param name="logger">Orleans Logger instance</param>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.DynamoDBStorage.InitializeTable(System.String,System.Collections.Generic.List{Amazon.DynamoDBv2.Model.KeySchemaElement},System.Collections.Generic.List{Amazon.DynamoDBv2.Model.AttributeDefinition},System.Collections.Generic.List{Amazon.DynamoDBv2.Model.GlobalSecondaryIndex})">
+            <summary>
+            Create a DynamoDB table if it doesn't exist
+            </summary>
+            <param name="tableName">The name of the table</param>
+            <param name="keys">The keys definitions</param>
+            <param name="attributes">The attributes used on the key definition</param>
+            <param name="secondaryIndexes">(optional) The secondary index definitions</param>
+            <returns></returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.DynamoDBStorage.DeleTableAsync(System.String)">
+            <summary>
+            Delete a table from DynamoDB
+            </summary>
+            <param name="tableName">The name of the table to delete</param>
+            <returns></returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.DynamoDBStorage.PutEntryAsync(System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue})">
+            <summary>
+            Create or Replace an entry in a DynamoDB Table
+            </summary>
+            <param name="tableName">The name of the table to put an entry</param>
+            <param name="fields">The fields/attributes to add or replace in the table</param>
+            <param name="conditionExpression">Optional conditional expression</param>
+            <param name="conditionValues">Optional field/attribute values used in the conditional expression</param>
+            <returns></returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.DynamoDBStorage.UpsertEntryAsync(System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue})">
+            <summary>
+            Create or update an entry in a DynamoDB Table
+            </summary>
+            <param name="tableName">The name of the table to upsert an entry</param>
+            <param name="keys">The table entry keys for the entry</param>
+            <param name="fields">The fields/attributes to add or updated in the table</param>
+            <param name="conditionExpression">Optional conditional expression</param>
+            <param name="conditionValues">Optional field/attribute values used in the conditional expression</param>
+            <param name="extraExpression">Additional expression that will be added in the end of the upsert expression</param>
+            <param name="extraExpressionValues">Additional field/attribute that will be used in the extraExpression</param>
+            <remarks>The fields dictionary item values will be updated with the values returned from DynamoDB</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.DynamoDBStorage.DeleteEntryAsync(System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue})">
+            <summary>
+            Delete an entry from a DynamoDB table
+            </summary>
+            <param name="tableName">The name of the table to delete an entry</param>
+            <param name="keys">The table entry keys for the entry to be deleted</param>
+            <param name="conditionExpression">Optional conditional expression</param>
+            <param name="conditionValues">Optional field/attribute values used in the conditional expression</param>
+            <returns></returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.DynamoDBStorage.DeleteEntriesAsync(System.String,System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue}})">
+            <summary>
+            Delete multiple entries from a DynamoDB table (Batch delete)
+            </summary>
+            <param name="tableName">The name of the table to delete entries</param>
+            <param name="toDelete">List of key values for each entry that must be deleted in the batch</param>
+            <returns></returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.DynamoDBStorage.ReadSingleEntryAsync``1(System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.Func{System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},``0})">
+            <summary>
+            Read an entry from a DynamoDB table
+            </summary>
+            <typeparam name="TResult">The result type</typeparam>
+            <param name="tableName">The name of the table to search for the entry</param>
+            <param name="keys">The table entry keys to search for</param>
+            <param name="resolver">Function that will be called to translate the returned fields into a concrete type. This Function is only called if the result is != null</param>
+            <returns>The object translated by the resolver function</returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.DynamoDBStorage.QueryAsync``1(System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.String,System.Func{System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},``0},System.String,System.Boolean)">
+            <summary>
+            Query for multiple entries in a DynamoDB table by filtering its keys
+            </summary>
+            <typeparam name="TResult">The result type</typeparam>
+            <param name="tableName">The name of the table to search for the entries</param>
+            <param name="keys">The table entry keys to search for</param>
+            <param name="keyConditionExpression">the expression that will filter the keys</param>
+            <param name="resolver">Function that will be called to translate the returned fields into a concrete type. This Function is only called if the result is != null and will be called for each entry that match the query and added to the results list</param>
+            <param name="indexName">In case a secondary index is used in the keyConditionExpression</param>
+            <param name="scanIndexForward">In case an index is used, show if the seek order is ascending (true) or descending (false)</param>
+            <returns>The collection containing a list of objects translated by the resolver function</returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.DynamoDBStorage.ScanAsync``1(System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.String,System.Func{System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},``0})">
+            <summary>
+            Scan a DynamoDB table by querying the entry fields.
+            </summary>
+            <typeparam name="TResult">The result type</typeparam>
+            <param name="tableName">The name of the table to search for the entries</param>
+            <param name="attributes">The attributes used on the expression</param>
+            <param name="expression">The filter expression</param>
+            <param name="resolver">Function that will be called to translate the returned fields into a concrete type. This Function is only called if the result is != null and will be called for each entry that match the query and added to the results list</param>
+            <returns>The collection containing a list of objects translated by the resolver function</returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.DynamoDBStorage.PutEntriesAsync(System.String,System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue}})">
+            <summary>
+            Crete or replace multiple entries in a DynamoDB table (Batch put)
+            </summary>
+            <param name="tableName">The name of the table to search for the entry</param>
+            <param name="toCreate">List of key values for each entry that must be created or replaced in the batch</param>
+            <returns></returns>
+        </member>
+        <member name="T:OrleansAWSUtils.Storage.SQSStorage">
+            <summary>
+            Wrapper/Helper class around AWS SQS queue service
+            </summary>
+        </member>
+        <member name="F:OrleansAWSUtils.Storage.SQSStorage.MAX_NUMBER_OF_MESSAGE_TO_PEAK">
+            <summary>
+            Maximum number of messages allowed by SQS to peak per request
+            </summary>
+        </member>
+        <member name="P:OrleansAWSUtils.Storage.SQSStorage.QueueName">
+            <summary>
+            The queue Name
+            </summary>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.SQSStorage.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Default Ctor
+            </summary>
+            <param name="queueName">The name of the queue</param>
+            <param name="connectionString">The connection string</param>
+            <param name="deploymentId">The cluster deployment Id</param>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.SQSStorage.InitQueueAsync">
+            <summary>
+            Initialize SQSStorage by creating or connecting to an existent queue
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.SQSStorage.DeleteQueue">
+            <summary>
+            Delete the queue
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.SQSStorage.AddMessage(Amazon.SQS.Model.SendMessageRequest)">
+            <summary>
+            Add a message to the SQS queue
+            </summary>
+            <param name="message">Message request</param>
+            <returns></returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.SQSStorage.GetMessages(System.Int32)">
+            <summary>
+            Get Messages from SQS Queue.
+            </summary>
+            <param name="count">The number of messages to peak. Min 1 and max 10</param>
+            <returns>Collection with messages from the queue</returns>
+        </member>
+        <member name="M:OrleansAWSUtils.Storage.SQSStorage.DeleteMessage(Amazon.SQS.Model.Message)">
+            <summary>
+            Delete a message from SQS queue
+            </summary>
+            <param name="message">The message to be deleted</param>
+            <returns></returns>
+        </member>
+        <member name="T:OrleansAWSUtils.Streams.SQSAdapterFactory">
+            <summary> Factory class for Azure Queue based stream provider.</summary>
+        </member>
+        <member name="F:OrleansAWSUtils.Streams.SQSAdapterFactory.NumQueuesDefaultValue">
+            <summary> Default number of Azure Queue used in this stream provider.</summary>
+        </member>
+        <member name="F:OrleansAWSUtils.Streams.SQSAdapterFactory.DataConnectionStringPropertyName">
+            <summary>"DataConnectionString".</summary>
+        </member>
+        <member name="F:OrleansAWSUtils.Streams.SQSAdapterFactory.DeploymentIdPropertyName">
+            <summary>"DeploymentId".</summary>
+        </member>
+        <member name="P:OrleansAWSUtils.Streams.SQSAdapterFactory.StreamFailureHandlerFactory">
+            <summary>
+            Application level failure handler override.
+            </summary>
+        </member>
+        <member name="M:OrleansAWSUtils.Streams.SQSAdapterFactory.Init(Orleans.Providers.IProviderConfiguration,System.String,Orleans.Runtime.Logger,System.IServiceProvider)">
+            <summary> Init the factory.</summary>
+        </member>
+        <member name="M:OrleansAWSUtils.Streams.SQSAdapterFactory.CreateAdapter">
+            <summary>Creates the Azure Queue based adapter.</summary>
+        </member>
+        <member name="M:OrleansAWSUtils.Streams.SQSAdapterFactory.GetQueueAdapterCache">
+            <summary>Creates the adapter cache.</summary>
+        </member>
+        <member name="M:OrleansAWSUtils.Streams.SQSAdapterFactory.GetStreamQueueMapper">
+            <summary>Creates the factory stream queue mapper.</summary>
+        </member>
+        <member name="M:OrleansAWSUtils.Streams.SQSAdapterFactory.GetDeliveryFailureHandler(Orleans.Streams.QueueId)">
+            <summary>
+            Creates a delivery failure handler for the specified queue.
+            </summary>
+            <param name="queueId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:OrleansAWSUtils.Streams.SQSAdapterReceiver">
+            <summary>
+            Recieves batches of messages from a single partition of a message queue.  
+            </summary>
+        </member>
+        <member name="T:OrleansAWSUtils.Streams.SQSStreamProviderUtils">
+            <summary>
+            SQS utility functions
+            </summary>
+        </member>
+        <member name="M:OrleansAWSUtils.Streams.SQSStreamProviderUtils.DeleteAllUsedQueues(System.String,System.String,System.String)">
+            <summary>
+            Async method to delete all used queques, for specific provider and deploymentId
+            </summary>
+            <param name="providerName"></param>
+            <param name="deploymentId"></param>
+            <param name="storageConnectionString"></param>
+            <returns> Task object for this async method </returns>
+        </member>
+        <member name="T:Orleans.Storage.DynamoDBStorageProvider">
+            <summary>
+            Dynamo DB storage Provider
+            Persist Grain State in a DynamoDB table either in Json or Binary format
+            </summary>
+             /// <para>
+            Required configuration params: <c>DataConnectionString</c>
+            </para>
+            <para>
+            Optional configuration params:
+            <c>TableName</c> -- defaults to <c>OrleansGrainState</c>
+            <c>DeleteStateOnClear</c> -- defaults to <c>false</c>
+            </para>
+        </member>
+        <member name="P:Orleans.Storage.DynamoDBStorageProvider.Name">
+            <summary>
+            Provider Name
+            </summary>
+        </member>
+        <member name="P:Orleans.Storage.DynamoDBStorageProvider.Log">
+            <summary>
+            Orleans Logger instance
+            </summary>
+        </member>
+        <member name="M:Orleans.Storage.DynamoDBStorageProvider.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Orleans.Storage.DynamoDBStorageProvider.Init(System.String,Orleans.Providers.IProviderRuntime,Orleans.Providers.IProviderConfiguration)">
+            <summary> Initialization function for this storage provider. </summary>
+            <see cref="M:Orleans.Providers.IProvider.Init(System.String,Orleans.Providers.IProviderRuntime,Orleans.Providers.IProviderConfiguration)"/>
+        </member>
+        <member name="M:Orleans.Storage.DynamoDBStorageProvider.Close">
+            <summary> Shutdown this storage provider. </summary>
+            <see cref="M:Orleans.Providers.IProvider.Close"/>
+        </member>
+        <member name="M:Orleans.Storage.DynamoDBStorageProvider.ReadStateAsync(System.String,Orleans.Runtime.GrainReference,Orleans.IGrainState)">
+            <summary> Read state data function for this storage provider. </summary>
+            <see cref="M:Orleans.Storage.IStorageProvider.ReadStateAsync(System.String,Orleans.Runtime.GrainReference,Orleans.IGrainState)"/>
+        </member>
+        <member name="M:Orleans.Storage.DynamoDBStorageProvider.WriteStateAsync(System.String,Orleans.Runtime.GrainReference,Orleans.IGrainState)">
+            <summary> Write state data function for this storage provider. </summary>
+            <see cref="M:Orleans.Storage.IStorageProvider.WriteStateAsync(System.String,Orleans.Runtime.GrainReference,Orleans.IGrainState)"/>
+        </member>
+        <member name="M:Orleans.Storage.DynamoDBStorageProvider.ClearStateAsync(System.String,Orleans.Runtime.GrainReference,Orleans.IGrainState)">
+            <summary> Clear / Delete state data function for this storage provider. </summary>
+            <remarks>
+            If the <c>DeleteStateOnClear</c> is set to <c>true</c> then the table row
+            for this grain will be deleted / removed, otherwise the table row will be
+            cleared by overwriting with default / null values.
+            </remarks>
+            <see cref="M:Orleans.Storage.IStorageProvider.ClearStateAsync(System.String,Orleans.Runtime.GrainReference,Orleans.IGrainState)"/>
+        </member>
+        <member name="T:Orleans.Providers.Streams.SQSStreamProvider">
+            <summary>
+            Persistent stream provider that uses azure queue for persistence
+            </summary>
+        </member>
+    </members>
+</doc>

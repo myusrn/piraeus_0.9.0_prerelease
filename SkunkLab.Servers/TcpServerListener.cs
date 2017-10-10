@@ -18,13 +18,15 @@ namespace SkunkLab.Servers
         public TcpServerListener(IPEndPoint localEP, CancellationToken token)
         {
             listener = new TcpListener(localEP);
-            this.token = token;            
+            this.token = token;
+            dict = new Dictionary<string, ProtocolAdapter>();
         }
 
         public TcpServerListener(IPAddress address, int port, CancellationToken token)
         {
             listener = new TcpListener(address, port);
-            this.token = token;            
+            this.token = token;
+            dict = new Dictionary<string, ProtocolAdapter>();
         }
 
         private TcpListener listener;
@@ -60,8 +62,8 @@ namespace SkunkLab.Servers
             dict.Add(adapter.Channel.Id, adapter);
             adapter.OnError += Adapter_OnError;
             adapter.OnClose += Adapter_OnClose;
-            //await channel.OpenAsync();
-            //await channel.ReceiveAsync();
+            await adapter.Channel.OpenAsync();
+            await adapter.Channel.ReceiveAsync();
         }
 
         private void Adapter_OnClose(object sender, ProtocolAdapterCloseEventArgs args)

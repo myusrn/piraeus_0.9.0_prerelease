@@ -43,8 +43,7 @@ namespace Piraeus.Clients.Coap
             session.UpdateKeepAliveTimestamp();
 
             byte[] token = CoapToken.Create().TokenBytes;
-            ushort id = session.CoapSender.NewId(token, null, action);
-            
+            ushort id = session.CoapSender.NewId(token, null, action);            
 
             RequestMessageType mtype = confirmable ? RequestMessageType.Confirmable : RequestMessageType.NonConfirmable;
             CoapRequest cr = new CoapRequest(id, mtype, MethodType.POST, new Uri(resourceUriString), MediaTypeConverter.ConvertToMediaType(contentType), payload);

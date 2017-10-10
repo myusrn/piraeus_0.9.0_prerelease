@@ -1,0 +1,9 @@
+C:\_git\core\Piraeus\Piraeus.Core\bin\Debug\netstandard2.0\Piraeus.Core.deps.json
+C:\_git\core\Piraeus\Piraeus.Core\bin\Debug\netstandard2.0\Piraeus.Core.dll
+C:\_git\core\Piraeus\Piraeus.Core\bin\Debug\netstandard2.0\Piraeus.Core.pdb
+C:\_git\core\Piraeus\Piraeus.Core\obj\Debug\netstandard2.0\Piraeus.Core.csproj.CoreCompileInputs.cache
+C:\_git\core\Piraeus\Piraeus.Core\obj\Debug\netstandard2.0\Piraeus.Core.AssemblyInfoInputs.cache
+C:\_git\core\Piraeus\Piraeus.Core\obj\Debug\netstandard2.0\Piraeus.Core.AssemblyInfo.cs
+C:\_git\core\Piraeus\Piraeus.Core\obj\Debug\netstandard2.0\Piraeus.Core.dll
+C:\_git\core\Piraeus\Piraeus.Core\obj\Debug\netstandard2.0\Piraeus.Core.pdb
+C:\_git\core\Piraeus\Piraeus.Core\obj\Debug\netstandard2.0\Piraeus.Core.csprojResolveAssemblyReference.cache
