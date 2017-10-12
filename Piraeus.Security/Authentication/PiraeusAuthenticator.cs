@@ -28,7 +28,6 @@ namespace Piraeus.Security.Authentication
         {
             return ContainsKey(tokenType);
         }
-
         
         public bool Authenticate(SecurityTokenType type, byte[] token)
         {                           

@@ -13,6 +13,12 @@ namespace Piraeus.ServiceModel
     public class GraphManager
     {
         #region Resources
+
+        public static async Task<IResourceList> GetResourceListAsync()
+        {
+            return await Task.FromResult<IResourceList>(GrainClient.GrainFactory.GetGrain<IResourceList>("resourcelist"));
+        }
+
         public static async Task<IResource> GetResourceAsync(string resourceUriString)
         {
             return await Task.FromResult<IResource>(GrainClient.GrainFactory.GetGrain<IResource>(resourceUriString));
@@ -91,6 +97,8 @@ namespace Piraeus.ServiceModel
             await UnsubscribeAsync(subscriptionUriString, resource);
 
         }
+
+        
 
 
         #endregion

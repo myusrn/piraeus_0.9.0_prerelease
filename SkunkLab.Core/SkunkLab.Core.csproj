@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\CoapProtocolAdapter.cs" />
+    <Compile Include="Adapters\MqttProtocolAdapter.cs" />
     <Compile Include="Messaging\EventMessage.cs" />
     <Compile Include="Messaging\HttpChannelConstants.cs" />
     <Compile Include="Messaging\QueryStringConstants.cs" />
@@ -75,6 +76,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Piraeus.Security\Piraeus.Security.csproj">
+      <Project>{96843533-6bf8-47d7-9a71-8a69bc79c40e}</Project>
+      <Name>Piraeus.Security</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SkunkLab.Channels\SkunkLab.Channels\SkunkLab.Channels.csproj">
       <Project>{7c69a3ca-29dd-4c33-b70f-f998a6e650b9}</Project>
       <Name>SkunkLab.Channels</Name>

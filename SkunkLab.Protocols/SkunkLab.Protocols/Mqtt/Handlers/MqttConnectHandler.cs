@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace SkunkLab.Protocols.Mqtt.Handlers
@@ -20,6 +18,7 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
             //authenticate
             string tokenType = msg.Username;
             string token = msg.Password;
+
 
             //wrong protocol version
             if(msg.ProtocolVersion != 4)
@@ -40,18 +39,30 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
 
             //if not authn'd send back not authz'd
 
-            return await Task.FromResult<MqttMessage>(new ConnectAckMessage(false, ConnectAckCode.ConnectionAccepted));
-
-
-
-
-
-
-            //return new ConnectAckMessage(false, ConnectAckCode.ConnectionAccepted);
-            //ConnectAckMessage msg = new ConnectAckMessage(false, ConnectAckCode.ConnectionAccepted);
-            //return msg;
+            if (!Session.IsAuthenticated)  //check for case where authentication was not done by channel
+            {
+                try
+                {
+                    Session.IsAuthenticated = Session.Authenticate(tokenType, token);
+                    if (Session.IsAuthenticated)
+                    {
+                        return await Task.FromResult<MqttMessage>(new ConnectAckMessage(false, ConnectAckCode.ConnectionAccepted));
+                    }
+                    else
+                    {
+                        return await Task.FromResult<MqttMessage>(new ConnectAckMessage(false, ConnectAckCode.NotAuthorized));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Trace.TraceError("MQTT authentication failed {0}", ex.Message);
+                    return await Task.FromResult<MqttMessage>(new ConnectAckMessage(false, ConnectAckCode.BadUsernameOrPassword));
+                }
+            }
+            else
+            {
+                return await Task.FromResult<MqttMessage>(new ConnectAckMessage(false, ConnectAckCode.ConnectionAccepted));
+            }
         }
-
-       
     }
 }

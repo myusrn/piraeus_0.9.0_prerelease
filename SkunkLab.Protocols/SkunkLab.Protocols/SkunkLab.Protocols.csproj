@@ -140,6 +140,11 @@
     <Compile Include="Utilities\QueryStringConstants.cs" />
     <Compile Include="Utilities\TaskExtensions.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\SkunkLab.Security\SkunkLab.Security.csproj">
+      <Project>{4b52bba1-435b-41d1-9447-da8466a92dba}</Project>
+      <Name>SkunkLab.Security</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

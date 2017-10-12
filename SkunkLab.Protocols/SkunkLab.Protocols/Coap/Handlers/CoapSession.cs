@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using SkunkLab.Security.Tokens;
 
 namespace SkunkLab.Protocols.Coap.Handlers
 {
@@ -32,15 +33,25 @@ namespace SkunkLab.Protocols.Coap.Handlers
 
         public event EventHandler<CoapMessageEventArgs> OnRetry;
         public event EventHandler<CoapMessageEventArgs> OnKeepAlive;
+
+        public bool IsAuthenticated { get; set; }
         public Transmitter CoapSender { get; internal set; }
 
         public Receiver CoapReceiver { get; internal set; }
                 
+        
 
         public CoapConfig Config { get; internal set; }
 
         private DateTime keepaliveTimestamp;
         private Timer keepaliveTimer;
+
+        public bool Authenticate(string tokenType, string token)
+        {
+            SecurityTokenType tt = (SecurityTokenType)Enum.Parse(typeof(SecurityTokenType), tokenType, true);
+            IsAuthenticated = Config.Authenticator.Authenticate(tt, token);
+            return IsAuthenticated;
+        }
 
 
         public bool IsNoResponse(NoResponseType? messageNrt, NoResponseType result)

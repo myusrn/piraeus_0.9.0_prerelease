@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using SkunkLab.Protocols.Mqtt.Handlers;
 using SkunkLab.Protocols.Utilities;
+using SkunkLab.Security.Tokens;
 
 namespace SkunkLab.Protocols.Mqtt
 {
@@ -43,8 +44,16 @@ namespace SkunkLab.Protocols.Mqtt
         private Dictionary<string, QualityOfServiceLevelType> qosLevels;    //qos levels return from subscriptions
         private ConnectAckCode _code;
 
+        public bool Authenticate(string tokenType, string token)
+        {
+            SecurityTokenType tt = (SecurityTokenType)Enum.Parse(typeof(SecurityTokenType), tokenType, true);
+            IsAuthenticated = config.Authenticator.Authenticate(tt, token);
+            return IsAuthenticated;
+
+
+        }
         public bool IsConnected { get; internal set; }
-        public bool IsAuthenticated { get; internal set; }
+        public bool IsAuthenticated { get; set; }
         public ConnectAckCode ConnectResult
         {
             get { return _code; }

@@ -20,6 +20,7 @@ namespace Piraeus.Grains
 
         Task<ResourceMetadata> GetMetadataAsync();
 
+        Task<IEnumerable<string>> GetSubscriptionListAsync();
         Task PublishAsync(EventMessage message);
 
         Task PublishAsync(EventMessage message, List<KeyValuePair<string, string>> indexes);

@@ -182,6 +182,11 @@ namespace Piraeus.ServiceModel
             }
         }
 
+        public async Task<IEnumerable<string>> GetSubscriptionListAsync()
+        {
+            return await Task.FromResult<IEnumerable<string>>(State.Subscriptions.Keys.ToArray());
+        }
+
         public async Task<string> AddObserverAsync(TimeSpan lifetime, IMetricObserver observer)
         {
             string leaseKey = Guid.NewGuid().ToString();

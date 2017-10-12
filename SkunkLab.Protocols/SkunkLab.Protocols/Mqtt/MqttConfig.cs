@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SkunkLab.Security.Authentication;
 
 namespace SkunkLab.Protocols.Mqtt
 {
     public sealed class MqttConfig
     {
 
-        public MqttConfig(double keepAliveSeconds = 180.0, double ackTimeout = 2.0, double ackRandomFactor = 1.5, int maxRetransmit = 4, double maxLatency = 100.0)
+        public MqttConfig(IAuthenticator authenticator, double keepAliveSeconds = 180.0, double ackTimeout = 2.0, double ackRandomFactor = 1.5, int maxRetransmit = 4, double maxLatency = 100.0)
         {
-            this.KeepAliveSeconds = keepAliveSeconds;
+            Authenticator = authenticator;
+            KeepAliveSeconds = keepAliveSeconds;
             AckTimeout = TimeSpan.FromSeconds(ackTimeout);
             AckRandomFactor = ackRandomFactor;
             MaxRetransmit = maxRetransmit;
             MaxLatency = TimeSpan.FromSeconds(maxLatency);
         }
 
+        public IAuthenticator Authenticator { get; set; }
         public double KeepAliveSeconds { get; internal set; }
         public TimeSpan AckTimeout { get; internal set; }
         public double AckRandomFactor { get; internal set; }
