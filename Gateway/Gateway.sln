@@ -13,6 +13,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piraeus.Security", "..\Pira
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkunkLab.Core", "..\SkunkLab.Core\SkunkLab.Core.csproj", "{A435D56C-2D3A-40B9-85A2-D7A231E38DFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piraeus.Core", "..\Piraeus\Piraeus.Core\Piraeus.Core.csproj", "{DB8FF87B-3C47-429E-BE51-29ADE3735FCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piraeus.Grains", "..\Piraeus\Piraeus.Grains\Piraeus.Grains.csproj", "{34B525F4-322F-4B49-8ECF-9BE16E93A991}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piraeus.ServiceModel", "..\Piraeus\Piraeus.ServiceModel\Piraeus.ServiceModel.csproj", "{F67EEEC4-650E-459E-8584-1246D62CE422}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkunkLab.Diagnostics", "..\SkunkLab.Diagnostics\SkunkLab.Diagnostics\SkunkLab.Diagnostics.csproj", "{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkunkLab.Security", "..\SkunkLab.Security\SkunkLab.Security.csproj", "{4B52BBA1-435B-41D1-9447-DA8466A92DBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +49,26 @@ Global
 		{A435D56C-2D3A-40B9-85A2-D7A231E38DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A435D56C-2D3A-40B9-85A2-D7A231E38DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A435D56C-2D3A-40B9-85A2-D7A231E38DFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB8FF87B-3C47-429E-BE51-29ADE3735FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB8FF87B-3C47-429E-BE51-29ADE3735FCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB8FF87B-3C47-429E-BE51-29ADE3735FCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB8FF87B-3C47-429E-BE51-29ADE3735FCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B525F4-322F-4B49-8ECF-9BE16E93A991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B525F4-322F-4B49-8ECF-9BE16E93A991}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B525F4-322F-4B49-8ECF-9BE16E93A991}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B525F4-322F-4B49-8ECF-9BE16E93A991}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F67EEEC4-650E-459E-8584-1246D62CE422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F67EEEC4-650E-459E-8584-1246D62CE422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F67EEEC4-650E-459E-8584-1246D62CE422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F67EEEC4-650E-459E-8584-1246D62CE422}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B52BBA1-435B-41D1-9447-DA8466A92DBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B52BBA1-435B-41D1-9447-DA8466A92DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B52BBA1-435B-41D1-9447-DA8466A92DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B52BBA1-435B-41D1-9447-DA8466A92DBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

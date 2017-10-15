@@ -44,7 +44,9 @@
     <Compile Include="Adapters\ProtocolAdapterFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Piraeus.Security\Piraeus.Security.csproj">
       <Project>{96843533-6bf8-47d7-9a71-8a69bc79c40e}</Project>

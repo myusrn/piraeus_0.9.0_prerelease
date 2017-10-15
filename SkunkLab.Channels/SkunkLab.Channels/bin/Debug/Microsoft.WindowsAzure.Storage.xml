@@ -33504,6 +33504,11 @@
             Retrieve share metadata.
             </summary>
         </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.File.ShareListingDetails.Snapshots">
+            <summary>
+            Retrieve share snapshots.
+            </summary>
+        </member>
         <member name="F:Microsoft.WindowsAzure.Storage.File.ShareListingDetails.All">
             <summary>
             Retrieve all available details.

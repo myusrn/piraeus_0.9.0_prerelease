@@ -82,7 +82,7 @@ C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\System.Web.Http.xml
 C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\System.Web.Http.WebHost.xml
 C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
 C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\Microsoft.WindowsAzure.Storage.xml
+C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csprojResolveAssemblyReference.cache
 C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csproj.CoreCompileInputs.cache
 C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.dll
 C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.pdb
-C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csprojResolveAssemblyReference.cache

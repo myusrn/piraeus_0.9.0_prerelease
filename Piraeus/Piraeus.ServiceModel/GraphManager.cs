@@ -19,9 +19,19 @@ namespace Piraeus.ServiceModel
             return await Task.FromResult<IResourceList>(GrainClient.GrainFactory.GetGrain<IResourceList>("resourcelist"));
         }
 
+        public static IResourceList GetResourceList()
+        {
+            return GrainClient.GrainFactory.GetGrain<IResourceList>("resourcelist");
+        }
+
         public static async Task<IResource> GetResourceAsync(string resourceUriString)
         {
             return await Task.FromResult<IResource>(GrainClient.GrainFactory.GetGrain<IResource>(resourceUriString));
+        }
+
+        public static IResource GetResource(string resourceUriString)
+        {
+            return GrainClient.GrainFactory.GetGrain<IResource>(resourceUriString);
         }
 
         public static async Task AddResourceAsync(ResourceMetadata metadata)
@@ -40,6 +50,13 @@ namespace Piraeus.ServiceModel
         {
             IResource resource = GrainClient.GrainFactory.GetGrain<IResource>(resourceUriString);
             return await resource.GetMetadataAsync();
+        }
+
+        public static ResourceMetadata GetResourceMetadata(string resourceUriString)
+        {
+            IResource resource = GrainClient.GrainFactory.GetGrain<IResource>(resourceUriString);
+            Task<ResourceMetadata> task = resource.GetMetadataAsync();
+            return task.GetAwaiter().GetResult();
         }
 
         public static async Task UpdateResourceMetadata(ResourceMetadata metadata)
@@ -186,10 +203,20 @@ namespace Piraeus.ServiceModel
             await accessControl.UpsertPolicyAsync(policy);
         }
 
-        public async Task RemovePolicy(string policyId)
+        public static async Task RemovePolicy(string policyId)
         {
             IAccessControl accessControl = GrainClient.GrainFactory.GetGrain<IAccessControl>(policyId);
             await accessControl.ClearAsync();
+        }
+
+        public static async Task<IAccessControl> GetAccessControlAsync(string policyId)
+        {
+            return await Task.FromResult<IAccessControl>(GrainClient.GrainFactory.GetGrain<IAccessControl>(policyId));
+        }
+
+        public static IAccessControl GetAccessControl(string policyId)
+        {
+            return GrainClient.GrainFactory.GetGrain<IAccessControl>(policyId);
         }
 
         #endregion

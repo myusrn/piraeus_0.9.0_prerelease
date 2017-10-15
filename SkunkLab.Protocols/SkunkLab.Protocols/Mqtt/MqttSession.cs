@@ -8,23 +8,24 @@ using SkunkLab.Security.Tokens;
 
 namespace SkunkLab.Protocols.Mqtt
 {
+    public delegate List<string> SubscriptionHandler(object sender, MqttMessageEventArgs args);
     public delegate void ConnectionHandler(object sender, MqttConnectionArgs args);
     public delegate void EventHandler<MqttMessageEventArgs>(object sender, MqttMessageEventArgs args);
-    public class MqttSession
+    public class MqttSession : IDisposable
     {
-       
+
         public MqttSession(MqttConfig config)
         {
             this.config = config;
             KeepAliveSeconds = config.KeepAliveSeconds;
             pubContainer = new PublishContainer(config);
-            
+
             qosLevels = new Dictionary<string, QualityOfServiceLevelType>();
             quarantine = new MqttQuarantineTimer(config);
             quarantine.OnRetry += Quarantine_OnRetry;
         }
 
-        
+
 
         public event ConnectionHandler OnConnect;                       //client function
         public event EventHandler<MqttMessageEventArgs> OnRetry;        //client function               
@@ -34,7 +35,8 @@ namespace SkunkLab.Protocols.Mqtt
         public event EventHandler<MqttMessageEventArgs> OnDisconnect;   //client & server function
         public event EventHandler<MqttMessageEventArgs> OnKeepAlive;    //client function
         public event EventHandler<MqttMessageEventArgs> OnKeepAliveExpiry; //server function
-        
+        public event SubscriptionHandler OnSubscribeWithReturn; //server function
+
         private MqttQuarantineTimer quarantine;     //quarantines ids for reuse and supplies valid ids
         private PublishContainer pubContainer;      //manages QoS 2 message features
         private MqttConfig config;                  //configuration
@@ -43,15 +45,21 @@ namespace SkunkLab.Protocols.Mqtt
         private DateTime keepaliveExpiry;           //expiry of the keepalive
         private Dictionary<string, QualityOfServiceLevelType> qosLevels;    //qos levels return from subscriptions
         private ConnectAckCode _code;
+        private bool disposed;
 
         public bool Authenticate(string tokenType, string token)
         {
             SecurityTokenType tt = (SecurityTokenType)Enum.Parse(typeof(SecurityTokenType), tokenType, true);
             IsAuthenticated = config.Authenticator.Authenticate(tt, token);
             return IsAuthenticated;
-
-
         }
+
+        public bool Authenticate(byte[] message)
+        {
+            ConnectMessage msg = (ConnectMessage)MqttMessage.DecodeMessage(message);
+            return Authenticate(msg.Username, msg.Password);
+        }
+
         public bool IsConnected { get; internal set; }
         public bool IsAuthenticated { get; set; }
         public ConnectAckCode ConnectResult
@@ -95,7 +103,7 @@ namespace SkunkLab.Protocols.Mqtt
 
         public QualityOfServiceLevelType? GetQoS(string topic)
         {
-            if(qosLevels.ContainsKey(topic))
+            if (qosLevels.ContainsKey(topic))
             {
                 return qosLevels[topic];
             }
@@ -111,6 +119,11 @@ namespace SkunkLab.Protocols.Mqtt
         internal void Publish(MqttMessage message)
         {
             OnPublish?.Invoke(this, new MqttMessageEventArgs(message));
+        }
+
+        internal List<string> GetValidSubscriptions(MqttMessage message)
+        {
+            return OnSubscribeWithReturn?.Invoke(this, new MqttMessageEventArgs(message));
         }
 
         internal void Subscribe(MqttMessage message)
@@ -179,7 +192,7 @@ namespace SkunkLab.Protocols.Mqtt
                     keepaliveTimer.Start();
                 }
 
-               
+
             }
         }
         internal void IncrementKeepAlive()
@@ -203,8 +216,8 @@ namespace SkunkLab.Protocols.Mqtt
             }
 
             //signals client to send a ping to keep alive
-            if(keepaliveExpiry > DateTime.UtcNow)
-            {                
+            if (keepaliveExpiry > DateTime.UtcNow)
+            {
                 OnKeepAlive(this, new MqttMessageEventArgs(new PingRequestMessage()));
             }
         }
@@ -243,5 +256,28 @@ namespace SkunkLab.Protocols.Mqtt
         }
 
         #endregion
+
+        public void Dispose()
+        {
+            Disposing(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected void Disposing(bool dispose)
+        {
+            if (dispose & !disposed)
+            {
+                quarantine.Dispose();
+                pubContainer.Dispose();
+                qosLevels.Clear();
+                qosLevels = null;
+
+                if(keepaliveTimer != null)
+                {
+                    keepaliveTimer.Dispose();
+                }
+            }
+        }
     }
+            
 }

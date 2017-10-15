@@ -128,3 +128,4 @@ C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Debug\zh-Hant\System.
 C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\SkunkLab.Diagnostics.csproj.CoreCompileInputs.cache
 C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\SkunkLab.Diagnostics.dll
 C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\SkunkLab.Diagnostics.pdb
+C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\SkunkLab.Diagnostics.csprojResolveAssemblyReference.cache

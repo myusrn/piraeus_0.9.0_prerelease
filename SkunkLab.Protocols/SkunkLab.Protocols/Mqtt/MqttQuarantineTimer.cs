@@ -5,9 +5,9 @@ using System.Timers;
 
 namespace SkunkLab.Protocols.Mqtt
 {
-    
 
-    public class MqttQuarantineTimer
+
+    public class MqttQuarantineTimer : IDisposable
     {
         public MqttQuarantineTimer(MqttConfig config)
         {
@@ -24,6 +24,7 @@ namespace SkunkLab.Protocols.Mqtt
         private Dictionary<ushort, RetryMessageData> container;
         private Timer timer;
         private ushort currentId;
+        private bool disposed;
 
         public ushort NewId()
         {
@@ -45,12 +46,12 @@ namespace SkunkLab.Protocols.Mqtt
 
         public void Add(MqttMessage message)
         {
-            if(message.QualityOfService == QualityOfServiceLevelType.AtMostOnce)
+            if (message.QualityOfService == QualityOfServiceLevelType.AtMostOnce)
             {
                 return;
             }
 
-            if(!container.ContainsKey(message.MessageId))
+            if (!container.ContainsKey(message.MessageId))
             {
                 DateTime timeout = DateTime.UtcNow.AddMilliseconds(config.AckTimeout.TotalMilliseconds);
                 RetryMessageData amd = new RetryMessageData(message, timeout, 0);
@@ -60,7 +61,7 @@ namespace SkunkLab.Protocols.Mqtt
 
         public void Remove(ushort id)
         {
-            container.Remove(id);            
+            container.Remove(id);
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -92,6 +93,29 @@ namespace SkunkLab.Protocols.Mqtt
             foreach (var item in list)
             {
                 Remove(item);
+            }
+        }
+
+        public void Dispose()
+        {
+            Disposing(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected void Disposing(bool dispose)
+        {
+            if (dispose & !disposed)
+            {
+                disposed = true;
+
+                container.Clear();
+                container = null;
+
+                if(timer != null)
+                {
+                    timer.Stop();
+                    timer.Dispose();
+                }
             }
         }
     }

@@ -398,8 +398,6 @@ namespace Piraeus.ServiceModel
             string resourceUriString = uriString.Replace(uri.Segments[uri.Segments.Length - 1], "");
             IResource resource = GrainFactory.GetGrain<IResource>(resourceUriString);
             await resource.UnsubscribeAsync(State.Metadata.SubscriptionUriString);
-            
-            await ClearStateAsync();
         }
 
         private async Task DequeueAsync(Queue<EventMessage> queue)
