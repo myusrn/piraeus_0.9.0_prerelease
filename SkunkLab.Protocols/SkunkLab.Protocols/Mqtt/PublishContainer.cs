@@ -85,7 +85,7 @@ namespace SkunkLab.Protocols.Mqtt
         {
             if (!container.ContainsKey(item.Key))
             {
-                container.Add(item.Key, item.Value);d
+                container.Add(item.Key, item.Value);
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -140,7 +141,7 @@ namespace SkunkLab.Channels.Tcp
         //    this.token = token;
         //}
         #endregion
-
+     
         private string pskIdentity;
         private byte[] psk;
         private IPEndPoint localEP;

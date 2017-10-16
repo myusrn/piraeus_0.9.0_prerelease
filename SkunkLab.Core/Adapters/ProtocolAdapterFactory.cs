@@ -41,5 +41,7 @@ namespace SkunkLab.Core.Adapters
             }           
 
         }
+
+        
     }
 }

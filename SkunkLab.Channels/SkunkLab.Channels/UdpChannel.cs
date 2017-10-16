@@ -1,13 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using SkunkLab.Channels.Udp;
 
 namespace SkunkLab.Channels
 {
     public abstract class UdpChannel : IChannel
     {
+        public static UdpChannel Create(IPEndPoint localEP, IPEndPoint remoteEP, CancellationToken token)
+        {
+            return new UdpServerChannel(localEP, remoteEP, token);
+        }
+
+        public static UdpChannel Create(IPEndPoint localEP, string hostname, int port, CancellationToken token)
+        {
+            return new UdpClientChannel(localEP, hostname, port, token);
+        }
+
+        public static UdpChannel Create(IPEndPoint localEP, IPAddress remoteAddress, int port, CancellationToken token)
+        {
+            return new UdpClientChannel(localEP, new IPEndPoint(remoteAddress, port), token);
+        }
+
+
         public abstract string Id { get; internal set; }
 
         public abstract bool IsConnected { get; }
