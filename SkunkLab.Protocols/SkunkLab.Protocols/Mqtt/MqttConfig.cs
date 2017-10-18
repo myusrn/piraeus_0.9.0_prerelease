@@ -20,6 +20,19 @@ namespace SkunkLab.Protocols.Mqtt
             MaxLatency = TimeSpan.FromSeconds(maxLatency);
         }
 
+        /// <summary>
+        /// Claim type that uniquely identifies the an identity.
+        /// </summary>
+        /// <remarks>Used only on server.</remarks>
+        public string IdentityClaimType { get; set; }
+
+
+        /// <summary>
+        /// List of claim type and index name used to associated indexes with an ephemeral subscription.
+        /// </summary>
+        /// <remarks>Used only on server.</remarks>
+        public List<KeyValuePair<string,string>> Indexes { get; set; }
+
         public IAuthenticator Authenticator { get; set; }
         public double KeepAliveSeconds { get; internal set; }
         public TimeSpan AckTimeout { get; internal set; }

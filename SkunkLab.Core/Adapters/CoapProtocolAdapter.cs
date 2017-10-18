@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SkunkLab.Channels;
+using SkunkLab.Protocols.Coap;
+using SkunkLab.Protocols.Coap.Handlers;
 
 namespace SkunkLab.Core.Adapters
 {
     public class CoapProtocolAdapter : ProtocolAdapter
     {
-        public CoapProtocolAdapter(IChannel channel)
+        public CoapProtocolAdapter(IChannel channel, CoapConfig config = null)
         {
             Channel = channel;
             Channel.OnClose += Channel_OnClose;
@@ -20,6 +22,14 @@ namespace SkunkLab.Core.Adapters
             Channel.OnSent += Channel_OnSent;
             Channel.OnStateChange += Channel_OnStateChange;
 
+            if (config != null)
+            {
+                session = new CoapSession(config);
+            }
+            else
+            {
+                session = new CoapSession(ProtocolAdapter.CoapConfig);
+            }
         }
 
        
@@ -29,12 +39,12 @@ namespace SkunkLab.Core.Adapters
         public override event ProtocolAdapterErrorHandler OnError;
         public override event ProtocolAdapterCloseHandler OnClose;
         private bool authenticated;
-
+        private CoapSession session;
        
 
         public override void Init()
         {
-            throw new NotImplementedException();
+           
         }
 
 
@@ -62,15 +72,13 @@ namespace SkunkLab.Core.Adapters
 
         private void Channel_OnReceive(object sender, ChannelReceivedEventArgs args)
         {
-            throw new NotImplementedException();
+           // SkunkLab.Protocols.Coap.ICoapRequestDispatch dispath;
+           //CoapMessageHandler handler = CoapMessageHandler.Create(session, )
         }
 
         private void Channel_OnOpen(object sender, ChannelOpenEventArgs args)
         {
-            if(!Channel.IsAuthenticated && !authenticated)
-            {
-                //authenticate
-            }
+            session.IsAuthenticated = Channel.IsAuthenticated;           
         }
 
         private void Channel_OnError(object sender, ChannelErrorEventArgs args)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -148,8 +149,9 @@ namespace SkunkLab.Channels.Http
                                     await Log.LogAsync("Http client channel calling observers from receive loop.");
                                     if(observer.ResourceUri.ToLower() == resourceUriString)
                                     {
-                                        await Log.LogInfoAsync("Http client channel calling observer from receive loop.");
+                                        
                                         observer.Update(observer.ResourceUri, response.ContentType, buffer);
+                                        await Log.LogInfoAsync("Http client channel observer updated.");
                                     }
                                 }
 

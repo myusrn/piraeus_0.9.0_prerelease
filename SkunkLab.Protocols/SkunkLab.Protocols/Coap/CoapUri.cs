@@ -10,6 +10,12 @@ namespace SkunkLab.Protocols.Coap
 {
     public class CoapUri : Uri
     {        
+        public static string Create(string hostname, string resource, bool encryptedChannel)
+        {
+            string scheme = encryptedChannel ? "coaps" : "coap";
+            return String.Format("{0}://{1}?r={2}", scheme, hostname.ToLower(CultureInfo.InvariantCulture), resource.ToLower(CultureInfo.InvariantCulture));
+        }
+
         public CoapUri(string uriString)
             : base(uriString, UriKind.Absolute)
         {
@@ -86,7 +92,7 @@ namespace SkunkLab.Protocols.Coap
 
         }
 
-
+        
 
     }
 }

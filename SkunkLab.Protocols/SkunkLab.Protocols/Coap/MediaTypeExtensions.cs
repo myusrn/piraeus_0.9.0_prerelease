@@ -7,7 +7,7 @@ namespace SkunkLab.Protocols.Coap
     public static class MediaTypeExtensions
     {
         public static string ConvertToContentType(this MediaType mediaType)
-        {
+        {            
             switch(mediaType)
             {
                 case MediaType.Xml:

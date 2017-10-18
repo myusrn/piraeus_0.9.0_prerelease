@@ -45,13 +45,14 @@ namespace SkunkLab.Core.Adapters
 
         public override void Init()
         {
-            session.OnPublish += Session_OnPublish;
+            session.OnPublish += Session_OnPublish;            
             session.OnSubscribe += Session_OnSubscribe;
             session.OnUnsubscribe += Session_OnUnsubscribe;
             session.OnDisconnect += Session_OnDisconnect;
-            session.OnSubscribeWithReturn += Session_OnSubscribeWithReturn;
 
         }
+
+        
 
         public override void Dispose()
         {
@@ -82,8 +83,8 @@ namespace SkunkLab.Core.Adapters
 
 
         #region Session Events
-        private void Session_OnSubscribe(object sender, MqttMessageEventArgs args)
-        {
+        private List<string> Session_OnSubscribe(object sender, MqttMessageEventArgs args)
+        {           
             //ephemeral subscribe to resource
             SubscribeMessage message = (SubscribeMessage)args.Message;
             foreach (var item in message.Topics)
@@ -104,11 +105,13 @@ namespace SkunkLab.Core.Adapters
                             //subscribe to resource
                             IResource resource = GraphManager.GetResource(mqttUri.Resource);
                             SubscriptionMetadata submetadata = new SubscriptionMetadata();
+                            submetadata.IsEphemeral = true;                           
                             string subscriptionUriString = GraphManager.SubscribeAsync(submetadata, resource).GetAwaiter().GetResult();
                             MessageObserver observer = new MessageObserver();
                             observer.OnNotify += Observer_OnNotify;
                             TimeSpan leaseTime = TimeSpan.FromSeconds(20.0);
                             string leaseKey = GraphManager.ObserveMessagesAsync(subscriptionUriString, leaseTime, observer).GetAwaiter().GetResult();
+                            ephemeralObservers.Add(subscriptionUriString, observer);
 
                             if (!container.ContainsKey(mqttUri.Resource)) //ensure resource is not already subscribed
                             {
@@ -132,31 +135,6 @@ namespace SkunkLab.Core.Adapters
                     }
                 }
             }
-        }
-        
-        private List<string> Session_OnSubscribeWithReturn(object sender, MqttMessageEventArgs args)
-        {
-            List<string> list = new List<string>();
-            SubscribeMessage message = (SubscribeMessage)args.Message;
-            foreach (var item in message.Topics)
-            {
-                MqttUri mqttUri = new MqttUri(item.Key);
-                ResourceMetadata metadata = GraphManager.GetResourceMetadata(mqttUri.Resource);
-                if (metadata != null)
-                {
-                    //get access control grain
-                    IAccessControl accessControl = GraphManager.GetAccessControl(metadata.SubscribePolicyUriString);
-                    if (accessControl != null)
-                    {
-                        if(accessControl.IsAuthorizedAsync(Thread.CurrentPrincipal.Identity as ClaimsIdentity).GetAwaiter().GetResult())
-                        {
-                            list.Add(item.Key);
-                        }
-                    }
-                }
-            }
-
-            return list;
         }
 
         private void Session_OnDisconnect(object sender, MqttMessageEventArgs args)

@@ -13,10 +13,16 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
 
         public override async Task<MqttMessage> ProcessAsync()
         {
+            if (!Session.IsConnected)
+            {
+                Session.Disconnect(Message);
+                return null;
+            }
+
             Session.IncrementKeepAlive();
             List<QualityOfServiceLevelType> list = new List<QualityOfServiceLevelType>();
             SubscribeMessage msg = Message as SubscribeMessage;
-            List<string> validSubs = Session.GetValidSubscriptions(Message);
+            List<string> validSubs = Session.Subscribe(Message); 
             IEnumerator<KeyValuePair<string, QualityOfServiceLevelType>> en = msg.Topics.GetEnumerator();
             while(en.MoveNext())
             {
@@ -25,8 +31,7 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
                 list.Add(qos);
                 Session.AddQosLevel(uri.Resource, qos);
             }
-
-            Session.Subscribe(Message);
+            
             return await Task.FromResult<MqttMessage>(new SubscriptionAckMessage(Message.MessageId,list));
         }
     }

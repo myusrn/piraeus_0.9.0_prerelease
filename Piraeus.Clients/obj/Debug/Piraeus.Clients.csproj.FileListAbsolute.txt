@@ -91,3 +91,8 @@ C:\_git\core\Piraeus.Clients\obj\Debug\Piraeus.Clients.dll
 C:\_git\core\Piraeus.Clients\obj\Debug\Piraeus.Clients.pdb
 C:\_git\core\Piraeus.Clients\bin\Debug\Newtonsoft.Json.dll
 C:\_git\core\Piraeus.Clients\bin\Debug\Newtonsoft.Json.xml
+C:\_git\core\Piraeus.Clients\bin\Debug\SkunkLab.Security.dll
+C:\_git\core\Piraeus.Clients\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\_git\core\Piraeus.Clients\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\_git\core\Piraeus.Clients\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\_git\core\Piraeus.Clients\bin\Debug\SkunkLab.Security.pdb

@@ -16,7 +16,7 @@ namespace SkunkLab.Protocols.Mqtt
 
         public MqttSession(MqttConfig config)
         {
-            this.config = config;
+            Config = config;
             KeepAliveSeconds = config.KeepAliveSeconds;
             pubContainer = new PublishContainer(config);
 
@@ -29,17 +29,15 @@ namespace SkunkLab.Protocols.Mqtt
 
         public event ConnectionHandler OnConnect;                       //client function
         public event EventHandler<MqttMessageEventArgs> OnRetry;        //client function               
-        public event EventHandler<MqttMessageEventArgs> OnSubscribe;    //server function
+        public event SubscriptionHandler OnSubscribe;                   //server function
         public event EventHandler<MqttMessageEventArgs> OnUnsubscribe;  //server function
         public event EventHandler<MqttMessageEventArgs> OnPublish;      //server function
         public event EventHandler<MqttMessageEventArgs> OnDisconnect;   //client & server function
         public event EventHandler<MqttMessageEventArgs> OnKeepAlive;    //client function
         public event EventHandler<MqttMessageEventArgs> OnKeepAliveExpiry; //server function
-        public event SubscriptionHandler OnSubscribeWithReturn; //server function
 
         private MqttQuarantineTimer quarantine;     //quarantines ids for reuse and supplies valid ids
         private PublishContainer pubContainer;      //manages QoS 2 message features
-        private MqttConfig config;                  //configuration
         private Timer keepaliveTimer;               //timer for tracking keepalives
         private double _keepaliveSeconds;              //keepalive time increment
         private DateTime keepaliveExpiry;           //expiry of the keepalive
@@ -47,10 +45,16 @@ namespace SkunkLab.Protocols.Mqtt
         private ConnectAckCode _code;
         private bool disposed;
 
+        public MqttConfig Config { get; set; }
+
+        public string Identity { get; set; }
+
+        public List<KeyValuePair<string,string>> Indexes { get; set; }
+
         public bool Authenticate(string tokenType, string token)
         {
             SecurityTokenType tt = (SecurityTokenType)Enum.Parse(typeof(SecurityTokenType), tokenType, true);
-            IsAuthenticated = config.Authenticator.Authenticate(tt, token);
+            IsAuthenticated = Config.Authenticator.Authenticate(tt, token);
             return IsAuthenticated;
         }
 
@@ -67,7 +71,6 @@ namespace SkunkLab.Protocols.Mqtt
             get { return _code; }
             internal set
             {
-                OnConnect?.Invoke(this, new MqttConnectionArgs(value));
                 _code = value;
             }
         }
@@ -80,6 +83,8 @@ namespace SkunkLab.Protocols.Mqtt
         {
             return quarantine.NewId();
         }
+
+        
 
         /// <summary>
         /// Processes a receive MQTT message and a response or null (no response).
@@ -120,15 +125,11 @@ namespace SkunkLab.Protocols.Mqtt
         {
             OnPublish?.Invoke(this, new MqttMessageEventArgs(message));
         }
+               
 
-        internal List<string> GetValidSubscriptions(MqttMessage message)
+        internal List<string> Subscribe(MqttMessage message)
         {
-            return OnSubscribeWithReturn?.Invoke(this, new MqttMessageEventArgs(message));
-        }
-
-        internal void Subscribe(MqttMessage message)
-        {
-            OnSubscribe?.Invoke(this, new MqttMessageEventArgs(message));
+            return OnSubscribe?.Invoke(this, new MqttMessageEventArgs(message));
         }
 
         internal void Unsubscribe(MqttMessage message)
@@ -138,6 +139,7 @@ namespace SkunkLab.Protocols.Mqtt
 
         internal void Connect(ConnectAckCode code)
         {
+            ConnectResult = code;
             OnConnect?.Invoke(this, new MqttConnectionArgs(code));
         }
 

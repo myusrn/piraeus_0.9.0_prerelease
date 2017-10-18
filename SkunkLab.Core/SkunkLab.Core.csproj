@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\CoapProtocolAdapter.cs" />
+    <Compile Include="Adapters\CoapRequestDispatcher.cs" />
     <Compile Include="Adapters\MqttProtocolAdapter.cs" />
     <Compile Include="Messaging\EventMessage.cs" />
     <Compile Include="Messaging\HttpChannelConstants.cs" />

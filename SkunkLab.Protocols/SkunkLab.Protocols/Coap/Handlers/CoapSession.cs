@@ -34,6 +34,10 @@ namespace SkunkLab.Protocols.Coap.Handlers
         public event EventHandler<CoapMessageEventArgs> OnRetry;
         public event EventHandler<CoapMessageEventArgs> OnKeepAlive;
 
+        public string Identity { get; set; }
+
+        public List<KeyValuePair<string,string>> Indexes { get; set; }
+
         public bool IsAuthenticated { get; set; }
         public Transmitter CoapSender { get; internal set; }
 

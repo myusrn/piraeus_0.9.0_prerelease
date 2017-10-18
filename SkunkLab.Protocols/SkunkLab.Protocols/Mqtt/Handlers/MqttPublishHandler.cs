@@ -15,6 +15,12 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
 
         public override async Task<MqttMessage> ProcessAsync()
         {
+            if (!Session.IsConnected)
+            {
+                Session.Disconnect(Message);
+                return null;
+            }
+
             PublishMessage msg = Message as PublishMessage;
             Session.IncrementKeepAlive();
 

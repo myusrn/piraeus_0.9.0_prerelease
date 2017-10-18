@@ -1,6 +1,8 @@
-﻿namespace SkunkLab.Protocols.Coap
+﻿using System;
+
+namespace SkunkLab.Protocols.Coap
 {
-    public interface ICoapRequestDispatch
+    public interface ICoapRequestDispatch : IDisposable
     {
         CoapMessage Post(CoapMessage message);
 
@@ -10,6 +12,6 @@
 
         CoapMessage Delete(CoapMessage message);
 
-        CoapMessage Observe(CoapMessage message);
+        CoapMessage Observe(CoapMessage message);        
     }
 }

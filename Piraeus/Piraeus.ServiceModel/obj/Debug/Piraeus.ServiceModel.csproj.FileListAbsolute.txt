@@ -105,3 +105,8 @@ C:\_git\core\Piraeus\Piraeus.ServiceModel\obj\Debug\Piraeus.ServiceModel.csprojR
 C:\_git\core\Piraeus\Piraeus.ServiceModel\obj\Debug\Piraeus.ServiceModel.csproj.CoreCompileInputs.cache
 C:\_git\core\Piraeus\Piraeus.ServiceModel\obj\Debug\Piraeus.ServiceModel.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\obj\Debug\Piraeus.ServiceModel.pdb
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Web.Http.dll
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Net.Http.Formatting.dll
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Piraeus.Core.dll.config
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Web.Http.xml
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Net.Http.Formatting.xml

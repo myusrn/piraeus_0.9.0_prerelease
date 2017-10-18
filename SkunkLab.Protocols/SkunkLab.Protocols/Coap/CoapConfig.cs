@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SkunkLab.Security.Authentication;
 
 namespace SkunkLab.Protocols.Coap
@@ -24,6 +25,10 @@ namespace SkunkLab.Protocols.Coap
             ProbingRate = probingRate;
             MaxLatency = TimeSpan.FromSeconds(maxLatency);
         }
+
+        public string IdentityClaimType { get; set; }
+
+        public List<KeyValuePair<string, string>> Indexes { get; set; }
 
         public IAuthenticator Authenticator { get; set; }
         public int? KeepAlive { get; internal set; }

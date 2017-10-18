@@ -220,5 +220,24 @@ namespace Piraeus.ServiceModel
         }
 
         #endregion
+
+        #region Subscribers
+        public static ISubscriber GetSubscriber(string identity)
+        {
+            return GrainClient.GrainFactory.GetGrain<ISubscriber>(identity);
+        }
+
+        public static async Task<IEnumerable<string>> GetSubscriberSubscriptionsAsync(string identity)
+        {
+            ISubscriber subscriber = GetSubscriber(identity);
+            return await subscriber.GetSubscriptionsAsync();
+        }
+
+        public static async Task RemoveSubscriberSubscriptionAsync(string identity, string subscriptionUriString)
+        {
+            ISubscriber subscriber = GetSubscriber(identity);
+            await subscriber.RemoveSubscriptionAsync(subscriptionUriString);
+        }
+        #endregion
     }
 }

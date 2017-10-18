@@ -17,8 +17,7 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
         public override async  Task<MqttMessage> ProcessAsync()
         {
             //the connection has been accepted
-            ConnectAckMessage msg = Message as ConnectAckMessage;
-            Session.ConnectResult = msg.ReturnCode;
+            ConnectAckMessage msg = Message as ConnectAckMessage;            
             Session.IsConnected = msg.ReturnCode == ConnectAckCode.ConnectionAccepted;
             Session.Connect(msg.ReturnCode);
             Session.IncrementKeepAlive();

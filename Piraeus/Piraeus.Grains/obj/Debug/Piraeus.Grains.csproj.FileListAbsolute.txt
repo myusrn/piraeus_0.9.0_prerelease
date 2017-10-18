@@ -102,3 +102,8 @@ C:\_git\core\Piraeus\Piraeus.Grains\obj\Debug\Piraeus.Grains.csprojResolveAssemb
 C:\_git\core\Piraeus\Piraeus.Grains\obj\Debug\Piraeus.Grains.csproj.CoreCompileInputs.cache
 C:\_git\core\Piraeus\Piraeus.Grains\obj\Debug\Piraeus.Grains.dll
 C:\_git\core\Piraeus\Piraeus.Grains\obj\Debug\Piraeus.Grains.pdb
+C:\_git\core\Piraeus\Piraeus.Grains\bin\Debug\System.Web.Http.dll
+C:\_git\core\Piraeus\Piraeus.Grains\bin\Debug\System.Net.Http.Formatting.dll
+C:\_git\core\Piraeus\Piraeus.Grains\bin\Debug\Piraeus.Core.dll.config
+C:\_git\core\Piraeus\Piraeus.Grains\bin\Debug\System.Web.Http.xml
+C:\_git\core\Piraeus\Piraeus.Grains\bin\Debug\System.Net.Http.Formatting.xml
