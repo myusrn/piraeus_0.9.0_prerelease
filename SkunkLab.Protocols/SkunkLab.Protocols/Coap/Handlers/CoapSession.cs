@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using SkunkLab.Security.Tokens;
 
@@ -10,7 +7,7 @@ namespace SkunkLab.Protocols.Coap.Handlers
 {
     public delegate void EventHandler<CoapMessageEventArgs>(object sender, CoapMessageEventArgs args);
     public delegate CoapMessage RespondingEventHandler(object sender, CoapMessageEventArgs args);
-    public class CoapSession
+    public class CoapSession : IDisposable
     {
         public CoapSession(CoapConfig config)
         {
@@ -28,17 +25,22 @@ namespace SkunkLab.Protocols.Coap.Handlers
                 keepaliveTimer.Start();
             }
         }
-
         
 
         public event EventHandler<CoapMessageEventArgs> OnRetry;
         public event EventHandler<CoapMessageEventArgs> OnKeepAlive;
+        private bool disposedValue;
+        private DateTime keepaliveTimestamp;
+        private Timer keepaliveTimer;
+
 
         public string Identity { get; set; }
 
         public List<KeyValuePair<string,string>> Indexes { get; set; }
 
         public bool IsAuthenticated { get; set; }
+       
+
         public Transmitter CoapSender { get; internal set; }
 
         public Receiver CoapReceiver { get; internal set; }
@@ -47,9 +49,7 @@ namespace SkunkLab.Protocols.Coap.Handlers
 
         public CoapConfig Config { get; internal set; }
 
-        private DateTime keepaliveTimestamp;
-        private Timer keepaliveTimer;
-
+        
         public bool Authenticate(string tokenType, string token)
         {
             SecurityTokenType tt = (SecurityTokenType)Enum.Parse(typeof(SecurityTokenType), tokenType, true);
@@ -103,7 +103,32 @@ namespace SkunkLab.Protocols.Coap.Handlers
             OnRetry?.Invoke(this, e);
         }
 
-       
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    if(keepaliveTimer != null)
+                    {
+                        keepaliveTimer.Stop();
+                        keepaliveTimer.Dispose();
+                    }
 
+                    CoapSender.Dispose();
+                    CoapReceiver.Dispose();
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            GC.SuppressFinalize(this);
+        }
     }
 }

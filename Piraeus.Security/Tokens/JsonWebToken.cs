@@ -5,23 +5,26 @@ namespace Piraeus.Security.Tokens
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Diagnostics;
-    using System.IdentityModel.Protocols.WSTrust;
-    using System.IdentityModel.Tokens;
     using System.IdentityModel.Tokens.Jwt;
-    using System.Net;
     using System.Security.Claims;
     using System.Threading;
     using Microsoft.IdentityModel.Tokens;
 
     public class JsonWebToken : System.IdentityModel.Tokens.SecurityToken
-    {        
-
-        
-        public JsonWebToken(Uri address, string securityKey, string issuer, IEnumerable<Claim> claims)
+    {   
+        public JsonWebToken(string securityKey, IEnumerable<Claim> claims, string issuer = null, string audience = null, TimeSpan? lifetime = null)
         {
             id = Guid.NewGuid().ToString();
             created = DateTime.UtcNow;
-            expires = created.AddMinutes(20);
+            if (lifetime.HasValue)
+            {
+                expires = created.Add(lifetime.Value);
+            }
+            else
+            {
+                //default 20 minutes
+                expires = created.AddMinutes(20.0);
+            }
 
             JwtSecurityTokenHandler jwt = new JwtSecurityTokenHandler();
             Microsoft.IdentityModel.Tokens.SecurityTokenDescriptor msstd = new Microsoft.IdentityModel.Tokens.SecurityTokenDescriptor()
@@ -31,7 +34,7 @@ namespace Piraeus.Security.Tokens
                 Expires = expires,
                 IssuedAt = created,
                 NotBefore = created,
-                Audience = address.ToString(),
+                Audience = audience,
                 SigningCredentials = new Microsoft.IdentityModel.Tokens.SigningCredentials(new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Convert.FromBase64String(securityKey)), Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha256Signature)
             };
             
@@ -39,28 +42,28 @@ namespace Piraeus.Security.Tokens
             tokenString = jwtToken.ToString();
         }
 
-        public JsonWebToken(Uri audience, string securityKey, string issuer, IEnumerable<Claim> claims, double lifetimeMinutes)
-        {
-            id = Guid.NewGuid().ToString();
-            created = DateTime.UtcNow;
-            expires = created.AddMinutes(lifetimeMinutes);
+        //public JsonWebToken(Uri audience, string securityKey, string issuer, IEnumerable<Claim> claims, double lifetimeMinutes)
+        //{
+        //    id = Guid.NewGuid().ToString();
+        //    created = DateTime.UtcNow;
+        //    expires = created.AddMinutes(lifetimeMinutes);
             
 
-            JwtSecurityTokenHandler jwt = new JwtSecurityTokenHandler();
-            Microsoft.IdentityModel.Tokens.SecurityTokenDescriptor msstd = new Microsoft.IdentityModel.Tokens.SecurityTokenDescriptor()
-            {
-                Issuer = issuer,
-                Subject = new ClaimsIdentity(claims),
-                Expires = expires,
-                IssuedAt = created,
-                NotBefore = created,
-                Audience = audience.ToString(),
-                SigningCredentials = new Microsoft.IdentityModel.Tokens.SigningCredentials(new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Convert.FromBase64String(securityKey)), Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha256Signature)
-            };
+        //    JwtSecurityTokenHandler jwt = new JwtSecurityTokenHandler();
+        //    Microsoft.IdentityModel.Tokens.SecurityTokenDescriptor msstd = new Microsoft.IdentityModel.Tokens.SecurityTokenDescriptor()
+        //    {
+        //        Issuer = issuer,
+        //        Subject = new ClaimsIdentity(claims),
+        //        Expires = expires,
+        //        IssuedAt = created,
+        //        NotBefore = created,
+        //        Audience = audience.ToString(),
+        //        SigningCredentials = new Microsoft.IdentityModel.Tokens.SigningCredentials(new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Convert.FromBase64String(securityKey)), Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha256Signature)
+        //    };
 
-            JwtSecurityToken jwtToken = jwt.CreateJwtSecurityToken(msstd);
-            tokenString = jwtToken.ToString();
-        }
+        //    JwtSecurityToken jwtToken = jwt.CreateJwtSecurityToken(msstd);
+        //    tokenString = jwtToken.ToString();
+        //}
 
         //private JwtSecurityTokenHandler handler;
         private DateTime created;
@@ -72,10 +75,10 @@ namespace Piraeus.Security.Tokens
             return tokenString;
         }
 
-        public void SetSecurityToken(HttpWebRequest request)
-        {
-            request.Headers.Add("Authorization", String.Format("Bearer {0}", tokenString));
-        }
+        //public void SetSecurityToken(HttpWebRequest request)
+        //{
+        //    request.Headers.Add("Authorization", String.Format("Bearer {0}", tokenString));
+        //}
 
 
         public override string Id

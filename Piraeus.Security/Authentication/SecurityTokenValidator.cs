@@ -3,18 +3,16 @@ namespace Piraeus.Security
 {
     //using Piraeus.Configuration;
     using System;
-    using System.Diagnostics;
-    using System.IdentityModel.Tokens;
-    using System.Security.Claims;
-    using System.ServiceModel.Security.Tokens;
-    using System.Threading;
-    using System.Security.Cryptography.X509Certificates;
-    using System.IdentityModel.Selectors;
-    using System.ServiceModel.Security;
     using System.Collections.ObjectModel;
-    using Piraeus.Security.Tokens;
+    using System.Diagnostics;
+    using System.IdentityModel.Selectors;
+    using System.IdentityModel.Tokens;
     using System.IdentityModel.Tokens.Jwt;
+    using System.Security.Claims;
+    using System.Security.Cryptography.X509Certificates;
+    using System.Threading;
     using Microsoft.IdentityModel.Tokens;
+    using Piraeus.Security.Tokens;
 
     public static class SecurityTokenValidator
     {        

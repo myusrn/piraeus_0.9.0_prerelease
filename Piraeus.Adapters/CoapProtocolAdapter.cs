@@ -36,11 +36,9 @@ namespace Piraeus.Adapters
 
         public override event ProtocolAdapterErrorHandler OnError;
         public override event ProtocolAdapterCloseHandler OnClose;
-        private bool authenticated;
         private CoapSession session;
         private ICoapRequestDispatch dispatcher;
-        private bool disposed;
-        private string nameIdentity;
+        private bool disposedValue;
 
         public override void Init()
         {
@@ -48,10 +46,27 @@ namespace Piraeus.Adapters
         }
 
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    dispatcher.Dispose();
+                    session.Dispose();
+                    
+                }
+
+                disposedValue = true;
+            }
+        }
 
         public override void Dispose()
         {
-            throw new NotImplementedException();
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            GC.SuppressFinalize(this);
         }
 
         #region Channel events
@@ -63,12 +78,14 @@ namespace Piraeus.Adapters
 
         private void Channel_OnSent(object sender, ChannelSentEventArgs args)
         {
-            //throw new NotImplementedException();
+            Task task = Log.LogInfoAsync("Channel {0} send message", Channel.Id);
+            Task.WhenAll(task);
         }
 
         private void Channel_OnRetry(object sender, ChannelRetryEventArgs args)
         {
-            //throw new NotImplementedException();
+            Task task = Log.LogInfoAsync("Channel {0} retrying message", Channel.Id);
+            Task.WhenAll(task);
         }
 
         private void Channel_OnReceive(object sender, ChannelReceivedEventArgs args)
@@ -87,16 +104,21 @@ namespace Piraeus.Adapters
 
         private void Channel_OnOpen(object sender, ChannelOpenEventArgs args)
         {
+            session.IsAuthenticated = Channel.IsAuthenticated;
 
-            if(!Channel.IsAuthenticated)
+            try
             {
-                CoapMessage msg = CoapMessage.DecodeMessage(args.Message);
-                CoapUri coapUri = new CoapUri(msg.ResourceUri.ToString());
-                session.IsAuthenticated = session.Authenticate(coapUri.TokenType, coapUri.SecurityToken);
+                if (!Channel.IsAuthenticated)
+                {
+                    CoapMessage msg = CoapMessage.DecodeMessage(args.Message);
+                    CoapUri coapUri = new CoapUri(msg.ResourceUri.ToString());
+                    session.IsAuthenticated = session.Authenticate(coapUri.TokenType, coapUri.SecurityToken);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                session.IsAuthenticated = true;
+                Task task = Log.LogErrorAsync("Channel {0} not authenticated.", Channel.Id);
+                Task.WhenAll(task);
             }
 
             if(!session.IsAuthenticated)

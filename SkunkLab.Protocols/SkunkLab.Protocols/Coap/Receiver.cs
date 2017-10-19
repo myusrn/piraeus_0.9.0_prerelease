@@ -5,7 +5,7 @@ using System.Timers;
 
 namespace SkunkLab.Protocols.Coap
 {
-    public class Receiver
+    public class Receiver : IDisposable
     {
         public Receiver(double lifetimeMilliseconds)
         {
@@ -20,6 +20,7 @@ namespace SkunkLab.Protocols.Coap
         private double lifetimeMilliseconds;
         private Dictionary<ushort, DateTime> container;
         private Timer timer;
+        private bool disposedValue;
 
         public void CacheId(ushort id)
         {
@@ -68,6 +69,33 @@ namespace SkunkLab.Protocols.Coap
 
             timer.Enabled = container.Count() > 0;
 
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    if (timer != null)
+                    {
+                        timer.Stop();
+                        timer.Dispose();
+                    }
+                    
+                    container.Clear();
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            GC.SuppressFinalize(this);
         }
     }
 }

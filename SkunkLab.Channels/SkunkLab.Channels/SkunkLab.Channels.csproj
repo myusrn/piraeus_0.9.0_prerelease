@@ -71,7 +71,6 @@
     <Compile Include="ChannelStateEventArgs.cs" />
     <Compile Include="HttpParameterReader.cs" />
     <Compile Include="Http\HttpChannel.cs" />
-    <Compile Include="Http\HttpChannel2.cs" />
     <Compile Include="Http\HttpChannelConstants.cs" />
     <Compile Include="Http\HttpClientChannel.cs" />
     <Compile Include="Http\HttpObserver.cs" />

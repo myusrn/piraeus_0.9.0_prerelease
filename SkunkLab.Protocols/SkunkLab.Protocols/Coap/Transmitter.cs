@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace SkunkLab.Protocols.Coap
 {
-    public class Transmitter
+    public class Transmitter : IDisposable
     {
         public Transmitter(double lifetimeMilliseconds, double retryMilliseconds, int maxRetryAttempts)
         {
@@ -24,6 +24,7 @@ namespace SkunkLab.Protocols.Coap
         private int maxAttempts;
         private ushort currentId;
         private Timer timer;
+        private bool disposedValue;
         
         private Dictionary<string, Action<CodeType, string, byte[]>> observeContainer;
         private Dictionary<ushort, Tuple<string, DateTime, Action<CodeType, string, byte[]>>> container;
@@ -191,6 +192,33 @@ namespace SkunkLab.Protocols.Coap
             }
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    if(timer != null)
+                    {
+                        timer.Stop();
+                        timer.Dispose();
+                    }
 
+                    observeContainer.Clear();
+                    retryContainer.Clear();
+                    container.Clear();
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            GC.SuppressFinalize(this);
+        }
     }
 }
