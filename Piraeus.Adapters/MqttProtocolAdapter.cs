@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading;
 using System.Threading.Tasks;
-using Orleans;
 using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
 using Piraeus.Grains;
@@ -38,8 +34,6 @@ namespace Piraeus.Adapters
         public override IChannel Channel { get; set; }
         private MqttSession session;
         private bool disposed;
-        private string nameIdentity;
-        private List<KeyValuePair<string, string>> claimIndexes;
         private OrleansAdapter adapter;
 
         public override void Init()
@@ -53,10 +47,6 @@ namespace Piraeus.Adapters
             adapter.OnObserve += Adapter_OnObserve;
         }
 
-        
-
-
-
         #region Dispose code
         public override void Dispose()
         {
@@ -64,12 +54,17 @@ namespace Piraeus.Adapters
             GC.SuppressFinalize(this);
         }
 
-        protected void Disposing(bool dispose)
+        protected void Disposing(bool disposing)
         {
-            if (dispose & !disposed)
+            if (!disposed)
             {
+                if (disposing)
+                {
+                    adapter.Dispose();
+                    session.Dispose();
+                }
+
                 disposed = true;
-                session.Dispose(); 
             }
         }
 
@@ -88,6 +83,13 @@ namespace Piraeus.Adapters
             Task.WhenAll(task);
         }
 
+        private void Session_OnPublish(object sender, MqttMessageEventArgs args)
+        {
+            //publish to resource
+            PublishMessage message = (PublishMessage)args.Message;
+            Task task = PublishAsync(message);
+            Task.WhenAll(task);
+        }
         private List<string> Session_OnSubscribe(object sender, MqttMessageEventArgs args)
         {
             List<string> list = new List<string>();
@@ -96,22 +98,13 @@ namespace Piraeus.Adapters
             Task.WhenAll<List<string>>(task);
             return task.Result;
         }
-        
-
         private void Session_OnUnsubscribe(object sender, MqttMessageEventArgs args)
         {
             UnsubscribeMessage msg = (UnsubscribeMessage)args.Message;
             Task task = UnsubscribeAsync(msg);
             Task.WhenAll(task);
         }
-        
-        private void Session_OnPublish(object sender, MqttMessageEventArgs args)
-        {
-            //publish to resource
-            PublishMessage message = (PublishMessage)args.Message;
-            Task task = PublishAsync(message);
-            Task.WhenAll(task);            
-        }
+               
         private void Session_OnDisconnect(object sender, MqttMessageEventArgs args)
         {
             //clean up observers and remove ephemeral subscriptions
@@ -128,22 +121,16 @@ namespace Piraeus.Adapters
             IResource resource = await GraphManager.GetResourceAsync(mqttUri.Resource);
             ResourceMetadata metadata = await resource.GetMetadataAsync();            
 
-            if (await CanPublishAsync(metadata))
+            if(await adapter.CanPublishAsync(mqttUri.Resource, Channel.IsEncrypted))
             {
                 EventMessage msg = new EventMessage(mqttUri.ContentType, mqttUri.Resource, ProtocolType.MQTT, message.Encode());
-                if (mqttUri.Indexes == null)
-                {
-                    await resource.PublishAsync(msg);
-                }
-                else
-                {
-                    await resource.PublishAsync(msg, new List<KeyValuePair<string, string>>(mqttUri.Indexes));
-                }
+                await adapter.PublishAsync(msg, session.Indexes);
             }
             else
             {
-                await Log.LogWarningAsync("Publish failed.");
+                await Log.LogWarningAsync("Mqtt message cannot be published.");
             }
+            
         }
         private async Task<List<string>> SubscribeAsync(SubscribeMessage message)
         {
@@ -198,9 +185,7 @@ namespace Piraeus.Adapters
         }
 
         #endregion
-
         
-
         #region Channel Events
         private void Channel_OnOpen(object sender, ChannelOpenEventArgs args)
         {
@@ -267,10 +252,7 @@ namespace Piraeus.Adapters
                 {
                     await Log.LogErrorAsync("Mqtt send error {0}", error.Message);
                 }
-            }      
-            
-            
-            
+            }  
         }
 
         private void Channel_OnStateChange(object sender, ChannelStateEventArgs args)
@@ -300,94 +282,12 @@ namespace Piraeus.Adapters
         private void Channel_OnClose(object sender, ChannelCloseEventArgs args)
         {
             adapter.Dispose();
+            session.Dispose();
         }
 
         #endregion
-
-        #region Utilities
-
-        
-
-        public async Task<bool> CanSubscribeAsync(ResourceMetadata metadata)
-        {
-            if (metadata == null)
-            {
-                await Log.LogWarningAsync("Subscribe resource metadata is null.");
-                return false;
-            }
-
-            if (!metadata.Enabled)
-            {
-                await Log.LogWarningAsync("Subscribe resource {0} is disabled.", metadata.ResourceUriString);
-                return false;
-            }
-
-            if (metadata.Expires.HasValue && metadata.Expires.Value < DateTime.UtcNow)
-            {
-                await Log.LogWarningAsync("Subscribe resource {0} has expired.", metadata.ResourceUriString);
-                return false;
-            }
-
-            if (metadata.RequireEncryptedChannel && !Channel.IsEncrypted)
-            {
-                await Log.LogWarningAsync("Subscribe resource {0} requires an encrypted channel.  Channel {1} is not encrypted.", metadata.ResourceUriString, Channel.Id);
-                return false;
-            }
-
-            IAccessControl accessControl = await GraphManager.GetAccessControlAsync(metadata.PublishPolicyUriString);
-
-            ClaimsIdentity identity = Thread.CurrentPrincipal.Identity as ClaimsIdentity;
-            bool authz = await accessControl.IsAuthorizedAsync(identity);
-
-            if (!authz)
-            {
-                await Log.LogWarningAsync("Identity {0} is not authorized to subscribe/unsubscribe for resource {1}", nameIdentity, metadata.ResourceUriString);
-            }
-
-            return authz;
-        }
-
-        private async Task<bool> CanPublishAsync(ResourceMetadata metadata)
-        {
-            if(metadata == null)
-            {
-                await Log.LogWarningAsync("Publish resource metadata is null.");
-                return false;
-            }
-
-            if (!metadata.Enabled)
-            {
-                await Log.LogWarningAsync("Publish resource {0} is disabled.", metadata.ResourceUriString);
-                return false;
-            }
-
-            if (metadata.Expires.HasValue && metadata.Expires.Value < DateTime.UtcNow)
-            {
-                await Log.LogWarningAsync("Publish resource {0} has expired.", metadata.ResourceUriString);
-                return false;
-            }
-
-            if(metadata.RequireEncryptedChannel && !Channel.IsEncrypted)
-            {
-                await Log.LogWarningAsync("Publish resource {0} requires an encrypted channel.  Channel {1} is not encrypted.", metadata.ResourceUriString, Channel.Id);
-                return false;
-            }
-
-            IAccessControl accessControl = await GraphManager.GetAccessControlAsync(metadata.PublishPolicyUriString);
-
-            ClaimsIdentity identity = Thread.CurrentPrincipal.Identity as ClaimsIdentity;
-            bool authz = await accessControl.IsAuthorizedAsync(identity);
-
-            if(!authz)
-            {
-                await Log.LogWarningAsync("Identity {0} is not authorized to publish to resource {1}", nameIdentity, metadata.ResourceUriString);                
-            }
-
-            return authz;
-        }
 
       
-        #endregion
 
 
 

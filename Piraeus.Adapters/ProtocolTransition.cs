@@ -27,27 +27,53 @@ namespace Piraeus.Adapters
             }
         }
 
-        public static byte[] ConvertToCoap(CoapSession session, EventMessage message)
+        public static byte[] ConvertToCoap(CoapSession session, EventMessage message, byte[] observableToken = null)
         {            
             CoapToken token = CoapToken.Create();
-            ushort id = session.CoapSender.NewId(token.TokenBytes);
+
+            ushort id = observableToken == null ? session.CoapSender.NewId(token.TokenBytes) : session.CoapSender.NewId(observableToken);
+
             string uriString = CoapUri.Create(session.Config.Authority, message.ResourceUri, IsEncryptedChannel);
             CoapRequest request = null;
+            CoapResponse response = null;
 
             if (message.Protocol == ProtocolType.MQTT)
             {
-                MqttMessage msg = MqttMessage.DecodeMessage(message.Message);                
-                RequestMessageType messageType = msg.QualityOfService == QualityOfServiceLevelType.AtMostOnce ? RequestMessageType.NonConfirmable : RequestMessageType.Confirmable;
-                request = new CoapRequest(id, messageType, MethodType.POST, new Uri(uriString), MediaTypeConverter.ConvertToMediaType(message.ContentType));                
+                MqttMessage msg = MqttMessage.DecodeMessage(message.Message);
+                PublishMessage pub = msg as PublishMessage;
+                MqttUri uri = new MqttUri(pub.Topic);
+                if (observableToken == null)
+                {
+                    RequestMessageType messageType = msg.QualityOfService == QualityOfServiceLevelType.AtMostOnce ? RequestMessageType.NonConfirmable : RequestMessageType.Confirmable;
+                    request = new CoapRequest(id, messageType, MethodType.POST, new Uri(uriString), MediaTypeConverter.ConvertToMediaType(message.ContentType));
+                }
+                else
+                {
+                    response = new CoapResponse(id, ResponseMessageType.NonConfirmable, ResponseCodeType.Content, observableToken, MediaTypeConverter.ConvertToMediaType(uri.ContentType), msg.Payload);
+                }
             }
             else if(message.Protocol == ProtocolType.COAP)
             {
-                CoapMessage msg = CoapMessage.DecodeMessage(message.Message);                
-                request = new CoapRequest(id, msg.MessageType == CoapMessageType.Confirmable ? RequestMessageType.Confirmable : RequestMessageType.NonConfirmable, MethodType.POST, new Uri(uriString), MediaTypeConverter.ConvertToMediaType(message.ContentType));
+                CoapMessage msg = CoapMessage.DecodeMessage(message.Message);
+                if (observableToken == null)
+                {
+                    request = new CoapRequest(id, msg.MessageType == CoapMessageType.Confirmable ? RequestMessageType.Confirmable : RequestMessageType.NonConfirmable, MethodType.POST, new Uri(uriString), MediaTypeConverter.ConvertToMediaType(message.ContentType));
+                }
+                else
+                {
+                    response = new CoapResponse(id, ResponseMessageType.NonConfirmable, ResponseCodeType.Content, observableToken, MediaTypeConverter.ConvertToMediaType(message.ContentType), msg.Payload);
+                }
             }
             else
-            {   
-                request = new CoapRequest(id, RequestMessageType.NonConfirmable, MethodType.POST, new Uri(""), MediaTypeConverter.ConvertToMediaType(message.ContentType), message.Message);
+            {
+                if (observableToken == null)
+                {
+                    request = new CoapRequest(id, RequestMessageType.NonConfirmable, MethodType.POST, new Uri(uriString), MediaTypeConverter.ConvertToMediaType(message.ContentType), message.Message);
+                }
+                else
+                {
+                    response = new CoapResponse(id, ResponseMessageType.NonConfirmable, ResponseCodeType.Content, observableToken, MediaTypeConverter.ConvertToMediaType(message.ContentType), message.Message);
+                }
             }
 
             return request.Encode();

@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
-using Orleans;
 using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
-using Piraeus.Grains;
-using Piraeus.ServiceModel;
 using SkunkLab.Channels;
-using SkunkLab.Diagnostics.Logging;
 using SkunkLab.Protocols.Coap;
 using SkunkLab.Protocols.Coap.Handlers;
 
@@ -21,21 +12,23 @@ namespace Piraeus.Adapters
     public class CoapRequestDispatcher : ICoapRequestDispatch
     {
         public CoapRequestDispatcher(CoapSession session, IChannel channel)
-        {
-            container = new Dictionary<string, Tuple<string, string>>();
-            ephemeralObservers = new Dictionary<string, IMessageObserver>();
-            durableObservers = new Dictionary<string, IMessageObserver>();
+        {            
             this.channel = channel;
             this.session = session;
+            coapObserved = new Dictionary<string, byte[]>();
+            adapter = new OrleansAdapter();
+            adapter.OnObserve += Adapter_OnObserve;
+            Task task = LoadDurables();
+            Task.WhenAll(task);
         }
 
+        private OrleansAdapter adapter;
         private IChannel channel;
         private CoapSession session;
-        private Dictionary<string, Tuple<string, string>> container;  //resource, subscription + leaseKey
-        private Dictionary<string, IMessageObserver> ephemeralObservers; //subscription, observer
-        private Dictionary<string, IMessageObserver> durableObservers;   //subscription, observer
-        private System.Timers.Timer leaseTimer;
-
+        private HashSet<string> coapUnobserved;
+        private Dictionary<string, byte[]> coapObserved;
+        private bool disposedValue = false; // To detect redundant calls
+        
         /// <summary>
         /// Unsubscribes an ephemeral subscription from a resource.
         /// </summary>
@@ -43,44 +36,50 @@ namespace Piraeus.Adapters
         /// <returns></returns>
         public CoapMessage Delete(CoapMessage message)
         {
+            Exception error = null;
+
             CoapUri uri = new CoapUri(message.ResourceUri.ToString());
-
-            if(container.ContainsKey(uri.Resource))
+            try
             {
-                Tuple<string, string> tuple = container[uri.Resource];
-                Task task = GraphManager.RemoveSubscriptionObserverAsync(tuple.Item1, tuple.Item2);
-                Task.WhenAll(task);   
-                
-                if(ephemeralObservers.ContainsKey(tuple.Item1))
-                {
-                    ephemeralObservers.Remove(tuple.Item1);
-                }
+                Task task = UnsubscribeAsync(uri.Resource);
+                Task.WhenAll(task);
+            }
+            catch(AggregateException ae)
+            {
+                error = ae.Flatten().InnerException;
+            }
+            catch(Exception ex)
+            {
+                error = ex;
+            }
 
-                if (message.MessageType == CoapMessageType.NonConfirmable)
-                {
-                    return new CoapResponse(message.MessageId, ResponseMessageType.NonConfirmable, ResponseCodeType.Deleted, message.Token);
-                }
-                else
-                {
-                    return new CoapResponse(message.MessageId, ResponseMessageType.Acknowledgement, ResponseCodeType.Deleted, message.Token);
-                }
+            if (error == null)
+            {
+                ResponseMessageType rmt = message.MessageType == CoapMessageType.Confirmable ? ResponseMessageType.Acknowledgement : ResponseMessageType.NonConfirmable;
+                return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Deleted, message.Token);
             }
             else
             {
-                return new CoapResponse(message.MessageId, ResponseMessageType.Reset, ResponseCodeType.NotFound);
+                return new CoapResponse(message.MessageId, ResponseMessageType.Reset, ResponseCodeType.EmptyMessage);
             }
-            
+        }
 
+        private async Task UnsubscribeAsync(string resourceUriString)
+        {
+            await adapter.UnsubscribeAsync(resourceUriString);
+            coapObserved.Remove(resourceUriString);
         }
 
         /// <summary>
-        /// Subscribes to a resource, but is not Coap Observe
+        /// Not implemented in Piraeus
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
+        /// <remarks>GET is associated with CoAP observe.  If the client does not support this, then
+        /// should use PUT to create a subscription.  Therefore, a GET which is not CoAP observe returns RST.</remarks>
         public CoapMessage Get(CoapMessage message)
         {
-            throw new NotImplementedException();
+            return new CoapResponse(message.MessageId, ResponseMessageType.Reset, ResponseCodeType.EmptyMessage, message.Token);
         }
 
         /// <summary>
@@ -90,35 +89,60 @@ namespace Piraeus.Adapters
         /// <returns></returns>
         public CoapMessage Observe(CoapMessage message)
         {
-            CoapUri uri = new CoapUri(message.ResourceUri.ToString());
-
-            if(!container.ContainsKey(uri.Resource))
-            {
-                IResource resource = GraphManager.GetResource(uri.Resource);
-                SubscriptionMetadata submetadata = new SubscriptionMetadata();
-                submetadata.IsEphemeral = true;
-                string subscriptionUriString = GraphManager.SubscribeAsync(submetadata, resource).GetAwaiter().GetResult();
-                MessageObserver observer = new MessageObserver();
-                observer.OnNotify += Observer_OnNotify;
-                TimeSpan leaseTime = TimeSpan.FromSeconds(20.0);
-                string leaseKey = GraphManager.ObserveMessagesAsync(subscriptionUriString, leaseTime, observer).GetAwaiter().GetResult();
-                ephemeralObservers.Add(subscriptionUriString, observer);
-
-                if (!container.ContainsKey(uri.Resource)) //ensure resource is not already subscribed
-                {
-                    container.Add(uri.Resource, new Tuple<string, string>(subscriptionUriString, leaseKey));
-                }
-
-                
-            }
-
-            return null;
-
+            Task<CoapMessage> task = ObserveAsync(message);
+            Task.WhenAll<CoapMessage>(task);
+            return task.Result;
         }
 
-        private void Observer_OnNotify(object sender, MessageNotificationArgs e)
+
+        public async Task<CoapMessage> ObserveAsync(CoapMessage message)
         {
-            byte[] message = ProtocolTransition.ConvertToCoap(session, e.Message);
+            if (!message.Observe.HasValue)
+            {
+                //RST because GET needs to be observe/unobserve
+                return new CoapResponse(message.MessageId, ResponseMessageType.Reset, ResponseCodeType.EmptyMessage);
+            }
+
+            CoapUri uri = new CoapUri(message.ResourceUri.ToString());
+            ResponseMessageType rmt = message.MessageType == CoapMessageType.Confirmable ? ResponseMessageType.Acknowledgement : ResponseMessageType.NonConfirmable;
+
+            if(!await adapter.CanSubscribeAsync(uri.Resource, channel.IsEncrypted))
+            {
+                //not authorized
+                return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Unauthorized, message.Token);
+            }
+
+            if(!message.Observe.Value)
+            {
+                //unsubscribe
+                await adapter.UnsubscribeAsync(uri.Resource);
+                coapObserved.Remove(uri.Resource);
+            }
+            else
+            {
+                //subscribe
+                SubscriptionMetadata metadata = new SubscriptionMetadata()
+                {
+                    IsEphemeral = true,
+                    Identity = session.Identity,
+                    Indexes = session.Indexes
+                };
+               
+                string subscriptionUriString = await adapter.SubscribeAsync(uri.Resource, metadata);
+
+                if(!coapObserved.ContainsKey(uri.Resource)) //add resource to observed list
+                {
+                    coapObserved.Add(uri.Resource, message.Token);
+                }
+            }
+
+            return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Valid, message.Token);
+        }
+        
+        private void Adapter_OnObserve(object sender, ObserveMessageEventArgs e)
+        {
+            byte[] message = coapObserved.ContainsKey(e.Message.ResourceUri) ? ProtocolTransition.ConvertToCoap(session, e.Message, coapObserved[e.Message.ResourceUri]) : ProtocolTransition.ConvertToCoap(session, e.Message);
+
             Task task = channel.SendAsync(message);
             Task.WhenAll(task);
         }
@@ -138,29 +162,18 @@ namespace Piraeus.Adapters
         private async Task<CoapMessage> PostAsync(CoapMessage message)
         {
             CoapUri uri = new CoapUri(message.ResourceUri.ToString());
-            IResource resource = await GraphManager.GetResourceAsync(uri.Resource);
-            ResourceMetadata metadata = await resource.GetMetadataAsync();
             ResponseMessageType rmt = message.MessageType == CoapMessageType.Confirmable ? ResponseMessageType.Acknowledgement : ResponseMessageType.NonConfirmable;
 
-            if (await CanPublishAsync(metadata))
-            {
-                EventMessage msg = new EventMessage(message.ContentType.Value.ConvertToContentType(), uri.Resource, ProtocolType.COAP, message.Encode());
-
-                if (uri.Indexes == null)
-                {
-                    await resource.PublishAsync(msg);
-                }
-                else
-                {
-                    await resource.PublishAsync(msg, new List<KeyValuePair<string, string>>(uri.Indexes));
-                }
-
-                return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Created, message.Token);
-            }
-            else
+            if (!await adapter.CanPublishAsync(uri.Resource, channel.IsEncrypted))
             {
                 return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Unauthorized, message.Token);
             }
+
+            string contentType = message.ContentType.HasValue ? message.ContentType.Value.ConvertToContentType() : "application/octet-stream";
+            EventMessage msg = new EventMessage(contentType, uri.Resource, ProtocolType.COAP, message.Encode());
+            await adapter.PublishAsync(msg, new List<KeyValuePair<string, string>>(uri.Indexes));
+                        
+            return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Created, message.Token);
         }
 
         /// <summary>
@@ -178,48 +191,50 @@ namespace Piraeus.Adapters
         private async Task<CoapMessage> PutAsync(CoapMessage message)
         {
             CoapUri uri = new CoapUri(message.ResourceUri.ToString());
-            IResource resource = await GraphManager.GetResourceAsync(uri.Resource);
-            ResourceMetadata metadata = await resource.GetMetadataAsync();
             ResponseMessageType rmt = message.MessageType == CoapMessageType.Confirmable ? ResponseMessageType.Acknowledgement : ResponseMessageType.NonConfirmable;
             
-            if (await CanSubscribeAsync(metadata))
-            {
-                SubscriptionMetadata submetadata = new SubscriptionMetadata();
-                submetadata.IsEphemeral = true;
-
-                //subscribe to the resource
-                string subscriptionUriString = await GraphManager.SubscribeAsync(submetadata, resource);
-
-                //create and observer and wire up event to receive notifications
-                MessageObserver observer = new MessageObserver();
-                observer.OnNotify += Observer_OnNotify;
-
-                //set the observer in the subscription with the lease lifetime
-                TimeSpan leaseTime = TimeSpan.FromSeconds(20.0);
-                string leaseKey = await GraphManager.ObserveMessagesAsync(subscriptionUriString, leaseTime, observer);
-
-                //add the lease key to the list of ephemeral observers
-                ephemeralObservers.Add(subscriptionUriString, observer);
-
-                //add the resource, subscription, and lease key the container
-                if (!container.ContainsKey(uri.Resource))
-                {
-                    container.Add(uri.Resource, new Tuple<string, string>(subscriptionUriString, leaseKey));
-                }
-
-                //ensure the lease timer is running 50% faster than the lease.
-                EnsureLeaseTimer();
-
-                return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Created, message.Token);
-            }
-            else
+            if (!await adapter.CanSubscribeAsync(uri.Resource, channel.IsEncrypted))
             {
                 return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Unauthorized, message.Token);
+            }
+
+            if (coapObserved.ContainsKey(uri.Resource) || coapUnobserved.Contains(uri.Resource))
+            {
+                //resource previously subscribed 
+                return new CoapResponse(message.MessageId, rmt, ResponseCodeType.NotAcceptable, message.Token);
+            }
+
+            //this point the resource is not being observed, so we can
+            // #1 subscribe to it
+            // #2 add to unobserved resources (means not coap observed)
+
+            SubscriptionMetadata metadata = new SubscriptionMetadata()
+            {
+                IsEphemeral = true,
+                Identity = session.Identity,
+                Indexes = session.Indexes
+            };
+
+            string subscriptionUriString = await adapter.SubscribeAsync(uri.Resource, metadata);
+
+            coapUnobserved.Add(uri.Resource);
+
+            return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Created, message.Token);            
+        }
+
+
+        private async Task LoadDurables()
+        {
+            List<string> list = await adapter.LoadDurableSubscriptionsAsync(session.Identity);
+
+            if (list != null)
+            {
+                coapUnobserved = new HashSet<string>(list);
             }
         }
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
+       
 
         protected virtual void Dispose(bool disposing)
         {
@@ -227,11 +242,12 @@ namespace Piraeus.Adapters
             {
                 if (disposing)
                 {
-                    // TODO: dispose managed state (managed objects).
+                    adapter.Dispose();
+                    coapObserved.Clear();
+                    coapUnobserved.Clear();
+                    coapObserved = null;
+                    coapUnobserved = null;
                 }
-
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
 
                 disposedValue = true;
             }
@@ -253,177 +269,10 @@ namespace Piraeus.Adapters
         }
         #endregion
 
-        #region Subscribe Private Method
+       
 
-        public async Task<bool> CanSubscribeAsync(ResourceMetadata metadata)
-        {
-            if (metadata == null)
-            {
-                await Log.LogWarningAsync("Subscribe resource metadata is null.");
-                return false;
-            }
+       
 
-            if (!metadata.Enabled)
-            {
-                await Log.LogWarningAsync("Subscribe resource {0} is disabled.", metadata.ResourceUriString);
-                return false;
-            }
-
-            if (metadata.Expires.HasValue && metadata.Expires.Value < DateTime.UtcNow)
-            {
-                await Log.LogWarningAsync("Subscribe resource {0} has expired.", metadata.ResourceUriString);
-                return false;
-            }
-
-            if (metadata.RequireEncryptedChannel && !channel.IsEncrypted)
-            {
-                await Log.LogWarningAsync("Subscribe resource {0} requires an encrypted channel.  Channel {1} is not encrypted.", metadata.ResourceUriString, channel.Id);
-                return false;
-            }
-
-            IAccessControl accessControl = await GraphManager.GetAccessControlAsync(metadata.PublishPolicyUriString);
-
-            ClaimsIdentity identity = Thread.CurrentPrincipal.Identity as ClaimsIdentity;
-            bool authz = await accessControl.IsAuthorizedAsync(identity);
-
-            if (!authz)
-            {
-                await Log.LogWarningAsync("Identity {0} is not authorized to subscribe/unsubscribe for resource {1}", session.Identity, metadata.ResourceUriString);
-            }
-
-            return authz;
-        }
-
-        private ResponseCodeType Subscribe(string uriString)
-        {
-            CoapUri uri = new CoapUri(uriString);
-            ResourceMetadata metadata = GraphManager.GetResourceMetadata(uri.Resource);
-
-            if (container.ContainsKey(uri.Resource))
-            {
-                return ResponseCodeType.Created;
-            }
-
-            if (metadata != null)
-            {
-                //get access control grain
-                IAccessControl accessControl = GraphManager.GetAccessControl(metadata.SubscribePolicyUriString);
-                if (accessControl != null)
-                {
-                    //make access control check
-                    Task<bool> task = accessControl.IsAuthorizedAsync(Thread.CurrentPrincipal.Identity as ClaimsIdentity);
-
-                    if (task.GetAwaiter().GetResult())
-                    {
-                        //subscribe to resource
-                        IResource resource = GraphManager.GetResource(uri.Resource);
-                        SubscriptionMetadata submetadata = new SubscriptionMetadata();
-                        submetadata.IsEphemeral = true;
-                        string subscriptionUriString = GraphManager.SubscribeAsync(submetadata, resource).GetAwaiter().GetResult();
-                        MessageObserver observer = new MessageObserver();
-                        observer.OnNotify += Observer_OnNotify;
-                        TimeSpan leaseTime = TimeSpan.FromSeconds(20.0);
-                        string leaseKey = GraphManager.ObserveMessagesAsync(subscriptionUriString, leaseTime, observer).GetAwaiter().GetResult();
-                        ephemeralObservers.Add(subscriptionUriString, observer);
-
-                        container.Add(uri.Resource, new Tuple<string, string>(subscriptionUriString, leaseKey));
-
-                        if (leaseTimer == null)  //make sure lease timer is running
-                        {
-                            leaseTimer = new System.Timers.Timer(10.0);
-                            leaseTimer.Elapsed += LeaseTimer_Elapsed;
-                            leaseTimer.Start();
-                        }
-
-                        return ResponseCodeType.Created;
-                    }
-                    else //not authorized
-                    {
-                        return ResponseCodeType.Unauthorized;
-                    }
-                }
-                else
-                {
-                    //no access control policy cannot subscribe
-                    return ResponseCodeType.Unauthorized;
-                }
-            }
-            else
-            {
-                return ResponseCodeType.NotFound;
-            }
-
-        }
-        #endregion
-
-        #region Publish Utilities
-        private async Task<bool> CanPublishAsync(ResourceMetadata metadata)
-        {
-            if (metadata == null)
-            {
-                await Log.LogWarningAsync("Publish resource metadata is null.");
-                return false;
-            }
-
-            if (!metadata.Enabled)
-            {
-                await Log.LogWarningAsync("Publish resource {0} is disabled.", metadata.ResourceUriString);
-                return false;
-            }
-
-            if (metadata.Expires.HasValue && metadata.Expires.Value < DateTime.UtcNow)
-            {
-                await Log.LogWarningAsync("Publish resource {0} has expired.", metadata.ResourceUriString);
-                return false;
-            }
-
-            if (metadata.RequireEncryptedChannel && !channel.IsEncrypted)
-            {
-                await Log.LogWarningAsync("Publish resource {0} requires an encrypted channel.  Channel {1} is not encrypted.", metadata.ResourceUriString, channel.Id);
-                return false;
-            }
-
-            IAccessControl accessControl = await GraphManager.GetAccessControlAsync(metadata.PublishPolicyUriString);
-
-            ClaimsIdentity identity = Thread.CurrentPrincipal.Identity as ClaimsIdentity;
-            bool authz = await accessControl.IsAuthorizedAsync(identity);
-
-            if (!authz)
-            {
-                await Log.LogWarningAsync("Identity {0} is not authorized to publish to resource {1}", session.Identity, metadata.ResourceUriString);
-            }
-
-            return authz;
-        }
-        #endregion
-
-        private void LeaseTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            List<Task> taskList = new List<Task>();
-            Dictionary<string, Tuple<string, string>>.Enumerator en = container.GetEnumerator();
-            while (en.MoveNext())
-            {
-                ISubscription subscription = GrainClient.GrainFactory.GetGrain<ISubscription>(en.Current.Value.Item1);
-                if (subscription.GetMetadataAsync().GetAwaiter().GetResult() != null)
-                {
-                    taskList.Add(subscription.RenewObserverLeaseAsync(en.Current.Value.Item2, TimeSpan.FromSeconds(20.0)));
-                }
-            }
-
-            if (taskList.Count > 0)
-            {
-                Task.WhenAll(taskList);
-            }
-        }
-
-        private void EnsureLeaseTimer()
-        {
-            if (leaseTimer == null)  //make sure lease timer is running
-            {
-                leaseTimer = new System.Timers.Timer(10.0);
-                leaseTimer.Elapsed += LeaseTimer_Elapsed;
-                leaseTimer.Start();
-            }
-        }
+       
     }
 }

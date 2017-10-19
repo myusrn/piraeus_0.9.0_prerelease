@@ -73,6 +73,7 @@ namespace SkunkLab.Channels.Tcp
 
         public TcpClientChannel(IPEndPoint remoteEndpoint, IPEndPoint localEP, X509Certificate2 certificate, CancellationToken token)
         {
+            
             if(remoteEndpoint == null)
             {
                 throw new ArgumentNullException("remoteEndpoint");

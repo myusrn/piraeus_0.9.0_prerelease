@@ -8,7 +8,7 @@ namespace Piraeus.Adapters
 {
     public interface IOrleansAdapter : IDisposable
     {
-        Task LoadDurableSubscriptionsAsync(string identity);
+        Task<List<string>> LoadDurableSubscriptionsAsync(string identity);
 
         Task PublishAsync(EventMessage message, List<KeyValuePair<string,string>> indexes = null);
 

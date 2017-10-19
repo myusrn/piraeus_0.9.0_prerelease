@@ -38,8 +38,9 @@ namespace Piraeus.Adapters
             IResource resource = await GraphManager.GetResourceAsync(message.ResourceUri);
             await resource.PublishAsync(message, indexes);
         }
-        public async Task LoadDurableSubscriptionsAsync(string identity)
+        public async Task<List<string>> LoadDurableSubscriptionsAsync(string identity)
         {
+            List<string> list = new List<string>();
             IEnumerable<string> subscriptionUriStrings = await GraphManager.GetSubscriberSubscriptionsAsync(identity);
             foreach (var item in subscriptionUriStrings)
             {
@@ -54,10 +55,13 @@ namespace Piraeus.Adapters
 
                     //add the lease key to the list of ephemeral observers
                     durableObservers.Add(item, observer);
+                    
 
                     //get the resource from the subscription
                     Uri uri = new Uri(item);
                     string resourceUriString = item.Replace(uri.Segments[uri.Segments.Length - 1], "");
+
+                    list.Add(resourceUriString); //add to list to return
 
                     //add the resource, subscription, and lease key the container
 
@@ -73,6 +77,8 @@ namespace Piraeus.Adapters
             {
                 EnsureLeaseTimer();
             }
+
+            return list.Count == 0 ? null : list;
 
         }
 
