@@ -6,7 +6,6 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using SkunkLab.Diagnostics.Logging;
@@ -92,13 +91,22 @@ namespace SkunkLab.Channels.Http
 
         public override ChannelState State { get; internal set; }
 
-        public override event ChannelCloseEventHandler OnClose;
-        public override event ChannelErrorEventHandler OnError;
-        public override event ChannelOpenEventHandler OnOpen;
-        public override event ChannelReceivedEventHandler OnReceive;
-        public override event ChannelStateEventHandler OnStateChange;
-        public override event ChannelRetryEventHandler OnRetry;
-        public override event ChannelSentEventHandler OnSent;
+        public override event EventHandler<ChannelReceivedEventArgs> OnReceive;
+        public override event EventHandler<ChannelCloseEventArgs> OnClose;
+        public override event EventHandler<ChannelOpenEventArgs> OnOpen;
+        public override event EventHandler<ChannelErrorEventArgs> OnError;
+        public override event EventHandler<ChannelStateEventArgs> OnStateChange;
+        public override event EventHandler<ChannelRetryEventArgs> OnRetry;
+        public override event EventHandler<ChannelSentEventArgs> OnSent;
+        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
+
+        //public override event ChannelCloseEventHandler OnClose;
+        //public override event ChannelErrorEventHandler OnError;
+        //public override event ChannelOpenEventHandler OnOpen;
+        //public override event ChannelReceivedEventHandler OnReceive;
+        //public override event ChannelStateEventHandler OnStateChange;
+        //public override event ChannelRetryEventHandler OnRetry;
+        //public override event ChannelSentEventHandler OnSent;
 
         public override async Task SendAsync(byte[] message)
         {

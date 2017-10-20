@@ -8,7 +8,9 @@ C:\_git\core\Gateway\Piraeus.Configuration\bin\Debug\Xamarin.Forms.Core.xml
 C:\_git\core\Gateway\Piraeus.Configuration\bin\Debug\Xamarin.Forms.Platform.pdb
 C:\_git\core\Gateway\Piraeus.Configuration\bin\Debug\Xamarin.Forms.Xaml.pdb
 C:\_git\core\Gateway\Piraeus.Configuration\bin\Debug\Xamarin.Forms.Xaml.xml
-C:\_git\core\Gateway\Piraeus.Configuration\obj\Debug\Piraeus.Configuration.csprojResolveAssemblyReference.cache
 C:\_git\core\Gateway\Piraeus.Configuration\obj\Debug\Piraeus.Configuration.csproj.CoreCompileInputs.cache
 C:\_git\core\Gateway\Piraeus.Configuration\obj\Debug\Piraeus.Configuration.dll
 C:\_git\core\Gateway\Piraeus.Configuration\obj\Debug\Piraeus.Configuration.pdb
+C:\_git\core\Gateway\Piraeus.Configuration\obj\Debug\Piraeus.Configuration.csprojResolveAssemblyReference.cache
+C:\_git\core\Gateway\Piraeus.Configuration\bin\Debug\Piraeus.Configuration.dll.CodeAnalysisLog.xml
+C:\_git\core\Gateway\Piraeus.Configuration\bin\Debug\Piraeus.Configuration.dll.lastcodeanalysissucceeded

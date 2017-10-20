@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>SecurityRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -59,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChannelCloseEventArgs.cs" />
+    <Compile Include="ChannelObserverEventArgs.cs" />
     <Compile Include="ChannelRetryEventArgs.cs" />
     <Compile Include="ChannelSentEventArgs.cs" />
     <Compile Include="CoalesceType.cs" />

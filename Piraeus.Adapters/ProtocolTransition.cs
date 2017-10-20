@@ -10,6 +10,8 @@ namespace Piraeus.Adapters
     {
         public static bool IsEncryptedChannel { get; set; }
 
+       
+
         public static byte[] ConvertToMqtt(MqttSession session, EventMessage message)
         {
             if(message.Protocol == ProtocolType.MQTT)
@@ -79,7 +81,23 @@ namespace Piraeus.Adapters
             return request.Encode();
         }
 
-
+        public static byte[] ConvertToHttp(EventMessage message)
+        {
+            if(message.Protocol == ProtocolType.MQTT)
+            {
+                MqttMessage mqtt = MqttMessage.DecodeMessage(message.Message);
+                return mqtt.Payload;
+            }
+            else if(message.Protocol == ProtocolType.COAP)
+            {
+                CoapMessage coap = CoapMessage.DecodeMessage(message.Message);
+                return coap.Payload;
+            }
+            else
+            {
+                return message.Message;
+            }
+        }
         
 
         

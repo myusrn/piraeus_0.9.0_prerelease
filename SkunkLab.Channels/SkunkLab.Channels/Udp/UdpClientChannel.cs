@@ -39,13 +39,22 @@ namespace SkunkLab.Channels.Udp
         public override bool IsEncrypted { get; internal set; }
         public override bool IsAuthenticated { get; internal set; }
 
-        public override event ChannelCloseEventHandler OnClose;
-        public override event ChannelErrorEventHandler OnError;
-        public override event ChannelOpenEventHandler OnOpen;
-        public override event ChannelReceivedEventHandler OnReceive;
-        public override event ChannelStateEventHandler OnStateChange;
-        public override event ChannelRetryEventHandler OnRetry;
-        public override event ChannelSentEventHandler OnSent;
+        public override event EventHandler<ChannelReceivedEventArgs> OnReceive;
+        public override event EventHandler<ChannelCloseEventArgs> OnClose;
+        public override event EventHandler<ChannelOpenEventArgs> OnOpen;
+        public override event EventHandler<ChannelErrorEventArgs> OnError;
+        public override event EventHandler<ChannelStateEventArgs> OnStateChange;
+        public override event EventHandler<ChannelRetryEventArgs> OnRetry;
+        public override event EventHandler<ChannelSentEventArgs> OnSent;
+        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
+
+        //public override event ChannelCloseEventHandler OnClose;
+        //public override event ChannelErrorEventHandler OnError;
+        //public override event ChannelOpenEventHandler OnOpen;
+        //public override event ChannelReceivedEventHandler OnReceive;
+        //public override event ChannelStateEventHandler OnStateChange;
+        //public override event ChannelRetryEventHandler OnRetry;
+        //public override event ChannelSentEventHandler OnSent;
 
         public override async Task AddMessage(byte[] message)
         {

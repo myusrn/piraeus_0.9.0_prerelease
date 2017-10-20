@@ -279,6 +279,8 @@ namespace SkunkLab.Protocols.Mqtt
                     keepaliveTimer.Dispose();
                 }
             }
+
+            disposed = true;
         }
     }
             

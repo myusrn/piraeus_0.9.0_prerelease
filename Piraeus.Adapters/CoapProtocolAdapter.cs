@@ -34,8 +34,12 @@ namespace Piraeus.Adapters
 
         public override IChannel Channel { get; set; }
 
-        public override event ProtocolAdapterErrorHandler OnError;
-        public override event ProtocolAdapterCloseHandler OnClose;
+        //public override event ProtocolAdapterErrorHandler OnError;
+        //public override event ProtocolAdapterCloseHandler OnClose;
+        public override event System.EventHandler<ProtocolAdapterErrorEventArgs> OnError;
+        public override event System.EventHandler<ProtocolAdapterCloseEventArgs> OnClose;
+        public override event System.EventHandler<ChannelObserverEventArgs> OnObserve;
+
         private CoapSession session;
         private ICoapRequestDispatch dispatcher;
         private bool disposedValue;
@@ -83,7 +87,7 @@ namespace Piraeus.Adapters
         }
 
         private void Channel_OnRetry(object sender, ChannelRetryEventArgs args)
-        {
+        {            
             Task task = Log.LogInfoAsync("Channel {0} retrying message", Channel.Id);
             Task.WhenAll(task);
         }
@@ -98,12 +102,15 @@ namespace Piraeus.Adapters
 
             if(response != null)
             {
-                Channel.SendAsync(response.Encode());
+                Channel.SendAsync(response.Encode());               
             }
         }
 
         private void Channel_OnOpen(object sender, ChannelOpenEventArgs args)
         {
+            Task task = Log.LogInfoAsync("Channel {0} opened.", args.ChannelId);
+            Task.WhenAll(task);
+
             session.IsAuthenticated = Channel.IsAuthenticated;
 
             try
@@ -117,15 +124,18 @@ namespace Piraeus.Adapters
             }
             catch(Exception ex)
             {
-                Task task = Log.LogErrorAsync("Channel {0} not authenticated.", Channel.Id);
-                Task.WhenAll(task);
+                Task t = Log.LogErrorAsync("Channel {0} not authenticated. Exception {1}", Channel.Id, ex.Message);
+                Task.WhenAll(t);
             }
 
             if(!session.IsAuthenticated)
             {
                 //close the channel
-                Task task = Channel.CloseAsync();
-                Task.WaitAll(task);
+                Task logTask = Log.LogErrorAsync("Channel {0} not authenticated. Closing channel.", Channel.Id);
+                Task.WhenAll(logTask);
+
+                Task closeTask = Channel.CloseAsync();
+                Task.WaitAll(closeTask);
             }            
         }
 

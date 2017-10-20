@@ -28,13 +28,22 @@ namespace SkunkLab.Channels.WebSocket
         private readonly TaskQueue _sendQueue = new TaskQueue();
         private bool disposed;
 
-        public override event ChannelReceivedEventHandler OnReceive;
-        public override event ChannelCloseEventHandler OnClose;
-        public override event ChannelOpenEventHandler OnOpen;
-        public override event ChannelErrorEventHandler OnError;
-        public override event ChannelStateEventHandler OnStateChange;
-        public override event ChannelRetryEventHandler OnRetry;
-        public override event ChannelSentEventHandler OnSent;
+        public override event EventHandler<ChannelReceivedEventArgs> OnReceive;
+        public override event EventHandler<ChannelCloseEventArgs> OnClose;
+        public override event EventHandler<ChannelOpenEventArgs> OnOpen;
+        public override event EventHandler<ChannelErrorEventArgs> OnError;
+        public override event EventHandler<ChannelStateEventArgs> OnStateChange;
+        public override event EventHandler<ChannelRetryEventArgs> OnRetry;
+        public override event EventHandler<ChannelSentEventArgs> OnSent;
+        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
+
+        //public override event ChannelReceivedEventHandler OnReceive;
+        //public override event ChannelCloseEventHandler OnClose;
+        //public override event ChannelOpenEventHandler OnOpen;
+        //public override event ChannelErrorEventHandler OnError;
+        //public override event ChannelStateEventHandler OnStateChange;
+        //public override event ChannelRetryEventHandler OnRetry;
+        //public override event ChannelSentEventHandler OnSent;
 
 
         public override string Id { get; internal set; }
@@ -135,7 +144,7 @@ namespace SkunkLab.Channels.WebSocket
 
         private static bool IsFatalException(Exception ex)
         {
-
+            
             COMException exception = ex as COMException;
             if (exception != null)
             {

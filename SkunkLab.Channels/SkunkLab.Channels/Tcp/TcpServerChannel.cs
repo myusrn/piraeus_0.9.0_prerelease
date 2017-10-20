@@ -59,13 +59,22 @@ namespace SkunkLab.Channels.Tcp
         private SemaphoreSlim writeConnection;
         private NetworkStream localStream;
 
-        public override event ChannelReceivedEventHandler OnReceive;
-        public override event ChannelCloseEventHandler OnClose;
-        public override event ChannelOpenEventHandler OnOpen;
-        public override event ChannelErrorEventHandler OnError;
-        public override event ChannelStateEventHandler OnStateChange;
-        public override event ChannelRetryEventHandler OnRetry;
-        public override event ChannelSentEventHandler OnSent;
+        public override event EventHandler<ChannelReceivedEventArgs> OnReceive;
+        public override event EventHandler<ChannelCloseEventArgs> OnClose;
+        public override event EventHandler<ChannelOpenEventArgs> OnOpen;
+        public override event EventHandler<ChannelErrorEventArgs> OnError;
+        public override event EventHandler<ChannelStateEventArgs> OnStateChange;
+        public override event EventHandler<ChannelRetryEventArgs> OnRetry;
+        public override event EventHandler<ChannelSentEventArgs> OnSent;
+        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
+
+        //public override event ChannelReceivedEventHandler OnReceive;
+        //public override event ChannelCloseEventHandler OnClose;
+        //public override event ChannelOpenEventHandler OnOpen;
+        //public override event ChannelErrorEventHandler OnError;
+        //public override event ChannelStateEventHandler OnStateChange;
+        //public override event ChannelRetryEventHandler OnRetry;
+        //public override event ChannelSentEventHandler OnSent;
 
         public override string Id { get; internal set; }
 

@@ -29,8 +29,12 @@ namespace Piraeus.Adapters
             Channel.OnOpen += Channel_OnOpen;
         }
 
-        public override event ProtocolAdapterCloseHandler OnClose;
-        public override event ProtocolAdapterErrorHandler OnError;
+        //public override event ProtocolAdapterCloseHandler OnClose;
+        //public override event ProtocolAdapterErrorHandler OnError;
+        public override event System.EventHandler<ProtocolAdapterErrorEventArgs> OnError;
+        public override event System.EventHandler<ProtocolAdapterCloseEventArgs> OnClose;
+        public override event System.EventHandler<ChannelObserverEventArgs> OnObserve;
+
         public override IChannel Channel { get; set; }
         private MqttSession session;
         private bool disposed;

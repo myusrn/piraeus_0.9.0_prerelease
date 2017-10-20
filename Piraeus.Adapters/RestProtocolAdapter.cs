@@ -12,13 +12,18 @@ using Piraeus.Core.Utilities;
 using Piraeus.Grains;
 using Piraeus.ServiceModel;
 using SkunkLab.Channels;
+using SkunkLab.Security.Authentication;
+using SkunkLab.Security.Identity;
 
 namespace Piraeus.Adapters
 {
     public class RestProtocolAdapter : ProtocolAdapter
     {
-        public RestProtocolAdapter(IChannel channel)
+        public RestProtocolAdapter(IChannel channel, IAuthenticator authenticator, string identityClaimType, List<KeyValuePair<string, string>> indexes)
         {
+            authn = authenticator;
+            this.identityClaimType = identityClaimType;
+            this.indexes = indexes;
             Channel = channel;
             Channel.OnOpen += Channel_OnOpen;
             Channel.OnReceive += Channel_OnReceive;
@@ -27,53 +32,69 @@ namespace Piraeus.Adapters
         }
         
 
-        public override IChannel Channel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override IChannel Channel { get; set; }
+        private string identityClaimType;
+        private IAuthenticator authn;
+        private List<KeyValuePair<string, string>> indexes;
+        private OrleansAdapter adapter;
+        public override event System.EventHandler<ProtocolAdapterErrorEventArgs> OnError;
+        public override event System.EventHandler<ProtocolAdapterCloseEventArgs> OnClose;
+        public override event System.EventHandler<ChannelObserverEventArgs> OnObserve;
 
-        public override event ProtocolAdapterErrorHandler OnError;
-        public override event ProtocolAdapterCloseHandler OnClose;
+        public event EventHandler<byte[]> OnMessage;
         private bool disposedValue;
 
         public override void Init()
         {
-            throw new NotImplementedException();
+            adapter = new OrleansAdapter();
+            adapter.OnObserve += Adapter_OnObserve;
+        }
+
+        private void Adapter_OnObserve(object sender, ObserveMessageEventArgs e)
+        {
+            byte[] payload = ProtocolTransition.ConvertToHttp(e.Message);
+            OnObserve?.Invoke(this, new ChannelObserverEventArgs(e.Message.ResourceUri, e.Message.ContentType, e.Message.Message));
         }
 
         #region Channel Events
         private void Channel_OnOpen(object sender, ChannelOpenEventArgs args)
         {
+            MessageUri uri = new MessageUri(args.Message);
+
             if(!Channel.IsAuthenticated)  //requires channel authentication
             {
-                //close the channel.
+                //use security token validator
+                SkunkLab.Security.Tokens.SecurityTokenType tokenType = (SkunkLab.Security.Tokens.SecurityTokenType)Enum.Parse(typeof(SkunkLab.Security.Tokens.SecurityTokenType), uri.TokenType, true);                
+                if(!authn.Authenticate(tokenType, uri.SecurityToken))
+                {
+                    Task task = Channel.CloseAsync();
+                    Task.WhenAll(task);
+                    return;
+                }                
             }
+
+            IdentityDecoder decoder = new IdentityDecoder(identityClaimType, indexes);
 
             HttpRequestMessage request = (HttpRequestMessage)args.Message;
-            MessageUri uri = new MessageUri(request);
-            IResource resource = GraphManager.GetResource(uri.Resource);
-            ResourceMetadata metadata = resource.GetMetadataAsync().GetAwaiter().GetResult();
 
-            if(metadata != null)
+            if(request.Method == HttpMethod.Get)
             {
-                IAccessControl accessControl = GraphManager.GetAccessControl(metadata.PublishPolicyUriString);
-                if(accessControl != null && accessControl.IsAuthorizedAsync(Thread.CurrentPrincipal.Identity as ClaimsIdentity).GetAwaiter().GetResult())
+                foreach(var item in uri.Subscriptions)
                 {
-                    EventMessage msg = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, request.Content.ReadAsByteArrayAsync().GetAwaiter().GetResult());
-                    msg.Audit = metadata.Audit;
-                    Task task = null;
-                    if(uri.Indexes != null && uri.Indexes.Count() > 0)
-                    {
-                        task = resource.PublishAsync(msg, new List<KeyValuePair<string,string>>(uri.Indexes));
-                    }
-                    else
-                    {
-                        task = resource.PublishAsync(msg);
-                    }
-
+                    Task task = SubscribeAsync(item, decoder.Id, decoder.Indexes);
                     Task.WhenAll(task);
                 }
+            }else if(request.Method == HttpMethod.Post)
+            {
+                EventMessage message = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, request.Content.ReadAsByteArrayAsync().Result);
+                Task task = PublishAsync(message, new List<KeyValuePair<string, string>>(uri.Indexes));
+                Task.WhenAll(task);
+            }     
+            else
+            {
+                Task task = Channel.CloseAsync();
+                Task.WhenAll(task);
             }
-
-
-            //get the resource;
         }
 
         private void Channel_OnReceive(object sender, ChannelReceivedEventArgs args)
@@ -121,6 +142,34 @@ namespace Piraeus.Adapters
         }
 
         #endregion
+
+
+        private async Task PublishAsync(EventMessage message, List<KeyValuePair<string,string>> indexes = null)
+        {
+            if(!await adapter.CanPublishAsync(message.ResourceUri, Channel.IsEncrypted))
+            {
+                return;
+            }
+
+            await adapter.PublishAsync(message, indexes);
+        }
+
+        private async Task SubscribeAsync(string resourceUriString, string identity, List<KeyValuePair<string, string>> indexes)
+        {
+            if(!await adapter.CanSubscribeAsync(resourceUriString, Channel.IsEncrypted))
+            {
+                return;
+            }
+
+            SubscriptionMetadata metadata = new SubscriptionMetadata()
+            {
+                Identity = identity,
+                Indexes = indexes,
+                IsEphemeral = true
+            };
+
+            string subscriptionUriString = await adapter.SubscribeAsync(resourceUriString, metadata);
+        }
 
 
     }
