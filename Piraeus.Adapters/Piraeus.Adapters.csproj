@@ -167,6 +167,10 @@
     <Compile Include="WsnProtocolAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gateway\Piraeus.Configuration\Piraeus.Configuration.csproj">
+      <Project>{69e93539-bc52-4bb6-8912-2af485e42691}</Project>
+      <Name>Piraeus.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Piraeus\Piraeus.Core\Piraeus.Core.csproj">
       <Project>{db8ff87b-3c47-429e-be51-29ade3735fce}</Project>
       <Name>Piraeus.Core</Name>

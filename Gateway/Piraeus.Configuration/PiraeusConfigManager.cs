@@ -26,6 +26,8 @@ namespace Piraeus.Configuration
                 byte[] pskKey = null;
                 bool prefix = section.Channels.TCP.UseLengthPrefix;
                 bool authn = false;
+                int? blockSize = section.Channels.TCP.BlockSize;
+                int? maxBufferSize = section.Channels.TCP.MaxBufferSize;
 
                 if (section.Channels.TCP.PSK != null)
                 {
@@ -39,7 +41,7 @@ namespace Piraeus.Configuration
                     tcpCertificate = GetCertificate(section.Channels.TCP.Certificate.Store, section.Channels.TCP.Certificate.Location, section.Channels.TCP.Certificate.Thumbprint);
                 }
 
-                TcpSettings tcp = new TcpSettings(prefix, authn, tcpCertificate, pskIdentity, pskKey);
+                TcpSettings tcp = new TcpSettings(prefix, authn, tcpCertificate, pskIdentity, pskKey,blockSize, maxBufferSize);
                 channelSettings = new ChannelSettings(tcp);
             }
 

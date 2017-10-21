@@ -84,3 +84,5 @@ C:\_git\core\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.csprojResolveAssemblyRe
 C:\_git\core\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.csproj.CoreCompileInputs.cache
 C:\_git\core\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.dll
 C:\_git\core\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.pdb
+C:\_git\core\Piraeus.Adapters\bin\Debug\Piraeus.Configuration.dll
+C:\_git\core\Piraeus.Adapters\bin\Debug\Piraeus.Configuration.pdb

@@ -18,6 +18,22 @@ namespace Piraeus.Configuration.Channels
             set { base["presharedkey"] = value; }
         }
 
+        [ConfigurationProperty("blockSize", IsRequired =false)]
+        public int? BlockSize
+        {
+            get { return (int)base["blockSize"]; }
+            set { base["blockSize"] = value; }
+        }
+
+        [ConfigurationProperty("maxBufferSize", IsRequired = false)]
+        public int? MaxBufferSize
+        {
+            get { return (int)base["maxBufferSize"]; }
+            set { base["maxBufferSize"] = value; }
+        }
+
+
+
         [ConfigurationProperty("certificate", IsRequired =false)]
         public X509Element Certificate
         {

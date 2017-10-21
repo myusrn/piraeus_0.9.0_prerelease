@@ -19,14 +19,28 @@ namespace SkunkLab.Channels
         /// <param name="client">TCP client obtained from TCP listener.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        public static TcpChannel Create(TcpClient client, CancellationToken token)
+        public static TcpChannel Create(TcpClient client, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpServerChannel(client, token);
+            if(!blockSize.HasValue)
+            {
+                return new TcpServerChannel(client, token);
+            }
+            else
+            {
+                return new TcpServerChannel2(client, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
-        public static TcpChannel Create(IPAddress address, int port, IPEndPoint localEP, string pskIdentity, byte[] psk, CancellationToken token)
+        public static TcpChannel Create(IPAddress address, int port, IPEndPoint localEP, string pskIdentity, byte[] psk, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpClientChannel(address, port, localEP, pskIdentity, psk, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpClientChannel(address, port, localEP, pskIdentity, psk, token);
+            }
+            else
+            {
+                return new TcpClientChannel2(address, port, localEP, pskIdentity, psk, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         /// <summary>
@@ -37,9 +51,16 @@ namespace SkunkLab.Channels
         /// <param name="clientAuth">Determines whether to authenticate the client certificate.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        public static TcpChannel Create(TcpClient client, X509Certificate2 certificate, bool clientAuth, CancellationToken token)
+        public static TcpChannel Create(TcpClient client, X509Certificate2 certificate, bool clientAuth, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpServerChannel(client, certificate, clientAuth, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpServerChannel(client, certificate, clientAuth, token);
+            }
+            else
+            {
+                return new TcpServerChannel2(client, certificate, clientAuth, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         /// <summary>
@@ -50,9 +71,16 @@ namespace SkunkLab.Channels
         /// <param name="psk"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static TcpChannel Create(TcpClient client, string pskIdentity, byte[] psk, CancellationToken token)
+        public static TcpChannel Create(TcpClient client, string pskIdentity, byte[] psk, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpServerChannel(client, pskIdentity, psk, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpServerChannel(client, pskIdentity, psk, token);
+            }
+            else
+            {
+                return new TcpServerChannel2(client, pskIdentity, psk, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         /// <summary>
@@ -107,9 +135,16 @@ namespace SkunkLab.Channels
         /// <param name="port">Port of server to connect.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        public static TcpChannel Create(string hostname, int port, CancellationToken token)
+        public static TcpChannel Create(string hostname, int port, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpClientChannel(hostname, port, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpClientChannel(hostname, port, token);
+            }
+            else
+            {
+                return new TcpClientChannel2(hostname, port, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         /// <summary>
@@ -120,9 +155,16 @@ namespace SkunkLab.Channels
         /// <param name="localEP">Local endpoint to bind for client connection.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        public static TcpChannel Create(string hostname, int port, IPEndPoint localEP, CancellationToken token)
+        public static TcpChannel Create(string hostname, int port, IPEndPoint localEP, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpClientChannel(hostname, port, localEP, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpClientChannel(hostname, port, localEP, token);
+            }
+            else
+            {
+                return new TcpClientChannel2(hostname, port, localEP, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         /// <summary>
@@ -131,9 +173,16 @@ namespace SkunkLab.Channels
         /// <param name="remoteEndpoint">Remote endpoint of server to connect.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        public static TcpChannel Create(IPEndPoint remoteEndpoint, CancellationToken token)
+        public static TcpChannel Create(IPEndPoint remoteEndpoint, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpClientChannel(remoteEndpoint, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpClientChannel(remoteEndpoint, token);
+            }
+            else
+            {
+                return new TcpClientChannel2(remoteEndpoint, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         /// <summary>
@@ -143,9 +192,16 @@ namespace SkunkLab.Channels
         /// <param name="localEP">Local endpoint for client connection.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        public static TcpChannel Create(IPEndPoint remoteEndpoint, IPEndPoint localEP, CancellationToken token)
+        public static TcpChannel Create(IPEndPoint remoteEndpoint, IPEndPoint localEP, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpClientChannel(remoteEndpoint, localEP, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpClientChannel(remoteEndpoint, localEP, token);
+            }
+            else
+            {
+                return new TcpClientChannel2(remoteEndpoint, localEP, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         /// <summary>
@@ -155,9 +211,16 @@ namespace SkunkLab.Channels
         /// <param name="port">Port of server to connect.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        public static TcpChannel Create(IPAddress address, int port, CancellationToken token)
+        public static TcpChannel Create(IPAddress address, int port, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpClientChannel(address, port, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpClientChannel(address, port, token);
+            }
+            else
+            {
+                return new TcpClientChannel2(address, port, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         /// <summary>
@@ -168,9 +231,16 @@ namespace SkunkLab.Channels
         /// <param name="localEP">Local endpoint for client connection.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        public static TcpChannel Create(IPAddress address, int port, IPEndPoint localEP, CancellationToken token)
+        public static TcpChannel Create(IPAddress address, int port, IPEndPoint localEP, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpClientChannel(address, port, localEP, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpClientChannel(address, port, localEP, token);
+            }
+            else
+            {
+                return new TcpClientChannel2(address, port, localEP, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         /// <summary>
@@ -181,9 +251,16 @@ namespace SkunkLab.Channels
         /// <param name="certificate">Certificate used to authenticate the client.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        public static TcpChannel Create(string hostname, int port, X509Certificate2 certificate, CancellationToken token)
+        public static TcpChannel Create(string hostname, int port, X509Certificate2 certificate, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpClientChannel(hostname, port, certificate, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpClientChannel(hostname, port, certificate, token);
+            }
+            else
+            {
+                return new TcpClientChannel2(hostname, port, certificate, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         /// <summary>
@@ -195,9 +272,16 @@ namespace SkunkLab.Channels
         /// <param name="certificate">Certificate used to authenticate the client.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        public static TcpChannel Create(string hostname, int port, IPEndPoint localEP, X509Certificate2 certificate, CancellationToken token)
+        public static TcpChannel Create(string hostname, int port, IPEndPoint localEP, X509Certificate2 certificate, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpClientChannel(hostname, port, localEP, certificate, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpClientChannel(hostname, port, localEP, certificate, token);
+            }
+            else
+            {
+                return new TcpClientChannel2(hostname, port, localEP, certificate, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         
@@ -209,9 +293,16 @@ namespace SkunkLab.Channels
         /// <param name="certificate">Certificate used to authenticate the client.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        public static TcpChannel Create(IPEndPoint remoteEndpoint, X509Certificate2 certificate, CancellationToken token)
+        public static TcpChannel Create(IPEndPoint remoteEndpoint, X509Certificate2 certificate, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpClientChannel(remoteEndpoint, certificate, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpClientChannel(remoteEndpoint, certificate, token);
+            }
+            else
+            {
+                return new TcpClientChannel2(remoteEndpoint, certificate, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         /// <summary>
@@ -222,9 +313,16 @@ namespace SkunkLab.Channels
         /// <param name="certificate">Certificate used to authenticate the client.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        public static TcpChannel Create(IPEndPoint remoteEndpoint, IPEndPoint localEP, X509Certificate2 certificate, CancellationToken token)
+        public static TcpChannel Create(IPEndPoint remoteEndpoint, IPEndPoint localEP, X509Certificate2 certificate, int? blockSize, int? maxBuferSize, CancellationToken token)
         {
-            return new TcpClientChannel(remoteEndpoint, localEP, certificate, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpClientChannel(remoteEndpoint, localEP, certificate, token);
+            }
+            else
+            {
+                return new TcpClientChannel2(remoteEndpoint, localEP, certificate, blockSize.Value, maxBuferSize.Value, token);
+            }
         }
 
         /// <summary>
@@ -234,9 +332,16 @@ namespace SkunkLab.Channels
         /// <param name="port">Port of server to connect.</param>
         /// <param name="certificate">Certificate to authenticate client.</param>
         /// <param name="token">Cancellation token.</param>
-        public static TcpChannel Create(IPAddress address, int port, X509Certificate2 certificate, CancellationToken token)
+        public static TcpChannel Create(IPAddress address, int port, X509Certificate2 certificate, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpClientChannel(address, port, certificate, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpClientChannel(address, port, certificate, token);
+            }
+            else
+            {
+                return new TcpClientChannel2(address, port, certificate, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         /// <summary>
@@ -248,9 +353,16 @@ namespace SkunkLab.Channels
         /// <param name="certificate">Certificate used to authenticate the client.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        public static TcpChannel Create(IPAddress address, int port, IPEndPoint localEP, X509Certificate2 certificate, CancellationToken token)
+        public static TcpChannel Create(IPAddress address, int port, IPEndPoint localEP, X509Certificate2 certificate, int? blockSize, int? maxBufferSize, CancellationToken token)
         {
-            return new TcpClientChannel(address, port, localEP, certificate, token);
+            if (!blockSize.HasValue)
+            {
+                return new TcpClientChannel(address, port, localEP, certificate, token);
+            }
+            else
+            {
+                return new TcpClientChannel2(address, port, localEP, certificate, blockSize.Value, maxBufferSize.Value, token);
+            }
         }
 
         public static IChannel Create(string hostname, int port, int blockSize, int maxBufferSize, CancellationToken token)
