@@ -45,7 +45,10 @@ C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Xml.ReaderWriter.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Xml.XmlDocument.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Xml.XPath.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Xml.XPath.XDocument.dll
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Web.Http.dll
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Net.Http.Formatting.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Piraeus.Core.pdb
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Piraeus.Core.dll.config
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Piraeus.Grains.pdb
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Piraeus.Grains.dll.config
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Microsoft.CodeAnalysis.xml
@@ -65,6 +68,8 @@ C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Collections.Immutable
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Diagnostics.DiagnosticSource.xml
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Reflection.Metadata.xml
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Spatial.xml
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Web.Http.xml
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Net.Http.Formatting.xml
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\de\Microsoft.Data.Edm.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\es\Microsoft.Data.Edm.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\fr\Microsoft.Data.Edm.resources.dll
@@ -105,8 +110,3 @@ C:\_git\core\Piraeus\Piraeus.ServiceModel\obj\Debug\Piraeus.ServiceModel.csprojR
 C:\_git\core\Piraeus\Piraeus.ServiceModel\obj\Debug\Piraeus.ServiceModel.csproj.CoreCompileInputs.cache
 C:\_git\core\Piraeus\Piraeus.ServiceModel\obj\Debug\Piraeus.ServiceModel.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\obj\Debug\Piraeus.ServiceModel.pdb
-C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Web.Http.dll
-C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Net.Http.Formatting.dll
-C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Piraeus.Core.dll.config
-C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Web.Http.xml
-C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Net.Http.Formatting.xml

@@ -1,5 +1,3 @@
-C:\_git\core\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.csprojResolveAssemblyReference.cache
-C:\_git\core\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.csproj.CoreCompileInputs.cache
 C:\_git\core\Piraeus.Adapters\bin\Debug\Piraeus.Adapters.dll.config
 C:\_git\core\Piraeus.Adapters\bin\Debug\Piraeus.Adapters.dll
 C:\_git\core\Piraeus.Adapters\bin\Debug\Piraeus.Adapters.pdb
@@ -82,5 +80,7 @@ C:\_git\core\Piraeus.Adapters\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
 C:\_git\core\Piraeus.Adapters\bin\Debug\Microsoft.WindowsAzure.Storage.xml
 C:\_git\core\Piraeus.Adapters\bin\Debug\System.Net.Http.Formatting.xml
 C:\_git\core\Piraeus.Adapters\bin\Debug\StackExchange.Redis.xml
+C:\_git\core\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.csprojResolveAssemblyReference.cache
+C:\_git\core\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.csproj.CoreCompileInputs.cache
 C:\_git\core\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.dll
 C:\_git\core\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.pdb

@@ -70,19 +70,5 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\SkunkLab.Channels\SkunkLab.Channels\SkunkLab.Channels.csproj">
-      <Project>{7c69a3ca-29dd-4c33-b70f-f998a6e650b9}</Project>
-      <Name>SkunkLab.Channels</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SkunkLab.Diagnostics\SkunkLab.Diagnostics\SkunkLab.Diagnostics.csproj">
-      <Project>{c6bbc79c-7f29-4385-8b4b-bd73d01ac4e0}</Project>
-      <Name>SkunkLab.Diagnostics</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SkunkLab.Protocols\SkunkLab.Protocols\SkunkLab.Protocols.csproj">
-      <Project>{7b2c72a0-0dba-4ded-96dc-b6af80a82277}</Project>
-      <Name>SkunkLab.Protocols</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,3 +1,4 @@
+C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\Piraeus.Gateway.dll.config
 C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\Piraeus.Gateway.dll
 C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\Piraeus.Gateway.pdb
 C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\Piraeus.Security.dll
@@ -14,6 +15,7 @@ C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\Microsoft.IdentityModel.Logging.d
 C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\System.Net.Http.Formatting.dll
 C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\Microsoft.WindowsAzure.Storage.dll
 C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\Piraeus.Security.pdb
+C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\Piraeus.Security.dll.config
 C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\SkunkLab.Channels.pdb
 C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\SkunkLab.Channels.dll.config
 C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\SkunkLab.Protocols.pdb
@@ -32,5 +34,3 @@ C:\_git\core\Gateway\Piraeus.Gateway\obj\Debug\Piraeus.Gateway.csprojResolveAsse
 C:\_git\core\Gateway\Piraeus.Gateway\obj\Debug\Piraeus.Gateway.csproj.CoreCompileInputs.cache
 C:\_git\core\Gateway\Piraeus.Gateway\obj\Debug\Piraeus.Gateway.dll
 C:\_git\core\Gateway\Piraeus.Gateway\obj\Debug\Piraeus.Gateway.pdb
-C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\Piraeus.Gateway.dll.config
-C:\_git\core\Gateway\Piraeus.Gateway\bin\Debug\Piraeus.Security.dll.config

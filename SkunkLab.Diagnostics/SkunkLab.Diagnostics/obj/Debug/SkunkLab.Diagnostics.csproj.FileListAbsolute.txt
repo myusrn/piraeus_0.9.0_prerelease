@@ -125,7 +125,7 @@ C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Debug\ko\System.Spati
 C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Debug\ru\System.Spatial.resources.dll
 C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Debug\zh-Hant\System.Spatial.resources.dll
+C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\SkunkLab.Diagnostics.csprojResolveAssemblyReference.cache
 C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\SkunkLab.Diagnostics.csproj.CoreCompileInputs.cache
 C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\SkunkLab.Diagnostics.dll
 C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\SkunkLab.Diagnostics.pdb
-C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\SkunkLab.Diagnostics.csprojResolveAssemblyReference.cache

@@ -23,8 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkunkLab.Security", "..\Sku
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piraeus.Adapters", "..\Piraeus.Adapters\Piraeus.Adapters.csproj", "{9C1C84D7-29FD-45CE-ABCB-55FAB943439E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piraeus.Clients", "..\Piraeus.Clients\Piraeus.Clients.csproj", "{E41C1AA8-8160-4D4C-8462-E9EC011560EC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piraeus.Configuration", "Piraeus.Configuration\Piraeus.Configuration.csproj", "{69E93539-BC52-4BB6-8912-2AF485E42691}"
 EndProject
 Global
@@ -73,10 +71,6 @@ Global
 		{9C1C84D7-29FD-45CE-ABCB-55FAB943439E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C1C84D7-29FD-45CE-ABCB-55FAB943439E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C1C84D7-29FD-45CE-ABCB-55FAB943439E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E41C1AA8-8160-4D4C-8462-E9EC011560EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E41C1AA8-8160-4D4C-8462-E9EC011560EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E41C1AA8-8160-4D4C-8462-E9EC011560EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E41C1AA8-8160-4D4C-8462-E9EC011560EC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{69E93539-BC52-4BB6-8912-2AF485E42691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{69E93539-BC52-4BB6-8912-2AF485E42691}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69E93539-BC52-4BB6-8912-2AF485E42691}.Release|Any CPU.ActiveCfg = Release|Any CPU

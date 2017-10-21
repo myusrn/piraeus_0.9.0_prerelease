@@ -164,6 +164,7 @@
     <Compile Include="ProtocolAdapterPortException.cs" />
     <Compile Include="ProtocolTransition.cs" />
     <Compile Include="RestProtocolAdapter.cs" />
+    <Compile Include="WsnProtocolAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Piraeus\Piraeus.Core\Piraeus.Core.csproj">
