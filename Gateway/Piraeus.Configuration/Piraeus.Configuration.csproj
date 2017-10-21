@@ -49,6 +49,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Channels\ChannelsElement.cs" />
+    <Compile Include="Channels\PskElement.cs" />
+    <Compile Include="Channels\TcpChannelElement.cs" />
+    <Compile Include="Channels\X509Element.cs" />
     <Compile Include="Identity\ClientElement.cs" />
     <Compile Include="Identity\IdentityElement.cs" />
     <Compile Include="Identity\IndexElement.cs" />
@@ -63,12 +67,22 @@
     <Compile Include="Protocols\MqttProtocolElement.cs" />
     <Compile Include="Protocols\ProtocolsElement.cs" />
     <Compile Include="Security\AsymmetricKeyElement.cs" />
-    <Compile Include="Security\AsymmetricKeyParameters.cs" />
     <Compile Include="Security\ClientElement.cs" />
     <Compile Include="Security\SecurityElement.cs" />
     <Compile Include="Security\ServiceElement.cs" />
     <Compile Include="Security\SymmetricKeyElement.cs" />
-    <Compile Include="Security\SymmetricKeyParameters.cs" />
+    <Compile Include="Settings\ChannelSettings.cs" />
+    <Compile Include="Settings\ClientIdentity.cs" />
+    <Compile Include="Settings\ClientSecurity.cs" />
+    <Compile Include="Settings\CoapSettings.cs" />
+    <Compile Include="Settings\IdentitySettings.cs" />
+    <Compile Include="Settings\MqttSettings.cs" />
+    <Compile Include="Settings\PiraeusConfig.cs" />
+    <Compile Include="Settings\ProtocolSettings.cs" />
+    <Compile Include="Settings\SecuritySettings.cs" />
+    <Compile Include="Settings\ServiceIdentity.cs" />
+    <Compile Include="Settings\ServiceSecurity.cs" />
+    <Compile Include="Settings\TcpSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

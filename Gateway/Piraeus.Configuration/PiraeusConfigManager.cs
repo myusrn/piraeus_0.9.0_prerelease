@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Configuration;
-using Piraeus.Configuration.Security;
+using System.Security.Cryptography.X509Certificates;
+using Piraeus.Configuration.Settings;
 
 namespace Piraeus.Configuration
 {
@@ -8,192 +9,144 @@ namespace Piraeus.Configuration
     {
         static PiraeusConfigManager()
         {
+            ChannelSettings channelSettings = null;
+            ProtocolSettings protocolSettings = null;
+            IdentitySettings identitySettings = null;
+            SecuritySettings securitySettings = null;
+
+
             PiraeusSection section = ConfigurationManager.GetSection("piraeus") as PiraeusSection;
             if (section == null)
                 throw new ConfigurationErrorsException("Piraeus configuration section not found.");
 
+            if (section.Channels != null && section.Channels.TCP != null)
+            {
+                X509Certificate2 tcpCertificate = null;
+                string pskIdentity = null;
+                byte[] pskKey = null;
+                bool prefix = section.Channels.TCP.UseLengthPrefix;
+                bool authn = false;
+
+                if (section.Channels.TCP.PSK != null)
+                {
+                    pskIdentity = section.Channels.TCP.PSK.Identity;
+                    pskKey = Convert.FromBase64String(section.Channels.TCP.PSK.Key);
+                }
+                if (section.Channels.TCP.Certificate != null)
+                {
+                    //get the certificate
+                    authn = section.Channels.TCP.Certificate.AuthenticateServer;
+                    tcpCertificate = GetCertificate(section.Channels.TCP.Certificate.Store, section.Channels.TCP.Certificate.Location, section.Channels.TCP.Certificate.Thumbprint);
+                }
+
+                TcpSettings tcp = new TcpSettings(prefix, authn, tcpCertificate, pskIdentity, pskKey);
+                channelSettings = new ChannelSettings(tcp);
+            }
+
+            CoapSettings coapSettings = null;
             if (section.Protocols != null && section.Protocols.Coap != null)
             {
-                coapAckRandomFactor = section.Protocols.Coap.AckRandomFactor;
-                coapAckTimeout = section.Protocols.Coap.AckTimeoutSeconds;
-                coapAutoRetry = section.Protocols.Coap.AutoRetry;
-                coapDefaultLeisure = section.Protocols.Coap.DefaultLeisure;
-                coapHostName = section.Protocols.Coap.HostName;
-                coapKeepAlive = section.Protocols.Coap.KeepAliveSeconds;
-                coapMaxLatency = section.Protocols.Coap.MaxLatencySeconds;
-                coapMaxRetransmit = section.Protocols.Coap.MaxRetransmit;
-                coapNStart = section.Protocols.Coap.NStart;
-                coapProbingRate = section.Protocols.Coap.ProbingRate;
+
+                coapSettings = new CoapSettings(section.Protocols.Coap.HostName,
+                                                section.Protocols.Coap.AutoRetry,
+                                                section.Protocols.Coap.KeepAliveSeconds,
+                                                section.Protocols.Coap.AckTimeoutSeconds,
+                                                section.Protocols.Coap.AckRandomFactor,
+                                                section.Protocols.Coap.MaxRetransmit,
+                                                section.Protocols.Coap.MaxLatencySeconds,
+                                                section.Protocols.Coap.NStart,
+                                                section.Protocols.Coap.DefaultLeisure,
+                                                section.Protocols.Coap.ProbingRate);
             }
 
+            MqttSettings mqttSettings = null;
             if (section.Protocols != null && section.Protocols.Mqtt != null)
             {
-                mqttAckRandomFactor = section.Protocols.Mqtt.AckRandomFactor;
-                mqttAckTimeout = section.Protocols.Mqtt.AckTimeoutSeconds;
-                mqttKeepAlive = section.Protocols.Mqtt.KeepAliveSeconds;
-                mqttMaxLatency = section.Protocols.Mqtt.MaxLatencySeconds;
-                mqttMaxRetransmit = section.Protocols.Mqtt.MaxRetransmit;
+                mqttSettings = new MqttSettings(section.Protocols.Mqtt.KeepAliveSeconds,
+                                        section.Protocols.Mqtt.AckTimeoutSeconds,
+                                        section.Protocols.Mqtt.AckRandomFactor,
+                                        section.Protocols.Mqtt.MaxRetransmit, section.Protocols.Mqtt.MaxLatencySeconds);
             }
 
-            if(section.Identity != null && section.Identity.Client != null)
-            {
-                clientIdentityClaimType = section.Identity.Client.IdentityClaimType;
+            protocolSettings = new ProtocolSettings(mqttSettings, coapSettings);
 
-                if(section.Identity.Client.Indexes != null)
+            ClientIdentity clientIdentity = null;
+            if (section.Identity != null && section.Identity.Client != null)
+            {
+                if (section.Identity.Client.Indexes != null)
                 {
-                    clientIndexes = section.Identity.Client.Indexes.GetIndexes();
+                    clientIdentity = new ClientIdentity(section.Identity.Client.IdentityClaimType, section.Identity.Client.Indexes.GetIndexes());
+                }
+                else
+                {
+                    clientIdentity = new ClientIdentity(section.Identity.Client.IdentityClaimType, null);
                 }
             }
 
-            if(section.Identity != null && section.Identity.Service != null && section.Identity.Service.Claims != null)
-            {                
-                serviceClaims = section.Identity.Service.Claims.GetServiceClaims();
+            ServiceIdentity serviceIdentity = null;
+
+            if (section.Identity != null && section.Identity.Service != null && section.Identity.Service.Claims != null)
+            {
+                serviceIdentity = new ServiceIdentity(section.Identity.Service.Claims.GetServiceClaims());
             }
 
-            if(section.Security != null && section.Security.Client != null)
+            identitySettings = new IdentitySettings(clientIdentity, serviceIdentity);
+
+            ClientSecurity clientSecurity = null;
+            if (section.Security != null && section.Security.Client != null)
             {
-                if(section.Security.Client.SymmetricKey != null)
+                if (section.Security.Client.SymmetricKey != null)
                 {
-                    clientSymmetricKeyParams = new SymmetricKeyParameters(section.Security.Client.SymmetricKey.SecurityTokenType,
-                        section.Security.Client.SymmetricKey.SharedKey,
-                        section.Security.Client.SymmetricKey.Issuer,
-                        section.Security.Client.SymmetricKey.Audience);                    
+                    clientSecurity = new ClientSecurity(section.Security.Client.SymmetricKey.SecurityTokenType,
+                                            section.Security.Client.SymmetricKey.SharedKey,
+                                            section.Security.Client.SymmetricKey.Issuer, section.Security.Client.SymmetricKey.Audience);
                 }
             }
 
-            if(section.Security.Service != null && section.Security.Service != null)
+            ServiceSecurity serviceSecurity = null;
+            if (section.Security.Service != null && section.Security.Service != null)
             {
-                
                 if (section.Security.Service.AsymmetricKey != null)
                 {
-                    serviceAsymmetricKeyParams = new AsymmetricKeyParameters(section.Security.Service.AsymmetricKey.Store,
-                        section.Security.Service.AsymmetricKey.Location,
-                        section.Security.Service.AsymmetricKey.Thumbprint);
+                    X509Certificate2 serviceCertificate = GetCertificate(section.Security.Service.AsymmetricKey.Store, section.Security.Service.AsymmetricKey.Location, section.Security.Service.AsymmetricKey.Thumbprint);
+                    serviceSecurity = new ServiceSecurity(serviceCertificate);
                 }
             }
+
+            securitySettings = new SecuritySettings(clientSecurity, serviceSecurity);
+
+            config = new PiraeusConfig(channelSettings, protocolSettings, identitySettings, securitySettings);
         }
 
+        private static PiraeusConfig config;
 
-
-        #region CoAP private variables
-        private static string coapHostName;
-        private static double coapAckRandomFactor;
-        private static double coapAckTimeout;
-        private static bool coapAutoRetry;
-        private static double coapDefaultLeisure;
-        private static double coapKeepAlive;
-        private static double coapMaxLatency;
-        private static int coapMaxRetransmit;
-        private static double coapProbingRate;
-        private static int coapNStart;
-        #endregion
-
-        #region MQTT private variables
-
-        private static double mqttAckRandomFactor;
-        private static double mqttAckTimeout;
-        private static double mqttKeepAlive;
-        private static double mqttMaxLatency;
-        private static int mqttMaxRetransmit;
-
-        #endregion
-
-        #region Identity private variable
-        private static string clientIdentityClaimType;
-        private static List<KeyValuePair<string, string>> clientIndexes;
-        private static List<KeyValuePair<string, string>> serviceClaims;
-        #endregion
-
-        private static SymmetricKeyParameters clientSymmetricKeyParams;
-        private static AsymmetricKeyParameters serviceAsymmetricKeyParams;
-
-        #region CoAP parameters
-        public static string CoapHostName
+        public static PiraeusConfig Settings
         {
-            get { return coapHostName; }
+            get { return config; }
         }
+        
 
-        public double CoapAckTimeout
-        { get { return coapAckTimeout; } }
-
-        public static double CoapAckRandomFactor
+        private static X509Certificate2 GetCertificate(string store, string location, string thumbprint)
         {
-            get { return coapAckRandomFactor; }
+            StoreName storeName = (StoreName)Enum.Parse(typeof(StoreName), store, true);
+            StoreLocation storeLocation= (StoreLocation)Enum.Parse(typeof(StoreLocation), location, true);
+            
+
+            X509Store certStore = new X509Store(storeName, storeLocation);
+            certStore.Open(OpenFlags.ReadOnly);
+            X509Certificate2Collection certCollection =
+              certStore.Certificates.Find(X509FindType.FindByThumbprint,
+                                      thumbprint,
+                                      false);
+            X509Certificate2Enumerator enumerator = certCollection.GetEnumerator();
+            X509Certificate2 cert = null;
+            while (enumerator.MoveNext())
+            {
+                cert = enumerator.Current;
+            }
+            return cert;
+
         }
-
-        public static bool CoapAutoRetry
-        {
-            get { return coapAutoRetry; }
-        }
-
-        public static double CoapDefaultLeisure
-        {
-            get { return coapDefaultLeisure; }
-        }
-
-        public static double CoapKeepAlive
-        {
-            get { return coapKeepAlive; }
-        }
-
-        private static double CoapMaxLatency
-        {
-            get { return coapMaxLatency; }
-        }
-
-        public static int CoapMaxRetransmit
-        {
-            get { return coapMaxRetransmit; }
-        }
-
-        public static double CoapProbingRate
-        {
-            get { return coapProbingRate; }
-        }
-
-        public static int CoapNStart
-        {
-            get { return coapNStart; }
-        }
-
-        #endregion
-
-        #region MQTT parameters
-        public static double MqttAckRandomFactor
-        { get { return mqttAckRandomFactor; } }
-
-        public static double MqttAckTimeout
-        { get { return mqttAckTimeout; } }
-
-        public static double MqttKeepAlive
-        { get { return mqttKeepAlive; } }
-
-        public static double MqttMaxLatency
-        { get { return mqttMaxLatency; } }
-
-        public static double MqttMaxRetransmit
-        { get { return mqttMaxRetransmit; } }
-
-        #endregion
-
-        #region Identity parameters
-        public static string ClientIdentityClaimType
-        { get { return clientIdentityClaimType; } }
-
-        public static List<KeyValuePair<string,string>> ClientIndexes
-        { get { return clientIndexes; } }
-
-        public static List<KeyValuePair<string,string>> ServiceClaims
-        { get { return serviceClaims; } }
-        #endregion
-
-        public static SymmetricKeyParameters ClientSymmetricKeyParams
-        {
-            get { return clientSymmetricKeyParams; }
-        }        
-
-        public static AsymmetricKeyParameters ServiceAsymmetricKeyParams
-        { get { return serviceAsymmetricKeyParams; } }
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using Piraeus.Configuration.Channels;
 using Piraeus.Configuration.Identity;
 using Piraeus.Configuration.Protocols;
 using Piraeus.Configuration.Security;
@@ -7,6 +8,13 @@ namespace Piraeus.Configuration
 {
     public class PiraeusSection : ConfigurationSection
     {
+        [ConfigurationProperty("channels")]
+        public ChannelsElement Channels
+        {
+            get { return (ChannelsElement)base["channels"]; }
+            set { base["channels"] = value; }
+        }
+
        [ConfigurationProperty("protocols", IsRequired =true)]
        public ProtocolsElement Protocols
         {

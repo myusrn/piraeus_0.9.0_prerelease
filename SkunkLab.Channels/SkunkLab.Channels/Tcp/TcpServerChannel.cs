@@ -155,7 +155,7 @@ namespace SkunkLab.Channels.Tcp
                 stream = new SslStream(localStream, true, new RemoteCertificateValidationCallback(ValidateCertificate));
 
                 try
-                {                 
+                {   
                     await ((SslStream)stream).AuthenticateAsServerAsync(certificate, clientAuth, SslProtocols.Tls12, true);                   
                 }
                 catch (AggregateException ae)
