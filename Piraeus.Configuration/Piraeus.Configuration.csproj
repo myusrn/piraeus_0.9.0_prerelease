@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{69E93539-BC52-4BB6-8912-2AF485E42691}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Piraeus.Configuration</RootNamespace>
+    <AssemblyName>Piraeus.Configuration</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Channels\ChannelsElement.cs" />
+    <Compile Include="Channels\PskElement.cs" />
+    <Compile Include="Channels\TcpChannelElement.cs" />
+    <Compile Include="Channels\WebSocketChannelElement.cs" />
+    <Compile Include="Channels\X509Element.cs" />
+    <Compile Include="Identity\ClientElement.cs" />
+    <Compile Include="Identity\IdentityElement.cs" />
+    <Compile Include="Identity\IndexElement.cs" />
+    <Compile Include="Identity\IndexElementCollection.cs" />
+    <Compile Include="Identity\ServiceClaimElement.cs" />
+    <Compile Include="Identity\ServiceClaimsElementCollection.cs" />
+    <Compile Include="Identity\ServiceElement.cs" />
+    <Compile Include="PiraeusConfigManager.cs" />
+    <Compile Include="PiraeusSection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protocols\CoapProtocolElement.cs" />
+    <Compile Include="Protocols\MqttProtocolElement.cs" />
+    <Compile Include="Protocols\ProtocolsElement.cs" />
+    <Compile Include="Security\AsymmetricKeyElement.cs" />
+    <Compile Include="Security\ClientElement.cs" />
+    <Compile Include="Security\SecurityElement.cs" />
+    <Compile Include="Security\ServiceElement.cs" />
+    <Compile Include="Security\SymmetricKeyElement.cs" />
+    <Compile Include="Settings\ChannelSettings.cs" />
+    <Compile Include="Settings\ClientIdentity.cs" />
+    <Compile Include="Settings\ClientSecurity.cs" />
+    <Compile Include="Settings\CoapSettings.cs" />
+    <Compile Include="Settings\IdentitySettings.cs" />
+    <Compile Include="Settings\MqttSettings.cs" />
+    <Compile Include="Settings\PiraeusConfig.cs" />
+    <Compile Include="Settings\ProtocolSettings.cs" />
+    <Compile Include="Settings\SecuritySettings.cs" />
+    <Compile Include="Settings\ServiceIdentity.cs" />
+    <Compile Include="Settings\ServiceSecurity.cs" />
+    <Compile Include="Settings\TcpSettings.cs" />
+    <Compile Include="Settings\WebSocketSettings.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

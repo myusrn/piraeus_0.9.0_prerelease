@@ -9,7 +9,7 @@ namespace Piraeus.Adapters
 {
     public class CoapProtocolAdapter : ProtocolAdapter
     {
-        public CoapProtocolAdapter(IChannel channel, CoapConfig config = null)
+        public CoapProtocolAdapter(CoapConfig config, IChannel channel)
         {
             Channel = channel;
             Channel.OnClose += Channel_OnClose;
@@ -19,23 +19,13 @@ namespace Piraeus.Adapters
             Channel.OnRetry += Channel_OnRetry;
             Channel.OnSent += Channel_OnSent;
             Channel.OnStateChange += Channel_OnStateChange;
-
-            if (config != null)
-            {
-                session = new CoapSession(config);
-            }
-            else
-            {
-                session = new CoapSession(ProtocolAdapter.CoapConfig);
-            }
+            session = new CoapSession(config);
         }
 
        
 
         public override IChannel Channel { get; set; }
 
-        //public override event ProtocolAdapterErrorHandler OnError;
-        //public override event ProtocolAdapterCloseHandler OnClose;
         public override event System.EventHandler<ProtocolAdapterErrorEventArgs> OnError;
         public override event System.EventHandler<ProtocolAdapterCloseEventArgs> OnClose;
         public override event System.EventHandler<ChannelObserverEventArgs> OnObserve;

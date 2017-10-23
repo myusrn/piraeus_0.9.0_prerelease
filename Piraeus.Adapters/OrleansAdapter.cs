@@ -161,7 +161,7 @@ namespace Piraeus.Adapters
 
             if (!authz)
             {
-                await Log.LogWarningAsync("Identity {0} is not authorized to publish to resource {1}", identity.Name, metadata.ResourceUriString);
+                await Log.LogWarningAsync("Identity is not authorized to publish to resource {0}", metadata.ResourceUriString);
             }
 
             return authz;
@@ -174,25 +174,25 @@ namespace Piraeus.Adapters
 
             if (metadata == null)
             {
-                await Log.LogWarningAsync("Subscribe resource metadata is null.");
+                await Log.LogWarningAsync("Cannot subscribe. Resource metadata is null.");
                 return false;
             }
 
             if (!metadata.Enabled)
             {
-                await Log.LogWarningAsync("Subscribe resource {0} is disabled.", metadata.ResourceUriString);
+                await Log.LogWarningAsync("Cannot subscribe. Resource {0} is disabled.", metadata.ResourceUriString);
                 return false;
             }
 
             if (metadata.Expires.HasValue && metadata.Expires.Value < DateTime.UtcNow)
             {
-                await Log.LogWarningAsync("Subscribe resource {0} has expired.", metadata.ResourceUriString);
+                await Log.LogWarningAsync("Cannot subscribe. Resource {0} has expired.", metadata.ResourceUriString);
                 return false;
             }
 
             if (metadata.RequireEncryptedChannel && !channelEncrypted)
             {
-                await Log.LogWarningAsync("Subscribe resource {0} requires an encrypted channel.", metadata.ResourceUriString);
+                await Log.LogWarningAsync("Cannot subscribe. Resource {0} requires an encrypted channel.", metadata.ResourceUriString);
                 return false;
             }
 
@@ -203,7 +203,7 @@ namespace Piraeus.Adapters
 
             if (!authz)
             {
-                await Log.LogWarningAsync("Identity {0} is not authorized to subscribe/unsubscribe for resource {1}", identity.Name, metadata.ResourceUriString);
+                await Log.LogWarningAsync("Identity is not authorized to subscribe/unsubscribe for resource {1}", metadata.ResourceUriString);
             }
 
             return authz;

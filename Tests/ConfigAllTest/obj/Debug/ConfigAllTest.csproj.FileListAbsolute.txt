@@ -1,0 +1,9 @@
+C:\_git\core\Tests\ConfigAllTest\bin\Debug\ConfigAllTest.exe.config
+C:\_git\core\Tests\ConfigAllTest\bin\Debug\ConfigAllTest.exe
+C:\_git\core\Tests\ConfigAllTest\bin\Debug\ConfigAllTest.pdb
+C:\_git\core\Tests\ConfigAllTest\bin\Debug\Piraeus.Configuration.dll
+C:\_git\core\Tests\ConfigAllTest\bin\Debug\Piraeus.Configuration.pdb
+C:\_git\core\Tests\ConfigAllTest\obj\Debug\ConfigAllTest.csproj.CoreCompileInputs.cache
+C:\_git\core\Tests\ConfigAllTest\obj\Debug\ConfigAllTest.exe
+C:\_git\core\Tests\ConfigAllTest\obj\Debug\ConfigAllTest.pdb
+C:\_git\core\Tests\ConfigAllTest\obj\Debug\ConfigAllTest.csprojResolveAssemblyReference.cache

@@ -63,14 +63,7 @@ namespace SkunkLab.Channels.Http
         public abstract event EventHandler<ChannelSentEventArgs> OnSent;
         public abstract event EventHandler<ChannelObserverEventArgs> OnObserve;
 
-        //public abstract event ChannelReceivedEventHandler OnReceive;
-        //public abstract event ChannelCloseEventHandler OnClose;
-        //public abstract event ChannelOpenEventHandler OnOpen;
-        //public abstract event ChannelErrorEventHandler OnError;
-        //public abstract event ChannelStateEventHandler OnStateChange;
-        //public abstract event ChannelRetryEventHandler OnRetry;
-        //public abstract event ChannelSentEventHandler OnSent;
-
+        
         public abstract Task CloseAsync();
 
         public abstract void Dispose();

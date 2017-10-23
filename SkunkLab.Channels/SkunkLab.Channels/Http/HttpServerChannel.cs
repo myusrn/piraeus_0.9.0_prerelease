@@ -99,14 +99,7 @@ namespace SkunkLab.Channels.Http
         public override event EventHandler<ChannelRetryEventArgs> OnRetry;
         public override event EventHandler<ChannelSentEventArgs> OnSent;
         public override event EventHandler<ChannelObserverEventArgs> OnObserve;
-
-        //public override event ChannelCloseEventHandler OnClose;
-        //public override event ChannelErrorEventHandler OnError;
-        //public override event ChannelOpenEventHandler OnOpen;
-        //public override event ChannelReceivedEventHandler OnReceive;
-        //public override event ChannelStateEventHandler OnStateChange;
-        //public override event ChannelRetryEventHandler OnRetry;
-        //public override event ChannelSentEventHandler OnSent;
+        
 
         public override async Task SendAsync(byte[] message)
         {

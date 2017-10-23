@@ -10,7 +10,12 @@ namespace SkunkLab.Protocols.Coap
     public sealed class CoapConfig
     {       
 
-        public CoapConfig(IAuthenticator authenticator, string authority, CoapConfigOptions configOptions, bool autoRetry = false, int keepAliveSeconds = 180, double ackTimeout = 2.0, double ackRandomFactor = 1.5, int maxRetransmit = 4, int nstart = 1, double defaultLeisure = 4.0, double probingRate = 1.0, double maxLatency = 100.0)
+        public CoapConfig(IAuthenticator authenticator, string authority, 
+                        CoapConfigOptions configOptions, bool autoRetry = false, 
+                        double keepAliveSeconds = 180, 
+                        double ackTimeout = 2.0, double ackRandomFactor = 1.5, 
+                        int maxRetransmit = 4, int nstart = 1, double defaultLeisure = 4.0, 
+                        double probingRate = 1.0, double maxLatency = 100.0)
         {
             Authenticator = authenticator;
             Authority = authority;
@@ -31,7 +36,7 @@ namespace SkunkLab.Protocols.Coap
         public List<KeyValuePair<string, string>> Indexes { get; set; }
 
         public IAuthenticator Authenticator { get; set; }
-        public int? KeepAlive { get; internal set; }
+        public double? KeepAlive { get; internal set; }
         public bool AutoRetry { get; internal set; }
         public string Authority { get; internal set; }
         public string DoNotRetainNonconfirmableResponse { get; internal set; }
