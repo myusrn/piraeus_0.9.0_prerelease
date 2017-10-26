@@ -29,6 +29,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi">
+      <Version>5.2.3</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.IdentityModel.Logging" Version="1.1.4" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.1.4" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
@@ -52,6 +55,7 @@
     <Compile Include="Authentication\IAuthenticator.cs" />
     <Compile Include="Authentication\JwtValidationHandler.cs" />
     <Compile Include="Authentication\SwtValidationHandler.cs" />
+    <Compile Include="Authentication\X509ValidationHandler.cs" />
     <Compile Include="Identity\IdentityDecoder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tokens\DictionaryExtensions.cs" />

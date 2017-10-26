@@ -29,20 +29,20 @@ namespace SkunkLab.Channels.Http
             return new HttpServerChannel(endpoint, resourceUriString, contentType, certificate);
         }
 
-        public static HttpChannel Create(Uri requestUri, string securityToken, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
+        public static HttpChannel Create(Uri requestUri, string resourceUriString, string securityToken, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
         {
-            return new HttpClientChannel(requestUri, securityToken, contentType, observers, indexes, token);
+            return new HttpClientChannel(requestUri, securityToken, resourceUriString, contentType, observers, indexes, token);
         }
 
-        public static HttpChannel Create(Uri requestUri, X509Certificate2 certificate, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
+        public static HttpChannel Create(Uri requestUri, string resourceUriString, X509Certificate2 certificate, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
         {
-            return new HttpClientChannel(requestUri, certificate, contentType, observers, indexes, token);
+            return new HttpClientChannel(requestUri, certificate, resourceUriString, contentType, observers, indexes, token);
         }
 
-        public static HttpChannel Create(Uri requestUri, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
-        {
-            return new HttpClientChannel(requestUri, contentType, observers, indexes, token);
-        }
+        //public static HttpChannel Create(Uri requestUri, string resourceUriString, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
+        //{
+        //    return new HttpClientChannel(requestUri, resourceUriString, contentType, observers, indexes, token);
+        //}
 
         public abstract int Port { get; internal set; }
         public abstract bool IsConnected { get;  }

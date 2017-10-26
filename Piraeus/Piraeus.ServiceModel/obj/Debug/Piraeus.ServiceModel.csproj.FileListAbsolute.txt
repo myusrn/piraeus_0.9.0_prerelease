@@ -1,3 +1,7 @@
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Collections.Immutable.xml
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Net.Http.Formatting.xml
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\es\Microsoft.Data.OData.resources.dll
+C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\zh-Hant\Microsoft.Data.Services.Client.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Piraeus.ServiceModel.dll.config
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Piraeus.ServiceModel.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Piraeus.ServiceModel.pdb
@@ -64,12 +68,10 @@ C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Newtonsoft.Json.xml
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\Orleans.xml
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\OrleansCodeGenerator.xml
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\StackExchange.Redis.xml
-C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Collections.Immutable.xml
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Diagnostics.DiagnosticSource.xml
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Reflection.Metadata.xml
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Spatial.xml
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Web.Http.xml
-C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\System.Net.Http.Formatting.xml
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\de\Microsoft.Data.Edm.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\es\Microsoft.Data.Edm.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\fr\Microsoft.Data.Edm.resources.dll
@@ -80,7 +82,6 @@ C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\ru\Microsoft.Data.Edm.resour
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\zh-Hans\Microsoft.Data.Edm.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\zh-Hant\Microsoft.Data.Edm.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\de\Microsoft.Data.OData.resources.dll
-C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\es\Microsoft.Data.OData.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\fr\Microsoft.Data.OData.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\it\Microsoft.Data.OData.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\ja\Microsoft.Data.OData.resources.dll
@@ -96,7 +97,6 @@ C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\ja\Microsoft.Data.Services.C
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\ko\Microsoft.Data.Services.Client.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\ru\Microsoft.Data.Services.Client.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\zh-Hans\Microsoft.Data.Services.Client.resources.dll
-C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\zh-Hant\Microsoft.Data.Services.Client.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\de\System.Spatial.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\es\System.Spatial.resources.dll
 C:\_git\core\Piraeus\Piraeus.ServiceModel\bin\Debug\fr\System.Spatial.resources.dll

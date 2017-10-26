@@ -2,6 +2,7 @@
 
 namespace Piraeus.Core
 {
+    [Serializable]
     public class Lease
     {
         public Lease()

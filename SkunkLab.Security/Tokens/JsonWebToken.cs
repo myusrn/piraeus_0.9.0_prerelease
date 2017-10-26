@@ -58,8 +58,9 @@ namespace SkunkLab.Security.Tokens
                 SigningCredentials = new Microsoft.IdentityModel.Tokens.SigningCredentials(new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Convert.FromBase64String(securityKey)), Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha256Signature)
             };
 
+            
             JwtSecurityToken jwtToken = jwt.CreateJwtSecurityToken(msstd);
-            tokenString = jwtToken.ToString();
+            tokenString = jwt.WriteToken(jwtToken);
         }
 
         private DateTime created;

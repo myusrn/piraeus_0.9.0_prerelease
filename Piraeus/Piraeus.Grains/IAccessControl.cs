@@ -14,6 +14,6 @@ namespace Piraeus.Grains
 
         Task ClearAsync();
 
-        Task<bool> IsAuthorizedAsync(ClaimsIdentity identity);
+        Task<AuthorizationPolicy> GetPolicyAsync();
     }
 }

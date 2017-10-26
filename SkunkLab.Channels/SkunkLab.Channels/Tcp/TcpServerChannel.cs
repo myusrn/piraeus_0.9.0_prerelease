@@ -117,7 +117,6 @@ namespace SkunkLab.Channels.Tcp
                 client.Close();
             }
 
-
             if (State != ChannelState.Closed)
             {
                 State = ChannelState.Closed;

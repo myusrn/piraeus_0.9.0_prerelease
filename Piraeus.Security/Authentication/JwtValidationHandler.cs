@@ -76,8 +76,8 @@ namespace Piraeus.Security
                     IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Convert.FromBase64String(signingKey)),
                     ValidIssuer = issuer,
                     ValidAudience = audience,
-                    ValidateAudience = true,
-                    ValidateIssuer = true,
+                    ValidateAudience = audience != null,
+                    ValidateIssuer = issuer != null,
                     ValidateIssuerSigningKey = true                    
                 };
 

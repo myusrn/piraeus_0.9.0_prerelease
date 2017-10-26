@@ -1,5 +1,8 @@
-﻿namespace Piraeus.Core.Messaging
+﻿using System;
+
+namespace Piraeus.Core.Messaging
 {
+    [Serializable]
     public enum ProtocolType
     {
         REST,

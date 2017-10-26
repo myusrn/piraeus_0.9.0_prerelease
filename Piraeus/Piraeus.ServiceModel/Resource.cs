@@ -16,12 +16,35 @@ namespace Piraeus.ServiceModel
 
         public override Task OnActivateAsync()
         {           
-            return base.OnActivateAsync();
+            if(State.ErrorLeases == null)
+            {
+                State.ErrorLeases = new Dictionary<string, IErrorObserver>();
+            }
+
+            if(State.LeaseExpiry == null)
+            {
+                State.LeaseExpiry = new Dictionary<string, Tuple<DateTime, string>>();
+            }
+
+            if(State.MetricLeases == null)
+            {
+                State.MetricLeases = new Dictionary<string, IMetricObserver>();
+            }
+
+            if(State.Subscriptions == null)
+            {
+                State.Subscriptions = new Dictionary<string, ISubscription>();
+            }
+
+            return Task.CompletedTask;
         }
 
         public override Task OnDeactivateAsync()
         {
-            return base.OnDeactivateAsync();
+            Task task = WriteStateAsync();
+            Task.WhenAll(task);
+
+            return Task.CompletedTask;
         }
 
         public async Task ClearAsync()

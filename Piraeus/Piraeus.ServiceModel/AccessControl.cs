@@ -2,10 +2,12 @@
 using System.Threading.Tasks;
 using Capl.Authorization;
 using Orleans;
+using Orleans.Providers;
 using Piraeus.Grains;
 
 namespace Piraeus.ServiceModel
 {
+    [StorageProvider(ProviderName = "store")]
     public class AccessControl : Grain<AccessControlState>, IAccessControl
     {
         public async Task ClearAsync()
@@ -14,16 +16,9 @@ namespace Piraeus.ServiceModel
             await Task.CompletedTask;
         }
 
-        public async Task<bool> IsAuthorizedAsync(ClaimsIdentity identity)
+        public async Task<AuthorizationPolicy> GetPolicyAsync()
         {
-            if(State.Policy != null)
-            {
-                return await Task.FromResult<bool>(State.Policy.Evaluate(identity));
-            }
-            else
-            {
-                return await Task.FromResult<bool>(false);
-            }
+            return await Task.FromResult<AuthorizationPolicy>(State.Policy);
         }
 
         public async Task UpsertPolicyAsync(AuthorizationPolicy policy)

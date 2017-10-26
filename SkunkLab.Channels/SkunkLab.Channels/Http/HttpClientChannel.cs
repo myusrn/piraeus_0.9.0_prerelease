@@ -7,29 +7,29 @@ using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
-using SkunkLab.Diagnostics;
 using SkunkLab.Diagnostics.Logging;
 
 namespace SkunkLab.Channels.Http
 {
     public class HttpClientChannel : HttpChannel
     {
-        public HttpClientChannel(Uri requestUri, string securityToken, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
-            : this(requestUri, contentType, observers, indexes, token)
+        public HttpClientChannel(Uri requestUri, string securityToken, string resourceUriString = null,  string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
+            : this(requestUri, resourceUriString, contentType, observers, indexes, token)
         {
             this.securityToken = securityToken;
         }
         
 
-        public HttpClientChannel(Uri requestUri,  X509Certificate2 certificate, string contentType = null, IEnumerable < Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
-            : this(requestUri, contentType, observers, indexes, token)
+        public HttpClientChannel(Uri requestUri, X509Certificate2 certificate, string resourceUriString = null,  string contentType = null, IEnumerable < Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
+            : this(requestUri, contentType, resourceUriString, observers, indexes, token)
         {
             this.certificate = certificate;
         }
 
-        public HttpClientChannel(Uri requestUri, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string,string>> indexes = null,  CancellationToken token = default(CancellationToken))
+        public HttpClientChannel(Uri requestUri, string resourceUriString = null, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string,string>> indexes = null,  CancellationToken token = default(CancellationToken))
         {
             this.requestUri = requestUri;
+            this.resourceUriString = resourceUriString;
             this.contentType = contentType;
             this.observers = observers;
             this.indexes = indexes;
@@ -47,6 +47,7 @@ namespace SkunkLab.Channels.Http
         private string securityToken;
         private string contentType;
         private Uri requestUri;
+        private string resourceUriString;
         private CancellationToken internalToken;
         private CancellationToken token;
         private bool disposed;
@@ -86,13 +87,7 @@ namespace SkunkLab.Channels.Http
         public override event EventHandler<ChannelSentEventArgs> OnSent;
         public override event EventHandler<ChannelObserverEventArgs> OnObserve;
 
-        //public override event ChannelReceivedEventHandler OnReceive;
-        //public override event ChannelCloseEventHandler OnClose;
-        //public override event ChannelOpenEventHandler OnOpen;
-        //public override event ChannelErrorEventHandler OnError;
-        //public override event ChannelStateEventHandler OnStateChange;
-        //public override event ChannelRetryEventHandler OnRetry;
-        //public override event ChannelSentEventHandler OnSent;
+     
 
         public override async Task AddMessageAsync(byte[] message)
         {            
@@ -233,7 +228,7 @@ namespace SkunkLab.Channels.Http
             }
             catch(OperationCanceledException oce)
             {
-                await Log.LogWarningAsync("Channel '{0]' cancelled with '{1}'", Id, oce.Message);
+                await Log.LogWarningAsync("Channel '{0}' cancelled with '{1}'", Id, oce.Message);
                 State = ChannelState.Aborted;
             }
             catch(AggregateException ae)
@@ -243,13 +238,13 @@ namespace SkunkLab.Channels.Http
             }
             catch(WebException we)
             {
-                await Log.LogErrorAsync("Channel '{0]' error with '{1}'", Id, we.Message);
+                await Log.LogErrorAsync("Channel '{0}' error with '{1}'", Id, we.Message);
                 State = ChannelState.Aborted;
                 OnError?.Invoke(this, new ChannelErrorEventArgs(Id, we.InnerException));
             }
             catch(Exception ex)
             {
-                await Log.LogErrorAsync("Channel '{0]' error with '{1}'", Id, ex.Message);
+                await Log.LogErrorAsync("Channel '{0}' error with '{1}'", Id, ex.Message);
                 State = ChannelState.Aborted;
                 OnError?.Invoke(this, new ChannelErrorEventArgs(Id, ex));
             }
@@ -304,9 +299,12 @@ namespace SkunkLab.Channels.Http
             else if(method == HttpMethod.Post)
             {
                 request.Method = "POST";
-                request.ContentType = contentType;  
+                request.ContentType = contentType;
 
-                if(indexes != null)
+                Uri resourceUri = new Uri(resourceUriString.ToLower(CultureInfo.InvariantCulture));
+
+                request.Headers.Add(HttpChannelConstants.RESOURCE_HEADER, resourceUri.ToString());
+                if (indexes != null)
                 {
                     foreach(KeyValuePair<string,string> index in indexes)
                     {

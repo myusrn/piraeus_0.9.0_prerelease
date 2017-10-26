@@ -246,9 +246,10 @@ namespace SkunkLab.Channels
         /// <param name="indexes"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static IChannel Create(Uri requestUri, string securityToken, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
+        public static IChannel Create(Uri requestUri, string resourceUriString, string securityToken, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
         {
-            return HttpChannel.Create(requestUri, securityToken, contentType, observers, indexes, token);
+            return HttpChannel.Create(requestUri, resourceUriString, securityToken, contentType, null, indexes, token);
+            //return HttpChannel.Create(requestUri, resourceUriString, contentType, securityToken, observers, indexes, token);
         }
 
         /// <summary>
@@ -261,24 +262,18 @@ namespace SkunkLab.Channels
         /// <param name="indexes"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static IChannel Create(Uri requestUri, X509Certificate2 certificate, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
+        public static IChannel Create(Uri requestUri, string resourceUriString, X509Certificate2 certificate, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
         {
-            return HttpChannel.Create(requestUri, certificate, contentType, observers, indexes, token);
+            //return HttpChannel.Create(requestUri, certificate, contentType, observers, indexes, token);
+            return HttpChannel.Create(requestUri, resourceUriString, certificate, contentType, observers, indexes, token);
         }
 
-        /// <summary>
-        /// HTTP client channel used to transmit and receive via long polling messages from server.
-        /// </summary>
-        /// <param name="requestUri"></param>
-        /// <param name="contentType"></param>
-        /// <param name="observers"></param>
-        /// <param name="indexes"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
-        public static IChannel Create(Uri requestUri, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
-        {
-            return HttpChannel.Create(requestUri, contentType, observers, indexes, token);
-        }
+        
+        //public static IChannel Create(Uri requestUri, string contentType = null, IEnumerable<Observer> observers = null, IEnumerable<KeyValuePair<string, string>> indexes = null, CancellationToken token = default(CancellationToken))
+        //{
+        //    //return HttpChannel.Create(requestUri, contentType, observers, indexes, token);
+        //    return HttpChannel.Create(requestUri, null, contentType, observers, indexes, token);
+        //}
 
         #endregion
 

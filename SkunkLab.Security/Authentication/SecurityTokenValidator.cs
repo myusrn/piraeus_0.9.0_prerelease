@@ -29,7 +29,7 @@ namespace SkunkLab.Security.Authentication
             }
             else if(tokenType == SecurityTokenType.SWT)
             {
-                return ValidateSwt(tokenString, issuer, audience);
+                return ValidateSwt(tokenString, securityKey, issuer, audience);
             }
             else
             {
@@ -69,17 +69,15 @@ namespace SkunkLab.Security.Authentication
         }
 
 
-        private static bool ValidateSwt(string tokenString, string issuer = null, string audience = null)
+        private static bool ValidateSwt(string tokenString, string securityKey, string issuer = null, string audience = null)
         {
             bool result = false;
-
-            //get key from cofiguration
-            string key = null;
+           
 
             try
             {
                 SimpleWebToken token = SimpleWebToken.FromString(tokenString);
-                if(!token.SignVerify(Convert.FromBase64String(key)))
+                if(!token.SignVerify(Convert.FromBase64String(securityKey)))
                 {
                     throw new System.IdentityModel.Tokens.SecurityTokenException("SWT cannot be verified.");
                 }

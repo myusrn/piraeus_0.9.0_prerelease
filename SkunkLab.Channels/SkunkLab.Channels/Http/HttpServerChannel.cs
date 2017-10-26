@@ -25,48 +25,54 @@ namespace SkunkLab.Channels.Http
             this.request = request;
             //contentType = request.Content.Headers.ContentType.MediaType;
             Port = HttpContext.Current.Request.Url.Port;
-            
-            if (request.Method == HttpMethod.Get)
-            {
-                //long polling
-                subscriptions = GetSubscriptions(request.Headers);   //subscriptions to listen             
-            }
-            else
-            {
-                //published message to resource
-                resource = GetResource(request);
-                if(resource == null)
-                {
-                    throw new InvalidOperationException("Required resource for HTTP server channel not found.");
-                }
 
-                indexes = GetIndexes(request);
-            }
+            IsAuthenticated = HttpContext.Current.Request.IsAuthenticated;
+            IsConnected = true;
+            IsEncrypted = request.RequestUri.Scheme == "https";
+            //if (request.Method == HttpMethod.Get)
+            //{
+            //    //long polling
+            //    subscriptions = GetSubscriptions(request.Headers);   //subscriptions to listen             
+            //}
+            //else
+            //{
+            //    //published message to resource
+            //    resource = GetResource(request);
+            //    if(resource == null)
+            //    {
+            //        throw new InvalidOperationException("Required resource for HTTP server channel not found.");
+            //    }
+
+            //    indexes = GetIndexes(request);
+            //}
         }
 
-        public HttpServerChannel(string endpoint, string resourceUriString, string contentType)
+        public HttpServerChannel(string endpoint, string resourceUriString, string contentType, IEnumerable<KeyValuePair<string, string>> indexes = null)
         {
             this.endpoint = endpoint;
             this.resource = resourceUriString;
             this.contentType = contentType;
+            this.indexes = indexes;
             Id = "http-" + Guid.NewGuid().ToString();
         }
 
-        public HttpServerChannel(string endpoint, string resourceUriString, string contentType, string securityToken)
+        public HttpServerChannel(string endpoint, string resourceUriString, string contentType, string securityToken, IEnumerable<KeyValuePair<string,string>> indexes = null)
         {
             this.endpoint = endpoint;
             this.resource = resourceUriString;
             this.contentType = contentType;
             this.securityToken = securityToken;
+            this.indexes = indexes;
             Id = "http-" + Guid.NewGuid().ToString();
         }
 
-        public HttpServerChannel(string endpoint, string resourceUriString, string contentType, X509Certificate2 certificate)
+        public HttpServerChannel(string endpoint, string resourceUriString, string contentType, X509Certificate2 certificate, IEnumerable<KeyValuePair<string, string>> indexes = null)
         {
             this.endpoint = endpoint;
             this.resource = resourceUriString;
             this.contentType = contentType;
             this.certificate = certificate;
+            this.indexes = indexes;
             Id = "http-" + Guid.NewGuid().ToString();
         }
 
@@ -77,7 +83,7 @@ namespace SkunkLab.Channels.Http
         private HttpRequestMessage request;
         private string[] subscriptions;
         private string resource;
-        private KeyValuePair<string, string>[] indexes;
+        private IEnumerable<KeyValuePair<string, string>> indexes;
 
         public override string Id { get; internal set; }
 
@@ -114,14 +120,25 @@ namespace SkunkLab.Channels.Http
                 request.ClientCertificates.Add(certificate);
             }
 
-            request.ContentType = contentType;
-            request.ContentLength = message.Length;
-            request.Method = "POST";
-
             if (string.IsNullOrEmpty(resource))
             {
                 request.Headers.Add(HttpChannelConstants.RESOURCE_HEADER, resource);
             }
+
+            string[] indexArray = GetIndexes();
+            if (indexArray != null)
+            {
+                foreach (var item in indexArray)
+                {
+                    request.Headers.Add(HttpChannelConstants.INDEX_HEADER, item);
+                }
+            }
+
+            request.ContentType = contentType;
+            request.ContentLength = message.Length;
+            request.Method = "POST";
+
+            
 
             using (Stream stream = request.GetRequestStream())
             {
@@ -173,56 +190,56 @@ namespace SkunkLab.Channels.Http
             throw new NotImplementedException();
         }
 
-        private string[] GetSubscriptions(HttpRequestHeaders headers)
-        {
-            IEnumerable<string> subscriptions = headers.GetValues(HttpChannelConstants.SUBSCRIBE_HEADER);
-            List<string> subscriptionList = new List<string>();
-            foreach (string subscription in subscriptions)
-            {
-                if (Uri.IsWellFormedUriString(subscription, UriKind.Absolute))
-                {
-                    subscriptionList.Add(subscription);
-                }
-                else
-                {
-                    throw new UriFormatException(String.Format("Invalid subscription URI {0}", subscription));
-                }
-            }
+        //private string[] GetSubscriptions(HttpRequestHeaders headers)
+        //{
+        //    IEnumerable<string> subscriptions = headers.GetValues(HttpChannelConstants.SUBSCRIBE_HEADER);
+        //    List<string> subscriptionList = new List<string>();
+        //    foreach (string subscription in subscriptions)
+        //    {
+        //        if (Uri.IsWellFormedUriString(subscription, UriKind.Absolute))
+        //        {
+        //            subscriptionList.Add(subscription);
+        //        }
+        //        else
+        //        {
+        //            throw new UriFormatException(String.Format("Invalid subscription URI {0}", subscription));
+        //        }
+        //    }
 
-            return subscriptionList.Count == 0 ? null : subscriptionList.ToArray();
-        }
+        //    return subscriptionList.Count == 0 ? null : subscriptionList.ToArray();
+        //}
 
-        private KeyValuePair<string,string>[] GetIndexes(HttpRequestMessage request)
-        {
-            List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>();
-            IEnumerable<string> indexes = request.Headers.GetValues(HttpChannelConstants.INDEX_HEADER);
-            if(indexes == null)
-            {
-                indexes = (from kp in request.GetQueryNameValuePairs()
-                           where kp.Key == "index"
-                           select kp.Value);
-            }
+        //private KeyValuePair<string,string>[] GetIndexes(HttpRequestMessage request)
+        //{
+        //    List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>();
+        //    IEnumerable<string> indexes = request.Headers.GetValues(HttpChannelConstants.INDEX_HEADER);
+        //    if(indexes == null)
+        //    {
+        //        indexes = (from kp in request.GetQueryNameValuePairs()
+        //                   where kp.Key == "index"
+        //                   select kp.Value);
+        //    }
 
-            if(indexes == null)
-            {
-                return null;
-            }
+        //    if(indexes == null)
+        //    {
+        //        return null;
+        //    }
 
-            foreach (string index in indexes)
-            {
-                string[] parts = index.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
-                if (parts.Length == 2)
-                {
-                    list.Add(new KeyValuePair<string, string>(parts[0], parts[1]));
-                }
-                else
-                {
-                    throw new InvalidOperationException("Indexes in HTTP server channel header not understood.");
-                }
-            }
+        //    foreach (string index in indexes)
+        //    {
+        //        string[] parts = index.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+        //        if (parts.Length == 2)
+        //        {
+        //            list.Add(new KeyValuePair<string, string>(parts[0], parts[1]));
+        //        }
+        //        else
+        //        {
+        //            throw new InvalidOperationException("Indexes in HTTP server channel header not understood.");
+        //        }
+        //    }
 
-            return list.ToArray();
-        }
+        //    return list.ToArray();
+        //}
 
         private string GetResource(HttpRequestMessage request)
         {
@@ -258,6 +275,22 @@ namespace SkunkLab.Channels.Http
             }
 
             return resourceUriString;
+        }
+
+        private string[] GetIndexes()
+        {
+            List<string> indexList = new List<string>();
+
+            if (indexes != null)
+            {                
+                foreach (KeyValuePair<string, string> index in indexes)
+                {                    
+                    indexList.Add(index.Key + ";" + index.Value);
+                    //request.Headers.Add(HttpChannelConstants.INDEX_HEADER, index.Key + ";" + index.Value);
+                }
+            }
+
+            return indexList.Count > 0 ? indexList.ToArray() : null;
         }
 
     }

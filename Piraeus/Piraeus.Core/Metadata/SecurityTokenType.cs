@@ -1,5 +1,8 @@
-﻿namespace Piraeus.Core.Metadata
+﻿using System;
+
+namespace Piraeus.Core.Metadata
 {
+    [Serializable]
     public enum SecurityTokenType
     {
         None,

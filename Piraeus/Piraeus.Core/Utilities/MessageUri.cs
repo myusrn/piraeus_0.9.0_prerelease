@@ -72,12 +72,12 @@ namespace Piraeus.Core.Utilities
             Indexes = BuildIndexes(indexes);
             IEnumerable<string> messageIds = GetEnumerableHeaders(HttpHeaderConstants.MESSAGEID_HEADER, request);
 
-            if (resources != null || resources.Count() == 1)
+            if (resources != null && resources.Count() == 1)
             {
                 this.Resource = resources.First();
             }
 
-            if (messageIds != null || messageIds.Count() == 1)
+            if (messageIds != null && messageIds.Count() == 1)
             {
                 this.MessageId = messageIds.First();
             }
@@ -117,7 +117,21 @@ namespace Piraeus.Core.Utilities
         
         private IEnumerable<string> GetEnumerableHeaders(string key, HttpRequestMessage request)
         {
-            return request.Headers.GetValues(key);
+            try
+            {
+                if (request.Headers.Contains(key))
+                {
+                    return request.Headers.GetValues(key);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
         private IEnumerable<string> GetEnumerableParameters(string key, HttpRequestMessage request)
         {
@@ -128,6 +142,11 @@ namespace Piraeus.Core.Utilities
         [EditorBrowsable(EditorBrowsableState.Never)]
         internal KeyValuePair<string,string>[] BuildIndexes(IEnumerable<string> indexes)
         {
+            if(indexes == null)
+            {
+                return null;
+            }
+
             List<KeyValuePair<string, string>> indexList = new List<KeyValuePair<string, string>>();
             foreach (string index in indexes)
             {

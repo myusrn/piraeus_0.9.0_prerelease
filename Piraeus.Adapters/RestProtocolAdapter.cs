@@ -40,6 +40,8 @@ namespace Piraeus.Adapters
         {
             adapter = new OrleansAdapter();
             adapter.OnObserve += Adapter_OnObserve;
+            Task task = Channel.OpenAsync();
+            Task.WhenAll(task);
         }
 
         private void Adapter_OnObserve(object sender, ObserveMessageEventArgs e)
@@ -87,10 +89,22 @@ namespace Piraeus.Adapters
             if (request.Method == HttpMethod.Post)
             {
                 EventMessage message = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, request.Content.ReadAsByteArrayAsync().Result);
-                Task task = PublishAsync(message, new List<KeyValuePair<string, string>>(uri.Indexes));
-                Task.WhenAll(task);
-                Task final = Channel.CloseAsync();
-                Task.WhenAll(final);
+                try
+                {
+                    List<KeyValuePair<string, string>> indexList = uri.Indexes == null ? null : new List<KeyValuePair<string, string>>(uri.Indexes);
+                    Task task = PublishAsync(message, indexList);
+                    Task.WhenAll(task);
+                    Task final = Channel.CloseAsync();
+                    Task.WhenAll(final);
+                }
+                catch(AggregateException ae)
+                {
+
+                }
+                catch(Exception ex)
+                {
+
+                }
             }
             
 

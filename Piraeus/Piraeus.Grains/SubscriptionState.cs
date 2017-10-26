@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
-using Orleans;
 
 namespace Piraeus.Grains
 {
+    [Serializable]
     public class SubscriptionState 
     {
 

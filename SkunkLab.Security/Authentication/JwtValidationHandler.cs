@@ -1,34 +1,21 @@
 ﻿
 
-namespace SkunkLab.Security
+namespace SkunkLab.Security.Authentication
 {
-    //using Piraeus.Configuration;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
-    using System.IdentityModel.Tokens;
+    using System.IdentityModel.Tokens.Jwt;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
-    using System.ServiceModel.Security.Tokens;
     using System.Threading;
     using System.Threading.Tasks;
     using System.Web;
-    //using System.Web.Http;
-    using System.IdentityModel.Tokens.Jwt;
     using Microsoft.IdentityModel.Tokens;
 
     public class JwtValidationHandler : DelegatingHandler
     {
-        //public JwtValidationHandler()
-        //{
-        //    SymmetricKeyTokenInfo info = PiraeusConfigurationManager.GetSigningTokenInfo("JWT");
-
-        //    this.signingKey = info.SigningKey;
-        //    this.audience = info.Audience;
-        //    this.issuer = info.Issuer;
-        //}
-
         public JwtValidationHandler(string signingKey, string issuer = null, string audience = null)
         {
             this.signingKey = signingKey;

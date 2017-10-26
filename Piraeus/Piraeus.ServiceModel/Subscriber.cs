@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Orleans;
+using Orleans.Providers;
 using Piraeus.Grains;
 
 namespace Piraeus.ServiceModel
 {
+    [StorageProvider(ProviderName = "store")]
     public class Subscriber : Grain<SubscriberState>, ISubscriber
     {
         public override Task OnActivateAsync()

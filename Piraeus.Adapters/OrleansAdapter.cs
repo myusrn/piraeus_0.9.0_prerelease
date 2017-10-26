@@ -127,9 +127,22 @@ namespace Piraeus.Adapters
 
         public async Task<bool> CanPublishAsync(string resourceUriString, bool channelEncrypted)
         {
-            IResource resource = await GraphManager.GetResourceAsync(resourceUriString);
-            ResourceMetadata metadata = await resource.GetMetadataAsync();
+            ResourceMetadata metadata = null;
 
+            try
+            {
+                metadata = await GraphManager.GetResourceMetadataAsync(resourceUriString);
+                //IResource resource = await GraphManager.GetResourceAsync(resourceUriString);
+                //metadata = await resource.GetMetadataAsync();
+            }
+            catch(AggregateException ae)
+            {
+               
+            }
+            catch(Exception ex)
+            {
+
+            }
             if (metadata == null)
             {
                 await Log.LogWarningAsync("Publish resource metadata is null.");
@@ -155,9 +168,10 @@ namespace Piraeus.Adapters
             }
 
             IAccessControl accessControl = await GraphManager.GetAccessControlAsync(metadata.PublishPolicyUriString);
-
+            Capl.Authorization.AuthorizationPolicy policy = await accessControl.GetPolicyAsync();
+            
             ClaimsIdentity identity = Thread.CurrentPrincipal.Identity as ClaimsIdentity;
-            bool authz = await accessControl.IsAuthorizedAsync(identity);
+            bool authz = policy.Evaluate(identity);
 
             if (!authz)
             {
@@ -196,10 +210,11 @@ namespace Piraeus.Adapters
                 return false;
             }
 
-            IAccessControl accessControl = await GraphManager.GetAccessControlAsync(metadata.PublishPolicyUriString);
+            IAccessControl accessControl = await GraphManager.GetAccessControlAsync(metadata.SubscribePolicyUriString);
+            Capl.Authorization.AuthorizationPolicy policy = await accessControl.GetPolicyAsync();
 
             ClaimsIdentity identity = Thread.CurrentPrincipal.Identity as ClaimsIdentity;
-            bool authz = await accessControl.IsAuthorizedAsync(identity);
+            bool authz = policy.Evaluate(identity);
 
             if (!authz)
             {
