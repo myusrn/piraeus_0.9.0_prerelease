@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Orleans;
 using Piraeus.Core.Metadata;
+using Piraeus.Grains;
 using Piraeus.ServiceModel;
 
 namespace OrleansClientTest
@@ -29,84 +31,80 @@ namespace OrleansClientTest
                 return;
             }
             Console.WriteLine("Olreans client initialized");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
 
-            Console.WriteLine("Add some metadata");
-            try
+            Task task = Task.Factory.StartNew(async () =>
             {
-                AddMetadata();
-            }
-            catch(Exception ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(ex.Message);
-                Console.ResetColor();
-                Console.ReadKey();
-                return;
-            }
+                //await AddAsync();
+                await GetAsync();
+            });
 
-            Console.WriteLine("Metadata addded");
+            Task.WaitAll(task);
 
-            Console.WriteLine("Get metadata");
-            try
-            {
-                GetMetadata();
-            }
-            catch(Exception ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(ex.Message);
-                Console.ResetColor();
-                Console.ReadKey();
-                return;
-            }
-
-            Console.WriteLine("Got metadata");
+        
             Console.WriteLine("Done");
             Console.ReadKey();
 
 
         }
 
-        static void GetMetadata()
+        static async Task AddAsync()
         {
             try
             {
-                Task<ResourceMetadata> task = GraphManager.GetResourceMetadataAsync("http://www.example.org/resource1");
-                Task.WhenAll<ResourceMetadata>(task);
-                ResourceMetadata metadata = task.Result;
+                ResourceMetadata metadata = new ResourceMetadata()
+                {
+                    RequireEncryptedChannel = false,
+                    Enabled = true,
+                    PublishPolicyUriString = "http://www.example.org/pubpolicy",
+                    ResourceUriString = "http://www.example.org/resource1",
+                    SubscribePolicyUriString = "http://www.example.org/subpolicy"
+                };
+
+                IResource resource = GrainClient.GrainFactory.GetGrain<IResource>(metadata.ResourceUriString);
+                await resource.UpsertMetadataAsync(metadata);
             }
             catch(AggregateException ae)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(ae.Flatten().InnerException.Message);
-                Console.ResetColor();
-                Console.ReadKey();
-                return;
+                Console.WriteLine("AE ADD {0}", ae.Flatten().InnerException.Message);
+
             }
             catch(Exception ex)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(ex.Message);
-                Console.ResetColor();
-                Console.ReadKey();
-                return;
+                Console.WriteLine("EX ADD {0}", ex.Message);
+
             }
         }
-        static void AddMetadata()
-        {
-            ResourceMetadata metadata = new ResourceMetadata()
-            {
-                RequireEncryptedChannel = false,
-                Enabled = true,
-                PublishPolicyUriString = "http://www.example.org/pubpolicy",
-                ResourceUriString = "http://www.example.org/resource1",
-                SubscribePolicyUriString = "http://www.example.org/subpolicy"
-            };
 
-           
-            Task task = GraphManager.AddResourceAsync(metadata);
-            Task.WaitAll(task);
+        static async Task GetAsync()
+        {
+            try
+            {
+                IResource resource = GrainClient.GrainFactory.GetGrain<IResource>("http://www.example.org/resource1");
+                ResourceMetadata metadata = await resource.GetMetadataAsync();
+
+                if (metadata == null)
+                {
+                    Console.WriteLine("Metadata is null");
+                }
+                else
+                {
+                    Console.WriteLine("Metadata Id = {0}", metadata.ResourceUriString);
+                }
+            }
+            catch (AggregateException ae)
+            {
+                Console.WriteLine("AE GET {0}", ae.Flatten().InnerException.Message);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("EX GET {0}", ex.Message);
+
+            }
         }
+        
 
         static void Init()
         {

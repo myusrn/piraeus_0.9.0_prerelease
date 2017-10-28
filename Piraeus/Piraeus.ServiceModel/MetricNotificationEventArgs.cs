@@ -9,9 +9,6 @@ namespace Piraeus.ServiceModel
         {
 
         }
-
-        
-
         public MetricNotificationEventArgs(CommunicationMetrics metrics)
         {
             Metrics = metrics;

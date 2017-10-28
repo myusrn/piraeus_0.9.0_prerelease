@@ -75,7 +75,6 @@ C:\_git\core\Tests\OrleansClientTest\OrleansClientTest\bin\Debug\Microsoft.Data.
 C:\_git\core\Tests\OrleansClientTest\OrleansClientTest\bin\Debug\Microsoft.Data.OData.dll
 C:\_git\core\Tests\OrleansClientTest\OrleansClientTest\bin\Debug\Microsoft.Data.Services.Client.dll
 C:\_git\core\Tests\OrleansClientTest\OrleansClientTest\bin\Debug\System.Spatial.dll
-C:\_git\core\Tests\OrleansClientTest\OrleansClientTest\bin\Debug\Microsoft.Azure.KeyVault.Core.xml
 C:\_git\core\Tests\OrleansClientTest\OrleansClientTest\bin\Debug\Microsoft.Data.Edm.xml
 C:\_git\core\Tests\OrleansClientTest\OrleansClientTest\bin\Debug\Microsoft.Data.OData.xml
 C:\_git\core\Tests\OrleansClientTest\OrleansClientTest\bin\Debug\Microsoft.Data.Services.Client.xml

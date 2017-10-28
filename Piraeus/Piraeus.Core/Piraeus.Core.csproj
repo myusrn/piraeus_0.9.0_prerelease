@@ -65,6 +65,7 @@
     <Compile Include="Utilities\HttpHeaderConstants.cs" />
     <Compile Include="Utilities\MessageUri.cs" />
     <Compile Include="Utilities\QueryStringConstants.cs" />
+    <Compile Include="Utilities\UriExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
