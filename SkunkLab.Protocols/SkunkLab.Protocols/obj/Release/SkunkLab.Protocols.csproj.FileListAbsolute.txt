@@ -1,5 +1,0 @@
-C:\_git\piraeus\SkunkLab.Protocols\SkunkLab.Protocols\bin\Release\SkunkLab.Protocols.dll
-C:\_git\piraeus\SkunkLab.Protocols\SkunkLab.Protocols\bin\Release\SkunkLab.Protocols.pdb
-C:\_git\piraeus\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocols.csprojResolveAssemblyReference.cache
-C:\_git\piraeus\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocols.dll
-C:\_git\piraeus\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocols.pdb

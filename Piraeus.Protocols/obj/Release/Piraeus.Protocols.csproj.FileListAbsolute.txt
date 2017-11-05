@@ -1,4 +1,0 @@
-C:\Users\malong\Downloads\Piraeus\piraeus-master\src\Piraeus.Protocols\bin\Release\Piraeus.Protocols.dll
-C:\Users\malong\Downloads\Piraeus\piraeus-master\src\Piraeus.Protocols\bin\Release\Piraeus.Protocols.pdb
-C:\Users\malong\Downloads\Piraeus\piraeus-master\src\Piraeus.Protocols\obj\Release\Piraeus.Protocols.dll
-C:\Users\malong\Downloads\Piraeus\piraeus-master\src\Piraeus.Protocols\obj\Release\Piraeus.Protocols.pdb
