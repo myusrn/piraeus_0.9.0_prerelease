@@ -1,0 +1,14 @@
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\System.Collections.Immutable.dll
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\System.IO.Compression.dll
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\System.IO.FileSystem.dll
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\System.Reflection.Metadata.dll
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\System.ValueTuple.dll
+C:\_git\core\src\Piraeus\WebGateway\WebGateway\bin\roslyn\VBCSCompiler.exe

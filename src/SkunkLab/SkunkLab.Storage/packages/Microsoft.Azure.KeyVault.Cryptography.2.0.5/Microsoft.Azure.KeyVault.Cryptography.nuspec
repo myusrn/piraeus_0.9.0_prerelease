@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.KeyVault.Cryptography</id>
+    <version>2.0.5</version>
+    <title>Microsoft Azure Key Vault Cryptography</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>https://raw.githubusercontent.com/Microsoft/dotnet/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Azure/azure-sdk-for-net</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Microsoft Azure Key Vault Cryptography Class Library</description>
+    <summary>Class library for Azure Key Vault Cryptography.</summary>
+    <releaseNotes>This is a preview release of the Azure Key Vault Cryptography .NET SDK</releaseNotes>
+    <tags>Microsoft Azure key vault cryptography</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Microsoft.Azure.KeyVault.Core" version="[2.0.4, 3.0.0)" />
+      </group>
+      <group targetFramework=".NETStandard1.5">
+        <dependency id="System.Diagnostics.Tools" version="[4.0.1, )" />
+        <dependency id="System.Linq" version="[4.1.0, )" />
+        <dependency id="System.Globalization" version="[4.0.11, )" />
+        <dependency id="System.Runtime.Extensions" version="[4.1.0, )" />
+        <dependency id="System.Security.Cryptography.Primitives" version="[4.0.0, )" />
+        <dependency id="System.Security.Cryptography.Algorithms" version="[4.2.0, )" />
+        <dependency id="Microsoft.Azure.KeyVault.Core" version="[2.0.4, 3.0.0)" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
