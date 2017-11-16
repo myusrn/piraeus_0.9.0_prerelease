@@ -43,10 +43,12 @@ namespace Piraeus.Clients.Coap
             session.UpdateKeepAliveTimestamp();
 
             byte[] token = CoapToken.Create().TokenBytes;
-            ushort id = session.CoapSender.NewId(token, null, action);            
+            ushort id = session.CoapSender.NewId(token, null, action);
+            string scheme = channel.IsEncrypted ? "coaps" : "coap";
+            string coapUriString = String.Format("{0}://{1}?r={2}", scheme, config.Authority, resourceUriString);
 
             RequestMessageType mtype = confirmable ? RequestMessageType.Confirmable : RequestMessageType.NonConfirmable;
-            CoapRequest cr = new CoapRequest(id, mtype, MethodType.POST, new Uri(resourceUriString), MediaTypeConverter.ConvertToMediaType(contentType), payload);
+            CoapRequest cr = new CoapRequest(id, mtype, MethodType.POST, new Uri(coapUriString), MediaTypeConverter.ConvertToMediaType(contentType), payload);
             await channel.SendAsync(cr.Encode());
         }
 
@@ -118,7 +120,8 @@ namespace Piraeus.Clients.Coap
             CoapRequest cr = new CoapRequest(id, RequestMessageType.NonConfirmable, MethodType.GET, token, new Uri(coapUriString), null);
             cr.Observe = true;
             observers.Add(resourceUriString, Convert.ToBase64String(token));
-            await channel.SendAsync(cr.Encode());
+            byte[] observeRequest = cr.Encode();
+            await channel.SendAsync(observeRequest);
         }
 
         public async Task UnobserveAsync(string resourceUriString)
@@ -139,8 +142,6 @@ namespace Piraeus.Clients.Coap
 
                 session.CoapSender.Unobserve(Convert.FromBase64String(tokenString));
             }
-
-            
         }
 
         #region channel events
@@ -156,8 +157,7 @@ namespace Piraeus.Clients.Coap
                 pingId.Remove(msg.MessageId);
                 //ping complete
                 OnPingResponse?.Invoke(this, new CoapMessageEventArgs(msg));
-            }
-            
+            }            
         }
 
         private void Channel_OnStateChange(object sender, ChannelStateEventArgs args)

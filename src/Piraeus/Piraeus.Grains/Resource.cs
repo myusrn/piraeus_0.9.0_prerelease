@@ -140,8 +140,12 @@ namespace Piraeus.Grains
             //if the subscriber does not have this subscription, no harm, it wasn't durable
             ISubscription subscription = GrainFactory.GetGrain<ISubscription>(subscriptionUriString);
             SubscriptionMetadata metadata = await subscription.GetMetadataAsync();
-            ISubscriber subscriber = GrainFactory.GetGrain<ISubscriber>(metadata.Identity);
-            await subscriber.RemoveSubscriptionAsync(subscriptionUriString);
+
+            if(metadata != null && !string.IsNullOrEmpty(metadata.Identity))
+            {
+                ISubscriber subscriber = GrainFactory.GetGrain<ISubscriber>(metadata.Identity);
+                await subscriber.RemoveSubscriptionAsync(subscriptionUriString);
+            }
 
             //remove the subscription from the resource
             State.Subscriptions.Remove(subscriptionUriString);
@@ -285,7 +289,7 @@ namespace Piraeus.Grains
 
                 if (leaseTimer == null)
                 {
-                    leaseTimer = RegisterTimer(CheckLeaseExpiryAsync, null, TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(60.0));
+                    leaseTimer = RegisterTimer(CheckLeaseExpiryAsync, null, TimeSpan.FromSeconds(10.0), TimeSpan.FromSeconds(60.0));
                 }
             }
             catch(Exception ex)
@@ -322,7 +326,7 @@ namespace Piraeus.Grains
 
                 if (leaseTimer == null)
                 {
-                    leaseTimer = RegisterTimer(CheckLeaseExpiryAsync, null, TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(60.0));
+                    leaseTimer = RegisterTimer(CheckLeaseExpiryAsync, null, TimeSpan.FromSeconds(10.0), TimeSpan.FromSeconds(60.0));
                 }
             }
             catch(Exception ex)

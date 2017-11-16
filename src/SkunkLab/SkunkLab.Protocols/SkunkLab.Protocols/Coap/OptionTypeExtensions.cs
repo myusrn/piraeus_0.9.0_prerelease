@@ -65,6 +65,11 @@ namespace SkunkLab.Protocols.Coap
             {
                 return null;
             }
+            else if (typeValue == 6)
+            {
+                byte[] b = new byte[] { Convert.ToByte(value) };
+                return b;
+            }
             else if(typeValue == 1)
             {
                 return value == null ? null : (byte[])value;                

@@ -1,0 +1,1 @@
+﻿import-module C:\_git\core\Powershell\SkunkLab.Powershell\bin\Debug\SkunkLab.Powershell.dll

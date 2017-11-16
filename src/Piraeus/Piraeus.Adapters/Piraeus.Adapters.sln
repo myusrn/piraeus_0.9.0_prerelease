@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piraeus.Adapters", "Piraeus.Adapters.csproj", "{30009B82-B444-4AD0-9BB4-7198DC103F8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piraeus.Adapters", "Piraeus.Adapters.csproj", "{72E062B7-9BAF-47E1-AC10-D89CC3994E3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{30009B82-B444-4AD0-9BB4-7198DC103F8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30009B82-B444-4AD0-9BB4-7198DC103F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30009B82-B444-4AD0-9BB4-7198DC103F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30009B82-B444-4AD0-9BB4-7198DC103F8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E062B7-9BAF-47E1-AC10-D89CC3994E3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E062B7-9BAF-47E1-AC10-D89CC3994E3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E062B7-9BAF-47E1-AC10-D89CC3994E3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E062B7-9BAF-47E1-AC10-D89CC3994E3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {6067474E-DBF5-4362-A937-B958C2580759}
+		SolutionGuid = {FDDB5429-A1A5-4A3B-9E71-F7A9CA3C343A}
 	EndGlobalSection
 EndGlobal

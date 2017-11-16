@@ -25,7 +25,7 @@ namespace SkunkLab.Protocols.Coap.Handlers
             }
             else if(message.Code == CodeType.GET)
             {
-                return new CoapObserveHandler(session, message);
+                return new CoapObserveHandler(session, message, dispatcher);
             }
             else if(message.Code == CodeType.DELETE)
             {

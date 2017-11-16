@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Capl.Authorization;
 using Orleans;
 using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
-using Piraeus.Grains;
 using Piraeus.GrainInterfaces;
+using Piraeus.Grains;
 using SkunkLab.Diagnostics.Logging;
 
 namespace Piraeus.Adapters
 {
-    public class OrleansAdapter : IOrleansAdapter
+    public class OrleansAdapter : OrleansAdapterBase
     {
         public OrleansAdapter()
         {
@@ -30,123 +32,10 @@ namespace Piraeus.Adapters
         private System.Timers.Timer leaseTimer; //timer for leases
         private bool disposedValue = false; // To detect redundant calls
 
-        #region Interface
-
-        public async Task PublishAsync(EventMessage message, List<KeyValuePair<string, string>> indexes = null)
+        public override async Task<bool> CanPublishAsync(string resourceUriString, bool channelEncrypted)
         {
-            IResource resource = GraphManager.GetResource(message.ResourceUri);
-            await resource.PublishAsync(message, indexes);
-        }
-        public async Task<List<string>> LoadDurableSubscriptionsAsync(string identity)
-        {
-            List<string> list = new List<string>();
-            
-            IEnumerable<string> subscriptionUriStrings = await GraphManager.GetSubscriberSubscriptionsListAsync(identity);
-            foreach (var item in subscriptionUriStrings)
-            {
-                if (!durableObservers.ContainsKey(item))
-                {
-                    MessageObserver observer = new MessageObserver();
-                    observer.OnNotify += Observer_OnNotify;
+            ResourceMetadata metadata = await GraphManager.GetResourceMetadataAsync(resourceUriString);
 
-                    //set the observer in the subscription with the lease lifetime
-                    TimeSpan leaseTime = TimeSpan.FromSeconds(20.0);
-
-                    string leaseKey = await GraphManager.AddSubscriptionObserverAsync(item, leaseTime, observer);
-
-                    //add the lease key to the list of ephemeral observers
-                    durableObservers.Add(item, observer);
-                    
-
-                    //get the resource from the subscription
-                    Uri uri = new Uri(item);
-                    string resourceUriString = item.Replace(uri.Segments[uri.Segments.Length - 1], "");
-
-                    list.Add(resourceUriString); //add to list to return
-
-                    //add the resource, subscription, and lease key the container
-
-                    if (!container.ContainsKey(resourceUriString))
-                    {
-                        container.Add(resourceUriString, new Tuple<string, string>(item, leaseKey));
-                    }
-                }
-            }
-
-            //ensure the lease timer is running 50% faster than the lease.
-            if (subscriptionUriStrings.Count() > 0)
-            {
-                EnsureLeaseTimer();
-            }
-
-            return list.Count == 0 ? null : list;
-
-        }
-
-        public async Task<string> SubscribeAsync(string resourceUriString, SubscriptionMetadata metadata)
-        {
-            metadata.IsEphemeral = true;
-            IResource resource = GraphManager.GetResource(resourceUriString);
-            
-            string subscriptionUriString = await GraphManager.SubscribeAsync(resourceUriString, metadata);
-
-            //create and observer and wire up event to receive notifications
-            MessageObserver observer = new MessageObserver();
-            observer.OnNotify += Observer_OnNotify;
-
-            //set the observer in the subscription with the lease lifetime
-            TimeSpan leaseTime = TimeSpan.FromSeconds(20.0);
-
-            string leaseKey = await GraphManager.AddSubscriptionObserverAsync(subscriptionUriString, leaseTime, observer);
-
-            //add the lease key to the list of ephemeral observers
-            ephemeralObservers.Add(subscriptionUriString, observer);
-
-            //add the resource, subscription, and lease key the container
-            if (!container.ContainsKey(resourceUriString))
-            {
-                container.Add(resourceUriString, new Tuple<string, string>(subscriptionUriString, leaseKey));
-            }
-
-            //ensure the lease timer is running
-            EnsureLeaseTimer();
-
-            return subscriptionUriString;
-        }
-        
-        public async Task UnsubscribeAsync(string resourceUriString)
-        {
-            //unsubscribe from resource
-            if (container.ContainsKey(resourceUriString))
-            {
-                if (ephemeralObservers.ContainsKey(container[resourceUriString].Item1))
-                {                    
-                    await GraphManager.RemoveSubscriptionObserverAsync(container[resourceUriString].Item1, container[resourceUriString].Item2);
-                    ephemeralObservers.Remove(container[resourceUriString].Item1);
-                }
-
-                container.Remove(resourceUriString);
-            }            
-        }
-
-        public async Task<bool> CanPublishAsync(string resourceUriString, bool channelEncrypted)
-        {
-            ResourceMetadata metadata = null;
-
-            try
-            {                
-                metadata = await GraphManager.GetResourceMetadata(resourceUriString);
-                //IResource resource = await GraphManager.GetResourceAsync(resourceUriString);
-                //metadata = await resource.GetMetadataAsync();
-            }
-            catch(AggregateException ae)
-            {
-               
-            }
-            catch(Exception ex)
-            {
-
-            }
             if (metadata == null)
             {
                 await Log.LogWarningAsync("Publish resource metadata is null.");
@@ -171,8 +60,14 @@ namespace Piraeus.Adapters
                 return false;
             }
 
-            Capl.Authorization.AuthorizationPolicy policy = await GraphManager.GetAccessControlPolicyAsync(metadata.PublishPolicyUriString);            
-                        
+            AuthorizationPolicy policy = await GraphManager.GetAccessControlPolicyAsync(metadata.PublishPolicyUriString);
+
+            if (policy == null)
+            {
+                await Log.LogWarningAsync("Publish policy URI {0} did not return an authorization policy.", metadata.PublishPolicyUriString);
+                return false;
+            }
+
             ClaimsIdentity identity = Thread.CurrentPrincipal.Identity as ClaimsIdentity;
             bool authz = policy.Evaluate(identity);
 
@@ -184,10 +79,9 @@ namespace Piraeus.Adapters
             return authz;
         }
 
-        public async Task<bool> CanSubscribeAsync(string resourceUriString, bool channelEncrypted)
-        {
-            IResource resource = GraphManager.GetResource(resourceUriString);
-            ResourceMetadata metadata = await resource.GetMetadataAsync();
+        public override async Task<bool> CanSubscribeAsync(string resourceUriString, bool channelEncrypted)
+        {            
+            ResourceMetadata metadata = await GraphManager.GetResourceMetadataAsync(resourceUriString);
 
             if (metadata == null)
             {
@@ -213,7 +107,13 @@ namespace Piraeus.Adapters
                 return false;
             }
 
-            Capl.Authorization.AuthorizationPolicy policy = await GraphManager.GetAccessControlPolicyAsync(metadata.SubscribePolicyUriString);
+            AuthorizationPolicy policy = await GraphManager.GetAccessControlPolicyAsync(metadata.SubscribePolicyUriString);
+            
+            if(policy == null)
+            {
+                await Log.LogWarningAsync("Subscription policy URI {0} did not return an authorization policy.", metadata.SubscribePolicyUriString);
+                return false;
+            }
 
             ClaimsIdentity identity = Thread.CurrentPrincipal.Identity as ClaimsIdentity;
             bool authz = policy.Evaluate(identity);
@@ -226,7 +126,107 @@ namespace Piraeus.Adapters
             return authz;
         }
 
+        public override async Task<List<string>> LoadDurableSubscriptionsAsync(string identity)
+        {
+            List<string> list = new List<string>();
 
+            IEnumerable<string> subscriptionUriStrings = await GraphManager.GetSubscriberSubscriptionsListAsync(identity);
+            foreach (var item in subscriptionUriStrings)
+            {
+                if (!durableObservers.ContainsKey(item))
+                {
+                    MessageObserver observer = new MessageObserver();
+                    observer.OnNotify += Observer_OnNotify;
+
+                    //set the observer in the subscription with the lease lifetime
+                    TimeSpan leaseTime = TimeSpan.FromSeconds(20.0);
+
+                    string leaseKey = await GraphManager.AddSubscriptionObserverAsync(item, leaseTime, observer);
+
+                    //add the lease key to the list of ephemeral observers
+                    durableObservers.Add(item, observer);
+
+
+                    //get the resource from the subscription
+                    Uri uri = new Uri(item);
+                    string resourceUriString = item.Replace(uri.Segments[uri.Segments.Length - 1], "");
+
+                    list.Add(resourceUriString); //add to list to return
+
+                    //add the resource, subscription, and lease key the container
+
+                    if (!container.ContainsKey(resourceUriString))
+                    {
+                        container.Add(resourceUriString, new Tuple<string, string>(item, leaseKey));
+                    }
+                }
+            }
+
+            if (subscriptionUriStrings.Count() > 0)
+            {
+                EnsureLeaseTimer();
+            }
+
+            return list.Count == 0 ? null : list;
+        }
+
+        public override async Task PublishAsync(EventMessage message, List<KeyValuePair<string, string>> indexes = null)
+        {
+            if(indexes == null || indexes.Count == 0)
+            {
+                await GraphManager.PublishAsync(message.ResourceUri, message);
+            }
+            else
+            {
+                await GraphManager.PublishAsync(message.ResourceUri, message, indexes);
+            }
+        }
+
+        public override async Task<string> SubscribeAsync(string resourceUriString, SubscriptionMetadata metadata)
+        {
+            metadata.IsEphemeral = true;
+            string subscriptionUriString = await GraphManager.SubscribeAsync(resourceUriString, metadata);
+
+            //create and observer and wire up event to receive notifications
+            MessageObserver observer = new MessageObserver();
+            observer.OnNotify += Observer_OnNotify;
+
+            //set the observer in the subscription with the lease lifetime
+            TimeSpan leaseTime = TimeSpan.FromSeconds(20.0);
+
+            string leaseKey = await GraphManager.AddSubscriptionObserverAsync(subscriptionUriString, leaseTime, observer);
+
+            //add the lease key to the list of ephemeral observers
+            ephemeralObservers.Add(subscriptionUriString, observer);
+
+            //add the resource, subscription, and lease key the container
+            if (!container.ContainsKey(resourceUriString))
+            {
+                container.Add(resourceUriString, new Tuple<string, string>(subscriptionUriString, leaseKey));
+            }
+
+            //ensure the lease timer is running
+            EnsureLeaseTimer();
+
+            return subscriptionUriString;
+        }
+
+        public override async Task UnsubscribeAsync(string resourceUriString)
+        {
+            //unsubscribe from resource
+            if (container.ContainsKey(resourceUriString))
+            {
+                if (ephemeralObservers.ContainsKey(container[resourceUriString].Item1))
+                {
+                    await GraphManager.RemoveSubscriptionObserverAsync(container[resourceUriString].Item1, container[resourceUriString].Item2);
+                    ephemeralObservers.Remove(container[resourceUriString].Item1);
+                }
+
+                container.Remove(resourceUriString);
+            }
+        }
+
+        #region Dispose
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -260,10 +260,57 @@ namespace Piraeus.Adapters
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
         #endregion
-        
+
+
+
+
         #region private methods
+        private void Observer_OnNotify(object sender, MessageNotificationArgs e)
+        {
+            //signal the protocol adapter
+            OnObserve?.Invoke(this, new ObserveMessageEventArgs(e.Message));
+        }
+
+        private void EnsureLeaseTimer()
+        {
+            if (leaseTimer == null)
+            {
+                leaseTimer = new System.Timers.Timer(10.0);
+                leaseTimer.Elapsed += LeaseTimer_Elapsed;
+                leaseTimer.Start();
+            }
+        }
+
+        private void LeaseTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Dictionary<string, Tuple<string, string>>.Enumerator en = container.GetEnumerator();
+            while (en.MoveNext())
+            {
+                Task<SubscriptionMetadata> task = GraphManager.GetSubscriptionMetadataAsync(en.Current.Value.Item1);
+                Task.WhenAll<SubscriptionMetadata>(task);
+                SubscriptionMetadata metadata = task.Result;
+
+                if (metadata != null)
+                {
+                    Task<bool> renewTask = GraphManager.RenewObserverLeaseAsync(en.Current.Value.Item1, en.Current.Value.Item2, TimeSpan.FromSeconds(20.0));
+                    Task.WhenAll<bool>(renewTask);
+                    if(!renewTask.Result)
+                    {
+                        Log.LogWarningAsync("Observer lease could not be renewed.");
+                    }
+
+                    //taskList.Add(subscription.RenewObserverLeaseAsync(en.Current.Value.Item2, TimeSpan.FromSeconds(20.0)));
+                }
+                //ISubscription subscription = GraphManager.GetSubscription(en.Current.Value.Item1);
+                //if (subscription.GetMetadataAsync().GetAwaiter().GetResult() != null)
+                //{
+                //    taskList.Add(subscription.RenewObserverLeaseAsync(en.Current.Value.Item2, TimeSpan.FromSeconds(20.0)));
+                //}
+
+
+            }
+        }
 
         private async Task RemoveDurableObserversAsync()
         {
@@ -351,47 +398,6 @@ namespace Piraeus.Adapters
                 RemoveFromContainer(item);
             }
         }
-        
-        private void EnsureLeaseTimer()
-        {
-            if (leaseTimer == null)
-            {
-                leaseTimer = new System.Timers.Timer(10.0);
-                leaseTimer.Elapsed += LeaseTimer_Elapsed;
-                leaseTimer.Start();
-            }
-        }
-
         #endregion
-
-        #region events
-        private void Observer_OnNotify(object sender, MessageNotificationArgs e)
-        {
-            //signal the protocol adapter
-            OnObserve?.Invoke(this, new ObserveMessageEventArgs(e.Message));
-        }
-        private void LeaseTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            List<Task> taskList = new List<Task>();
-            Dictionary<string, Tuple<string, string>>.Enumerator en = container.GetEnumerator();
-            while (en.MoveNext())
-            {
-                ISubscription subscription = GrainClient.GrainFactory.GetGrain<ISubscription>(en.Current.Value.Item1);
-                if (subscription.GetMetadataAsync().GetAwaiter().GetResult() != null)
-                {
-                    taskList.Add(subscription.RenewObserverLeaseAsync(en.Current.Value.Item2, TimeSpan.FromSeconds(20.0)));
-                }
-            }
-
-            if (taskList.Count > 0)
-            {
-                Task.WhenAll(taskList);
-            }
-        }
-
-        #endregion
-
-
-
     }
 }

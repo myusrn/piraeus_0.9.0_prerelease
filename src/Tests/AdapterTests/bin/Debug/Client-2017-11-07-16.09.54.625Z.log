@@ -1,0 +1,215 @@
+[2017-11-07 16:10:03.837 GMT    10	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\_git\core\src\Tests\AdapterTests\bin\Debug...	
+[2017-11-07 16:10:04.108 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\AdapterTests.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:04.171 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\BouncyCastle.Crypto.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:04.191 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Capl.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:04.194 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:04.199 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.Azure.KeyVault.Cryptography.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:04.246 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.Azure.KeyVault.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:04.249 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.Azure.KeyVault.Extensions.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:04.251 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.Azure.KeyVault.WebKey.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:04.782 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.CodeAnalysis.CSharp.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:04.961 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.CodeAnalysis.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:04.982 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.Data.Edm.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.024 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.Data.OData.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.041 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.Data.Services.Client.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.044 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.053 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.080 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.083 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.IdentityModel.Logging.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.086 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.094 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.Rest.ClientRuntime.Azure.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.098 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.Rest.ClientRuntime.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.111 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.126 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.128 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.131 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.134 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.136 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.Win32.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.169 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.196 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Newtonsoft.Json.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.197 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Orleans.dll
+	* Assembly filename is excluded.	
+[2017-11-07 16:10:05.200 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\OrleansCodeGenerator.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.212 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\OrleansRuntime.dll
+	* Assembly filename is excluded.	
+[2017-11-07 16:10:05.232 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Piraeus.Adapters.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.235 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Piraeus.Configuration.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.238 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Piraeus.Core.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.241 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Piraeus.GrainInterfaces.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.246 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Piraeus.Grains.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.253 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\SkunkLab.Channels.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.255 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\SkunkLab.Diagnostics.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.262 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\SkunkLab.Protocols.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.268 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\SkunkLab.Security.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.274 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\SkunkLab.Storage.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.295 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\StackExchange.Redis.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.301 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.AppContext.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.315 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Collections.Immutable.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.318 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Console.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.324 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.327 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Diagnostics.FileVersionInfo.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.328 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Diagnostics.StackTrace.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.330 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Globalization.Calendars.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.333 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.338 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.IO.Compression.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.340 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.IO.Compression.ZipFile.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.342 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.IO.FileSystem.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.344 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.IO.FileSystem.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.353 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Net.Http.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.362 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Net.Http.Formatting.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.365 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Net.Sockets.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.390 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Reflection.Metadata.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.392 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.394 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Security.Cryptography.Algorithms.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.397 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Security.Cryptography.Encoding.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.398 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Security.Cryptography.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.400 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.404 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Spatial.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.408 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Text.Encoding.CodePages.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.411 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Threading.Thread.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.415 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.ValueTuple.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.441 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Web.Http.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.448 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Web.Http.WebHost.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.451 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Xml.ReaderWriter.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.452 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Xml.XmlDocument.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.454 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Xml.XPath.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.456 GMT    10	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\AdapterTests\bin\Debug\System.Xml.XPath.XDocument.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-07 16:10:05.458 GMT    10	INFO   	100000	AssemblyLoader.Client	]	Loading assembly C:\_git\core\src\Tests\AdapterTests\bin\Debug\OrleansProviders.dll...	
+[2017-11-07 16:10:05.486 GMT    10	INFO   	100000	AssemblyLoader.Client	]	1 assemblies loaded.	
+[2017-11-07 16:10:05.595 GMT    10	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.18.160.177 Client Id = *cli/18a494b5 ----------	
+[2017-11-07 16:10:05.609 GMT    10	INFO   	100314	OutsideRuntimeClient	]	---------- Starting OutsideRuntimeClient with runtime Version='1.5.2.0 (Release).' in AppDomain=<AppDomain.Id=3, AppDomain.FriendlyName=TestSourceHost: Enumering assembly> Config= 
+ Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 10.0.14393.0
+   App config file: C:\_git\core\src\Tests\AdapterTests\bin\Debug\AdapterTests.dll.config
+   GC Type=Client GCLatencyMode=Interactive
+   Host: MININT-2T87D76
+   Processor Count: 4
+Client Configuration:
+   Config File Name: 
+   Start time: 2017-11-07 16:10:05.602 GMT
+   Gateway Provider: Config
+   Gateways[1]:
+      127.0.0.1:40000
+   Preferred Gateway Index: -1
+   GatewayListRefreshPeriod: 00:01:00
+   Preferred Address Family: InterNetwork
+   DNS Host Name: MININT-2T87D76
+   Client Name: Client
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\_git\core\src\Tests\AdapterTests\bin\Debug\Client-2017-11-07-16.09.54.625Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: -00:00:00.0010000
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Client Sender Buckets: 8192
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Fallback serializer: 
+   .NET: 
+       .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+       .NET thread pool sizes - Max: Worker Threads=1023 Completion Port Threads=1000
+   Providers:
+       No providers configured.
+	
+[2017-11-07 16:10:05.757 GMT     8	INFO   	101309	Messaging.GatewayManager	]	Found 1 knownGateways from Gateway listProvider [gwy.tcp://127.0.0.1:40000/0]	
+[2017-11-07 16:10:05.850 GMT     8	INFO   	100908	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.160.177:0]	Connected to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0.	
+[2017-11-07 16:10:05.869 GMT    18	INFO   	100000	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.18.160.177:0]	Starting AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 on managed thread 18	
+[2017-11-07 16:10:05.997 GMT    17	INFO   	100000	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.160.177:0]	Starting AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 on managed thread 17	
+[2017-11-07 16:10:07.234 GMT    15	INFO   	100929	OutsideRuntimeClient	172.18.160.177:0]	---------- Started OutsideRuntimeClient with Global Client ID: C172.18.160.177:0:-247767005*cli/18a494b5@85227c85, client GUID ID: *cli/18a494b5	
+[2017-11-07 16:10:10.140 GMT     2	WARNING	100931	OutsideRuntimeClient	172.18.160.177:0]	Current AppDomain=<AppDomain.Id=3, AppDomain.FriendlyName=TestSourceHost: Enumering assembly> is unloading.	
+[2017-11-07 16:10:10.181 GMT    17	INFO   	100312	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.160.177:0]	Stop request processed	
+[2017-11-07 16:10:10.195 GMT    18	INFO   	100328	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.18.160.177:0]	Stopping AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 that runs on managed thread 18	
+[2017-11-07 16:10:10.235 GMT     9	ERROR  	100326	OutsideRuntimeClient	172.18.160.177:0]	!!!!!!!!!! RunClientMessagePump has thrown exception	
+Exc level 0: System.Threading.ThreadAbortException: Thread was being aborted.
+   at Orleans.Messaging.ProxiedMessageCenter.WaitMessage(Categories type, CancellationToken ct)
+   at Orleans.OutsideRuntimeClient.RunClientMessagePump(CancellationToken ct)
+   at Orleans.OutsideRuntimeClient.<>c__DisplayClass65_0.<StartInternal>b__0()
+[2017-11-07 16:10:10.261 GMT    17	INFO   	100328	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.160.177:0]	Stopping AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 that runs on managed thread 17	

@@ -25,6 +25,14 @@ namespace WebGateway
             );
 
             config.Routes.MapHttpRoute(
+                name: "SubsystemApi",
+                routeTemplate: "api4/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional },
+                constraints: null,
+                handler: new JwtValidationHandler(ConfigurationManager.AppSettings["symmetricKey"], ConfigurationManager.AppSettings["issuer"], ConfigurationManager.AppSettings["audience"])
+            );
+
+            config.Routes.MapHttpRoute(
                     name: "ManagementApi",
                     routeTemplate: "api2/{controller}/{action}",
                     defaults: new { id = RouteParameter.Optional },

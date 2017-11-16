@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Piraeus.Core.Metadata;
+using Piraeus.Grains;
 using SkunkLab.Channels;
 using SkunkLab.Diagnostics.Logging;
 using SkunkLab.Protocols.Coap;
@@ -8,7 +10,8 @@ using SkunkLab.Protocols.Coap.Handlers;
 namespace Piraeus.Adapters
 {
     public class CoapProtocolAdapter : ProtocolAdapter
-    {
+    {        
+
         public CoapProtocolAdapter(CoapConfig config, IChannel channel)
         {
             Channel = channel;
@@ -22,23 +25,24 @@ namespace Piraeus.Adapters
             session = new CoapSession(config);
         }
 
-       
-
-        public override IChannel Channel { get; set; }
-
         public override event System.EventHandler<ProtocolAdapterErrorEventArgs> OnError;
         public override event System.EventHandler<ProtocolAdapterCloseEventArgs> OnClose;
         public override event System.EventHandler<ChannelObserverEventArgs> OnObserve;
-
         private CoapSession session;
         private ICoapRequestDispatch dispatcher;
         private bool disposedValue;
 
+
+        public override IChannel Channel { get; set; }
+
+
         public override void Init()
         {
-            dispatcher = new CoapRequestDispatcher(session,Channel);
+            dispatcher = new CoapRequestDispatcher(session, Channel);           
         }
 
+
+        #region Dispose
 
         protected virtual void Dispose(bool disposing)
         {
@@ -48,7 +52,7 @@ namespace Piraeus.Adapters
                 {
                     dispatcher.Dispose();
                     session.Dispose();
-                    
+
                 }
 
                 disposedValue = true;
@@ -62,43 +66,61 @@ namespace Piraeus.Adapters
             // TODO: uncomment the following line if the finalizer is overridden above.
             GC.SuppressFinalize(this);
         }
+        #endregion
 
-        #region Channel events
-        private void Channel_OnStateChange(object sender, ChannelStateEventArgs args)
+        #region Channel Events
+        private void Channel_OnStateChange(object sender, ChannelStateEventArgs e)
         {
-            Task task = Log.LogInfoAsync("Channel {0} state {1}", Channel.Id, args.State);
+            Task task = Log.LogInfoAsync("Channel {0} state {1}", Channel.Id, e.State);
             Task.WhenAll(task);
         }
 
-        private void Channel_OnSent(object sender, ChannelSentEventArgs args)
+        private void Channel_OnSent(object sender, ChannelSentEventArgs e)
         {
             Task task = Log.LogInfoAsync("Channel {0} send message", Channel.Id);
             Task.WhenAll(task);
         }
 
-        private void Channel_OnRetry(object sender, ChannelRetryEventArgs args)
-        {            
+        private void Channel_OnRetry(object sender, ChannelRetryEventArgs e)
+        {
             Task task = Log.LogInfoAsync("Channel {0} retrying message", Channel.Id);
             Task.WhenAll(task);
         }
 
-        private void Channel_OnReceive(object sender, ChannelReceivedEventArgs args)
+        private void Channel_OnReceive(object sender, ChannelReceivedEventArgs e)
         {
-            CoapMessage message = CoapMessage.DecodeMessage(args.Message);
-            CoapMessageHandler handler = CoapMessageHandler.Create(session, message, dispatcher);
-            Task<CoapMessage> task = handler.ProcessAsync();
-            Task.WhenAll<CoapMessage>(task);
-            CoapMessage response = task.Result;
+            CoapMessage message = CoapMessage.DecodeMessage(e.Message);            
 
-            if(response != null)
+            OnObserve?.Invoke(this, new ChannelObserverEventArgs(message.ResourceUri.ToString(), MediaTypeConverter.ConvertFromMediaType(message.ContentType), message.Payload));
+            
+            CoapMessageHandler handler = CoapMessageHandler.Create(session, message, dispatcher);
+
+            Task t = Task.Factory.StartNew(async () =>
             {
-                Channel.SendAsync(response.Encode());               
-            }
+                CoapMessage msg = await handler.ProcessAsync();
+                if(msg != null)
+                {
+                    await Channel.SendAsync(msg.Encode());
+                }
+            });
+
+            Task.WhenAll(t);
+
+            //Task.WhenAll(t);
+            //Task<CoapMessage> task = handler.ProcessAsync();
+            //Task.WhenAll<CoapMessage>(task);
+            //CoapMessage response = task.Result;
+
+            //if (response != null)
+            //{
+            //    Task sendTask = Channel.SendAsync(response.Encode());
+            //    Task.WhenAll(sendTask);
+            //}
         }
 
-        private void Channel_OnOpen(object sender, ChannelOpenEventArgs args)
+        private void Channel_OnOpen(object sender, ChannelOpenEventArgs e)
         {
-            Task task = Log.LogInfoAsync("Channel {0} opened.", args.ChannelId);
+            Task task = Log.LogInfoAsync("Channel {0} opened.", e.ChannelId);
             Task.WhenAll(task);
 
             session.IsAuthenticated = Channel.IsAuthenticated;
@@ -107,18 +129,18 @@ namespace Piraeus.Adapters
             {
                 if (!Channel.IsAuthenticated)
                 {
-                    CoapMessage msg = CoapMessage.DecodeMessage(args.Message);
+                    CoapMessage msg = CoapMessage.DecodeMessage(e.Message);
                     CoapUri coapUri = new CoapUri(msg.ResourceUri.ToString());
                     session.IsAuthenticated = session.Authenticate(coapUri.TokenType, coapUri.SecurityToken);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Task t = Log.LogErrorAsync("Channel {0} not authenticated. Exception {1}", Channel.Id, ex.Message);
                 Task.WhenAll(t);
             }
 
-            if(!session.IsAuthenticated)
+            if (!session.IsAuthenticated)
             {
                 //close the channel
                 Task logTask = Log.LogErrorAsync("Channel {0} not authenticated. Closing channel.", Channel.Id);
@@ -126,23 +148,28 @@ namespace Piraeus.Adapters
 
                 Task closeTask = Channel.CloseAsync();
                 Task.WaitAll(closeTask);
-            }            
+            }
+
         }
 
-        private void Channel_OnError(object sender, ChannelErrorEventArgs args)
+        private void Channel_OnError(object sender, ChannelErrorEventArgs e)
         {
-            Task task = Log.LogErrorAsync("Channel ID {0} with error {1}", Channel.Id, args.Error.Message);
+            OnError?.Invoke(this, new ProtocolAdapterErrorEventArgs(Channel.Id, e.Error));
+
+            Task task = Log.LogErrorAsync("Channel ID {0} with error {1}", Channel.Id, e.Error.Message);
             Task.WhenAll(task);
+
+            
         }
 
-        private void Channel_OnClose(object sender, ChannelCloseEventArgs args)
+        private void Channel_OnClose(object sender, ChannelCloseEventArgs e)
         {
+            OnClose?.Invoke(this, new ProtocolAdapterCloseEventArgs(Channel.Id));
+
             Task task = Log.LogInfoAsync("Channel {0} closing.", Channel.Id);
             Task.WhenAll(task);
         }
 
         #endregion
-
-
     }
 }

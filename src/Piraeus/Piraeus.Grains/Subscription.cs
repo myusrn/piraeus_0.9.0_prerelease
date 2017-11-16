@@ -189,7 +189,7 @@ namespace Piraeus.Grains
 
             if (leaseTimer == null)
             {
-                leaseTimer = RegisterTimer(CheckLeaseExpiryAsync, null, TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(10.0));
+                leaseTimer = RegisterTimer(CheckLeaseExpiryAsync, null, TimeSpan.FromSeconds(10.0), TimeSpan.FromSeconds(60.0));
             }
 
             return await Task.FromResult<string>(leaseKey);
@@ -209,7 +209,7 @@ namespace Piraeus.Grains
 
             if (leaseTimer == null)
             {
-                leaseTimer = RegisterTimer(CheckLeaseExpiryAsync, null, TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(10.0));
+                leaseTimer = RegisterTimer(CheckLeaseExpiryAsync, null, TimeSpan.FromSeconds(10.0), TimeSpan.FromSeconds(60.0));
             }
 
             return await Task.FromResult<string>(leaseKey);
@@ -230,7 +230,7 @@ namespace Piraeus.Grains
 
             if (leaseTimer == null)
             {
-                leaseTimer = RegisterTimer(CheckLeaseExpiryAsync, null, TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(10.0));
+                leaseTimer = RegisterTimer(CheckLeaseExpiryAsync, null, TimeSpan.FromSeconds(10.0), TimeSpan.FromSeconds(60.0));
             }
 
             return await Task.FromResult<string>(leaseKey);
@@ -292,7 +292,11 @@ namespace Piraeus.Grains
 
             string resourceUriString = uriString.Replace("/" + uri.Segments[uri.Segments.Length - 1], "");
             IResource resource = GrainFactory.GetGrain<IResource>(resourceUriString);
-            await resource.UnsubscribeAsync(State.Metadata.SubscriptionUriString);
+
+            if (State.Metadata != null && !string.IsNullOrEmpty(State.Metadata.SubscriptionUriString))
+            {
+                await resource.UnsubscribeAsync(State.Metadata.SubscriptionUriString);
+            }
         }
 
         private async Task NotifyErrorAsync(Exception ex)
@@ -379,7 +383,7 @@ namespace Piraeus.Grains
             //start the timer if not already started
             if (messageQueueTimer == null)
             {               
-                messageQueueTimer = RegisterTimer(CheckQueueAsync, null, TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(10.0));
+                messageQueueTimer = RegisterTimer(CheckQueueAsync, null, TimeSpan.FromSeconds(10.0), TimeSpan.FromSeconds(60.0));
             }
 
             await Task.CompletedTask;
@@ -391,10 +395,10 @@ namespace Piraeus.Grains
 
             if (messageQueueTimer == null)
             {
-                messageQueueTimer = RegisterTimer(CheckQueueAsync, null, TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(5.0));
+                messageQueueTimer = RegisterTimer(CheckQueueAsync, null, TimeSpan.FromSeconds(10.0), TimeSpan.FromSeconds(60.0));
             }
 
-            DelayDeactivation(TimeSpan.FromSeconds(20.0));
+            DelayDeactivation(TimeSpan.FromSeconds(60.0));
 
             await Task.CompletedTask;
         }

@@ -38,8 +38,9 @@ namespace Piraeus.Core.Utilities
         private static string GetFromQuery(string uriString, Uri uri)
         {
             string resourceString = uriString.Replace(uri.Query, "");
-            string canonicalResourceString = GetBase(resourceString, new Uri(resourceString), false);
-            return canonicalResourceString + uri.Query;
+            return GetBase(resourceString, new Uri(resourceString), false);
+            //string canonicalResourceString = GetBase(resourceString, new Uri(resourceString), false);
+            //return canonicalResourceString + uri.Query;
         }
 
 

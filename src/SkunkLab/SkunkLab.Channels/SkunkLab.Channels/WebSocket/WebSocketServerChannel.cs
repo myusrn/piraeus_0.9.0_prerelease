@@ -18,6 +18,8 @@ namespace SkunkLab.Channels.WebSocket
             Id = "ws-" + Guid.NewGuid().ToString();
             this.config = config;
             this.token = token;
+            this.IsEncrypted = request.RequestUri.Scheme == "wss";
+            this.IsAuthenticated = HttpContext.Current.Request.IsAuthenticated;
             HttpContext.Current.AcceptWebSocketRequest(this);
         }
 
@@ -37,13 +39,6 @@ namespace SkunkLab.Channels.WebSocket
         public override event EventHandler<ChannelSentEventArgs> OnSent;
         public override event EventHandler<ChannelObserverEventArgs> OnObserve;
 
-        //public override event ChannelReceivedEventHandler OnReceive;
-        //public override event ChannelCloseEventHandler OnClose;
-        //public override event ChannelOpenEventHandler OnOpen;
-        //public override event ChannelErrorEventHandler OnError;
-        //public override event ChannelStateEventHandler OnStateChange;
-        //public override event ChannelRetryEventHandler OnRetry;
-        //public override event ChannelSentEventHandler OnSent;
 
 
         public override string Id { get; internal set; }
@@ -177,7 +172,7 @@ namespace SkunkLab.Channels.WebSocket
             try
             {
                 WebSocketContext = webSocketContext;
-                OnOpen?.Invoke(this, new ChannelOpenEventArgs(Id, null));
+                OnOpen?.Invoke(this, new ChannelOpenEventArgs(Id, null));                
 
                 while (!token.IsCancellationRequested && WebSocketContext.WebSocket.State == WebSocketState.Open)
                 {

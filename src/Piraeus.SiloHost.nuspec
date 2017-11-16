@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Piraeus.SiloHost</id>
+        <version>0.0.8.0</version>
+        <title>Piraeus.SiloHost</title>
+        <authors>SkunkLab</authors>
+        <owners>SkunkLab</owners>        	<licenseUrl>https://raw.githubusercontent.com/skunklab/core/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/skunklab/</projectUrl>
+        <iconUrl>https://avatars2.githubusercontent.com/u/25301165?s=400&amp;v</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Piraeus communications server running in Orleans host</description>
+        <summary>Piraeus server with Orleans host</summary>
+        <releaseNotes>Prelease</releaseNotes>
+        <copyright>2017</copyright>
+        <tags>Piraeus</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework4.6.1">
+                <dependency id="Piraeus.Grains" version="0.0.2.0" />
+                <dependency id="Microsoft.Orleans.Core" version="1.5.2" />
+                <dependency id="Microsoft.Orleans.OrleansRuntime" version="1.5.2" />
+                <dependency id="Microsoft.Orleans.OrleansProviders" version="1.5.2" />
+                <dependency id="Newtonsoft.Json" version="10.0.3" />
+                <dependency id="CAPL" version="1.2.1" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+    <file src="bin\release\*.*" target="lib\net461" />
+  </files>
+</package>

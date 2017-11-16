@@ -139,6 +139,7 @@
     <Compile Include="Coap\CoapUri.cs" />
     <Compile Include="Utilities\QueryStringConstants.cs" />
     <Compile Include="Utilities\TaskExtensions.cs" />
+    <Compile Include="Utilities\UriExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SkunkLab.Security\SkunkLab.Security\SkunkLab.Security.csproj">

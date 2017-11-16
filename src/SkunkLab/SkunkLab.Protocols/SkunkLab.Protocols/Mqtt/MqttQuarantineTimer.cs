@@ -35,7 +35,8 @@ namespace SkunkLab.Protocols.Mqtt
             {
                 currentId++;
                 currentId = currentId == ushort.MaxValue ? (ushort)1 : currentId;
-            }
+            }            
+
             return currentId;
         }
 
@@ -68,32 +69,35 @@ namespace SkunkLab.Protocols.Mqtt
         {
             List<ushort> list = new List<ushort>();
 
-            IEnumerable<KeyValuePair<ushort, RetryMessageData>> items = container.Where((c) => c.Value.NextRetryTime > DateTime.UtcNow);
-            if (items != null)
-            {
-                foreach (var item in items)
-                {
-                    item.Value.Increment(config.AckTimeout);
-                    container[item.Key] = item.Value;
+           
+                IEnumerable<KeyValuePair<ushort, RetryMessageData>> items = container.Where((c) => c.Value.NextRetryTime > DateTime.UtcNow);
 
-                    if (item.Value.AttemptCount >= config.MaxRetransmit)
+                if (items != null)
+                {
+                    foreach (var item in items.ToArray())
                     {
-                        //add expired items to list to be removed
-                        list.Add(item.Key);
-                    }
-                    else
-                    {
-                        //signal retransmit
-                        OnRetry?.Invoke(this, new MqttMessageEventArgs(item.Value.Message));
+                        item.Value.Increment(config.AckTimeout);
+                        container[item.Key] = item.Value;
+
+                        if (item.Value.AttemptCount >= config.MaxRetransmit)
+                        {
+                            //add expired items to list to be removed
+                            list.Add(item.Key);
+                        }
+                        else
+                        {
+                            //signal retransmit
+                            OnRetry?.Invoke(this, new MqttMessageEventArgs(item.Value.Message));
+                        }
                     }
                 }
-            }
 
-            //remove expired items
-            foreach (var item in list)
-            {
-                Remove(item);
-            }
+                //remove expired items
+                foreach (var item in list)
+                {
+                    Remove(item);
+                }
+            
         }
 
         public void Dispose()

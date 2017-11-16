@@ -11,7 +11,7 @@ namespace Piraeus.Adapters
         }
 
         public ProtocolAdapterPortException(string message)
-           :base(message)
+           : base(message)
         {
         }
 

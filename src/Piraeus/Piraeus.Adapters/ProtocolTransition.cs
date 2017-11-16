@@ -10,15 +10,15 @@ namespace Piraeus.Adapters
     {
         public static bool IsEncryptedChannel { get; set; }
 
-       
+
 
         public static byte[] ConvertToMqtt(MqttSession session, EventMessage message)
         {
-            if(message.Protocol == ProtocolType.MQTT)
+            if (message.Protocol == ProtocolType.MQTT)
             {
                 return MqttConversion(session, message.Message);
             }
-            else if(message.Protocol == ProtocolType.COAP)
+            else if (message.Protocol == ProtocolType.COAP)
             {
                 CoapMessage msg = CoapMessage.DecodeMessage(message.Message);
                 return MqttConversion(session, msg.Payload, message.ContentType);
@@ -30,7 +30,8 @@ namespace Piraeus.Adapters
         }
 
         public static byte[] ConvertToCoap(CoapSession session, EventMessage message, byte[] observableToken = null)
-        {            
+        {
+            CoapMessage coapMessage = null;
             CoapToken token = CoapToken.Create();
 
             ushort id = observableToken == null ? session.CoapSender.NewId(token.TokenBytes) : session.CoapSender.NewId(observableToken);
@@ -47,48 +48,54 @@ namespace Piraeus.Adapters
                 if (observableToken == null)
                 {
                     RequestMessageType messageType = msg.QualityOfService == QualityOfServiceLevelType.AtMostOnce ? RequestMessageType.NonConfirmable : RequestMessageType.Confirmable;
-                    request = new CoapRequest(id, messageType, MethodType.POST, new Uri(uriString), MediaTypeConverter.ConvertToMediaType(message.ContentType));
+                    //request
+                    coapMessage = new CoapRequest(id, messageType, MethodType.POST, new Uri(uriString), MediaTypeConverter.ConvertToMediaType(message.ContentType));
                 }
                 else
                 {
-                    response = new CoapResponse(id, ResponseMessageType.NonConfirmable, ResponseCodeType.Content, observableToken, MediaTypeConverter.ConvertToMediaType(uri.ContentType), msg.Payload);
+                    //response
+                    coapMessage = new CoapResponse(id, ResponseMessageType.NonConfirmable, ResponseCodeType.Content, observableToken, MediaTypeConverter.ConvertToMediaType(uri.ContentType), msg.Payload);
                 }
             }
-            else if(message.Protocol == ProtocolType.COAP)
+            else if (message.Protocol == ProtocolType.COAP)
             {
                 CoapMessage msg = CoapMessage.DecodeMessage(message.Message);
                 if (observableToken == null)
                 {
-                    request = new CoapRequest(id, msg.MessageType == CoapMessageType.Confirmable ? RequestMessageType.Confirmable : RequestMessageType.NonConfirmable, MethodType.POST, new Uri(uriString), MediaTypeConverter.ConvertToMediaType(message.ContentType));
+                    //request
+                    coapMessage = new CoapRequest(id, msg.MessageType == CoapMessageType.Confirmable ? RequestMessageType.Confirmable : RequestMessageType.NonConfirmable, MethodType.POST, new Uri(uriString), MediaTypeConverter.ConvertToMediaType(message.ContentType));
                 }
                 else
                 {
-                    response = new CoapResponse(id, ResponseMessageType.NonConfirmable, ResponseCodeType.Content, observableToken, MediaTypeConverter.ConvertToMediaType(message.ContentType), msg.Payload);
+                    //response
+                    coapMessage = new CoapResponse(id, ResponseMessageType.NonConfirmable, ResponseCodeType.Content, observableToken, MediaTypeConverter.ConvertToMediaType(message.ContentType), msg.Payload);
                 }
             }
             else
             {
                 if (observableToken == null)
                 {
-                    request = new CoapRequest(id, RequestMessageType.NonConfirmable, MethodType.POST, new Uri(uriString), MediaTypeConverter.ConvertToMediaType(message.ContentType), message.Message);
+                    //request
+                    coapMessage = new CoapRequest(id, RequestMessageType.NonConfirmable, MethodType.POST, new Uri(uriString), MediaTypeConverter.ConvertToMediaType(message.ContentType), message.Message);
                 }
                 else
                 {
-                    response = new CoapResponse(id, ResponseMessageType.NonConfirmable, ResponseCodeType.Content, observableToken, MediaTypeConverter.ConvertToMediaType(message.ContentType), message.Message);
+                    //response
+                    coapMessage = new CoapResponse(id, ResponseMessageType.NonConfirmable, ResponseCodeType.Content, observableToken, MediaTypeConverter.ConvertToMediaType(message.ContentType), message.Message);
                 }
             }
 
-            return request.Encode();
+            return coapMessage.Encode();
         }
 
         public static byte[] ConvertToHttp(EventMessage message)
         {
-            if(message.Protocol == ProtocolType.MQTT)
+            if (message.Protocol == ProtocolType.MQTT)
             {
                 MqttMessage mqtt = MqttMessage.DecodeMessage(message.Message);
                 return mqtt.Payload;
             }
-            else if(message.Protocol == ProtocolType.COAP)
+            else if (message.Protocol == ProtocolType.COAP)
             {
                 CoapMessage coap = CoapMessage.DecodeMessage(message.Message);
                 return coap.Payload;
@@ -98,9 +105,9 @@ namespace Piraeus.Adapters
                 return message.Message;
             }
         }
-        
 
-        
+
+
 
         private static byte[] MqttConversion(MqttSession session, byte[] message, string contentType = null)
         {
@@ -108,6 +115,7 @@ namespace Piraeus.Adapters
             MqttUri uri = new MqttUri(msg.Topic);
             QualityOfServiceLevelType? qos = session.GetQoS(uri.Resource);
 
+            
             msg.QualityOfService = qos.HasValue ? qos.Value : QualityOfServiceLevelType.AtMostOnce;
             msg.MessageId = session.NewId();
 
@@ -119,8 +127,9 @@ namespace Piraeus.Adapters
             return msg.Encode();
         }
 
-        
 
-        
+
+
     }
 }
+

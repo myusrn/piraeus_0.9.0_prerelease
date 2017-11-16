@@ -12,10 +12,11 @@ namespace Piraeus.Adapters
     public class CoapRequestDispatcher : ICoapRequestDispatch
     {
         public CoapRequestDispatcher(CoapSession session, IChannel channel)
-        {            
+        {
             this.channel = channel;
             this.session = session;
             coapObserved = new Dictionary<string, byte[]>();
+            coapUnobserved = new HashSet<string>();
             adapter = new OrleansAdapter();
             adapter.OnObserve += Adapter_OnObserve;
             Task task = LoadDurables();
@@ -28,7 +29,7 @@ namespace Piraeus.Adapters
         private HashSet<string> coapUnobserved;
         private Dictionary<string, byte[]> coapObserved;
         private bool disposedValue = false; // To detect redundant calls
-        
+
         /// <summary>
         /// Unsubscribes an ephemeral subscription from a resource.
         /// </summary>
@@ -44,11 +45,11 @@ namespace Piraeus.Adapters
                 Task task = UnsubscribeAsync(uri.Resource);
                 Task.WhenAll(task);
             }
-            catch(AggregateException ae)
+            catch (AggregateException ae)
             {
                 error = ae.Flatten().InnerException;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 error = ex;
             }
@@ -106,13 +107,13 @@ namespace Piraeus.Adapters
             CoapUri uri = new CoapUri(message.ResourceUri.ToString());
             ResponseMessageType rmt = message.MessageType == CoapMessageType.Confirmable ? ResponseMessageType.Acknowledgement : ResponseMessageType.NonConfirmable;
 
-            if(!await adapter.CanSubscribeAsync(uri.Resource, channel.IsEncrypted))
+            if (!await adapter.CanSubscribeAsync(uri.Resource, channel.IsEncrypted))
             {
                 //not authorized
                 return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Unauthorized, message.Token);
             }
 
-            if(!message.Observe.Value)
+            if (!message.Observe.Value)
             {
                 //unsubscribe
                 await adapter.UnsubscribeAsync(uri.Resource);
@@ -127,10 +128,10 @@ namespace Piraeus.Adapters
                     Identity = session.Identity,
                     Indexes = session.Indexes
                 };
-               
+
                 string subscriptionUriString = await adapter.SubscribeAsync(uri.Resource, metadata);
 
-                if(!coapObserved.ContainsKey(uri.Resource)) //add resource to observed list
+                if (!coapObserved.ContainsKey(uri.Resource)) //add resource to observed list
                 {
                     coapObserved.Add(uri.Resource, message.Token);
                 }
@@ -138,10 +139,22 @@ namespace Piraeus.Adapters
 
             return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Valid, message.Token);
         }
-        
+
         private void Adapter_OnObserve(object sender, ObserveMessageEventArgs e)
         {
-            byte[] message = coapObserved.ContainsKey(e.Message.ResourceUri) ? ProtocolTransition.ConvertToCoap(session, e.Message, coapObserved[e.Message.ResourceUri]) : ProtocolTransition.ConvertToCoap(session, e.Message);
+
+            byte[] message = null;
+
+            if (coapObserved.ContainsKey(e.Message.ResourceUri))
+            {
+                message = ProtocolTransition.ConvertToCoap(session, e.Message, coapObserved[e.Message.ResourceUri]);
+            }
+            else
+            {
+                message = ProtocolTransition.ConvertToCoap(session, e.Message);
+            }
+
+            //byte[] message = coapObserved.ContainsKey(e.Message.ResourceUri) ? ProtocolTransition.ConvertToCoap(session, e.Message, coapObserved[e.Message.ResourceUri]) : ProtocolTransition.ConvertToCoap(session, e.Message);
 
             Task task = channel.SendAsync(message);
             Task.WhenAll(task);
@@ -171,8 +184,20 @@ namespace Piraeus.Adapters
 
             string contentType = message.ContentType.HasValue ? message.ContentType.Value.ConvertToContentType() : "application/octet-stream";
             EventMessage msg = new EventMessage(contentType, uri.Resource, ProtocolType.COAP, message.Encode());
-            await adapter.PublishAsync(msg, new List<KeyValuePair<string, string>>(uri.Indexes));
-                        
+
+            
+
+            if(uri.Indexes == null)
+            {
+                await adapter.PublishAsync(msg);
+            }
+           else
+            {
+                List<KeyValuePair<string, string>> indexes = new List<KeyValuePair<string, string>>(uri.Indexes);
+                await adapter.PublishAsync(msg, indexes);
+            }
+            
+
             return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Created, message.Token);
         }
 
@@ -192,7 +217,7 @@ namespace Piraeus.Adapters
         {
             CoapUri uri = new CoapUri(message.ResourceUri.ToString());
             ResponseMessageType rmt = message.MessageType == CoapMessageType.Confirmable ? ResponseMessageType.Acknowledgement : ResponseMessageType.NonConfirmable;
-            
+
             if (!await adapter.CanSubscribeAsync(uri.Resource, channel.IsEncrypted))
             {
                 return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Unauthorized, message.Token);
@@ -219,7 +244,7 @@ namespace Piraeus.Adapters
 
             coapUnobserved.Add(uri.Resource);
 
-            return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Created, message.Token);            
+            return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Created, message.Token);
         }
 
 
@@ -234,7 +259,7 @@ namespace Piraeus.Adapters
         }
 
         #region IDisposable Support
-       
+
 
         protected virtual void Dispose(bool disposing)
         {
@@ -242,6 +267,7 @@ namespace Piraeus.Adapters
             {
                 if (disposing)
                 {
+                    adapter.OnObserve -= Adapter_OnObserve;
                     adapter.Dispose();
                     coapObserved.Clear();
                     coapUnobserved.Clear();
@@ -269,10 +295,10 @@ namespace Piraeus.Adapters
         }
         #endregion
 
-       
 
-       
 
-       
+
+
+
     }
 }

@@ -59,7 +59,7 @@ C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Debug\ko\S
 C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Debug\ru\System.Spatial.resources.dll
 C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Debug\zh-Hant\System.Spatial.resources.dll
+C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Debug\Piraeus.Module.csprojResolveAssemblyReference.cache
 C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Debug\Piraeus.Module.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Debug\Piraeus.Module.dll
 C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Debug\Piraeus.Module.pdb
-C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Debug\Piraeus.Module.csprojResolveAssemblyReference.cache

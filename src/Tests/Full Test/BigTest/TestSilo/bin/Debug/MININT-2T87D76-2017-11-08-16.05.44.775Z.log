@@ -1,0 +1,506 @@
+[2017-11-08 16:05:46.778 GMT     1	INFO   	100404	Silo	127.0.0.1:22222]	Silo starting with GC settings: ServerGC=False GCLatencyMode=Interactive	
+[2017-11-08 16:05:46.932 GMT     1	WARNING	100405	Silo	127.0.0.1:22222]	Note: Silo not running with ServerGC turned on or with GCLatencyMode.Batch enabled - recommend checking app config : <configuration>-<runtime>-<gcServer enabled="true"> and <configuration>-<runtime>-<gcConcurrent enabled="false"/>	
+[2017-11-08 16:05:47.153 GMT     1	WARNING	100405	Silo	127.0.0.1:22222]	Note: ServerGC only kicks in on multi-core systems (settings enabling ServerGC have no effect on single-core machines).	
+[2017-11-08 16:05:47.364 GMT     1	INFO   	100403	Silo	127.0.0.1:22222]	-------------- Initializing Primary silo on host MININT-2T87D76 MachineName MININT-2T87D76 at 127.0.0.1:22222, gen 247853146 --------------	
+[2017-11-08 16:05:47.446 GMT     1	INFO   	100415	Silo	127.0.0.1:22222]	Starting silo MININT-2T87D76 with the following configuration= 
+Config File Name: 
+Host: MININT-2T87D76
+Start time: 2017-11-08 16:05:47.420 GMT
+Primary node: 127.0.0.1:22222
+Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 6.2.9200.0
+   App config file: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\TestSilo.exe.Config
+   GC Type=Client GCLatencyMode=Interactive
+Global configuration:
+   System Ids:
+      ServiceId: 00000000-0000-0000-0000-000000000000
+      DeploymentId: 
+   Subnet: 
+   Seed nodes: 127.0.0.1:22222
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Silo Sender queues: 4
+       Gateway Sender queues: 4
+       Client Drop Timeout: 00:01:00
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Maximum forward count: 2
+       Fallback serializer: 
+   Liveness:
+      LivenessEnabled: True
+      LivenessType: MembershipTableGrain
+      ProbeTimeout: 00:00:10
+      TableRefreshTimeout: 00:01:00
+      DeathVoteExpirationTimeout: 00:02:00
+      NumMissedProbesLimit: 3
+      NumProbedSilos: 3
+      NumVotesForDeathDeclaration: 2
+      UseLivenessGossip: True
+      ValidateInitialConnectivity: True
+      IAmAliveTablePublishTimeout: 00:05:00
+      NumMissedTableIAmAliveLimit: 2
+      MaxJoinAttemptTime: 00:05:00
+      ExpectedClusterSize: 20
+   MultiClusterNetwork: N/A
+   SystemStore:
+      SystemStore ConnectionString: null
+      Reminders ConnectionString: null
+   Application:
+      Defaults:
+         Deactivate if idle for: 02:00:00
+
+   PlacementStrategy: 
+         Default Placement Strategy: RandomPlacement
+         Deployment Load Publisher Refresh Time: 00:00:01
+         Activation CountBased Placement Choose Out Of: 2
+   Grain directory cache:
+      Maximum size: 1000000 grains
+      Initial TTL: 00:00:30
+      Maximum TTL: 00:04:00
+      TTL extension factor: 2.00
+      Directory Caching Strategy: Adaptive
+   Grain directory:
+      Lazy deregistration delay: 00:01:00
+      Client registration refresh: 00:05:00
+   Reminder Service:
+       ReminderServiceType: ReminderTableGrain
+   Consistent Ring:
+       Use Virtual Buckets Consistent Ring: True
+       Num Virtual Buckets Consistent Ring: 30
+   Providers:
+       StorageProviders:
+           Name=store, Type=Orleans.Storage.MemoryStorage, Properties=[NumStorageGrains]
+
+Silo configuration:
+   Silo Name: MININT-2T87D76
+   Generation: 247853146
+   Host Name or IP Address: localhost
+   DNS Host Name: MININT-2T87D76
+   Port: 22222
+   Subnet: 
+   Preferred Address Family: InterNetwork
+   Proxy Gateway: 127.0.0.1:40000
+   IsPrimaryNode: True
+   Scheduler: 
+         Max Active Threads: 4
+         Processor Count: 4
+         Delay Warning Threshold: 00:00:10
+         Activation Scheduling Quantum: 00:00:00.1000000
+         Turn Warning Length Threshold: 00:00:00.2000000
+         Inject More Worker Threads: False
+         MinDotNetThreadPoolSize: 200
+         .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+         .NET thread pool sizes - Max: Worker Threads=2047 Completion Port Threads=1000
+         .NET ServicePointManager - DefaultConnectionLimit=200 Expect100Continue=False UseNagleAlgorithm=False
+   Load Shedding Enabled: False
+   Load Shedding Limit: 95
+   SiloShutdownEventName: 
+   Debug: 
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\MININT-2T87D76-2017-11-08-16.05.44.775Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: 00:00:30
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+
+	
+[2017-11-08 16:05:49.570 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	Searching for assemblies in C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug...	
+[2017-11-08 16:05:49.703 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\Capl.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:50.143 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\Microsoft.CodeAnalysis.CSharp.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:50.346 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\Microsoft.CodeAnalysis.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:50.352 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:50.367 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:50.372 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\Microsoft.Win32.Primitives.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:50.820 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:50.865 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\Newtonsoft.Json.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:50.868 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\Orleans.dll
+	* Assembly filename is excluded.	
+[2017-11-08 16:05:50.872 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\OrleansCodeGenerator.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:50.883 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\OrleansRuntime.dll
+	* Assembly filename is excluded.	
+[2017-11-08 16:05:50.886 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\Piraeus.Core.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:50.895 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\Piraeus.GrainInterfaces.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:50.938 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\StackExchange.Redis.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:50.944 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.AppContext.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:50.991 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Collections.Immutable.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.002 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Console.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.011 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.015 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Diagnostics.FileVersionInfo.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.017 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Diagnostics.StackTrace.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.020 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Globalization.Calendars.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.029 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.IO.Compression.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.031 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.IO.Compression.ZipFile.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.037 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.IO.FileSystem.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.039 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.IO.FileSystem.Primitives.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.055 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Net.Http.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.070 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Net.Http.Formatting.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.074 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Net.Sockets.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.116 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Reflection.Metadata.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.121 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.125 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Security.Cryptography.Algorithms.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.131 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Security.Cryptography.Encoding.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.134 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Security.Cryptography.Primitives.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.137 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.146 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Text.Encoding.CodePages.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.151 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Threading.Thread.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.160 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.ValueTuple.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.223 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Web.Http.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.236 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Xml.ReaderWriter.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.239 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Xml.XmlDocument.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.246 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Xml.XPath.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.250 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	User assembly ignored: C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\System.Xml.XPath.XDocument.dll
+	* Assembly does not contain any acceptable grain types.
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-08 16:05:51.257 GMT     1	WARNING	101705	AssemblyLoader.Silo	127.0.0.1:22222]	Unable to find directory C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\Applications; skipping.	
+[2017-11-08 16:05:51.260 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	Loading assembly C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\OrleansProviders.dll...	
+[2017-11-08 16:05:51.263 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	Loading assembly C:\_git\core\src\Tests\Full Test\BigTest\TestSilo\bin\Debug\Piraeus.Grains.dll...	
+[2017-11-08 16:05:51.458 GMT     1	WARNING	101723	AssemblyProcessor	127.0.0.1:22222]	Exception loading types from assembly 'Microsoft.WindowsAzure.Storage, Version=8.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35': 
+Exc level 0: System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeAssembly.get_DefinedTypes()
+   at Orleans.Runtime.TypeUtils.GetDefinedTypes(Assembly assembly, Logger logger)
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified..	
+Exc level 0: System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeAssembly.get_DefinedTypes()
+   at Orleans.Runtime.TypeUtils.GetDefinedTypes(Assembly assembly, Logger logger)
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+[2017-11-08 16:05:51.547 GMT     1	ERROR  	102401	AssemblyProcessor	127.0.0.1:22222]	!!!!!!!!!! Failed to load type Microsoft.WindowsAzure.Storage.Table.DataServices.TableServiceEntity in assembly Microsoft.WindowsAzure.Storage, Version=8.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35.	
+Exc level 0: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+   at System.ModuleHandle.ResolveType(RuntimeModule module, Int32 typeToken, IntPtr* typeInstArgs, Int32 typeInstCount, IntPtr* methodInstArgs, Int32 methodInstCount, ObjectHandleOnStack type)
+   at System.ModuleHandle.ResolveTypeHandleInternal(RuntimeModule module, Int32 typeToken, RuntimeTypeHandle[] typeInstantiationContext, RuntimeTypeHandle[] methodInstantiationContext)
+   at System.Reflection.RuntimeModule.ResolveType(Int32 metadataToken, Type[] genericTypeArguments, Type[] genericMethodArguments)
+   at System.Reflection.CustomAttribute.FilterCustomAttributeRecord(CustomAttributeRecord caRecord, MetadataImport scope, Assembly& lastAptcaOkAssembly, RuntimeModule decoratedModule, MetadataToken decoratedToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, Object[] attributes, IList derivedAttributes, RuntimeType& attributeType, IRuntimeMethodInfo& ctor, Boolean& ctorHasParameters, Boolean& isVarArg)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeModule decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType, Boolean mustBeInheritable, IList derivedAttributes, Boolean isDecoratedTargetSecurityTransparent)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeType type, RuntimeType caType, Boolean inherit)
+   at System.RuntimeType.GetCustomAttributes(Type attributeType, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type type, Boolean inherit)
+   at System.Reflection.CustomAttributeExtensions.GetCustomAttributes[T](MemberInfo element)
+   at Orleans.Serialization.SerializationManager.FindSerializationInfo(Type type)
+   at Orleans.Runtime.AssemblyProcessor.ProcessAssembly(Assembly assembly)
+[2017-11-08 16:05:51.628 GMT     1	ERROR  	102401	AssemblyProcessor	127.0.0.1:22222]	!!!!!!!!!! Failed to load type Microsoft.WindowsAzure.Storage.Table.TableServiceTable in assembly Microsoft.WindowsAzure.Storage, Version=8.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35.	
+Exc level 0: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+   at System.ModuleHandle.ResolveType(RuntimeModule module, Int32 typeToken, IntPtr* typeInstArgs, Int32 typeInstCount, IntPtr* methodInstArgs, Int32 methodInstCount, ObjectHandleOnStack type)
+   at System.ModuleHandle.ResolveTypeHandleInternal(RuntimeModule module, Int32 typeToken, RuntimeTypeHandle[] typeInstantiationContext, RuntimeTypeHandle[] methodInstantiationContext)
+   at System.Reflection.RuntimeModule.ResolveType(Int32 metadataToken, Type[] genericTypeArguments, Type[] genericMethodArguments)
+   at System.Reflection.CustomAttribute.FilterCustomAttributeRecord(CustomAttributeRecord caRecord, MetadataImport scope, Assembly& lastAptcaOkAssembly, RuntimeModule decoratedModule, MetadataToken decoratedToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, Object[] attributes, IList derivedAttributes, RuntimeType& attributeType, IRuntimeMethodInfo& ctor, Boolean& ctorHasParameters, Boolean& isVarArg)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeModule decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType, Boolean mustBeInheritable, IList derivedAttributes, Boolean isDecoratedTargetSecurityTransparent)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeType type, RuntimeType caType, Boolean inherit)
+   at System.RuntimeType.GetCustomAttributes(Type attributeType, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type type, Boolean inherit)
+   at System.Reflection.CustomAttributeExtensions.GetCustomAttributes[T](MemberInfo element)
+   at Orleans.Serialization.SerializationManager.FindSerializationInfo(Type type)
+   at Orleans.Runtime.AssemblyProcessor.ProcessAssembly(Assembly assembly)
+[2017-11-08 16:05:51.754 GMT     1	INFO   	100000	AssemblyLoader.Silo	127.0.0.1:22222]	2 assemblies loaded.	
+[2017-11-08 16:05:52.616 GMT     1	INFO   	100000	Scheduler.OrleansTaskScheduler	127.0.0.1:22222]	Starting OrleansTaskScheduler with 4 Max Active application Threads and 1 system thread.	
+[2017-11-08 16:05:52.645 GMT     1	INFO   	101010	Runtime.Messaging.IncomingMessageAcceptor	127.0.0.1:22222]	Opened a listening socket at address 127.0.0.1:22222	
+[2017-11-08 16:05:52.654 GMT     1	INFO   	101010	Runtime.Messaging.GatewayAcceptor	127.0.0.1:22222]	Opened a listening socket at address 127.0.0.1:40000	
+[2017-11-08 16:05:52.736 GMT     1	INFO   	100000	VirtualBucketsRingProvider	127.0.0.1:22222]	Starting VirtualBucketsRingProvider on silo S127.0.0.1:22222:247853146/x0BA4EE18.	
+[2017-11-08 16:05:52.781 GMT     1	INFO   	103003	VirtualBucketsRingProvider	127.0.0.1:22222]	Added Server S127.0.0.1:22222:247853146/x0BA4EE18. Current view: [S127.0.0.1:22222:247853146 -> <MultiRange: Size=x100000000, %Ring=100.000%>]	
+[2017-11-08 16:05:52.787 GMT     1	INFO   	103005	VirtualBucketsRingProvider	127.0.0.1:22222]	-NotifyLocalRangeSubscribers about old <(0 0], Size=x100000000, %Ring=100.000%> new <MultiRange: Size=x100000000, %Ring=100.000%> increased? True	
+[2017-11-08 16:05:52.827 GMT     1	INFO   	100000	Silo	127.0.0.1:22222]	Skip multicluster oracle creation (no multicluster network configured)	
+[2017-11-08 16:05:52.830 GMT     1	INFO   	100422	Silo	127.0.0.1:22222]	-------------- Started silo S127.0.0.1:22222:247853146, ConsistentHashCode BA4EE18 --------------	
+[2017-11-08 16:05:52.832 GMT     1	INFO   	100288	OrleansSiloHost	127.0.0.1:22222]	Successfully initialized Orleans silo 'MININT-2T87D76' as a Primary node.	
+[2017-11-08 16:05:52.845 GMT     1	INFO   	100441	OrleansSiloHost	127.0.0.1:22222]	Silo shutdown event name: MININT-2T87D76-Shutdown	
+[2017-11-08 16:05:52.850 GMT     1	INFO   	100442	OrleansSiloHost	127.0.0.1:22222]	Created and set shutdown event MININT-2T87D76-Shutdown	
+[2017-11-08 16:05:52.862 GMT     1	INFO   	100401	Silo	127.0.0.1:22222]	Silo Start()	
+[2017-11-08 16:05:52.866 GMT     1	INFO   	100430	Silo	127.0.0.1:22222]	Configured ThreadPool.SetMinThreads() to values: 200,200. Previous values are: 4,4.	
+[2017-11-08 16:05:52.868 GMT     1	INFO   	100436	Silo	127.0.0.1:22222]	Configured .NET ServicePointManager to Expect100Continue=False, DefaultConnectionLimit=200, UseNagleAlgorithm=False to improve Azure storage performance.	
+[2017-11-08 16:05:52.996 GMT     1	WARNING	101723	AssemblyLoader.Silo	127.0.0.1:22222]	Exception loading types from assembly 'Microsoft.WindowsAzure.Storage, Version=8.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35': 
+Exc level 0: System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeAssembly.get_DefinedTypes()
+   at Orleans.Runtime.TypeUtils.GetDefinedTypes(Assembly assembly, Logger logger)
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified..	
+Exc level 0: System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeAssembly.get_DefinedTypes()
+   at Orleans.Runtime.TypeUtils.GetDefinedTypes(Assembly assembly, Logger logger)
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+[2017-11-08 16:05:53.034 GMT     1	INFO   	101711	AssemblyLoader.Silo	127.0.0.1:22222]	Loaded grain type summary for 13 types: 
+Grain class Orleans.LogConsistency.Orleans.LogConsistency.LogConsistentGrainBase<TView> [-2062750837 (0x850CEB8B)] from Orleans.dll implementing interfaces: 
+Grain class Orleans.Providers.Orleans.Providers.MemoryStreamQueueGrain [1359359215 (0x51062CEF)] from OrleansProviders.dll implementing interfaces: Orleans.Providers.Orleans.Providers.IMemoryStreamQueueGrain [1158152105 (0x4507FFA9)]
+Grain class Orleans.Runtime.Management.Orleans.Runtime.Management.ManagementGrain [1954798034 (0x7483D9D2)] from OrleansRuntime.dll implementing interfaces: Orleans.Runtime.Orleans.Runtime.IManagementGrain [-1734666656 (0x989B1660)]
+Grain class Orleans.Runtime.MembershipService.Orleans.Runtime.MembershipService.GrainBasedMembershipTable [-2103923544 (0x8298ACA8)] from OrleansRuntime.dll implementing interfaces: Orleans.Orleans.IMembershipTableGrain [-1256503757 (0xB51B4633)]
+Grain class Orleans.Runtime.ReminderService.Orleans.Runtime.ReminderService.GrainBasedReminderTable [-55315191 (0xFCB3F509)] from OrleansRuntime.dll implementing interfaces: Orleans.Orleans.IReminderTableGrain [-1135060418 (0xBC585A3E)]
+Grain class Orleans.Runtime.Versions.Orleans.Runtime.Versions.VersionStoreGrain [331003096 (0x13BAB4D8)] from OrleansRuntime.dll implementing interfaces: Orleans.Runtime.Versions.Orleans.Runtime.Versions.IVersionStoreGrain [-297600501 (0xEE42FA0B)], Orleans.Orleans.IGrainWithStringKey [-1277021679 (0xB3E23211)]
+Grain class Orleans.Storage.Orleans.Storage.MemoryStorageGrain [819348208 (0x30D642F0)] from OrleansRuntime.dll implementing interfaces: Orleans.Storage.Orleans.Storage.IMemoryStorageGrain [577125491 (0x22663C73)]
+Grain class Orleans.Streams.Orleans.Streams.PubSubRendezvousGrain [1903070868 (0x716E8E94)] from OrleansRuntime.dll implementing interfaces: Orleans.Streams.Orleans.Streams.IPubSubRendezvousGrain [1746702088 (0x681C8F08)]
+Grain class Piraeus.Grains.Piraeus.Grains.AccessControl [1194438116 (0x4731ADE4)] from Piraeus.Grains.dll implementing interfaces: Piraeus.GrainInterfaces.Piraeus.GrainInterfaces.IAccessControl [904784176 (0x35EDE930)], Orleans.Orleans.IGrainWithStringKey [-1277021679 (0xB3E23211)]
+Grain class Piraeus.Grains.Piraeus.Grains.Resource [568034996 (0x21DB86B4)] from Piraeus.Grains.dll implementing interfaces: Piraeus.GrainInterfaces.Piraeus.GrainInterfaces.IResource [-369762324 (0xE9F5DFEC)], Orleans.Orleans.IGrainWithStringKey [-1277021679 (0xB3E23211)]
+Grain class Piraeus.Grains.Piraeus.Grains.ResourceList [-1258561115 (0xB4FBE1A5)] from Piraeus.Grains.dll implementing interfaces: Piraeus.GrainInterfaces.Piraeus.GrainInterfaces.IResourceList [-1548578914 (0xA3B28F9E)], Orleans.Orleans.IGrainWithStringKey [-1277021679 (0xB3E23211)]
+Grain class Piraeus.Grains.Piraeus.Grains.Subscriber [-305176254 (0xEDCF6142)] from Piraeus.Grains.dll implementing interfaces: Piraeus.GrainInterfaces.Piraeus.GrainInterfaces.ISubscriber [678607351 (0x2872B9F7)], Orleans.Orleans.IGrainWithStringKey [-1277021679 (0xB3E23211)]
+Grain class Piraeus.Grains.Piraeus.Grains.Subscription [-1847807736 (0x91DCB108)] from Piraeus.Grains.dll implementing interfaces: Piraeus.GrainInterfaces.Piraeus.GrainInterfaces.ISubscription [1486087461 (0x5893E525)], Orleans.Orleans.IGrainWithStringKey [-1277021679 (0xB3E23211)]
+	
+[2017-11-08 16:05:53.121 GMT     1	WARNING	101723	AssemblyLoader.Silo	127.0.0.1:22222]	Exception loading types from assembly 'Microsoft.WindowsAzure.Storage, Version=8.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35': 
+Exc level 0: System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeAssembly.get_DefinedTypes()
+   at Orleans.Runtime.TypeUtils.GetDefinedTypes(Assembly assembly, Logger logger)
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified..	
+Exc level 0: System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeAssembly.get_DefinedTypes()
+   at Orleans.Runtime.TypeUtils.GetDefinedTypes(Assembly assembly, Logger logger)
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+[2017-11-08 16:05:53.180 GMT     9	INFO   	100000	Runtime.Scheduler.WorkerPoolThread/1	127.0.0.1:22222]	Starting AsyncAgent Runtime.Scheduler.WorkerPoolThread/1 on managed thread 9	
+[2017-11-08 16:05:53.177 GMT    12	INFO   	100000	Runtime.Scheduler.WorkerPoolThread/System.5	127.0.0.1:22222]	Starting AsyncAgent Runtime.Scheduler.WorkerPoolThread/System.5 on managed thread 12	
+[2017-11-08 16:05:53.248 GMT    11	INFO   	100000	Runtime.Scheduler.WorkerPoolThread/3	127.0.0.1:22222]	Starting AsyncAgent Runtime.Scheduler.WorkerPoolThread/3 on managed thread 11	
+[2017-11-08 16:05:53.179 GMT     8	INFO   	100000	Runtime.Scheduler.WorkerPoolThread/0	127.0.0.1:22222]	Starting AsyncAgent Runtime.Scheduler.WorkerPoolThread/0 on managed thread 8	
+[2017-11-08 16:05:53.225 GMT    10	INFO   	100000	Runtime.Scheduler.WorkerPoolThread/2	127.0.0.1:22222]	Starting AsyncAgent Runtime.Scheduler.WorkerPoolThread/2 on managed thread 10	
+[2017-11-08 16:05:53.302 GMT    13	INFO   	100000	Runtime.Messaging.IncomingMessageAcceptor	127.0.0.1:22222]	Starting AsyncAgent Runtime.Messaging.IncomingMessageAcceptor on managed thread 13	
+[2017-11-08 16:05:53.381 GMT    14	INFO   	100000	Runtime.Messaging.SiloMessageSender/PingSender	127.0.0.1:22222]	Starting AsyncAgent Runtime.Messaging.SiloMessageSender/PingSender on managed thread 14	
+[2017-11-08 16:05:53.399 GMT    15	INFO   	100000	Runtime.Messaging.SiloMessageSender/SystemSender	127.0.0.1:22222]	Starting AsyncAgent Runtime.Messaging.SiloMessageSender/SystemSender on managed thread 15	
+[2017-11-08 16:05:53.447 GMT    21	INFO   	100000	Runtime.Messaging.IncomingMessageAgent/Ping	127.0.0.1:22222]	Starting AsyncAgent Runtime.Messaging.IncomingMessageAgent/Ping on managed thread 21	
+[2017-11-08 16:05:53.524 GMT    20	INFO   	100000	Runtime.Messaging.IncomingMessageAgent/System	127.0.0.1:22222]	Starting AsyncAgent Runtime.Messaging.IncomingMessageAgent/System on managed thread 20	
+[2017-11-08 16:05:53.459 GMT    13	INFO   	100328	Runtime.Messaging.IncomingMessageAcceptor	127.0.0.1:22222]	Stopping AsyncAgent Runtime.Messaging.IncomingMessageAcceptor that runs on managed thread 13	
+[2017-11-08 16:05:53.574 GMT     1	INFO   	100000	Orleans.GrainDirectory.LocalGrainDirectory	127.0.0.1:22222]	Start (SeverityLevel=Info)	
+[2017-11-08 16:05:53.551 GMT    22	INFO   	100000	Runtime.Messaging.IncomingMessageAgent/Application	127.0.0.1:22222]	Starting AsyncAgent Runtime.Messaging.IncomingMessageAgent/Application on managed thread 22	
+[2017-11-08 16:05:53.665 GMT    18	INFO   	100000	Runtime.GrainDirectory.AdaptiveDirectoryCacheMaintainer`1	127.0.0.1:22222]	Starting AsyncAgent Runtime.GrainDirectory.AdaptiveDirectoryCacheMaintainer`1 on managed thread 18	
+[2017-11-08 16:05:53.668 GMT    19	INFO   	100000	Runtime.GrainDirectory.GlobalSingleInstanceActivationMaintainer	127.0.0.1:22222]	Starting AsyncAgent Runtime.GrainDirectory.GlobalSingleInstanceActivationMaintainer on managed thread 19	
+[2017-11-08 16:05:53.681 GMT    19	INFO   	100328	Runtime.GrainDirectory.GlobalSingleInstanceActivationMaintainer	127.0.0.1:22222]	Stopping AsyncAgent Runtime.GrainDirectory.GlobalSingleInstanceActivationMaintainer that runs on managed thread 19	
+[2017-11-08 16:05:53.729 GMT     1	INFO   	100000	ReminderFactory	127.0.0.1:22222]	Creating reminder grain service for type=Orleans.OrleansCodeGenReminderTableGrainReference	
+[2017-11-08 16:05:53.776 GMT    12	INFO   	103102	ProviderLoader/IStorageProvider	127.0.0.1:22222]	Loaded provider of type Orleans.Storage.MemoryStorage Name=store	
+[2017-11-08 16:05:53.780 GMT    11	INFO   	100507	Catalog	127.0.0.1:22222]	Before collection#1: memory=8MB, #activations=0, collector=<#Activations=0, #Buckets=0, buckets=[]>.	
+[2017-11-08 16:05:53.823 GMT    11	INFO   	100508	Catalog	127.0.0.1:22222]	After collection#1: memory=8MB, #activations=0, collected 0 activations, collector=<#Activations=0, #Buckets=0, buckets=[]>, collection time=00:00:00.0477519.	
+[2017-11-08 16:05:53.906 GMT    12	WARNING	101723	ProviderTypeLoader	127.0.0.1:22222]	Exception loading types from assembly 'Microsoft.WindowsAzure.Storage, Version=8.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35': 
+Exc level 0: System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeAssembly.get_DefinedTypes()
+   at Orleans.Runtime.TypeUtils.GetDefinedTypes(Assembly assembly, Logger logger)
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified..	
+Exc level 0: System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeAssembly.get_DefinedTypes()
+   at Orleans.Runtime.TypeUtils.GetDefinedTypes(Assembly assembly, Logger logger)
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+Exc level 1: System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.
+[2017-11-08 16:05:53.947 GMT    12	INFO   	0	Storage.MemoryStorage.1	127.0.0.1:22222]	Init: Name=store NumStorageGrains=10	
+[2017-11-08 16:05:53.967 GMT    12	INFO   	100603	MembershipOracle	127.0.0.1:22222]	MembershipOracle starting on host = MININT-2T87D76 address = S127.0.0.1:22222:247853146 at 2017-11-08 16:05:52.676 GMT, backOffMax = 00:00:20	
+[2017-11-08 16:05:53.976 GMT    12	INFO   	100635	MembershipTableFactory	127.0.0.1:22222]	Creating membership table grain	
+[2017-11-08 16:05:54.023 GMT    11	INFO   	100637	GrainBasedMembershipTable	127.0.0.1:22222]	GrainBasedMembershipTable Activated.	
+[2017-11-08 16:05:54.100 GMT    12	INFO   	100631	MembershipTableFactory	127.0.0.1:22222]	-Connected to membership table provider.	
+[2017-11-08 16:05:54.146 GMT     9	INFO   	100000	GrainBasedMembershipTable	127.0.0.1:22222]	InitializeMembershipTable True.	
+[2017-11-08 16:05:59.153 GMT    12	INFO   	100652	MembershipOracle	127.0.0.1:22222]	-CleanupTable called on silo startup. Membership table 0 silos, 0 are Active, 0 are Dead, Version=<0, 0>. All silos: []	
+[2017-11-08 16:05:59.199 GMT    12	INFO   	100660	MembershipOracle	127.0.0.1:22222]	Starting IAmAliveUpdateTimer.	
+[2017-11-08 16:05:59.214 GMT    12	INFO   	100604	MembershipOracle	127.0.0.1:22222]	-BecomeActive	
+[2017-11-08 16:05:59.224 GMT    12	INFO   	100614	MembershipOracle	127.0.0.1:22222]	About to send pings to 0 nodes in order to validate communication in the Joining state. Pinged nodes = []	
+[2017-11-08 16:05:59.235 GMT     9	INFO   	100634	MembershipOracle	127.0.0.1:22222]	-ReadAll (called from BecomeActive) Membership table 1 silos, 1 are Active, 0 are Dead, Version=<2, 5>. All silos: [SiloAddress=S127.0.0.1:22222:247853146 SiloName=MININT-2T87D76 Status=Active]	
+[2017-11-08 16:05:59.240 GMT     9	INFO   	100605	MembershipOracle	127.0.0.1:22222]	-Finished BecomeActive.	
+[2017-11-08 16:05:59.249 GMT    12	INFO   	100000	TypeManager	127.0.0.1:22222]	OnRefreshClusterMapTimer: refresh start	
+[2017-11-08 16:05:59.256 GMT     1	INFO   	100702	WindowsPerfCountersStatistics	127.0.0.1:22222]	Starting Windows perf counter stats collection with frequency=00:00:30	
+[2017-11-08 16:05:59.276 GMT     1	INFO   	100714	SiloPerformanceMetrics	127.0.0.1:22222]	Starting Silo Table metrics reporter with reportFrequency=00:00:30	
+[2017-11-08 16:05:59.287 GMT    12	INFO   	100000	DeploymentLoadPublisher	127.0.0.1:22222]	Starting DeploymentLoadPublisher.	
+[2017-11-08 16:05:59.318 GMT    10	INFO   	100000	DeploymentLoadPublisher	127.0.0.1:22222]	Started DeploymentLoadPublisher.	
+[2017-11-08 16:05:59.327 GMT     1	INFO   	100000	Watchdog	127.0.0.1:22222]	Starting Silo Watchdog.	
+[2017-11-08 16:05:59.348 GMT    24	INFO   	100000	Runtime.Watchdog	127.0.0.1:22222]	Starting AsyncAgent Runtime.Watchdog on managed thread 24	
+[2017-11-08 16:05:59.425 GMT     9	INFO   	100000	GrainBasedReminderTable_S127.0.0.1:22222:247853146*grn/FCB3F509/00003039@ad6c9298	127.0.0.1:22222]	GrainBasedReminderTable *grn/FCB3F509/00003039 Activated. Full identity: [ActivationAddress: S127.0.0.1:22222:247853146*grn/FCB3F509/00003039@ad6c9298, Full GrainId: [GrainId: *grn/FCB3F509/0000000000000000000000000000303903fffffffcb3f509-0xBB9ED002, IdCategory: Grain, BaseTypeCode: -55315191 (xFCB3F509), PrimaryKey: 12345 (x3039), UniformHashCode: 3147747330 (0xBB9ED002)], Full ActivationId: @48653c478d91d0468047cfedad6c92980000000000000000]	
+[2017-11-08 16:05:59.438 GMT    11	INFO   	102925	Orleans.Runtime.ReminderService.LocalReminderService	127.0.0.1:22222]	Starting Orleans.Runtime.ReminderService.LocalReminderService grain service on: S127.0.0.1:22222:247853146 x0BA4EE18, with range 	
+[2017-11-08 16:05:59.535 GMT    16	INFO   	100000	Runtime.Messaging.GatewayAcceptor	127.0.0.1:22222]	Starting AsyncAgent Runtime.Messaging.GatewayAcceptor on managed thread 16	
+[2017-11-08 16:05:59.571 GMT     1	INFO   	100424	OrleansSiloHost	127.0.0.1:22222]	Silo startup event name: MININT-2T87D76	
+[2017-11-08 16:05:59.536 GMT    17	INFO   	100000	Runtime.Messaging.GatewayClientCleanupAgent	127.0.0.1:22222]	Starting AsyncAgent Runtime.Messaging.GatewayClientCleanupAgent on managed thread 17	
+[2017-11-08 16:05:59.615 GMT    16	INFO   	100328	Runtime.Messaging.GatewayAcceptor	127.0.0.1:22222]	Stopping AsyncAgent Runtime.Messaging.GatewayAcceptor that runs on managed thread 16	
+[2017-11-08 16:05:59.618 GMT     1	INFO   	100425	OrleansSiloHost	127.0.0.1:22222]	Created and set startup event MININT-2T87D76	
+[2017-11-08 16:05:59.643 GMT     1	INFO   	100402	OrleansSiloHost	127.0.0.1:22222]	Silo MININT-2T87D76 started successfully	
+[2017-11-08 16:06:00.095 GMT    23	INFO   	101301	Orleans.Messaging.Gateway	127.0.0.1:22222]	Recorded opened socket from endpoint 127.0.0.1:2672, client ID *cli/c83e36bd.	
+[2017-11-08 16:06:00.233 GMT    27	INFO   	100000	Runtime.Messaging.GatewaySender/GatewaySiloSender_0	127.0.0.1:22222]	Starting AsyncAgent Runtime.Messaging.GatewaySender/GatewaySiloSender_0 on managed thread 27	
+[2017-11-08 16:06:53.857 GMT    12	INFO   	100507	Catalog	127.0.0.1:22222]	Before collection#2: memory=7MB, #activations=2, collector=<#Activations=0, #Buckets=0, buckets=[]>.	
+[2017-11-08 16:06:53.866 GMT    12	INFO   	100508	Catalog	127.0.0.1:22222]	After collection#2: memory=7MB, #activations=2, collected 0 activations, collector=<#Activations=0, #Buckets=0, buckets=[]>, collection time=00:00:00.0088804.	
+[2017-11-08 16:06:59.195 GMT    11	INFO   	0	MemoryStorageGrain	]	OnActivateAsync	
+[2017-11-08 16:06:59.226 GMT    11	INFO   	0	MemoryStorageGrain	]	OnActivateAsync	
+[2017-11-08 16:06:59.368 GMT     8	INFO   	0	MemoryStorageGrain	]	OnActivateAsync	
+[2017-11-08 16:07:09.940 GMT    24	WARNING	100150	Watchdog	127.0.0.1:22222]	.NET Runtime Platform stalled for 00:00:03.4697763 - possibly GC? We are now using total of 8MB memory. gc=21, 7, 4	
+[2017-11-08 16:07:15.120 GMT    24	WARNING	100150	Watchdog	127.0.0.1:22222]	.NET Runtime Platform stalled for 00:00:05.1428215 - possibly GC? We are now using total of 8MB memory. gc=21, 7, 4	
+[2017-11-08 16:07:21.242 GMT    24	WARNING	100150	Watchdog	127.0.0.1:22222]	.NET Runtime Platform stalled for 00:00:06.0784674 - possibly GC? We are now using total of 8MB memory. gc=21, 7, 4	
+[2017-11-08 16:07:24.779 GMT    24	WARNING	100150	Watchdog	127.0.0.1:22222]	.NET Runtime Platform stalled for 00:00:03.5262939 - possibly GC? We are now using total of 8MB memory. gc=21, 7, 4	
+[2017-11-08 16:07:28.092 GMT    24	WARNING	100150	Watchdog	127.0.0.1:22222]	.NET Runtime Platform stalled for 00:00:02.0356913 - possibly GC? We are now using total of 8MB memory. gc=21, 7, 4	
+[2017-11-08 16:08:04.705 GMT    12	INFO   	100507	Catalog	127.0.0.1:22222]	Before collection#3: memory=8MB, #activations=9, collector=<#Activations=4, #Buckets=1, buckets=[1h:58m:55s.294ms->4 items]>.	
+[2017-11-08 16:08:05.800 GMT    12	INFO   	100508	Catalog	127.0.0.1:22222]	After collection#3: memory=8MB, #activations=9, collected 0 activations, collector=<#Activations=4, #Buckets=1, buckets=[1h:58m:54s.199ms->4 items]>, collection time=00:00:01.0949980.	
+[2017-11-08 16:08:04.718 GMT    10	WARNING	101410	GrainTimer	127.0.0.1:22222]	-GrainTimer.Membership.ProbeTimer. TimerCallbackHandler:Orleans.Runtime.GrainTimer+<>c__DisplayClass16_0->System.Threading.Tasks.Task <FromTimerCallback>b__0(System.Object) did not fire on time. Last fired at 2017-11-08 16:07:33.666 GMT, 00:00:31.0502371 since previous fire, should have fired after 00:00:10.	
+[2017-11-08 16:08:10.770 GMT    24	INFO   	600150	Watchdog	127.0.0.1:22222]	Log code 100150 occurred 3 additional times in the previous 00:01:00.8292847	
+[2017-11-08 16:08:10.788 GMT    12	WARNING	101215	Scheduler.Catalog.WorkItemGroup	127.0.0.1:22222]	Task [Id=2179, Status=RanToCompletion] in WorkGroup [SystemTarget: S127.0.0.1:22222:247853146Catalog@S0000000e] took elapsed time 0:00:01.0983896 for execution, which is longer than 00:00:00.2000000. Running on thread <Runtime.Scheduler.WorkerPoolThread/System.5, ManagedThreadId=12, Executing Task Id=2179 Status=RanToCompletion for 00:00:06.0789324 on WorkItem=System*WorkItemGroup:Name=Catalog,WorkGroupStatus=Running Executing for 00:00:06.0819384. .>	
+[2017-11-08 16:08:10.810 GMT    24	WARNING	100150	Watchdog	127.0.0.1:22222]	.NET Runtime Platform stalled for 00:00:05.0050015 - possibly GC? We are now using total of 8MB memory. gc=22, 7, 4	
+[2017-11-08 16:08:10.810 GMT    10	WARNING	101215	Scheduler.MembershipOracle.WorkItemGroup	127.0.0.1:22222]	Task [Id=2181, Status=RanToCompletion] in WorkGroup [SystemTarget: S127.0.0.1:22222:247853146MembershipOracle@S0000000f] took elapsed time 0:00:06.0928082 for execution, which is longer than 00:00:00.2000000. Running on thread <Runtime.Scheduler.WorkerPoolThread/2, ManagedThreadId=10, Executing Task Id=2181 Status=RanToCompletion for 00:00:06.0934747 on WorkItem=System*WorkItemGroup:Name=MembershipOracle,WorkGroupStatus=Running Executing for 00:00:06.0934747. .>	
+[2017-11-08 16:08:17.608 GMT    24	WARNING	100150	Watchdog	127.0.0.1:22222]	.NET Runtime Platform stalled for 00:00:02.1983169 - possibly GC? We are now using total of 9MB memory. gc=22, 7, 4	
+[2017-11-08 16:08:24.577 GMT    24	WARNING	100150	Watchdog	127.0.0.1:22222]	.NET Runtime Platform stalled for 00:00:04.0394525 - possibly GC? We are now using total of 7MB memory. gc=23, 7, 4	
+[2017-11-08 16:08:24.586 GMT     9	WARNING	101410	GrainTimer	127.0.0.1:22222]	-GrainTimer.Membership.ProbeTimer. TimerCallbackHandler:Orleans.Runtime.GrainTimer+<>c__DisplayClass16_0->System.Threading.Tasks.Task <FromTimerCallback>b__0(System.Object) did not fire on time. Last fired at 2017-11-08 16:08:10.810 GMT, 00:00:13.7759146 since previous fire, should have fired after 00:00:10.	
+[2017-11-08 16:08:28.961 GMT    24	WARNING	100150	Watchdog	127.0.0.1:22222]	.NET Runtime Platform stalled for 00:00:03.1264775 - possibly GC? We are now using total of 7MB memory. gc=23, 7, 4	
+[2017-11-08 16:08:31.915 GMT    24	WARNING	100150	Watchdog	127.0.0.1:22222]	.NET Runtime Platform stalled for 00:00:02.9452755 - possibly GC? We are now using total of 8MB memory. gc=23, 7, 4	
+[2017-11-08 16:09:05.849 GMT    11	WARNING	101410	GrainTimer	127.0.0.1:22222]	-GrainTimer.Membership.ProbeTimer. TimerCallbackHandler:Orleans.Runtime.GrainTimer+<>c__DisplayClass16_0->System.Threading.Tasks.Task <FromTimerCallback>b__0(System.Object) did not fire on time. Last fired at 2017-11-08 16:08:24.596 GMT, 00:00:41.2530670 since previous fire, should have fired after 00:00:10.	
+[2017-11-08 16:09:05.849 GMT    10	INFO   	100507	Catalog	127.0.0.1:22222]	Before collection#4: memory=8MB, #activations=9, collector=<#Activations=4, #Buckets=1, buckets=[1h:57m:54s.150ms->4 items]>.	
+[2017-11-08 16:09:06.737 GMT    12	WARNING	101215	Scheduler.DeploymentLoadPublisherSystemTarget.WorkItemGroup	127.0.0.1:22222]	Task [Id=2414, Status=RanToCompletion] in WorkGroup [SystemTarget: S127.0.0.1:22222:247853146DeploymentLoadPublisherSystemTarget@S00000016] took elapsed time 0:00:00.8888892 for execution, which is longer than 00:00:00.2000000. Running on thread <Runtime.Scheduler.WorkerPoolThread/System.5, ManagedThreadId=12, Executing Task Id=2414 Status=RanToCompletion for 00:00:00.8893032 on WorkItem=System*WorkItemGroup:Name=DeploymentLoadPublisherSystemTarget,WorkGroupStatus=Running Executing for 00:00:00.8893032. .>	
+[2017-11-08 16:09:08.404 GMT    11	WARNING	101215	Scheduler.MembershipOracle.WorkItemGroup	127.0.0.1:22222]	Task [Id=2417, Status=RanToCompletion] in WorkGroup [SystemTarget: S127.0.0.1:22222:247853146MembershipOracle@S0000000f] took elapsed time 0:00:02.5552839 for execution, which is longer than 00:00:00.2000000. Running on thread <Runtime.Scheduler.WorkerPoolThread/3, ManagedThreadId=11, Executing Task Id=2417 Status=RanToCompletion for 00:00:02.5550556 on WorkItem=System*WorkItemGroup:Name=MembershipOracle,WorkGroupStatus=Running Executing for 00:00:02.5550556. .>	
+[2017-11-08 16:09:08.442 GMT    10	INFO   	100508	Catalog	127.0.0.1:22222]	After collection#4: memory=8MB, #activations=9, collected 0 activations, collector=<#Activations=4, #Buckets=1, buckets=[1h:57m:51s.557ms->4 items]>, collection time=00:00:02.5922666.	
+[2017-11-08 16:09:08.466 GMT    10	WARNING	101215	Scheduler.Catalog.WorkItemGroup	127.0.0.1:22222]	Task [Id=2420, Status=RanToCompletion] in WorkGroup [SystemTarget: S127.0.0.1:22222:247853146Catalog@S0000000e] took elapsed time 0:00:02.6165476 for execution, which is longer than 00:00:00.2000000. Running on thread <Runtime.Scheduler.WorkerPoolThread/2, ManagedThreadId=10, Executing Task Id=2420 Status=RanToCompletion for 00:00:02.6171793 on WorkItem=System*WorkItemGroup:Name=Catalog,WorkGroupStatus=Running Executing for 00:00:02.6171793. .>	

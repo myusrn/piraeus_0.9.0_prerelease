@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using Capl.Authorization;
+﻿using Capl.Authorization;
 using Orleans;
 using Orleans.Providers;
 using Piraeus.GrainInterfaces;
+using System.Threading.Tasks;
 
 namespace Piraeus.Grains
 {

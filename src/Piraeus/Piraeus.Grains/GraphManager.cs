@@ -44,7 +44,7 @@ namespace Piraeus.Grains
         /// </summary>
         /// <param name="resourceUriString">Unique URI that identifies the resource.</param>
         /// <returns>Resource's metadata.</returns>
-        public static async Task<ResourceMetadata> GetResourceMetadata(string resourceUriString)
+        public static async Task<ResourceMetadata> GetResourceMetadataAsync(string resourceUriString)
         {
             IResource resource = GetResource(resourceUriString);
             return await resource.GetMetadataAsync();
@@ -133,7 +133,7 @@ namespace Piraeus.Grains
         /// <param name="lifetime">The lifetime of the lease.</param>
         /// <param name="observer">Metric observer to receive events.</param>
         /// <returns>A unique string for the lease key, which is used to refresh the lease for the observer.</returns>
-        public static async Task<string> AddResourceObserver(string resourceUriString, TimeSpan lifetime, MetricObserver observer)
+        public static async Task<string> AddResourceObserverAsync(string resourceUriString, TimeSpan lifetime, MetricObserver observer)
         {
             IMetricObserver objRef = await GrainClient.GrainFactory.CreateObjectReference<IMetricObserver>(observer);
             IResource resource = GetResource(resourceUriString);
@@ -147,7 +147,7 @@ namespace Piraeus.Grains
         /// <param name="lifetime">The lifetime of the lease.</param>
         /// <param name="observer">Error observer to receive events.</param>
         /// <returns>A unique string for the lease key, whic is used to refresh the lease for the observer.</returns>
-        public static async Task<string> AddResourceObserver(string resourceUriString, TimeSpan lifetime, ErrorObserver observer)
+        public static async Task<string> AddResourceObserverAsync(string resourceUriString, TimeSpan lifetime, ErrorObserver observer)
         {
             IErrorObserver objRef = await GrainClient.GrainFactory.CreateObjectReference<IErrorObserver>(observer);
             IResource resource = GetResource(resourceUriString);
@@ -161,7 +161,7 @@ namespace Piraeus.Grains
         /// <param name="leaseKey">Unique string of the observer's lease.</param>
         /// <param name="lifetime">The lifetime of the renewed lease.</param>
         /// <returns></returns>
-        public static async Task<bool> RenewResourceObserverLease(string resourceUriString, string leaseKey, TimeSpan lifetime)
+        public static async Task<bool> RenewResourceObserverLeaseAsync(string resourceUriString, string leaseKey, TimeSpan lifetime)
         {
             IResource resource = GetResource(resourceUriString);
             return await resource.RenewObserverLeaseAsync(leaseKey, lifetime);

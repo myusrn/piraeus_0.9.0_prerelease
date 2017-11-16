@@ -180,7 +180,7 @@ namespace SkunkLab.Channels.Http
         {
             if (!string.IsNullOrEmpty(securityToken))
             {
-                request.Headers.Add("Authorize", "Bearer " + securityToken);
+                request.Headers.Add("Authorization", String.Format("Bearer {0}", securityToken));
                 return;
             }
 

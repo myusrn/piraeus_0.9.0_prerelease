@@ -84,19 +84,19 @@ namespace SkunkLab.Protocols.Coap
         {
             var observeQuery = observeContainer.Where((c) => c.Key == Convert.ToBase64String(message.Token));
 
-            if(observeQuery != null)
+            foreach(var item in observeQuery)
             {
-                observeQuery.First().Value(message.Code, MediaTypeConverter.ConvertFromMediaType(message.ContentType), message.Payload);
+                item.Value(message.Code, MediaTypeConverter.ConvertFromMediaType(message.ContentType), message.Payload);
             }
-
-
+            
+            
             var query = container.Where((c) => c.Value.Item1 == Convert.ToBase64String(message.Token));
 
-            if(query != null && query.Count() == 1)
+            if(query.Count() == 1)
             {
-                if (observeQuery == null)
+                if (observeQuery.Count() == 1)  
                 {
-                    query.First().Value.Item3(message.Code, MediaTypeConverter.ConvertFromMediaType(message.ContentType), message.Payload);
+                    //query.First().Value.Item3(message.Code, MediaTypeConverter.ConvertFromMediaType(message.ContentType), message.Payload);
                 }
                 else
                 {

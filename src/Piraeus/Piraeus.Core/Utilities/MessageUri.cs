@@ -130,7 +130,8 @@ namespace Piraeus.Core.Utilities
             }
             catch(Exception ex)
             {
-                return null;
+                System.Diagnostics.Trace.TraceError(ex.Message);
+                throw ex;
             }
         }
         private IEnumerable<string> GetEnumerableParameters(string key, HttpRequestMessage request)

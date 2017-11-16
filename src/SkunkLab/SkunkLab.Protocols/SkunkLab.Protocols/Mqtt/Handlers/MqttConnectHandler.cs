@@ -58,7 +58,7 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
                     {
                         IdentityDecoder decoder = new IdentityDecoder(Session.Config.IdentityClaimType, Session.Config.Indexes);
                         Session.Identity = decoder.Id;
-                        Session.Indexes = decoder.Indexes;
+                        Session.Indexes = decoder.Indexes == null || decoder.Indexes.Count == 0 ? null : decoder.Indexes;
                         Session.IsConnected = true;
                         Session.Connect(ConnectAckCode.ConnectionAccepted);
                         return await Task.FromResult<MqttMessage>(new ConnectAckMessage(false, ConnectAckCode.ConnectionAccepted));

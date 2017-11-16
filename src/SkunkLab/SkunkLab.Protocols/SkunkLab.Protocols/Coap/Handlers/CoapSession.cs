@@ -19,8 +19,8 @@ namespace SkunkLab.Protocols.Coap.Handlers
 
             if(config.KeepAlive.HasValue)
             {
-                keepaliveTimestamp = DateTime.UtcNow.AddMilliseconds(config.KeepAlive.Value);
-                keepaliveTimer = new Timer(config.KeepAlive.Value);
+                keepaliveTimestamp = DateTime.UtcNow.AddSeconds(config.KeepAlive.Value);
+                keepaliveTimer = new Timer(config.KeepAlive.Value * 1000);
                 keepaliveTimer.Elapsed += KeepaliveTimer_Elapsed;
                 keepaliveTimer.Start();
             }

@@ -68,14 +68,6 @@ namespace SkunkLab.Channels.WebSocket
         public override event EventHandler<ChannelSentEventArgs> OnSent;
         public override event EventHandler<ChannelObserverEventArgs> OnObserve;
 
-        //public override event ChannelCloseEventHandler OnClose;
-        //public override event ChannelErrorEventHandler OnError;
-        //public override event ChannelOpenEventHandler OnOpen;
-        //public override event ChannelReceivedEventHandler OnReceive;
-        //public override event ChannelStateEventHandler OnStateChange;
-        //public override event ChannelRetryEventHandler OnRetry;
-        //public override event ChannelSentEventHandler OnSent;
-
         public override string Id { get;  internal set; }
 
         public override bool IsConnected
@@ -123,7 +115,7 @@ namespace SkunkLab.Channels.WebSocket
 
             if (!string.IsNullOrEmpty(securityToken))
             {
-                client.Options.SetRequestHeader("Authorize", "Bearer " + securityToken);
+                client.Options.SetRequestHeader("Authorization", String.Format("Bearer {0}", securityToken));
             }
 
             if (certificate != null)
@@ -185,7 +177,7 @@ namespace SkunkLab.Channels.WebSocket
 
             if(!string.IsNullOrEmpty(securityToken))
             {
-                client.Options.SetRequestHeader("Authorize", securityToken);
+                client.Options.SetRequestHeader("Authorization", String.Format("Bearer {0}",securityToken));
             }
 
             if(certificate != null)

@@ -13,8 +13,9 @@ namespace SkunkLab.Protocols.Mqtt
         public MqttUri(string uriString)
             : base(uriString, UriKind.Absolute)
         {
-            Uri uri = new Uri(uriString.ToLower(CultureInfo.InvariantCulture));
-            Resource = new Uri(uri.ToString().Replace(uri.PathAndQuery, "")).ToString();
+            Uri uri = new Uri(uriString.ToLowerInvariant());
+            Resource = uri.ToCanonicalString(false);
+            //Resource = new Uri(uri.ToString().Replace(uri.PathAndQuery, "")).ToString();
             List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>();
             NameValueCollection nvc = HttpUtility.ParseQueryString(new Uri(HttpUtility.UrlDecode(uriString)).Query);
 

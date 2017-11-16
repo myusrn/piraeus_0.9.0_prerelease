@@ -340,6 +340,7 @@ namespace SkunkLab.Protocols.Coap
             object[] uripath = message.Options.GetOptionValues(OptionType.UriPath);
             object[] uriquery = message.Options.GetOptionValues(OptionType.UriQuery);
             object[] locationquery = message.Options.GetOptionValues(OptionType.LocationQuery);
+            object observe = message.Options.GetOptionValue(OptionType.Observe);
 
             message.ResourceUri = message.Options.GetResourceUri();
 
@@ -347,6 +348,11 @@ namespace SkunkLab.Protocols.Coap
             message._eTag = etag == null ? new List<byte[]>() : new List<byte[]>(etag as byte[][]);
             message.IfNoneMatch = message.Options.Contains(new CoapOption(OptionType.IfNoneMatch, null));
             message._locationPath = locationpath == null ? new List<string>() : new List<string>(locationpath as string[]);
+            
+            if(observe != null)
+            {
+                message.Observe = ((uint)observe) == 0 ? true : false;
+            }
 
             object contentType = (message.Options.GetOptionValue(OptionType.ContentFormat));
             if (contentType != null)

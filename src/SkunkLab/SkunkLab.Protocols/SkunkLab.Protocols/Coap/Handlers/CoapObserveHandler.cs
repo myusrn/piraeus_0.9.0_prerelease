@@ -21,7 +21,9 @@ namespace SkunkLab.Protocols.Coap.Handlers
                 Session.CoapReceiver.CacheId(Message.MessageId);               
             }
 
-            return await Task.FromResult<CoapMessage>(Dispatcher.Observe(Message));
+            CoapMessage message = Dispatcher.Observe(Message);
+
+            return await Task.FromResult<CoapMessage>(message);
         }
     }
 }

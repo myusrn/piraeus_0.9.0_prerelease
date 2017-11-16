@@ -1,0 +1,113 @@
+<package>
+  <metadata>
+    <id>Piraeus.SiloHost</id>
+    <version>0.0.2.0</version>
+    <authors>malong</authors>
+    <owners>malong</owners>
+    <tags>OctopusDeploy</tags>
+    <licenseUrl>http://example.com</licenseUrl>
+    <projectUrl>http://example.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The Piraeus.SiloHost deployment package, built on 10/28/2017</description>
+    <releaseNotes></releaseNotes>
+  </metadata>
+  <files>
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Piraeus.SiloHost.dll.config" target="Piraeus.SiloHost.dll.config" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Piraeus.SiloHost.dll" target="Piraeus.SiloHost.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Piraeus.SiloHost.pdb" target="Piraeus.SiloHost.pdb" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Capl.dll" target="Capl.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.Azure.KeyVault.Core.dll" target="Microsoft.Azure.KeyVault.Core.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.Data.Edm.dll" target="Microsoft.Data.Edm.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.Data.OData.dll" target="Microsoft.Data.OData.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.Data.Services.Client.dll" target="Microsoft.Data.Services.Client.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.Extensions.DependencyInjection.Abstractions.dll" target="Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.Extensions.DependencyInjection.dll" target="Microsoft.Extensions.DependencyInjection.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.Win32.Primitives.dll" target="Microsoft.Win32.Primitives.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.WindowsAzure.Storage.dll" target="Microsoft.WindowsAzure.Storage.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Newtonsoft.Json.dll" target="Newtonsoft.Json.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Orleans.dll" target="Orleans.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\OrleansProviders.dll" target="OrleansProviders.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\OrleansRuntime.dll" target="OrleansRuntime.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Piraeus.Core.dll" target="Piraeus.Core.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Piraeus.GrainInterfaces.dll" target="Piraeus.GrainInterfaces.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Piraeus.Grains.dll" target="Piraeus.Grains.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\StackExchange.Redis.dll" target="StackExchange.Redis.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.AppContext.dll" target="System.AppContext.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Collections.Immutable.dll" target="System.Collections.Immutable.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Console.dll" target="System.Console.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Diagnostics.DiagnosticSource.dll" target="System.Diagnostics.DiagnosticSource.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Globalization.Calendars.dll" target="System.Globalization.Calendars.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.IO.Compression.dll" target="System.IO.Compression.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.IO.Compression.ZipFile.dll" target="System.IO.Compression.ZipFile.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.IO.FileSystem.dll" target="System.IO.FileSystem.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.IO.FileSystem.Primitives.dll" target="System.IO.FileSystem.Primitives.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Net.Http.dll" target="System.Net.Http.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Net.Sockets.dll" target="System.Net.Sockets.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Reflection.Metadata.dll" target="System.Reflection.Metadata.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll" target="System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Security.Cryptography.Algorithms.dll" target="System.Security.Cryptography.Algorithms.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Security.Cryptography.Encoding.dll" target="System.Security.Cryptography.Encoding.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Security.Cryptography.Primitives.dll" target="System.Security.Cryptography.Primitives.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Security.Cryptography.X509Certificates.dll" target="System.Security.Cryptography.X509Certificates.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Spatial.dll" target="System.Spatial.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Xml.ReaderWriter.dll" target="System.Xml.ReaderWriter.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.Data.Edm.xml" target="Microsoft.Data.Edm.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.Data.OData.xml" target="Microsoft.Data.OData.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.Data.Services.Client.xml" target="Microsoft.Data.Services.Client.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.Extensions.DependencyInjection.xml" target="Microsoft.Extensions.DependencyInjection.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.Extensions.DependencyInjection.Abstractions.xml" target="Microsoft.Extensions.DependencyInjection.Abstractions.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.WindowsAzure.Storage.pdb" target="Microsoft.WindowsAzure.Storage.pdb" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Microsoft.WindowsAzure.Storage.xml" target="Microsoft.WindowsAzure.Storage.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Newtonsoft.Json.xml" target="Newtonsoft.Json.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Orleans.xml" target="Orleans.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\OrleansProviders.xml" target="OrleansProviders.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\OrleansRuntime.xml" target="OrleansRuntime.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Piraeus.Core.pdb" target="Piraeus.Core.pdb" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Piraeus.Core.dll.config" target="Piraeus.Core.dll.config" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Piraeus.GrainInterfaces.pdb" target="Piraeus.GrainInterfaces.pdb" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Piraeus.GrainInterfaces.dll.config" target="Piraeus.GrainInterfaces.dll.config" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Piraeus.Grains.pdb" target="Piraeus.Grains.pdb" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\Piraeus.Grains.dll.config" target="Piraeus.Grains.dll.config" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\StackExchange.Redis.xml" target="StackExchange.Redis.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Collections.Immutable.xml" target="System.Collections.Immutable.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Diagnostics.DiagnosticSource.xml" target="System.Diagnostics.DiagnosticSource.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Reflection.Metadata.xml" target="System.Reflection.Metadata.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\System.Spatial.xml" target="System.Spatial.xml" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\de\Microsoft.Data.Edm.resources.dll" target="de\Microsoft.Data.Edm.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\es\Microsoft.Data.Edm.resources.dll" target="es\Microsoft.Data.Edm.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\fr\Microsoft.Data.Edm.resources.dll" target="fr\Microsoft.Data.Edm.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\it\Microsoft.Data.Edm.resources.dll" target="it\Microsoft.Data.Edm.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\ja\Microsoft.Data.Edm.resources.dll" target="ja\Microsoft.Data.Edm.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\ko\Microsoft.Data.Edm.resources.dll" target="ko\Microsoft.Data.Edm.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\ru\Microsoft.Data.Edm.resources.dll" target="ru\Microsoft.Data.Edm.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\zh-Hans\Microsoft.Data.Edm.resources.dll" target="zh-Hans\Microsoft.Data.Edm.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\zh-Hant\Microsoft.Data.Edm.resources.dll" target="zh-Hant\Microsoft.Data.Edm.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\de\Microsoft.Data.OData.resources.dll" target="de\Microsoft.Data.OData.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\es\Microsoft.Data.OData.resources.dll" target="es\Microsoft.Data.OData.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\fr\Microsoft.Data.OData.resources.dll" target="fr\Microsoft.Data.OData.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\it\Microsoft.Data.OData.resources.dll" target="it\Microsoft.Data.OData.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\ja\Microsoft.Data.OData.resources.dll" target="ja\Microsoft.Data.OData.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\ko\Microsoft.Data.OData.resources.dll" target="ko\Microsoft.Data.OData.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\ru\Microsoft.Data.OData.resources.dll" target="ru\Microsoft.Data.OData.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\zh-Hans\Microsoft.Data.OData.resources.dll" target="zh-Hans\Microsoft.Data.OData.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\zh-Hant\Microsoft.Data.OData.resources.dll" target="zh-Hant\Microsoft.Data.OData.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\de\Microsoft.Data.Services.Client.resources.dll" target="de\Microsoft.Data.Services.Client.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\es\Microsoft.Data.Services.Client.resources.dll" target="es\Microsoft.Data.Services.Client.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\fr\Microsoft.Data.Services.Client.resources.dll" target="fr\Microsoft.Data.Services.Client.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\it\Microsoft.Data.Services.Client.resources.dll" target="it\Microsoft.Data.Services.Client.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\ja\Microsoft.Data.Services.Client.resources.dll" target="ja\Microsoft.Data.Services.Client.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\ko\Microsoft.Data.Services.Client.resources.dll" target="ko\Microsoft.Data.Services.Client.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\ru\Microsoft.Data.Services.Client.resources.dll" target="ru\Microsoft.Data.Services.Client.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\zh-Hans\Microsoft.Data.Services.Client.resources.dll" target="zh-Hans\Microsoft.Data.Services.Client.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\zh-Hant\Microsoft.Data.Services.Client.resources.dll" target="zh-Hant\Microsoft.Data.Services.Client.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\de\System.Spatial.resources.dll" target="de\System.Spatial.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\es\System.Spatial.resources.dll" target="es\System.Spatial.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\fr\System.Spatial.resources.dll" target="fr\System.Spatial.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\it\System.Spatial.resources.dll" target="it\System.Spatial.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\ja\System.Spatial.resources.dll" target="ja\System.Spatial.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\ko\System.Spatial.resources.dll" target="ko\System.Spatial.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\ru\System.Spatial.resources.dll" target="ru\System.Spatial.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\zh-Hans\System.Spatial.resources.dll" target="zh-Hans\System.Spatial.resources.dll" />
+    <file src="C:\_git\core\Piraeus.SiloHost\bin\Release\zh-Hant\System.Spatial.resources.dll" target="zh-Hant\System.Spatial.resources.dll" />
+  </files>
+</package>

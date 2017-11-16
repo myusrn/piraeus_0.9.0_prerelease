@@ -1,0 +1,6 @@
+C:\Users\malong\Downloads\SkunkLab\Powershell\Services\main\src\RestServices\bin\Release\RestServices.dll
+C:\Users\malong\Downloads\SkunkLab\Powershell\Services\main\src\RestServices\bin\Release\RestServices.pdb
+C:\Users\malong\Downloads\SkunkLab\Powershell\Services\main\src\RestServices\bin\Release\Newtonsoft.Json.dll
+C:\Users\malong\Downloads\SkunkLab\Powershell\Services\main\src\RestServices\bin\Release\Newtonsoft.Json.xml
+C:\Users\malong\Downloads\SkunkLab\Powershell\Services\main\src\RestServices\obj\Release\RestServices.dll
+C:\Users\malong\Downloads\SkunkLab\Powershell\Services\main\src\RestServices\obj\Release\RestServices.pdb

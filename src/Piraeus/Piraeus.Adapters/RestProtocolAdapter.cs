@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Security;
+using System.Text;
 using System.Threading.Tasks;
 using Piraeus.Configuration.Settings;
 using Piraeus.Core.Messaging;
@@ -15,45 +17,42 @@ namespace Piraeus.Adapters
 {
     public class RestProtocolAdapter : ProtocolAdapter
     {
+
         public RestProtocolAdapter(PiraeusConfig config, IChannel channel)
         {
             this.config = config;
-            adapter = new OrleansAdapter();
             Channel = channel;
-            Channel.OnOpen += Channel_OnOpen;
-            Channel.OnReceive += Channel_OnReceive;
-            Channel.OnClose += Channel_OnClose;
-            Channel.OnError += Channel_OnError;
         }
-        
 
         public override IChannel Channel { get; set; }
+
+        public override event EventHandler<ProtocolAdapterErrorEventArgs> OnError;
+        public override event EventHandler<ProtocolAdapterCloseEventArgs> OnClose;
+        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
+
+
         private PiraeusConfig config;
         private OrleansAdapter adapter;
-        public override event System.EventHandler<ProtocolAdapterErrorEventArgs> OnError;
-        public override event System.EventHandler<ProtocolAdapterCloseEventArgs> OnClose;
-        public override event System.EventHandler<ChannelObserverEventArgs> OnObserve;
-
         private bool disposedValue;
+
+        
 
         public override void Init()
         {
             adapter = new OrleansAdapter();
             adapter.OnObserve += Adapter_OnObserve;
+            Channel.OnOpen += Channel_OnOpen;
+            Channel.OnReceive += Channel_OnReceive;
+            Channel.OnClose += Channel_OnClose;
+            Channel.OnError += Channel_OnError;
+            
             Task task = Channel.OpenAsync();
             Task.WhenAll(task);
         }
 
-        private void Adapter_OnObserve(object sender, ObserveMessageEventArgs e)
+        private void Channel_OnOpen(object sender, ChannelOpenEventArgs e)
         {
-            byte[] payload = ProtocolTransition.ConvertToHttp(e.Message);
-            OnObserve?.Invoke(this, new ChannelObserverEventArgs(e.Message.ResourceUri, e.Message.ContentType, e.Message.Message));
-        }
-
-        #region Channel Events
-        private void Channel_OnOpen(object sender, ChannelOpenEventArgs args)
-        {
-            if(!Channel.IsAuthenticated)  //requires channel authentication
+            if (!Channel.IsAuthenticated)  //requires channel authentication
             {
                 Task logTask = Log.LogErrorAsync("Channel {0} not authenticated.", Channel.Id);
                 Task.WhenAll(logTask);
@@ -64,23 +63,22 @@ namespace Piraeus.Adapters
                 return;
             }
 
-            if (args.Message.Method != HttpMethod.Post && args.Message.Method != HttpMethod.Get)
+            if (e.Message.Method != HttpMethod.Post && e.Message.Method != HttpMethod.Get)
             {
                 Task closeTask = Channel.CloseAsync();
                 Task.WhenAll(closeTask);
-                OnError?.Invoke(this, new ProtocolAdapterErrorEventArgs(Channel.Id, new SecurityException("Rest protocol adapter requires GET or POST only.")));               
+                OnError?.Invoke(this, new ProtocolAdapterErrorEventArgs(Channel.Id, new SecurityException("Rest protocol adapter requires GET or POST only.")));
             }
 
-            MessageUri uri = new MessageUri(args.Message);
-
+            MessageUri uri = new MessageUri(e.Message);
             IdentityDecoder decoder = new IdentityDecoder(config.Identity.Client.IdentityClaimType, config.Identity.Client.Indexes);
-
-            HttpRequestMessage request = (HttpRequestMessage)args.Message;
+            HttpRequestMessage request = (HttpRequestMessage)e.Message;
 
             if (request.Method == HttpMethod.Get)
             {
                 foreach (var item in uri.Subscriptions)
                 {
+                    
                     Task task = SubscribeAsync(item, decoder.Id, decoder.Indexes);
                     Task.WhenAll(task);
                 }
@@ -89,43 +87,43 @@ namespace Piraeus.Adapters
             if (request.Method == HttpMethod.Post)
             {
                 EventMessage message = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, request.Content.ReadAsByteArrayAsync().Result);
-                try
-                {
-                    List<KeyValuePair<string, string>> indexList = uri.Indexes == null ? null : new List<KeyValuePair<string, string>>(uri.Indexes);
-                    Task task = PublishAsync(message, indexList);
-                    Task.WhenAll(task);
-                    Task final = Channel.CloseAsync();
-                    Task.WhenAll(final);
-                }
-                catch(AggregateException ae)
-                {
-
-                }
-                catch(Exception ex)
-                {
-
-                }
+                List<KeyValuePair<string, string>> indexList = uri.Indexes == null ? null : new List<KeyValuePair<string, string>>(uri.Indexes);
+                Task task = PublishAsync(decoder.Id, message, indexList);
+                Task.WhenAll(task);
+                Task final = Channel.CloseAsync();
+                Task.WhenAll(final);
             }
+        }
+
+        private void Channel_OnReceive(object sender, ChannelReceivedEventArgs e)
+        {
             
-
         }
 
-        private void Channel_OnReceive(object sender, ChannelReceivedEventArgs args)
-        {            
-        }
-
-
-        private void Channel_OnError(object sender, ChannelErrorEventArgs args)
+        private void Channel_OnError(object sender, ChannelErrorEventArgs e)
         {
+            OnError?.Invoke(this, new ProtocolAdapterErrorEventArgs(Channel.Id, e.Error));
         }
 
-        private void Channel_OnClose(object sender, ChannelCloseEventArgs args)
+        private void Channel_OnClose(object sender, ChannelCloseEventArgs e)
         {
+            OnClose?.Invoke(this, new ProtocolAdapterCloseEventArgs(Channel.Id));
         }
+
+        
+
+        
+
+        #region Adapter event
+        private void Adapter_OnObserve(object sender, ObserveMessageEventArgs e)
+        {
+            byte[] payload = ProtocolTransition.ConvertToHttp(e.Message);
+            OnObserve?.Invoke(this, new ChannelObserverEventArgs(e.Message.ResourceUri, e.Message.ContentType, e.Message.Message));
+        }
+
         #endregion
 
-
-        #region dispose
+        #region Dispose
 
         protected virtual void Dispose(bool disposing)
         {
@@ -152,46 +150,39 @@ namespace Piraeus.Adapters
         #endregion
 
 
-        private async Task PublishAsync(EventMessage message, List<KeyValuePair<string,string>> indexes = null)
-        {
-            if(!await adapter.CanPublishAsync(message.ResourceUri, Channel.IsEncrypted))
-            {
-                return;
-            }
-
-            await adapter.PublishAsync(message, indexes);
-        }
+        #region private methods
 
         private async Task SubscribeAsync(string resourceUriString, string identity, List<KeyValuePair<string, string>> indexes)
-        {
-            Exception ex = null;
-            bool result = false;
-
-            try
+        {          
+            if(await adapter.CanSubscribeAsync(resourceUriString, Channel.IsEncrypted))
             {
-                result = await adapter.CanSubscribeAsync(resourceUriString, Channel.IsEncrypted);
+                SubscriptionMetadata metadata = new SubscriptionMetadata()
+                {
+                    Identity = identity,
+                    Indexes = indexes,
+                    IsEphemeral = true
+                };
+
+                string subscriptionUriString = await adapter.SubscribeAsync(resourceUriString, metadata);
+                await Log.LogInfoAsync("Identity {0} subscribed to resource {1} with subscription URI {2}", identity, resourceUriString, subscriptionUriString);
             }
-            catch(AggregateException ae)
+            else
             {
-                ex = ae.Flatten().InnerException;
+                await Log.LogErrorAsync("REST protocol cannot subscribe identity {0} to resource {1}", identity, resourceUriString);
             }
-
-            if(!result)
-            {
-                await Log.LogErrorAsync(ex.Message);
-                return;
-            }
-
-            SubscriptionMetadata metadata = new SubscriptionMetadata()
-            {
-                Identity = identity,
-                Indexes = indexes,
-                IsEphemeral = true
-            };
-
-            string subscriptionUriString = await adapter.SubscribeAsync(resourceUriString, metadata);
         }
 
-
+        private async Task PublishAsync(string identity, EventMessage message, List<KeyValuePair<string, string>> indexes = null)
+        {
+            if (await adapter.CanPublishAsync(message.ResourceUri, Channel.IsEncrypted))
+            {
+                await adapter.PublishAsync(message, indexes);
+            }
+            else
+            {
+                await Log.LogErrorAsync("Identity {0} cannot publish to resource {1}", identity, message.ResourceUri);
+            }
+        }
+        #endregion
     }
 }

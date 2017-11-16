@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketCoapClient", "WebSocketCoapClient.csproj", "{DC50B7DE-C560-415A-8E69-B141D868DB07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Common", "..\Client.Common\Client.Common.csproj", "{13E01257-C2B9-4B4A-9675-0FA9A5C792BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piraeus.Clients", "..\..\..\..\Piraeus\Piraeus.Clients\Piraeus.Clients.csproj", "{E41C1AA8-8160-4D4C-8462-E9EC011560EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC50B7DE-C560-415A-8E69-B141D868DB07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC50B7DE-C560-415A-8E69-B141D868DB07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC50B7DE-C560-415A-8E69-B141D868DB07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC50B7DE-C560-415A-8E69-B141D868DB07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13E01257-C2B9-4B4A-9675-0FA9A5C792BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13E01257-C2B9-4B4A-9675-0FA9A5C792BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13E01257-C2B9-4B4A-9675-0FA9A5C792BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13E01257-C2B9-4B4A-9675-0FA9A5C792BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E41C1AA8-8160-4D4C-8462-E9EC011560EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E41C1AA8-8160-4D4C-8462-E9EC011560EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E41C1AA8-8160-4D4C-8462-E9EC011560EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E41C1AA8-8160-4D4C-8462-E9EC011560EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46556665-9CB8-4560-99AB-811C44CCD34C}
+	EndGlobalSection
+EndGlobal
