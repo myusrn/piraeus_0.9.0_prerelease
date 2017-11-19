@@ -108,3 +108,6 @@ C:\_git\core\src\Piraeus\Piraeus.Adapters\obj\Release\Piraeus.Adapters.dll
 C:\_git\core\src\Piraeus\Piraeus.Adapters\obj\Release\Piraeus.Adapters.pdb
 C:\_git\core\src\Piraeus\Piraeus.Adapters\obj\Release\Piraeus.Adapters.orleans.g.cs
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\System.Collections.Immutable.xml
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\System.Net.Http.Formatting.xml
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\System.Web.Http.xml
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\System.Web.Http.WebHost.xml
