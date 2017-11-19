@@ -137,22 +137,39 @@ namespace Piraeus.Adapters
                 IsEphemeral = true
             };
 
+            //List<Task> taskList = new List<Task>();
+
+            //foreach (var item in message.Topics)
+            //{
+            //    Task task = Task.Factory.StartNew(async () =>
+            //    {
+            //        MqttUri uri = new MqttUri(item.Key);
+            //        string resourceUriString = uri.Resource;
+
+            //        if (await adapter.CanSubscribeAsync(resourceUriString, Channel.IsEncrypted))
+            //        {
+            //            string subscriptionUriString = await adapter.SubscribeAsync(resourceUriString, metadata);
+            //            list.Add(resourceUriString);
+            //        }
+            //    });
+
+            //    taskList.Add(task);
+            //}
+
+            //Task.WaitAll(taskList.ToArray());
+
             foreach (var item in message.Topics)
             {
-                Task task = Task.Factory.StartNew(async () =>
+                MqttUri uri = new MqttUri(item.Key);
+                string resourceUriString = uri.Resource;
+
+                if (adapter.CanSubscribeAsync(resourceUriString, Channel.IsEncrypted).Result)
                 {
-                    MqttUri uri = new MqttUri(item.Key);
-                    string resourceUriString = uri.Resource;
-
-                    if (await adapter.CanSubscribeAsync(resourceUriString, Channel.IsEncrypted))
-                    {
-                        string subscriptionUriString = await adapter.SubscribeAsync(resourceUriString, metadata);
-                        list.Add(resourceUriString);
-                    }
-                });
-
-                Task.WhenAll(task);
+                    string subscriptionUriString = adapter.SubscribeAsync(resourceUriString, metadata).Result;
+                    list.Add(resourceUriString);
+                }
             }
+
 
             return list;
         }

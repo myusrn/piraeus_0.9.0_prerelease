@@ -113,18 +113,17 @@ namespace Piraeus.Adapters
         {
             PublishMessage msg = MqttMessage.DecodeMessage(message) as PublishMessage;
             MqttUri uri = new MqttUri(msg.Topic);
+            //msg.Topic = uri.Resource;
             QualityOfServiceLevelType? qos = session.GetQoS(uri.Resource);
 
-            
-            msg.QualityOfService = qos.HasValue ? qos.Value : QualityOfServiceLevelType.AtMostOnce;
-            msg.MessageId = session.NewId();
+            PublishMessage pm = new PublishMessage(false, qos.HasValue ? qos.Value : QualityOfServiceLevelType.AtMostOnce, false, session.NewId(), uri.Resource, msg.Payload);                         
 
-            if (msg.QualityOfService != QualityOfServiceLevelType.AtMostOnce)
+            if (pm.QualityOfService != QualityOfServiceLevelType.AtMostOnce)
             {
-                session.Quarantine(msg);
+                session.Quarantine(pm);
             }
 
-            return msg.Encode();
+            return pm.Encode();
         }
 
 

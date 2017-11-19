@@ -1,7 +1,9 @@
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\BouncyCastle.Crypto.dll
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Microsoft.CodeAnalysis.CSharp.xml
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\StackExchange.Redis.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Piraeus.Adapters.dll.config
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Piraeus.Adapters.dll
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Piraeus.Adapters.pdb
-C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\BouncyCastle.Crypto.dll
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Capl.dll
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Microsoft.Azure.KeyVault.Cryptography.dll
@@ -72,7 +74,6 @@ C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Microsoft.Azure.KeyVault.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Microsoft.Azure.KeyVault.Extensions.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Microsoft.Azure.KeyVault.WebKey.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Microsoft.CodeAnalysis.xml
-C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Microsoft.CodeAnalysis.CSharp.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
@@ -99,12 +100,14 @@ C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\SkunkLab.Protocols.pdb
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\SkunkLab.Security.pdb
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\SkunkLab.Storage.pdb
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\SkunkLab.Storage.dll.config
-C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\StackExchange.Redis.xml
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\System.Collections.Immutable.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\System.Net.Http.Formatting.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\System.Reflection.Metadata.xml
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\System.Web.Http.xml
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\System.Web.Http.WebHost.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Piraeus\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.dll
 C:\_git\core\src\Piraeus\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.pdb
 C:\_git\core\src\Piraeus\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.csprojResolveAssemblyReference.cache
-C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\System.Collections.Immutable.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.orleans.g.cs

@@ -34,7 +34,7 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
                 case MqttMessageType.SUBACK:
                     return new MqttSubAckHandler(session, message);
                 case MqttMessageType.SUBSCRIBE:
-                    return new MqttSubAckHandler(session, message);
+                    return new MqttSubscribeHandler(session, message);
                 case MqttMessageType.UNSUBACK:
                     return new MqttUnsubAckHandler(session, message);
                 case MqttMessageType.UNSUBSCRIBE:

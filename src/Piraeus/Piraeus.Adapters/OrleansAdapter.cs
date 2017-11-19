@@ -131,6 +131,12 @@ namespace Piraeus.Adapters
             List<string> list = new List<string>();
 
             IEnumerable<string> subscriptionUriStrings = await GraphManager.GetSubscriberSubscriptionsListAsync(identity);
+
+            if(subscriptionUriStrings == null || subscriptionUriStrings.Count() == 0)
+            {
+                return null;
+            }
+
             foreach (var item in subscriptionUriStrings)
             {
                 if (!durableObservers.ContainsKey(item))

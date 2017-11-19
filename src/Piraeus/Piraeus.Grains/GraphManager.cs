@@ -316,6 +316,11 @@ namespace Piraeus.Grains
         /// <returns>Subscriber interface for grain.</returns>
         public static ISubscriber GetSubscriber(string identity)
         {            
+            if(string.IsNullOrEmpty(identity))
+            {
+                return null;
+            }
+
             return GrainClient.GrainFactory.GetGrain<ISubscriber>(identity.ToLowerInvariant());
         }
 
@@ -328,7 +333,11 @@ namespace Piraeus.Grains
         public static async Task AddSubscriberSubscriptionAsync(string identity, string subscriptionUriString)
         {
             ISubscriber subscriber = GetSubscriber(identity);
-            await subscriber.AddSubscriptionAsync(subscriptionUriString);
+
+            if (subscriber != null)
+            {
+                await subscriber.AddSubscriptionAsync(subscriptionUriString);
+            }
         }
 
         /// <summary>
@@ -340,7 +349,11 @@ namespace Piraeus.Grains
         public static async Task RemoveSubscriberSubscriptionAsync(string identity, string subscriptionUriString)
         {
             ISubscriber subscriber = GetSubscriber(identity);
-            await subscriber.RemoveSubscriptionAsync(subscriptionUriString);
+
+            if (subscriber != null)
+            {
+                await subscriber.RemoveSubscriptionAsync(subscriptionUriString);
+            }
         }
 
         /// <summary>
@@ -351,7 +364,15 @@ namespace Piraeus.Grains
         public static async Task<IEnumerable<string>> GetSubscriberSubscriptionsListAsync(string identity)
         {
             ISubscriber subscriber = GetSubscriber(identity);
-            return await subscriber.GetSubscriptionsAsync();
+
+            if (subscriber != null)
+            {
+                return await subscriber.GetSubscriptionsAsync();
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -362,7 +383,11 @@ namespace Piraeus.Grains
         public static async Task ClearSubscriberSubscriptionsAsync(string identity)
         {
             ISubscriber subscriber = GetSubscriber(identity);
-            await subscriber.ClearAsync();
+
+            if (subscriber != null)
+            {
+                await subscriber.ClearAsync();
+            }
         }
 
         #endregion

@@ -1,7 +1,7 @@
 ﻿import-module C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release\Piraeus.Module.dll
 
-#$url = "http://localhost:3111"
-$url = "http://localhost:25021"
+$url = "http://localhost:3111"
+#$url = "http://localhost:25021"
 $token = Get-PiraeusManagementToken -ServiceUrl $url -Key "12345678"
 $token
 
@@ -17,7 +17,7 @@ $match = New-CaplMatch -Type Literal -ClaimType "http://www.skunklab.io/role" -R
 $pubOperation = New-CaplOperation -Type Equal -Value "pub"
 
 #create CAPL operation for sub-policy; will check identity's matched claim type equals 'sub' to authz subscribe
-$subOperation = New-CaplOperation -Type Equal -Value "sub"
+$subOperation = New-CaplOperation -Type Equal -Value "pub"
 
 #create CAPL rule for pub-policy; combines the match expression and operation into a binary expression
 $pubRule = New-CaplRule -Evaluates $true -MatchExpression $match -Operation $pubOperation

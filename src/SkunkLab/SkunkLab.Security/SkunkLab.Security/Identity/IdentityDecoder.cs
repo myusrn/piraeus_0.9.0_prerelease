@@ -16,14 +16,18 @@ namespace SkunkLab.Security.Identity
         public IdentityDecoder(string identityClaimType, List<KeyValuePair<string,string>> indexes = null)
         {
             Id = DecodeClaimType(identityClaimType);
-            Indexes = new List<KeyValuePair<string, string>>();
 
-            foreach(var item in indexes)
+            if (indexes != null)
             {
-                string value = DecodeClaimType(item.Key);
-                if(!string.IsNullOrEmpty(value))
+                Indexes = new List<KeyValuePair<string, string>>();
+
+                foreach (var item in indexes)
                 {
-                    Indexes.Add(new KeyValuePair<string, string>(item.Value, value));
+                    string value = DecodeClaimType(item.Key);
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        Indexes.Add(new KeyValuePair<string, string>(item.Value, value));
+                    }
                 }
             }
         }
