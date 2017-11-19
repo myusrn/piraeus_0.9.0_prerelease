@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Piraeus.Module</id>
-    <version>0.0.1.1</version>
+    <version>0.2.1.0</version>
     <title>Piraeus.Module</title>
     <authors>SkunkLab</authors>
     <owners>SkunkLab</owners>
@@ -18,7 +18,7 @@
     <dependencies>
       <group targetFramework=".NETFramework4.6.1">
         <dependency id="CAPL" version="1.2.1" />
-        <dependency id="Piraeus.Core" version="0.1.0.0" />
+        <dependency id="Piraeus.Core" version="0.2.1.0" />
       </group>
     </dependencies>
   </metadata>
