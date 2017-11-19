@@ -198,6 +198,5 @@ C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\bin\Debug\Piraeus.Core.pdb
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\bin\Debug\Piraeus.Core.dll.config
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Debug\Piraeus.GrainInterfaces.dll
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Debug\Piraeus.GrainInterfaces.pdb
-C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Debug\Piraeus.GrainInterfaces.orleans.g.cs
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\bin\Debug\System.Web.Http.WebHost.dll
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\bin\Debug\System.Web.Http.WebHost.xml

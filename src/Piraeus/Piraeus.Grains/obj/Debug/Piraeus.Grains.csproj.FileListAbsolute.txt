@@ -178,4 +178,3 @@ C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Web.Http.xml
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Net.Http.Formatting.xml
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Web.Http.WebHost.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Web.Http.WebHost.xml
-C:\_git\core\src\Piraeus\Piraeus.Grains\obj\Debug\Piraeus.Grains.orleans.g.cs
