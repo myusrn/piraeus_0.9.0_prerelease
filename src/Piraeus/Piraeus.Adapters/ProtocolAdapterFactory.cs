@@ -64,7 +64,7 @@ namespace Piraeus.Adapters
                     throw new InvalidOperationException("invalid web socket subprotocol");
                 }
             }
-
+            
             if (request.Method != HttpMethod.Post && request.Method != HttpMethod.Get)
             {
                 throw new HttpRequestException("Protocol adapter requires HTTP get or post.");
