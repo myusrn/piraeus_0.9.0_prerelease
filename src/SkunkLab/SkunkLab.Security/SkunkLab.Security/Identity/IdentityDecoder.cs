@@ -12,7 +12,7 @@ namespace SkunkLab.Security.Identity
         /// Decodes the claims identity
         /// </summary>
         /// <param name="identityClaimType">Claim type of the unique identifier of the identity.</param>
-        /// <param name="indexes">Key value pair of claim type and index name.</param>
+        /// <param name="indexes">Key value pair of claim type and index name.</param> 
         public IdentityDecoder(string identityClaimType, List<KeyValuePair<string,string>> indexes = null)
         {
             Id = DecodeClaimType(identityClaimType);
