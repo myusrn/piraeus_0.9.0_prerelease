@@ -63,3 +63,5 @@ C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Release\Pi
 C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Release\Piraeus.Module.dll
 C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Release\Piraeus.Module.pdb
 C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Release\Piraeus.Module.csprojResolveAssemblyReference.cache
+C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release\System.Web.Http.WebHost.dll
+C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release\System.Web.Http.WebHost.xml

@@ -182,4 +182,5 @@ C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\bin\WebGatewayTest.pdb
 C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\bin\System.Collections.Immutable.xml
 C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\bin\System.Net.Http.Formatting.xml
 C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\bin\System.Web.Http.xml
+C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\bin\SkunkLab.Protocols.dll.config
 C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\obj\Debug\WebGatewayTest.orleans.g.cs

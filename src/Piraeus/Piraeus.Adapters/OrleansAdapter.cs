@@ -225,6 +225,7 @@ namespace Piraeus.Adapters
                 if (ephemeralObservers.ContainsKey(container[resourceUriString].Item1))
                 {
                     await GraphManager.RemoveSubscriptionObserverAsync(container[resourceUriString].Item1, container[resourceUriString].Item2);
+                    await GraphManager.UnsubscribeAsync(container[resourceUriString].Item1);
                     ephemeralObservers.Remove(container[resourceUriString].Item1);
                 }
 
@@ -290,32 +291,57 @@ namespace Piraeus.Adapters
 
         private void LeaseTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            Dictionary<string, Tuple<string, string>>.Enumerator en = container.GetEnumerator();
-            while (en.MoveNext())
+            //Dictionary<string, Tuple<string, string>>.Enumerator en = container.GetEnumerator();
+            KeyValuePair<string, Tuple<string, string>>[] kvps = container.ToArray();
+
+            if(kvps != null && kvps.Length > 0)
             {
-                Task<SubscriptionMetadata> task = GraphManager.GetSubscriptionMetadataAsync(en.Current.Value.Item1);
-                Task.WhenAll<SubscriptionMetadata>(task);
-                SubscriptionMetadata metadata = task.Result;
-
-                if (metadata != null)
+                foreach (var kvp in kvps)
                 {
-                    Task<bool> renewTask = GraphManager.RenewObserverLeaseAsync(en.Current.Value.Item1, en.Current.Value.Item2, TimeSpan.FromSeconds(20.0));
-                    Task.WhenAll<bool>(renewTask);
-                    if(!renewTask.Result)
+                    Task<SubscriptionMetadata> task = GraphManager.GetSubscriptionMetadataAsync(kvp.Value.Item1); 
+                    Task.WhenAll<SubscriptionMetadata>(task);
+                    SubscriptionMetadata metadata = task.Result;
+
+                    if (metadata != null)
                     {
-                        Log.LogWarningAsync("Observer lease could not be renewed.");
+                        Task<bool> renewTask = GraphManager.RenewObserverLeaseAsync(kvp.Value.Item1, kvp.Value.Item2, TimeSpan.FromSeconds(60.0));
+                        Task.WhenAll<bool>(renewTask);
+                        if (!renewTask.Result)
+                        {
+                            Log.LogWarningAsync("Observer lease could not be renewed.");
+                        }
+
+                        //taskList.Add(subscription.RenewObserverLeaseAsync(en.Current.Value.Item2, TimeSpan.FromSeconds(20.0)));
                     }
-
-                    //taskList.Add(subscription.RenewObserverLeaseAsync(en.Current.Value.Item2, TimeSpan.FromSeconds(20.0)));
                 }
-                //ISubscription subscription = GraphManager.GetSubscription(en.Current.Value.Item1);
-                //if (subscription.GetMetadataAsync().GetAwaiter().GetResult() != null)
-                //{
-                //    taskList.Add(subscription.RenewObserverLeaseAsync(en.Current.Value.Item2, TimeSpan.FromSeconds(20.0)));
-                //}
-
-
             }
+
+
+            //while (en.MoveNext())
+            //{
+            //    Task<SubscriptionMetadata> task = GraphManager.GetSubscriptionMetadataAsync(en.Current.Value.Item1);
+            //    Task.WhenAll<SubscriptionMetadata>(task);
+            //    SubscriptionMetadata metadata = task.Result;
+
+            //    if (metadata != null)
+            //    {
+            //        Task<bool> renewTask = GraphManager.RenewObserverLeaseAsync(en.Current.Value.Item1, en.Current.Value.Item2, TimeSpan.FromSeconds(20.0));
+            //        Task.WhenAll<bool>(renewTask);
+            //        if(!renewTask.Result)
+            //        {
+            //            Log.LogWarningAsync("Observer lease could not be renewed.");
+            //        }
+
+            //        //taskList.Add(subscription.RenewObserverLeaseAsync(en.Current.Value.Item2, TimeSpan.FromSeconds(20.0)));
+            //    }
+            //    //ISubscription subscription = GraphManager.GetSubscription(en.Current.Value.Item1);
+            //    //if (subscription.GetMetadataAsync().GetAwaiter().GetResult() != null)
+            //    //{
+            //    //    taskList.Add(subscription.RenewObserverLeaseAsync(en.Current.Value.Item2, TimeSpan.FromSeconds(20.0)));
+            //    //}
+
+
+            //}
         }
 
         private async Task RemoveDurableObserversAsync()

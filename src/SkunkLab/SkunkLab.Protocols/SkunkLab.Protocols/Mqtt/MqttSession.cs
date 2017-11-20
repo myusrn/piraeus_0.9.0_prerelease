@@ -121,9 +121,14 @@ namespace SkunkLab.Protocols.Mqtt
         #endregion
 
         #region internal function calls from handlers
-        internal void Publish(MqttMessage message)
+        internal void Publish(MqttMessage message, bool force = false)
         {
-            OnPublish?.Invoke(this, new MqttMessageEventArgs(message));
+            //if the message is QoS = 2, the message is held waiting for release.
+            if (message.QualityOfService != QualityOfServiceLevelType.ExactlyOnce
+                || (message.QualityOfService == QualityOfServiceLevelType.ExactlyOnce && force))
+            {
+                OnPublish?.Invoke(this, new MqttMessageEventArgs(message));
+            }
         }
                
 

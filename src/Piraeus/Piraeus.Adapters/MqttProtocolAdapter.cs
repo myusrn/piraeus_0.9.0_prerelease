@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Piraeus.Core.Messaging;
+﻿using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
 using Piraeus.Grains;
 using SkunkLab.Channels;
@@ -11,6 +6,9 @@ using SkunkLab.Diagnostics.Logging;
 using SkunkLab.Protocols.Mqtt;
 using SkunkLab.Protocols.Mqtt.Handlers;
 using SkunkLab.Security.Identity;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Piraeus.Adapters
 {

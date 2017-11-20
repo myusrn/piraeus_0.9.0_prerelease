@@ -23,7 +23,14 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
             {
                 PublishMessage msg = message as PublishMessage;
                 MqttUri uri = new MqttUri(msg.Topic);
-                Dispatcher.Dispatch(uri.Resource, uri.ContentType, msg.Payload);
+                if (Dispatcher != null)
+                {
+                    Dispatcher.Dispatch(uri.Resource, uri.ContentType, msg.Payload);
+                }
+                else
+                {
+                    Session.Publish(msg, true);
+                }
             }
             
             return await Task.FromResult<MqttMessage>(new PublishAckMessage(PublishAckType.PUBCOMP, Message.MessageId));

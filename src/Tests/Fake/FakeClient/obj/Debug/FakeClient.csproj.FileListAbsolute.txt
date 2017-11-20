@@ -110,3 +110,7 @@ C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Piraeus.Configuration.pdb
 C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\StackExchange.Redis.xml
 C:\_git\core\src\Tests\Fake\FakeClient\obj\Debug\FakeClient.exe
 C:\_git\core\src\Tests\Fake\FakeClient\obj\Debug\FakeClient.pdb
+C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Web.Http.WebHost.dll
+C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\SkunkLab.Protocols.dll.config
+C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Web.Http.xml
+C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Web.Http.WebHost.xml

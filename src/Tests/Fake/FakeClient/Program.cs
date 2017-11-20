@@ -115,12 +115,34 @@ namespace FakeClient
 
             id++;
 
-            //send publish
-            SkunkLab.Protocols.Mqtt.PublishMessage pub = new SkunkLab.Protocols.Mqtt.PublishMessage(false, SkunkLab.Protocols.Mqtt.QualityOfServiceLevelType.AtLeastOnce, false, id, "http://www.skunklab.io/resource1?ct=plain/text", Encoding.UTF8.GetBytes("hello mqtt"));
-            byte[] encoded = pub.Encode();
-            SkunkLab.Protocols.Mqtt.MqttMessage m = SkunkLab.Protocols.Mqtt.MqttMessage.DecodeMessage(encoded);
-            Task t3 = channel.AddMessageAsync(pub.Encode());
-            Task.WhenAll(t3);
+            int index = 0;
+
+            while (index < 5)
+            {
+                id++;
+                //send publish
+                SkunkLab.Protocols.Mqtt.PublishMessage pub = new SkunkLab.Protocols.Mqtt.PublishMessage(false, SkunkLab.Protocols.Mqtt.QualityOfServiceLevelType.ExactlyOnce, false, id, "http://www.skunklab.io/resource1?ct=plain/text", Encoding.UTF8.GetBytes("hello mqtt"));
+                byte[] encoded = pub.Encode();
+                SkunkLab.Protocols.Mqtt.MqttMessage m = SkunkLab.Protocols.Mqtt.MqttMessage.DecodeMessage(encoded);
+                Task t3 = channel.AddMessageAsync(pub.Encode());
+                Task.WhenAll(t3);
+                Console.WriteLine("Sent {0}", id);
+
+                SkunkLab.Protocols.Mqtt.PublishAckMessage p = new SkunkLab.Protocols.Mqtt.PublishAckMessage(SkunkLab.Protocols.Mqtt.PublishAckType.PUBREL, id);
+                Task tx = channel.AddMessageAsync(p.Encode());
+                Task.WhenAll(tx);
+
+                id++;
+                if(index > 5)
+                {
+                    SkunkLab.Protocols.Mqtt.UnsubscribeMessage unsub = new SkunkLab.Protocols.Mqtt.UnsubscribeMessage(2323, new List<string>() { "http://www.skunklab.io/resource1" });
+                    Task t4 = channel.AddMessageAsync(unsub.Encode());
+                    Task.WhenAll(t4);
+                }
+                index++;
+                Thread.Sleep(2000);
+            }
+
         }
 
         static ProtocolAdapter GetAdapter(IChannel channel, int protocolNo)
