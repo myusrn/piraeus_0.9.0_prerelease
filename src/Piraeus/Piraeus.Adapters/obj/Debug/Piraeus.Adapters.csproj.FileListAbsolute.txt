@@ -110,3 +110,4 @@ C:\_git\core\src\Piraeus\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.csproj.Core
 C:\_git\core\src\Piraeus\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.dll
 C:\_git\core\src\Piraeus\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.pdb
 C:\_git\core\src\Piraeus\Piraeus.Adapters\obj\Debug\Piraeus.Adapters.csprojResolveAssemblyReference.cache
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Debug\SkunkLab.Protocols.dll.config
