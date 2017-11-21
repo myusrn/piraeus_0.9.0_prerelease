@@ -47,10 +47,12 @@ namespace ClientA
 
             //get Web socket opened and connected using CoAP subprotocol
             channel = Channels.GetChannel(webSocketEndpoint, securityToken, "coapv1", config, source.Token);
-
+           
             if(!channel.IsConnected)
             {
                 Console.WriteLine("Channel connected is {0}", "FALSE");
+                Console.WriteLine("Aborting....");
+                Console.ReadKey();
             }
 
 

@@ -17,7 +17,7 @@ $match = New-CaplMatch -Type Literal -ClaimType "http://www.skunklab.io/role" -R
 $pubOperation = New-CaplOperation -Type Equal -Value "pub"
 
 #create CAPL operation for sub-policy; will check identity's matched claim type equals 'sub' to authz subscribe
-$subOperation = New-CaplOperation -Type Equal -Value "pub"
+$subOperation = New-CaplOperation -Type Equal -Value "sub"
 
 #create CAPL rule for pub-policy; combines the match expression and operation into a binary expression
 $pubRule = New-CaplRule -Evaluates $true -MatchExpression $match -Operation $pubOperation

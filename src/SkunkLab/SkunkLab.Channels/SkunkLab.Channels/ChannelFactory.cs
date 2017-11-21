@@ -224,30 +224,56 @@ namespace SkunkLab.Channels
 
         #region HTTP Client Channels
        
-        
 
-        public static IChannel Create(string endpoint, string resourceUriString, string contentType, string securityToken, List<KeyValuePair<string, string>> indexes = null)
+        /// <summary>
+        /// Creates HTTP send-only channel
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <param name="securityToken"></param>
+        /// <returns></returns>
+        public static IChannel Create(string endpoint, string securityToken)
         {
-            return HttpChannel.Create(endpoint, resourceUriString, contentType, securityToken, indexes);
+            return HttpChannel.Create(endpoint, securityToken);
         }
 
-        public static IChannel Create(string endpoint, string resourceUriString, string contentType, X509Certificate2 certificate, List<KeyValuePair<string, string>> indexes = null)
+        /// <summary>
+        /// Creates HTTP send-only channel
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <param name="certficate"></param>
+        /// <returns></returns>
+        public static IChannel Create(string endpoint, X509Certificate2 certficate)
         {
-            return HttpChannel.Create(endpoint, resourceUriString, contentType, certificate, indexes);
+            return HttpChannel.Create(endpoint, certficate);
         }
+
+        /// <summary>
+        /// Creates HTTP receive only channel (long polling)
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <param name="securityToken"></param>
+        /// <param name="observers"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+
 
         public static IChannel Create(string endpoint, string securityToken, IEnumerable<Observer> observers, CancellationToken token = default(CancellationToken))
         {
             return HttpChannel.Create(endpoint, securityToken, observers, token);
         }
 
+        /// <summary>
+        /// Creates HTTP receive only channel (long polling)
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <param name="certificate"></param>
+        /// <param name="observers"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static IChannel Create(string endpoint, X509Certificate2 certificate, IEnumerable<Observer> observers, CancellationToken token = default(CancellationToken))
         {
             return HttpChannel.Create(endpoint, certificate, observers, token);
         }
-
-        
-        
 
         #endregion
 

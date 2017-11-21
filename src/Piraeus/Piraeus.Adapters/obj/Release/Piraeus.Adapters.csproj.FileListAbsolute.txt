@@ -111,3 +111,4 @@ C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\System.Collections.Immutab
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\System.Net.Http.Formatting.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\System.Web.Http.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\System.Web.Http.WebHost.xml
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\SkunkLab.Protocols.dll.config

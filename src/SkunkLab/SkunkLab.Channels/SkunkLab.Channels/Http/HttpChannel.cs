@@ -12,6 +12,15 @@ namespace SkunkLab.Channels.Http
 
         #region Client Channels
 
+        public static HttpChannel Create(string endpoint, string securityToken)
+        {
+            return new HttpClientChannel(endpoint, securityToken);
+        }
+
+        public static HttpChannel Create(string endpoint, X509Certificate2 certificate)
+        {
+            return new HttpClientChannel(endpoint, certificate);
+        }
 
         /// <summary>
         /// Creates http client channel used for sending

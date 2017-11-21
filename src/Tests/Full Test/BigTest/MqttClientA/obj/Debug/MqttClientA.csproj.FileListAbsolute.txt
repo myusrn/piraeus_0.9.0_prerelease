@@ -35,3 +35,4 @@ C:\_git\core\src\Tests\Full Test\BigTest\MqttClientA\bin\Debug\Microsoft.Data.Ed
 C:\_git\core\src\Tests\Full Test\BigTest\MqttClientA\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
 C:\_git\core\src\Tests\Full Test\BigTest\MqttClientA\bin\Debug\System.Spatial.dll
 C:\_git\core\src\Tests\Full Test\BigTest\MqttClientA\obj\Debug\MqttClientA.csprojResolveAssemblyReference.cache
+C:\_git\core\src\Tests\Full Test\BigTest\MqttClientA\bin\Debug\SkunkLab.Protocols.dll.config

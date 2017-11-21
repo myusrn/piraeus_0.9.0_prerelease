@@ -13,6 +13,21 @@ namespace SkunkLab.Channels.Http
 {
     public class HttpClientChannel : HttpChannel
     {
+        
+        public HttpClientChannel(string endpoint, string securityToken)
+        {
+            Id = "http-" + Guid.NewGuid().ToString();
+            requestUri = new Uri(endpoint);
+            this.securityToken = securityToken;
+        }
+
+        public HttpClientChannel(string endpoint, X509Certificate2 certificate)
+        {
+            Id = "http-" + Guid.NewGuid().ToString();
+            requestUri = new Uri(endpoint);
+            this.certificate = certificate;
+        }
+
         public HttpClientChannel(string endpoint, string resourceUriString, string contentType, string securityToken, List<KeyValuePair<string, string>> indexes = null)
         {
             Id = "http-" + Guid.NewGuid().ToString();
@@ -23,6 +38,7 @@ namespace SkunkLab.Channels.Http
             this.indexes = indexes;
         }
 
+        
         public HttpClientChannel(string endpoint, string resourceUriString, string contentType, X509Certificate2 certificate, List<KeyValuePair<string, string>> indexes = null)
         {
             Id = "http-" + Guid.NewGuid().ToString();
@@ -33,6 +49,13 @@ namespace SkunkLab.Channels.Http
             this.indexes = indexes;
         }
 
+        /// <summary>
+        /// Receive only (long polling) http client channel
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <param name="securityToken"></param>
+        /// <param name="observers"></param>
+        /// <param name="token"></param>
         public HttpClientChannel(string endpoint, string securityToken, IEnumerable<Observer> observers, CancellationToken token = default(CancellationToken))
         {
             Id = "http-" + Guid.NewGuid().ToString();
@@ -45,6 +68,13 @@ namespace SkunkLab.Channels.Http
             this.token.Register(() => this.tokenSource.Cancel());
         }
 
+        /// <summary>
+        /// Receive only (long polling) client channel
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <param name="certificate"></param>
+        /// <param name="observers"></param>
+        /// <param name="token"></param>
         public HttpClientChannel(string endpoint, X509Certificate2 certificate, IEnumerable<Observer> observers, CancellationToken token = default(CancellationToken))
         {
             Id = "http-" + Guid.NewGuid().ToString();
@@ -211,6 +241,14 @@ namespace SkunkLab.Channels.Http
                     OnError?.Invoke(this, new ChannelErrorEventArgs(Id, ex));
                 }
             }
+        }
+
+        public async Task SendAsync(string resourceUriString, string contentType, byte[] message, List<KeyValuePair<string,string>> indexes = null)
+        {
+            this.resourceUriString = resourceUriString;
+            this.contentType = contentType;
+            this.indexes = indexes;
+            await SendAsync(message);
         }
 
         public override async Task SendAsync(byte[] message)

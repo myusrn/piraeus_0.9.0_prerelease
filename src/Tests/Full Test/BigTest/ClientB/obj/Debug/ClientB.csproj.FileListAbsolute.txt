@@ -38,3 +38,4 @@ C:\_git\core\src\Tests\Full Test\BigTest\ClientB\obj\Debug\ClientB.pdb
 C:\_git\core\src\Tests\Full Test\BigTest\ClientB\bin\Debug\Client.Common.dll
 C:\_git\core\src\Tests\Full Test\BigTest\ClientB\bin\Debug\Client.Common.pdb
 C:\_git\core\src\Tests\Full Test\BigTest\ClientB\bin\Debug\Client.Common.dll.config
+C:\_git\core\src\Tests\Full Test\BigTest\ClientB\bin\Debug\SkunkLab.Protocols.dll.config

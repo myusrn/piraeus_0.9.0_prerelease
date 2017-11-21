@@ -1,0 +1,7 @@
+C:\_git\core\src\Tests\Full Test\BigTest\GenericClient\bin\Debug\GenericClient.exe.config
+C:\_git\core\src\Tests\Full Test\BigTest\GenericClient\bin\Debug\GenericClient.exe
+C:\_git\core\src\Tests\Full Test\BigTest\GenericClient\bin\Debug\GenericClient.pdb
+C:\_git\core\src\Tests\Full Test\BigTest\GenericClient\obj\Debug\GenericClient.csprojResolveAssemblyReference.cache
+C:\_git\core\src\Tests\Full Test\BigTest\GenericClient\obj\Debug\GenericClient.csproj.CoreCompileInputs.cache
+C:\_git\core\src\Tests\Full Test\BigTest\GenericClient\obj\Debug\GenericClient.exe
+C:\_git\core\src\Tests\Full Test\BigTest\GenericClient\obj\Debug\GenericClient.pdb
