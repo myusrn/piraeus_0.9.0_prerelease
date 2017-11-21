@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Piraeus.SiloHost</id>
-    <version>0.2.2.0</version>
+    <version>0.2.3.0</version>
     <title>Piraeus.SiloHost</title>
     <authors>SkunkLab</authors>
     <owners>SkunkLab</owners>
@@ -17,7 +17,7 @@
     <tags>Piraeus</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.6.1">
-        <dependency id="Piraeus.Grains" version="0.2.2.0" />
+        <dependency id="Piraeus.Grains" version="0.2.3.0" />
         <dependency id="Microsoft.Orleans.Core" version="1.5.2" />
         <dependency id="Microsoft.Orleans.OrleansRuntime" version="1.5.2" />
         <dependency id="Microsoft.Orleans.OrleansProviders" version="1.5.2" />
