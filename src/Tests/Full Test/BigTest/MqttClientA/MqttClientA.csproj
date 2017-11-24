@@ -53,23 +53,5 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Piraeus\Piraeus.Clients\Piraeus.Clients.csproj">
-      <Project>{e41c1aa8-8160-4d4c-8462-e9ec011560ec}</Project>
-      <Name>Piraeus.Clients</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\SkunkLab.Channels.csproj">
-      <Project>{7c69a3ca-29dd-4c33-b70f-f998a6e650b9}</Project>
-      <Name>SkunkLab.Channels</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\SkunkLab.Protocols.csproj">
-      <Project>{7b2c72a0-0dba-4ded-96dc-b6af80a82277}</Project>
-      <Name>SkunkLab.Protocols</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\SkunkLab\SkunkLab.Security\SkunkLab.Security\SkunkLab.Security.csproj">
-      <Project>{ea12413c-2396-4435-aad5-97f846fdd9c6}</Project>
-      <Name>SkunkLab.Security</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

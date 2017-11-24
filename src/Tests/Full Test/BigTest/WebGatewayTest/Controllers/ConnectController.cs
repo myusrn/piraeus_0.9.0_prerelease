@@ -9,6 +9,8 @@ using System.Threading;
 using Piraeus.Core.Utilities;
 using Piraeus.Grains;
 using Piraeus.Core.Metadata;
+using System.Text;
+using WebGatewayTest.Formatters;
 
 namespace WebGatewayTest.Controllers
 {
@@ -19,6 +21,8 @@ namespace WebGatewayTest.Controllers
             config = Piraeus.Configuration.PiraeusConfigManager.Settings;
             source = new CancellationTokenSource();
         }
+
+        private System.Timers.Timer timer;
 
         private CancellationTokenSource source;
         private Piraeus.Configuration.Settings.PiraeusConfig config;
@@ -96,10 +100,26 @@ namespace WebGatewayTest.Controllers
         {
             AutoResetEvent are = (AutoResetEvent)state;
             OnMessage += (o, a) => {
-                response = Request.CreateResponse(HttpStatusCode.OK, a.Message, a.ContentType);
+
+                if(a.ContentType == "text/plain")
+                {
+                    response = Request.CreateResponse(HttpStatusCode.OK, Encoding.UTF8.GetString(a.Message), new TextMediaTypeFormatter(), a.ContentType);
+                }
+                else if(a.ContentType == "application/octet-stream")
+                {
+                    response = Request.CreateResponse(HttpStatusCode.OK, a.Message, new BinaryMediaTypeFormatter(), a.ContentType);
+                }
+                else
+                {
+                    response = Request.CreateResponse(HttpStatusCode.OK, Encoding.UTF8.GetString(a.Message), a.ContentType);
+                }
+                
+
+                //response = Request.CreateResponse(HttpStatusCode.OK,  a.Message, a.ContentType);                
                 response.Headers.Add("x-sl-resource", a.ResourceUriString);
                 are.Set();
             };
         }
+
     }
 }

@@ -81,8 +81,8 @@ C:\_git\core\src\Tests\TempTest\SiloNugetTest\TempSilo\bin\Debug\System.Reflecti
 C:\_git\core\src\Tests\TempTest\SiloNugetTest\TempSilo\bin\Debug\System.Spatial.xml
 C:\_git\core\src\Tests\TempTest\SiloNugetTest\TempSilo\bin\Debug\System.Web.Http.xml
 C:\_git\core\src\Tests\TempTest\SiloNugetTest\TempSilo\bin\Debug\System.Web.Http.WebHost.xml
+C:\_git\core\src\Tests\TempTest\SiloNugetTest\TempSilo\obj\Debug\TempSilo.csprojResolveAssemblyReference.cache
 C:\_git\core\src\Tests\TempTest\SiloNugetTest\TempSilo\obj\Debug\TempSilo.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Tests\TempTest\SiloNugetTest\TempSilo\obj\Debug\TempSilo.exe
 C:\_git\core\src\Tests\TempTest\SiloNugetTest\TempSilo\obj\Debug\TempSilo.pdb
-C:\_git\core\src\Tests\TempTest\SiloNugetTest\TempSilo\obj\Debug\TempSilo.csprojResolveAssemblyReference.cache
 C:\_git\core\src\Tests\TempTest\SiloNugetTest\TempSilo\obj\Debug\TempSilo.orleans.g.cs

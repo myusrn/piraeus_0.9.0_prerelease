@@ -1,14 +1,18 @@
 ﻿using Piraeus.Adapters;
+using Piraeus.Configuration.Settings;
 using SkunkLab.Channels;
+using SkunkLab.Channels.Http;
 using SkunkLab.Protocols.Coap;
 using SkunkLab.Security.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace FakeClient
 {
@@ -20,7 +24,7 @@ namespace FakeClient
         private static string nameClaimType = "http://www.skunklab.io/name";
         private static string roleClaimType = "http://www.skunklab.io/role";
         private static string nameClaimValue = Guid.NewGuid().ToString();
-        private static string roleClaimVlaue = "pub";
+        private static string roleClaimVlaue = "A";
 
 
 
@@ -34,27 +38,40 @@ namespace FakeClient
 
             CreateIdentity();
             StartOrleansClient();
-            FakeChannel channel = new FakeChannel();
+            
 
-            Console.Write("(1) CoAP (2) MQTT ? ");
+            Console.Write("(1) CoAP (2) MQTT (3) REST ? ");
             int protocolNo = Convert.ToInt32(Console.ReadLine());
-            channel.ProtocolNo = protocolNo;
+            
                        
             
             //CoapProtocolAdapter adapter = new CoapProtocolAdapter(new CoapConfig(null, "www.skunklab.io", CoapConfigOptions.NoResponse | CoapConfigOptions.Observe), channel);
-            ProtocolAdapter adapter = GetAdapter(channel, protocolNo);
-            adapter.Init();
+            
+            
 
             Console.WriteLine("Adapter created");
             //create a coap message to observe
             
             if(protocolNo == 1)
             {
+                FakeChannel channel = new FakeChannel();
+                channel.ProtocolNo = protocolNo;
+                ProtocolAdapter adapter = GetAdapter(channel, protocolNo);
+                adapter.Init();
                 RunCoap(channel);
             }
-            else
-            {                
+            else if(protocolNo == 2)
+            {
+                FakeChannel channel = new FakeChannel();
+                channel.ProtocolNo = protocolNo;
+                ProtocolAdapter adapter = GetAdapter(channel, protocolNo);
+                adapter.Init();
                 RunMqtt(channel);
+            }
+            else
+            {
+                ProtocolAdapter adapter = GetAdapter(null, 3);
+                adapter.Init();
             }
 
 
@@ -62,10 +79,10 @@ namespace FakeClient
             Console.ReadKey();
         }
 
-
+        
         static void RunCoap(IChannel channel)
         {
-            Uri observeUri = new Uri("coap://www.skunklab.io?r=http://www.skunklab.io/resource1");
+            Uri observeUri = new Uri("coap://www.skunklab.io?r=http://www.skunklab.io/resourcea");
             byte[] coapToken1 = SkunkLab.Protocols.Coap.CoapToken.Create().TokenBytes;
             id++;
             CoapRequest observeRequest = new CoapRequest(id, RequestMessageType.NonConfirmable, MethodType.GET, coapToken1, observeUri, MediaType.TextPlain);
@@ -151,7 +168,7 @@ namespace FakeClient
             {
                 return new CoapProtocolAdapter(new CoapConfig(null, "www.skunklab.io", CoapConfigOptions.NoResponse | CoapConfigOptions.Observe), channel);
             }
-            else
+            else if(protocolNo == 2)
             {
                 SkunkLab.Protocols.Mqtt.MqttConfig mqttConfig = new SkunkLab.Protocols.Mqtt.MqttConfig(null);
 
@@ -160,7 +177,41 @@ namespace FakeClient
                 mqttConfig.Indexes.Add(new KeyValuePair<string, string>("http://wwww.skunklab.io/key1", "value1"));
                 return new MqttProtocolAdapter(mqttConfig, channel);
             }
+            else
+            {
+                //HttpWorkerRequest hwr = HttpWorkerRequest
+                FakeHttpWorkerRequest fakeWorker = new FakeHttpWorkerRequest();
+
+                HttpContext context = new HttpContext(fakeWorker);
+                
+
+                HttpRequestMessage hrm = GetHttpRequestMessage();
+                HttpContext.Current = context;
+                
+                HttpServerChannel hsc = new HttpServerChannel(hrm);
+                return new RestProtocolAdapter(Piraeus.Configuration.PiraeusConfigManager.Settings, hsc);
+            }
+
             
+
+            
+        }
+
+        private static HttpRequestMessage GetHttpRequestMessage()
+        {
+            string jwt = CreateJwt(symmetricKey, issuer, audience, 20.0, GetClaims());
+            HttpRequestMessage hrm = new HttpRequestMessage(HttpMethod.Post, "http://localhost:80/api/connect?r=http://www.skunklab.io/resourcea");
+            
+            hrm.Content = new StringContent("test");
+            hrm.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/plain");
+            hrm.Content.Headers.ContentLength = 4;
+            hrm.Headers.Add("Authorization", String.Format("Bearer {0}", jwt));
+            hrm.RequestUri = new Uri("http://localhost:80/api/connect?r=http://www.skunklab.io/resourcea");
+            
+
+
+
+            return hrm;
         }
 
         public static string CreateJwt(string key, string issuer, string audience, double lifetimeMinutes, List<Claim> claims)

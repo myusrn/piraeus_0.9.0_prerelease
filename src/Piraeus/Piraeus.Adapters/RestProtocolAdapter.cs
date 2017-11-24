@@ -88,10 +88,15 @@ namespace Piraeus.Adapters
             {
                 EventMessage message = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, request.Content.ReadAsByteArrayAsync().Result);
                 List<KeyValuePair<string, string>> indexList = uri.Indexes == null ? null : new List<KeyValuePair<string, string>>(uri.Indexes);
-                Task task = PublishAsync(decoder.Id, message, indexList);
-                Task.WhenAll(task);
-                Task final = Channel.CloseAsync();
-                Task.WhenAll(final);
+
+                var tcs = new TaskCompletionSource<Task>();
+                Task t = PublishAsync(decoder.Id, message, indexList);
+                tcs.SetResult(t);
+
+                //Task task = PublishAsync(decoder.Id, message, indexList);
+                //Task.WhenAll(task);
+                //Task final = Channel.CloseAsync();
+                //Task.WhenAll(final);
             }
         }
 
@@ -181,7 +186,7 @@ namespace Piraeus.Adapters
             else
             {
                 await Log.LogErrorAsync("Identity {0} cannot publish to resource {1}", identity, message.ResourceUri);
-            }
+            }            
         }
         #endregion
     }

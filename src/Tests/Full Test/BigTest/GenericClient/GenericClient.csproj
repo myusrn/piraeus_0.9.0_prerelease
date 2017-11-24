@@ -112,11 +112,5 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Piraeus\Piraeus.Clients\Piraeus.Clients.csproj">
-      <Project>{E41C1AA8-8160-4D4C-8462-E9EC011560EC}</Project>
-      <Name>Piraeus.Clients</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

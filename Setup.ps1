@@ -11,13 +11,13 @@ $matchClaimType = "http://www.skunklab.io/role"
 
 #create CAPL match expression; matches an identity's 'literal' claim type
 #$match = New-CaplMatch -Type Literal -Required $true -ClaimType $matchClaimType
-$match = New-CaplMatch -Type Literal -ClaimType "http://www.skunklab.io/role" -Required $true
+$match = New-CaplMatch -Type Literal -ClaimType "http://www.skunklab.io/role" -Required $true                                                
 
 #create CAPL operation for pub-policy; will check the identity's matched claim type equals 'pub' to authz publish
-$pubOperation = New-CaplOperation -Type Equal -Value "pub"
+$pubOperation = New-CaplOperation -Type Equal -Value "A"
 
 #create CAPL operation for sub-policy; will check identity's matched claim type equals 'sub' to authz subscribe
-$subOperation = New-CaplOperation -Type Equal -Value "sub"
+$subOperation = New-CaplOperation -Type Equal -Value "B"
 
 #create CAPL rule for pub-policy; combines the match expression and operation into a binary expression
 $pubRule = New-CaplRule -Evaluates $true -MatchExpression $match -Operation $pubOperation
@@ -50,10 +50,10 @@ $subPolicyId
 
 
 #create a Resource that references the access control policies
-$resource = "http://www.skunklab.io/resource1"
+$resource = "http://www.skunklab.io/resourcea"
 Set-PiraeusResourceMetadata -ResourceUriString $resource -Enabled $true -RequireEncryptedChannel $false -PublishPolicyUriString $pubPolicyId -SubscribePolicyUriString $subPolicyId -ServiceUrl $url -SecurityToken $token
 
-$resource2 = "http://www.skunklab.io/resource2"
+$resource2 = "http://www.skunklab.io/resourceb"
 Set-PiraeusResourceMetadata -ResourceUriString $resource2 -Enabled $true -RequireEncryptedChannel $false -PublishPolicyUriString $subPolicyId -SubscribePolicyUriString $pubPolicyId -ServiceUrl $url -SecurityToken $token
 
 

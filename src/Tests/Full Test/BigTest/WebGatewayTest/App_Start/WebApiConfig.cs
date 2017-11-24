@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web.Http;
 using SkunkLab.Security.Authentication;
+using WebGatewayTest.Formatters;
 
 namespace WebGatewayTest
 {
@@ -23,6 +24,11 @@ namespace WebGatewayTest
             //);
 
             config.MapHttpAttributeRoutes();
+
+            //config.Formatters.Clear();
+           
+            config.Formatters.Add(new TextMediaTypeFormatter());
+            config.Formatters.Add(new BinaryMediaTypeFormatter());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
