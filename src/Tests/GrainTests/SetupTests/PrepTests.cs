@@ -26,7 +26,7 @@ namespace GrainTests.SetupTests
 
         public async Task<ResourceMetadata> GetResourceMetadata(string resourceUriString)
         {
-            return await GraphManager.GetResourceMetadata(resourceUriString);
+            return await GraphManager.GetResourceMetadataAsync(resourceUriString);
         }
 
         public async Task<string> Subscribe(string resourceUriString, SubscriptionMetadata metadata)

@@ -84,4 +84,7 @@ C:\_git\core\src\Tests\GrainTests\bin\Debug\GrainTests.pdb
 C:\_git\core\src\Tests\GrainTests\obj\Debug\GrainTests.exe
 C:\_git\core\src\Tests\GrainTests\obj\Debug\GrainTests.pdb
 C:\_git\core\src\Tests\GrainTests\obj\Debug\GrainTests.csprojResolveAssemblyReference.cache
+C:\_git\core\src\Tests\GrainTests\bin\Debug\System.Net.Http.Formatting.xml
+C:\_git\core\src\Tests\GrainTests\bin\Debug\System.Web.Http.xml
+C:\_git\core\src\Tests\GrainTests\bin\Debug\System.Web.Http.WebHost.xml
 C:\_git\core\src\Tests\GrainTests\obj\Debug\GrainTests.orleans.g.cs

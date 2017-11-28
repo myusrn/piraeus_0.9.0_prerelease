@@ -148,3 +148,4 @@ C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\SkunkLab.Protocols.dll.config
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Net.Http.Formatting.xml
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Web.Http.xml
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Web.Http.WebHost.xml
+C:\_git\core\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.csprojResolveAssemblyReference.cache

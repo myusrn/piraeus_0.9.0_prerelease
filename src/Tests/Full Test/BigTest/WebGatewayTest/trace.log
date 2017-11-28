@@ -24280,3 +24280,1556 @@ iisexpress.exe Warning: 0 : [2017-11-24 03:48:24.537 GMT    16	WARNING	100912	Me
 iisexpress.exe Information: 0 : [2017-11-24 03:48:24.622 GMT    16	INFO   	100328	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Stopping AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 that runs on managed thread 16	
 iisexpress.exe Information: 0 : [2017-11-24 03:48:25.668 GMT    15	INFO   	100312	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Stop request processed	
 iisexpress.exe Information: 0 : [2017-11-24 03:48:25.926 GMT    15	INFO   	100328	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Stopping AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 that runs on managed thread 15	
+iisexpress.exe Error: 0 : Error opening trace file Client-2017-11-24-13.03.25.535Z.log -- Using DefaultTraceListener instead -- Exception=System.UnauthorizedAccessException: Access to the path 'C:\Program Files (x86)\IIS Express\Client-2017-11-24-13.03.25.535Z.log' is denied.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.FileInfo.CreateText()
+   at Orleans.Runtime.FileTelemetryConsumer..ctor(FileInfo file)
+   at Orleans.Runtime.LogManager.Initialize(ITraceConfiguration config, Boolean configChange)
+iisexpress.exe Information: 0 : [2017-11-24 13:03:30.014 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301...	
+iisexpress.exe Information: 0 : [2017-11-24 13:03:30.038 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301\Orleans.DLL
+	* Assembly filename is excluded.	
+iisexpress.exe Information: 0 : [2017-11-24 13:03:30.044 GMT     1	INFO   	100000	AssemblyLoader.Client	]	0 assemblies loaded.	
+iisexpress.exe Information: 0 : [2017-11-24 13:03:30.167 GMT     1	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.18.169.105 Client Id = *cli/6b9ca593 ----------	
+iisexpress.exe Information: 0 : [2017-11-24 13:03:30.191 GMT     1	INFO   	100314	OutsideRuntimeClient	]	---------- Starting OutsideRuntimeClient with runtime Version='1.5.2.0 (Release).' in AppDomain=<AppDomain.Id=2, AppDomain.FriendlyName=/LM/W3SVC/3/ROOT-1-131560021789968826> Config= 
+ Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 10.0.14393.0
+   App config file: C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\web.config
+   GC Type=Server GCLatencyMode=Batch
+   Host: MININT-2T87D76
+   Processor Count: 4
+Client Configuration:
+   Config File Name: 
+   Start time: 2017-11-24 13:03:30.183 GMT
+   Gateway Provider: Config
+   Gateways[1]:
+      127.0.0.1:40000
+   Preferred Gateway Index: -1
+   GatewayListRefreshPeriod: 00:01:00
+   Preferred Address Family: InterNetwork
+   DNS Host Name: MININT-2T87D76
+   Client Name: Client
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\Program Files (x86)\IIS Express\Client-2017-11-24-13.03.25.535Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: -00:00:00.0010000
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Client Sender Buckets: 8192
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Fallback serializer: 
+   .NET: 
+       .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+       .NET thread pool sizes - Max: Worker Threads=4095 Completion Port Threads=1000
+   Providers:
+       No providers configured.
+	
+iisexpress.exe Information: 0 : [2017-11-24 13:03:30.349 GMT     5	INFO   	101309	Messaging.GatewayManager	]	Found 1 knownGateways from Gateway listProvider [gwy.tcp://127.0.0.1:40000/0]	
+iisexpress.exe Information: 0 : [2017-11-24 13:03:30.448 GMT     5	INFO   	100908	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.169.105:0]	Connected to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0.	
+iisexpress.exe Information: 0 : [2017-11-24 13:03:30.473 GMT    17	INFO   	100000	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.18.169.105:0]	Starting AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 on managed thread 17	
+iisexpress.exe Information: 0 : [2017-11-24 13:03:30.473 GMT    16	INFO   	100000	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.169.105:0]	Starting AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 on managed thread 16	
+iisexpress.exe Information: 0 : [2017-11-24 13:03:30.820 GMT     8	INFO   	100929	OutsideRuntimeClient	172.18.169.105:0]	---------- Started OutsideRuntimeClient with Global Client ID: C172.18.169.105:0:-249224610*cli/6b9ca593@13d988b3, client GUID ID: *cli/6b9ca593	
+iisexpress.exe Information: 0 : [2017-11-24 13:04:30.378 GMT     5	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:03:30 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:05:30.388 GMT     8	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:04:30 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:06:30.396 GMT    18	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:05:30 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:07:30.417 GMT     5	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:06:30 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:08:30.459 GMT    15	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:07:30 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:08:30.890 GMT    20	INFO   	100704	ClientLogStatistics	172.18.169.105:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=2010
+Messaging.Received.Bytes.Total.Current=6028
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=8
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=8
+Messaging.Received.Messages.Total.Current=8
+Messaging.Received.MessageSizeHistogram.Bytes=[256:511]=6, [1024:2047]=1, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=1842
+Messaging.Sent.Bytes.Total.Current=4373
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=8
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=8
+Messaging.Sent.Messages.Total.Current=8
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=2, [256:511]=4, [1024:2047]=2, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=89.133
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=3, gen1=1, gen2=1
+Runtime.GC.GenSizesKb=gen0=82182.84, gen1=14409.99, gen2=1260.73
+Runtime.GC.LargeObjectHeapSizeKb=6156.453
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.950
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=54.465
+Runtime.GC.PromotedMemoryFromGen1Kb=0.000
+Runtime.GC.TotalMemoryKb=35145
+Runtime.Memory.AvailableMemoryMb=8453
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=287
+Serialization.BufferPool.CheckedOutBuffers.Current=320
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+iisexpress.exe Information: 0 : [2017-11-24 13:09:30.472 GMT    12	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:08:30 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:10:30.489 GMT    12	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:09:30 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:11:30.508 GMT    25	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:10:30 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:12:30.522 GMT    25	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:11:30 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:13:30.537 GMT    28	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:12:30 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:13:30.999 GMT    28	INFO   	100704	ClientLogStatistics	172.18.169.105:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=2010
+Messaging.Received.Bytes.Total.Current=6028
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=8
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=8
+Messaging.Received.Messages.Total.Current=8
+Messaging.Received.MessageSizeHistogram.Bytes=[256:511]=6, [1024:2047]=1, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=1842
+Messaging.Sent.Bytes.Total.Current=4373
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=8
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=8
+Messaging.Sent.Messages.Total.Current=8
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=2, [256:511]=4, [1024:2047]=2, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=100.000
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=3, gen1=1, gen2=1
+Runtime.GC.GenSizesKb=gen0=82182.84, gen1=14409.99, gen2=1260.73
+Runtime.GC.LargeObjectHeapSizeKb=6156.453
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.950
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=54.465
+Runtime.GC.PromotedMemoryFromGen1Kb=0.000
+Runtime.GC.TotalMemoryKb=40159
+Runtime.Memory.AvailableMemoryMb=7964
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=287
+Serialization.BufferPool.CheckedOutBuffers.Current=320
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+iisexpress.exe Information: 0 : [2017-11-24 13:14:30.552 GMT    27	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:13:30 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:15:30.776 GMT    31	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:14:30 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:16:33.381 GMT    31	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:15:30 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:17:37.173 GMT    36	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:16:33 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:18:31.064 GMT    36	INFO   	100704	ClientLogStatistics	172.18.169.105:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=2010
+Messaging.Received.Bytes.Total.Current=6028
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=8
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=8
+Messaging.Received.Messages.Total.Current=8
+Messaging.Received.MessageSizeHistogram.Bytes=[256:511]=6, [1024:2047]=1, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=1842
+Messaging.Sent.Bytes.Total.Current=4373
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=8
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=8
+Messaging.Sent.Messages.Total.Current=8
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=2, [256:511]=4, [1024:2047]=2, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=32.538
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=3, gen1=1, gen2=1
+Runtime.GC.GenSizesKb=gen0=82182.84, gen1=14409.99, gen2=1260.73
+Runtime.GC.LargeObjectHeapSizeKb=6156.453
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.950
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=54.465
+Runtime.GC.PromotedMemoryFromGen1Kb=0.000
+Runtime.GC.TotalMemoryKb=45124
+Runtime.Memory.AvailableMemoryMb=8393
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=287
+Serialization.BufferPool.CheckedOutBuffers.Current=320
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+iisexpress.exe Information: 0 : [2017-11-24 13:18:37.189 GMT    36	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:17:37 PM	
+iisexpress.exe Information: 0 : Authorization configuration section is not configured.
+iisexpress.exe Information: 0 : [2017-11-24 13:19:37.206 GMT    43	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:18:37 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:20:37.222 GMT    49	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:19:37 PM	
+iisexpress.exe Error: 0 : Error opening trace file Client-2017-11-24-13.21.07.762Z.log -- Using DefaultTraceListener instead -- Exception=System.UnauthorizedAccessException: Access to the path 'C:\Program Files (x86)\IIS Express\Client-2017-11-24-13.21.07.762Z.log' is denied.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.FileInfo.CreateText()
+   at Orleans.Runtime.FileTelemetryConsumer..ctor(FileInfo file)
+   at Orleans.Runtime.LogManager.Initialize(ITraceConfiguration config, Boolean configChange)
+iisexpress.exe Information: 0 : [2017-11-24 13:21:15.676 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301...	
+iisexpress.exe Information: 0 : [2017-11-24 13:21:15.697 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301\Orleans.DLL
+	* Assembly filename is excluded.	
+iisexpress.exe Information: 0 : [2017-11-24 13:21:15.701 GMT     1	INFO   	100000	AssemblyLoader.Client	]	0 assemblies loaded.	
+iisexpress.exe Information: 0 : [2017-11-24 13:21:15.838 GMT     1	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.18.169.105 Client Id = *cli/9046dfaf ----------	
+iisexpress.exe Information: 0 : [2017-11-24 13:21:15.869 GMT     1	INFO   	100314	OutsideRuntimeClient	]	---------- Starting OutsideRuntimeClient with runtime Version='1.5.2.0 (Release).' in AppDomain=<AppDomain.Id=2, AppDomain.FriendlyName=/LM/W3SVC/3/ROOT-1-131560032523660098> Config= 
+ Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 10.0.14393.0
+   App config file: C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\web.config
+   GC Type=Server GCLatencyMode=Batch
+   Host: MININT-2T87D76
+   Processor Count: 4
+Client Configuration:
+   Config File Name: 
+   Start time: 2017-11-24 13:21:15.859 GMT
+   Gateway Provider: Config
+   Gateways[1]:
+      127.0.0.1:40000
+   Preferred Gateway Index: -1
+   GatewayListRefreshPeriod: 00:01:00
+   Preferred Address Family: InterNetwork
+   DNS Host Name: MININT-2T87D76
+   Client Name: Client
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\Program Files (x86)\IIS Express\Client-2017-11-24-13.21.07.762Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: -00:00:00.0010000
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Client Sender Buckets: 8192
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Fallback serializer: 
+   .NET: 
+       .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+       .NET thread pool sizes - Max: Worker Threads=4095 Completion Port Threads=1000
+   Providers:
+       No providers configured.
+	
+iisexpress.exe Information: 0 : [2017-11-24 13:21:16.017 GMT     5	INFO   	101309	Messaging.GatewayManager	]	Found 1 knownGateways from Gateway listProvider [gwy.tcp://127.0.0.1:40000/0]	
+iisexpress.exe Information: 0 : [2017-11-24 13:21:16.107 GMT     5	INFO   	100908	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.169.105:0]	Connected to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0.	
+iisexpress.exe Information: 0 : [2017-11-24 13:21:16.117 GMT    15	INFO   	100000	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.18.169.105:0]	Starting AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 on managed thread 15	
+iisexpress.exe Information: 0 : [2017-11-24 13:21:16.142 GMT    14	INFO   	100000	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.169.105:0]	Starting AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 on managed thread 14	
+iisexpress.exe Information: 0 : [2017-11-24 13:21:16.312 GMT     7	INFO   	100929	OutsideRuntimeClient	172.18.169.105:0]	---------- Started OutsideRuntimeClient with Global Client ID: C172.18.169.105:0:-249225676*cli/9046dfaf@6a9b13b6, client GUID ID: *cli/9046dfaf	
+iisexpress.exe Information: 0 : [2017-11-24 13:22:16.045 GMT     5	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:21:16 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:23:16.072 GMT     5	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:22:16 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:24:16.088 GMT     5	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:23:16 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:25:16.097 GMT     5	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:24:16 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:26:16.128 GMT     5	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:25:16 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:26:16.349 GMT    19	INFO   	100704	ClientLogStatistics	172.18.169.105:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=453
+Messaging.Received.Bytes.Total.Current=3298
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=2
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=2
+Messaging.Received.Messages.Total.Current=2
+Messaging.Received.MessageSizeHistogram.Bytes=[256:511]=1, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=453
+Messaging.Sent.Bytes.Total.Current=526
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=2
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=2
+Messaging.Sent.Messages.Total.Current=2
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=1, [256:511]=1, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=32.815
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=3, gen1=2, gen2=2
+Runtime.GC.GenSizesKb=gen0=76333.70, gen1=44.77, gen2=7855.28
+Runtime.GC.LargeObjectHeapSizeKb=6847.883
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=8.534
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=0.141
+Runtime.GC.PromotedMemoryFromGen1Kb=7805.965
+Runtime.GC.TotalMemoryKb=21350
+Runtime.Memory.AvailableMemoryMb=8017
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=257
+Serialization.BufferPool.CheckedOutBuffers.Current=290
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+iisexpress.exe Information: 0 : [2017-11-24 13:27:16.256 GMT    19	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:26:16 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:28:16.650 GMT     5	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:27:16 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:29:17.977 GMT    21	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:28:16 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:30:18.506 GMT    21	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:29:17 PM	
+iisexpress.exe Information: 0 : [2017-11-24 13:31:16.417 GMT    24	INFO   	100704	ClientLogStatistics	172.18.169.105:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=453
+Messaging.Received.Bytes.Total.Current=3298
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=2
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=2
+Messaging.Received.Messages.Total.Current=2
+Messaging.Received.MessageSizeHistogram.Bytes=[256:511]=1, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=453
+Messaging.Sent.Bytes.Total.Current=526
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=2
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=2
+Messaging.Sent.Messages.Total.Current=2
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=1, [256:511]=1, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=80.521
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=3, gen1=2, gen2=2
+Runtime.GC.GenSizesKb=gen0=76333.70, gen1=44.77, gen2=7855.28
+Runtime.GC.LargeObjectHeapSizeKb=6847.883
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=8.534
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=0.141
+Runtime.GC.PromotedMemoryFromGen1Kb=7805.965
+Runtime.GC.TotalMemoryKb=26245
+Runtime.Memory.AvailableMemoryMb=8153
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=257
+Serialization.BufferPool.CheckedOutBuffers.Current=290
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+iisexpress.exe Information: 0 : [2017-11-24 13:31:18.534 GMT    21	INFO   	101309	Messaging.GatewayManager	172.18.169.105:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/24/2017 1:30:18 PM	
+iisexpress.exe Error: 0 : Error opening trace file Client-2017-11-25-02.07.14.080Z.log -- Using DefaultTraceListener instead -- Exception=System.UnauthorizedAccessException: Access to the path 'C:\Program Files (x86)\IIS Express\Client-2017-11-25-02.07.14.080Z.log' is denied.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.FileInfo.CreateText()
+   at Orleans.Runtime.FileTelemetryConsumer..ctor(FileInfo file)
+   at Orleans.Runtime.LogManager.Initialize(ITraceConfiguration config, Boolean configChange)
+iisexpress.exe Information: 0 : [2017-11-25 02:07:22.334 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301...	
+iisexpress.exe Information: 0 : [2017-11-25 02:07:22.357 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301\Orleans.DLL
+	* Assembly filename is excluded.	
+iisexpress.exe Information: 0 : [2017-11-25 02:07:22.362 GMT     1	INFO   	100000	AssemblyLoader.Client	]	0 assemblies loaded.	
+iisexpress.exe Information: 0 : [2017-11-25 02:07:22.485 GMT     1	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.19.80.194 Client Id = *cli/755627a1 ----------	
+iisexpress.exe Information: 0 : [2017-11-25 02:07:22.509 GMT     1	INFO   	100314	OutsideRuntimeClient	]	---------- Starting OutsideRuntimeClient with runtime Version='1.5.2.0 (Release).' in AppDomain=<AppDomain.Id=2, AppDomain.FriendlyName=/LM/W3SVC/3/ROOT-1-131560492241976980> Config= 
+ Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 10.0.14393.0
+   App config file: C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\web.config
+   GC Type=Server GCLatencyMode=Batch
+   Host: MININT-2T87D76
+   Processor Count: 4
+Client Configuration:
+   Config File Name: 
+   Start time: 2017-11-25 02:07:22.501 GMT
+   Gateway Provider: Config
+   Gateways[1]:
+      127.0.0.1:40000
+   Preferred Gateway Index: -1
+   GatewayListRefreshPeriod: 00:01:00
+   Preferred Address Family: InterNetwork
+   DNS Host Name: MININT-2T87D76
+   Client Name: Client
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\Program Files (x86)\IIS Express\Client-2017-11-25-02.07.14.080Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: -00:00:00.0010000
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Client Sender Buckets: 8192
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Fallback serializer: 
+   .NET: 
+       .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+       .NET thread pool sizes - Max: Worker Threads=4095 Completion Port Threads=1000
+   Providers:
+       No providers configured.
+	
+iisexpress.exe Information: 0 : [2017-11-25 02:07:22.658 GMT     7	INFO   	101309	Messaging.GatewayManager	]	Found 1 knownGateways from Gateway listProvider [gwy.tcp://127.0.0.1:40000/0]	
+iisexpress.exe Information: 0 : [2017-11-25 02:07:22.792 GMT     7	INFO   	100908	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.80.194:0]	Connected to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0.	
+iisexpress.exe Information: 0 : [2017-11-25 02:07:22.817 GMT    16	INFO   	100000	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.19.80.194:0]	Starting AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 on managed thread 16	
+iisexpress.exe Information: 0 : [2017-11-25 02:07:22.817 GMT    15	INFO   	100000	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.80.194:0]	Starting AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 on managed thread 15	
+iisexpress.exe Information: 0 : [2017-11-25 02:07:23.139 GMT    14	INFO   	100929	OutsideRuntimeClient	172.19.80.194:0]	---------- Started OutsideRuntimeClient with Global Client ID: C172.19.80.194:0:-249271642*cli/755627a1@8564efb5, client GUID ID: *cli/755627a1	
+iisexpress.exe Information: 0 : [2017-11-25 02:08:22.670 GMT     7	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:07:22 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:09:22.678 GMT    10	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:08:22 AM	
+iisexpress.exe Information: 0 : Authorization configuration section is not configured.
+iisexpress.exe Information: 0 : [2017-11-25 02:10:22.693 GMT    13	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:09:22 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:11:22.959 GMT    25	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:10:22 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:12:23.005 GMT    13	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:11:22 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:12:23.166 GMT    13	INFO   	100704	ClientLogStatistics	172.19.80.194:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=3537
+Messaging.Received.Bytes.Total.Current=9235
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=14
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=14
+Messaging.Received.Messages.Total.Current=14
+Messaging.Received.MessageSizeHistogram.Bytes=[128:255]=1, [256:511]=10, [1024:2047]=2, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=3201
+Messaging.Sent.Bytes.Total.Current=6072
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=14
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=14
+Messaging.Sent.Messages.Total.Current=14
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=6, [256:511]=6, [1024:2047]=2, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=77.016
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=4
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=3, gen1=1, gen2=1
+Runtime.GC.GenSizesKb=gen0=73638.91, gen1=4524.99, gen2=1633.73
+Runtime.GC.LargeObjectHeapSizeKb=5495.375
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.227
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=5.006
+Runtime.GC.PromotedMemoryFromGen1Kb=0.000
+Runtime.GC.TotalMemoryKb=80547
+Runtime.Memory.AvailableMemoryMb=9702
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=317
+Serialization.BufferPool.CheckedOutBuffers.Current=350
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+iisexpress.exe Information: 0 : [2017-11-25 02:13:23.103 GMT    13	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:12:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:14:23.551 GMT    13	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:13:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:15:23.553 GMT    28	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:14:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:16:23.561 GMT    28	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:15:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:17:23.153 GMT    25	INFO   	100704	ClientLogStatistics	172.19.80.194:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=3537
+Messaging.Received.Bytes.Total.Current=9235
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=14
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=14
+Messaging.Received.Messages.Total.Current=14
+Messaging.Received.MessageSizeHistogram.Bytes=[128:255]=1, [256:511]=10, [1024:2047]=2, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=3201
+Messaging.Sent.Bytes.Total.Current=6072
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=14
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=14
+Messaging.Sent.Messages.Total.Current=14
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=6, [256:511]=6, [1024:2047]=2, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=20.101
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=4
+Runtime.GC.AllocatedBytesInKbPerSec=244.191
+Runtime.GC.GenCollectonCount=gen0=4, gen1=1, gen2=1
+Runtime.GC.GenSizesKb=gen0=77756.14, gen1=7974.48, gen2=1633.73
+Runtime.GC.LargeObjectHeapSizeKb=9346.320
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.014
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=41.754
+Runtime.GC.PromotedMemoryFromGen1Kb=0.000
+Runtime.GC.TotalMemoryKb=21920
+Runtime.Memory.AvailableMemoryMb=9426
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=317
+Serialization.BufferPool.CheckedOutBuffers.Current=350
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+iisexpress.exe Information: 0 : [2017-11-25 02:17:23.578 GMT    20	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:16:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:18:23.590 GMT    20	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:17:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:19:23.608 GMT    17	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:18:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:20:23.622 GMT    17	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:19:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:21:23.633 GMT    17	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:20:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:22:23.212 GMT    36	INFO   	100704	ClientLogStatistics	172.19.80.194:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=3537
+Messaging.Received.Bytes.Total.Current=9235
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=14
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=14
+Messaging.Received.Messages.Total.Current=14
+Messaging.Received.MessageSizeHistogram.Bytes=[128:255]=1, [256:511]=10, [1024:2047]=2, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=3201
+Messaging.Sent.Bytes.Total.Current=6072
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=14
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=14
+Messaging.Sent.Messages.Total.Current=14
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=6, [256:511]=6, [1024:2047]=2, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=22.301
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=4
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=4, gen1=1, gen2=1
+Runtime.GC.GenSizesKb=gen0=77756.14, gen1=7974.48, gen2=1633.73
+Runtime.GC.LargeObjectHeapSizeKb=9346.320
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.014
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=41.754
+Runtime.GC.PromotedMemoryFromGen1Kb=0.000
+Runtime.GC.TotalMemoryKb=26923
+Runtime.Memory.AvailableMemoryMb=9391
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=317
+Serialization.BufferPool.CheckedOutBuffers.Current=350
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+iisexpress.exe Information: 0 : [2017-11-25 02:22:23.647 GMT    36	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:21:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:23:23.650 GMT    37	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:22:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:24:23.667 GMT    37	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:23:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:25:23.693 GMT    37	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:24:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:26:23.740 GMT    44	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:25:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:28:26.026 GMT    45	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:26:23 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:28:26.060 GMT    44	INFO   	100704	ClientLogStatistics	172.19.80.194:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=3791,      Delta=254
+Messaging.Received.Bytes.Total.Current=9661,      Delta=426
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=15,      Delta=1
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=15,      Delta=1
+Messaging.Received.Messages.Total.Current=15,      Delta=1
+Messaging.Received.MessageSizeHistogram.Bytes=[128:255]=1, [256:511]=11, [1024:2047]=2, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=3427,      Delta=226
+Messaging.Sent.Bytes.Total.Current=6322,      Delta=250
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=15,      Delta=1
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=15,      Delta=1
+Messaging.Sent.Messages.Total.Current=15,      Delta=1
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=7, [256:511]=6, [1024:2047]=2, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=10.126
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=5
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=4, gen1=1, gen2=1
+Runtime.GC.GenSizesKb=gen0=77756.14, gen1=7974.48, gen2=1633.73
+Runtime.GC.LargeObjectHeapSizeKb=9346.320
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.014
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=41.754
+Runtime.GC.PromotedMemoryFromGen1Kb=0.000
+Runtime.GC.TotalMemoryKb=31910
+Runtime.Memory.AvailableMemoryMb=9922
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=322,      Delta=5
+Serialization.BufferPool.CheckedOutBuffers.Current=355,      Delta=5
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+iisexpress.exe Information: 0 : [2017-11-25 02:29:26.030 GMT    45	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:28:26 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:30:26.042 GMT    52	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:29:26 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:31:26.071 GMT    53	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:30:26 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:32:28.178 GMT    61	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:31:26 AM	
+iisexpress.exe Information: 0 : [2017-11-25 02:33:26.127 GMT    58	INFO   	100704	ClientLogStatistics	172.19.80.194:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=6859,      Delta=3068
+Messaging.Received.Bytes.Total.Current=17723,      Delta=8062
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=27,      Delta=12
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=27,      Delta=12
+Messaging.Received.Messages.Total.Current=27,      Delta=12
+Messaging.Received.MessageSizeHistogram.Bytes=[128:255]=3, [256:511]=17, [1024:2047]=6, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=6159,      Delta=2732
+Messaging.Sent.Bytes.Total.Current=9734,      Delta=3412
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=27,      Delta=12
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=27,      Delta=12
+Messaging.Sent.Messages.Total.Current=27,      Delta=12
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=13, [256:511]=12, [1024:2047]=2, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=15.535
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=4
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=4, gen1=1, gen2=1
+Runtime.GC.GenSizesKb=gen0=77756.14, gen1=7974.48, gen2=1633.73
+Runtime.GC.LargeObjectHeapSizeKb=9346.320
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.014
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=41.754
+Runtime.GC.PromotedMemoryFromGen1Kb=0.000
+Runtime.GC.TotalMemoryKb=37588
+Runtime.Memory.AvailableMemoryMb=9002
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=382,      Delta=60
+Serialization.BufferPool.CheckedOutBuffers.Current=415,      Delta=60
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+iisexpress.exe Information: 0 : [2017-11-25 02:33:29.962 GMT    56	INFO   	101309	Messaging.GatewayManager	172.19.80.194:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:32:28 AM	
+iisexpress.exe Error: 0 : Error opening trace file Client-2017-11-25-13.11.09.406Z.log -- Using DefaultTraceListener instead -- Exception=System.UnauthorizedAccessException: Access to the path 'C:\Program Files (x86)\IIS Express\Client-2017-11-25-13.11.09.406Z.log' is denied.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.FileInfo.CreateText()
+   at Orleans.Runtime.FileTelemetryConsumer..ctor(FileInfo file)
+   at Orleans.Runtime.LogManager.Initialize(ITraceConfiguration config, Boolean configChange)
+iisexpress.exe Information: 0 : [2017-11-25 13:11:15.426 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301...	
+iisexpress.exe Information: 0 : [2017-11-25 13:11:15.443 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301\Orleans.DLL
+	* Assembly filename is excluded.	
+iisexpress.exe Information: 0 : [2017-11-25 13:11:15.446 GMT     1	INFO   	100000	AssemblyLoader.Client	]	0 assemblies loaded.	
+iisexpress.exe Information: 0 : [2017-11-25 13:11:15.551 GMT     1	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.19.176.1 Client Id = *cli/4d826b86 ----------	
+iisexpress.exe Information: 0 : [2017-11-25 13:11:15.571 GMT     1	INFO   	100314	OutsideRuntimeClient	]	---------- Starting OutsideRuntimeClient with runtime Version='1.5.2.0 (Release).' in AppDomain=<AppDomain.Id=2, AppDomain.FriendlyName=/LM/W3SVC/3/ROOT-1-131560890633512770> Config= 
+ Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 10.0.14393.0
+   App config file: C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\web.config
+   GC Type=Server GCLatencyMode=Batch
+   Host: MININT-2T87D76
+   Processor Count: 4
+Client Configuration:
+   Config File Name: 
+   Start time: 2017-11-25 13:11:15.565 GMT
+   Gateway Provider: Config
+   Gateways[1]:
+      127.0.0.1:40000
+   Preferred Gateway Index: -1
+   GatewayListRefreshPeriod: 00:01:00
+   Preferred Address Family: InterNetwork
+   DNS Host Name: MININT-2T87D76
+   Client Name: Client
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\Program Files (x86)\IIS Express\Client-2017-11-25-13.11.09.406Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: -00:00:00.0010000
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Client Sender Buckets: 8192
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Fallback serializer: 
+   .NET: 
+       .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+       .NET thread pool sizes - Max: Worker Threads=4095 Completion Port Threads=1000
+   Providers:
+       No providers configured.
+	
+iisexpress.exe Information: 0 : [2017-11-25 13:11:15.694 GMT     7	INFO   	101309	Messaging.GatewayManager	]	Found 1 knownGateways from Gateway listProvider [gwy.tcp://127.0.0.1:40000/0]	
+iisexpress.exe Information: 0 : [2017-11-25 13:11:15.771 GMT     7	INFO   	100908	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Connected to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0.	
+iisexpress.exe Information: 0 : [2017-11-25 13:11:15.781 GMT    16	INFO   	100000	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Starting AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 on managed thread 16	
+iisexpress.exe Information: 0 : [2017-11-25 13:11:15.805 GMT    15	INFO   	100000	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Starting AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 on managed thread 15	
+iisexpress.exe Information: 0 : [2017-11-25 13:11:15.964 GMT    10	INFO   	100929	OutsideRuntimeClient	172.19.176.1:0]	---------- Started OutsideRuntimeClient with Global Client ID: C172.19.176.1:0:-249311475*cli/4d826b86@b325a59e, client GUID ID: *cli/4d826b86	
+iisexpress.exe Information: 0 : [2017-11-25 13:12:15.921 GMT     7	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:11:15 PM	
+iisexpress.exe Information: 0 : [2017-11-25 13:13:18.745 GMT    17	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:12:15 PM	
+iisexpress.exe Warning: 0 : Exception in JWT validation.
+iisexpress.exe Error: 0 : IDX10709: JWT is not well formed: 'securityToken'.
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+iisexpress.exe Warning: 0 : Exception in JWT validation.
+iisexpress.exe Error: 0 : IDX10709: JWT is not well formed: 'securityToken'.
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+iisexpress.exe Information: 0 : [2017-11-25 13:14:18.763 GMT    17	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:13:18 PM	
+iisexpress.exe Information: 0 : [2017-11-25 13:15:18.822 GMT    11	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:14:18 PM	
+iisexpress.exe Information: 0 : 2017-11-25T01:15:36.0423 INFORMATION Channel ws-f0423972-916e-450b-ad21-87bed99e524b opened.
+iisexpress.exe Error: 0 : 2017-11-25T01:16:06.9025 ERROR       Channel ID ws-f0423972-916e-450b-ad21-87bed99e524b with error Reached the end of the file
+iisexpress.exe Information: 0 : 2017-11-25T01:16:07.0365 INFORMATION Channel ws-f0423972-916e-450b-ad21-87bed99e524b closing.
+iisexpress.exe Information: 0 : [2017-11-25 13:16:16.014 GMT    22	INFO   	100704	ClientLogStatistics	172.19.176.1:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=2010
+Messaging.Received.Bytes.Total.Current=6028
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=8
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=8
+Messaging.Received.Messages.Total.Current=8
+Messaging.Received.MessageSizeHistogram.Bytes=[256:511]=6, [1024:2047]=1, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=1842
+Messaging.Sent.Bytes.Total.Current=4373
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=8
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=8
+Messaging.Sent.Messages.Total.Current=8
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=2, [256:511]=4, [1024:2047]=2, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=14.503
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=2, gen1=1, gen2=1
+Runtime.GC.GenSizesKb=gen0=87834.58, gen1=6008.26, gen2=0.05
+Runtime.GC.LargeObjectHeapSizeKb=5083.969
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.364
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=5.041
+Runtime.GC.PromotedMemoryFromGen1Kb=0.000
+Runtime.GC.TotalMemoryKb=79522
+Runtime.Memory.AvailableMemoryMb=8985
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=287
+Serialization.BufferPool.CheckedOutBuffers.Current=320
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+iisexpress.exe Information: 0 : [2017-11-25 13:16:22.268 GMT    23	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:15:18 PM	
+iisexpress.exe Information: 0 : 2017-11-25T01:16:45.7746 INFORMATION Channel ws-6e726f30-ef0a-44e1-b57b-d5f555f5810e opened.
+iisexpress.exe Error: 0 : 2017-11-25T01:16:57.0351 ERROR       Channel ID ws-6e726f30-ef0a-44e1-b57b-d5f555f5810e with error The I/O operation has been aborted because of either a thread exit or an application request
+iisexpress.exe Information: 0 : 2017-11-25T01:16:57.0361 INFORMATION Channel ws-6e726f30-ef0a-44e1-b57b-d5f555f5810e closing.
+iisexpress.exe Information: 0 : [2017-11-25 13:17:22.287 GMT    18	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:16:22 PM	
+iisexpress.exe Information: 0 : 2017-11-25T01:17:28.3458 INFORMATION Channel ws-db9e8b69-9c2b-4071-922a-b0f7f0a3198f opened.
+iisexpress.exe Information: 0 : 2017-11-25T01:17:33.8356 INFORMATION Channel ws-6ed8905d-5cf9-4030-8331-50d09755c64b opened.
+iisexpress.exe Information: 0 : Authorization configuration section is not configured.
+iisexpress.exe Error: 0 : Error opening trace file Client-2017-11-25-13.18.11.486Z.log -- Using DefaultTraceListener instead -- Exception=System.UnauthorizedAccessException: Access to the path 'C:\Program Files (x86)\IIS Express\Client-2017-11-25-13.18.11.486Z.log' is denied.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.FileInfo.CreateText()
+   at Orleans.Runtime.FileTelemetryConsumer..ctor(FileInfo file)
+   at Orleans.Runtime.LogManager.Initialize(ITraceConfiguration config, Boolean configChange)
+iisexpress.exe Information: 0 : [2017-11-25 13:18:20.498 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301...	
+iisexpress.exe Information: 0 : [2017-11-25 13:18:20.515 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301\Orleans.DLL
+	* Assembly filename is excluded.	
+iisexpress.exe Information: 0 : [2017-11-25 13:18:20.519 GMT     1	INFO   	100000	AssemblyLoader.Client	]	0 assemblies loaded.	
+iisexpress.exe Information: 0 : [2017-11-25 13:18:20.630 GMT     1	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.19.176.1 Client Id = *cli/ebb80ba8 ----------	
+iisexpress.exe Information: 0 : [2017-11-25 13:18:20.652 GMT     1	INFO   	100314	OutsideRuntimeClient	]	---------- Starting OutsideRuntimeClient with runtime Version='1.5.2.0 (Release).' in AppDomain=<AppDomain.Id=2, AppDomain.FriendlyName=/LM/W3SVC/3/ROOT-1-131560894825435806> Config= 
+ Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 10.0.14393.0
+   App config file: C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\web.config
+   GC Type=Server GCLatencyMode=Batch
+   Host: MININT-2T87D76
+   Processor Count: 4
+Client Configuration:
+   Config File Name: 
+   Start time: 2017-11-25 13:18:20.645 GMT
+   Gateway Provider: Config
+   Gateways[1]:
+      127.0.0.1:40000
+   Preferred Gateway Index: -1
+   GatewayListRefreshPeriod: 00:01:00
+   Preferred Address Family: InterNetwork
+   DNS Host Name: MININT-2T87D76
+   Client Name: Client
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\Program Files (x86)\IIS Express\Client-2017-11-25-13.18.11.486Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: -00:00:00.0010000
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Client Sender Buckets: 8192
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Fallback serializer: 
+   .NET: 
+       .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+       .NET thread pool sizes - Max: Worker Threads=4095 Completion Port Threads=1000
+   Providers:
+       No providers configured.
+	
+iisexpress.exe Information: 0 : [2017-11-25 13:18:20.780 GMT     7	INFO   	101309	Messaging.GatewayManager	]	Found 1 knownGateways from Gateway listProvider [gwy.tcp://127.0.0.1:40000/0]	
+iisexpress.exe Information: 0 : [2017-11-25 13:18:20.861 GMT     7	INFO   	100908	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Connected to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0.	
+iisexpress.exe Information: 0 : [2017-11-25 13:18:20.870 GMT    16	INFO   	100000	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Starting AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 on managed thread 16	
+iisexpress.exe Information: 0 : [2017-11-25 13:18:20.876 GMT    15	INFO   	100000	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Starting AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 on managed thread 15	
+iisexpress.exe Information: 0 : [2017-11-25 13:18:21.000 GMT    10	INFO   	100929	OutsideRuntimeClient	172.19.176.1:0]	---------- Started OutsideRuntimeClient with Global Client ID: C172.19.176.1:0:-249311900*cli/ebb80ba8@a8382cb1, client GUID ID: *cli/ebb80ba8	
+iisexpress.exe Information: 0 : [2017-11-25 13:19:20.933 GMT     7	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:18:20 PM	
+iisexpress.exe Information: 0 : 2017-11-25T01:19:46.8629 INFORMATION Channel ws-8e4a7d90-b66f-4256-a21a-76721a2b3287 opened.
+iisexpress.exe Information: 0 : Authorization configuration section is not configured.
+iisexpress.exe Information: 0 : 2017-11-25T01:19:52.6594 INFORMATION Channel ws-2849ef20-3d93-4008-973e-542eab730546 opened.
+iisexpress.exe Error: 0 : 2017-11-25T01:20:10.4311 ERROR       Channel ID ws-2849ef20-3d93-4008-973e-542eab730546 with error The I/O operation has been aborted because of either a thread exit or an application request
+iisexpress.exe Information: 0 : 2017-11-25T01:20:10.4531 INFORMATION Channel ws-2849ef20-3d93-4008-973e-542eab730546 closing.
+iisexpress.exe Error: 0 : 2017-11-25T01:20:11.6316 ERROR       Channel ID ws-8e4a7d90-b66f-4256-a21a-76721a2b3287 with error The I/O operation has been aborted because of either a thread exit or an application request
+iisexpress.exe Information: 0 : 2017-11-25T01:20:11.6316 INFORMATION Channel ws-8e4a7d90-b66f-4256-a21a-76721a2b3287 closing.
+iisexpress.exe Information: 0 : [2017-11-25 13:20:21.277 GMT     7	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:19:20 PM	
+iisexpress.exe Information: 0 : 2017-11-25T01:21:09.4862 INFORMATION Channel ws-4596e45e-cbad-4a85-b3d4-cb212a40fb6a opened.
+iisexpress.exe Information: 0 : 2017-11-25T01:21:17.4923 INFORMATION Channel ws-8ec7fcda-3411-412e-92ff-e800def4524e opened.
+iisexpress.exe Information: 0 : [2017-11-25 13:21:21.299 GMT    18	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:20:21 PM	
+iisexpress.exe Error: 0 : 2017-11-25T01:21:42.3058 ERROR       Channel ID ws-8ec7fcda-3411-412e-92ff-e800def4524e with error The I/O operation has been aborted because of either a thread exit or an application request
+iisexpress.exe Information: 0 : 2017-11-25T01:21:42.3058 INFORMATION Channel ws-8ec7fcda-3411-412e-92ff-e800def4524e closing.
+iisexpress.exe Error: 0 : [2017-11-25 13:21:42.342 GMT     2	ERROR  	100007	OutsideRuntimeClient	172.19.176.1:0]	!!!!!!!!!! OutsideRuntimeClient caught an UnobservedException.	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 405
+iisexpress.exe Error: 0 : [2017-11-25 13:21:42.399 GMT     2	ERROR  	100005	UnobservedExceptionHandler	172.19.176.1:0]	!!!!!!!!!! UnobservedExceptionsHandlerClass Caught an UnobservedTaskException event sent by [Id=15732, Status=Faulted]. Exception = 
+Exc level 0: System.AggregateException: A Task's exception(s) were not observed either by Waiting on the Task or accessing its Exception property. As a result, the unobserved exception was rethrown by the finalizer thread.
+Exc level 1: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 405	
+iisexpress.exe Error: 0 : [2017-11-25 13:21:42.506 GMT     2	ERROR  	100006	UnobservedExceptionHandler	172.19.176.1:0]	!!!!!!!!!! Exception remained UnObserved!!! The subsequent behavior depends on the ThrowUnobservedTaskExceptions setting in app config and .NET version.	
+iisexpress.exe Information: 0 : 2017-11-25T01:21:43.4919 INFORMATION Channel ws-4596e45e-cbad-4a85-b3d4-cb212a40fb6a closing.
+iisexpress.exe Error: 0 : 2017-11-25T01:21:43.4919 ERROR       Channel ID ws-4596e45e-cbad-4a85-b3d4-cb212a40fb6a with error The I/O operation has been aborted because of either a thread exit or an application request
+iisexpress.exe Information: 0 : [2017-11-25 13:22:21.373 GMT    11	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:21:21 PM	
+iisexpress.exe Information: 0 : 2017-11-25T01:22:41.9423 INFORMATION Channel ws-4d03f9f3-b3dd-4d18-ba9f-9018fe24c6a3 opened.
+iisexpress.exe Information: 0 : 2017-11-25T01:22:55.6116 INFORMATION Channel ws-a081c048-6eff-481e-8583-8d9e00b0c933 opened.
+iisexpress.exe Warning: 0 : [2017-11-25 13:23:14.204 GMT     8	WARNING	100162	OutsideRuntimeClient	172.19.176.1:0]	Object associated with Observer ID 339a56cf-f66d-4ba2-8a4b-27c4e4ea9889 has been garbage collected. Deleting object reference and unregistering it. Message = OneWay S127.0.0.1:40000:0*grn/91DCB108/00000000+http://www.skunklab.io/resourcea/402c2d4d-b836-44e7-a310-cf25e37acca1@a309e2b4->*cli/ebb80ba8@7ee51244339a56cf-f66d-4ba2-8a4b-27c4e4ea9889 #14146: global::Piraeus.GrainInterfaces.IMessageObserver:Notify()	
+iisexpress.exe Information: 0 : [2017-11-25 13:23:21.034 GMT    11	INFO   	100704	ClientLogStatistics	172.19.176.1:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=1876498
+Messaging.Received.Bytes.Total.Current=2316988
+Messaging.Received.Direction.OneWay.Current=3
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=6287
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=6290
+Messaging.Received.Messages.Total.Current=6290
+Messaging.Received.MessageSizeHistogram.Bytes=[128:255]=7, [256:511]=6272, [512:1023]=3, [1024:2047]=7, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=1699627
+Messaging.Sent.Bytes.Total.Current=2009052
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=6287
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=6287
+Messaging.Sent.Messages.Total.Current=6287
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=8, [256:511]=6279, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=8.237
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=3, gen1=2, gen2=1
+Runtime.GC.GenSizesKb=gen0=71581.95, gen1=514.54, gen2=8057.48
+Runtime.GC.LargeObjectHeapSizeKb=9908.859
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.026
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=4.707
+Runtime.GC.PromotedMemoryFromGen1Kb=8025.281
+Runtime.GC.TotalMemoryKb=22318
+Runtime.Memory.AvailableMemoryMb=8929
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=216
+Serialization.BufferPool.CheckedInBuffers.Current=31687
+Serialization.BufferPool.CheckedOutBuffers.Current=31721
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=34
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=34
+	
+iisexpress.exe Information: 0 : [2017-11-25 13:23:21.388 GMT    18	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:22:21 PM	
+iisexpress.exe Error: 0 : Error opening trace file Client-2017-11-25-13.25.39.337Z.log -- Using DefaultTraceListener instead -- Exception=System.UnauthorizedAccessException: Access to the path 'C:\Program Files (x86)\IIS Express\Client-2017-11-25-13.25.39.337Z.log' is denied.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.FileInfo.CreateText()
+   at Orleans.Runtime.FileTelemetryConsumer..ctor(FileInfo file)
+   at Orleans.Runtime.LogManager.Initialize(ITraceConfiguration config, Boolean configChange)
+iisexpress.exe Information: 0 : [2017-11-25 13:25:45.226 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301...	
+iisexpress.exe Information: 0 : [2017-11-25 13:25:45.242 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301\Orleans.DLL
+	* Assembly filename is excluded.	
+iisexpress.exe Information: 0 : [2017-11-25 13:25:45.246 GMT     1	INFO   	100000	AssemblyLoader.Client	]	0 assemblies loaded.	
+iisexpress.exe Information: 0 : [2017-11-25 13:25:45.351 GMT     1	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.19.176.1 Client Id = *cli/df09808c ----------	
+iisexpress.exe Information: 0 : [2017-11-25 13:25:45.370 GMT     1	INFO   	100314	OutsideRuntimeClient	]	---------- Starting OutsideRuntimeClient with runtime Version='1.5.2.0 (Release).' in AppDomain=<AppDomain.Id=2, AppDomain.FriendlyName=/LM/W3SVC/3/ROOT-1-131560899271190523> Config= 
+ Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 10.0.14393.0
+   App config file: C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\web.config
+   GC Type=Server GCLatencyMode=Batch
+   Host: MININT-2T87D76
+   Processor Count: 4
+Client Configuration:
+   Config File Name: 
+   Start time: 2017-11-25 13:25:45.364 GMT
+   Gateway Provider: Config
+   Gateways[1]:
+      127.0.0.1:40000
+   Preferred Gateway Index: -1
+   GatewayListRefreshPeriod: 00:01:00
+   Preferred Address Family: InterNetwork
+   DNS Host Name: MININT-2T87D76
+   Client Name: Client
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\Program Files (x86)\IIS Express\Client-2017-11-25-13.25.39.337Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: -00:00:00.0010000
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Client Sender Buckets: 8192
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Fallback serializer: 
+   .NET: 
+       .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+       .NET thread pool sizes - Max: Worker Threads=4095 Completion Port Threads=1000
+   Providers:
+       No providers configured.
+	
+iisexpress.exe Information: 0 : [2017-11-25 13:25:45.495 GMT     7	INFO   	101309	Messaging.GatewayManager	]	Found 1 knownGateways from Gateway listProvider [gwy.tcp://127.0.0.1:40000/0]	
+iisexpress.exe Information: 0 : [2017-11-25 13:25:45.574 GMT     7	INFO   	100908	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Connected to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0.	
+iisexpress.exe Information: 0 : [2017-11-25 13:25:45.584 GMT    16	INFO   	100000	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Starting AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 on managed thread 16	
+iisexpress.exe Information: 0 : [2017-11-25 13:25:45.587 GMT    15	INFO   	100000	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Starting AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 on managed thread 15	
+iisexpress.exe Information: 0 : [2017-11-25 13:25:45.853 GMT    10	INFO   	100929	OutsideRuntimeClient	172.19.176.1:0]	---------- Started OutsideRuntimeClient with Global Client ID: C172.19.176.1:0:-249312345*cli/df09808c@5b12e3b4, client GUID ID: *cli/df09808c	
+iisexpress.exe Information: 0 : 2017-11-25T01:26:28.1709 INFORMATION Channel ws-a77cbd77-bab3-42e2-83a9-74412becf357 opened.
+iisexpress.exe Information: 0 : 2017-11-25T01:26:39.9256 INFORMATION Channel ws-31003bfa-3d87-410b-ab02-7e1ffb5e666f opened.
+iisexpress.exe Information: 0 : [2017-11-25 13:26:45.507 GMT    10	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:25:45 PM	
+iisexpress.exe Warning: 0 : 2017-11-25T01:27:01.8780 WARNING     Publish resource metadata is null.
+iisexpress.exe Warning: 0 : 2017-11-25T01:27:22.1755 WARNING     Publish resource metadata is null.
+iisexpress.exe Error: 0 : 2017-11-25T01:27:35.3690 ERROR       Channel ID ws-31003bfa-3d87-410b-ab02-7e1ffb5e666f with error The I/O operation has been aborted because of either a thread exit or an application request
+iisexpress.exe Information: 0 : 2017-11-25T01:27:35.3870 INFORMATION Channel ws-31003bfa-3d87-410b-ab02-7e1ffb5e666f closing.
+iisexpress.exe Error: 0 : 2017-11-25T01:27:39.4052 ERROR       Channel ID ws-a77cbd77-bab3-42e2-83a9-74412becf357 with error The I/O operation has been aborted because of either a thread exit or an application request
+iisexpress.exe Information: 0 : 2017-11-25T01:27:39.4112 INFORMATION Channel ws-a77cbd77-bab3-42e2-83a9-74412becf357 closing.
+iisexpress.exe Information: 0 : [2017-11-25 13:27:45.518 GMT    10	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:26:45 PM	
+iisexpress.exe Information: 0 : 2017-11-25T01:28:36.2827 INFORMATION Channel ws-88be1b6e-6dab-4e2c-83e9-ead368e9fedb opened.
+iisexpress.exe Information: 0 : 2017-11-25T01:28:42.2281 INFORMATION Channel ws-7a5fab9d-3070-40fe-956b-6b2ce5e42ae8 opened.
+iisexpress.exe Warning: 0 : 2017-11-25T01:28:45.1958 WARNING     Cannot subscribe. Resource metadata is null.
+iisexpress.exe Information: 0 : [2017-11-25 13:28:45.537 GMT    17	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 1:27:45 PM	
+iisexpress.exe Warning: 0 : 2017-11-25T01:28:59.3549 WARNING     Publish resource metadata is null.
+iisexpress.exe Error: 0 : 2017-11-25T01:29:06.6522 ERROR       Channel ID ws-7a5fab9d-3070-40fe-956b-6b2ce5e42ae8 with error The I/O operation has been aborted because of either a thread exit or an application request
+iisexpress.exe Information: 0 : 2017-11-25T01:29:06.6592 INFORMATION Channel ws-7a5fab9d-3070-40fe-956b-6b2ce5e42ae8 closing.
+iisexpress.exe Error: 0 : Error opening trace file Client-2017-11-25-14.59.04.136Z.log -- Using DefaultTraceListener instead -- Exception=System.UnauthorizedAccessException: Access to the path 'C:\Program Files (x86)\IIS Express\Client-2017-11-25-14.59.04.136Z.log' is denied.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.FileInfo.CreateText()
+   at Orleans.Runtime.FileTelemetryConsumer..ctor(FileInfo file)
+   at Orleans.Runtime.LogManager.Initialize(ITraceConfiguration config, Boolean configChange)
+iisexpress.exe Information: 0 : [2017-11-25 14:59:09.270 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301...	
+iisexpress.exe Information: 0 : [2017-11-25 14:59:09.285 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301\Orleans.DLL
+	* Assembly filename is excluded.	
+iisexpress.exe Information: 0 : [2017-11-25 14:59:09.290 GMT     1	INFO   	100000	AssemblyLoader.Client	]	0 assemblies loaded.	
+iisexpress.exe Information: 0 : [2017-11-25 14:59:09.388 GMT     1	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.19.176.1 Client Id = *cli/ef9bc5b1 ----------	
+iisexpress.exe Information: 0 : [2017-11-25 14:59:09.407 GMT     1	INFO   	100314	OutsideRuntimeClient	]	---------- Starting OutsideRuntimeClient with runtime Version='1.5.2.0 (Release).' in AppDomain=<AppDomain.Id=2, AppDomain.FriendlyName=/LM/W3SVC/3/ROOT-1-131560955341342464> Config= 
+ Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 10.0.14393.0
+   App config file: C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\web.config
+   GC Type=Server GCLatencyMode=Batch
+   Host: MININT-2T87D76
+   Processor Count: 4
+Client Configuration:
+   Config File Name: 
+   Start time: 2017-11-25 14:59:09.401 GMT
+   Gateway Provider: Config
+   Gateways[1]:
+      127.0.0.1:40000
+   Preferred Gateway Index: -1
+   GatewayListRefreshPeriod: 00:01:00
+   Preferred Address Family: InterNetwork
+   DNS Host Name: MININT-2T87D76
+   Client Name: Client
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\Program Files (x86)\IIS Express\Client-2017-11-25-14.59.04.136Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: -00:00:00.0010000
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Client Sender Buckets: 8192
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Fallback serializer: 
+   .NET: 
+       .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+       .NET thread pool sizes - Max: Worker Threads=4095 Completion Port Threads=1000
+   Providers:
+       No providers configured.
+	
+iisexpress.exe Information: 0 : [2017-11-25 14:59:09.526 GMT     5	INFO   	101309	Messaging.GatewayManager	]	Found 1 knownGateways from Gateway listProvider [gwy.tcp://127.0.0.1:40000/0]	
+iisexpress.exe Information: 0 : [2017-11-25 14:59:09.597 GMT     5	INFO   	100908	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Connected to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0.	
+iisexpress.exe Information: 0 : [2017-11-25 14:59:09.656 GMT    15	INFO   	100000	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Starting AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 on managed thread 15	
+iisexpress.exe Information: 0 : [2017-11-25 14:59:09.657 GMT    14	INFO   	100000	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Starting AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 on managed thread 14	
+iisexpress.exe Information: 0 : [2017-11-25 14:59:09.834 GMT     8	INFO   	100929	OutsideRuntimeClient	172.19.176.1:0]	---------- Started OutsideRuntimeClient with Global Client ID: C172.19.176.1:0:-249317949*cli/ef9bc5b1@3e095b97, client GUID ID: *cli/ef9bc5b1	
+iisexpress.exe Information: 0 : [2017-11-25 15:00:09.537 GMT     5	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 2:59:09 PM	
+iisexpress.exe Information: 0 : [2017-11-25 15:01:09.558 GMT    12	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 3:00:09 PM	
+iisexpress.exe Information: 0 : 2017-11-25T03:01:15.1433 INFORMATION Channel ws-1a91146c-5a23-4f52-9879-8351fb8db2a2 opened.
+iisexpress.exe Information: 0 : 2017-11-25T03:01:35.5962 INFORMATION Channel ws-5f1efa05-7910-42dd-89df-b777622a6462 opened.
+iisexpress.exe Information: 0 : Authorization configuration section is not configured.
+iisexpress.exe Information: 0 : [2017-11-25 15:02:09.579 GMT    16	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/25/2017 3:01:09 PM	
+iisexpress.exe Error: 0 : Error opening trace file Client-2017-11-26-03.42.06.715Z.log -- Using DefaultTraceListener instead -- Exception=System.UnauthorizedAccessException: Access to the path 'C:\Program Files (x86)\IIS Express\Client-2017-11-26-03.42.06.715Z.log' is denied.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.FileInfo.CreateText()
+   at Orleans.Runtime.FileTelemetryConsumer..ctor(FileInfo file)
+   at Orleans.Runtime.LogManager.Initialize(ITraceConfiguration config, Boolean configChange)
+iisexpress.exe Information: 0 : [2017-11-26 03:42:10.660 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301...	
+iisexpress.exe Information: 0 : [2017-11-26 03:42:10.687 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301\Orleans.DLL
+	* Assembly filename is excluded.	
+iisexpress.exe Information: 0 : [2017-11-26 03:42:10.691 GMT     1	INFO   	100000	AssemblyLoader.Client	]	0 assemblies loaded.	
+iisexpress.exe Information: 0 : [2017-11-26 03:42:10.803 GMT     1	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.19.82.60 Client Id = *cli/be3b7981 ----------	
+iisexpress.exe Information: 0 : [2017-11-26 03:42:10.826 GMT     1	INFO   	100314	OutsideRuntimeClient	]	---------- Starting OutsideRuntimeClient with runtime Version='1.5.2.0 (Release).' in AppDomain=<AppDomain.Id=2, AppDomain.FriendlyName=/LM/W3SVC/3/ROOT-1-131561413056065044> Config= 
+ Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 10.0.14393.0
+   App config file: C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\web.config
+   GC Type=Server GCLatencyMode=Batch
+   Host: MININT-2T87D76
+   Processor Count: 4
+Client Configuration:
+   Config File Name: 
+   Start time: 2017-11-26 03:42:10.817 GMT
+   Gateway Provider: Config
+   Gateways[1]:
+      127.0.0.1:40000
+   Preferred Gateway Index: -1
+   GatewayListRefreshPeriod: 00:01:00
+   Preferred Address Family: InterNetwork
+   DNS Host Name: MININT-2T87D76
+   Client Name: Client
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\Program Files (x86)\IIS Express\Client-2017-11-26-03.42.06.715Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: -00:00:00.0010000
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Client Sender Buckets: 8192
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Fallback serializer: 
+   .NET: 
+       .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+       .NET thread pool sizes - Max: Worker Threads=4095 Completion Port Threads=1000
+   Providers:
+       No providers configured.
+	
+iisexpress.exe Information: 0 : [2017-11-26 03:42:10.967 GMT     5	INFO   	101309	Messaging.GatewayManager	]	Found 1 knownGateways from Gateway listProvider [gwy.tcp://127.0.0.1:40000/0]	
+iisexpress.exe Information: 0 : [2017-11-26 03:42:11.073 GMT     5	INFO   	100908	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.82.60:0]	Connected to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0.	
+iisexpress.exe Information: 0 : [2017-11-26 03:42:11.091 GMT    16	INFO   	100000	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.19.82.60:0]	Starting AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 on managed thread 16	
+iisexpress.exe Information: 0 : [2017-11-26 03:42:11.099 GMT    15	INFO   	100000	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.82.60:0]	Starting AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 on managed thread 15	
+iisexpress.exe Information: 0 : [2017-11-26 03:42:11.349 GMT     7	INFO   	100929	OutsideRuntimeClient	172.19.82.60:0]	---------- Started OutsideRuntimeClient with Global Client ID: C172.19.82.60:0:-249363730*cli/be3b7981@84f12983, client GUID ID: *cli/be3b7981	
+iisexpress.exe Information: 0 : [2017-11-26 03:43:10.987 GMT     5	INFO   	101309	Messaging.GatewayManager	172.19.82.60:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/26/2017 3:42:10 AM	
+iisexpress.exe Information: 0 : 2017-11-26T03:43:23.3936 INFORMATION Channel ws-9094f12e-42f1-448d-af54-94f562848eba opened.
+iisexpress.exe Information: 0 : Authorization configuration section is not configured.
+iisexpress.exe Information: 0 : 2017-11-26T03:43:57.9895 INFORMATION Channel ws-fd991d13-1e39-4b6e-8362-461456dc91f3 opened.
+iisexpress.exe Information: 0 : [2017-11-26 03:44:11.002 GMT    27	INFO   	101309	Messaging.GatewayManager	172.19.82.60:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/26/2017 3:43:10 AM	
+iisexpress.exe Error: 0 : 2017-11-26T03:44:58.7120 ERROR       Channel ID ws-9094f12e-42f1-448d-af54-94f562848eba with error The I/O operation has been aborted because of either a thread exit or an application request
+iisexpress.exe Information: 0 : 2017-11-26T03:44:58.7400 INFORMATION Channel ws-9094f12e-42f1-448d-af54-94f562848eba closing.
+iisexpress.exe Error: 0 : 2017-11-26T03:45:02.1195 ERROR       Channel ID ws-fd991d13-1e39-4b6e-8362-461456dc91f3 with error The I/O operation has been aborted because of either a thread exit or an application request
+iisexpress.exe Information: 0 : 2017-11-26T03:45:02.1315 INFORMATION Channel ws-fd991d13-1e39-4b6e-8362-461456dc91f3 closing.
+iisexpress.exe Warning: 0 : 2017-11-26T03:45:02.1605 WARNING     Observer lease could not be renewed.
+iisexpress.exe Information: 0 : [2017-11-26 03:45:11.018 GMT    19	INFO   	101309	Messaging.GatewayManager	172.19.82.60:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/26/2017 3:44:11 AM	
+iisexpress.exe Information: 0 : 2017-11-26T03:45:26.2045 INFORMATION Channel ws-efa985e1-60f7-4fb9-8894-bc84a94a3abc opened.
+iisexpress.exe Error: 0 : [2017-11-26 03:45:36.797 GMT     2	ERROR  	100007	OutsideRuntimeClient	172.19.82.60:0]	!!!!!!!!!! OutsideRuntimeClient caught an UnobservedException.	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 405
+iisexpress.exe Error: 0 : [2017-11-26 03:45:36.807 GMT     2	ERROR  	100005	UnobservedExceptionHandler	172.19.82.60:0]	!!!!!!!!!! UnobservedExceptionsHandlerClass Caught an UnobservedTaskException event sent by [Id=52555, Status=Faulted]. Exception = 
+Exc level 0: System.AggregateException: A Task's exception(s) were not observed either by Waiting on the Task or accessing its Exception property. As a result, the unobserved exception was rethrown by the finalizer thread.
+Exc level 1: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 405	
+iisexpress.exe Error: 0 : [2017-11-26 03:45:36.810 GMT     2	ERROR  	100006	UnobservedExceptionHandler	172.19.82.60:0]	!!!!!!!!!! Exception remained UnObserved!!! The subsequent behavior depends on the ThrowUnobservedTaskExceptions setting in app config and .NET version.	
+iisexpress.exe Information: 0 : 2017-11-26T03:45:43.5196 INFORMATION Channel ws-efa985e1-60f7-4fb9-8894-bc84a94a3abc closing.
+iisexpress.exe Error: 0 : 2017-11-26T03:45:45.0807 ERROR       Channel ID ws-efa985e1-60f7-4fb9-8894-bc84a94a3abc with error The I/O operation has been aborted because of either a thread exit or an application request
+iisexpress.exe Warning: 0 : [2017-11-26 03:45:45.069 GMT    16	WARNING	100158	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.19.82.60:0]	Exception receiving from gateway gwy.tcp://127.0.0.1:40000/0: An existing connection was forcibly closed by the remote host	
+iisexpress.exe Warning: 0 : [2017-11-26 03:45:47.142 GMT    16	WARNING	100913	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.82.60:0]	Marking gateway at address gwy.tcp://127.0.0.1:40000/0 as Disconnected	
+iisexpress.exe Error: 0 : Error opening trace file Client-2017-11-26-11.09.58.073Z.log -- Using DefaultTraceListener instead -- Exception=System.UnauthorizedAccessException: Access to the path 'C:\Program Files (x86)\IIS Express\Client-2017-11-26-11.09.58.073Z.log' is denied.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.FileInfo.CreateText()
+   at Orleans.Runtime.FileTelemetryConsumer..ctor(FileInfo file)
+   at Orleans.Runtime.LogManager.Initialize(ITraceConfiguration config, Boolean configChange)
+iisexpress.exe Information: 0 : [2017-11-26 11:10:04.858 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301...	
+iisexpress.exe Information: 0 : [2017-11-26 11:10:04.874 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\Users\malong\AppData\Local\Temp\Temporary ASP.NET Files\vs\4882ec55\62f97a6\assembly\dl3\cd3699d9\0001efd7_2065d301\Orleans.DLL
+	* Assembly filename is excluded.	
+iisexpress.exe Information: 0 : [2017-11-26 11:10:04.874 GMT     1	INFO   	100000	AssemblyLoader.Client	]	0 assemblies loaded.	
+iisexpress.exe Information: 0 : [2017-11-26 11:10:04.990 GMT     1	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.18.152.107 Client Id = *cli/9c1eee9c ----------	
+iisexpress.exe Information: 0 : [2017-11-26 11:10:05.012 GMT     1	INFO   	100314	OutsideRuntimeClient	]	---------- Starting OutsideRuntimeClient with runtime Version='1.5.2.0 (Release).' in AppDomain=<AppDomain.Id=2, AppDomain.FriendlyName=/LM/W3SVC/3/ROOT-1-131561681926307729> Config= 
+ Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 10.0.14393.0
+   App config file: C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\web.config
+   GC Type=Server GCLatencyMode=Batch
+   Host: MININT-2T87D76
+   Processor Count: 4
+Client Configuration:
+   Config File Name: 
+   Start time: 2017-11-26 11:10:05.012 GMT
+   Gateway Provider: Config
+   Gateways[1]:
+      127.0.0.1:40000
+   Preferred Gateway Index: -1
+   GatewayListRefreshPeriod: 00:01:00
+   Preferred Address Family: InterNetwork
+   DNS Host Name: MININT-2T87D76
+   Client Name: Client
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\Program Files (x86)\IIS Express\Client-2017-11-26-11.09.58.073Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: -00:00:00.0010000
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Client Sender Buckets: 8192
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Fallback serializer: 
+   .NET: 
+       .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+       .NET thread pool sizes - Max: Worker Threads=4095 Completion Port Threads=1000
+   Providers:
+       No providers configured.
+	
+iisexpress.exe Information: 0 : [2017-11-26 11:10:05.159 GMT     7	INFO   	101309	Messaging.GatewayManager	]	Found 1 knownGateways from Gateway listProvider [gwy.tcp://127.0.0.1:40000/0]	
+iisexpress.exe Information: 0 : [2017-11-26 11:10:05.243 GMT     7	INFO   	100908	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.152.107:0]	Connected to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0.	
+iisexpress.exe Information: 0 : [2017-11-26 11:10:05.243 GMT    17	INFO   	100000	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.18.152.107:0]	Starting AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 on managed thread 17	
+iisexpress.exe Information: 0 : [2017-11-26 11:10:05.259 GMT    16	INFO   	100000	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.152.107:0]	Starting AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 on managed thread 16	
+iisexpress.exe Information: 0 : [2017-11-26 11:10:05.490 GMT     7	INFO   	100929	OutsideRuntimeClient	172.18.152.107:0]	---------- Started OutsideRuntimeClient with Global Client ID: C172.18.152.107:0:-249390605*cli/9c1eee9c@f510b492, client GUID ID: *cli/9c1eee9c	
+iisexpress.exe Information: 0 : [2017-11-26 11:11:05.163 GMT    10	INFO   	101309	Messaging.GatewayManager	172.18.152.107:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/26/2017 11:10:05 AM	
+iisexpress.exe Information: 0 : [2017-11-26 11:12:05.177 GMT    10	INFO   	101309	Messaging.GatewayManager	172.18.152.107:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/26/2017 11:11:05 AM	
+iisexpress.exe Information: 0 : 2017-11-26T11:12:11.6368 INFORMATION Channel ws-4d6de7b7-8406-4353-bf91-203204876d80 opened.
+iisexpress.exe Information: 0 : Authorization configuration section is not configured.
+iisexpress.exe Error: 0 : 2017-11-26T11:13:02.8607 ERROR       Channel ID ws-4d6de7b7-8406-4353-bf91-203204876d80 with error The I/O operation has been aborted because of either a thread exit or an application request
+iisexpress.exe Information: 0 : 2017-11-26T11:13:02.8862 INFORMATION Channel ws-4d6de7b7-8406-4353-bf91-203204876d80 closing.
+iisexpress.exe Information: 0 : [2017-11-26 11:13:05.203 GMT    10	INFO   	101309	Messaging.GatewayManager	172.18.152.107:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/26/2017 11:12:05 AM	
+iisexpress.exe Information: 0 : [2017-11-26 11:14:05.223 GMT    18	INFO   	101309	Messaging.GatewayManager	172.18.152.107:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/26/2017 11:13:05 AM	
+iisexpress.exe Information: 0 : [2017-11-26 11:15:05.242 GMT    13	INFO   	101309	Messaging.GatewayManager	172.18.152.107:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 11/26/2017 11:14:05 AM	
+iisexpress.exe Information: 0 : [2017-11-26 11:15:05.528 GMT    18	INFO   	100704	ClientLogStatistics	172.18.152.107:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=1366787
+Messaging.Received.Bytes.Total.Current=1685816
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=4581
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=4581
+Messaging.Received.Messages.Total.Current=4581
+Messaging.Received.MessageSizeHistogram.Bytes=[128:255]=2, [256:511]=4575, [1024:2047]=3, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=1238575
+Messaging.Sent.Bytes.Total.Current=1465650
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=4581
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=4581
+Messaging.Sent.Messages.Total.Current=4581
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=4, [256:511]=4575, [1024:2047]=2, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=7.918
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=3, gen1=2, gen2=1
+Runtime.GC.GenSizesKb=gen0=83297.61, gen1=3082.32, gen2=5872.52
+Runtime.GC.LargeObjectHeapSizeKb=9961.023
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.026
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=40.691
+Runtime.GC.PromotedMemoryFromGen1Kb=5850.715
+Runtime.GC.TotalMemoryKb=47695
+Runtime.Memory.AvailableMemoryMb=9476
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=23152
+Serialization.BufferPool.CheckedOutBuffers.Current=23185
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	

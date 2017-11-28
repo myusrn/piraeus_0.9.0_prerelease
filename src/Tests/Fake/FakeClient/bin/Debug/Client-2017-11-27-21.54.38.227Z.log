@@ -1,0 +1,138 @@
+[2017-11-27 21:54:42.982 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug...	
+[2017-11-27 21:54:43.444 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\BouncyCastle.Crypto.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:43.479 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Capl.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:43.487 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:43.503 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.Azure.KeyVault.Cryptography.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:43.555 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.Azure.KeyVault.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:43.603 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.Azure.KeyVault.Extensions.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:43.698 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.Azure.KeyVault.WebKey.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:44.369 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.CodeAnalysis.CSharp.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:44.734 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.CodeAnalysis.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:44.794 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.Data.Edm.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:44.917 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.Data.OData.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.025 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.Data.Services.Client.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.094 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.183 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.275 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.278 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.IdentityModel.Logging.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.282 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.298 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.Rest.ClientRuntime.Azure.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.308 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.Rest.ClientRuntime.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.310 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.Win32.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.387 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.442 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Newtonsoft.Json.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.462 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Orleans.dll
+	* Assembly filename is excluded.	
+[2017-11-27 21:54:45.465 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\OrleansCodeGenerator.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.505 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\OrleansRuntime.dll
+	* Assembly filename is excluded.	
+[2017-11-27 21:54:45.528 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Piraeus.Adapters.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.534 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Piraeus.Configuration.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.539 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Piraeus.Core.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.552 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Piraeus.GrainInterfaces.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.565 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\Piraeus.Grains.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.579 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\SkunkLab.Channels.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.582 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\SkunkLab.Diagnostics.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.593 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\SkunkLab.Protocols.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.599 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\SkunkLab.Security.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.608 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\SkunkLab.Storage.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.673 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\StackExchange.Redis.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.681 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.AppContext.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.710 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Collections.Immutable.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.730 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Console.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.735 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.737 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Diagnostics.FileVersionInfo.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.742 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Diagnostics.StackTrace.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.744 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Globalization.Calendars.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.747 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.753 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.IO.Compression.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.758 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.IO.Compression.ZipFile.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.762 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.IO.FileSystem.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.762 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.IO.FileSystem.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.785 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Net.Http.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.798 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Net.Http.Formatting.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.803 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Net.Sockets.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.868 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Reflection.Metadata.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.885 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.888 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Security.Cryptography.Algorithms.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.889 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Security.Cryptography.Encoding.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.893 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Security.Cryptography.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.898 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.909 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Spatial.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.914 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Text.Encoding.CodePages.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.916 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Threading.Thread.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.926 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.ValueTuple.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.974 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Web.Http.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.995 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Web.Http.WebHost.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:45.999 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Xml.ReaderWriter.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:46.001 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Xml.XmlDocument.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:46.003 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Xml.XPath.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:46.006 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\System.Xml.XPath.XDocument.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-11-27 21:54:46.012 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Loading assembly C:\_git\core\src\Tests\Fake\FakeClient\bin\Debug\OrleansProviders.dll...	
+[2017-11-27 21:54:46.079 GMT     1	INFO   	100000	AssemblyLoader.Client	]	1 assemblies loaded.	
+[2017-11-27 21:54:46.567 GMT     1	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.18.152.220 Client Id = *cli/679f4ebe ----------	

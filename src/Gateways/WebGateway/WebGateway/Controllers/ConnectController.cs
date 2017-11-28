@@ -50,22 +50,26 @@ namespace WebGateway.Controllers
         {
             try
             {
-                MessageUri mu = new MessageUri(Request);
+                //MessageUri mu = new MessageUri(Request);
                 SkunkLab.Security.Authentication.BasicAuthenticator authn = new SkunkLab.Security.Authentication.BasicAuthenticator();
                 adapter = ProtocolAdapterFactory.Create(config, Request, source.Token, authn);
-                adapter.OnObserve += Adapter_OnObserve;
+                
                 adapter.OnClose += Adapter_OnClose;
-                adapter.Init();
+                adapter.OnError += Adapter_OnError;
+                
 
                 HttpContext context = HttpContext.Current;
 
                 if (context.IsWebSocketRequest ||
                 context.IsWebSocketRequestUpgrading)
                 {
+                    adapter.Init();
                     return new HttpResponseMessage(HttpStatusCode.SwitchingProtocols);
                 }
                 else //long polling
                 {
+                    adapter.OnObserve += Adapter_OnObserve;
+                    adapter.Init();
                     ThreadPool.QueueUserWorkItem(new WaitCallback(Listen), waitHandles[0]);
                     WaitHandle.WaitAll(waitHandles);
 
@@ -78,6 +82,10 @@ namespace WebGateway.Controllers
             }
         }
 
+        private void Adapter_OnError(object sender, ProtocolAdapterErrorEventArgs e)
+        {
+            Exception ex = e.Error;
+        }
 
         private void Adapter_OnObserve(object sender, SkunkLab.Channels.ChannelObserverEventArgs e)
         {

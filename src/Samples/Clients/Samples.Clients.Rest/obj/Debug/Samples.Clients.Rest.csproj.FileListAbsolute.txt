@@ -51,3 +51,6 @@ C:\_git\core\src\Samples\Clients\Samples.Clients.Rest\bin\Debug\Microsoft.Rest.C
 C:\_git\core\src\Samples\Clients\Samples.Clients.Rest\bin\Debug\Microsoft.Rest.ClientRuntime.Azure.xml
 C:\_git\core\src\Samples\Clients\Samples.Clients.Rest\bin\Debug\SkunkLab.Storage.pdb
 C:\_git\core\src\Samples\Clients\Samples.Clients.Rest\bin\Debug\SkunkLab.Storage.dll.config
+C:\_git\core\src\Samples\Clients\Samples.Clients.Rest\bin\Debug\System.Net.Http.Formatting.xml
+C:\_git\core\src\Samples\Clients\Samples.Clients.Rest\bin\Debug\System.Web.Http.xml
+C:\_git\core\src\Samples\Clients\Samples.Clients.Rest\bin\Debug\System.Web.Http.WebHost.xml

@@ -24,8 +24,8 @@ namespace FakeClient
         private static string nameClaimType = "http://www.skunklab.io/name";
         private static string roleClaimType = "http://www.skunklab.io/role";
         private static string nameClaimValue = Guid.NewGuid().ToString();
-        private static string roleClaimVlaue = "A";
-
+        private static string roleClaimValue = "A";
+        private static string role;
 
 
         static ushort id;
@@ -36,18 +36,20 @@ namespace FakeClient
 
 
 
-            CreateIdentity();
+            
             StartOrleansClient();
             
 
             Console.Write("(1) CoAP (2) MQTT (3) REST ? ");
             int protocolNo = Convert.ToInt32(Console.ReadLine());
-            
-                       
-            
+            Console.Write("Role (A/B) ? ");
+            role = Console.ReadLine().ToUpperInvariant();
+            CreateIdentity();
+
+
             //CoapProtocolAdapter adapter = new CoapProtocolAdapter(new CoapConfig(null, "www.skunklab.io", CoapConfigOptions.NoResponse | CoapConfigOptions.Observe), channel);
-            
-            
+
+
 
             Console.WriteLine("Adapter created");
             //create a coap message to observe
@@ -82,7 +84,8 @@ namespace FakeClient
         
         static void RunCoap(IChannel channel)
         {
-            Uri observeUri = new Uri("coap://www.skunklab.io?r=http://www.skunklab.io/resourcea");
+            string subResource = role == "A" ? "resourceb" : "resourcea";
+            Uri observeUri = new Uri(String.Format("coap://www.skunklab.io?r=http://www.skunklab.io/{0}", subResource));
             byte[] coapToken1 = SkunkLab.Protocols.Coap.CoapToken.Create().TokenBytes;
             id++;
             CoapRequest observeRequest = new CoapRequest(id, RequestMessageType.NonConfirmable, MethodType.GET, coapToken1, observeUri, MediaType.TextPlain);
@@ -90,14 +93,18 @@ namespace FakeClient
             Task observeTask = channel.AddMessageAsync(observeRequest.Encode());
             Task.WhenAll(observeTask);
 
-            Console.WriteLine("Observing");
+            Console.WriteLine("Observing {0}", subResource);
 
             Thread.Sleep(500);
             //create a coap message to send to the resource
             byte[] coapToken2 = SkunkLab.Protocols.Coap.CoapToken.Create().TokenBytes;
             id++;
-            CoapRequest pubRequest = new CoapRequest(id, RequestMessageType.NonConfirmable, MethodType.POST, coapToken2, observeUri, MediaType.TextPlain, Encoding.UTF8.GetBytes("hello"));
 
+            string pubResource = role == "A" ? "resourcea" : "resourceb";
+            Uri pubUri = new Uri(String.Format("coap://www.skunklab.io?r=http://www.skunklab.io/{0}", pubResource));
+            CoapRequest pubRequest = new CoapRequest(id, RequestMessageType.NonConfirmable, MethodType.POST, coapToken2, pubUri, MediaType.TextPlain, Encoding.UTF8.GetBytes("hello"));
+            Console.WriteLine("Press enter to publish");
+            Console.ReadKey();
             Task pubTask = channel.AddMessageAsync(pubRequest.Encode());
             Task.WhenAll(pubTask);
 
@@ -246,7 +253,7 @@ namespace FakeClient
             return new List<Claim>()
             {
                 new Claim(nameClaimType, nameClaimValue),
-                new Claim(roleClaimType, roleClaimVlaue)
+                new Claim(roleClaimType, role == "A" ? "A" : "B")
             };
         }
     }

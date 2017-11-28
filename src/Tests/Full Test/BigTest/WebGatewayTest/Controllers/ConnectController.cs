@@ -103,6 +103,7 @@ namespace WebGatewayTest.Controllers
 
                 if(a.ContentType == "text/plain")
                 {
+                   
                     response = Request.CreateResponse(HttpStatusCode.OK, Encoding.UTF8.GetString(a.Message), new TextMediaTypeFormatter(), a.ContentType);
                 }
                 else if(a.ContentType == "application/octet-stream")

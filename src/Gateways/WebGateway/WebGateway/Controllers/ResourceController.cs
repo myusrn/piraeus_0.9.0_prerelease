@@ -33,7 +33,7 @@ namespace WebGateway.Controllers
         {
             try
             {
-                ResourceMetadata metadata = await GraphManager.GetResourceMetadata(resourceUriString);
+                ResourceMetadata metadata = await GraphManager.GetResourceMetadataAsync(resourceUriString);
                 return Request.CreateResponse<ResourceMetadata>(HttpStatusCode.OK, metadata);
             }
             catch (Exception ex)

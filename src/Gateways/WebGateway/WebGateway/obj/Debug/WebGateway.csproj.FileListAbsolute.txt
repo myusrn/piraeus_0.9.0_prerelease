@@ -277,7 +277,6 @@ C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Web.Razor.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Web.WebPages.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Web.WebPages.Deployment.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Web.WebPages.Razor.xml
-C:\_git\core\src\Gateways\WebGateway\WebGateway\obj\Debug\WebGateway.csprojResolveAssemblyReference.cache
 C:\_git\core\src\Gateways\WebGateway\WebGateway\obj\Debug\WebGateway.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Capl.dll
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Microsoft.Azure.KeyVault.Core.dll
@@ -304,9 +303,6 @@ C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Security.Cryptography
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Spatial.dll
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Web.Http.dll
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Web.Http.WebHost.dll
-C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Microsoft.Data.Edm.xml
-C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Microsoft.Data.OData.xml
-C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Microsoft.Data.Services.Client.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Microsoft.Extensions.DependencyInjection.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Microsoft.WindowsAzure.Storage.pdb
@@ -323,7 +319,6 @@ C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Collections.Immutable
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Diagnostics.DiagnosticSource.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Net.Http.Formatting.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Reflection.Metadata.xml
-C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Spatial.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Web.Http.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Web.Http.WebHost.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Piraeus.Configuration.dll
@@ -362,3 +357,8 @@ C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\SkunkLab.Protocols.dll.confi
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\SkunkLab.Security.pdb
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\SkunkLab.Storage.pdb
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\SkunkLab.Storage.dll.config
+C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\WebGateway.pdb
+C:\_git\core\src\Gateways\WebGateway\WebGateway\obj\Debug\WebGateway.dll
+C:\_git\core\src\Gateways\WebGateway\WebGateway\obj\Debug\WebGateway.pdb
+C:\_git\core\src\Gateways\WebGateway\WebGateway\obj\Debug\WebGateway.csprojResolveAssemblyReference.cache
+C:\_git\core\src\Gateways\WebGateway\WebGateway\obj\Debug\WebGateway.orleans.g.cs
