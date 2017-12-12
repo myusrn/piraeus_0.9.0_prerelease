@@ -18,6 +18,7 @@
             {
                 throw new ArgumentNullException("channel");
             }
+            
             httpContext.AcceptWebSocketRequest(new Func<AspNetWebSocketContext, Task>(channel.ProcessWebSocketRequestAsync));
         }
 
@@ -31,6 +32,7 @@
             {
                 throw new ArgumentNullException("webSocketHandler");
             }
+
             httpContext.AcceptWebSocketRequest(new Func<AspNetWebSocketContext, Task>(webSocketHandler.ProcessWebSocketRequestAsync));
         }
 

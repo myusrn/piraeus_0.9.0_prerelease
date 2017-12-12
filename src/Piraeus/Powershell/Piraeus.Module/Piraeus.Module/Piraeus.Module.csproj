@@ -49,10 +49,10 @@
       <HintPath>..\packages\WindowsAzure.Storage.8.5.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Piraeus.Core.0.2.3\lib\net461\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Piraeus.Core.0.2.6\lib\net461\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Piraeus.Core, Version=0.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Piraeus.Core.0.2.3\lib\net461\Piraeus.Core.dll</HintPath>
+    <Reference Include="Piraeus.Core, Version=0.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Piraeus.Core.0.2.6\lib\net461\Piraeus.Core.dll</HintPath>
     </Reference>
     <Reference Include="StackExchange.Redis, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\StackExchange.Redis.1.2.6\lib\net46\StackExchange.Redis.dll</HintPath>
@@ -65,16 +65,16 @@
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Piraeus.Core.0.2.3\lib\net461\System.Net.Http.Formatting.dll</HintPath>
+      <HintPath>..\packages\Piraeus.Core.0.2.6\lib\net461\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Spatial, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.8.3\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Piraeus.Core.0.2.3\lib\net461\System.Web.Http.dll</HintPath>
+      <HintPath>..\packages\Piraeus.Core.0.2.6\lib\net461\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Piraeus.Core.0.2.3\lib\net461\System.Web.Http.WebHost.dll</HintPath>
+      <HintPath>..\packages\Piraeus.Core.0.2.6\lib\net461\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />

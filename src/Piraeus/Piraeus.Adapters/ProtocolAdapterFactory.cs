@@ -40,7 +40,8 @@ namespace Piraeus.Adapters
                 context.IsWebSocketRequestUpgrading)
             {
                 WebSocketConfig webSocketConfig = GetWebSocketConfig(config);
-                channel = ChannelFactory.Create(request, webSocketConfig, token);
+                channel = ChannelFactory.Create(request, webSocketConfig, token);               
+                
 
                 if (context.WebSocketRequestedProtocols.Contains("mqtt"))
                 {

@@ -2,18 +2,15 @@
 
 namespace SkunkLab.Channels.WebSocket
 {
-    
-        using System;
-        using System.Collections.Generic;
-        using System.ComponentModel;
-        using System.Diagnostics;
-        using System.Net.WebSockets;
-        using System.Runtime.CompilerServices;
-        using System.Runtime.InteropServices;
-        using System.Text;
-        using System.Threading;
-        using System.Threading.Tasks;
-        using System.Web.WebSockets;
+
+    using System;
+    using System.ComponentModel;
+    using System.Net.WebSockets;
+    using System.Runtime.InteropServices;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using System.Web.WebSockets;
 
     public delegate void WebSocketOpenHandler(object sender, WebSocketOpenEventArgs args);
     public delegate void WebSocketCloseHandler(object sender, WebSocketCloseEventArgs args);
@@ -44,9 +41,18 @@ namespace SkunkLab.Channels.WebSocket
             CloseAsync();
         }
 
-        internal Task CloseAsync() =>
-            this._sendQueue.Enqueue(() => WebSocketContext.WebSocket.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, "", token));
+        internal Task CloseAsync()
+        {
+            TaskCompletionSource<Task> tcs = new TaskCompletionSource<Task>();
+            
+            if (WebSocketContext.WebSocket != null && WebSocketContext.WebSocket.State == WebSocketState.Open)
+            {
+                Task task =  this._sendQueue.Enqueue(() => WebSocketContext.WebSocket.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, "", token));
+                tcs.SetResult(task);
+            }
 
+            return tcs.Task;
+        }
         private static bool IsFatalException(Exception ex)
         {
 
@@ -69,6 +75,8 @@ namespace SkunkLab.Channels.WebSocket
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Task ProcessWebSocketRequestAsync(AspNetWebSocketContext webSocketContext)
         {
+            //TaskCompletionSource<Task> source = new TaskCompletionSource<Task>();
+            
             if (webSocketContext == null)
             {
                 throw new ArgumentNullException("webSocketContext");
@@ -76,7 +84,10 @@ namespace SkunkLab.Channels.WebSocket
 
             byte[] buffer = new byte[config.ReceiveLoopBufferSize];
             WebSocket webSocket = webSocketContext.WebSocket;
-            return ProcessWebSocketRequestAsync(webSocketContext, () => WebSocketMessageReader.ReadMessageAsync(webSocket, buffer, config.MaxIncomingMessageSize, CancellationToken.None));
+           
+            return ProcessWebSocketRequestAsync(webSocketContext, () => WebSocketMessageReader.ReadMessageAsync(webSocket, buffer, config.MaxIncomingMessageSize,CancellationToken.None));
+            //source.SetResult(ProcessWebSocketRequestAsync(webSocketContext, () => WebSocketMessageReader.ReadMessageAsync(webSocket, buffer, config.MaxIncomingMessageSize, CancellationToken.None)));
+            //return source.Task;
         }
 
         internal async Task ProcessWebSocketRequestAsync(AspNetWebSocketContext webSocketContext, Func<Task<WebSocketMessage>> messageRetriever)
@@ -157,9 +168,21 @@ namespace SkunkLab.Channels.WebSocket
         internal Task SendAsync(string message) =>
             SendAsync(Encoding.UTF8.GetBytes(message), WebSocketMessageType.Text);
 
-        internal Task SendAsync(byte[] message, WebSocketMessageType messageType) =>
-            _sendQueue.Enqueue(() => this.WebSocketContext.WebSocket.SendAsync(new ArraySegment<byte>(message), messageType, true, token));
+        internal Task SendAsync(byte[] message, WebSocketMessageType messageType)
+        {
+            TaskCompletionSource<Task> tcs = new TaskCompletionSource<Task>();
+            try
+            {
+                if (this.WebSocketContext.WebSocket != null && this.WebSocketContext.WebSocket.State == WebSocketState.Open)
+                {
+                    _sendQueue.Enqueue(() => this.WebSocketContext.WebSocket.SendAsync(new ArraySegment<byte>(message), messageType, true, token));
+                }
+                tcs.SetResult(null);
+            }
+            catch (Exception exc) { tcs.SetException(exc); }
 
+            return tcs.Task;
+        }
         
 
         

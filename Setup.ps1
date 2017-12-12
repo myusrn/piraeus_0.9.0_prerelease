@@ -36,13 +36,18 @@ $pubPolicy = New-CaplPolicy -PolicyID $pubPolicyId -EvaluationExpression $pubRul
 $subPolicy = New-CaplPolicy -PolicyID $subPolicyId -EvaluationExpression $subRule
 
 
+
+
 #add the CAPL policies to Piraeus
 Set-CaplPolicy -ServiceUrl $url -SecurityToken $token -Policy $pubPolicy 
 Set-CaplPolicy -ServiceUrl $url -SecurityToken $token -Policy $subPolicy
 
-$retval = Get-CaplPolicy -ServiceUrl $url -SecurityToken $token -PolicyId $subPolicyId
-$retval
-$subPolicyId
+$retval1 = Get-CaplPolicy -ServiceUrl $url -SecurityToken $token -PolicyId $pubPolicyId
+$retval2 = Get-CaplPolicy -ServiceUrl $url -SecurityToken $token -PolicyId $subPolicyId
+
+$retVal1
+$retVal2
+
 
 
 
@@ -58,8 +63,12 @@ Set-PiraeusResourceMetadata -ResourceUriString $resource2 -Enabled $true -Requir
 
 
 
-$data = Get-PiraeusResourceMetadata -ResourceUriString $resource -ServiceUrl $url -SecurityToken $token
-$data
+$data1 = Get-PiraeusResourceMetadata -ResourceUriString $resource -ServiceUrl $url -SecurityToken $token
+$data1
+
+$data2 = Get-PiraeusResourceMetadata -ResourceUriString $resource2 -ServiceUrl $url -SecurityToken $token
+$data2
+
 
 #Summary
 #Created 2 access control policies and 1 resource in Piraeus

@@ -84,4 +84,5 @@ C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.csproj.CoreCompileIn
 C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\LocalSilo.pdb
 C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.exe
 C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.pdb
+C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.csprojResolveAssemblyReference.cache
 C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.orleans.g.cs

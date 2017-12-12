@@ -35,6 +35,7 @@ namespace Piraeus.Clients.Coap
         private CoapSession session;
         private ICoapRequestDispatch dispatcher;
         private List<ushort> pingId;
+       
 
         public event System.EventHandler<CoapMessageEventArgs> OnPingResponse;
         
@@ -48,13 +49,13 @@ namespace Piraeus.Clients.Coap
             string coapUriString = String.Format("{0}://{1}?r={2}", scheme, config.Authority, resourceUriString);
 
             RequestMessageType mtype = confirmable ? RequestMessageType.Confirmable : RequestMessageType.NonConfirmable;
-            CoapRequest cr = new CoapRequest(id, mtype, MethodType.POST, new Uri(coapUriString), MediaTypeConverter.ConvertToMediaType(contentType), payload);
+            CoapRequest cr = new CoapRequest(id, mtype, MethodType.POST, token, new Uri(coapUriString), MediaTypeConverter.ConvertToMediaType(contentType), payload);
             await channel.SendAsync(cr.Encode());
         }
 
         
 
-        public async Task PublishAsync(string resourceUriString, string contentType, byte[] payload, NoResponseType nrt)
+        public Task PublishAsync(string resourceUriString, string contentType, byte[] payload, NoResponseType nrt)
         {
             session.UpdateKeepAliveTimestamp();
 
@@ -62,7 +63,7 @@ namespace Piraeus.Clients.Coap
             ushort id = session.CoapSender.NewId(token);
             CoapRequest cr = new CoapRequest(id, RequestMessageType.NonConfirmable, MethodType.POST, new Uri(resourceUriString), MediaTypeConverter.ConvertToMediaType(contentType), payload);
             cr.NoResponse = nrt;
-            await channel.SendAsync(cr.Encode());
+            return channel.SendAsync(cr.Encode());
         }
 
         public async Task SubscribeAsync(string resourceUriString, bool confirmable, Action<CodeType, string, byte[]> action)
@@ -149,15 +150,23 @@ namespace Piraeus.Clients.Coap
         {
             CoapMessage message = CoapMessage.DecodeMessage(args.Message);
             CoapMessageHandler handler = CoapMessageHandler.Create(session, message, dispatcher);
-            Task<CoapMessage> task = handler.ProcessAsync();
-            Task<CoapMessage>.WhenAll(task);
-            CoapMessage msg = task.Result;
-            if(msg != null && pingId.Contains(msg.MessageId))
+            Task task = Task.Factory.StartNew(async () =>
             {
-                pingId.Remove(msg.MessageId);
-                //ping complete
-                OnPingResponse?.Invoke(this, new CoapMessageEventArgs(msg));
-            }            
+                CoapMessage msg = await handler.ProcessAsync();
+                if (msg != null && pingId.Contains(msg.MessageId))
+                {
+                    pingId.Remove(msg.MessageId);
+                    //ping complete
+                    OnPingResponse?.Invoke(this, new CoapMessageEventArgs(msg));
+                }
+            });
+
+            Task.WhenAll(task);
+
+            //Task<CoapMessage> task = handler.ProcessAsync();
+            //Task<CoapMessage>.WhenAll(task);
+            //CoapMessage msg = task.Result;
+                
         }
 
         private void Channel_OnStateChange(object sender, ChannelStateEventArgs args)

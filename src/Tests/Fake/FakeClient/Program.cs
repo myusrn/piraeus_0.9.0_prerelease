@@ -57,6 +57,7 @@ namespace FakeClient
             if(protocolNo == 1)
             {
                 FakeChannel channel = new FakeChannel();
+                channel.OnReceive += Channel_OnReceive;
                 channel.ProtocolNo = protocolNo;
                 ProtocolAdapter adapter = GetAdapter(channel, protocolNo);
                 adapter.Init();
@@ -81,7 +82,11 @@ namespace FakeClient
             Console.ReadKey();
         }
 
-        
+        private static void Channel_OnReceive(object sender, ChannelReceivedEventArgs e)
+        {
+            //byte[] b = e.Message;
+        }
+
         static void RunCoap(IChannel channel)
         {
             string subResource = role == "A" ? "resourceb" : "resourcea";
@@ -97,17 +102,23 @@ namespace FakeClient
 
             Thread.Sleep(500);
             //create a coap message to send to the resource
-            byte[] coapToken2 = SkunkLab.Protocols.Coap.CoapToken.Create().TokenBytes;
-            id++;
+            
 
-            string pubResource = role == "A" ? "resourcea" : "resourceb";
-            Uri pubUri = new Uri(String.Format("coap://www.skunklab.io?r=http://www.skunklab.io/{0}", pubResource));
-            CoapRequest pubRequest = new CoapRequest(id, RequestMessageType.NonConfirmable, MethodType.POST, coapToken2, pubUri, MediaType.TextPlain, Encoding.UTF8.GetBytes("hello"));
-            Console.WriteLine("Press enter to publish");
-            Console.ReadKey();
-            Task pubTask = channel.AddMessageAsync(pubRequest.Encode());
-            Task.WhenAll(pubTask);
-
+            int index = 0;
+            while (index < 100)
+            {
+                byte[] coapToken2 = CoapToken.Create().TokenBytes;
+                id++;
+                string pubResource = role == "A" ? "resourcea" : "resourceb";
+                Uri pubUri = new Uri(String.Format("coap://www.skunklab.io?r=http://www.skunklab.io/{0}", pubResource));
+                CoapRequest pubRequest = new CoapRequest(id, RequestMessageType.NonConfirmable, MethodType.POST, coapToken2, pubUri, MediaType.TextPlain, Encoding.UTF8.GetBytes("hello"));
+                //Console.WriteLine("Press enter to publish");
+                //Console.ReadKey();
+                Console.WriteLine("{0}  Token = {1} ", id, Convert.ToBase64String(coapToken2));
+                Task pubTask = channel.AddMessageAsync(pubRequest.Encode());
+                Task.WaitAll(pubTask);
+                index++;
+            }
             Console.WriteLine("Published");
         }
 

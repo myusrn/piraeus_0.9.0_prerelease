@@ -86,7 +86,8 @@ namespace Piraeus.Clients.Mqtt
 
             if (!channel.IsConnected)
             {
-                await channel.OpenAsync();                
+                await channel.OpenAsync();
+                Receive(channel);
             }
 
             await channel.SendAsync(msg.Encode());
@@ -102,6 +103,12 @@ namespace Piraeus.Clients.Mqtt
             }
 
             return code.Value;
+        }
+
+        private void Receive(IChannel channel)
+        {
+            Task task = channel.ReceiveAsync();
+            Task.WhenAll(task);
         }
 
         /// <summary>
@@ -207,7 +214,7 @@ namespace Piraeus.Clients.Mqtt
         {
             MqttMessage msg = MqttMessage.DecodeMessage(args.Message);
 
-            MqttMessageHandler handler = MqttMessageHandler.Create(session, msg);
+            MqttMessageHandler handler = MqttMessageHandler.Create(session, msg, dispatcher);
             Task<MqttMessage> task = handler.ProcessAsync();
             Task.WhenAll<MqttMessage>(task);
             MqttMessage response = task.Result;

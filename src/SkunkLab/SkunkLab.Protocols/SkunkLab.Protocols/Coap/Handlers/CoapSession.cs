@@ -103,6 +103,7 @@ namespace SkunkLab.Protocols.Coap.Handlers
             OnRetry?.Invoke(this, e);
         }
 
+        #region Dispose
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -130,5 +131,7 @@ namespace SkunkLab.Protocols.Coap.Handlers
             // TODO: uncomment the following line if the finalizer is overridden above.
             GC.SuppressFinalize(this);
         }
+
+        #endregion
     }
 }

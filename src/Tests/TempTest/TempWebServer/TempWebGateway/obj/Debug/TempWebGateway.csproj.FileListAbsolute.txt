@@ -143,4 +143,3 @@ C:\_git\core\src\Tests\TempTest\TempWebServer\TempWebGateway\obj\Debug\TempWebGa
 C:\_git\core\src\Tests\TempTest\TempWebServer\TempWebGateway\obj\Debug\TempWebGateway.pdb
 C:\_git\core\src\Tests\TempTest\TempWebServer\TempWebGateway\obj\Debug\TempWebGateway.csprojResolveAssemblyReference.cache
 C:\_git\core\src\Tests\TempTest\TempWebServer\TempWebGateway\bin\System.Collections.Immutable.xml
-C:\_git\core\src\Tests\TempTest\TempWebServer\TempWebGateway\obj\Debug\TempWebGateway.orleans.g.cs

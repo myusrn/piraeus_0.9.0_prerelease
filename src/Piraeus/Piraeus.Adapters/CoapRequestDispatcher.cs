@@ -90,9 +90,7 @@ namespace Piraeus.Adapters
         /// <returns></returns>
         public CoapMessage Observe(CoapMessage message)
         {
-            Task<CoapMessage> task = ObserveAsync(message);
-            Task.WhenAll<CoapMessage>(task);
-            return task.Result;
+            return ObserveAsync(message).Result;
         }
 
 
@@ -167,9 +165,31 @@ namespace Piraeus.Adapters
         /// <returns></returns>
         public CoapMessage Post(CoapMessage message)
         {
-            Task<CoapMessage> task = PostAsync(message);
-            Task.WhenAll<CoapMessage>(task);
-            return task.Result;
+            //return PostAsync(message).Result;
+
+            CoapUri uri = new CoapUri(message.ResourceUri.ToString());
+            ResponseMessageType rmt = message.MessageType == CoapMessageType.Confirmable ? ResponseMessageType.Acknowledgement : ResponseMessageType.NonConfirmable;
+
+            if (!adapter.CanPublishAsync(uri.Resource, channel.IsEncrypted).Result)
+            {
+                return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Unauthorized, message.Token);
+            }
+
+            string contentType = message.ContentType.HasValue ? message.ContentType.Value.ConvertToContentType() : "application/octet-stream";
+            EventMessage msg = new EventMessage(contentType, uri.Resource, ProtocolType.COAP, message.Encode());
+            
+            if (uri.Indexes == null)
+            {
+                adapter.PublishAsync(msg).Wait();
+            }
+            else
+            {
+                List<KeyValuePair<string, string>> indexes = new List<KeyValuePair<string, string>>(uri.Indexes);
+                adapter.PublishAsync(msg, indexes).Wait();
+            }
+
+            return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Created, message.Token);
+
         }
 
         private async Task<CoapMessage> PostAsync(CoapMessage message)
@@ -208,9 +228,7 @@ namespace Piraeus.Adapters
         /// <returns></returns>
         public CoapMessage Put(CoapMessage message)
         {
-            Task<CoapMessage> task = PutAsync(message);
-            Task.WhenAll<CoapMessage>(task);
-            return task.Result;
+            return PutAsync(message).Result;
         }
 
         private async Task<CoapMessage> PutAsync(CoapMessage message)

@@ -7,6 +7,10 @@ using Piraeus.Adapters;
 using System.Web;
 using System.Threading;
 using Piraeus.Core.Utilities;
+using SkunkLab.Channels.WebSocket;
+using SkunkLab.Protocols.Coap;
+using SkunkLab.Channels;
+using Piraeus.Configuration.Settings;
 
 namespace WebGateway.Controllers
 {
@@ -18,6 +22,7 @@ namespace WebGateway.Controllers
             source = new CancellationTokenSource();
         }
 
+        private WebSocketHandler handler;
         private CancellationTokenSource source;
         private Piraeus.Configuration.Settings.PiraeusConfig  config;
         private delegate void HttpResponseObserverHandler(object sender, SkunkLab.Channels.ChannelObserverEventArgs args);
@@ -52,10 +57,10 @@ namespace WebGateway.Controllers
             {
                 //MessageUri mu = new MessageUri(Request);
                 SkunkLab.Security.Authentication.BasicAuthenticator authn = new SkunkLab.Security.Authentication.BasicAuthenticator();
-                adapter = ProtocolAdapterFactory.Create(config, Request, source.Token, authn);
+                //adapter = ProtocolAdapterFactory.Create(config, Request, source.Token, authn);
                 
-                adapter.OnClose += Adapter_OnClose;
-                adapter.OnError += Adapter_OnError;
+                //adapter.OnClose += Adapter_OnClose;
+                //adapter.OnError += Adapter_OnError;
                 
 
                 HttpContext context = HttpContext.Current;
@@ -63,13 +68,27 @@ namespace WebGateway.Controllers
                 if (context.IsWebSocketRequest ||
                 context.IsWebSocketRequestUpgrading)
                 {
+                    //WebSocketConfig config = new WebSocketConfig();
+                    //handler = new WebSocketHandler(config, source.Token);
+                    //HttpContext.Current.AcceptWebSocketRequest(handler);
+                   // WebSocketConfig wsc = new WebSocketConfig();
+                   // WebSocketServerChannel wschannel = new WebSocketServerChannel(Request, wsc, source.Token);
+                    //CoapConfig cc = new CoapConfig(authn, "www.skunklab.io", CoapConfigOptions.NoResponse | CoapConfigOptions.Observe);
+
+                    //IChannel channel = ChannelFactory.Create(Request, new WebSocketConfig(), source.Token);
+
+                    PiraeusConfig config = Piraeus.Configuration.PiraeusConfigManager.Settings;
+
+                    adapter = ProtocolAdapterFactory.Create(config, Request, source.Token);
+                    adapter.OnClose += Adapter_OnClose;
+                    adapter.OnError += Adapter_OnError;
                     adapter.Init();
                     return new HttpResponseMessage(HttpStatusCode.SwitchingProtocols);
                 }
                 else //long polling
                 {
-                    adapter.OnObserve += Adapter_OnObserve;
-                    adapter.Init();
+                    //adapter.OnObserve += Adapter_OnObserve;
+                    //adapter.Init();
                     ThreadPool.QueueUserWorkItem(new WaitCallback(Listen), waitHandles[0]);
                     WaitHandle.WaitAll(waitHandles);
 
@@ -94,7 +113,7 @@ namespace WebGateway.Controllers
 
         private void Adapter_OnClose(object sender, ProtocolAdapterCloseEventArgs e)
         {
-            source.Cancel();
+            //source.Cancel();
             adapter.Dispose();
         }
 

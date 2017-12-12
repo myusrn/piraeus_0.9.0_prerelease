@@ -21,7 +21,15 @@ namespace Piraeus.Adapters
             else if (message.Protocol == ProtocolType.COAP)
             {
                 CoapMessage msg = CoapMessage.DecodeMessage(message.Message);
-                return MqttConversion(session, msg.Payload, message.ContentType);
+                CoapUri curi = new CoapUri(msg.ResourceUri.ToString());
+                PublishMessage pub = new PublishMessage(false, session.GetQoS(message.ResourceUri).Value, false, session.NewId(), message.ResourceUri, msg.Payload);
+                return pub.Encode();
+                //return MqttConversion(session, msg.Payload, message.ContentType);
+            }
+            else if(message.Protocol == ProtocolType.REST)
+            {
+                PublishMessage pubm = new PublishMessage(false, session.GetQoS(message.ResourceUri).Value, false, session.NewId(), message.ResourceUri, message.Message);
+                return pubm.Encode();
             }
             else
             {

@@ -406,6 +406,7 @@ namespace Piraeus.Grains
         private async Task CheckQueueAsync(object args)
         {
             //timer firing for queued messages
+           
             if (State.MessageLeases.Count > 0)
             {
                 if (memoryMessageQueue != null)
@@ -428,27 +429,22 @@ namespace Piraeus.Grains
 
         private async Task DequeueAsync(Queue<EventMessage> queue)
         {
-            while (queue.Count > 0)
+            EventMessage[] msgs = queue != null && queue.Count > 0 ? queue.ToArray() : null;
+            
+            if(msgs != null)
             {
-                EventMessage msg = queue.Dequeue();
-                if (msg.Timestamp.Add(State.Metadata.TTL.Value) > DateTime.UtcNow)
+                foreach(EventMessage msg in msgs)
                 {
-                    await NotifyAsync(msg);
-
-                    if (State.Metadata.SpoolRate.HasValue)
+                    if (msg.Timestamp.Add(State.Metadata.TTL.Value) > DateTime.UtcNow)
                     {
-                        await Task.Delay(State.Metadata.SpoolRate.Value);
+                        await NotifyAsync(msg);
+
+                        if (State.Metadata.SpoolRate.HasValue)
+                        {
+                            await Task.Delay(State.Metadata.SpoolRate.Value);
+                        }
                     }
                 }
-                else
-                {
-                    queue.Dequeue();
-                }
-            }
-
-            if (messageQueueTimer != null)
-            {
-                messageQueueTimer.Dispose();
             }
         }
         #endregion

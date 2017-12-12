@@ -16,6 +16,7 @@ namespace SkunkLab.Channels.WebSocket
             this.config = config;
             this.token = token;
             Id = "ws-" + Guid.NewGuid().ToString();
+            sendQueue = new TaskQueue();
         }
 
         public WebSocketClientChannel(Uri endpointUri, string subProtocol, WebSocketConfig config, CancellationToken token)
@@ -25,6 +26,7 @@ namespace SkunkLab.Channels.WebSocket
             this.config = config;
             this.token = token;
             Id = "ws-" + Guid.NewGuid().ToString();
+            sendQueue = new TaskQueue();
         }
 
         public WebSocketClientChannel(Uri endpointUri, string securityToken, string subProtocol, WebSocketConfig config, CancellationToken token)
@@ -35,6 +37,7 @@ namespace SkunkLab.Channels.WebSocket
             this.config = config;
             this.token = token;
             Id = "ws-" + Guid.NewGuid().ToString();
+            sendQueue = new TaskQueue();
         }
 
         public WebSocketClientChannel(Uri endpointUri, X509Certificate2 certificate, string subProtocol, WebSocketConfig config, CancellationToken token)
@@ -45,6 +48,8 @@ namespace SkunkLab.Channels.WebSocket
             this.config = config;
             this.token = token;
             Id = "ws-" + Guid.NewGuid().ToString();
+            sendQueue = new TaskQueue();
+           
         }
 
         #endregion
@@ -58,6 +63,8 @@ namespace SkunkLab.Channels.WebSocket
         private X509Certificate2 certificate;
         private ChannelState _state;
         private bool disposed;
+        private TaskQueue sendQueue;
+
 
         public override event EventHandler<ChannelReceivedEventArgs> OnReceive;
         public override event EventHandler<ChannelCloseEventArgs> OnClose;
@@ -68,6 +75,7 @@ namespace SkunkLab.Channels.WebSocket
         public override event EventHandler<ChannelSentEventArgs> OnSent;
         public override event EventHandler<ChannelObserverEventArgs> OnObserve;
 
+        
         public override string Id { get;  internal set; }
 
         public override bool IsConnected
@@ -98,8 +106,10 @@ namespace SkunkLab.Channels.WebSocket
         {
             if (client != null)
             {
-                Task task =  client.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, "Normal", token);
-                Task.WaitAll(task);
+                sendQueue.Enqueue(() => client.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, "Normal", token));
+
+                //Task task =  client.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, "Normal", token);
+                //Task.WaitAll(task);
                 client.Dispose();
                 
             }
@@ -127,8 +137,10 @@ namespace SkunkLab.Channels.WebSocket
 
             try
             {
-                Task task =  client.ConnectAsync(endpoint, token);
-                Task.WaitAll(task);
+                //Task task =  client.ConnectAsync(endpoint, token);
+                //Task.WaitAll(task);
+
+                sendQueue.Enqueue(() => client.ConnectAsync(endpoint, token));
                 State = ChannelState.Open;
                 IsAuthenticated = true;
                
@@ -209,6 +221,7 @@ namespace SkunkLab.Channels.WebSocket
             while (!token.IsCancellationRequested && IsConnected)
             {
                 ChannelReceivedEventArgs args = null;
+               
                 WebSocketMessage message = await WebSocketMessageReader.ReadMessageAsync(client, new byte[config.ReceiveLoopBufferSize], config.MaxIncomingMessageSize, token);
                 if(message.Data != null)
                 {
@@ -242,7 +255,11 @@ namespace SkunkLab.Channels.WebSocket
 
             if (message.Length <= config.SendBufferSize)
             {
-                await client.SendAsync(new ArraySegment<byte>(message), WebSocketMessageType.Binary, true, token);
+                Task task =  sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(message), WebSocketMessageType.Binary, true, token));
+                Task.WaitAll(task);
+                
+                //Task task = client.SendAsync(new ArraySegment<byte>(message), WebSocketMessageType.Binary, true, token);
+                //Task.WaitAll(task);
             }
             else
             {
@@ -252,13 +269,20 @@ namespace SkunkLab.Channels.WebSocket
                 {
                     buffer = new byte[config.SendBufferSize];
                     Buffer.BlockCopy(message, offset, buffer, 0, buffer.Length);
-                    await client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, false, token);
+                    await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, false, token));
+                    //Task task = client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, false, token);
+                    //Task.WaitAll(task);
+
                     offset += buffer.Length;        
                 }
 
                 buffer = new byte[message.Length - offset];
-                await client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, true, token);
+                await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, true, token));
+                //Task t =  client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, true, token);
+                //Task.WaitAll(t);
+               
             }
+            
         }
 
         public override async Task CloseAsync()

@@ -20,10 +20,20 @@ namespace SkunkLab.Channels.WebSocket
             this.token = token;
             this.IsEncrypted = request.RequestUri.Scheme == "wss";
             this.IsAuthenticated = HttpContext.Current.Request.IsAuthenticated;
-            HttpContext.Current.AcceptWebSocketRequest(this);
+            this.handler = new WebSocketHandler(config, token);
+            HttpContext.Current.AcceptWebSocketRequest(this.handler);
+            this.handler.OnReceive += Handler_OnReceive;
+            this.handler.OnError += Handler_OnError;
+            this.handler.OnOpen += Handler_OnOpen;
+            this.handler.OnClose += Handler_OnClose;
+            
+          
+            //HttpContext.Current.AcceptWebSocketRequest(this);
         }
 
-      
+        
+
+        private WebSocketHandler handler;
         private WebSocketConfig config;
         private CancellationToken token;
         private AspNetWebSocketContext WebSocketContext;
@@ -60,10 +70,37 @@ namespace SkunkLab.Channels.WebSocket
         {            
         }
 
+        #region Handler Events
+
+        private void Handler_OnClose(object sender, WebSocketCloseEventArgs args)
+        {
+            State = ChannelState.Closed;
+            OnClose?.Invoke(this, new ChannelCloseEventArgs(this.Id));
+        }
+
+        private void Handler_OnOpen(object sender, WebSocketOpenEventArgs args)
+        {
+            State = ChannelState.Open;
+            OnOpen?.Invoke(this, new ChannelOpenEventArgs(this.Id, null));
+        }
+
+        private void Handler_OnError(object sender, WebSocketErrorEventArgs args)
+        {
+            OnError?.Invoke(this, new ChannelErrorEventArgs(this.Id, args.Error));
+        }
+
+        private void Handler_OnReceive(object sender, WebSocketReceiveEventArgs args)
+        {
+            OnReceive?.Invoke(this, new ChannelReceivedEventArgs(this.Id, args.Message));
+        }
+
+        #endregion
+
         public override void Send(byte[] message)
         {
-            Task task = SendAsync(message);
-            Task.WaitAll(task);
+            this.handler.Send(message);
+            //Task task = SendAsync(message);
+            //Task.WaitAll(task);
             OnSent?.Invoke(this, new ChannelSentEventArgs(Id, null));
         }
 
@@ -80,14 +117,16 @@ namespace SkunkLab.Channels.WebSocket
                 State = ChannelState.ClosedReceived;
             }
 
-            if (State != ChannelState.Closed)
-            {
-                State = ChannelState.Closed;
+            //await this.handler.CloseAsync();
 
-                OnClose?.Invoke(this, new ChannelCloseEventArgs(Id));
-            }
+            OnClose?.Invoke(this, new ChannelCloseEventArgs(Id));
 
-            await TaskDone.Done;
+            //if (State != ChannelState.Closed)
+            //{
+            //    State = ChannelState.Closed;
+
+            //    OnClose?.Invoke(this, new ChannelCloseEventArgs(Id));
+            //}
         }
 
         protected void Disposing(bool dispose)
@@ -98,8 +137,9 @@ namespace SkunkLab.Channels.WebSocket
                 
                 if(State == ChannelState.Open)
                 {
-                    Task task = CloseAsync();
-                    Task.WhenAll(task);
+                    this.handler.Close();
+                    //Task task = CloseAsync();
+                    //Task.WhenAll(task);
                 }
 
                 if(WebSocketContext != null && WebSocketContext.WebSocket != null)
@@ -127,14 +167,17 @@ namespace SkunkLab.Channels.WebSocket
 
         public override async Task SendAsync(byte[] message)
         {
-            await SendAsync(message, WebSocketMessageType.Binary);
+            //await this.handler.SendAsync(message, WebSocketMessageType.Binary);
+            Task task = this.handler.SendAsync(message, WebSocketMessageType.Binary);
+            Task.WaitAll(task);
+            //await SendAsync(message, WebSocketMessageType.Binary);
         }
 
-        internal Task SendAsync(string message) =>
-            SendAsync(Encoding.UTF8.GetBytes(message), WebSocketMessageType.Text);
+        //internal Task SendAsync(string message) =>
+        //    SendAsync(Encoding.UTF8.GetBytes(message), WebSocketMessageType.Text);
 
-        internal Task SendAsync(byte[] message, WebSocketMessageType messageType) =>
-            _sendQueue.Enqueue(() => this.WebSocketContext.WebSocket.SendAsync(new ArraySegment<byte>(message), messageType, true, token));
+        //internal Task SendAsync(byte[] message, WebSocketMessageType messageType) =>
+        //    _sendQueue.Enqueue(() => this.WebSocketContext.WebSocket.SendAsync(new ArraySegment<byte>(message), messageType, true, token));
 
 
         private static bool IsFatalException(Exception ex)

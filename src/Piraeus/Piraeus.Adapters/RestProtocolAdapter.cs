@@ -86,12 +86,22 @@ namespace Piraeus.Adapters
 
             if (request.Method == HttpMethod.Post)
             {
-                EventMessage message = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, request.Content.ReadAsByteArrayAsync().Result);
-                List<KeyValuePair<string, string>> indexList = uri.Indexes == null ? null : new List<KeyValuePair<string, string>>(uri.Indexes);
+                Task t = Task.Factory.StartNew(async () =>
+                {
+                    EventMessage message = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, await request.Content.ReadAsByteArrayAsync());
+                    List<KeyValuePair<string, string>> indexList = uri.Indexes == null ? null : new List<KeyValuePair<string, string>>(uri.Indexes);
 
-                var tcs = new TaskCompletionSource<Task>();
-                Task t = PublishAsync(decoder.Id, message, indexList);
-                tcs.SetResult(t);
+                    await PublishAsync(decoder.Id, message, indexList);
+                });
+
+                Task.WhenAll(t);
+
+                //EventMessage message = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, request.Content.ReadAsByteArrayAsync().Result);
+                //List<KeyValuePair<string, string>> indexList = uri.Indexes == null ? null : new List<KeyValuePair<string, string>>(uri.Indexes);
+
+                //var tcs = new TaskCompletionSource<Task>();
+                //Task t = PublishAsync(decoder.Id, message, indexList);
+                //tcs.SetResult(t);
 
                 //Task task = PublishAsync(decoder.Id, message, indexList);
                 //Task.WhenAll(task);

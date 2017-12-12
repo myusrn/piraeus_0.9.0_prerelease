@@ -112,3 +112,7 @@ C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\System.Net.Http.Formatting
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\System.Web.Http.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\System.Web.Http.WebHost.xml
 C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\SkunkLab.Protocols.dll.config
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\Microsoft.Data.Edm.xml
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\Microsoft.Data.OData.xml
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\Microsoft.Data.Services.Client.xml
+C:\_git\core\src\Piraeus\Piraeus.Adapters\bin\Release\System.Spatial.xml

@@ -21,7 +21,7 @@ namespace SkunkLab.Channels.WebSocket
             private static string BufferSliceToString(byte[] buffer, int count) =>
                 Encoding.UTF8.GetString(buffer, 0, count);
 
-            public async static Task<WebSocketMessage> ReadMessageAsync(WebSocket webSocket, byte[] buffer, int maxMessageSize, CancellationToken token)
+            public static async Task<WebSocketMessage> ReadMessageAsync(WebSocket webSocket, byte[] buffer, int maxMessageSize, CancellationToken token)
             {
                 WebSocketMessage message;
                 ArraySegment<byte> arraySegment = new ArraySegment<byte>(buffer);

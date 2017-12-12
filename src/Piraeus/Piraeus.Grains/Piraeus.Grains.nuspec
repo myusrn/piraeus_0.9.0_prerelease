@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Piraeus.Grains</id>
-    <version>0.2.4.0</version>
+    <version>0.2.6.0</version>
     <title>Piraeus.Grains</title>
     <authors>SkunkLab</authors>
     <owners>SkunkLab</owners>
@@ -18,8 +18,8 @@
     <dependencies>
       <group targetFramework=".NETFramework4.6.1">
         <dependency id="CAPL" version="1.2.1" />
-        <dependency id="Piraeus.Core" version="0.2.4.0" />
-        <dependency id="Piraeus.GrainInterfaces" version="0.2.4.0" />
+        <dependency id="Piraeus.Core" version="0.2.6.0" />
+        <dependency id="Piraeus.GrainInterfaces" version="0.2.6.0" />
         <dependency id="Microsoft.Orleans.Core" version="1.5.2" />
         <dependency id="Microsoft.Orleans.OrleansRuntime" version="1.5.2" />
         <dependency id="Microsoft.Orleans.OrleansCodeGenerator" version="1.5.2" />

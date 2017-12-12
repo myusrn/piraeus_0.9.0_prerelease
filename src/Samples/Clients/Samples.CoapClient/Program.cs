@@ -33,120 +33,124 @@ namespace Samples.CoapClient
         static void Main(string[] args)
         {
             source = new CancellationTokenSource();
-
+            Console.WriteLine("CoAP Client --WooHoo!!!---");
+            Console.ReadKey();
             Console.Write("Select a role (A/B) ? ");
             abSwitch = Console.ReadLine().ToUpperInvariant() == "A";
 
             string token = GetSecurityToken(abSwitch ? "A" : "B");
+            
             channel = ChannelFactory.Create(new Uri(endpoint), token, "coapv1", new WebSocketConfig(), source.Token);
-           
-
-
-            channel.OnOpen += Channel_OnOpen;
-            channel.OnReceive += Channel_OnReceive;
+            channel.OnStateChange += Channel_OnStateChange1;
+            channel.OnClose += Channel_OnClose;
             channel.OnError += Channel_OnError;
-            channel.OnStateChange += Channel_OnStateChange;
-            Task openTask = channel.OpenAsync();
-            Task.WaitAll(openTask);
+            Task task = channel.OpenAsync();
+            Task.WaitAll(task);
 
-            Console.WriteLine("Waiting the channel state");
+            Task t = channel.ReceiveAsync();
+            Task.WhenAll(t);
+
+            Console.WriteLine("OPEN");
             Console.ReadKey();
 
-
-
-           
-
-            //create channel and open it
-            CreateWebSocketChannel();
-
-            //create the Piraeus client the uses the channel
-            CoapConfig config = new CoapConfig(null, "www.skunklab.io", CoapConfigOptions.NoResponse | CoapConfigOptions.Observe);
+            CoapConfig config = new CoapConfig(null, "www.skunklab.io", CoapConfigOptions.NoResponse | CoapConfigOptions.Observe, false, 180.0,30.0,1.5,2,1,4.0,1.0,100.0);
             PiraeusCoapClient coapClient = new PiraeusCoapClient(config, channel, null);
 
-            //create an observer for a resource
             string subResource = abSwitch ? resourceB : resourceA;
-            Task observeTask = coapClient.ObserveAsync(subResource, new Action<CodeType, string, byte[]>(ObserveResource));
-            Task.WhenAll(observeTask);
 
-            Thread.Sleep(3000);
+            Task subTask = coapClient.ObserveAsync(subResource, Observe);
+            Task.WhenAll(subTask);
 
-            Console.WriteLine("Press any key to send");
-            Console.ReadKey();
+            Console.WriteLine("Subscribed {0}", subResource);
 
-            //send messages over coap to a resource
+
             string pubResource = abSwitch ? resourceA : resourceB;
-            string message = "Message 1";
-            Task pubTask = coapClient.PublishAsync(pubResource, "text/plain", Encoding.UTF8.GetBytes(message), false, new Action<CodeType, string, byte[]>(Response));
-            Task.WhenAll(pubTask);
-            Console.WriteLine("Message is sent");
 
-            Thread.Sleep(3000);
+           
 
-            Console.WriteLine("waiting...");
+            Console.WriteLine("Press key to send message");
             Console.ReadKey();
+
+            bool trysend = true;
+            while (trysend)
+            {
+                //Console.Write("Unobserve (Y/N) ? ");
+                //if(Console.ReadLine().ToLowerInvariant() == "y")
+                //{
+                //    Task unobserveTask = coapClient.UnobserveAsync(subResource);
+                //    Task.WhenAll(unobserveTask);
+                //}
+
+                int index = 0;
+                Console.Write("Send another (Y/N) ? ");
+                trysend = Console.ReadLine().ToLowerInvariant() == "y";
+
+                while(trysend)
+                {
+                    while (index < 20)
+                    {
+                        if (trysend)
+                        {
+                            string message = String.Format("Hi from {0} {1}", pubResource, index++);
+                            //TaskCompletionSource<Task> tcs = new TaskCompletionSource<Task>();
+                            Task pubTask = coapClient.PublishAsync(pubResource, "text/plain", Encoding.UTF8.GetBytes(message), true, Response);
+                            Task.WaitAll(pubTask);
+                            
+                        }
+                    }
+
+                    index = 0;
+                    Console.Write("Send another (Y/N) ? ");
+                    trysend = Console.ReadLine().ToLowerInvariant() == "y";
+                }
+                
+
+            }
 
             source.Cancel();
+            Console.WriteLine("Finished.");
             Console.ReadKey();
 
-        }
-
-        private static void ObserveResource(CodeType code, string contentType, byte[] message)
-        {
-            Console.WriteLine("Code = {0} Message = {1}", code, Encoding.UTF8.GetString(message));
-        }
-
-        private static void Response(CodeType code, string contentType, byte[] message)
-        {
-            Console.WriteLine("Coap Response Code = {0}", code);
-        }
-
-        private static void CreateWebSocketChannel()
-        {
-            string token = GetSecurityToken(abSwitch ? "A" : "B");
-            channel = ChannelFactory.Create(new Uri(endpoint), token, "coapv1", new WebSocketConfig(), source.Token);
-            channel.OnOpen += Channel_OnOpen;
-            channel.OnReceive += Channel_OnReceive;
-            channel.OnError += Channel_OnError;
-            channel.OnStateChange += Channel_OnStateChange;
-            Task task = OpenChannel(channel);
-            Task.WaitAll(task);
-            
-        }
-
-        private static void Channel_OnStateChange(object sender, ChannelStateEventArgs e)
-        {
-            Console.WriteLine("State = {0}", e.State);
-            if(e.State == ChannelState.Open)
-            {
-                Task task = channel.ReceiveAsync();
-                Task.WhenAll(task);
-            }
         }
 
         private static void Channel_OnError(object sender, ChannelErrorEventArgs e)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Error {0}", e.Error.Message);
+            Console.ResetColor();
         }
 
-        private static Task OpenChannel(IChannel channel)
+        private static void Channel_OnClose(object sender, ChannelCloseEventArgs e)
         {
-            TaskCompletionSource<Task> tcs = new TaskCompletionSource<Task>();
-            Task task = channel.OpenAsync();
-            tcs.SetResult(null);
-            return tcs.Task;        
-
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Channel closed");
+            Console.ResetColor();
         }
 
-        private static void Channel_OnReceive(object sender, ChannelReceivedEventArgs e)
+        private static void Observe(CodeType code, string contentType, byte[] payload)
         {
-            Console.WriteLine("Message = {0}", Encoding.UTF8.GetString(e.Message));
+            if (payload != null)
+            {
+                Console.WriteLine("Observe with message {0}", Encoding.UTF8.GetString(payload));
+            }
+            else
+            {
+                Console.WriteLine("Observer with Code {0}", code);
+            }
         }
 
-        private static void Channel_OnOpen(object sender, ChannelOpenEventArgs e)
+        private static void Response(CodeType code, string contentType, byte[] payload)
         {
-            //Console.WriteLine("Channel is {0}", "Open");
-           
+            Console.WriteLine("Response with Code = {0}", code);
         }
+
+
+        private static void Channel_OnStateChange1(object sender, ChannelStateEventArgs e)
+        {
+            Console.WriteLine("Channel State = {0}", e.State);
+        }
+
+       
 
         static string GetSecurityToken(string role)
         {

@@ -225,7 +225,7 @@ namespace SkunkLab.Protocols.Mqtt
             //signals client to send a ping to keep alive
             if (keepaliveExpiry > DateTime.UtcNow)
             {
-                OnKeepAlive(this, new MqttMessageEventArgs(new PingRequestMessage()));
+                OnKeepAlive?.Invoke(this, new MqttMessageEventArgs(new PingRequestMessage()));
             }
         }
 

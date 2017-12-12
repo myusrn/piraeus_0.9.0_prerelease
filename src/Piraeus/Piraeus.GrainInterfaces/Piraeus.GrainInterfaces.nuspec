@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Piraeus.GrainInterfaces</id>
-    <version>0.2.4.0</version>
+    <version>0.2.6.0</version>
     <title>Piraeus.GrainInterfaces</title>
     <authors>SkunkLab</authors>
     <owners>SkunkLab</owners>
@@ -17,7 +17,7 @@
     <tags>Piraeus SkunkLab</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.6.1">
-        <dependency id="Piraeus.Core" version="0.2.4.0" />
+        <dependency id="Piraeus.Core" version="0.2.6.0" />
         <dependency id="Microsoft.Orleans.Core" version="1.5.2" />
         <dependency id="Microsoft.Orleans.OrleansCodeGenerator.Build" version="1.5.2" />
         <dependency id="Newtonsoft.Json" version="10.0.3" />

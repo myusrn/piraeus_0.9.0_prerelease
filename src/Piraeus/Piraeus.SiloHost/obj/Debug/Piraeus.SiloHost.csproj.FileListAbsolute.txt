@@ -82,3 +82,4 @@ C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Debug\Piraeus.SiloHost.csprojResol
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Debug\Piraeus.SiloHost.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Debug\Piraeus.SiloHost.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Debug\Piraeus.SiloHost.pdb
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Debug\Piraeus.SiloHost.orleans.g.cs

@@ -195,4 +195,3 @@ C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\bin\System.Net.Http.Form
 C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\bin\System.Reflection.Metadata.xml
 C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\bin\System.Web.Http.xml
 C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\bin\System.Web.Http.WebHost.xml
-C:\_git\core\src\Tests\Full Test\BigTest\WebGatewayTest\obj\Debug\WebGatewayTest.orleans.g.cs
