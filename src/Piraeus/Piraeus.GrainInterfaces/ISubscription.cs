@@ -11,7 +11,7 @@ namespace Piraeus.GrainInterfaces
     {
         Task<string> GetIdAsync();
         Task UpsertMetadataAsync(SubscriptionMetadata metadata);
-
+        Task<CommunicationMetrics> GetMetricsAsync();
         Task<SubscriptionMetadata> GetMetadataAsync();
         Task<string> AddObserverAsync(TimeSpan lifetime, IMessageObserver observer);
         Task<string> AddObserverAsync(TimeSpan lifetime, IMetricObserver observer);

@@ -44,16 +44,36 @@ namespace SkunkLab.Protocols.Mqtt
         private Dictionary<string, QualityOfServiceLevelType> qosLevels;    //qos levels return from subscriptions
         private ConnectAckCode _code;
         private bool disposed;
+        private SecurityTokenType bootstrapTokenType;
+        private string bootstrapToken;
 
+
+        public bool HasBootstrapToken { get; internal set; }
         public MqttConfig Config { get; set; }
 
         public string Identity { get; set; }
 
         public List<KeyValuePair<string,string>> Indexes { get; set; }
 
+
+        public bool Authenticate()
+        {
+            if(!HasBootstrapToken)
+            {
+                return false;
+            }
+
+            IsAuthenticated = Config.Authenticator.Authenticate(bootstrapTokenType, bootstrapToken);
+            return IsAuthenticated;
+        }
+
         public bool Authenticate(string tokenType, string token)
         {
             SecurityTokenType tt = (SecurityTokenType)Enum.Parse(typeof(SecurityTokenType), tokenType, true);
+            bootstrapTokenType = tt;
+            bootstrapToken = token;
+            HasBootstrapToken = true;
+
             IsAuthenticated = Config.Authenticator.Authenticate(tt, token);
             return IsAuthenticated;
         }
@@ -61,6 +81,12 @@ namespace SkunkLab.Protocols.Mqtt
         public bool Authenticate(byte[] message)
         {
             ConnectMessage msg = (ConnectMessage)MqttMessage.DecodeMessage(message);
+            return Authenticate(msg.Username, msg.Password);
+        }
+        
+
+        public bool Authenticate(ConnectMessage msg)
+        {
             return Authenticate(msg.Username, msg.Password);
         }
 

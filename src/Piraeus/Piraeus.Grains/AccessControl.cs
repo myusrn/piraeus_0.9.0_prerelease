@@ -24,5 +24,10 @@ namespace Piraeus.Grains
             State.Policy = policy;
             await Task.CompletedTask;
         }
+
+        public override async Task OnDeactivateAsync()
+        {
+            await WriteStateAsync();
+        }
     }
 }

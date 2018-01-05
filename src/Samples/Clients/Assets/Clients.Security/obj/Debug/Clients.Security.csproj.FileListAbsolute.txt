@@ -1,0 +1,16 @@
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\bin\Debug\Clients.Security.dll.config
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\bin\Debug\Clients.Security.dll
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\bin\Debug\Clients.Security.pdb
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\bin\Debug\Newtonsoft.Json.dll
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\bin\Debug\SkunkLab.Security.dll
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\bin\Debug\System.Net.Http.Formatting.dll
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\bin\Debug\System.Web.Http.dll
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\bin\Debug\System.Web.Http.WebHost.dll
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\bin\Debug\SkunkLab.Security.pdb
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\obj\Debug\Clients.Security.csprojResolveAssemblyReference.cache
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\obj\Debug\Clients.Security.csproj.CoreCompileInputs.cache
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\obj\Debug\Clients.Security.dll
+C:\_git\core\src\Samples\Clients\Assets\Clients.Security\obj\Debug\Clients.Security.pdb

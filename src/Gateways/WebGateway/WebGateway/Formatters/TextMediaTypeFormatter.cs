@@ -16,8 +16,7 @@ namespace WebGateway.Formatters
 
         public TextMediaTypeFormatter()
         {
-            //SupportedMediaTypes.Add(new MediaTypeHeaderValue(supportedMediaType));
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/plain"));
+            SupportedMediaTypes.Add(new MediaTypeHeaderValue(supportedMediaType));
             SupportedEncodings.Add(Encoding.GetEncoding("utf-8"));
             SupportedEncodings.Add(Encoding.GetEncoding("utf-16"));
             SupportedEncodings.Add(Encoding.ASCII);
@@ -97,7 +96,6 @@ namespace WebGateway.Formatters
             var buff = System.Text.Encoding.UTF8.GetBytes(value.ToString());
             return writeStream.WriteAsync(buff, 0, buff.Length);
 
-
             //TaskCompletionSource<object> source = new TaskCompletionSource<object>();
             //byte[] buffer = value == null ? new byte[0] : Encoding.UTF8.GetBytes(value as string);
 
@@ -113,6 +111,7 @@ namespace WebGateway.Formatters
 
         public override Task WriteToStreamAsync(Type type, object value, Stream writeStream, HttpContent content, TransportContext transportContext, CancellationToken cancellationToken)
         {
+
             var buff = System.Text.Encoding.UTF8.GetBytes(value.ToString());
             return writeStream.WriteAsync(buff, 0, buff.Length, cancellationToken);
 

@@ -7,7 +7,7 @@
 #pragma warning disable 1591
 #pragma warning disable 1998
 [assembly: global::System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.5.2.0")]
-[assembly: global::Orleans.CodeGeneration.OrleansCodeGenerationTargetAttribute("Piraeus.GrainInterfaces, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null")]
+[assembly: global::Orleans.CodeGeneration.OrleansCodeGenerationTargetAttribute("Piraeus.GrainInterfaces, Version=0.5.24.0, Culture=neutral, PublicKeyToken=null")]
 namespace Piraeus.GrainInterfaces
 {
     using global::Orleans.Async;
@@ -673,7 +673,7 @@ namespace Piraeus.GrainInterfaces
             result.@Id = input.@Id;
             result.@LastError = (global::System.Exception)global::Orleans.Serialization.SerializationManager.@DeepCopyInner(input.@LastError, context);
             result.@LastErrorTimestamp = (global::System.Nullable<global::System.DateTime>)global::Orleans.Serialization.SerializationManager.@DeepCopyInner(input.@LastErrorTimestamp, context);
-            result.@LastMessageTimestamp = input.@LastMessageTimestamp;
+            result.@LastMessageTimestamp = (global::System.Nullable<global::System.DateTime>)global::Orleans.Serialization.SerializationManager.@DeepCopyInner(input.@LastMessageTimestamp, context);
             result.@MessageCount = input.@MessageCount;
             return result;
         }
@@ -687,7 +687,7 @@ namespace Piraeus.GrainInterfaces
             global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@Id, context, typeof (global::System.String));
             global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@LastError, context, typeof (global::System.Exception));
             global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@LastErrorTimestamp, context, typeof (global::System.Nullable<global::System.DateTime>));
-            global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@LastMessageTimestamp, context, typeof (global::System.DateTime));
+            global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@LastMessageTimestamp, context, typeof (global::System.Nullable<global::System.DateTime>));
             global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@MessageCount, context, typeof (global::System.Int64));
         }
 
@@ -701,7 +701,7 @@ namespace Piraeus.GrainInterfaces
             result.@Id = (global::System.String)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.String), context);
             result.@LastError = (global::System.Exception)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Exception), context);
             result.@LastErrorTimestamp = (global::System.Nullable<global::System.DateTime>)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Nullable<global::System.DateTime>), context);
-            result.@LastMessageTimestamp = (global::System.DateTime)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.DateTime), context);
+            result.@LastMessageTimestamp = (global::System.Nullable<global::System.DateTime>)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Nullable<global::System.DateTime>), context);
             result.@MessageCount = (global::System.Int64)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Int64), context);
             return (global::Piraeus.Core.Messaging.CommunicationMetrics)result;
         }
@@ -756,6 +756,8 @@ namespace Piraeus.GrainInterfaces
                     {
                         case 1120461561:
                             return "UpsertMetadataAsync";
+                        case 42119730:
+                            return "GetMetricsAsync";
                         case 1255360387:
                             return "GetMetadataAsync";
                         case 1523623891:
@@ -797,6 +799,11 @@ namespace Piraeus.GrainInterfaces
         public global::System.Threading.Tasks.Task @UpsertMetadataAsync(global::Piraeus.Core.Metadata.ResourceMetadata @metadata)
         {
             return base.@InvokeMethodAsync<global::System.Object>(1120461561, new global::System.Object[]{@metadata});
+        }
+
+        public global::System.Threading.Tasks.Task<global::Piraeus.Core.Messaging.CommunicationMetrics> @GetMetricsAsync()
+        {
+            return base.@InvokeMethodAsync<global::Piraeus.Core.Messaging.CommunicationMetrics>(42119730, null);
         }
 
         public global::System.Threading.Tasks.Task<global::Piraeus.Core.Metadata.ResourceMetadata> @GetMetadataAsync()
@@ -874,6 +881,8 @@ namespace Piraeus.GrainInterfaces
                     {
                         case 1120461561:
                             return ((global::Piraeus.GrainInterfaces.IResource)@grain).@UpsertMetadataAsync((global::Piraeus.Core.Metadata.ResourceMetadata)arguments[0]).@Box();
+                        case 42119730:
+                            return ((global::Piraeus.GrainInterfaces.IResource)@grain).@GetMetricsAsync().@Box();
                         case 1255360387:
                             return ((global::Piraeus.GrainInterfaces.IResource)@grain).@GetMetadataAsync().@Box();
                         case 1523623891:
@@ -1342,6 +1351,8 @@ namespace Piraeus.GrainInterfaces
                             return "GetIdAsync";
                         case 233903696:
                             return "UpsertMetadataAsync";
+                        case 42119730:
+                            return "GetMetricsAsync";
                         case 1255360387:
                             return "GetMetadataAsync";
                         case 1347980661:
@@ -1384,6 +1395,11 @@ namespace Piraeus.GrainInterfaces
         public global::System.Threading.Tasks.Task @UpsertMetadataAsync(global::Piraeus.Core.Metadata.SubscriptionMetadata @metadata)
         {
             return base.@InvokeMethodAsync<global::System.Object>(233903696, new global::System.Object[]{@metadata});
+        }
+
+        public global::System.Threading.Tasks.Task<global::Piraeus.Core.Messaging.CommunicationMetrics> @GetMetricsAsync()
+        {
+            return base.@InvokeMethodAsync<global::Piraeus.Core.Messaging.CommunicationMetrics>(42119730, null);
         }
 
         public global::System.Threading.Tasks.Task<global::Piraeus.Core.Metadata.SubscriptionMetadata> @GetMetadataAsync()
@@ -1454,6 +1470,8 @@ namespace Piraeus.GrainInterfaces
                             return ((global::Piraeus.GrainInterfaces.ISubscription)@grain).@GetIdAsync().@Box();
                         case 233903696:
                             return ((global::Piraeus.GrainInterfaces.ISubscription)@grain).@UpsertMetadataAsync((global::Piraeus.Core.Metadata.SubscriptionMetadata)arguments[0]).@Box();
+                        case 42119730:
+                            return ((global::Piraeus.GrainInterfaces.ISubscription)@grain).@GetMetricsAsync().@Box();
                         case 1255360387:
                             return ((global::Piraeus.GrainInterfaces.ISubscription)@grain).@GetMetadataAsync().@Box();
                         case 1347980661:

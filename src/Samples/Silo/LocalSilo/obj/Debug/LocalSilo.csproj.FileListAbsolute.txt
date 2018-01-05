@@ -1,5 +1,6 @@
 C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\LocalSilo.exe.config
 C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\LocalSilo.exe
+C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\LocalSilo.pdb
 C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\Capl.dll
 C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
 C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\Microsoft.CodeAnalysis.CSharp.dll
@@ -80,9 +81,8 @@ C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\System.Reflection.Metadata.xml
 C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\System.Spatial.xml
 C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\System.Web.Http.xml
 C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\System.Web.Http.WebHost.xml
+C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.csprojResolveAssemblyReference.cache
 C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.csproj.CoreCompileInputs.cache
-C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\LocalSilo.pdb
 C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.exe
 C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.pdb
-C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.csprojResolveAssemblyReference.cache
 C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.orleans.g.cs

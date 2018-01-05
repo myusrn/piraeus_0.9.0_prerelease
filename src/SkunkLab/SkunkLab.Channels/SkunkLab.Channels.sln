@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkunkLab.Channels", "SkunkLab.Channels\SkunkLab.Channels.csproj", "{7C69A3CA-29DD-4C33-B70F-F998A6E650B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkunkLab.Diagnostics", "..\SkunkLab.Diagnostics\SkunkLab.Diagnostics\SkunkLab.Diagnostics.csproj", "{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7C69A3CA-29DD-4C33-B70F-F998A6E650B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C69A3CA-29DD-4C33-B70F-F998A6E650B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C69A3CA-29DD-4C33-B70F-F998A6E650B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

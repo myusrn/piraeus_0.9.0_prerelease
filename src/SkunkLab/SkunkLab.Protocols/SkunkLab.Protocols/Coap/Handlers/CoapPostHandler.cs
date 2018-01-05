@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security;
 using System.Threading.Tasks;
 using SkunkLab.Protocols.Utilities;
 
@@ -9,14 +10,16 @@ namespace SkunkLab.Protocols.Coap.Handlers
         public CoapPostHandler(CoapSession session, CoapMessage message, ICoapRequestDispatch dispatcher = null) 
             : base(session, message, dispatcher)         
         {
+            CoapAuthentication.EnsureAuthentication(session, message);
         }
 
         public override async Task<CoapMessage> ProcessAsync()
-        {
+        {            
+
             CoapMessage response = null;
             if (!Session.CoapReceiver.IsDup(Message.MessageId))
             {
-                response = Dispatcher.Post(Message);
+                response = await Dispatcher.PostAsync(Message);
             }
             else
             {

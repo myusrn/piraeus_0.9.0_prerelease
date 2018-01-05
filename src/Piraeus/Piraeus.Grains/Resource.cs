@@ -43,9 +43,9 @@ namespace Piraeus.Grains
             return Task.CompletedTask;
         }
 
-        public override Task OnDeactivateAsync()
+        public override async Task OnDeactivateAsync()
         {
-            return base.OnDeactivateAsync();
+            await WriteStateAsync();
         }
         #endregion
 
@@ -68,6 +68,12 @@ namespace Piraeus.Grains
 
             IResourceList resourceList = GrainFactory.GetGrain<IResourceList>("resourcelist");
             await resourceList.AddAsync(metadata.ResourceUriString);
+        }
+
+        public async Task<CommunicationMetrics> GetMetricsAsync()
+        {
+            CommunicationMetrics metrics = new CommunicationMetrics(State.Metadata.ResourceUriString, State.MessageCount, State.ByteCount, State.ErrorCount, State.LastMessageTimestamp, State.LastErrorTimestamp);
+            return await Task.FromResult<CommunicationMetrics>(metrics);
         }
 
         public async Task<ResourceMetadata> GetMetadataAsync()

@@ -78,17 +78,21 @@ namespace Piraeus.Adapters
             {
                 foreach (var item in uri.Subscriptions)
                 {
-                    
-                    Task task = SubscribeAsync(item, decoder.Id, decoder.Indexes);
-                    Task.WhenAll(task);
+                    Task t = Task.Factory.StartNew(async () =>
+                    {
+                        await SubscribeAsync(item, decoder.Id, decoder.Indexes);
+                    });
+
+                    Task.WhenAll(t);
                 }
             }
 
             if (request.Method == HttpMethod.Post)
             {
+                byte[] buffer = request.Content.ReadAsByteArrayAsync().Result;
                 Task t = Task.Factory.StartNew(async () =>
                 {
-                    EventMessage message = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, await request.Content.ReadAsByteArrayAsync());
+                    EventMessage message = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, buffer);
                     List<KeyValuePair<string, string>> indexList = uri.Indexes == null ? null : new List<KeyValuePair<string, string>>(uri.Indexes);
 
                     await PublishAsync(decoder.Id, message, indexList);
@@ -133,7 +137,7 @@ namespace Piraeus.Adapters
         private void Adapter_OnObserve(object sender, ObserveMessageEventArgs e)
         {
             byte[] payload = ProtocolTransition.ConvertToHttp(e.Message);
-            OnObserve?.Invoke(this, new ChannelObserverEventArgs(e.Message.ResourceUri, e.Message.ContentType, e.Message.Message));
+            OnObserve?.Invoke(this, new ChannelObserverEventArgs(e.Message.ResourceUri, e.Message.ContentType, payload));
         }
 
         #endregion

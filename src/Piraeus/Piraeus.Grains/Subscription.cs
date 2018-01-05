@@ -65,6 +65,14 @@ namespace Piraeus.Grains
         }
         #endregion
 
+        #region Metrics
+
+        public async Task<CommunicationMetrics> GetMetricsAsync()
+        {
+            CommunicationMetrics metrics = new CommunicationMetrics(State.Metadata.SubscriptionUriString, State.MessageCount, State.ByteCount, State.ErrorCount, State.LastMessageTimestamp, State.LastErrorTimestamp);
+            return await Task.FromResult<CommunicationMetrics>(metrics);
+        }
+        #endregion
 
         #region ID
         public async Task<string> GetIdAsync()

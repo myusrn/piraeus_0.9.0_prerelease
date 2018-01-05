@@ -1,0 +1,180 @@
+[2017-12-19 23:46:23.694 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug...	
+[2017-12-19 23:46:24.201 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\BouncyCastle.Crypto.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.222 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Capl.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.226 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.549 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Microsoft.CodeAnalysis.CSharp.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.693 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Microsoft.CodeAnalysis.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.713 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Microsoft.Data.Edm.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.742 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Microsoft.Data.OData.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.761 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Microsoft.Data.Services.Client.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.767 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.782 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.788 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Microsoft.IdentityModel.Logging.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.795 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.798 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Microsoft.Win32.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.832 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.865 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Newtonsoft.Json.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.868 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Orleans.dll
+	* Assembly filename is excluded.	
+[2017-12-19 23:46:24.872 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\OrleansCodeGenerator.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.886 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\OrleansRuntime.dll
+	* Assembly filename is excluded.	
+[2017-12-19 23:46:24.896 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Piraeus.Adapters.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.900 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Piraeus.Configuration.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.906 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Piraeus.Core.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.910 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Piraeus.GrainInterfaces.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.917 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Piraeus.Grains.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.926 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\SkunkLab.Channels.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.931 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\SkunkLab.Diagnostics.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.941 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\SkunkLab.Protocols.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.951 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\SkunkLab.Security.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.955 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\SkunkLab.Servers.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.986 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\StackExchange.Redis.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:24.990 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.AppContext.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.008 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Collections.Immutable.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.014 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Console.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.020 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.022 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Diagnostics.FileVersionInfo.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.026 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Diagnostics.StackTrace.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.033 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Globalization.Calendars.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.037 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.043 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.IO.Compression.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.046 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.IO.Compression.ZipFile.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.049 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.IO.FileSystem.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.056 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.IO.FileSystem.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.067 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Net.Http.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.079 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Net.Http.Formatting.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.083 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Net.Sockets.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.117 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Reflection.Metadata.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.121 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.125 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Security.Cryptography.Algorithms.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.131 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Security.Cryptography.Encoding.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.134 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Security.Cryptography.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.142 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.149 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Spatial.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.155 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Text.Encoding.CodePages.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.159 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Threading.Thread.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.166 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.ValueTuple.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.194 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Web.Http.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.212 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Xml.ReaderWriter.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.214 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Xml.XmlDocument.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.217 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Xml.XPath.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.228 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\System.Xml.XPath.XDocument.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-19 23:46:25.234 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Loading assembly C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\OrleansProviders.dll...	
+[2017-12-19 23:46:25.307 GMT     1	INFO   	100000	AssemblyLoader.Client	]	1 assemblies loaded.	
+[2017-12-19 23:46:27.789 GMT     1	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.19.176.1 Client Id = *cli/d0fa65bd ----------	
+[2017-12-19 23:46:28.280 GMT     1	INFO   	100314	OutsideRuntimeClient	]	---------- Starting OutsideRuntimeClient with runtime Version='1.5.2.0 (Release).' in AppDomain=<AppDomain.Id=1, AppDomain.FriendlyName=SkunkLab.Servers.Tcp.exe> Config= 
+ Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 6.2.9200.0
+   App config file: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\SkunkLab.Servers.Tcp.exe.Config
+   GC Type=Client GCLatencyMode=Interactive
+   Host: MININT-2T87D76
+   Processor Count: 4
+Client Configuration:
+   Config File Name: 
+   Start time: 2017-12-19 23:46:28.271 GMT
+   Gateway Provider: Config
+   Gateways[1]:
+      127.0.0.1:40000
+   Preferred Gateway Index: -1
+   GatewayListRefreshPeriod: 00:01:00
+   Preferred Address Family: InterNetwork
+   DNS Host Name: MININT-2T87D76
+   Client Name: Client
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Client-2017-12-19-23.46.18.725Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: -00:00:00.0010000
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Client Sender Buckets: 8192
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Fallback serializer: 
+   .NET: 
+       .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+       .NET thread pool sizes - Max: Worker Threads=2047 Completion Port Threads=1000
+   Providers:
+       No providers configured.
+	
+[2017-12-19 23:46:29.072 GMT     4	INFO   	101309	Messaging.GatewayManager	]	Found 1 knownGateways from Gateway listProvider [gwy.tcp://127.0.0.1:40000/0]	
+[2017-12-19 23:46:29.135 GMT     4	INFO   	100908	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Connected to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0.	
+[2017-12-19 23:46:29.161 GMT     9	INFO   	100000	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Starting AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 on managed thread 9	
+[2017-12-19 23:46:29.161 GMT    10	INFO   	100000	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Starting AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 on managed thread 10	
+[2017-12-19 23:46:29.369 GMT     7	INFO   	100929	OutsideRuntimeClient	172.19.176.1:0]	---------- Started OutsideRuntimeClient with Global Client ID: C172.19.176.1:0:-251423189*cli/d0fa65bd@1af6afb6, client GUID ID: *cli/d0fa65bd	
+[2017-12-19 23:47:29.090 GMT     7	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/19/2017 11:46:29 PM	
+[2017-12-19 23:48:29.101 GMT     7	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/19/2017 11:47:29 PM	

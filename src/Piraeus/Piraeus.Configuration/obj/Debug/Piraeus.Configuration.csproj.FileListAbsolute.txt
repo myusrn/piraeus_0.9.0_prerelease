@@ -18,9 +18,3 @@ C:\_git\core\Piraeus.Configuration\obj\Debug\Piraeus.Configuration.csproj.CoreCo
 C:\_git\core\Piraeus.Configuration\obj\Debug\Piraeus.Configuration.dll
 C:\_git\core\Piraeus.Configuration\obj\Debug\Piraeus.Configuration.pdb
 C:\_git\core\Piraeus.Configuration\obj\Debug\Piraeus.Configuration.csprojResolveAssemblyReference.cache
-C:\_git\core\src\Piraeus\Piraeus.Configuration\bin\Debug\Piraeus.Configuration.dll
-C:\_git\core\src\Piraeus\Piraeus.Configuration\bin\Debug\Piraeus.Configuration.pdb
-C:\_git\core\src\Piraeus\Piraeus.Configuration\obj\Debug\Piraeus.Configuration.csprojResolveAssemblyReference.cache
-C:\_git\core\src\Piraeus\Piraeus.Configuration\obj\Debug\Piraeus.Configuration.csproj.CoreCompileInputs.cache
-C:\_git\core\src\Piraeus\Piraeus.Configuration\obj\Debug\Piraeus.Configuration.dll
-C:\_git\core\src\Piraeus\Piraeus.Configuration\obj\Debug\Piraeus.Configuration.pdb

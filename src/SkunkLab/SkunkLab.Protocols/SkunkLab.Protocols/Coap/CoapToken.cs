@@ -6,8 +6,14 @@ namespace SkunkLab.Protocols.Coap
 
     public class CoapToken
     {
+        private static Random ran;
         public CoapToken()
         {
+        }
+
+        static CoapToken()
+        {
+            ran = new Random();
         }
 
         public CoapToken(byte[] tokenBytes)
@@ -16,8 +22,7 @@ namespace SkunkLab.Protocols.Coap
         }
         public static CoapToken Create()
         {
-            byte[] buffer = new byte[8];
-            Random ran = new Random();
+            byte[] buffer = new byte[8];            
             ran.NextBytes(buffer);
             return new CoapToken(buffer);
         }

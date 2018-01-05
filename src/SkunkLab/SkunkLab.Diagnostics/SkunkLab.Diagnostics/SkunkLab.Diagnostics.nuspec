@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>SkunkLab.Diagnostics</id>
-    <version>0.2.6.0</version>
+    <version>0.5.23</version>
     <title>SkunkLab.Diagnostics</title>
     <authors>SkunkLab</authors>
     <owners>SkunkLab</owners>
@@ -17,6 +17,7 @@
     <tags>SkunkLab</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.6.1">
+        <dependency id="SkunkLab.Storage" version="0.5.23" />
         <dependency id="System.ComponentModel.EventBasedAsync" version="4.3.0" />
         <dependency id="System.Dynamic.Runtime" version="4.3.0" />
         <dependency id="System.Linq.Queryable" version="4.3.0" />

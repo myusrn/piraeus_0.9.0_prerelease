@@ -4,7 +4,9 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
+using Piraeus.GrainInterfaces;
 using Piraeus.Grains;
 using WebGateway.Security;
 
@@ -12,10 +14,11 @@ namespace WebGateway.Controllers
 {
     public class ResourceController : ApiController
     {
+        
         //[CaplAuthorize(PolicyId = "http://www.skunklab.io/api/management")]
         [HttpGet]
         public async Task<HttpResponseMessage> GetResourceList()
-        {
+        {            
             try
             {
                 IEnumerable<string> list = await GraphManager.GetResourceListAsync();
@@ -27,6 +30,7 @@ namespace WebGateway.Controllers
             }
         }
 
+       
         //[CaplAuthorize(PolicyId = "http://www.skunklab.io/api/management")]
         [HttpGet]
         public async Task<HttpResponseMessage> GetResourceMetadata(string resourceUriString)
@@ -42,12 +46,27 @@ namespace WebGateway.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<HttpResponseMessage> GetResourceMetrics(string resourceUriString)
+        {
+            try
+            {
+                CommunicationMetrics metrics = await GraphManager.GetResourceMetricsAsync(resourceUriString);
+                return Request.CreateResponse<CommunicationMetrics>(HttpStatusCode.OK, metrics);
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
+        }
+
         //[CaplAuthorize(PolicyId = "http://www.skunklab.io/api/management")]
         [HttpPut]
         public async Task<HttpResponseMessage> UpsertResourceMetadata(ResourceMetadata metadata)
         {
             try
             {
+               
                 await GraphManager.UpsertResourceMetadataAsync(metadata);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }

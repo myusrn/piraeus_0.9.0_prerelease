@@ -11,6 +11,7 @@ namespace SkunkLab.Protocols.Coap.Handlers
         public CoapDeleteHandler(CoapSession session, CoapMessage message, ICoapRequestDispatch dispatcher = null) 
             : base(session, message, dispatcher)
         {
+            CoapAuthentication.EnsureAuthentication(session, message);
         }
 
         public override async Task<CoapMessage> ProcessAsync()
@@ -18,7 +19,7 @@ namespace SkunkLab.Protocols.Coap.Handlers
             CoapMessage response = null;
             if (!Session.CoapReceiver.IsDup(Message.MessageId))
             {
-                response = Dispatcher.Delete(Message);
+                response = await Dispatcher.DeleteAsync(Message);
             }
             else
             {

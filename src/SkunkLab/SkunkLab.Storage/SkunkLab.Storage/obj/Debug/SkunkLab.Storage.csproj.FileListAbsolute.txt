@@ -180,12 +180,6 @@ C:\_git\piraeus\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.Pro
 C:\_git\piraeus\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.csproj.GenerateResource.Cache
 C:\_git\piraeus\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.dll
 C:\_git\piraeus\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.pdb
-C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.csproj.App.config
-C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.Properties.Resources.resources
-C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.csproj.GenerateResource.Cache
-C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.csproj.CoreCompileInputs.cache
-C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.dll
-C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.pdb
 C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\bin\Debug\SkunkLab.Storage.dll.config
 C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\bin\Debug\SkunkLab.Storage.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\bin\Debug\SkunkLab.Storage.pdb
@@ -272,4 +266,10 @@ C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\bin\Debug\ko\System.
 C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\bin\Debug\ru\System.Spatial.resources.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\bin\Debug\zh-Hant\System.Spatial.resources.dll
+C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.csproj.App.config
+C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.Properties.Resources.resources
+C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.csproj.GenerateResource.Cache
+C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.csproj.CoreCompileInputs.cache
+C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.dll
+C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.pdb
 C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\obj\Debug\SkunkLab.Storage.csprojResolveAssemblyReference.cache

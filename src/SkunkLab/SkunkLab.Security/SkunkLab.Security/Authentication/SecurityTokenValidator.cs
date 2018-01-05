@@ -57,7 +57,9 @@ namespace SkunkLab.Security.Authentication
 
                 Microsoft.IdentityModel.Tokens.SecurityToken stoken = null;
 
-                Thread.CurrentPrincipal = tokenHandler.ValidateToken(tokenString, validationParameters, out stoken);
+                ClaimsPrincipal prin = tokenHandler.ValidateToken(tokenString, validationParameters, out stoken);
+                Thread.CurrentPrincipal = prin;                
+                //AppDomain.CurrentDomain.SetThreadPrincipal(prin);
                 return true;
             }
             catch (Exception ex)
@@ -99,6 +101,7 @@ namespace SkunkLab.Security.Authentication
 
                 ClaimsPrincipal principal = new ClaimsPrincipal(token.Identity);
                 Thread.CurrentPrincipal = principal;
+                //AppDomain.CurrentDomain.SetThreadPrincipal(principal);
             }
             catch(Exception ex)
             {
@@ -118,6 +121,7 @@ namespace SkunkLab.Security.Authentication
                 ReadOnlyCollection<ClaimsIdentity> col = handler.ValidateToken(token);
                 ClaimsPrincipal principal = new ClaimsPrincipal(col[0]);
                 Thread.CurrentPrincipal = principal;
+                //AppDomain.CurrentDomain.SetThreadPrincipal(principal);
                 return true;
             }
             catch(Exception ex)

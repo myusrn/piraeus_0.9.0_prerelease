@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace SkunkLab.Protocols.Coap
 {
     public interface ICoapRequestDispatch : IDisposable
     {
-        CoapMessage Post(CoapMessage message);
+        Task<CoapMessage> PostAsync(CoapMessage message);
 
-        CoapMessage Get(CoapMessage message);
+        Task<CoapMessage> GetAsync(CoapMessage message);
 
-        CoapMessage Put(CoapMessage message);
+        Task<CoapMessage> PutAsync(CoapMessage message);
 
-        CoapMessage Delete(CoapMessage message);
+        Task<CoapMessage> DeleteAsync(CoapMessage message);
 
-        CoapMessage Observe(CoapMessage message);        
+        Task<CoapMessage> ObserveAsync(CoapMessage message);        
     }
 }

@@ -20,7 +20,7 @@ namespace WebGateway.Formatters
             SupportedMediaTypes.Add(new MediaTypeHeaderValue(supportedMediaType));
             SupportedEncodings.Add(Encoding.GetEncoding("utf-8"));
             SupportedEncodings.Add(Encoding.GetEncoding("utf-16"));
-            SupportedEncodings.Add(Encoding.ASCII);
+            SupportedEncodings.Add(Encoding.UTF8);
         }
 
         public override bool CanReadType(Type type)

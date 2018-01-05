@@ -5,7 +5,7 @@ namespace Piraeus.Configuration.Settings
     public class TcpSettings
     {
         
-        public TcpSettings(bool useLengthPrefix = true, bool authenticate = false, X509Certificate2 certificate = null, string pskIdentity = null, byte[] pskKey = null, int? blockSize = null, int? maxBufferSize = null)
+        public TcpSettings(bool useLengthPrefix, int blockSize, int maxBufferSize, bool authenticate = false, X509Certificate2 certificate = null, string pskIdentity = null, byte[] pskKey = null)
         {
             UseLengthPrefix = useLengthPrefix;
             Authenticate = authenticate;
@@ -21,9 +21,9 @@ namespace Piraeus.Configuration.Settings
         public string PskIdentity { get; set; }
         public byte[] PskKey { get; set; }
 
-        public int? BlockSize { get; set; }
+        public int BlockSize { get; set; }
 
-        public int? MaxBufferSize { get; set; }
+        public int MaxBufferSize { get; set; }
 
     }
 }

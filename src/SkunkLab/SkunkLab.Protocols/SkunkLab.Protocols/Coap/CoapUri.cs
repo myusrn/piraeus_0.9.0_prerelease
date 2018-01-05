@@ -57,7 +57,7 @@ namespace SkunkLab.Protocols.Coap
 
         private IEnumerable<string> GetEnumerableParameters(string key)
         {
-            return from kv in items where kv.Key.ToLower(CultureInfo.InvariantCulture) == key.ToLower(CultureInfo.InvariantCulture) select kv.Value.ToLower(CultureInfo.InvariantCulture);
+            return from kv in items where kv.Key.ToLowerInvariant() == key.ToLowerInvariant() select kv.Value;
         }
 
         private string GetSingleParameter(string key)

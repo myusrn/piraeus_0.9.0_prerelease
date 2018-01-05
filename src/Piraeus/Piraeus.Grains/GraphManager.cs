@@ -50,6 +50,12 @@ namespace Piraeus.Grains
             return await resource.GetMetadataAsync();
         }
 
+
+        public static async Task<CommunicationMetrics> GetResourceMetricsAsync(string resourceUriString)
+        {
+            IResource resource = GetResource(resourceUriString);
+            return await resource.GetMetricsAsync();
+        }
         /// <summary>
         /// Subscribes to a resource by creating a subscription and adding it to the resource.
         /// </summary>
@@ -226,6 +232,12 @@ namespace Piraeus.Grains
             Uri uri = new Uri(subscriptionUriString);
             ISubscription subscription = GetSubscription(uri.ToCanonicalString(false));
             return await subscription.GetMetadataAsync();
+        }
+
+        public static async Task<CommunicationMetrics> GetSubscriptionMetricsAsync(string subscriptionUriString)
+        {
+            ISubscription subscription = GetSubscription(subscriptionUriString);
+            return await subscription.GetMetricsAsync();
         }
 
         /// <summary>

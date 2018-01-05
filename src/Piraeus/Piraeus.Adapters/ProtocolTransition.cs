@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Piraeus.Core.Messaging;
+using SkunkLab.Diagnostics.Logging;
 using SkunkLab.Protocols.Coap;
 using SkunkLab.Protocols.Coap.Handlers;
 using SkunkLab.Protocols.Mqtt;
@@ -22,7 +24,20 @@ namespace Piraeus.Adapters
             {
                 CoapMessage msg = CoapMessage.DecodeMessage(message.Message);
                 CoapUri curi = new CoapUri(msg.ResourceUri.ToString());
-                PublishMessage pub = new PublishMessage(false, session.GetQoS(message.ResourceUri).Value, false, session.NewId(), message.ResourceUri, msg.Payload);
+                QualityOfServiceLevelType qos = QualityOfServiceLevelType.AtLeastOnce;
+
+                try
+                {
+                    QualityOfServiceLevelType? qosType = session.GetQoS(curi.Resource);
+                    qos = qosType.HasValue ? qosType.Value : QualityOfServiceLevelType.AtLeastOnce;
+                }
+                catch(Exception ex)
+                {
+                    Task task = Log.LogErrorAsync(ex.Message);
+                    Task.WhenAll(task);
+                }
+
+                PublishMessage pub = new PublishMessage(false, qos, false, session.NewId(), curi.Resource, msg.Payload);
                 return pub.Encode();
                 //return MqttConversion(session, msg.Payload, message.ContentType);
             }
@@ -45,9 +60,7 @@ namespace Piraeus.Adapters
             ushort id = observableToken == null ? session.CoapSender.NewId(token.TokenBytes) : session.CoapSender.NewId(observableToken);
 
             string uriString = CoapUri.Create(session.Config.Authority, message.ResourceUri, IsEncryptedChannel);
-            CoapRequest request = null;
-            CoapResponse response = null;
-
+            
             if (message.Protocol == ProtocolType.MQTT)
             {
                 MqttMessage msg = MqttMessage.DecodeMessage(message.Message);

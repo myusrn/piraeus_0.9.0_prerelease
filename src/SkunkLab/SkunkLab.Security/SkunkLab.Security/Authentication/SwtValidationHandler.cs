@@ -54,7 +54,7 @@ namespace SkunkLab.Security.Authentication
 
                 if(SecurityTokenValidator.Validate(token, SecurityTokenType.SWT, signingKey, issuer, audience))
                 {
-                    HttpContext.Current.User = Thread.CurrentPrincipal;
+                    //HttpContext.Current.User = Thread.CurrentPrincipal;
                 }
 
                 return base.SendAsync(request, cancellationToken);

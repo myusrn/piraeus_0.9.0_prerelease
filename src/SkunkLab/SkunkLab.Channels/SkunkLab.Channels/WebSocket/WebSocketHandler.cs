@@ -75,7 +75,6 @@ namespace SkunkLab.Channels.WebSocket
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Task ProcessWebSocketRequestAsync(AspNetWebSocketContext webSocketContext)
         {
-            //TaskCompletionSource<Task> source = new TaskCompletionSource<Task>();
             
             if (webSocketContext == null)
             {

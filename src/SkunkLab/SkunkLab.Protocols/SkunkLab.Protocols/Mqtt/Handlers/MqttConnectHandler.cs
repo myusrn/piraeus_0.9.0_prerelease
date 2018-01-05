@@ -22,10 +22,6 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
             }
 
             ConnectMessage msg = Message as ConnectMessage;
-            //authenticate
-            string tokenType = msg.Username;
-            string token = msg.Password;
-
 
             //wrong protocol version
             if(msg.ProtocolVersion != 4)
@@ -41,47 +37,19 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
                 return await Task.FromResult<MqttMessage>(new ConnectAckMessage(false, ConnectAckCode.IdentifierRejected));
             }
 
-            if(!Session.IsAuthenticated && (msg.Username == null || msg.Password == null))
+            if(!Session.IsAuthenticated)
             {
-                Session.ConnectResult = ConnectAckCode.BadUsernameOrPassword;
+                Session.ConnectResult = ConnectAckCode.NotAuthorized;
                 return await Task.FromResult<MqttMessage>(new ConnectAckMessage(false, ConnectAckCode.BadUsernameOrPassword));
-            }
-
-            //if not authn'd send back not authz'd
-
-            if (!Session.IsAuthenticated)  //check for case where authentication was not done by channel
-            {
-                try
-                {
-                    Session.IsAuthenticated = Session.Authenticate(tokenType, token);
-                    if (Session.IsAuthenticated)
-                    {
-                        IdentityDecoder decoder = new IdentityDecoder(Session.Config.IdentityClaimType, Session.Config.Indexes);
-                        Session.Identity = decoder.Id;
-                        Session.Indexes = decoder.Indexes == null || decoder.Indexes.Count == 0 ? null : decoder.Indexes;
-                        Session.IsConnected = true;
-                        Session.Connect(ConnectAckCode.ConnectionAccepted);
-                        return await Task.FromResult<MqttMessage>(new ConnectAckMessage(false, ConnectAckCode.ConnectionAccepted));
-                    }
-                    else
-                    {
-                        Session.ConnectResult = ConnectAckCode.NotAuthorized;
-                        return await Task.FromResult<MqttMessage>(new ConnectAckMessage(false, ConnectAckCode.NotAuthorized));
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Trace.TraceError("MQTT authentication failed {0}", ex.Message);
-                    Session.ConnectResult = ConnectAckCode.BadUsernameOrPassword;
-                    return await Task.FromResult<MqttMessage>(new ConnectAckMessage(false, ConnectAckCode.BadUsernameOrPassword));
-                }
             }
             else
             {
                 Session.IsConnected = true;
-                Session.Connect(ConnectAckCode.ConnectionAccepted);      
+                Session.Connect(ConnectAckCode.ConnectionAccepted);
                 return await Task.FromResult<MqttMessage>(new ConnectAckMessage(false, ConnectAckCode.ConnectionAccepted));
             }
+            
+            
         }
     }
 }

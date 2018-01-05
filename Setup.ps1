@@ -1,5 +1,6 @@
 ﻿import-module C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release\Piraeus.Module.dll
 
+
 #$url = "http://localhost:3111"
 $url = "http://localhost:4163"
 $token = Get-PiraeusManagementToken -ServiceUrl $url -Key "12345678"
@@ -42,11 +43,7 @@ $subPolicy = New-CaplPolicy -PolicyID $subPolicyId -EvaluationExpression $subRul
 Set-CaplPolicy -ServiceUrl $url -SecurityToken $token -Policy $pubPolicy 
 Set-CaplPolicy -ServiceUrl $url -SecurityToken $token -Policy $subPolicy
 
-$retval1 = Get-CaplPolicy -ServiceUrl $url -SecurityToken $token -PolicyId $pubPolicyId
-$retval2 = Get-CaplPolicy -ServiceUrl $url -SecurityToken $token -PolicyId $subPolicyId
 
-$retVal1
-$retVal2
 
 
 

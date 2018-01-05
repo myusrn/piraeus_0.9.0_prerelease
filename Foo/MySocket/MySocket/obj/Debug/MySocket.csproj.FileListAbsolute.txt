@@ -1,0 +1,2 @@
+C:\_git\core\Foo\MySocket\MySocket\obj\Debug\MySocket.csprojResolveAssemblyReference.cache
+C:\_git\core\Foo\MySocket\MySocket\obj\Debug\MySocket.csproj.CoreCompileInputs.cache

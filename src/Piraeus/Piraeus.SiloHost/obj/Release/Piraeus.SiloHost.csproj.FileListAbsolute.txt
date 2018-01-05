@@ -76,10 +76,10 @@ C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\System.Diagnostics.Diagnos
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\System.Reflection.Metadata.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\System.Spatial.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\System.Web.Http.WebHost.xml
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.csprojResolveAssemblyReference.cache
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.pdb
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.orleans.g.cs
-C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.csprojResolveAssemblyReference.cache
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\System.Net.Http.Formatting.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\System.Web.Http.xml

@@ -23,9 +23,9 @@ namespace SkunkLab.Channels
         /// <param name="client"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static IChannel Create(TcpClient client, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, TcpClient client, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(client, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, client, blockSize, maxBufferSize, token);
         }
 
         /// <summary>
@@ -36,9 +36,9 @@ namespace SkunkLab.Channels
         /// <param name="clientAuth"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static IChannel Create(TcpClient client, X509Certificate2 certificate, bool clientAuth, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, TcpClient client, X509Certificate2 certificate, bool clientAuth, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(client, certificate, clientAuth, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, client, certificate, clientAuth, blockSize, maxBufferSize, token);
         }
 
         /// <summary>
@@ -49,9 +49,9 @@ namespace SkunkLab.Channels
         /// <param name="psk"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static IChannel Create(TcpClient client, string pskIdentity, byte[] psk, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, TcpClient client, string pskIdentity, byte[] psk, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(client, pskIdentity, psk, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, client, pskIdentity, psk, blockSize, maxBufferSize, token);
         }
         
         #endregion
@@ -61,36 +61,36 @@ namespace SkunkLab.Channels
         /// Creates TCP client channel
         /// </summary>
         /// <returns></returns>
-        public static IChannel Create(string hostname, int port, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, string hostname, int port, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(hostname, port, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, hostname, port, blockSize, maxBufferSize, token);
         }
 
         /// <summary>
         /// Creates TCP client channel
         /// </summary>
         /// <returns></returns>
-        public static IChannel Create(string hostname, int port, IPEndPoint localEP, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, string hostname, int port, IPEndPoint localEP, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(hostname, port, localEP, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, hostname, port, localEP, blockSize, maxBufferSize, token);
         }
 
         /// <summary>
         /// Creates TCP client channel
         /// </summary>
         /// <returns></returns>
-        public static IChannel Create(IPEndPoint remoteEndpoint, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, IPEndPoint remoteEndpoint, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(remoteEndpoint, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, remoteEndpoint, blockSize, maxBufferSize, token);
         }
 
         /// <summary>
         /// Creates TCP client channel
         /// </summary>
         /// <returns></returns>
-        public static IChannel Create(IPEndPoint remoteEndpoint, IPEndPoint localEP, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, IPEndPoint remoteEndpoint, IPEndPoint localEP, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(remoteEndpoint, localEP, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, remoteEndpoint, localEP, blockSize, maxBufferSize, token);
         }
 
 
@@ -99,81 +99,81 @@ namespace SkunkLab.Channels
         /// Creates TCP client channel
         /// </summary>
         /// <returns></returns>
-        public static IChannel Create(IPAddress address, int port, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, IPAddress address, int port, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(address, port, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, address, port, blockSize, maxBufferSize, token);
         }
 
         /// <summary>
         /// Creates TCP client channel
         /// </summary>
         /// <returns></returns>
-        public static IChannel Create(IPAddress address, int port, IPEndPoint localEP, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, IPAddress address, int port, IPEndPoint localEP, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(address, port, localEP, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, address, port, localEP, blockSize, maxBufferSize, token);
         }
 
         /// <summary>
         /// Creates TCP client channel
         /// </summary>
         /// <returns></returns>
-        public static IChannel Create(string hostname, int port, X509Certificate2 certificate, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, string hostname, int port, X509Certificate2 certificate, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(hostname, port, certificate, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, hostname, port, certificate, blockSize, maxBufferSize, token);
         }
 
         /// <summary>
         /// Creates TCP client channel
         /// </summary>
         /// <returns></returns>
-        public static IChannel Create(string hostname, int port, IPEndPoint localEP, X509Certificate2 certificate, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, string hostname, int port, IPEndPoint localEP, X509Certificate2 certificate, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(hostname, port, localEP, certificate, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, hostname, port, localEP, certificate, blockSize, maxBufferSize, token);
         }
 
         /// <summary>
         /// Creates TCP client channel
         /// </summary>
         /// <returns></returns>
-        public static IChannel Create(IPEndPoint remoteEndpoint, X509Certificate2 certificate, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, IPEndPoint remoteEndpoint, X509Certificate2 certificate, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(remoteEndpoint, certificate, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, remoteEndpoint, certificate, blockSize, maxBufferSize, token);
         }
 
         /// <summary>
         /// Creates TCP client channel
         /// </summary>
         /// <returns></returns>
-        public static IChannel Create(IPEndPoint remoteEndpoint, IPEndPoint localEP, X509Certificate2 certificate, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, IPEndPoint remoteEndpoint, IPEndPoint localEP, X509Certificate2 certificate, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(remoteEndpoint, localEP, certificate, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, remoteEndpoint, localEP, certificate, blockSize, maxBufferSize, token);
         }
 
         /// <summary>
         /// Creates TCP client channel
         /// </summary>
         /// <returns></returns>
-        public static IChannel Create(IPAddress address, int port, X509Certificate2 certificate, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, IPAddress address, int port, X509Certificate2 certificate, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(address, port, certificate, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, address, port, certificate, blockSize, maxBufferSize, token);
         }
 
         /// <summary>
         /// Creates TCP client channel
         /// </summary>
         /// <returns></returns>
-        public static IChannel Create(IPAddress address, int port, IPEndPoint localEP, X509Certificate2 certificate, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, IPAddress address, int port, IPEndPoint localEP, X509Certificate2 certificate, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(address, port, localEP, certificate, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, address, port, localEP, certificate, blockSize, maxBufferSize, token);
         }
 
         /// <summary>
         /// Creates TCP client channel
         /// </summary>
         /// <returns></returns>
-        public static IChannel Create(IPAddress address, int port, IPEndPoint localEP, string pskIdentity, byte[] psk, int? blockSize, int? maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, IPAddress address, int port, IPEndPoint localEP, string pskIdentity, byte[] psk, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(address, port, localEP, pskIdentity, psk, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, address, port, localEP, pskIdentity, psk, blockSize, maxBufferSize, token);
         }
 
        
@@ -368,11 +368,9 @@ namespace SkunkLab.Channels
         /// <param name="remotePort"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static IChannel Create(IPAddress localAddress, int localPort, IPAddress remoteAddress, int remotePort, CancellationToken token)
+        public static IChannel Create(UdpClient client, IPEndPoint remoteEP, CancellationToken token)
         {
-            IPEndPoint localEP = new IPEndPoint(localAddress, localPort);
-            IPEndPoint remoteEP = new IPEndPoint(remoteAddress, remotePort);
-            return UdpChannel.Create(localEP, remoteEP, token);
+            return UdpChannel.Create(client, remoteEP, token);
         }
 
         #endregion
@@ -387,9 +385,9 @@ namespace SkunkLab.Channels
         /// <param name="port"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static IChannel Create(IPEndPoint localEP, string hostname, int port, CancellationToken token)
+        public static IChannel Create(int localPort, string hostname, int port, CancellationToken token)
         {
-            return UdpChannel.Create(localEP, hostname, port, token);
+            return UdpChannel.Create(localPort, hostname, port, token);
         }
 
         /// <summary>
@@ -400,9 +398,9 @@ namespace SkunkLab.Channels
         /// <param name="port"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static IChannel Create(IPEndPoint localEP, IPAddress remoteAddress, int port, CancellationToken token)
+        public static IChannel Create(int localPort, IPEndPoint remoteEP, CancellationToken token)
         {
-            return UdpChannel.Create(localEP, remoteAddress, port, token);
+            return UdpChannel.Create(localPort, remoteEP, token);
         }
 
         #endregion

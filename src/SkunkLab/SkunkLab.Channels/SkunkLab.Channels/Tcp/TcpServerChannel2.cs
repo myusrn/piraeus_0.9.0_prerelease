@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Org.BouncyCastle.Crypto.Tls;
 using Org.BouncyCastle.Security;
+using SkunkLab.Diagnostics.Logging;
 
 namespace SkunkLab.Channels.Tcp
 {
@@ -137,7 +138,7 @@ namespace SkunkLab.Channels.Tcp
             writeConnection = new SemaphoreSlim(1);
 
             try
-            {
+            {   
                 localStream = client.GetStream();
             }
             catch (Exception ex)
@@ -185,54 +186,114 @@ namespace SkunkLab.Channels.Tcp
 
         public override async Task ReceiveAsync()
         {
+            await Log.LogInfoAsync("Channel {0} tcp server channel2 receiving.", Id);
+
             byte[] buffer = null;
             int offset = 0;
             int bytesRead = 0;
             byte[] msgBuffer = null;
-            byte[] tempBuffer = null;
+            byte[] tempBuffer = null;            
 
             try
             {
                 while (client.Connected && !token.IsCancellationRequested)
                 {
-                    await readConnection.WaitAsync();
+                    await readConnection.WaitAsync();             
                     buffer = new byte[blockSize];
-                    bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
 
-                    while (bytesRead == blockSize)
+                    while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
                     {
-                        tempBuffer = new byte[blockSize];
-                        Buffer.BlockCopy(buffer, 0, tempBuffer, offset, buffer.Length);
-                        offset += bytesRead;
+                        offset += msgBuffer == null ? 0 : msgBuffer.Length;
+
+                        if (offset + bytesRead > this.maxBufferSize)
+                        {
+                            await Log.LogErrorAsync("Message receives by tcp server channel2 exceeds maximum message size.  Will close channel.");
+                            await CloseAsync();
+                            return;
+                        }
+
+                        if (offset == 0)
+                        {
+                            tempBuffer = new byte[bytesRead];
+                            Buffer.BlockCopy(buffer, 0, tempBuffer, offset, bytesRead);
+                        }
+                        else
+                        {
+                            tempBuffer = new byte[msgBuffer.Length + bytesRead];
+                            Buffer.BlockCopy(msgBuffer, 0, tempBuffer, 0, msgBuffer.Length);
+                            Buffer.BlockCopy(buffer, 0, tempBuffer, offset, bytesRead);
+                        }
                     }
 
-                    if (tempBuffer == null)
+                    if (tempBuffer != null && tempBuffer.Length > 0)
                     {
-                        msgBuffer = new byte[bytesRead + offset];
-                        Buffer.BlockCopy(buffer, 0, msgBuffer, offset, msgBuffer.Length);
-                    }
-                    else
-                    {
-                        msgBuffer = new byte[bytesRead + offset];
-                        Buffer.BlockCopy(tempBuffer, 0, msgBuffer, 0, tempBuffer.Length);
-                        Buffer.BlockCopy(buffer, 0, msgBuffer, offset, buffer.Length);
+                        msgBuffer = tempBuffer;
+                        OnReceive?.Invoke(this, new ChannelReceivedEventArgs(Id, msgBuffer));
+                        OnObserve?.Invoke(this, new ChannelObserverEventArgs(null, null, msgBuffer));
+                        offset = 0;
+                        tempBuffer = null;
+                        msgBuffer = null;
                     }
 
-                    OnReceive?.Invoke(this, new ChannelReceivedEventArgs(Id, msgBuffer));
-                    OnObserve?.Invoke(this, new ChannelObserverEventArgs(null, null, msgBuffer));
-
-                    offset = 0;
                     readConnection.Release();
+
+                    await Task.Delay(10);
+                    //bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+
+                    //if (bytesRead == 0)
+                    //{
+                    //    if (!client.Connected)
+                    //    {
+                    //        readConnection.Release();
+                    //        break;
+                    //    }
+
+                    //    continue;
+                    //}
+
+                    //offset += msgBuffer == null ? 0 : msgBuffer.Length;
+
+                    //if(offset + bytesRead > this.maxBufferSize)
+                    //{
+                    //    await Log.LogErrorAsync("Message receives by tcp server channel2 exceeds maximum message size.  Will close channel.");
+                    //    await CloseAsync();
+                    //    return;
+                    //}
+
+                    //if (offset == 0)
+                    //{
+                    //    tempBuffer = new byte[bytesRead];
+                    //    Buffer.BlockCopy(buffer, 0, tempBuffer, offset, bytesRead);
+                    //}
+                    //else
+                    //{
+                    //    tempBuffer = new byte[msgBuffer.Length + bytesRead];
+                    //    Buffer.BlockCopy(msgBuffer, 0, tempBuffer, 0, msgBuffer.Length);
+                    //    Buffer.BlockCopy(buffer, 0, tempBuffer, offset, bytesRead);
+                    //}
+
+                    //if (bytesRead < blockSize)
+                    //{
+                    //    //EOM
+                    //    msgBuffer = tempBuffer;
+                    //    readConnection.Release();
+                    //    OnReceive?.Invoke(this, new ChannelReceivedEventArgs(Id, msgBuffer));
+                    //    OnObserve?.Invoke(this, new ChannelObserverEventArgs(null, null, msgBuffer));
+                    //    await Log.LogInfoAsync("TCP server channel 2 fired receive events.");
+                    //    offset = 0;
+                    //    tempBuffer = null;
+                    //    msgBuffer = null;
+
+                    //}
+
                 }
-            }
-            catch (AggregateException ae)
-            {
-                State = ChannelState.Aborted;
-                Trace.TraceError(ae.Flatten().Message);
-                OnError?.Invoke(this, new ChannelErrorEventArgs(Id, ae));
             }
             catch (Exception ex)
             {
+                stream.Close();
+                stream.Dispose();
+                client.Close();
+                await Log.LogErrorAsync("Tcp Server Channel receive error {0}", ex.Message);
                 if (State != ChannelState.ClosedReceived && State != ChannelState.Closed)
                 {
                     State = ChannelState.Aborted;
@@ -252,6 +313,7 @@ namespace SkunkLab.Channels.Tcp
             string errorMsg = null;
             int offset = 0;
             byte[] buffer = null;
+            
 
             if(message.Length > maxBufferSize)
             {
@@ -261,11 +323,11 @@ namespace SkunkLab.Channels.Tcp
 
             try
             {
-                await writeConnection.WaitAsync();
+                await writeConnection.WaitAsync().ConfigureAwait(false);
 
                 int segments = message.Length / blockSize;
                 segments = message.Length % blockSize > 0 ? segments + 1 : segments;
-
+                
                 int index = 0;
                 while(index < segments)
                 {
@@ -276,19 +338,25 @@ namespace SkunkLab.Channels.Tcp
                     else
                     {
                         buffer = new byte[blockSize];
-                        offset += blockSize;
                     }
+
+                    Buffer.BlockCopy(message, offset, buffer, 0, buffer.Length);
+                    offset += blockSize;
 
                     if (stream != null && stream.CanWrite)
                     {
-                        await stream.WriteAsync(buffer, 0, buffer.Length);
-                        await stream.FlushAsync();
+                        await stream.WriteAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+                        await stream.FlushAsync().ConfigureAwait(false);
+                        await Log.LogInfoAsync("Channel {0} tcp server channel2 sent message.").ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        await Log.LogInfoAsync("Channel {0} tcp server channel2 cannot send because stream is not writable at this time.").ConfigureAwait(false);
                     }
 
                     index++;
                 }
-
-                writeConnection.Release();
+                
                 OnSent?.Invoke(this, new ChannelSentEventArgs(Id, null));
             }
             catch (AggregateException ae)
@@ -304,12 +372,16 @@ namespace SkunkLab.Channels.Tcp
                 errorMsg = ex.Message;
                 error = ex;
             }
+            finally
+            {
+                writeConnection.Release();
+            }
 
             if (error != null)
             {
                 Trace.TraceError(errorMsg);
                 OnError?.Invoke(this, new ChannelErrorEventArgs(Id, error));
-                await CloseAsync();
+                await CloseAsync().ConfigureAwait(false);
             }
         }
 
@@ -363,5 +435,28 @@ namespace SkunkLab.Channels.Tcp
             }
         }
 
+        private SocketAsyncEventArgs GetReadArgs()
+        {
+            SocketAsyncEventArgs readSocketAsyncEventArgs = new SocketAsyncEventArgs();
+            readSocketAsyncEventArgs.Completed += ReadSocketAsyncEventArgs_Completed;
+            return readSocketAsyncEventArgs;
+        }
+
+        private SocketAsyncEventArgs GetWriteArgs()
+        {
+            SocketAsyncEventArgs writeSocketAsyncEventArgs = new SocketAsyncEventArgs();
+            writeSocketAsyncEventArgs.Completed += WriteSocketAsyncEventArgs_Completed;
+            return writeSocketAsyncEventArgs;
+        }
+
+        private void WriteSocketAsyncEventArgs_Completed(object sender, SocketAsyncEventArgs e)
+        {          
+            writeConnection.Release();
+        }
+
+        private void ReadSocketAsyncEventArgs_Completed(object sender, SocketAsyncEventArgs e)
+        {           
+            readConnection.Release();
+        }
     }
 }

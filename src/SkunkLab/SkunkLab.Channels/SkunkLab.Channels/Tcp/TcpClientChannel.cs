@@ -12,66 +12,68 @@ using System.Threading;
 using System.Threading.Tasks;
 using Org.BouncyCastle.Crypto.Tls;
 using Org.BouncyCastle.Security;
+using SkunkLab.Diagnostics.Logging;
 
 namespace SkunkLab.Channels.Tcp
 {
     public class TcpClientChannel : TcpChannel
     {
         #region ctor
-        public TcpClientChannel(string hostname, int port, CancellationToken token)
-            : this(hostname, port, null, null, token)
+        public TcpClientChannel(string hostname, int port, int maxBufferSize, CancellationToken token)
+            : this(hostname, port, null, null, maxBufferSize, token)
         {            
         }
 
-        public TcpClientChannel(string hostname, int port, IPEndPoint localEP, CancellationToken token)
-            : this(hostname, port, localEP, null, token)
+        public TcpClientChannel(string hostname, int port, IPEndPoint localEP, int maxBufferSize, CancellationToken token)
+            : this(hostname, port, localEP, null, maxBufferSize, token)
         {
         }
 
-        public TcpClientChannel(IPEndPoint remoteEndpoint, CancellationToken token)
-            : this(remoteEndpoint, null, null, token)
+        public TcpClientChannel(IPEndPoint remoteEndpoint, int maxBufferSize, CancellationToken token)
+            : this(remoteEndpoint, null, null, maxBufferSize, token)
         {
         }
 
-        public TcpClientChannel(IPEndPoint remoteEndpoint, IPEndPoint localEP, CancellationToken token)
-            : this(remoteEndpoint, localEP, null, token)
+        public TcpClientChannel(IPEndPoint remoteEndpoint, IPEndPoint localEP, int maxBufferSize, CancellationToken token)
+            : this(remoteEndpoint, localEP, null, maxBufferSize, token)
         {
         }
 
-        public TcpClientChannel(IPAddress address, int port, CancellationToken token)
-            : this(address, port, null, null, token)
+        public TcpClientChannel(IPAddress address, int port, int maxBufferSize, CancellationToken token)
+            : this(address, port, null, null, maxBufferSize, token)
         {
         }
 
-        public TcpClientChannel(IPAddress address, int port, IPEndPoint localEP, CancellationToken token)
-            : this(address, port, localEP, null, token)
+        public TcpClientChannel(IPAddress address, int port, IPEndPoint localEP, int maxBufferSize, CancellationToken token)
+            : this(address, port, localEP, null, maxBufferSize, token)
         {
         }
 
-        public TcpClientChannel(string hostname, int port,  X509Certificate2 certificate, CancellationToken token)
-            :this(hostname, port, null, certificate, token)
+        public TcpClientChannel(string hostname, int port,  X509Certificate2 certificate, int maxBufferSize, CancellationToken token)
+            :this(hostname, port, null, certificate, maxBufferSize, token)
         {
         }
 
-        public TcpClientChannel(string hostname, int port, IPEndPoint localEP, X509Certificate2 certificate, CancellationToken token)
+        public TcpClientChannel(string hostname, int port, IPEndPoint localEP, X509Certificate2 certificate, int maxBufferSize, CancellationToken token)
         {
             this.hostname = hostname;
             this.port = port;
             this.localEP = localEP;
             this.certificate = certificate;
             this.token = token;
+            this.maxBufferSize = maxBufferSize;
             Id = "tcp-" + Guid.NewGuid().ToString();
             this.token.Register(async () => await CloseAsync());
 
             Port = port;           
         }
         
-        public TcpClientChannel(IPEndPoint remoteEndpoint, X509Certificate2 certificate, CancellationToken token)
-            : this(remoteEndpoint, null, certificate, token)
+        public TcpClientChannel(IPEndPoint remoteEndpoint, X509Certificate2 certificate, int maxBufferSize, CancellationToken token)
+            : this(remoteEndpoint, null, certificate, maxBufferSize, token)
         {
         }
 
-        public TcpClientChannel(IPEndPoint remoteEndpoint, IPEndPoint localEP, X509Certificate2 certificate, CancellationToken token)
+        public TcpClientChannel(IPEndPoint remoteEndpoint, IPEndPoint localEP, X509Certificate2 certificate, int maxBufferSize, CancellationToken token)
         {
             
             if(remoteEndpoint == null)
@@ -83,6 +85,7 @@ namespace SkunkLab.Channels.Tcp
             this.localEP = localEP;
             this.certificate = certificate;
             this.token = token;
+            this.maxBufferSize = maxBufferSize;
             Id = "tcp-" + Guid.NewGuid().ToString();
             this.token.Register(async () => await CloseAsync());
 
@@ -95,12 +98,12 @@ namespace SkunkLab.Channels.Tcp
             Port = remoteEndpoint.Port;
         }
 
-        public TcpClientChannel(IPAddress address, int port, X509Certificate2 certificate, CancellationToken token)
-            : this(address, port, null, certificate, token)
+        public TcpClientChannel(IPAddress address, int port, X509Certificate2 certificate, int maxBufferSize, CancellationToken token)
+            : this(address, port, null, certificate, maxBufferSize, token)
         {
 
         }
-        public TcpClientChannel(IPAddress address, int port, IPEndPoint localEP, X509Certificate2 certificate, CancellationToken token)
+        public TcpClientChannel(IPAddress address, int port, IPEndPoint localEP, X509Certificate2 certificate, int maxBufferSize, CancellationToken token)
         {
             if(address == null)
             {
@@ -112,6 +115,7 @@ namespace SkunkLab.Channels.Tcp
             this.localEP = localEP;
             this.certificate = certificate;
             this.token = token;
+            this.maxBufferSize = maxBufferSize;
             Id = "tcp-" + Guid.NewGuid().ToString();
             this.token.Register(async () => await CloseAsync());
 
@@ -124,25 +128,21 @@ namespace SkunkLab.Channels.Tcp
             Port = port;
         }
 
-        public TcpClientChannel(IPAddress address, int port, IPEndPoint localEP, string pskIdentity, byte[] psk, CancellationToken token)
+        public TcpClientChannel(IPAddress address, int port, IPEndPoint localEP, string pskIdentity, byte[] psk, int maxBufferSize, CancellationToken token)
         {
             this.address = address;
             this.port = port;
             this.pskIdentity = pskIdentity;
             this.psk = psk;
             this.token = token;
+            this.maxBufferSize = maxBufferSize;
             Id = "tcp-" + Guid.NewGuid().ToString();
         }
 
-        //public TcpClientChannel(IPEndPoint remoteEndpoint, string pskIdentity, byte[] psk, CancellationToken token)
-        //{
-        //    remoteEP = remoteEndpoint;
-        //    this.pskIdentity = pskIdentity;
-        //    this.psk = psk;
-        //    this.token = token;
-        //}
+
         #endregion
-     
+
+        private int maxBufferSize;
         private string pskIdentity;
         private byte[] psk;
         private IPEndPoint localEP;
@@ -170,13 +170,6 @@ namespace SkunkLab.Channels.Tcp
         public override event EventHandler<ChannelSentEventArgs> OnSent;
         public override event EventHandler<ChannelObserverEventArgs> OnObserve;
 
-        //public override event ChannelReceivedEventHandler OnReceive;
-        //public override event ChannelCloseEventHandler OnClose;
-        //public override event ChannelOpenEventHandler OnOpen;
-        //public override event ChannelErrorEventHandler OnError;
-        //public override event ChannelStateEventHandler OnStateChange;
-        //public override event ChannelRetryEventHandler OnRetry;
-        //public override event ChannelSentEventHandler OnSent;
 
         public override bool IsConnected
         {
@@ -291,22 +284,13 @@ namespace SkunkLab.Channels.Tcp
 
                     if(!sslStream.IsEncrypted || !sslStream.IsSigned)
                     {
-                        stream.Dispose();
                         throw new AuthenticationException("SSL stream is not both encrypted and signed.");
                     }                    
                 }
-                catch(AggregateException ae)
-                {
-                    State = ChannelState.Aborted;
-                    Trace.TraceError(ae.Flatten().Message);
-                    OnError?.Invoke(this, new ChannelErrorEventArgs(Id, ae));
-                    throw;
-                }
                 catch (Exception ex)
                 {
-                    stream.Dispose();
                     State = ChannelState.Aborted;
-                    Trace.TraceError(ex.Message);
+                    await Log.LogErrorAsync("TCP client channel open error {0}", ex.Message);
                     OnError?.Invoke(this, new ChannelErrorEventArgs(Id, ex));
                     throw;
                 }
@@ -322,6 +306,8 @@ namespace SkunkLab.Channels.Tcp
 
         public override async Task ReceiveAsync()
         {
+            await Log.LogInfoAsync("Channel {0} tcp client channel receiving.", Id);
+
             byte[] buffer = null;
             byte[] prefix = null;
             int remainingLength = 0;
@@ -347,6 +333,11 @@ namespace SkunkLab.Channels.Tcp
                     //ensure the length prefix is ordered correctly to calc the remaining length
                     prefix = BitConverter.IsLittleEndian ? prefix.Reverse().ToArray() : prefix;
                     remainingLength = BitConverter.ToInt32(prefix, 0);
+
+                    if(remainingLength >= maxBufferSize)
+                    {
+                        throw new IndexOutOfRangeException("TCP client channel receive message exceeds max buffer size");
+                    }
 
                     offset = 0;
 
@@ -394,6 +385,16 @@ namespace SkunkLab.Channels.Tcp
             Exception error = null;
             string errorMsg = null;
 
+            if(message == null || message.Length == 0)
+            {
+                throw new IndexOutOfRangeException("TCP client channel cannot send null or 0-length message");
+            }
+
+            if (message.Length > maxBufferSize)
+            {
+                throw new IndexOutOfRangeException("TCP server channel message exceeds max buffer size");
+            }
+
             try
             {
                 await writeConnection.WaitAsync();
@@ -407,6 +408,11 @@ namespace SkunkLab.Channels.Tcp
                 {
                     await stream.WriteAsync(buffer, 0, buffer.Length);
                     await stream.FlushAsync();
+                    await Log.LogInfoAsync("Channel {0} tcp client channel sent message.");
+                }
+                else
+                {
+                    await Log.LogInfoAsync("Channel {0} tcp client channel cannot send because stream is not writable at this time.");
                 }
 
                 writeConnection.Release();
@@ -438,10 +444,6 @@ namespace SkunkLab.Channels.Tcp
         {
             if (dispose & !disposed)
             {
-                if (client != null && IsConnected)
-                {
-                    client.Close();
-                }
 
                 if (readConnection != null)
                 {
@@ -454,12 +456,19 @@ namespace SkunkLab.Channels.Tcp
                     writeConnection.Release();
                     writeConnection.Dispose();
                 }
-                if (client.Client != null)
+
+                if (stream != null)
                 {
-                    client.Client.Dispose();
+                    stream.Close();
+                    stream.Dispose();
                 }
 
-                client = null;
+                if (client != null && IsConnected)
+                {
+                    client.Close();
+                    client.Dispose();
+                }
+
                 disposed = true;
             }
         }

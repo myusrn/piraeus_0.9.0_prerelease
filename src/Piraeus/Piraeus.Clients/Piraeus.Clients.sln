@@ -1,9 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piraeus.Clients", "Piraeus.Clients.csproj", "{E41C1AA8-8160-4D4C-8462-E9EC011560EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkunkLab.Channels", "..\..\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\SkunkLab.Channels.csproj", "{7C69A3CA-29DD-4C33-B70F-F998A6E650B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkunkLab.Diagnostics", "..\..\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\SkunkLab.Diagnostics.csproj", "{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkunkLab.Storage", "..\..\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\SkunkLab.Storage.csproj", "{738CBF32-00AB-4D4D-BA03-BBA55CE1A543}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkunkLab.Protocols", "..\..\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\SkunkLab.Protocols.csproj", "{7B2C72A0-0DBA-4DED-96DC-B6AF80A82277}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkunkLab.Security", "..\..\SkunkLab\SkunkLab.Security\SkunkLab.Security\SkunkLab.Security.csproj", "{EA12413C-2396-4435-AAD5-97F846FDD9C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,26 @@ Global
 		{E41C1AA8-8160-4D4C-8462-E9EC011560EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E41C1AA8-8160-4D4C-8462-E9EC011560EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E41C1AA8-8160-4D4C-8462-E9EC011560EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C69A3CA-29DD-4C33-B70F-F998A6E650B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C69A3CA-29DD-4C33-B70F-F998A6E650B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C69A3CA-29DD-4C33-B70F-F998A6E650B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C69A3CA-29DD-4C33-B70F-F998A6E650B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6BBC79C-7F29-4385-8B4B-BD73D01AC4E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{738CBF32-00AB-4D4D-BA03-BBA55CE1A543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{738CBF32-00AB-4D4D-BA03-BBA55CE1A543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{738CBF32-00AB-4D4D-BA03-BBA55CE1A543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{738CBF32-00AB-4D4D-BA03-BBA55CE1A543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B2C72A0-0DBA-4DED-96DC-B6AF80A82277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B2C72A0-0DBA-4DED-96DC-B6AF80A82277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B2C72A0-0DBA-4DED-96DC-B6AF80A82277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B2C72A0-0DBA-4DED-96DC-B6AF80A82277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA12413C-2396-4435-AAD5-97F846FDD9C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA12413C-2396-4435-AAD5-97F846FDD9C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA12413C-2396-4435-AAD5-97F846FDD9C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA12413C-2396-4435-AAD5-97F846FDD9C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

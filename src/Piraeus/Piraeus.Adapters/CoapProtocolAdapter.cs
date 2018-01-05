@@ -1,8 +1,12 @@
-﻿using SkunkLab.Channels;
+﻿using Piraeus.Configuration.Settings;
+using SkunkLab.Channels;
 using SkunkLab.Diagnostics.Logging;
 using SkunkLab.Protocols.Coap;
 using SkunkLab.Protocols.Coap.Handlers;
+using SkunkLab.Security.Authentication;
 using System;
+using System.Diagnostics;
+using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,8 +14,15 @@ namespace Piraeus.Adapters
 {
     public class CoapProtocolAdapter : ProtocolAdapter
     {  
-        public CoapProtocolAdapter(CoapConfig config, IChannel channel)
-        {            
+        public CoapProtocolAdapter(PiraeusConfig config, IAuthenticator authenticator, IChannel channel)
+        {
+
+            CoapConfigOptions options = config.Protocols.Coap.ObserveOption && config.Protocols.Coap.NoResponseOption ? CoapConfigOptions.Observe | CoapConfigOptions.NoResponse : config.Protocols.Coap.ObserveOption ? CoapConfigOptions.Observe : config.Protocols.Coap.NoResponseOption ? CoapConfigOptions.NoResponse : CoapConfigOptions.None;
+            CoapConfig coapConfig = new CoapConfig(authenticator, config.Protocols.Coap.HostName, options, config.Protocols.Coap.AutoRetry,
+                config.Protocols.Coap.KeepAliveSeconds, config.Protocols.Coap.AckTimeoutSeconds, config.Protocols.Coap.AckRandomFactor,
+                config.Protocols.Coap.MaxRetransmit, config.Protocols.Coap.NStart, config.Protocols.Coap.DefaultLeisure, config.Protocols.Coap.ProbingRate, config.Protocols.Coap.MaxLatencySeconds);
+
+
             Channel = channel;
             Channel.OnClose += Channel_OnClose;
             Channel.OnError += Channel_OnError;
@@ -20,7 +31,7 @@ namespace Piraeus.Adapters
             Channel.OnRetry += Channel_OnRetry;
             Channel.OnSent += Channel_OnSent;
             Channel.OnStateChange += Channel_OnStateChange;
-            session = new CoapSession(config);            
+            session = new CoapSession(coapConfig);            
         }
 
         public override event System.EventHandler<ProtocolAdapterErrorEventArgs> OnError;
@@ -29,6 +40,7 @@ namespace Piraeus.Adapters
         private CoapSession session;
         private ICoapRequestDispatch dispatcher;
         private bool disposedValue;
+        private bool forcePerReceiveAuthn;
         
 
 
@@ -37,6 +49,8 @@ namespace Piraeus.Adapters
 
         public override void Init()
         {
+            forcePerReceiveAuthn = Channel as UdpChannel != null;
+
             dispatcher = new CoapRequestDispatcher(session, Channel);
             Task task = Channel.OpenAsync();
             Task.WaitAll(task);
@@ -77,6 +91,7 @@ namespace Piraeus.Adapters
 
         private void Channel_OnOpen(object sender, ChannelOpenEventArgs e)
         {
+           
             //opened = true;
             Task task = Log.LogInfoAsync("Channel {0} opened.", e.ChannelId);
             Task.WhenAll(task);
@@ -85,7 +100,7 @@ namespace Piraeus.Adapters
 
             try
             {
-                if (!Channel.IsAuthenticated)
+                if (!Channel.IsAuthenticated && e.Message != null)
                 {
                     CoapMessage msg = CoapMessage.DecodeMessage(e.Message);
                     CoapUri coapUri = new CoapUri(msg.ResourceUri.ToString());
@@ -98,7 +113,7 @@ namespace Piraeus.Adapters
                 Task.WhenAll(t);
             }
 
-            if (!session.IsAuthenticated)
+            if (!session.IsAuthenticated && e.Message != null)
             {
                 //close the channel
                 Task logTask = Log.LogErrorAsync("Channel {0} not authenticated. Closing channel.", Channel.Id);
@@ -111,35 +126,81 @@ namespace Piraeus.Adapters
         }
         private void Channel_OnReceive(object sender, ChannelReceivedEventArgs e)
         {
-            CoapMessage message = CoapMessage.DecodeMessage(e.Message);            
+            Task logTask = Log.LogInfoAsync("Channel {0} received message.", e.ChannelId);
+            Task.WhenAll(logTask);
+
+            CoapMessage message = CoapMessage.DecodeMessage(e.Message);     
+            
+            if(!session.IsAuthenticated || forcePerReceiveAuthn)
+            {
+                try
+                {
+                    CoapAuthentication.EnsureAuthentication(session, message, forcePerReceiveAuthn);
+                }
+                catch
+                {
+                    Task t = Channel.CloseAsync();
+                    Task.WhenAll(t);
+                    return;
+                }
+            }
+            
+
 
             OnObserve?.Invoke(this, new ChannelObserverEventArgs(message.ResourceUri.ToString(), MediaTypeConverter.ConvertFromMediaType(message.ContentType), message.Payload));
+                        
+            Task task = Forward(message);
+            Task.WhenAll(task);
+            //Task task = Forward(message);
+            //Task.WhenAll(task);
+
+
+            //CoapMessageHandler handler = CoapMessageHandler.Create(session, message, dispatcher);
+
+
+            //CoapMessage  msg = handler.ProcessAsync().GetAwaiter().GetResult();
+            //if(msg != null)
+            //{
+            //    Channel.SendAsync(msg.Encode()).GetAwaiter().GetResult();
+            //}
+
             
+            //Task t = Task.Factory.StartNew(async () =>
+            //{
+            //    CoapMessage msg = await handler.ProcessAsync();
+            //    if (msg != null)
+            //    {
+            //        await Channel.SendAsync(msg.Encode());
+            //    }
+            //});
+            //Task.WhenAll(t);
+        }
+
+
+        private async Task Forward(CoapMessage message)
+        {
             CoapMessageHandler handler = CoapMessageHandler.Create(session, message, dispatcher);
 
-            Task t = Task.Factory.StartNew(async () =>
+            await Log.LogInfoAsync("Coap handler about to start processing");
+            CoapMessage msg = await handler.ProcessAsync();
+            await Log.LogInfoAsync("Coap handler processed.");
+
+            if (msg != null)
             {
-                CoapMessage msg = await handler.ProcessAsync();
-                if(msg != null)
-                {
-                    await Channel.SendAsync(msg.Encode());
-                }
-            });
+                await Log.LogInfoAsync("Coap handler message to be sent.");
+                await Channel.SendAsync(msg.Encode());
+                await Log.LogInfoAsync("Coap handler message sent.");
 
-            Task.WaitAll(t);
+            }
+            else
+            {
+                await Log.LogInfoAsync("Coap handler return null messsage.");
+            }
 
-            //Task.WhenAll(t);
-            //Task<CoapMessage> task = handler.ProcessAsync();
-            //Task.WhenAll<CoapMessage>(task);
-            //CoapMessage response = task.Result;
-
-            //if (response != null)
-            //{
-            //    Task sendTask = Channel.SendAsync(response.Encode());
-            //    Task.WhenAll(sendTask);
-            //}
         }
-        
+
+
+
         private void Channel_OnError(object sender, ChannelErrorEventArgs e)
         {
             OnError?.Invoke(this, new ProtocolAdapterErrorEventArgs(Channel.Id, e.Error));

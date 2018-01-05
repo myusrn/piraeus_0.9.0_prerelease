@@ -15,83 +15,253 @@ namespace Samples.Clients.Mqtt
 {
     class Program
     {
+        //static string audience = "http://www.skunklab.io/";
+        //static string issuer = "http://www.skunklab.io/";
+        //static string symmetricKey = "SJoPNjLKFR4j1tD5B4xhJStujdvVukWz39DIY3i8abE=";
+        //static string nameClaimType = "http://www.skunklab.io/name";
+        //static string roleClaimType = "http://www.skunklab.io/role";
+        //static string endpoint = "ws://localhost:4163/api/connect";
+
+        //private static CancellationTokenSource source;
+        //private static bool abSwitch;
+        //private static IChannel channel; //communuications channel
+        //static string resourceA = "http://www.skunklab.io/resourcea";
+        //static string resourceB = "http://www.skunklab.io/resourceb";
+
         static string audience = "http://www.skunklab.io/";
         static string issuer = "http://www.skunklab.io/";
         static string symmetricKey = "SJoPNjLKFR4j1tD5B4xhJStujdvVukWz39DIY3i8abE=";
         static string nameClaimType = "http://www.skunklab.io/name";
         static string roleClaimType = "http://www.skunklab.io/role";
-        static string endpoint = "ws://localhost:4163/api/connect";
-
-        private static CancellationTokenSource source;
-        private static bool abSwitch;
-        private static IChannel channel; //communuications channel
         static string resourceA = "http://www.skunklab.io/resourcea";
         static string resourceB = "http://www.skunklab.io/resourceb";
+
+        static string endpoint = "ws://localhost:4163/api/connect";
+
+        static int channelNo;
+        static int index;
+        static IChannel channel;
+        static CancellationTokenSource source;
+        static string contentType = "text/plain";
+        static string publishResource;
+        static string observeResource;
+        static string role;
+        static string clientName;
+
 
         static void Main(string[] args)
         {
             source = new CancellationTokenSource();
+            WriteHeader();  //descriptive header
+            SelectClientRole(); //select a role for the client
 
-            Console.WriteLine("MQTT Client press any key to continue.");
-            Console.ReadKey();
+            string securityToken = GetSecurityToken();  //get the security token with a unique name
+            SetResources(); //setup the resources for pub and observe based on role.
 
-            Console.Write("Select a role (A/B) ? ");
-            abSwitch = Console.ReadLine().ToUpperInvariant() == "A";
+            //Note: Must start the Web gateway and/or TCP/UDP gateway to be able to communicate
+            SelectChannel(); //pick a channel for communication 
 
-            string token = GetSecurityToken(abSwitch ? "A" : "B");
-
-            channel = ChannelFactory.Create(new Uri(endpoint), token, "mqtt", new WebSocketConfig(), source.Token);
-            channel.OnStateChange += Channel_OnStateChange1;
-            channel.OnClose += Channel_OnClose;
+            channel = GetChannel(channelNo, securityToken);
+            channel.OnStateChange += Channel_OnStateChange;
             channel.OnError += Channel_OnError;
-            //Task task = channel.OpenAsync();
-            //Task.WaitAll(task);
+            channel.OnClose += Channel_OnClose;
 
-            //Task t = channel.ReceiveAsync();
-            //Task.WhenAll(t);
+            //source = new CancellationTokenSource();
 
-            string pubResource = abSwitch ? resourceA : resourceB;
-            string subResource = abSwitch ? resourceB : resourceA;
+            //Console.WriteLine("MQTT Client press any key to continue.");
+            //Console.ReadKey();
 
-            MqttConfig config = new MqttConfig(null);
+            //Console.Write("Select a role (A/B) ? ");
+            //abSwitch = Console.ReadLine().ToUpperInvariant() == "A";
+
+            //string token = GetSecurityToken(abSwitch ? "A" : "B");
+
+            //channel = ChannelFactory.Create(new Uri(endpoint), token, "mqtt", new WebSocketConfig(), source.Token);
+            //channel.OnStateChange += Channel_OnStateChange1;
+            //channel.OnClose += Channel_OnClose;
+            //channel.OnError += Channel_OnError;
+
+
+            //string pubResource = abSwitch ? resourceA : resourceB;
+            //string subResource = abSwitch ? resourceB : resourceA;
+
+            MqttConfig config = new MqttConfig();
             PiraeusMqttClient client = new PiraeusMqttClient(config, channel);
-            client.RegisterTopic(subResource, Subscription);
-            ConnectAckCode code = client.ConnectAsync("sessionId", "JWT", token, 90).Result;
+            client.RegisterTopic(observeResource, ObserveResource);
+            ConnectAckCode code = client.ConnectAsync("sessionId", "JWT", securityToken, 90).Result;
             Console.WriteLine("Connected with Ack Code {0}", code);
 
-            Task subTask = client.SubscribeAsync(subResource, QualityOfServiceLevelType.AtLeastOnce, Subscription);
-            Task.WhenAll(subTask);
+            try
+            {
+                Task subTask = client.SubscribeAsync(observeResource, QualityOfServiceLevelType.AtLeastOnce, ObserveResource);
+                Task.WaitAll(subTask);
 
-            Task pubTask = client.Publish(QualityOfServiceLevelType.AtLeastOnce, pubResource, "text/plain", Encoding.UTF8.GetBytes("Hi!"));
-            Task.WhenAll(pubTask);
+                Console.WriteLine("Subscribed to {0}", observeResource);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Observe failed.");
+                Console.WriteLine(ex.InnerException.Message);
+                goto endsample;
+            }
 
-            Console.WriteLine("Waiting for messages...because I was too lazy to write a sender :-)");
+            SendMessages(client);
+
+            source.Cancel();
+
+            endsample:
+            Console.WriteLine("client is closed...");
+            Console.ReadKey();            
+        }
+
+        static void SendMessages(PiraeusMqttClient client)
+        {
+            Console.WriteLine();
+            Console.Write("Send messages (Y/N) ? ");
+            bool sending = Console.ReadLine().ToLowerInvariant() == "y";
+
+            if (sending)
+            {
+                Console.Write("Enter number of messages to send ? ");
+                int num = Int32.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter delay between messages in milliseconds ? ");
+                int delay = Int32.Parse(Console.ReadLine());
+
+                for (int i = 0; i < num; i++)
+                {
+                    index++;
+                    //send a message to a resource
+                    string message = String.Format("{0} sent message {1}", clientName, index);
+                    byte[] payload = Encoding.UTF8.GetBytes(message);
+                    Task pubTask = client.PublishAsync(QualityOfServiceLevelType.AtLeastOnce, publishResource, "text/plain", payload);                    
+                    Task.WhenAll(pubTask);
+
+                    if (delay > 0)
+                    {
+                        Task.Delay(delay).Wait();
+                    }
+                }
+
+                SendMessages(client);
+            }
+        }
+
+        static void WriteHeader()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("--- MQTT Client ---");
+            Console.WriteLine("press any key to continue...");
+            Console.WriteLine();
+            Console.ResetColor();
             Console.ReadKey();
         }
 
-
-        static void Subscription(string a, string b, byte[] payload)
+        static void SelectClientRole()
         {
-            Console.WriteLine("Received = {0}", Encoding.UTF8.GetString(payload));
+            Console.WriteLine();
+            Console.Write("Enter Role for this client (A/B) ? ");
+            role = Console.ReadLine().ToUpperInvariant();
+            if (role != "A" && role != "B")
+                SelectClientRole();
         }
 
-        static string GetSecurityToken(string role)
+        static string GetSecurityToken()
         {
-            string roleClaimValue = abSwitch ? "A" : "B";
+            Console.Write("Enter unique client name ? ");
+            clientName = Console.ReadLine();
+
             List<Claim> claims = new List<Claim>()
             {
-                new Claim(nameClaimType, Guid.NewGuid().ToString()),
-                new Claim(roleClaimType, roleClaimValue)
+                new Claim(nameClaimType, clientName),
+                new Claim(roleClaimType, role)
             };
 
-            JsonWebToken token = new JsonWebToken(new Uri(audience), symmetricKey, issuer, claims, 20.0);
-            return token.ToString();
+            return CreateJwt(audience, issuer, claims, symmetricKey, 60.0);
+        }
+
+        static void SetResources()
+        {
+            publishResource = role == "A" ? resourceA : resourceB;
+            observeResource = role == "A" ? resourceB : resourceA;
+        }
+
+        static void SelectChannel()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("--- Select Channel ---");
+            Console.WriteLine("(1) Web Socket");
+            Console.WriteLine("(2) TCP");
+            Console.WriteLine("(3) UDP");
+            Console.Write("Enter selection # ? ");
+
+            int num = 0;
+            if (Int32.TryParse(Console.ReadLine(), out num) && num > 0 && num < 4)
+            {
+                channelNo = num;
+            }
+            else
+            {
+                Console.WriteLine("Try again...");
+                SelectChannel();
+            }
+        }
+
+        private static IChannel GetChannel(int num, string securityToken)
+        {
+            if (num == 1)
+            {
+                Console.Write("Enter Web Socket URL or Enter for default ? ");
+                string url = Console.ReadLine();
+                url = String.IsNullOrEmpty(url) ? endpoint : url;
+                return ChannelFactory.Create(new Uri(url), securityToken, "mqtt", new WebSocketConfig(), source.Token);                
+            }
+            else if (num == 2)
+            {
+                Console.Write("Enter TCP remote hostname or Enter for default ? ");
+                string hostname = Console.ReadLine();
+                hostname = String.IsNullOrEmpty(hostname) ? "localhost" : hostname;
+                return ChannelFactory.Create(true, hostname, 8883, 1024, 2048, source.Token);
+            }
+            else if (num == 3)
+            {
+                Console.Write("Enter UDP remote hostname or Enter for default ? ");
+                string hostname = Console.ReadLine();
+                hostname = String.IsNullOrEmpty(hostname) ? "localhost" : hostname;
+                Console.Write("Enter UDP port for this client to use ? ");
+                int port = Int32.Parse(Console.ReadLine());
+                return ChannelFactory.Create(port, hostname, 5883, source.Token);
+            }
+
+            return null;
+        }
+
+
+        public static string CreateJwt(string audience, string issuer, List<Claim> claims, string symmetricKey, double lifetimeMinutes)
+        {
+            SkunkLab.Security.Tokens.JsonWebToken jwt = new SkunkLab.Security.Tokens.JsonWebToken(new Uri(audience), symmetricKey, issuer, claims, lifetimeMinutes);
+            return jwt.ToString();
+        }
+
+        static void ObserveResource(string resourceUriString, string contentType, byte[] payload)
+        {
+            if (payload != null)
+            {
+                Console.WriteLine(Encoding.UTF8.GetString(payload));
+            }
+        }
+
+        private static void Channel_OnStateChange(object sender, ChannelStateEventArgs e)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Channel State {0}", e.State);
+            Console.ResetColor();
         }
 
         private static void Channel_OnError(object sender, ChannelErrorEventArgs e)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Error {0}", e.Error.Message);
+            Console.WriteLine(e.Error.Message);
             Console.ResetColor();
         }
 
@@ -101,10 +271,6 @@ namespace Samples.Clients.Mqtt
             Console.WriteLine("Channel closed");
             Console.ResetColor();
         }
-
-        private static void Channel_OnStateChange1(object sender, ChannelStateEventArgs e)
-        {
-            Console.WriteLine("Channel State = {0}", e.State);
-        }
+                
     }
 }

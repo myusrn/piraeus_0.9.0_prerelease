@@ -32,7 +32,11 @@ namespace SkunkLab.Protocols.Coap.Handlers
         private bool disposedValue;
         private DateTime keepaliveTimestamp;
         private Timer keepaliveTimer;
+        private string bootstrapToken;
+        private SecurityTokenType bootstrapTokenType;
 
+
+        public bool HasBootstrapToken { get; internal set; }
 
         public string Identity { get; set; }
 
@@ -52,8 +56,19 @@ namespace SkunkLab.Protocols.Coap.Handlers
         
         public bool Authenticate(string tokenType, string token)
         {
-            SecurityTokenType tt = (SecurityTokenType)Enum.Parse(typeof(SecurityTokenType), tokenType, true);
-            IsAuthenticated = Config.Authenticator.Authenticate(tt, token);
+            if (HasBootstrapToken)
+            {
+                IsAuthenticated = Config.Authenticator.Authenticate(bootstrapTokenType, bootstrapToken);
+            }
+            else
+            {
+                SecurityTokenType tt = (SecurityTokenType)Enum.Parse(typeof(SecurityTokenType), tokenType, true);
+                bootstrapTokenType = tt;
+                bootstrapToken = token;
+                IsAuthenticated = Config.Authenticator.Authenticate(tt, token);
+                HasBootstrapToken = true;
+            }
+
             return IsAuthenticated;
         }
 

@@ -1,15 +1,13 @@
-﻿using System;
+﻿using Piraeus.Configuration.Settings;
+using SkunkLab.Channels;
+using SkunkLab.Channels.WebSocket;
+using SkunkLab.Security.Authentication;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Sockets;
 using System.Threading;
 using System.Web;
-using Piraeus.Configuration.Settings;
-using SkunkLab.Channels;
-using SkunkLab.Channels.WebSocket;
-using SkunkLab.Protocols.Coap;
-using SkunkLab.Protocols.Mqtt;
-using SkunkLab.Security.Authentication;
 
 namespace Piraeus.Adapters
 {
@@ -32,9 +30,6 @@ namespace Piraeus.Adapters
         {
             IChannel channel = null;
 
-            //CoapConfig coapConfig = new CoapConfig(authenticator, config.Protocols.Coap.HostName, CoapConfigOptions.NoResponse | CoapConfigOptions.Observe);
-            //MqttConfig mqttConfig = new MqttConfig(authenticator);
-
             HttpContext context = HttpContext.Current;
             if (context.IsWebSocketRequest ||
                 context.IsWebSocketRequestUpgrading)
@@ -45,15 +40,11 @@ namespace Piraeus.Adapters
 
                 if (context.WebSocketRequestedProtocols.Contains("mqtt"))
                 {
-                    MqttConfig mqttConfig = GetMqttConfig(config, authenticator);
-                    mqttConfig.IdentityClaimType = config.Identity.Client.IdentityClaimType;
-                    mqttConfig.Indexes = config.Identity.Client.Indexes;
-                    return new MqttProtocolAdapter(mqttConfig, channel);
+                    return new MqttProtocolAdapter(config, authenticator, channel);
                 }
                 else if (context.WebSocketRequestedProtocols.Contains("coapv1"))
                 {
-                    CoapConfig coapConfig = GetCoapConfig(config, authenticator);
-                    return new CoapProtocolAdapter(coapConfig, channel);
+                    return new CoapProtocolAdapter(config, authenticator, channel);
                 }
                 else if (context.WebSocketRequestedProtocols.Count == 0)
                 {
@@ -85,18 +76,19 @@ namespace Piraeus.Adapters
         /// <returns></returns>
         public static ProtocolAdapter Create(PiraeusConfig config, IAuthenticator authenticator, TcpClient client, CancellationToken token)
         {
-            IChannel channel = ChannelFactory.Create(client, config.Channels.Tcp.BlockSize, config.Channels.Tcp.MaxBufferSize, token);
+            IChannel channel = ChannelFactory.Create(config.Channels.Tcp.UseLengthPrefix, client, config.Channels.Tcp.BlockSize, config.Channels.Tcp.MaxBufferSize, token);
+            
             IPEndPoint localEP = (IPEndPoint)client.Client.LocalEndPoint;
             int port = localEP.Port;
 
             if (port == 5684) //CoAP over TCP
             {
-                return new CoapProtocolAdapter(GetCoapConfig(config, authenticator), channel);
+                return new CoapProtocolAdapter(config, authenticator, channel);
             }
             else if (port == 1883 || port == 8883) //MQTT over TCP
             {
                 //MQTT
-                return new MqttProtocolAdapter(GetMqttConfig(config, authenticator), channel);
+                return new MqttProtocolAdapter(config, authenticator, channel);
             }
             else
             {
@@ -105,6 +97,25 @@ namespace Piraeus.Adapters
 
         }
 
+        public static ProtocolAdapter Create(PiraeusConfig config, IAuthenticator authenticator, UdpClient client, IPEndPoint remoteEP, CancellationToken token)
+        {
+            IPEndPoint endpoint = client.Client.LocalEndPoint as IPEndPoint;            
+            
+            IChannel channel = ChannelFactory.Create(client, remoteEP, token);
+            if(endpoint.Port == 5683)
+            {
+                return new CoapProtocolAdapter(config, authenticator, channel);
+            }
+            else if(endpoint.Port == 5883)
+            {
+                return new MqttProtocolAdapter(config, authenticator, channel);
+            }
+            else
+            {
+                throw new ProtocolAdapterPortException("UDP port does not map to a supported protocol.");
+            }
+
+        }
 
         #region configurations
         private static WebSocketConfig GetWebSocketConfig(PiraeusConfig config)
@@ -115,19 +126,23 @@ namespace Piraeus.Adapters
                 config.Channels.WebSocket.CloseTimeoutMilliseconds);
         }
 
-        private static CoapConfig GetCoapConfig(PiraeusConfig config, IAuthenticator authenticator)
-        {
-            CoapConfigOptions options = config.Protocols.Coap.ObserveOption && config.Protocols.Coap.NoResponseOption ? CoapConfigOptions.Observe | CoapConfigOptions.NoResponse : config.Protocols.Coap.ObserveOption ? CoapConfigOptions.Observe : config.Protocols.Coap.NoResponseOption ? CoapConfigOptions.NoResponse : CoapConfigOptions.None;
-            return new CoapConfig(authenticator, config.Protocols.Coap.HostName, options, config.Protocols.Coap.AutoRetry,
-                config.Protocols.Coap.KeepAliveSeconds, config.Protocols.Coap.AckTimeoutSeconds, config.Protocols.Coap.AckRandomFactor,
-                config.Protocols.Coap.MaxRetransmit, config.Protocols.Coap.NStart, config.Protocols.Coap.DefaultLeisure, config.Protocols.Coap.ProbingRate, config.Protocols.Coap.MaxLatencySeconds);
-        }
+        //private static CoapConfig GetCoapConfig(PiraeusConfig config, IAuthenticator authenticator)
+        //{
+        //    CoapConfigOptions options = config.Protocols.Coap.ObserveOption && config.Protocols.Coap.NoResponseOption ? CoapConfigOptions.Observe | CoapConfigOptions.NoResponse : config.Protocols.Coap.ObserveOption ? CoapConfigOptions.Observe : config.Protocols.Coap.NoResponseOption ? CoapConfigOptions.NoResponse : CoapConfigOptions.None;
+        //    return new CoapConfig(authenticator, config.Protocols.Coap.HostName, options, config.Protocols.Coap.AutoRetry,
+        //        config.Protocols.Coap.KeepAliveSeconds, config.Protocols.Coap.AckTimeoutSeconds, config.Protocols.Coap.AckRandomFactor,
+        //        config.Protocols.Coap.MaxRetransmit, config.Protocols.Coap.NStart, config.Protocols.Coap.DefaultLeisure, config.Protocols.Coap.ProbingRate, config.Protocols.Coap.MaxLatencySeconds);
+        //}
 
-        private static MqttConfig GetMqttConfig(PiraeusConfig config, IAuthenticator authenticator)
-        {
-            return new MqttConfig(authenticator, config.Protocols.Mqtt.KeepAliveSeconds,
-                   config.Protocols.Mqtt.AckTimeoutSeconds, config.Protocols.Mqtt.AckRandomFactor, config.Protocols.Mqtt.MaxRetransmit, config.Protocols.Mqtt.MaxLatencySeconds);
-        }
+        //private static MqttConfig GetMqttConfig(PiraeusConfig config, IAuthenticator authenticator)
+        //{
+        //    MqttConfig mqttConfig = new MqttConfig(authenticator, config.Protocols.Mqtt.KeepAliveSeconds,
+        //           config.Protocols.Mqtt.AckTimeoutSeconds, config.Protocols.Mqtt.AckRandomFactor, config.Protocols.Mqtt.MaxRetransmit, config.Protocols.Mqtt.MaxLatencySeconds);
+        //    mqttConfig.IdentityClaimType = config.Identity.Client.IdentityClaimType;
+        //    mqttConfig.Indexes = config.Identity.Client.Indexes;
+
+        //    return mqttConfig;
+        //}
 
         #endregion
     }

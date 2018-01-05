@@ -20,6 +20,7 @@ namespace SkunkLab.Channels.WebSocket
             this.token = token;
             this.IsEncrypted = request.RequestUri.Scheme == "wss";
             this.IsAuthenticated = HttpContext.Current.Request.IsAuthenticated;
+            //this.IsAuthenticated = Thread.CurrentPrincipal.Identity.IsAuthenticated;
             this.handler = new WebSocketHandler(config, token);
             HttpContext.Current.AcceptWebSocketRequest(this.handler);
             this.handler.OnReceive += Handler_OnReceive;
@@ -98,7 +99,14 @@ namespace SkunkLab.Channels.WebSocket
 
         public override void Send(byte[] message)
         {
-            this.handler.Send(message);
+            Task task = Task.Factory.StartNew(async () =>
+            {
+                await handler.SendAsync(message, WebSocketMessageType.Binary);
+            });
+
+            Task.WaitAll(task);
+
+            //this.handler.Send(message);
             //Task task = SendAsync(message);
             //Task.WaitAll(task);
             OnSent?.Invoke(this, new ChannelSentEventArgs(Id, null));
@@ -168,8 +176,7 @@ namespace SkunkLab.Channels.WebSocket
         public override async Task SendAsync(byte[] message)
         {
             //await this.handler.SendAsync(message, WebSocketMessageType.Binary);
-            Task task = this.handler.SendAsync(message, WebSocketMessageType.Binary);
-            Task.WaitAll(task);
+            await  this.handler.SendAsync(message, WebSocketMessageType.Binary);
             //await SendAsync(message, WebSocketMessageType.Binary);
         }
 

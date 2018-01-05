@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
 using Piraeus.Grains;
 using WebGateway.Security;
@@ -21,6 +22,20 @@ namespace WebGateway.Controllers
                 return Request.CreateResponse<SubscriptionMetadata>(HttpStatusCode.OK, metadata);
             }
             catch(Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
+        }
+
+        [HttpGet]
+        public async Task<HttpResponseMessage> GetSubscriptionMetrics(string subscriptionUriString)
+        {
+            try
+            {
+                CommunicationMetrics metrics = await GraphManager.GetSubscriptionMetricsAsync(subscriptionUriString);
+                return Request.CreateResponse<CommunicationMetrics>(HttpStatusCode.OK, metrics);
+            }
+            catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }

@@ -45,7 +45,7 @@ namespace SkunkLab.Protocols.Coap.Handlers
         {
             Session = session;
             Message = message;
-            Dispatcher = dispatcher;
+            Dispatcher = dispatcher;            
         }
 
         protected ICoapRequestDispatch Dispatcher { get; set; }

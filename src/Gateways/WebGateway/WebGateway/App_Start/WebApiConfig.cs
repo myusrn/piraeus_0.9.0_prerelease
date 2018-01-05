@@ -26,9 +26,10 @@ namespace WebGateway
             config.MapHttpAttributeRoutes();
 
             //config.Formatters.Clear();
-
-            config.Formatters.Add(new TextMediaTypeFormatter());
-            config.Formatters.Add(new BinaryMediaTypeFormatter());
+            config.Formatters.Insert(0, new TextMediaTypeFormatter());
+            config.Formatters.Insert(1, new BinaryMediaTypeFormatter());
+            //config.Formatters.Add(new TextMediaTypeFormatter());
+            //config.Formatters.Add(new BinaryMediaTypeFormatter());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

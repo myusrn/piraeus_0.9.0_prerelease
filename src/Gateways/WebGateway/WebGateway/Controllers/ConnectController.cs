@@ -11,6 +11,9 @@ using SkunkLab.Channels.WebSocket;
 using SkunkLab.Protocols.Coap;
 using SkunkLab.Channels;
 using Piraeus.Configuration.Settings;
+using WebGateway.Formatters;
+using System.Text;
+using System.Net.Http.Formatting;
 
 namespace WebGateway.Controllers
 {
@@ -87,8 +90,9 @@ namespace WebGateway.Controllers
                 }
                 else //long polling
                 {
-                    //adapter.OnObserve += Adapter_OnObserve;
-                    //adapter.Init();
+                    adapter = ProtocolAdapterFactory.Create(config, Request, source.Token);
+                    adapter.OnObserve += Adapter_OnObserve;
+                    adapter.Init();
                     ThreadPool.QueueUserWorkItem(new WaitCallback(Listen), waitHandles[0]);
                     WaitHandle.WaitAll(waitHandles);
 
@@ -121,7 +125,39 @@ namespace WebGateway.Controllers
         {
             AutoResetEvent are = (AutoResetEvent)state;
             OnMessage += (o, a) => {
-                response = Request.CreateResponse(HttpStatusCode.OK, a.Message, a.ContentType);
+
+                MediaTypeFormatter formatter = null;
+                if(a.ContentType == "application/octet-stream")
+                {
+                    formatter = new BinaryMediaTypeFormatter();
+                }
+                else if(a.ContentType == "text/plain")
+                {
+                    formatter = new TextMediaTypeFormatter();
+                }
+                else if(a.ContentType == "application/xml" || a.ContentType == "text/xml")
+                {
+                    formatter = new XmlMediaTypeFormatter();
+                }
+                else if(a.ContentType == "application/json" || a.ContentType == "text/json")
+                {
+                    formatter = new JsonMediaTypeFormatter();
+                }
+                else
+                {
+                    throw new SkunkLab.Protocols.Coap.UnsupportedMediaTypeException("Media type formatter not available.");
+                }
+
+                if (a.ContentType != "application/octet-stream")
+                {                    
+                    response = Request.CreateResponse<string>(HttpStatusCode.OK, Encoding.UTF8.GetString(a.Message), formatter);
+                }
+                else
+                {
+                    response = Request.CreateResponse<byte[]>(HttpStatusCode.OK, a.Message, formatter);
+                }
+
+                //response = Request.CreateResponse(HttpStatusCode.OK, a.Message, a.ContentType);
                 response.Headers.Add("x-sl-resource", a.ResourceUriString);
                 are.Set();
             };

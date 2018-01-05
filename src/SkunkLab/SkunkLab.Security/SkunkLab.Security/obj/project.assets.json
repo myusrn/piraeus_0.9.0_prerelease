@@ -503,7 +503,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\malong\\.nuget\\packages\\": {}
+    "C:\\Users\\malong\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -515,9 +516,13 @@
       "outputPath": "C:\\_git\\core\\src\\SkunkLab\\SkunkLab.Security\\SkunkLab.Security\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
+      ],
       "configFilePaths": [
         "C:\\Users\\malong\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "net461"
@@ -540,23 +545,23 @@
         "dependencies": {
           "Microsoft.AspNet.WebApi": {
             "target": "Package",
-            "version": "5.2.3"
+            "version": "[5.2.3, )"
           },
           "Microsoft.IdentityModel.Logging": {
             "target": "Package",
-            "version": "1.1.4"
+            "version": "[1.1.4, )"
           },
           "Microsoft.IdentityModel.Tokens": {
             "target": "Package",
-            "version": "5.1.4"
+            "version": "[5.1.4, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
-            "version": "10.0.3"
+            "version": "[10.0.3, )"
           },
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
-            "version": "5.1.4"
+            "version": "[5.1.4, )"
           }
         }
       }

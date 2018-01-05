@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using SkunkLab.Diagnostics.Logging;
+using System;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,25 +10,22 @@ namespace SkunkLab.Channels.Udp
     public class UdpServerChannel : UdpChannel
     {
 
-        public UdpServerChannel(IPEndPoint localEP, IPEndPoint remoteEP, CancellationToken token)
+        public UdpServerChannel(UdpClient listener, IPEndPoint remoteEP, CancellationToken token)
         {
-            this.localEP = localEP;
-            this.remoteEP = remoteEP;
             Id = "udp-" + Guid.NewGuid().ToString();
-            client = new UdpClient()
-            {
-                DontFragment = true,
-                ExclusiveAddressUse = false
-            };
-
+            this.client = listener;
+            this.remoteEP = remoteEP;
             this.token = token;
+            
         }
 
+        
         private IPEndPoint remoteEP;
-        private IPEndPoint localEP;
+        //private IPEndPoint localEP;
         private UdpClient client;
         private ChannelState _state;
         private CancellationToken token;
+        private bool disposedValue;
 
         public override event EventHandler<ChannelReceivedEventArgs> OnReceive;
         public override event EventHandler<ChannelCloseEventArgs> OnClose;
@@ -78,28 +73,54 @@ namespace SkunkLab.Channels.Udp
         public override async Task OpenAsync()
         {
             try
-            {
-                State = ChannelState.Connecting;
-                client.Client.Bind(localEP);
+            {                
+                State = ChannelState.Open; //the channel is already open by the listener
+
                 OnOpen?.Invoke(this, new ChannelOpenEventArgs(Id, null));
-                State = ChannelState.Open;
             }
             catch(Exception ex)
             {
+                await Log.LogErrorAsync("UDP server channel open error {0}", ex.Message);
                 State = ChannelState.Aborted;
                 OnError?.Invoke(this, new ChannelErrorEventArgs(Id, ex));
             }
-
-            await TaskDone.Done;
+            
         }
 
         public override async Task ReceiveAsync()
         {
-            //not implemented because UDP server must "Add Message" to the receive pipeline
+
+            //nothing implemented here because the listener will call AddMessageAsync and raise OnReceive
+            //We do bind the remote endpoint to call SendAsync to the connected UDP client.
+
             await TaskDone.Done;
+
+            //while (!token.IsCancellationRequested)
+            //{
+            //    try
+            //    {
+            //        UdpReceiveResult result = await client.ReceiveAsync();
+
+            //        if (remoteEP == null)
+            //        {
+            //            remoteEP = result.RemoteEndPoint;
+            //        }
+
+            //        if (result.Buffer.Length > 0)
+            //        {
+            //            OnReceive?.Invoke(this, new ChannelReceivedEventArgs(Id, result.Buffer));
+            //            OnObserve?.Invoke(this, new ChannelObserverEventArgs(null, null, result.Buffer));
+            //        }
+            //    }
+            //    catch(Exception ex)
+            //    {
+            //        await Log.LogErrorAsync("UDP server channel receive error {0}", ex.Message);
+            //        OnError?.Invoke(this, new ChannelErrorEventArgs(Id, ex));
+            //    }
+            //}
         }
 
-        public override async Task AddMessage(byte[] message)
+        public override async Task AddMessageAsync(byte[] message)
         {
             //Raise the event received from the Protocol Adapter on the gateway
             OnReceive?.Invoke(this, new ChannelReceivedEventArgs(Id, message));
@@ -107,19 +128,45 @@ namespace SkunkLab.Channels.Udp
             await TaskDone.Done;
         }
 
-        public override Task CloseAsync()
+        public override async Task CloseAsync()
         {
-            throw new NotImplementedException();
+            //nothing to do here because closing the client is closing the listener to all channels 
+            //connected to the listener.
+
+            //client.Close();            
+        }
+
+        protected void Disposing(bool dispose)
+        {
+            if (dispose & !disposedValue)
+            {
+                //if (client != null && IsConnected)
+                //{
+                //    client.Close();
+                //}
+
+                //client = null;
+                disposedValue = true;
+            }
         }
 
         public override void Dispose()
         {
-            throw new NotImplementedException();
+            Disposing(true);
+            GC.SuppressFinalize(this);
         }
 
-        public override Task SendAsync(byte[] message)
+        public override async Task SendAsync(byte[] message)
         {
-            throw new NotImplementedException();
+            try
+            {               
+                await client.SendAsync(message, message.Length, remoteEP);
+            }
+            catch(Exception ex)
+            {               
+                await Log.LogErrorAsync("UDP server channel send error {0}", ex.Message);
+                OnError?.Invoke(this, new ChannelErrorEventArgs(Id, ex));
+            }
         }
     }
 }

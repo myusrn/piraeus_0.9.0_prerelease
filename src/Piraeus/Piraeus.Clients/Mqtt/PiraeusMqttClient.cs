@@ -12,7 +12,7 @@ namespace Piraeus.Clients.Mqtt
 {
     public delegate void MqttClientChannelStateHandler(object sender, ChannelStateEventArgs args);
     public delegate void MqttClientChannelErrorHandler(object sender, ChannelErrorEventArgs args);
-    //public delegate void EventHandler<>
+    
     
     public class PiraeusMqttClient
     {
@@ -36,6 +36,8 @@ namespace Piraeus.Clients.Mqtt
             this.channel.OnClose += Channel_OnClose;
             this.channel.OnError += Channel_OnError;
             this.channel.OnStateChange += Channel_OnStateChange;
+
+            queue = new Queue<byte[]>();
         }
 
         
@@ -48,6 +50,7 @@ namespace Piraeus.Clients.Mqtt
         private ConnectAckCode? code;
         private double timeoutMilliseconds;
         private IMqttDispatch dispatcher;
+        private Queue<byte[]> queue;
 
         /// <summary>
         /// Register a topic that already has a subscription.
@@ -131,7 +134,7 @@ namespace Piraeus.Clients.Mqtt
         /// <param name="indexes"></param>
         /// <param name="messageId"></param>
         /// <returns></returns>
-        public async Task Publish(QualityOfServiceLevelType qos, string topicUriString, string contentType, byte[] data, IEnumerable<KeyValuePair<string, string>> indexes = null, string messageId = null)
+        public async Task PublishAsync(QualityOfServiceLevelType qos, string topicUriString, string contentType, byte[] data, IEnumerable<KeyValuePair<string, string>> indexes = null, string messageId = null)
         {
             UriBuilder builder = new UriBuilder(topicUriString);
             builder.Query = messageId == null ? String.Format("{0}={1}", SkunkLab.Protocols.Utilities.QueryStringConstants.CONTENT_TYPE, contentType) : String.Format("{0}={1}&{2}={3}", QueryStringConstants.CONTENT_TYPE, contentType, QueryStringConstants.MESSAGE_ID, messageId);
@@ -143,7 +146,14 @@ namespace Piraeus.Clients.Mqtt
                 session.Quarantine(msg);
             }
 
-            await channel.SendAsync(msg.Encode());
+            queue.Enqueue(msg.Encode());
+
+            while (queue.Count > 0)
+            {
+                byte[] message = queue.Dequeue();
+                Task t = channel.SendAsync(message);
+                Task.WaitAll(t);
+            }
         }
 
         /// <summary>

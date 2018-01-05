@@ -1,0 +1,117 @@
+/in:obj\Debug\LocalServer.exe
+/out:C:\_git\core\src\Samples\Clients\Assets\LocalServer\obj\Debug\LocalServer.orleans.g.cs
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Capl.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Microsoft.Azure.KeyVault.Core.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Microsoft.CodeAnalysis.CSharp.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Microsoft.CodeAnalysis.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.CSharp.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Microsoft.Data.Edm.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Microsoft.Data.OData.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Microsoft.Data.Services.Client.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Microsoft.Extensions.DependencyInjection.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Microsoft.Win32.Primitives.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Microsoft.WindowsAzure.Storage.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Newtonsoft.Json.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Orleans.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\OrleansCodeGenerator.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\OrleansProviders.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\OrleansRuntime.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Configuration.0.5.23\lib\net461\Piraeus.Configuration.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Piraeus.Core.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Piraeus.GrainInterfaces.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Piraeus.Grains.dll
+/r:C:\_git\core\src\SkunkLab\SkunkLab.Servers\lib\bin\Debug\SkunkLab.Servers.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\StackExchange.Redis.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.AppContext.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Collections.Immutable.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.ComponentModel.Composition.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Console.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Core.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.DataSetExtensions.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Diagnostics.DiagnosticSource.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Diagnostics.FileVersionInfo.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Diagnostics.StackTrace.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Globalization.Calendars.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.IO.Compression.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.IO.Compression.FileSystem.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.IO.Compression.ZipFile.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.IO.FileSystem.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.IO.FileSystem.Primitives.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Net.Http.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Net.Http.Formatting.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Net.Sockets.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Numerics.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Reflection.Metadata.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Runtime.InteropServices.RuntimeInformation.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Security.Cryptography.Algorithms.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Security.Cryptography.Encoding.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Security.Cryptography.Primitives.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Security.Cryptography.X509Certificates.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Spatial.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Text.Encoding.CodePages.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Threading.Thread.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.ValueTuple.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Web.Http.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Web.Http.WebHost.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.Linq.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Xml.ReaderWriter.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Xml.XmlDocument.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Xml.XPath.dll
+/r:C:\_git\core\src\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\System.Xml.XPath.XDocument.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Collections.Concurrent.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Collections.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ComponentModel.Annotations.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ComponentModel.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ComponentModel.EventBasedAsync.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Diagnostics.Contracts.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Diagnostics.Debug.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Diagnostics.Tools.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Diagnostics.Tracing.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Dynamic.Runtime.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Globalization.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.IO.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Linq.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Linq.Expressions.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Linq.Parallel.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Linq.Queryable.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Net.NetworkInformation.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Net.Primitives.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Net.Requests.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Net.WebHeaderCollection.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ObjectModel.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Reflection.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Reflection.Emit.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Reflection.Emit.ILGeneration.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Reflection.Emit.Lightweight.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Reflection.Extensions.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Reflection.Primitives.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Resources.ResourceManager.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.Extensions.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.Handles.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.InteropServices.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.InteropServices.WindowsRuntime.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.Numerics.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.Serialization.Json.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.Serialization.Primitives.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.Serialization.Xml.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Security.Principal.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ServiceModel.Duplex.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ServiceModel.Http.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ServiceModel.NetTcp.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ServiceModel.Primitives.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ServiceModel.Security.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Text.Encoding.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Text.Encoding.Extensions.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Text.RegularExpressions.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Threading.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Threading.Tasks.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Threading.Tasks.Parallel.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Threading.Timer.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Xml.XDocument.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Xml.XmlSerializer.dll

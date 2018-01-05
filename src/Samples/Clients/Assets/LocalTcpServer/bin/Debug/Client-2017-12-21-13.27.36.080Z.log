@@ -1,0 +1,472 @@
+[2017-12-21 13:27:52.858 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug...	
+[2017-12-21 13:27:56.095 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\BouncyCastle.Crypto.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:27:56.286 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Capl.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:27:56.445 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:27:57.872 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Microsoft.CodeAnalysis.CSharp.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:27:58.186 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Microsoft.CodeAnalysis.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:27:58.247 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Microsoft.Data.Edm.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:27:58.319 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Microsoft.Data.OData.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:27:58.358 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Microsoft.Data.Services.Client.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:27:58.369 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:27:58.387 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:27:58.404 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Microsoft.IdentityModel.Logging.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:27:58.418 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:27:58.446 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Microsoft.Win32.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:27:58.523 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:00.030 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Newtonsoft.Json.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:01.992 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Orleans.dll
+	* Assembly filename is excluded.	
+[2017-12-21 13:28:03.757 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\OrleansCodeGenerator.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:05.097 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\OrleansRuntime.dll
+	* Assembly filename is excluded.	
+[2017-12-21 13:28:05.679 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Piraeus.Adapters.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:05.925 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Piraeus.Configuration.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:06.239 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Piraeus.Core.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:06.549 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Piraeus.GrainInterfaces.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:06.910 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Piraeus.Grains.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:07.235 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\SkunkLab.Channels.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:07.519 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\SkunkLab.Diagnostics.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:07.808 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\SkunkLab.Protocols.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:08.215 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\SkunkLab.Security.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:08.523 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\SkunkLab.Servers.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:08.834 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\StackExchange.Redis.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:09.106 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.AppContext.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:09.413 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Collections.Immutable.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:09.696 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Console.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:10.125 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:10.440 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Diagnostics.FileVersionInfo.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:10.831 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Diagnostics.StackTrace.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:11.310 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Globalization.Calendars.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:11.641 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:12.162 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.IO.Compression.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:12.464 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.IO.Compression.ZipFile.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:12.775 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.IO.FileSystem.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:12.989 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.IO.FileSystem.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:13.276 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Net.Http.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:13.528 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Net.Http.Formatting.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:13.702 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Net.Sockets.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:13.976 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Reflection.Metadata.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:14.238 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:14.390 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Security.Cryptography.Algorithms.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:14.733 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Security.Cryptography.Encoding.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:14.942 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Security.Cryptography.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:15.122 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:15.290 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Spatial.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:15.389 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Text.Encoding.CodePages.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:15.502 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Threading.Thread.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:15.558 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.ValueTuple.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:15.770 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Web.Http.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:15.840 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Xml.ReaderWriter.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:15.929 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Xml.XmlDocument.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:15.990 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Xml.XPath.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:16.113 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\System.Xml.XPath.XDocument.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2017-12-21 13:28:16.235 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Loading assembly C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\OrleansProviders.dll...	
+[2017-12-21 13:28:16.451 GMT     1	INFO   	100000	AssemblyLoader.Client	]	1 assemblies loaded.	
+[2017-12-21 13:28:16.900 GMT     1	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.19.176.1 Client Id = *cli/909d3d8a ----------	
+[2017-12-21 13:28:16.990 GMT     1	INFO   	100314	OutsideRuntimeClient	]	---------- Starting OutsideRuntimeClient with runtime Version='1.5.2.0 (Release).' in AppDomain=<AppDomain.Id=1, AppDomain.FriendlyName=LocalTcpServer.exe> Config= 
+ Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 6.2.9200.0
+   App config file: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\LocalTcpServer.exe.Config
+   GC Type=Client GCLatencyMode=Interactive
+   Host: MININT-2T87D76
+   Processor Count: 4
+Client Configuration:
+   Config File Name: 
+   Start time: 2017-12-21 13:28:16.973 GMT
+   Gateway Provider: Config
+   Gateways[1]:
+      127.0.0.1:40000
+   Preferred Gateway Index: -1
+   GatewayListRefreshPeriod: 00:01:00
+   Preferred Address Family: InterNetwork
+   DNS Host Name: MININT-2T87D76
+   Client Name: Client
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\_git\core\src\Samples\Clients\Assets\LocalTcpServer\bin\Debug\Client-2017-12-21-13.27.36.080Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: -00:00:00.0010000
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Client Sender Buckets: 8192
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Fallback serializer: 
+   .NET: 
+       .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+       .NET thread pool sizes - Max: Worker Threads=2047 Completion Port Threads=1000
+   Providers:
+       No providers configured.
+	
+[2017-12-21 13:28:17.670 GMT     7	INFO   	101309	Messaging.GatewayManager	]	Found 1 knownGateways from Gateway listProvider [gwy.tcp://127.0.0.1:40000/0]	
+[2017-12-21 13:28:18.286 GMT     7	INFO   	100908	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Connected to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0.	
+[2017-12-21 13:28:18.342 GMT    11	INFO   	100000	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Starting AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 on managed thread 11	
+[2017-12-21 13:28:18.341 GMT    12	INFO   	100000	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.19.176.1:0]	Starting AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 on managed thread 12	
+[2017-12-21 13:28:18.547 GMT     7	INFO   	100929	OutsideRuntimeClient	172.19.176.1:0]	---------- Started OutsideRuntimeClient with Global Client ID: C172.19.176.1:0:-251558897*cli/909d3d8a@015cc590, client GUID ID: *cli/909d3d8a	
+[2017-12-21 13:29:19.154 GMT     7	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:28:18 PM	
+[2017-12-21 13:30:29.040 GMT    18	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:29:19 PM	
+[2017-12-21 13:31:29.073 GMT     7	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:30:29 PM	
+[2017-12-21 13:32:29.110 GMT     7	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:31:29 PM	
+[2017-12-21 13:32:46.557 GMT     2	ERROR  	100007	OutsideRuntimeClient	172.19.176.1:0]	!!!!!!!!!! OutsideRuntimeClient caught an UnobservedException.	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 415
+[2017-12-21 13:32:46.568 GMT     2	ERROR  	100005	UnobservedExceptionHandler	172.19.176.1:0]	!!!!!!!!!! UnobservedExceptionsHandlerClass Caught an UnobservedTaskException event sent by [Id=83384, Status=Faulted]. Exception = 
+Exc level 0: System.AggregateException: A Task's exception(s) were not observed either by Waiting on the Task or accessing its Exception property. As a result, the unobserved exception was rethrown by the finalizer thread.
+Exc level 1: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 415	
+[2017-12-21 13:32:46.571 GMT     2	ERROR  	100006	UnobservedExceptionHandler	172.19.176.1:0]	!!!!!!!!!! Exception remained UnObserved!!! The subsequent behavior depends on the ThrowUnobservedTaskExceptions setting in app config and .NET version.	
+[2017-12-21 13:33:18.632 GMT     7	INFO   	100704	ClientLogStatistics	172.19.176.1:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=3508001
+Messaging.Received.Bytes.Total.Current=4678864
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=11759
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=11759
+Messaging.Received.Messages.Total.Current=11759
+Messaging.Received.MessageSizeHistogram.Bytes=[128:255]=11, [256:511]=11736, [1024:2047]=11, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=3178805
+Messaging.Sent.Bytes.Total.Current=3756872
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=11759
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=11759
+Messaging.Sent.Messages.Total.Current=11759
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=22, [256:511]=11737, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=66.973
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=83, gen1=13, gen2=3
+Runtime.GC.GenSizesKb=gen0=2048.00, gen1=87.32, gen2=6994.46
+Runtime.GC.LargeObjectHeapSizeKb=4608.281
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.001
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=0.379
+Runtime.GC.PromotedMemoryFromGen1Kb=0.000
+Runtime.GC.TotalMemoryKb=10930
+Runtime.Memory.AvailableMemoryMb=7990
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=59042
+Serialization.BufferPool.CheckedOutBuffers.Current=59075
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+[2017-12-21 13:33:29.126 GMT     7	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:32:29 PM	
+[2017-12-21 13:34:29.484 GMT    26	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:33:29 PM	
+[2017-12-21 13:35:30.465 GMT    26	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:34:29 PM	
+[2017-12-21 13:36:21.030 GMT     2	ERROR  	100007	OutsideRuntimeClient	172.19.176.1:0]	!!!!!!!!!! OutsideRuntimeClient caught an UnobservedException.	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 415
+[2017-12-21 13:36:21.041 GMT     2	ERROR  	100005	UnobservedExceptionHandler	172.19.176.1:0]	!!!!!!!!!! UnobservedExceptionsHandlerClass Caught an UnobservedTaskException event sent by [Id=140604, Status=Faulted]. Exception = 
+Exc level 0: System.AggregateException: A Task's exception(s) were not observed either by Waiting on the Task or accessing its Exception property. As a result, the unobserved exception was rethrown by the finalizer thread.
+Exc level 1: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 415	
+[2017-12-21 13:36:21.045 GMT     2	ERROR  	100006	UnobservedExceptionHandler	172.19.176.1:0]	!!!!!!!!!! Exception remained UnObserved!!! The subsequent behavior depends on the ThrowUnobservedTaskExceptions setting in app config and .NET version.	
+[2017-12-21 13:36:31.492 GMT    20	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:35:30 PM	
+[2017-12-21 13:37:33.271 GMT    25	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:36:31 PM	
+[2017-12-21 13:38:18.736 GMT    26	INFO   	100704	ClientLogStatistics	172.19.176.1:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=9282603,      Delta=5774602
+Messaging.Received.Bytes.Total.Current=12412247,      Delta=7733383
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=31136,      Delta=19377
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=31136,      Delta=19377
+Messaging.Received.Messages.Total.Current=31136,      Delta=19377
+Messaging.Received.MessageSizeHistogram.Bytes=[128:255]=65, [256:511]=31005, [1024:2047]=65, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=8411118,      Delta=5232313
+Messaging.Sent.Bytes.Total.Current=9947428,      Delta=6190556
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=31137,      Delta=19378
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=31137,      Delta=19378
+Messaging.Sent.Messages.Total.Current=31137,      Delta=19378
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=128, [256:511]=31009, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=75.913
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=793.776
+Runtime.GC.GenCollectonCount=gen0=185, gen1=23, gen2=4
+Runtime.GC.GenSizesKb=gen0=2048.00, gen1=74.63, gen2=7256.02
+Runtime.GC.LargeObjectHeapSizeKb=4608.281
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.031
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=0.000
+Runtime.GC.PromotedMemoryFromGen1Kb=0.000
+Runtime.GC.TotalMemoryKb=9130
+Runtime.Memory.AvailableMemoryMb=7664
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=155967,      Delta=96925
+Serialization.BufferPool.CheckedOutBuffers.Current=156000,      Delta=96925
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+[2017-12-21 13:38:33.300 GMT    26	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:37:33 PM	
+[2017-12-21 13:39:28.835 GMT     2	ERROR  	100007	OutsideRuntimeClient	172.19.176.1:0]	!!!!!!!!!! OutsideRuntimeClient caught an UnobservedException.	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 415
+[2017-12-21 13:39:28.861 GMT     2	ERROR  	100005	UnobservedExceptionHandler	172.19.176.1:0]	!!!!!!!!!! UnobservedExceptionsHandlerClass Caught an UnobservedTaskException event sent by [Id=225076, Status=Faulted]. Exception = 
+Exc level 0: System.AggregateException: A Task's exception(s) were not observed either by Waiting on the Task or accessing its Exception property. As a result, the unobserved exception was rethrown by the finalizer thread.
+Exc level 1: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 415	
+[2017-12-21 13:39:28.867 GMT     2	ERROR  	100006	UnobservedExceptionHandler	172.19.176.1:0]	!!!!!!!!!! Exception remained UnObserved!!! The subsequent behavior depends on the ThrowUnobservedTaskExceptions setting in app config and .NET version.	
+[2017-12-21 13:39:33.352 GMT    26	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:38:33 PM	
+[2017-12-21 13:40:33.390 GMT    26	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:39:33 PM	
+[2017-12-21 13:41:33.427 GMT     4	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:40:33 PM	
+[2017-12-21 13:42:33.661 GMT     4	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:41:33 PM	
+[2017-12-21 13:43:10.571 GMT     2	ERROR  	100007	OutsideRuntimeClient	172.19.176.1:0]	!!!!!!!!!! OutsideRuntimeClient caught an UnobservedException.	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 415
+[2017-12-21 13:43:10.588 GMT     2	ERROR  	100005	UnobservedExceptionHandler	172.19.176.1:0]	!!!!!!!!!! UnobservedExceptionsHandlerClass Caught an UnobservedTaskException event sent by [Id=261949, Status=Faulted]. Exception = 
+Exc level 0: System.AggregateException: A Task's exception(s) were not observed either by Waiting on the Task or accessing its Exception property. As a result, the unobserved exception was rethrown by the finalizer thread.
+Exc level 1: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 415	
+[2017-12-21 13:43:10.597 GMT     2	ERROR  	100006	UnobservedExceptionHandler	172.19.176.1:0]	!!!!!!!!!! Exception remained UnObserved!!! The subsequent behavior depends on the ThrowUnobservedTaskExceptions setting in app config and .NET version.	
+[2017-12-21 13:43:18.861 GMT    26	INFO   	100704	ClientLogStatistics	172.19.176.1:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=10968693,      Delta=1682508
+Messaging.Received.Bytes.Total.Current=14677206,      Delta=2260195
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=36798,      Delta=5650
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=36798,      Delta=5650
+Messaging.Received.Messages.Total.Current=36798,      Delta=5650
+Messaging.Received.MessageSizeHistogram.Bytes=[128:255]=88, [256:511]=36621, [1024:2047]=88, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=9938405,      Delta=1524308
+Messaging.Sent.Bytes.Total.Current=11755906,      Delta=1804935
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=36798,      Delta=5650
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=36798,      Delta=5650
+Messaging.Sent.Messages.Total.Current=36798,      Delta=5650
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=173, [256:511]=36625, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=74.576
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=218.627
+Runtime.GC.GenCollectonCount=gen0=217, gen1=25, gen2=4
+Runtime.GC.GenSizesKb=gen0=2048.00, gen1=124.77, gen2=7256.02
+Runtime.GC.LargeObjectHeapSizeKb=4608.281
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.001
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=0.379
+Runtime.GC.PromotedMemoryFromGen1Kb=0.000
+Runtime.GC.TotalMemoryKb=10053
+Runtime.Memory.AvailableMemoryMb=7984
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=184237,      Delta=28250
+Serialization.BufferPool.CheckedOutBuffers.Current=184270,      Delta=28250
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+[2017-12-21 13:43:33.678 GMT    26	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:42:33 PM	
+[2017-12-21 13:44:33.690 GMT    26	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:43:33 PM	
+[2017-12-21 13:45:33.745 GMT    26	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:44:33 PM	
+[2017-12-21 13:46:33.751 GMT    26	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:45:33 PM	
+[2017-12-21 13:47:33.774 GMT    25	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:46:33 PM	
+[2017-12-21 13:48:18.960 GMT    26	INFO   	100704	ClientLogStatistics	172.19.176.1:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=12961086,      Delta=1992393
+Messaging.Received.Bytes.Total.Current=17359731,      Delta=2682525
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=43492,      Delta=6694
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=43492,      Delta=6694
+Messaging.Received.Messages.Total.Current=43492,      Delta=6694
+Messaging.Received.MessageSizeHistogram.Bytes=[128:255]=121, [256:511]=43249, [1024:2047]=121, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=11743633,      Delta=1805228
+Messaging.Sent.Bytes.Total.Current=13894459,      Delta=2138553
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=43493,      Delta=6695
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=43493,      Delta=6695
+Messaging.Sent.Messages.Total.Current=43493,      Delta=6695
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=238, [256:511]=43255, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=76.334
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=252.723
+Runtime.GC.GenCollectonCount=gen0=255, gen1=30, gen2=5
+Runtime.GC.GenSizesKb=gen0=2048.00, gen1=101.61, gen2=7256.02
+Runtime.GC.LargeObjectHeapSizeKb=4608.281
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.042
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=0.000
+Runtime.GC.PromotedMemoryFromGen1Kb=0.000
+Runtime.GC.TotalMemoryKb=9791
+Runtime.Memory.AvailableMemoryMb=8024
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=217747,      Delta=33510
+Serialization.BufferPool.CheckedOutBuffers.Current=217780,      Delta=33510
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+[2017-12-21 13:48:33.822 GMT    13	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:47:33 PM	
+[2017-12-21 13:49:33.845 GMT    26	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:48:33 PM	
+[2017-12-21 13:49:54.949 GMT     2	ERROR  	100007	OutsideRuntimeClient	172.19.176.1:0]	!!!!!!!!!! OutsideRuntimeClient caught an UnobservedException.	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 415
+[2017-12-21 13:49:54.967 GMT     2	ERROR  	100005	UnobservedExceptionHandler	172.19.176.1:0]	!!!!!!!!!! UnobservedExceptionsHandlerClass Caught an UnobservedTaskException event sent by [Id=341801, Status=Faulted]. Exception = 
+Exc level 0: System.AggregateException: A Task's exception(s) were not observed either by Waiting on the Task or accessing its Exception property. As a result, the unobserved exception was rethrown by the finalizer thread.
+Exc level 1: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Piraeus.Adapters.OrleansAdapter.<RemoveEphemeralObserversAsync>d__21.MoveNext() in C:\_git\core\src\Piraeus\Piraeus.Adapters\OrleansAdapter.cs:line 415	
+[2017-12-21 13:49:54.997 GMT     2	ERROR  	100006	UnobservedExceptionHandler	172.19.176.1:0]	!!!!!!!!!! Exception remained UnObserved!!! The subsequent behavior depends on the ThrowUnobservedTaskExceptions setting in app config and .NET version.	
+[2017-12-21 13:50:33.868 GMT     4	INFO   	101309	Messaging.GatewayManager	172.19.176.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 12/21/2017 1:49:33 PM	

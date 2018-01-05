@@ -12,7 +12,7 @@ namespace SkunkLab.Protocols.Coap.Handlers
         public CoapPingHandler(CoapSession session, CoapMessage message)
             :base(session, message, null)
         {
-
+            CoapAuthentication.EnsureAuthentication(session, message);
         }
         public override async Task<CoapMessage> ProcessAsync()
         {            

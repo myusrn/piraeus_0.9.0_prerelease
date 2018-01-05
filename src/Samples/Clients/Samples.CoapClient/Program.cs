@@ -44,17 +44,10 @@ namespace Samples.CoapClient
             channel.OnStateChange += Channel_OnStateChange1;
             channel.OnClose += Channel_OnClose;
             channel.OnError += Channel_OnError;
-            Task task = channel.OpenAsync();
-            Task.WaitAll(task);
-
-            Task t = channel.ReceiveAsync();
-            Task.WhenAll(t);
-
-            Console.WriteLine("OPEN");
-            Console.ReadKey();
+            
 
             CoapConfig config = new CoapConfig(null, "www.skunklab.io", CoapConfigOptions.NoResponse | CoapConfigOptions.Observe, false, 180.0,30.0,1.5,2,1,4.0,1.0,100.0);
-            PiraeusCoapClient coapClient = new PiraeusCoapClient(config, channel, null);
+            PiraeusCoapClient coapClient = new PiraeusCoapClient(config, channel);
 
             string subResource = abSwitch ? resourceB : resourceA;
 
@@ -87,14 +80,16 @@ namespace Samples.CoapClient
 
                 while(trysend)
                 {
-                    while (index < 20)
+                    while (index < 10)
                     {
                         if (trysend)
                         {
                             string message = String.Format("Hi from {0} {1}", pubResource, index++);
                             //TaskCompletionSource<Task> tcs = new TaskCompletionSource<Task>();
                             Task pubTask = coapClient.PublishAsync(pubResource, "text/plain", Encoding.UTF8.GetBytes(message), true, Response);
-                            Task.WaitAll(pubTask);
+                            Task.WhenAll(pubTask);
+                            Console.WriteLine(index);
+                            //Task.WaitAll(pubTask);
                             
                         }
                     }

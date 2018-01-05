@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,19 +12,40 @@ namespace SkunkLab.Channels
 {
     public abstract class UdpChannel : IChannel
     {
-        public static UdpChannel Create(IPEndPoint localEP, IPEndPoint remoteEP, CancellationToken token)
+        /// <summary>
+        /// Create a UDP server-side connection to send/receive.
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static UdpChannel Create(UdpClient client, IPEndPoint remoteEP, CancellationToken token)
         {
-            return new UdpServerChannel(localEP, remoteEP, token);
+            return new UdpServerChannel(client, remoteEP, token);
         }
 
-        public static UdpChannel Create(IPEndPoint localEP, string hostname, int port, CancellationToken token)
+        /// <summary>
+        /// Create UDP client channel.
+        /// </summary>
+        /// <param name="localPort"></param>
+        /// <param name="hostname"></param>
+        /// <param name="port"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static UdpChannel Create(int localPort, string hostname, int port, CancellationToken token)
         {
-            return new UdpClientChannel(localEP, hostname, port, token);
+            return new UdpClientChannel(localPort, hostname, port, token);
         }
 
-        public static UdpChannel Create(IPEndPoint localEP, IPAddress remoteAddress, int port, CancellationToken token)
+        /// <summary>
+        /// Creates UDP client channel.
+        /// </summary>
+        /// <param name="localPort"></param>
+        /// <param name="remoteEP"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static UdpChannel Create(int localPort, IPEndPoint remoteEP, CancellationToken token)
         {
-            return new UdpClientChannel(localEP, new IPEndPoint(remoteAddress, port), token);
+            return new UdpClientChannel(localPort, remoteEP, token);
         }
 
 
@@ -65,12 +87,8 @@ namespace SkunkLab.Channels
         public abstract Task ReceiveAsync();
 
         public abstract Task SendAsync(byte[] message);
+      
 
-        public abstract Task AddMessage(byte[] message);
-
-        public Task AddMessageAsync(byte[] message)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract Task AddMessageAsync(byte[] message);
     }
 }

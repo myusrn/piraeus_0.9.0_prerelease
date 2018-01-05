@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
 using SkunkLab.Channels;
+using SkunkLab.Diagnostics.Logging;
 using SkunkLab.Protocols.Coap;
 using SkunkLab.Protocols.Coap.Handlers;
 
@@ -19,7 +20,7 @@ namespace Piraeus.Adapters
             coapUnobserved = new HashSet<string>();
             adapter = new OrleansAdapter();
             adapter.OnObserve += Adapter_OnObserve;
-            Task task = LoadDurables();
+            Task task = LoadDurableAyncs();
             Task.WhenAll(task);
         }
 
@@ -35,15 +36,15 @@ namespace Piraeus.Adapters
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public CoapMessage Delete(CoapMessage message)
+        public async Task<CoapMessage> DeleteAsync(CoapMessage message)
         {
             Exception error = null;
 
             CoapUri uri = new CoapUri(message.ResourceUri.ToString());
             try
             {
-                Task task = UnsubscribeAsync(uri.Resource);
-                Task.WhenAll(task);
+                await adapter.UnsubscribeAsync(uri.Resource);
+                coapObserved.Remove(uri.Resource);
             }
             catch (AggregateException ae)
             {
@@ -65,11 +66,11 @@ namespace Piraeus.Adapters
             }
         }
 
-        private async Task UnsubscribeAsync(string resourceUriString)
-        {
-            await adapter.UnsubscribeAsync(resourceUriString);
-            coapObserved.Remove(resourceUriString);
-        }
+        //private async Task UnsubscribeAsync(string resourceUriString)
+        //{
+        //    await adapter.UnsubscribeAsync(resourceUriString);
+        //    coapObserved.Remove(resourceUriString);
+        //}
 
         /// <summary>
         /// Not implemented in Piraeus
@@ -78,9 +79,13 @@ namespace Piraeus.Adapters
         /// <returns></returns>
         /// <remarks>GET is associated with CoAP observe.  If the client does not support this, then
         /// should use PUT to create a subscription.  Therefore, a GET which is not CoAP observe returns RST.</remarks>
-        public CoapMessage Get(CoapMessage message)
+        public Task<CoapMessage> GetAsync(CoapMessage message)
         {
-            return new CoapResponse(message.MessageId, ResponseMessageType.Reset, ResponseCodeType.EmptyMessage, message.Token);
+            TaskCompletionSource<CoapMessage> tcs = new TaskCompletionSource<CoapMessage>();
+            CoapMessage msg = new CoapResponse(message.MessageId, ResponseMessageType.Reset, ResponseCodeType.EmptyMessage, message.Token);
+            tcs.SetResult(msg);
+            return tcs.Task;
+
         }
 
         /// <summary>
@@ -88,16 +93,13 @@ namespace Piraeus.Adapters
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public CoapMessage Observe(CoapMessage message)
-        {
-            return ObserveAsync(message).Result;
-        }
-
-
         public async Task<CoapMessage> ObserveAsync(CoapMessage message)
         {
+            await Log.LogInfoAsync("Coap observe message received.");
+
             if (!message.Observe.HasValue)
             {
+                await Log.LogInfoAsync("Coap observe received without Observe flag set, return RST.");
                 //RST because GET needs to be observe/unobserve
                 return new CoapResponse(message.MessageId, ResponseMessageType.Reset, ResponseCodeType.EmptyMessage);
             }
@@ -107,12 +109,14 @@ namespace Piraeus.Adapters
 
             if (!await adapter.CanSubscribeAsync(uri.Resource, channel.IsEncrypted))
             {
+                await Log.LogInfoAsync("Coap observe not authorized.");
                 //not authorized
                 return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Unauthorized, message.Token);
             }
 
             if (!message.Observe.Value)
             {
+                await Log.LogInfoAsync("Coap observe without value, unsubscribing.");
                 //unsubscribe
                 await adapter.UnsubscribeAsync(uri.Resource);
                 coapObserved.Remove(uri.Resource);
@@ -127,7 +131,9 @@ namespace Piraeus.Adapters
                     Indexes = session.Indexes
                 };
 
+                await Log.LogInfoAsync("Coap observe subscribe attempt.");
                 string subscriptionUriString = await adapter.SubscribeAsync(uri.Resource, metadata);
+                await Log.LogInfoAsync("Coap obseve subscribed.");
 
                 if (!coapObserved.ContainsKey(uri.Resource)) //add resource to observed list
                 {
@@ -135,27 +141,47 @@ namespace Piraeus.Adapters
                 }
             }
 
+            await Log.LogInfoAsync("Returning Coap observe response.");
             return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Valid, message.Token);
         }
 
         private void Adapter_OnObserve(object sender, ObserveMessageEventArgs e)
         {
+            Task t0 = Log.LogInfoAsync("Coap adapter observed incoming message from Piraeus.");
+            Task.WhenAll(t0);
 
             byte[] message = null;
 
             if (coapObserved.ContainsKey(e.Message.ResourceUri))
             {
+                Task t1 = Log.LogInfoAsync("Coap adapter observed message converting with token prior to send.");
+                Task.WhenAll(t1);
+
                 message = ProtocolTransition.ConvertToCoap(session, e.Message, coapObserved[e.Message.ResourceUri]);
             }
             else
             {
+                Task t2 = Log.LogInfoAsync("Coap adapter observed message converting without token prior to send.");
+                Task.WhenAll(t2);
+
                 message = ProtocolTransition.ConvertToCoap(session, e.Message);
             }
 
-            //byte[] message = coapObserved.ContainsKey(e.Message.ResourceUri) ? ProtocolTransition.ConvertToCoap(session, e.Message, coapObserved[e.Message.ResourceUri]) : ProtocolTransition.ConvertToCoap(session, e.Message);
+            Task t3 = Log.LogInfoAsync("Coap adapter observed messaging sending converted messsage.");
+            Task.WhenAll(t3);
 
-            Task task = channel.SendAsync(message);
+            Task task = Send(message);
             Task.WhenAll(task);
+        }
+
+        private async Task Send(byte[] message)
+        {
+            await Log.LogInfoAsync("Coap adapter about to send observed message on channel.");
+
+            await channel.SendAsync(message);
+
+            await Log.LogInfoAsync("Coap adapter about to sent observed message on channel.");
+
         }
 
         /// <summary>
@@ -163,37 +189,10 @@ namespace Piraeus.Adapters
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public CoapMessage Post(CoapMessage message)
+        public async Task<CoapMessage> PostAsync(CoapMessage message)
         {
-            //return PostAsync(message).Result;
+            await Log.LogInfoAsync("Coap post of message received.");
 
-            CoapUri uri = new CoapUri(message.ResourceUri.ToString());
-            ResponseMessageType rmt = message.MessageType == CoapMessageType.Confirmable ? ResponseMessageType.Acknowledgement : ResponseMessageType.NonConfirmable;
-
-            if (!adapter.CanPublishAsync(uri.Resource, channel.IsEncrypted).Result)
-            {
-                return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Unauthorized, message.Token);
-            }
-
-            string contentType = message.ContentType.HasValue ? message.ContentType.Value.ConvertToContentType() : "application/octet-stream";
-            EventMessage msg = new EventMessage(contentType, uri.Resource, ProtocolType.COAP, message.Encode());
-            
-            if (uri.Indexes == null)
-            {
-                adapter.PublishAsync(msg).Wait();
-            }
-            else
-            {
-                List<KeyValuePair<string, string>> indexes = new List<KeyValuePair<string, string>>(uri.Indexes);
-                adapter.PublishAsync(msg, indexes).Wait();
-            }
-
-            return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Created, message.Token);
-
-        }
-
-        private async Task<CoapMessage> PostAsync(CoapMessage message)
-        {
             CoapUri uri = new CoapUri(message.ResourceUri.ToString());
             ResponseMessageType rmt = message.MessageType == CoapMessageType.Confirmable ? ResponseMessageType.Acknowledgement : ResponseMessageType.NonConfirmable;
 
@@ -205,33 +204,30 @@ namespace Piraeus.Adapters
             string contentType = message.ContentType.HasValue ? message.ContentType.Value.ConvertToContentType() : "application/octet-stream";
             EventMessage msg = new EventMessage(contentType, uri.Resource, ProtocolType.COAP, message.Encode());
 
-            
 
-            if(uri.Indexes == null)
+
+            if (uri.Indexes == null)
             {
                 await adapter.PublishAsync(msg);
             }
-           else
+            else
             {
                 List<KeyValuePair<string, string>> indexes = new List<KeyValuePair<string, string>>(uri.Indexes);
                 await adapter.PublishAsync(msg, indexes);
             }
-            
+
 
             return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Created, message.Token);
+
         }
+        
 
         /// <summary>
         /// Subscribe message for ephemeral subscription
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public CoapMessage Put(CoapMessage message)
-        {
-            return PutAsync(message).Result;
-        }
-
-        private async Task<CoapMessage> PutAsync(CoapMessage message)
+        public async Task<CoapMessage> PutAsync(CoapMessage message)
         {
             CoapUri uri = new CoapUri(message.ResourceUri.ToString());
             ResponseMessageType rmt = message.MessageType == CoapMessageType.Confirmable ? ResponseMessageType.Acknowledgement : ResponseMessageType.NonConfirmable;
@@ -264,9 +260,9 @@ namespace Piraeus.Adapters
 
             return new CoapResponse(message.MessageId, rmt, ResponseCodeType.Created, message.Token);
         }
+        
 
-
-        private async Task LoadDurables()
+        private async Task LoadDurableAyncs()
         {
             List<string> list = await adapter.LoadDurableSubscriptionsAsync(session.Identity);
 

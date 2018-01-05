@@ -26,7 +26,8 @@ namespace Samples.Clients.Rest
 
 
         static int index;
-        static string endpoint;
+        static string endpoint = "http://localhost:4163/api/connect";
+
         static string resourceA;
         static string resourceB;
         static CancellationTokenSource source;
@@ -44,7 +45,7 @@ namespace Samples.Clients.Rest
             SelectEndpoint();
             SelectClientName();
             SelectClientRole();
-            AddIndexClaim();
+            //AddIndexClaim();
             //SelectContentType();
             string token = GetSecurityToken(symmetricKey, issuer, audience, 60.0, GetClaims());
             source = new CancellationTokenSource();
@@ -55,7 +56,10 @@ namespace Samples.Clients.Rest
 
             //create the REST client
             RestClient client = new RestClient(endpoint, token, new HttpObserver[] { observer }, source.Token);
+            
 
+            
+            
             Console.WriteLine("Press any key to send a message !");
             Console.ReadKey();
 
@@ -64,18 +68,18 @@ namespace Samples.Clients.Rest
             {
                 List<KeyValuePair<string, string>> indexes = null;
                 index++;
-                byte[] message = Encoding.UTF8.GetBytes(String.Format("Hello {0} from client {1}", index, clientName));
-                Console.Write("Do you want to send with an index (Y/N) ? ");
-                if(Console.ReadLine().ToLowerInvariant() == "y")
-                {
-                    Console.Write("Enter index name ? ");
-                    string indexName = Console.ReadLine().ToLowerInvariant();
-                    Console.Write("Enter index value ? ");
-                    string indexValue = Console.ReadLine().ToLowerInvariant();
-                    indexes = new List<KeyValuePair<string, string>>(new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(indexName, indexValue) });
-                }
+                byte[] message = Encoding.UTF8.GetBytes(String.Format("{0} sent message {1}", clientName, index));
+                //Console.Write("Do you want to send with an index (Y/N) ? ");
+                //if(Console.ReadLine().ToLowerInvariant() == "y")
+                //{
+                //    Console.Write("Enter index name ? ");
+                //    string indexName = Console.ReadLine().ToLowerInvariant();
+                //    Console.Write("Enter index value ? ");
+                //    string indexValue = Console.ReadLine().ToLowerInvariant();
+                //    indexes = new List<KeyValuePair<string, string>>(new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(indexName, indexValue) });
+                //}
 
-                Task sendTask = client.SendAsync(resourceA, contentType, message, indexes);
+                Task sendTask = client.SendAsync(resourceA, contentType, message);
                 Task.WhenAll(sendTask);
                 Console.Write("Do you want to send another message (Y/N) ? ");               
                 sending = Console.ReadLine().ToLowerInvariant() == "y";
@@ -204,14 +208,14 @@ namespace Samples.Clients.Rest
             }
             else if(role == "A")
             {
-                resourceA = "http://www.skunklab.io/resourceA";
-                resourceB = "http://www.skunklab.io/resourceB";
+                resourceA = "http://www.skunklab.io/resourcea";
+                resourceB = "http://www.skunklab.io/resourceb";
                
             }
             else
             {
-                resourceB = "http://www.skunklab.io/resourceA";
-                resourceA = "http://www.skunklab.io/resourceB";
+                resourceB = "http://www.skunklab.io/resourcea";
+                resourceA = "http://www.skunklab.io/resourceb";
             }
            
         }
@@ -219,9 +223,10 @@ namespace Samples.Clients.Rest
         static void SelectEndpoint()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Enter REST endpoint ? ");
+            Console.Write("Enter REST endpoint or Enter for default ? ");
             Console.ForegroundColor = ConsoleColor.Green;
-            endpoint = Console.ReadLine();
+            string url = Console.ReadLine();
+            endpoint = String.IsNullOrEmpty(url) ? endpoint : url;
             Console.ResetColor();
         }
 

@@ -11,6 +11,7 @@ namespace Piraeus.GrainInterfaces
     {
         Task UpsertMetadataAsync(ResourceMetadata metadata);
 
+        Task<CommunicationMetrics> GetMetricsAsync();
         Task<ResourceMetadata> GetMetadataAsync();
 
         Task SubscribeAsync(ISubscription subscription);

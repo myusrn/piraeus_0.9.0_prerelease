@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SkunkLab.Protocols.Mqtt.Handlers
@@ -22,8 +23,9 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
             Session.IncrementKeepAlive();
             List<QualityOfServiceLevelType> list = new List<QualityOfServiceLevelType>();
             SubscribeMessage msg = Message as SubscribeMessage;
+            
             List<string> validSubs = Session.Subscribe(Message); 
-            IEnumerator<KeyValuePair<string, QualityOfServiceLevelType>> en = msg.Topics.GetEnumerator();
+            IEnumerator<KeyValuePair<string, QualityOfServiceLevelType>> en = msg.Topics.GetEnumerator();            
             while(en.MoveNext())
             {
                 MqttUri uri = new MqttUri(en.Current.Key);

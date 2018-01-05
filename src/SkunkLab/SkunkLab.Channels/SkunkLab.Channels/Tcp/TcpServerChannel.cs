@@ -11,40 +11,45 @@ using System.Threading;
 using System.Threading.Tasks;
 using Org.BouncyCastle.Crypto.Tls;
 using Org.BouncyCastle.Security;
+using SkunkLab.Diagnostics.Logging;
 
 namespace SkunkLab.Channels.Tcp
 {
     public class TcpServerChannel : TcpChannel
     {
-        public TcpServerChannel(TcpClient client, CancellationToken token)
+        public TcpServerChannel(TcpClient client, int maxBufferSize, CancellationToken token)
         {
             this.client = client;
             this.token = token;
+            this.maxBufferSize = maxBufferSize;
             this.token.Register(async () => await CloseAsync());
             Id = "tcp-" + Guid.NewGuid().ToString();
             Port = ((IPEndPoint)client.Client.LocalEndPoint).Port;
         }
 
-        public TcpServerChannel(TcpClient client, X509Certificate2 certificate, bool clientAuth, CancellationToken token)
+        public TcpServerChannel(TcpClient client, X509Certificate2 certificate, bool clientAuth, int maxBufferSize, CancellationToken token)
         {
             this.client = client;
             this.certificate = certificate;
             this.clientAuth = clientAuth;
             this.token = token;
+            this.maxBufferSize = maxBufferSize;
             this.token.Register(async () => await CloseAsync());
             Id = "tcp-" + Guid.NewGuid().ToString();
         }
 
-        public TcpServerChannel(TcpClient client, string pskIdentity, byte[] psk, CancellationToken token)
+        public TcpServerChannel(TcpClient client, string pskIdentity, byte[] psk, int maxBufferSize, CancellationToken token)
         {
             this.client = client;
             this.pskIdentity = pskIdentity;
             this.psk = psk;
             this.token = token;
+            this.maxBufferSize = maxBufferSize;
             this.token.Register(async () => await CloseAsync());
             Id = "tcp-" + Guid.NewGuid().ToString();
         }
 
+        private int maxBufferSize;
         private SecureRandom srandom;
         private string pskIdentity;
         private byte[] psk;
@@ -175,6 +180,8 @@ namespace SkunkLab.Channels.Tcp
 
         public override async Task ReceiveAsync()
         {
+            await Log.LogInfoAsync("Channel {0} tcp server channel receiving.", Id);
+
             byte[] buffer = null;
             byte[] prefix = null;
             int remainingLength = 0;
@@ -200,6 +207,11 @@ namespace SkunkLab.Channels.Tcp
                     //ensure the length prefix is ordered correctly to calc the remaining length
                     prefix = BitConverter.IsLittleEndian ? prefix.Reverse().ToArray() : prefix;
                     remainingLength = BitConverter.ToInt32(prefix, 0);
+
+                    if (remainingLength >= maxBufferSize)
+                    {
+                        throw new IndexOutOfRangeException("TCP server channel receive message exceeds max buffer size");
+                    }
 
                     offset = 0;
 
@@ -248,6 +260,16 @@ namespace SkunkLab.Channels.Tcp
             Exception error = null;
             string errorMsg = null;
 
+            if (message == null || message.Length == 0)
+            {
+                throw new IndexOutOfRangeException("TCP client channel cannot send null or 0-length message");
+            }
+
+            if (message.Length > maxBufferSize)
+            {
+                throw new IndexOutOfRangeException("TCP server channel message exceeds max buffer size");
+            }
+
             try
             {
                 await writeConnection.WaitAsync();
@@ -261,6 +283,11 @@ namespace SkunkLab.Channels.Tcp
                 {
                     await stream.WriteAsync(buffer, 0, buffer.Length);
                     await stream.FlushAsync();
+                    await Log.LogInfoAsync("Channel {0} tcp server channel sent message.");
+                }
+                else
+                {
+                    await Log.LogInfoAsync("Channel {0} tcp server channel cannot send because stream is not writable at this time.");
                 }
 
                 writeConnection.Release();
