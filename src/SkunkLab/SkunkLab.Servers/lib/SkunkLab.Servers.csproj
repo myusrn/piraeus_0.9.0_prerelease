@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capl, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Capl.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Microsoft.Azure.KeyVault.Core.dll</HintPath>
     </Reference>
@@ -80,18 +77,6 @@
     </Reference>
     <Reference Include="OrleansRuntime, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\OrleansRuntime.dll</HintPath>
-    </Reference>
-    <Reference Include="Piraeus.Configuration, Version=0.5.23.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Piraeus.Configuration.0.5.23\lib\net461\Piraeus.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Piraeus.Core, Version=0.5.23.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Piraeus.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Piraeus.GrainInterfaces, Version=0.5.23.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Piraeus.GrainInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Piraeus.Grains, Version=0.5.24.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\Piraeus.Grains.dll</HintPath>
     </Reference>
     <Reference Include="StackExchange.Redis, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\Samples\Clients\Assets\LocalServer\packages\Piraeus.Grains.0.5.24\lib\net461\StackExchange.Redis.dll</HintPath>
@@ -220,9 +205,29 @@
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\CAPL\Capl\Capl.csproj">
+      <Project>{f1c1c07f-b282-48e4-8e60-e534d9df7cb3}</Project>
+      <Name>Capl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Piraeus\Piraeus.Adapters\Piraeus.Adapters.csproj">
       <Project>{72e062b7-9baf-47e1-ac10-d89cc3994e3b}</Project>
       <Name>Piraeus.Adapters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Piraeus\Piraeus.Configuration\Piraeus.Configuration.csproj">
+      <Project>{69e93539-bc52-4bb6-8912-2af485e42691}</Project>
+      <Name>Piraeus.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Piraeus\Piraeus.Core\Piraeus.Core.csproj">
+      <Project>{db8ff87b-3c47-429e-be51-29ade3735fce}</Project>
+      <Name>Piraeus.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Piraeus\Piraeus.GrainInterfaces\Piraeus.GrainInterfaces.csproj">
+      <Project>{336ee3d2-8d06-4194-83f8-59a3dc7d63f2}</Project>
+      <Name>Piraeus.GrainInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Piraeus\Piraeus.Grains\Piraeus.Grains.csproj">
+      <Project>{ceb5bd18-eed5-4a35-b2bd-2063f46903a9}</Project>
+      <Name>Piraeus.Grains</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\SkunkLab.Channels\SkunkLab.Channels\SkunkLab.Channels.csproj">
       <Project>{7c69a3ca-29dd-4c33-b70f-f998a6e650b9}</Project>

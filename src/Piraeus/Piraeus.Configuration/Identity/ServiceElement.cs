@@ -10,5 +10,11 @@ namespace Piraeus.Configuration.Identity
             get { return (ServiceClaimsElementCollection)base["claims"]; }
             set { base["claims"] = value; }
         }
+
+        
+
+
+
+
     }
 }

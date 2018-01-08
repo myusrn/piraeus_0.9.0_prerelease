@@ -2971,3 +2971,81 @@ Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=44
 Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=44
 	
 [2018-01-05 17:25:48.863 GMT    90	INFO   	101309	Messaging.GatewayManager	172.18.144.72:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 1/5/2018 5:24:48 PM	
+[2018-01-05 17:26:48.868 GMT    82	INFO   	101309	Messaging.GatewayManager	172.18.144.72:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 1/5/2018 5:25:48 PM	
+[2018-01-05 17:27:48.879 GMT    84	INFO   	101309	Messaging.GatewayManager	172.18.144.72:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 1/5/2018 5:26:48 PM	
+[2018-01-05 17:28:48.893 GMT    87	INFO   	101309	Messaging.GatewayManager	172.18.144.72:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 1/5/2018 5:27:48 PM	
+[2018-01-05 17:29:48.914 GMT    86	INFO   	101309	Messaging.GatewayManager	172.18.144.72:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 1/5/2018 5:28:48 PM	
+[2018-01-05 17:30:48.426 GMT    86	INFO   	100704	ClientLogStatistics	172.18.144.72:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=383583,      Delta=11940
+Messaging.Received.Bytes.Total.Current=510786,      Delta=15030
+Messaging.Received.Direction.OneWay.Current=33
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=1262,      Delta=40
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=1295,      Delta=40
+Messaging.Received.Messages.Total.Current=1295,      Delta=40
+Messaging.Received.MessageSizeHistogram.Bytes=[128:255]=16, [256:511]=1239, [512:1023]=20, [1024:2047]=19, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=338502,      Delta=10820
+Messaging.Sent.Bytes.Total.Current=403006,      Delta=12780
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=1262,      Delta=40
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=1262,      Delta=40
+Messaging.Sent.Messages.Total.Current=1262,      Delta=40
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=32, [256:511]=1230, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=65.021
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=20.588
+Runtime.GC.GenCollectonCount=gen0=141, gen1=130, gen2=4
+Runtime.GC.GenSizesKb=gen0=2048.00, gen1=69.13, gen2=7249.59
+Runtime.GC.LargeObjectHeapSizeKb=4705.328
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.001
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=0.000
+Runtime.GC.PromotedMemoryFromGen1Kb=0.605
+Runtime.GC.TotalMemoryKb=11324
+Runtime.Memory.AvailableMemoryMb=9860
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=206
+Serialization.BufferPool.CheckedInBuffers.Current=6612,      Delta=200
+Serialization.BufferPool.CheckedOutBuffers.Current=6656,      Delta=200
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=44
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=44
+	
+[2018-01-05 17:30:48.916 GMT    78	INFO   	101309	Messaging.GatewayManager	172.18.144.72:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 1/5/2018 5:29:48 PM	
+[2018-01-05 17:31:48.929 GMT    72	INFO   	101309	Messaging.GatewayManager	172.18.144.72:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 1/5/2018 5:30:48 PM	
+[2018-01-05 17:32:48.936 GMT    72	INFO   	101309	Messaging.GatewayManager	172.18.144.72:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 1/5/2018 5:31:48 PM	
+[2018-01-05 17:33:29.791 GMT    10	WARNING	100158	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.18.144.72:0]	Exception receiving from gateway gwy.tcp://127.0.0.1:40000/0: An existing connection was forcibly closed by the remote host	
+[2018-01-05 17:33:29.840 GMT    10	WARNING	100913	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.144.72:0]	Marking gateway at address gwy.tcp://127.0.0.1:40000/0 as Disconnected	
+[2018-01-05 17:33:29.845 GMT    85	INFO   	101309	Messaging.GatewayManager	172.18.144.72:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 1/5/2018 5:32:48 PM	
+[2018-01-05 17:33:30.899 GMT    10	WARNING	100178	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.144.72:0]	Unable to connect to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0 (Exception: Could not connect to 127.0.0.1:40000: ConnectionRefused)	
+[2018-01-05 17:33:30.901 GMT    10	WARNING	100913	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.144.72:0]	Marking gateway at address gwy.tcp://127.0.0.1:40000/0 as Disconnected	
+[2018-01-05 17:33:30.902 GMT    72	INFO   	101309	Messaging.GatewayManager	172.18.144.72:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 1/5/2018 5:33:29 PM	
+[2018-01-05 17:33:31.910 GMT    10	WARNING	100178	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.144.72:0]	Unable to connect to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 1 (Exception: Could not connect to 127.0.0.1:40000: ConnectionRefused)	
+[2018-01-05 17:33:31.910 GMT    10	WARNING	100913	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.144.72:0]	Marking gateway at address gwy.tcp://127.0.0.1:40000/0 as Disconnected	
+[2018-01-05 17:33:31.910 GMT    60	INFO   	101309	Messaging.GatewayManager	172.18.144.72:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 1/5/2018 5:33:30 PM	
+[2018-01-05 17:33:31.910 GMT    10	WARNING	100912	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.144.72:0]	Marking gateway at address gwy.tcp://127.0.0.1:40000/0 as Dead in my client local gateway list.	
+[2018-01-05 17:33:31.926 GMT     9	INFO   	100312	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.144.72:0]	Stop request processed	
+[2018-01-05 17:33:31.926 GMT     9	INFO   	100328	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.18.144.72:0]	Stopping AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 that runs on managed thread 9	
+[2018-01-05 17:33:31.926 GMT    10	INFO   	100328	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.18.144.72:0]	Stopping AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 that runs on managed thread 10	

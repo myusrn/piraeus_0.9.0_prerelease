@@ -37,6 +37,8 @@ namespace SkunkLab.Channels.Udp
 
 
         public override string Id { get; internal set; }
+
+        public override string TypeId { get { return "UDP"; } }
         public override bool IsConnected
         {
             get
@@ -77,9 +79,6 @@ namespace SkunkLab.Channels.Udp
         public override event EventHandler<ChannelOpenEventArgs> OnOpen;
         public override event EventHandler<ChannelErrorEventArgs> OnError;
         public override event EventHandler<ChannelStateEventArgs> OnStateChange;
-        public override event EventHandler<ChannelRetryEventArgs> OnRetry;
-        public override event EventHandler<ChannelSentEventArgs> OnSent;
-        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
 
         
 
@@ -154,7 +153,6 @@ namespace SkunkLab.Channels.Udp
                 {  
                     UdpReceiveResult result = await client.ReceiveAsync();                    
                     OnReceive?.Invoke(this, new ChannelReceivedEventArgs(Id, result.Buffer));
-                    OnObserve?.Invoke(this, new ChannelObserverEventArgs(Id, null, result.Buffer));
                 }
                 catch(Exception ex)
                 {
@@ -174,15 +172,13 @@ namespace SkunkLab.Channels.Udp
                 if (remoteEP == null)
                 {
                     await client.SendAsync(message, message.Length);
-                    //await client.SendAsync(message, message.Length, hostname, port);
                 }
                 else
                 {
-                    //await client.SendAsync(message, message.Length, remoteEP);
                     await client.SendAsync(message, message.Length);
                 }
 
-                OnSent?.Invoke(this, new ChannelSentEventArgs(Id, null));
+                
             }
             catch(Exception ex)
             {

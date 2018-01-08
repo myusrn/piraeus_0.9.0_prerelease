@@ -14,7 +14,7 @@ namespace Piraeus.Module
         [Parameter(HelpMessage = "Security token used to access the REST service.", Mandatory = true)]
         public string SecurityToken;
 
-        [Parameter(HelpMessage = "Unique URI identifier of resource.", Mandatory = true)]
+        [Parameter(HelpMessage = "Unique URI identifier of resource to subscribe.", Mandatory = true)]
         public string ResourceUriString;
 
         [Parameter(HelpMessage = "Security identity from claims; required for actively connected subsystems; otherwise omit.", Mandatory = false)]

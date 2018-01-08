@@ -104,7 +104,7 @@ namespace SkunkLab.Channels.Http
         
 
         
-
+        public abstract string TypeId { get; }
         public abstract int Port { get; internal set; }
         public abstract bool IsConnected { get;  }
         public abstract string Id { get; internal set; }
@@ -120,9 +120,6 @@ namespace SkunkLab.Channels.Http
         public abstract event EventHandler<ChannelOpenEventArgs> OnOpen;
         public abstract event EventHandler<ChannelErrorEventArgs> OnError;
         public abstract event EventHandler<ChannelStateEventArgs> OnStateChange;
-        public abstract event EventHandler<ChannelRetryEventArgs> OnRetry;
-        public abstract event EventHandler<ChannelSentEventArgs> OnSent;
-        public abstract event EventHandler<ChannelObserverEventArgs> OnObserve;
 
         
         public abstract Task CloseAsync();

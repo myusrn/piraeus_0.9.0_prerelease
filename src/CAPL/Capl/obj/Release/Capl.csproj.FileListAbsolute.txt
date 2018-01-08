@@ -1,0 +1,7 @@
+C:\_git\core\src\CAPL\Capl\Capl\bin\Release\Capl.dll
+C:\_git\core\src\CAPL\Capl\Capl\bin\Release\Capl.pdb
+C:\_git\core\src\CAPL\Capl\Capl\obj\Release\Capl.Properties.Resources.resources
+C:\_git\core\src\CAPL\Capl\Capl\obj\Release\Capl.csproj.GenerateResource.Cache
+C:\_git\core\src\CAPL\Capl\Capl\obj\Release\Capl.csproj.CoreCompileInputs.cache
+C:\_git\core\src\CAPL\Capl\Capl\obj\Release\Capl.dll
+C:\_git\core\src\CAPL\Capl\Capl\obj\Release\Capl.pdb

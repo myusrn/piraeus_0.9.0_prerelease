@@ -34,44 +34,89 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capl, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Capl.dll</HintPath>
+    <Reference Include="DotNetty.Buffers, Version=0.4.7.0, Culture=neutral, PublicKeyToken=bc13ca065fa06c29, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\DotNetty.Buffers.0.4.7\lib\net45\DotNetty.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetty.Codecs, Version=0.4.7.0, Culture=neutral, PublicKeyToken=bc13ca065fa06c29, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\DotNetty.Codecs.0.4.7\lib\net45\DotNetty.Codecs.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetty.Codecs.Mqtt, Version=0.4.7.0, Culture=neutral, PublicKeyToken=bc13ca065fa06c29, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\DotNetty.Codecs.Mqtt.0.4.7\lib\net45\DotNetty.Codecs.Mqtt.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetty.Common, Version=0.4.7.0, Culture=neutral, PublicKeyToken=bc13ca065fa06c29, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\DotNetty.Common.0.4.7\lib\net45\DotNetty.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetty.Handlers, Version=0.4.7.0, Culture=neutral, PublicKeyToken=bc13ca065fa06c29, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\DotNetty.Handlers.0.4.7\lib\net45\DotNetty.Handlers.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetty.Transport, Version=0.4.7.0, Culture=neutral, PublicKeyToken=bc13ca065fa06c29, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\DotNetty.Transport.0.4.7\lib\net45\DotNetty.Transport.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Amqp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\Microsoft.Azure.Amqp.2.1.3\lib\net45\Microsoft.Azure.Amqp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Devices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\Microsoft.Azure.Devices.1.5.0\lib\net451\Microsoft.Azure.Devices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Devices.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\Microsoft.Azure.Devices.Client.1.6.1\lib\net451\Microsoft.Azure.Devices.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Devices.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\Microsoft.Azure.Devices.Shared.1.4.0\lib\net451\Microsoft.Azure.Devices.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Documents.Client, Version=1.19.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\Microsoft.Azure.DocumentDB.1.19.1\lib\net45\Microsoft.Azure.Documents.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\Microsoft.Azure.KeyVault.Core.2.0.4\lib\net45\Microsoft.Azure.KeyVault.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Microsoft.CodeAnalysis.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\Microsoft.CodeAnalysis.Common.2.0.0\lib\netstandard1.3\Microsoft.CodeAnalysis.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\Microsoft.CodeAnalysis.CSharp.2.0.0\lib\netstandard1.3\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Microsoft.Data.Edm.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\Microsoft.Data.Edm.5.8.3\lib\net40\Microsoft.Data.Edm.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.OData, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Microsoft.Data.OData.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\Microsoft.Data.OData.5.8.3\lib\net40\Microsoft.Data.OData.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Services.Client, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Microsoft.Data.Services.Client.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\Microsoft.Data.Services.Client.5.8.3\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection, Version=1.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\Microsoft.Extensions.DependencyInjection.1.1.0\lib\netstandard1.1\Microsoft.Extensions.DependencyInjection.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.1.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\Microsoft.Extensions.Logging.1.1.1\lib\netstandard1.1\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\Microsoft.Extensions.Logging.Abstractions.1.1.1\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\WindowsAzure.ServiceBus.4.1.6\lib\net45\Microsoft.ServiceBus.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Microsoft.Win32.Primitives.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\WindowsAzure.Storage.8.7.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Orleans, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Orleans.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\Microsoft.Orleans.Core.1.5.2\lib\net461\Orleans.dll</HintPath>
     </Reference>
     <Reference Include="OrleansCodeGenerator, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.1.5.2\lib\net461\OrleansCodeGenerator.dll</HintPath>
@@ -82,120 +127,149 @@
     <Reference Include="OrleansRuntime, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\Orleans\packages\Microsoft.Orleans.OrleansRuntime.1.5.2\lib\net461\OrleansRuntime.dll</HintPath>
     </Reference>
-    <Reference Include="Piraeus.Core, Version=0.5.23.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Piraeus.Core.dll</HintPath>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Piraeus.GrainInterfaces, Version=0.5.23.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\Piraeus.GrainInterfaces.dll</HintPath>
+    <Reference Include="PCLCrypto, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d4421c8a4786956c, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\PCLCrypto.2.0.147\lib\net45\PCLCrypto.dll</HintPath>
     </Reference>
-    <Reference Include="StackExchange.Redis, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\StackExchange.Redis.dll</HintPath>
+    <Reference Include="PInvoke.BCrypt, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\PInvoke.BCrypt.0.5.111\lib\net45\PInvoke.BCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.Kernel32, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\PInvoke.Kernel32.0.5.111\lib\net45\PInvoke.Kernel32.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.NCrypt, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\PInvoke.NCrypt.0.5.111\lib\net45\PInvoke.NCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.Windows.Core, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\PInvoke.Windows.Core.0.5.111\lib\net35\PInvoke.Windows.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.AppContext.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.AppContext.4.3.0\lib\net46\System.AppContext.dll</HintPath>
     </Reference>
     <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Collections.Immutable.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Collections.Immutable.1.3.1\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Console.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Diagnostics.DiagnosticSource.4.3.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.FileVersionInfo, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Diagnostics.FileVersionInfo.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Diagnostics.FileVersionInfo.4.3.0\lib\net46\System.Diagnostics.FileVersionInfo.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.StackTrace, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Diagnostics.StackTrace.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Diagnostics.StackTrace.4.3.0\lib\net46\System.Diagnostics.StackTrace.dll</HintPath>
     </Reference>
     <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Globalization.Calendars.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
     </Reference>
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.IO.Compression.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.IO.Compression.ZipFile.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.IO.FileSystem.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.IO.FileSystem.Primitives.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Net.Http.dll</HintPath>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Net.Http.Formatting.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Net.Sockets.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.WebSockets, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\System.Net.WebSockets.4.0.0\lib\net46\System.Net.WebSockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.WebSockets.Client, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\System.Net.WebSockets.Client.4.0.0\lib\net46\System.Net.WebSockets.Client.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Reflection.Metadata, Version=1.4.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Reflection.Metadata.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Reflection.Metadata.1.4.2\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\System.Runtime.CompilerServices.Unsafe.4.4.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\System.Runtime.Serialization.Primitives.4.1.1\lib\net46\System.Runtime.Serialization.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Security.Cryptography.Encoding.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Security.Cryptography.Primitives.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
     </Reference>
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Spatial, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Spatial.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Spatial.5.8.3\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Encoding.CodePages, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Text.Encoding.CodePages.4.3.0\lib\net46\System.Text.Encoding.CodePages.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Thread, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Threading.Thread.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Threading.Thread.4.3.0\lib\net46\System.Threading.Thread.dll</HintPath>
     </Reference>
     <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.ValueTuple.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Web.Http.WebHost.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Xml.ReaderWriter.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.XmlDocument, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Xml.XmlDocument.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Xml.XmlDocument.4.3.0\lib\net46\System.Xml.XmlDocument.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.XPath, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Xml.XPath.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Xml.XPath.4.3.0\lib\net46\System.Xml.XPath.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.XPath.XDocument, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\Orleans\packages\Piraeus.GrainInterfaces.0.5.23\lib\net461\System.Xml.XPath.XDocument.dll</HintPath>
+      <HintPath>..\..\Orleans\packages\System.Xml.XPath.XDocument.4.3.0\lib\net46\System.Xml.XPath.XDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="Validation, Version=2.4.0.0, Culture=neutral, PublicKeyToken=2fc06f0d701809a7, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\Validation.2.4.18\lib\net45\Validation.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessControl.cs" />
+    <Compile Include="AuditConfig.cs" />
     <Compile Include="ErrorNotificationEventArgs.cs" />
     <Compile Include="ErrorObserver.cs" />
     <Compile Include="GraphManager.cs" />
@@ -203,10 +277,23 @@
     <Compile Include="MessageObserver.cs" />
     <Compile Include="MetricNotificationEventArgs.cs" />
     <Compile Include="MetricObserver.cs" />
+    <Compile Include="Notifications\Auditor.cs" />
+    <Compile Include="Notifications\AuditRecord.cs" />
+    <Compile Include="Notifications\AzureBlobStorageSink.cs" />
+    <Compile Include="Notifications\AzureQueueStorageEventSink.cs" />
+    <Compile Include="Notifications\CosmosDbSink.cs" />
+    <Compile Include="Notifications\DataLakeSink.cs" />
+    <Compile Include="Notifications\EventHubSink.cs" />
+    <Compile Include="Notifications\EventSink.cs" />
+    <Compile Include="Notifications\EventSinkFactory.cs" />
+    <Compile Include="Notifications\IoTHubSink.cs" />
+    <Compile Include="Notifications\RestWebServiceSink.cs" />
+    <Compile Include="Notifications\ServiceBusTopicSink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.cs" />
     <Compile Include="ResourceIdentityMismatchException.cs" />
     <Compile Include="ResourceList.cs" />
+    <Compile Include="ServiceIdentity.cs" />
     <Compile Include="Subscriber.cs" />
     <Compile Include="Subscription.cs" />
     <Compile Include="SubscriptionIdentityMismatchException.cs" />
@@ -214,6 +301,28 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CAPL\Capl\Capl.csproj">
+      <Project>{f1c1c07f-b282-48e4-8e60-e534d9df7cb3}</Project>
+      <Name>Capl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SkunkLab\SkunkLab.Security\SkunkLab.Security\SkunkLab.Security.csproj">
+      <Project>{ea12413c-2396-4435-aad5-97f846fdd9c6}</Project>
+      <Name>SkunkLab.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\SkunkLab.Storage.csproj">
+      <Project>{738cbf32-00ab-4d4d-ba03-bba55ce1a543}</Project>
+      <Name>SkunkLab.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Piraeus.Core\Piraeus.Core.csproj">
+      <Project>{db8ff87b-3c47-429e-be51-29ade3735fce}</Project>
+      <Name>Piraeus.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Piraeus.GrainInterfaces\Piraeus.GrainInterfaces.csproj">
+      <Project>{336ee3d2-8d06-4194-83f8-59a3dc7d63f2}</Project>
+      <Name>Piraeus.GrainInterfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\Orleans\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
@@ -225,7 +334,11 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets'))" />
+    <!-- <Error Condition="!Exists('..\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" /> -->
     <Error Condition="!Exists('..\..\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets'))" />
+    <Error Condition="!Exists('..\..\Orleans\packages\Microsoft.Azure.DocumentDB.1.19.1\build\Microsoft.Azure.DocumentDB.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Orleans\packages\Microsoft.Azure.DocumentDB.1.19.1\build\Microsoft.Azure.DocumentDB.targets'))" />
+    <Error Condition="!Exists('..\..\Orleans\packages\Mono.Security.5.4.0.201\build\net45\Mono.Security.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Orleans\packages\Mono.Security.5.4.0.201\build\net45\Mono.Security.targets'))" />
+    <Error Condition="!Exists('..\..\Orleans\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Orleans\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets'))" />
   </Target>
   <PropertyGroup>
     <PostBuildEvent>
@@ -235,7 +348,11 @@
     <PreBuildEvent>
     </PreBuildEvent>
   </PropertyGroup>
+  <!-- <Import Project="..\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" /> -->
   <Import Project="..\..\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets" Condition="Exists('..\..\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets')" />
+  <Import Project="..\..\Orleans\packages\Microsoft.Azure.DocumentDB.1.19.1\build\Microsoft.Azure.DocumentDB.targets" Condition="Exists('..\..\Orleans\packages\Microsoft.Azure.DocumentDB.1.19.1\build\Microsoft.Azure.DocumentDB.targets')" />
+  <Import Project="..\..\Orleans\packages\Mono.Security.5.4.0.201\build\net45\Mono.Security.targets" Condition="Exists('..\..\Orleans\packages\Mono.Security.5.4.0.201\build\net45\Mono.Security.targets')" />
+  <Import Project="..\..\Orleans\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\Orleans\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
   <!-- <Import Project="..\..\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets" Condition="Exists('..\..\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets')" /> -->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

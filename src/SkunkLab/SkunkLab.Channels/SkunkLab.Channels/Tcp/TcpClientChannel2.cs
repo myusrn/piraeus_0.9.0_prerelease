@@ -175,9 +175,6 @@ namespace SkunkLab.Channels.Tcp
         public override event EventHandler<ChannelOpenEventArgs> OnOpen;
         public override event EventHandler<ChannelErrorEventArgs> OnError;
         public override event EventHandler<ChannelStateEventArgs> OnStateChange;
-        public override event EventHandler<ChannelRetryEventArgs> OnRetry;
-        public override event EventHandler<ChannelSentEventArgs> OnSent;
-        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
 
 
         public override bool IsConnected
@@ -194,6 +191,8 @@ namespace SkunkLab.Channels.Tcp
                 }
             }
         }
+
+        public override string TypeId { get { return "TCP2"; } }
 
         public override int Port { get; internal set; }
 
@@ -375,7 +374,6 @@ namespace SkunkLab.Channels.Tcp
                     {
                         msgBuffer = tempBuffer;
                         OnReceive?.Invoke(this, new ChannelReceivedEventArgs(Id, msgBuffer));
-                        OnObserve?.Invoke(this, new ChannelObserverEventArgs(null, null, msgBuffer));
                         offset = 0;
                         tempBuffer = null;
                         msgBuffer = null;
@@ -385,52 +383,7 @@ namespace SkunkLab.Channels.Tcp
 
                     await Task.Delay(10);
 
-
-                    //bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
-
-                    //if (bytesRead == 0)
-                    //{
-                    //    if(!client.Connected)
-                    //    {
-                    //        break;
-                    //    }
-                    //}
-
-                    //offset += msgBuffer == null ? 0 : msgBuffer.Length;
-
-                    //if (offset + bytesRead > this.maxBufferSize)
-                    //{
-                    //    await Log.LogErrorAsync("Message receives by tcp client channel2 exceeds maximum message size.  Will close channel.");
-                    //    await CloseAsync();
-                    //    return;
-                    //}
-
-                    //if (offset == 0)
-                    //{
-                    //    tempBuffer = new byte[bytesRead];
-                    //    Buffer.BlockCopy(buffer, 0, tempBuffer, offset, bytesRead);
-                    //}
-                    //else
-                    //{
-                    //    tempBuffer = new byte[msgBuffer.Length + bytesRead];
-                    //    Buffer.BlockCopy(msgBuffer, 0, tempBuffer, 0, msgBuffer.Length);
-                    //    Buffer.BlockCopy(buffer, 0, tempBuffer, offset, bytesRead);
-                    //}
-
-                    //if(bytesRead < blockSize)
-                    //{
-                    //    //EOM
-                    //    msgBuffer = tempBuffer;                        
-                    //    OnReceive?.Invoke(this, new ChannelReceivedEventArgs(Id, msgBuffer));
-                    //    OnObserve?.Invoke(this, new ChannelObserverEventArgs(null, null, msgBuffer));
-                    //    offset = 0;
-                    //    tempBuffer = null;
-                    //    msgBuffer = null;
-                    //    readConnection.Release();
-                    //}
-
                     
-                  
                 }
             }
             catch (AggregateException ae)
@@ -509,7 +462,7 @@ namespace SkunkLab.Channels.Tcp
                     index++;
                 }
                 
-                OnSent?.Invoke(this, new ChannelSentEventArgs(Id, null));
+                
             }
             catch (AggregateException ae)
             {

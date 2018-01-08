@@ -46,13 +46,14 @@ namespace SkunkLab.Channels.WebSocket
         public override event EventHandler<ChannelOpenEventArgs> OnOpen;
         public override event EventHandler<ChannelErrorEventArgs> OnError;
         public override event EventHandler<ChannelStateEventArgs> OnStateChange;
-        public override event EventHandler<ChannelRetryEventArgs> OnRetry;
-        public override event EventHandler<ChannelSentEventArgs> OnSent;
-        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
+
+        private ChannelState _state;
 
 
 
         public override string Id { get; internal set; }
+
+        public override string TypeId { get { return "WebSocket"; } }
 
         public override int Port { get; internal set; }
 
@@ -60,7 +61,22 @@ namespace SkunkLab.Channels.WebSocket
 
         public override bool IsAuthenticated { get; internal set; }
 
-        public override ChannelState State { get; internal set; }
+        public override ChannelState State
+        {
+            get
+            {
+                return _state;
+            }
+            internal set
+            {
+                if (_state != value)
+                {
+                    OnStateChange?.Invoke(this, new ChannelStateEventArgs(Id, value));
+                }
+
+                _state = value;
+            }
+        }
 
         public override bool IsConnected
         {
@@ -68,7 +84,8 @@ namespace SkunkLab.Channels.WebSocket
         }
 
         public override void Open()
-        {            
+        {
+            State = ChannelState.Open;
         }
 
         #region Handler Events
@@ -106,10 +123,7 @@ namespace SkunkLab.Channels.WebSocket
 
             Task.WaitAll(task);
 
-            //this.handler.Send(message);
-            //Task task = SendAsync(message);
-            //Task.WaitAll(task);
-            OnSent?.Invoke(this, new ChannelSentEventArgs(Id, null));
+            
         }
 
         public override async Task AddMessageAsync(byte[] message)
@@ -125,16 +139,9 @@ namespace SkunkLab.Channels.WebSocket
                 State = ChannelState.ClosedReceived;
             }
 
-            //await this.handler.CloseAsync();
-
             OnClose?.Invoke(this, new ChannelCloseEventArgs(Id));
-
-            //if (State != ChannelState.Closed)
-            //{
-            //    State = ChannelState.Closed;
-
-            //    OnClose?.Invoke(this, new ChannelCloseEventArgs(Id));
-            //}
+            await TaskDone.Done;
+            
         }
 
         protected void Disposing(bool dispose)
@@ -175,17 +182,8 @@ namespace SkunkLab.Channels.WebSocket
 
         public override async Task SendAsync(byte[] message)
         {
-            //await this.handler.SendAsync(message, WebSocketMessageType.Binary);
             await  this.handler.SendAsync(message, WebSocketMessageType.Binary);
-            //await SendAsync(message, WebSocketMessageType.Binary);
         }
-
-        //internal Task SendAsync(string message) =>
-        //    SendAsync(Encoding.UTF8.GetBytes(message), WebSocketMessageType.Text);
-
-        //internal Task SendAsync(byte[] message, WebSocketMessageType messageType) =>
-        //    _sendQueue.Enqueue(() => this.WebSocketContext.WebSocket.SendAsync(new ArraySegment<byte>(message), messageType, true, token));
-
 
         private static bool IsFatalException(Exception ex)
         {

@@ -14,17 +14,7 @@
     <summary>Azure storage wrappers</summary>
     <releaseNotes>Prelease</releaseNotes>
     <copyright>Copyright 2017</copyright>
-    <tags>SkunkLab</tags>
-    <dependencies>
-      <group targetFramework=".NETFramework4.6.1">
-        <dependency id="SkunkLab.Storage" version="0.5.23" />
-        <dependency id="System.ComponentModel.EventBasedAsync" version="4.3.0" />
-        <dependency id="System.Dynamic.Runtime" version="4.3.0" />
-        <dependency id="System.Linq.Queryable" version="4.3.0" />
-        <dependency id="System.Net.Requests" version="4.3.0" />
-        <dependency id="WindowsAzure.Storage" version="8.5.0" />
-      </group>
-    </dependencies>
+    <tags>SkunkLab Diagnotics</tags>    
   </metadata>
   <files>
     <file src="bin\release\*.*" target="lib\net461" />

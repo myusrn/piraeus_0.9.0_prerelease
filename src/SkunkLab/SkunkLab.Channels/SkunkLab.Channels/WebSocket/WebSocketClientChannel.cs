@@ -71,12 +71,11 @@ namespace SkunkLab.Channels.WebSocket
         public override event EventHandler<ChannelOpenEventArgs> OnOpen;
         public override event EventHandler<ChannelErrorEventArgs> OnError;
         public override event EventHandler<ChannelStateEventArgs> OnStateChange;
-        public override event EventHandler<ChannelRetryEventArgs> OnRetry;
-        public override event EventHandler<ChannelSentEventArgs> OnSent;
-        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
 
         
         public override string Id { get;  internal set; }
+
+        public override string TypeId { get { return "WebSocket"; } }
 
         public override bool IsConnected
         {
@@ -162,7 +161,7 @@ namespace SkunkLab.Channels.WebSocket
         {
             Task task = SendAsync(message);
             Task.WaitAll(task);
-            OnSent?.Invoke(Id, null);
+            
         }
 
         public override async Task AddMessageAsync(byte[] message)
@@ -255,11 +254,7 @@ namespace SkunkLab.Channels.WebSocket
 
             if (message.Length <= config.SendBufferSize)
             {
-                Task task =  sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(message), WebSocketMessageType.Binary, true, token));
-                Task.WaitAll(task);
-                
-                //Task task = client.SendAsync(new ArraySegment<byte>(message), WebSocketMessageType.Binary, true, token);
-                //Task.WaitAll(task);
+                await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(message), WebSocketMessageType.Binary, true, token));                
             }
             else
             {
@@ -269,18 +264,13 @@ namespace SkunkLab.Channels.WebSocket
                 {
                     buffer = new byte[config.SendBufferSize];
                     Buffer.BlockCopy(message, offset, buffer, 0, buffer.Length);
-                    await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, false, token));
-                    //Task task = client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, false, token);
-                    //Task.WaitAll(task);
+                    await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, false, token));                   
 
                     offset += buffer.Length;        
                 }
 
                 buffer = new byte[message.Length - offset];
-                await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, true, token));
-                //Task t =  client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, true, token);
-                //Task.WaitAll(t);
-               
+                await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, true, token));                               
             }
             
         }

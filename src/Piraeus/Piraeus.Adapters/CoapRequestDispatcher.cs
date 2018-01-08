@@ -18,7 +18,7 @@ namespace Piraeus.Adapters
             this.session = session;
             coapObserved = new Dictionary<string, byte[]>();
             coapUnobserved = new HashSet<string>();
-            adapter = new OrleansAdapter();
+            adapter = new OrleansAdapter(session.Identity, channel.TypeId, "CoAP");
             adapter.OnObserve += Adapter_OnObserve;
             Task task = LoadDurableAyncs();
             Task.WhenAll(task);
@@ -170,15 +170,27 @@ namespace Piraeus.Adapters
             Task t3 = Log.LogInfoAsync("Coap adapter observed messaging sending converted messsage.");
             Task.WhenAll(t3);
 
-            Task task = Send(message);
+            Task task = Send(message,e);
             Task.WhenAll(task);
         }
 
-        private async Task Send(byte[] message)
+        private async Task Send(byte[] message, ObserveMessageEventArgs e)
         {
             await Log.LogInfoAsync("Coap adapter about to send observed message on channel.");
 
-            await channel.SendAsync(message);
+            try
+            {
+                await channel.SendAsync(message);
+                //TODO: setup audit record
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+
+            }
 
             await Log.LogInfoAsync("Coap adapter about to sent observed message on channel.");
 

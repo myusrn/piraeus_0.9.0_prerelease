@@ -13,12 +13,25 @@ namespace Piraeus.Core.Metadata
 
         }
 
-        public SubscriptionMetadata(string identity, string subscriptionUriString, string address, string symmetricKey, TimeSpan? ttl = null, DateTime? expires = null, TimeSpan? spoolRate = null, bool durableMessaging = false)
+        /// <summary>
+        /// Metadata for a durable subscription.
+        /// </summary>
+        /// <param name="identity"></param>
+        /// <param name="subscriptionUriString"></param>
+        /// <param name="address"></param>
+        /// <param name="symmetricKey"></param>
+        /// <param name="description"></param>
+        /// <param name="ttl"></param>
+        /// <param name="expires"></param>
+        /// <param name="spoolRate"></param>
+        /// <param name="durableMessaging"></param>
+        public SubscriptionMetadata(string identity, string subscriptionUriString, string address, string symmetricKey, string description = null, TimeSpan? ttl = null, DateTime? expires = null, TimeSpan? spoolRate = null, bool durableMessaging = false)
         {
             Identity = identity;
             SubscriptionUriString = subscriptionUriString;
             NotifyAddress = address;
             SymmetricKey = symmetricKey;
+            Description = description;
             TTL = ttl;
             Expires = expires;
             SpoolRate = spoolRate;
@@ -26,9 +39,27 @@ namespace Piraeus.Core.Metadata
             IsEphemeral = false;
         }
 
+        /// <summary>
+        /// Metadata for an ephemeral subscription.
+        /// </summary>
+        /// <param name="subscriptionUriString"></param>
         public SubscriptionMetadata(string subscriptionUriString)
         {
             SubscriptionUriString = subscriptionUriString;
+            Description = "Ephemeral subscription.";
+            IsEphemeral = true;
+        }
+
+        /// <summary>
+        /// Metadata for an ephemeral subscription.
+        /// </summary>
+        /// <param name="subscriptionUriString"></param>
+        /// <param name="identity"></param>
+        public SubscriptionMetadata(string subscriptionUriString, string identity)
+        {
+            SubscriptionUriString = subscriptionUriString;
+            Identity = identity; //owner of the ephemeral subscription.
+            Description = "Ephemeral subscription.";
             IsEphemeral = true;
         }
 
@@ -40,6 +71,12 @@ namespace Piraeus.Core.Metadata
         /// for a durable subscription where the subsystem actively connects.  It is omitted for a passively connected subsystem or an ephemeral subscription.</remarks>       
         [JsonProperty("identity")]
         public string Identity { get; set; }
+
+        /// <summary>
+        /// An optional description of the subscription
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets of sets the indicator whether the subscription is durable or ephemeral.

@@ -1,5 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Org.BouncyCastle.Crypto.Tls;
+using Org.BouncyCastle.Security;
+using SkunkLab.Diagnostics.Logging;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -10,9 +12,6 @@ using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
-using Org.BouncyCastle.Crypto.Tls;
-using Org.BouncyCastle.Security;
-using SkunkLab.Diagnostics.Logging;
 
 namespace SkunkLab.Channels.Tcp
 {
@@ -166,9 +165,6 @@ namespace SkunkLab.Channels.Tcp
         public override event EventHandler<ChannelOpenEventArgs> OnOpen;
         public override event EventHandler<ChannelErrorEventArgs> OnError;
         public override event EventHandler<ChannelStateEventArgs> OnStateChange;
-        public override event EventHandler<ChannelRetryEventArgs> OnRetry;
-        public override event EventHandler<ChannelSentEventArgs> OnSent;
-        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
 
 
         public override bool IsConnected
@@ -178,6 +174,8 @@ namespace SkunkLab.Channels.Tcp
                 return State == ChannelState.Open;
             }
         }
+
+        public override string TypeId { get { return "TCP"; } }
 
         public override int Port { get; internal set; }
 
@@ -416,7 +414,7 @@ namespace SkunkLab.Channels.Tcp
                 }
 
                 writeConnection.Release();
-                OnSent?.Invoke(this, new ChannelSentEventArgs(Id, null));
+                
             }
             catch(AggregateException ae)
             {

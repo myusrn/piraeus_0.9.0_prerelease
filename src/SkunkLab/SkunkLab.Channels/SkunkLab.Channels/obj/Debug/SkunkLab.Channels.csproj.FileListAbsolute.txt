@@ -86,15 +86,13 @@ C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csp
 C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csproj.CoreCompileInputs.cache
 C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.dll
 C:\_git\core\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.pdb
-C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csproj.CoreCompileInputs.cache
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Channels.dll.config
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Channels.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Channels.pdb
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Diagnostics.dll
-C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\Newtonsoft.Json.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Diagnostics.pdb
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Diagnostics.dll.config
-C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\Newtonsoft.Json.xml
+C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csprojResolveAssemblyReference.cache
+C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csproj.CoreCompileInputs.cache
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.pdb
-C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csprojResolveAssemblyReference.cache

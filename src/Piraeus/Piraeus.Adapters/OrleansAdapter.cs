@@ -1,24 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Capl.Authorization;
-using Orleans;
+﻿using Capl.Authorization;
 using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
 using Piraeus.GrainInterfaces;
 using Piraeus.Grains;
 using SkunkLab.Diagnostics.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading;
+using System.Threading.Tasks;
+using Piraeus.Grains.Notifications;
 
 namespace Piraeus.Adapters
 {
     public class OrleansAdapter : OrleansAdapterBase
     {
-        public OrleansAdapter()
+        public OrleansAdapter(string identity, string channelType, string protocolType)
         {
+            this.identity = identity;
+            this.channelType = channelType;
+            this.protocolType = protocolType;
+
             container = new Dictionary<string, Tuple<string, string>>();
             ephemeralObservers = new Dictionary<string, IMessageObserver>();
             durableObservers = new Dictionary<string, IMessageObserver>();
@@ -26,11 +29,15 @@ namespace Piraeus.Adapters
 
         public event EventHandler<ObserveMessageEventArgs> OnObserve;   //signal protocol adapter
 
+        private string identity;
+        private string channelType;
+        private string protocolType;
         private Dictionary<string, Tuple<string, string>> container;  //resource, subscription + leaseKey
         private Dictionary<string, IMessageObserver> ephemeralObservers; //subscription, observer
         private Dictionary<string, IMessageObserver> durableObservers;   //subscription, observer
         private System.Timers.Timer leaseTimer; //timer for leases
         private bool disposedValue = false; // To detect redundant calls
+        private Auditor auditor;
 
         public override async Task<bool> CanPublishAsync(string resourceUriString, bool channelEncrypted)
         {
@@ -187,13 +194,32 @@ namespace Piraeus.Adapters
 
         public override async Task PublishAsync(EventMessage message, List<KeyValuePair<string, string>> indexes = null)
         {
-            if (indexes == null || indexes.Count == 0)
+            AuditRecord record = null;
+
+            try
             {
-                await GraphManager.PublishAsync(message.ResourceUri, message);
+                if (indexes == null || indexes.Count == 0)
+                {
+                    await GraphManager.PublishAsync(message.ResourceUri, message);                   
+                }
+                else
+                {
+                    await GraphManager.PublishAsync(message.ResourceUri, message, indexes);                    
+                }
+
+                if(message.Audit)
+                {
+
+                    record = new AuditRecord(message.MessageId, identity, channelType, protocolType, message.Message.Length, DateTime.UtcNow);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                await GraphManager.PublishAsync(message.ResourceUri, message, indexes);
+                record = new AuditRecord(message.MessageId, identity, channelType, protocolType, message.Message.Length, DateTime.UtcNow, ex.Message);
+            }
+            finally
+            {
+                Audit(record);
             }
         }
 
@@ -333,37 +359,7 @@ namespace Piraeus.Adapters
             });
 
             Task.WhenAll(leaseTask);
-
             
-
-
-
-
-            //while (en.MoveNext())
-            //{
-            //    Task<SubscriptionMetadata> task = GraphManager.GetSubscriptionMetadataAsync(en.Current.Value.Item1);
-            //    Task.WhenAll<SubscriptionMetadata>(task);
-            //    SubscriptionMetadata metadata = task.Result;
-
-            //    if (metadata != null)
-            //    {
-            //        Task<bool> renewTask = GraphManager.RenewObserverLeaseAsync(en.Current.Value.Item1, en.Current.Value.Item2, TimeSpan.FromSeconds(20.0));
-            //        Task.WhenAll<bool>(renewTask);
-            //        if(!renewTask.Result)
-            //        {
-            //            Log.LogWarningAsync("Observer lease could not be renewed.");
-            //        }
-
-            //        //taskList.Add(subscription.RenewObserverLeaseAsync(en.Current.Value.Item2, TimeSpan.FromSeconds(20.0)));
-            //    }
-            //    //ISubscription subscription = GraphManager.GetSubscription(en.Current.Value.Item1);
-            //    //if (subscription.GetMetadataAsync().GetAwaiter().GetResult() != null)
-            //    //{
-            //    //    taskList.Add(subscription.RenewObserverLeaseAsync(en.Current.Value.Item2, TimeSpan.FromSeconds(20.0)));
-            //    //}
-
-
-            //}
         }
 
         private void RemoveDurableObservers()
@@ -453,6 +449,20 @@ namespace Piraeus.Adapters
             foreach (var item in subscriptionUriStrings)
             {
                 RemoveFromContainer(item);
+            }
+        }
+
+        private void Audit(AuditRecord record)
+        {
+            if (auditor == null)
+            {
+                auditor = new Auditor();
+            }
+
+            if (record != null)
+            {
+                Task task = auditor.WriteAuditRecordAsync(record);
+                Task.WhenAll(task);
             }
         }
         #endregion

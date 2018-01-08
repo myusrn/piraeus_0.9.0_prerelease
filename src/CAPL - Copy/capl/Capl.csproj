@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F967630C-DC89-4433-A732-833E9815EB1E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Capl</RootNamespace>
+    <AssemblyName>Capl</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authorization\AuthorizationConstants.cs" />
+    <Compile Include="Authorization\AuthorizationPolicy.cs" />
+    <Compile Include="Authorization\AuthorizationPolicyBase.cs" />
+    <Compile Include="Authorization\ClaimTransform.cs" />
+    <Compile Include="Authorization\EvaluationOperation.cs" />
+    <Compile Include="Authorization\LiteralClaim.cs" />
+    <Compile Include="Authorization\LogicalAndCollection.cs" />
+    <Compile Include="Authorization\LogicalConnectiveCollection.cs" />
+    <Compile Include="Authorization\LogicalOrCollection.cs" />
+    <Compile Include="Authorization\Match.cs" />
+    <Compile Include="Authorization\Matching\ComplexTypeMatchExpression.cs" />
+    <Compile Include="Authorization\Matching\LiteralMatchExpression.cs" />
+    <Compile Include="Authorization\Matching\MatchExpression.cs" />
+    <Compile Include="Authorization\Matching\MatchExpressionDictionary.cs" />
+    <Compile Include="Authorization\Matching\PatternMatchExpression.cs" />
+    <Compile Include="Authorization\Matching\UnaryMatchExpression.cs" />
+    <Compile Include="Authorization\Operations\BetweenDateTimeOperation.cs" />
+    <Compile Include="Authorization\Operations\ContainsOperation.cs" />
+    <Compile Include="Authorization\Operations\DateTimeComparer.cs" />
+    <Compile Include="Authorization\Operations\DecimalComparer.cs" />
+    <Compile Include="Authorization\Operations\EqualDateTimeOperation.cs" />
+    <Compile Include="Authorization\Operations\EqualNumericOperation.cs" />
+    <Compile Include="Authorization\Operations\EqualOperation.cs" />
+    <Compile Include="Authorization\Operations\ExistsOperation.cs" />
+    <Compile Include="Authorization\Operations\GreaterThanDateTimeOperation.cs" />
+    <Compile Include="Authorization\Operations\GreaterThanOperation.cs" />
+    <Compile Include="Authorization\Operations\GreaterThanOrEqualDateTimeOperation.cs" />
+    <Compile Include="Authorization\Operations\GreaterThanOrEqualOperation.cs" />
+    <Compile Include="Authorization\Operations\LessThanDateTimeOperation.cs" />
+    <Compile Include="Authorization\Operations\LessThanOperation.cs" />
+    <Compile Include="Authorization\Operations\LessThanOrEqualDateTimeOperation.cs" />
+    <Compile Include="Authorization\Operations\LessThanOrEqualOperation.cs" />
+    <Compile Include="Authorization\Operations\NotEqualOperation.cs" />
+    <Compile Include="Authorization\Operations\Operation.cs" />
+    <Compile Include="Authorization\Operations\OperationsDictionary.cs" />
+    <Compile Include="Authorization\Rule.cs" />
+    <Compile Include="Authorization\Term.cs" />
+    <Compile Include="Authorization\Transform.cs" />
+    <Compile Include="Authorization\TransformBase.cs" />
+    <Compile Include="Authorization\TransformCollection.cs" />
+    <Compile Include="Authorization\Transforms\AddTransformAction.cs" />
+    <Compile Include="Authorization\Transforms\RemoveTransformAction.cs" />
+    <Compile Include="Authorization\Transforms\ReplaceTransformAction.cs" />
+    <Compile Include="Authorization\Transforms\TransformAction.cs" />
+    <Compile Include="Authorization\Transforms\TransformsDictionary.cs" />
+    <Compile Include="Authorization\XmlReaderExtensions.cs" />
+    <Compile Include="Issuance\IssueConstants.cs" />
+    <Compile Include="Issuance\IssueMode.cs" />
+    <Compile Include="Issuance\IssueModeNotRecognizedException.cs" />
+    <Compile Include="Issuance\IssuePolicy.cs" />
+    <Compile Include="Issuance\IssuePolicyBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\..\Piraeus\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\Piraeus\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\Piraeus\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Piraeus\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

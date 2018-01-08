@@ -10,5 +10,6 @@ namespace Piraeus.Configuration.Security
             get { return (AsymmetricKeyElement)base["asymmetricKey"]; }
             set { base["asymmetricKey"] = value; }
         }
+        
     }
 }

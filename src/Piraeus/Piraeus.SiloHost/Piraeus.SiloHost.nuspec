@@ -17,7 +17,7 @@
     <tags>Piraeus</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.6.1">
-        <dependency id="Piraeus.Grains" version="0.5.23" />
+        <dependency id="Piraeus.Grains" version="0.5.24" />
       </group>
     </dependencies>
   </metadata>

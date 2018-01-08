@@ -349,4 +349,8 @@ C:\_git\core\src\Gateways\WebGateway\WebGateway\obj\Debug\WebGateway.pdb
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Net.Http.Formatting.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Web.Http.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Web.Http.WebHost.xml
+C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\SkunkLab.Security.dll.config
+C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Microsoft.IdentityModel.Tokens.xml
+C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Microsoft.IdentityModel.Logging.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\obj\Debug\WebGateway.orleans.g.cs

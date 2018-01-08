@@ -87,8 +87,6 @@ namespace SkunkLab.Servers
 
                     Task task = ManageConnection(client);
                     await Task.WhenAll(task);
-
-                    
                 }
                 catch(Exception ex)
                 {
@@ -115,17 +113,15 @@ namespace SkunkLab.Servers
         }
 
         private async Task ManageConnection(TcpClient client)
-        {
-            
+        {           
             ProtocolAdapter adapter = ProtocolAdapterFactory.Create(config, authn, client, token);
             dict.Add(adapter.Channel.Id, adapter);
             adapter.OnError += Adapter_OnError;
             adapter.OnClose += Adapter_OnClose;
             adapter.Init();
             await adapter.Channel.OpenAsync();
-            //adapter.Channel.ReceiveAsync();
             Task t = adapter.Channel.ReceiveAsync();
-            Task.WhenAll(t);
+            await Task.WhenAll(t);
         }
         
 
@@ -134,9 +130,7 @@ namespace SkunkLab.Servers
             Trace.TraceWarning("Protocol adapter on channel {0} closing.", args.ChannelId);
             if (dict.ContainsKey(args.ChannelId))
             {
-                ProtocolAdapter adapter = dict[args.ChannelId];
-                Task task = adapter.Channel.CloseAsync();
-                Task.WaitAll(task);
+                ProtocolAdapter adapter = dict[args.ChannelId];                
                 adapter.Dispose();
                 dict.Remove(args.ChannelId);
             }

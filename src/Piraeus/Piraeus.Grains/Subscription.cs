@@ -7,6 +7,7 @@ using Piraeus.Core.Metadata;
 using Piraeus.GrainInterfaces;
 using System.Linq;
 using Orleans.Providers;
+using Piraeus.Grains.Notifications;
 
 namespace Piraeus.Grains
 {
@@ -21,6 +22,9 @@ namespace Piraeus.Grains
 
         [NonSerialized]
         IDisposable messageQueueTimer;
+
+        [NonSerialized]
+        EventSink sink;
 
         #region Activatio/Deactivation
 
@@ -123,7 +127,12 @@ namespace Piraeus.Grains
             {
                 if (!string.IsNullOrEmpty(State.Metadata.NotifyAddress))
                 {
-                    //send to passively connected subsystem
+                    if(sink == null)
+                    {
+                        sink = EventSinkFactory.Create(State.Metadata);                       
+                    }
+
+                    await sink.SendAsync(message);
                 }
                 else if (State.MessageLeases.Count > 0)
                 {

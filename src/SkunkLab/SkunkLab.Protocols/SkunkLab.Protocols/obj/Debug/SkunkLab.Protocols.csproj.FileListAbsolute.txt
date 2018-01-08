@@ -26,6 +26,12 @@ C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System
 C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\Microsoft.IdentityModel.Logging.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System.Net.Http.Formatting.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\SkunkLab.Security.pdb
+C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\SkunkLab.Security.dll.config
+C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System.Web.Http.xml
+C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System.Net.Http.Formatting.xml
 C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Debug\SkunkLab.Protocols.csprojResolveAssemblyReference.cache
 C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Debug\SkunkLab.Protocols.csproj.CoreCompileInputs.cache
 C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Debug\SkunkLab.Protocols.dll

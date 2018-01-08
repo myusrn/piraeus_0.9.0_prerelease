@@ -69,11 +69,10 @@ namespace SkunkLab.Channels.Tcp
         public override event EventHandler<ChannelOpenEventArgs> OnOpen;
         public override event EventHandler<ChannelErrorEventArgs> OnError;
         public override event EventHandler<ChannelStateEventArgs> OnStateChange;
-        public override event EventHandler<ChannelRetryEventArgs> OnRetry;
-        public override event EventHandler<ChannelSentEventArgs> OnSent;
-        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
 
         public override string Id { get; internal set; }
+
+        public override string TypeId { get { return "TCP"; } }
 
         public override int Port { get; internal set; }
 
@@ -228,7 +227,6 @@ namespace SkunkLab.Channels.Tcp
                     }
 
                     OnReceive?.Invoke(this, new ChannelReceivedEventArgs(Id, message));
-                    OnObserve?.Invoke(this, new ChannelObserverEventArgs(null, null, message));
 
                     offset = 0;
                     readConnection.Release();
@@ -291,7 +289,7 @@ namespace SkunkLab.Channels.Tcp
                 }
 
                 writeConnection.Release();
-                OnSent?.Invoke(this, new ChannelSentEventArgs(Id, null));
+                
             }
             catch (AggregateException ae)
             {

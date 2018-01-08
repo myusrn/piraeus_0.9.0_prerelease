@@ -43,6 +43,18 @@ namespace SkunkLab.Storage
             }
         }
 
+        protected BlobStorage(string connectionString, string sasToken)
+        {
+            CloudStorageAccount account = CloudStorageAccount.Parse(connectionString);
+            StorageCredentials credentials = new StorageCredentials(sasToken);
+            client = new CloudBlobClient(account.BlobStorageUri, credentials);
+
+            if(bufferManager != null)
+            {
+                client.BufferManager = bufferManager;
+            }
+        }
+
         private static SkunkLabBufferManager bufferManager;
 
         public static BlobStorage CreateSingleton(string connectionString)
@@ -79,8 +91,14 @@ namespace SkunkLab.Storage
             return CreateSingleton(vault, clientId, clientSecret, keyName);
         }
 
-        public static BlobStorage New(string connectionString)
+        public static BlobStorage New(string connectionString, long maxBufferPoolSize = 0, int defaultBufferSize = 0)
         {
+            if(maxBufferPoolSize > 0)
+            {
+                BufferManager manager = BufferManager.CreateBufferManager(maxBufferPoolSize, defaultBufferSize);
+                bufferManager = new SkunkLabBufferManager(manager, defaultBufferSize);
+            }
+
             return new BlobStorage(connectionString);
         }
 
@@ -89,12 +107,17 @@ namespace SkunkLab.Storage
             return new BlobStorage(vault, clientId, clientSecret, keyName);
         }
 
-        public static BlobStorage New(string connectionString, long maxBufferPoolSize, int defaultBufferSize)
+        public static BlobStorage New(string connectionString, string sasToken, long maxBufferPoolSize = 0, int defaultBufferSize = 0)
         {
-            BufferManager manager = BufferManager.CreateBufferManager(maxBufferPoolSize, defaultBufferSize);
-            bufferManager = new SkunkLabBufferManager(manager, defaultBufferSize);
-            return new BlobStorage(connectionString);
+            if (maxBufferPoolSize > 0)
+            {
+                BufferManager manager = BufferManager.CreateBufferManager(maxBufferPoolSize, defaultBufferSize);
+                bufferManager = new SkunkLabBufferManager(manager, defaultBufferSize);
+            }
+
+            return new BlobStorage(connectionString, sasToken);
         }
+        
 
         public static BlobStorage New(string vault, string clientId, string clientSecret, string keyName, long maxBufferPoolSize, int defaultBufferSize)
         {
@@ -155,10 +178,11 @@ namespace SkunkLab.Storage
                 throw new ArgumentNullException("source");
             }
 
-            using (MemoryStream stream = new MemoryStream(source))
-            {
-                WriteBlockBlob(containerName, filename, stream, contentType, encryptKeyName);
-            }
+            CloudBlobContainer container = GetContainerReference(containerName);
+            CloudBlockBlob blob = container.GetBlockBlobReference(filename);
+            blob.Properties.ContentType = contentType;
+
+            Upload(blob, source, encryptKeyName);            
         }
 
         public async Task WriteBlockBlobAsync(string containerName, string filename, byte[] source, string contentType = "application/octet-stream", string encryptKeyName = null)
@@ -168,10 +192,11 @@ namespace SkunkLab.Storage
                 throw new ArgumentNullException("source");
             }
 
-            using (MemoryStream stream = new MemoryStream(source))
-            {
-                await WriteBlockBlobAsync(containerName, filename, stream, contentType, encryptKeyName);
-            }
+            CloudBlobContainer container = GetContainerReference(containerName);
+            CloudBlockBlob blob = container.GetBlockBlobReference(filename);
+            blob.Properties.ContentType = contentType;
+
+            await UploadAsync(blob, source, encryptKeyName);
         }
         #endregion
 
@@ -464,11 +489,37 @@ namespace SkunkLab.Storage
 
         #region Utilities
 
+        public void Upload(ICloudBlob blob, byte[] buffer, string encryptKeyName = null)
+        {
+            if(encryptKeyName == null)
+            {
+                blob.UploadFromByteArray(buffer, 0, buffer.Length);
+            }
+            else
+            {
+                BlobRequestOptions options = keyVault.GetEncryptionBlobOptions(encryptKeyName);
+                blob.UploadFromByteArray(buffer, 0, buffer.Length, null, options);
+            }
+        }
+
+        public async Task UploadAsync(ICloudBlob blob, byte[] buffer, string encryptKeyName = null)
+        {
+            if (encryptKeyName == null)
+            {
+                await blob.UploadFromByteArrayAsync(buffer, 0, buffer.Length);
+            }
+            else
+            {
+                BlobRequestOptions options = keyVault.GetEncryptionBlobOptions(encryptKeyName);
+                await blob.UploadFromByteArrayAsync(buffer, 0, buffer.Length, null, options, null);
+            }
+        }
+
         public void Upload(ICloudBlob blob, Stream stream, string encryptKeyName = null)
         {
             if(encryptKeyName == null)
             {
-                blob.UploadFromStream(stream);
+                blob.UploadFromStream(stream); 
             }
             else
             {

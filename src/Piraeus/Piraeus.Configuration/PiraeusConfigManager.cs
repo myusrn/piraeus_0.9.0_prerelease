@@ -109,6 +109,7 @@ namespace Piraeus.Configuration
                 serviceIdentity = new ServiceIdentity(section.Identity.Service.Claims.GetServiceClaims());
             }
 
+            
             identitySettings = new IdentitySettings(clientIdentity, serviceIdentity);
 
             ClientSecurity clientSecurity = null;

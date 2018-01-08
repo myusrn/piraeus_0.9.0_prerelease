@@ -76,7 +76,10 @@ namespace SkunkLab.Servers
                         else
                         {
                             Tuple<ProtocolAdapter, CancellationTokenSource> tuple = cache[key];
-                            await tuple.Item1.Channel.AddMessageAsync(result.Buffer);
+                            if (tuple.Item1.Channel.State == ChannelState.Open)
+                            {
+                                await tuple.Item1.Channel.AddMessageAsync(result.Buffer);
+                            }
                         }
                     }
                 }
@@ -90,27 +93,9 @@ namespace SkunkLab.Servers
         }
 
      
-        private void Sa_Completed(object sender, SocketAsyncEventArgs e)
-        {
-            Socket s = e.ConnectSocket;
-        }
 
 
-
-
-
-        //private async Task BindUdpClientAsync(UdpClient client)
-        //{
-        //    BasicAuthenticator authn = new BasicAuthenticator();
-        //    CancellationTokenSource source = new CancellationTokenSource();
-        //    ProtocolAdapter adapter = ProtocolAdapterFactory.Create(config, authn, client, source.Token);
-        //    adapter.OnError += Adapter_OnError;
-        //    adapter.OnClose += Adapter_OnClose;
-        //    cache.Add(adapter.Channel.Id, new Tuple<ProtocolAdapter, CancellationTokenSource>(adapter, source));
-        //    adapter.Init();
-        //    await adapter.Channel.OpenAsync();
-        //    await adapter.Channel.ReceiveAsync();
-        //}
+        
 
         private void Adapter_OnClose(object sender, ProtocolAdapterCloseEventArgs e)
         {

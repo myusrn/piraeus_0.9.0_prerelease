@@ -17,15 +17,22 @@ cd %CMDHOME%
 
 cd src
 
-cd Piraeus\Piraeus.Core
+cd CAPL\capl
+powershell.exe ..\..\..\UpdateNuspecVersion.ps1 ".\CAPL.nuspec" %@version%
+powershell.exe ..\..\..\VersionUpdate.ps1 ".\Properties\AssemblyInfo.cs" "%@version%"
+msbuild Capl.csproj /t:Clean,Rebuild,restore /p:Configuration=Release /fl1 /fl2 /fl3 /flp1:logfile=..\..\..\BuildOutput\Capl.log /flp2:logfile=..\..\..\BuildOutput\Capl_errors.log;errorsonly /flp3:logfile=..\..\..\BuildOutput\Capl_warnings.log;warningsonly  
+nuget pack .\CAPL.nuspec -OutputDirectory "..\..\Nuget"
 
-GOTO SKIP
+
+
+cd ..\..\Piraeus\Piraeus.Core
+
 powershell.exe ..\..\..\UpdateNuspecVersion.ps1 ".\Piraeus.Core.nuspec" %@version%
 powershell.exe ..\..\..\VersionUpdate.ps1 ".\Properties\AssemblyInfo.cs" "%@version%"
 msbuild Piraeus.Core.csproj /t:Clean,Rebuild,restore /p:Configuration=Release /fl1 /fl2 /fl3 /flp1:logfile=..\..\..\BuildOutput\Piraeus.Core.log /flp2:logfile=..\..\..\BuildOutput\Piraeus.Core_errors.log;errorsonly /flp3:logfile=..\..\..\BuildOutput\Piraeus.Core_warnings.log;warningsonly  
 nuget pack .\Piraeus.Core.nuspec -OutputDirectory "..\..\Nuget"
 
-:SKIP
+GOTO ENDLINE
 
 cd ..\..\Piraeus\Piraeus.GrainInterfaces
 powershell.exe ..\..\..\UpdateNuspecVersion.ps1 ".\Piraeus.GrainInterfaces.nuspec" %@version%

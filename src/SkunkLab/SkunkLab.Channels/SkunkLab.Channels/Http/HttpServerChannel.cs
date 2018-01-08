@@ -69,6 +69,8 @@ namespace SkunkLab.Channels.Http
 
         public override string Id { get; internal set; }
 
+        public override string TypeId { get { return "HTTP"; } }
+
         public override bool IsConnected { get; }
 
         public override int Port { get; internal set; }
@@ -96,9 +98,6 @@ namespace SkunkLab.Channels.Http
         public override event EventHandler<ChannelOpenEventArgs> OnOpen;
         public override event EventHandler<ChannelErrorEventArgs> OnError;
         public override event EventHandler<ChannelStateEventArgs> OnStateChange;
-        public override event EventHandler<ChannelRetryEventArgs> OnRetry;
-        public override event EventHandler<ChannelSentEventArgs> OnSent;
-        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
 
         public override async Task SendAsync(byte[] message)
         {           
@@ -122,7 +121,7 @@ namespace SkunkLab.Channels.Http
                             response.StatusCode == HttpStatusCode.Accepted ||
                             response.StatusCode == HttpStatusCode.NoContent)
                         {
-                            OnSent?.Invoke(this, new ChannelSentEventArgs(Id, null));
+                            await Log.LogAsync("Channel {0} sent http request.", this.Id);
                         }
                         else
                         {
@@ -132,7 +131,7 @@ namespace SkunkLab.Channels.Http
                     }
                 }
 
-                OnSent?.Invoke(this, new ChannelSentEventArgs(Id, null));               
+                             
             }
             catch(WebException we)
             {
@@ -162,7 +161,7 @@ namespace SkunkLab.Channels.Http
             {
                 byte[] message = await request.Content.ReadAsByteArrayAsync();
                 OnReceive?.Invoke(this, new ChannelReceivedEventArgs(Id, message));
-                OnObserve?.Invoke(this, new ChannelObserverEventArgs(resource, contentType, message));
+                //OnObserve?.Invoke(this, new ChannelObserverEventArgs(resource, contentType, message));
             }
             catch(Exception ex)
             {

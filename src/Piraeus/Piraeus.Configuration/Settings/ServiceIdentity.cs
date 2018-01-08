@@ -11,7 +11,7 @@ namespace Piraeus.Configuration.Settings
         }
 
         public ServiceIdentity(IEnumerable<Claim> claims)
-        {
+        {           
             Claims = claims;
         }
 
@@ -27,6 +27,7 @@ namespace Piraeus.Configuration.Settings
         }
 
         public IEnumerable<Claim> Claims { get; set; }
+
 
 
 

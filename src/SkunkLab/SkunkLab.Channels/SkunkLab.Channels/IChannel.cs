@@ -14,14 +14,13 @@ namespace SkunkLab.Channels
         event EventHandler<ChannelCloseEventArgs> OnClose;
         event EventHandler<ChannelOpenEventArgs> OnOpen;
         event EventHandler<ChannelErrorEventArgs> OnError;
-        event EventHandler<ChannelStateEventArgs> OnStateChange;
-        event EventHandler<ChannelRetryEventArgs> OnRetry;
-        event EventHandler<ChannelSentEventArgs> OnSent;
-        event EventHandler<ChannelObserverEventArgs> OnObserve;
+        event EventHandler<ChannelStateEventArgs> OnStateChange; 
         
 
         bool IsConnected { get; }
         string Id { get; }
+
+        string TypeId { get; }
 
         int Port { get; }
 

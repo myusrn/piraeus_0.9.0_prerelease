@@ -106,6 +106,8 @@ namespace SkunkLab.Channels.Http
         public override bool IsEncrypted { get; internal set; }
         public override int Port { get; internal set; }
 
+        public override string TypeId { get { return "HTTP"; } }
+
         public override bool IsConnected
         {
             get { return State == ChannelState.Open; }
@@ -131,9 +133,6 @@ namespace SkunkLab.Channels.Http
         public override event EventHandler<ChannelOpenEventArgs> OnOpen;
         public override event EventHandler<ChannelErrorEventArgs> OnError;
         public override event EventHandler<ChannelStateEventArgs> OnStateChange;
-        public override event EventHandler<ChannelRetryEventArgs> OnRetry;
-        public override event EventHandler<ChannelSentEventArgs> OnSent;
-        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
 
      
 
@@ -282,7 +281,7 @@ namespace SkunkLab.Channels.Http
                     }
                 }
 
-                OnSent?.Invoke(this, new ChannelSentEventArgs(Id, null));
+                
             }
             catch(OperationCanceledException oce)
             {

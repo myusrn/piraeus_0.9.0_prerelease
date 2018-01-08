@@ -7,12 +7,17 @@ using Piraeus.Core.Utilities;
 using System.Collections.Generic;
 using Piraeus.Core.Messaging;
 using Capl.Authorization;
+using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Piraeus.Grains
 {
     public class GraphManager
     {
-        #region Resource Operations
+        
+        #region Static Resource Operations
+
+
 
         /// <summary>
         /// Gets a resource from Orleans 
@@ -198,7 +203,7 @@ namespace Piraeus.Grains
 
         #endregion
 
-        #region Subscription Operations
+        #region Static Subscription Operations
 
         /// <summary>
         /// Get a subscription from Orleans.
@@ -320,7 +325,7 @@ namespace Piraeus.Grains
 
         #endregion
 
-        #region Subscriber Operations
+        #region Static Subscriber Operations
         /// <summary>
         /// Gets subscriber from Orleans.
         /// </summary>
@@ -404,7 +409,7 @@ namespace Piraeus.Grains
 
         #endregion
 
-        #region ResourceList
+        #region Static ResourceList
         
         /// <summary>
         /// Returns of list of resources in Orleans.
@@ -418,7 +423,7 @@ namespace Piraeus.Grains
 
         #endregion
 
-        #region Access Control
+        #region Static Access Control
 
         /// <summary>
         /// Gets access control grain from Orleans.
@@ -466,6 +471,54 @@ namespace Piraeus.Grains
             return await accessControl.GetPolicyAsync();
         }
 
+        #endregion
+
+        #region Static Service Identity
+
+        public static async Task SetServiceIdentityAsync(List<Claim> claims = null, X509Certificate2 certificate = null)
+        {
+            IServiceIdentity identity = GrainClient.GrainFactory.GetGrain<IServiceIdentity>("serviceidentity");
+            await identity.AddClaimsAsync(claims);
+            await identity.AddCertificateAsync(certificate);
+
+            //IResourceList resourceList = GrainClient.GrainFactory.GetGrain<IResourceList>("resourcelist");
+            //return await resourceList.GetListAsync();
+        }
+
+        public static async Task<List<Claim>> GetServiceIdentityClaimsAsync()
+        {
+            IServiceIdentity identity = GrainClient.GrainFactory.GetGrain<IServiceIdentity>("serviceidentity");
+            return await identity.GetClaimsAsync();
+        }
+
+        public static async Task<X509Certificate2> GetServiceIdentityCertificateAsync()
+        {
+            IServiceIdentity identity = GrainClient.GrainFactory.GetGrain<IServiceIdentity>("serviceidentity");
+            return await identity.GetCertificateAsync();
+        }
+
+        #endregion
+
+        #region Static Audit
+
+        public static async Task SetAuditConfigAsync(string connectionstring, string tablename)
+        {
+            IAuditConfig config = GrainClient.GrainFactory.GetGrain<IAuditConfig>("auditconfig");
+            await config.SetAzureStorageConnectionAsync(connectionstring, tablename);
+
+        }
+
+        public static async Task<string> GetAuditConfigConnectionstringAsync()
+        {
+            IAuditConfig config = GrainClient.GrainFactory.GetGrain<IAuditConfig>("auditconfig");
+            return await config.GetConnectionstringAsync();
+        }
+
+        public static async Task<string> GetAuditConfigTablenameAsync()
+        {
+            IAuditConfig config = GrainClient.GrainFactory.GetGrain<IAuditConfig>("auditconfig");
+            return await config.GetTableNameAsync();
+        }
         #endregion
 
 

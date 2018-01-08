@@ -30,8 +30,6 @@ namespace Piraeus.Adapters
             Channel = channel;
             Channel.OnClose += Channel_OnClose;
             Channel.OnError += Channel_OnError;
-            Channel.OnSent += Channel_OnSent;
-            Channel.OnRetry += Channel_OnRetry;
             Channel.OnStateChange += Channel_OnStateChange;
             Channel.OnReceive += Channel_OnReceive;
             Channel.OnOpen += Channel_OnOpen;
@@ -47,7 +45,6 @@ namespace Piraeus.Adapters
         private PiraeusConfig config;
         private bool forcePerReceiveAuthn;
 
-        private int receiveIndex;
         private int publishIndex;
 
 
@@ -62,9 +59,7 @@ namespace Piraeus.Adapters
             session.OnSubscribe += Session_OnSubscribe;
             session.OnUnsubscribe += Session_OnUnsubscribe;
             session.OnDisconnect += Session_OnDisconnect; ;
-            session.OnConnect += Session_OnConnect;
-            adapter = new OrleansAdapter();
-            adapter.OnObserve += Adapter_OnObserve;
+            session.OnConnect += Session_OnConnect;            
         }
 
 
@@ -110,91 +105,102 @@ namespace Piraeus.Adapters
         #region MQTT Session Events
         private void Session_OnConnect(object sender, MqttConnectionArgs args)
         {
-            if (args.Code == ConnectAckCode.ConnectionAccepted)
+            try
             {
-                Task t = adapter.LoadDurableSubscriptionsAsync(session.Identity);
-                Task.WhenAll(t);
-            }
+                if (args.Code == ConnectAckCode.ConnectionAccepted)
+                {
+                    Task t = adapter.LoadDurableSubscriptionsAsync(session.Identity);
+                    Task.WhenAll(t);
+                }
 
-            Task task = Log.LogInfoAsync("Mqtt session is connected for channel {0}", Channel.Id);
-            Task.WhenAll(task);
+                Task task = Log.LogInfoAsync("Mqtt session is connected for channel {0}", Channel.Id);
+                Task.WhenAll(task);
+            }
+            catch(Exception ex)
+            {
+                Task logTask = Log.LogErrorAsync("Mqtt OnConnect error {0}.", ex.Message);
+                Task.WhenAll(logTask);
+                OnError?.Invoke(this, new ProtocolAdapterErrorEventArgs(Channel.Id, ex));
+                Task task = Channel.CloseAsync();
+                Task.WhenAll(task);
+            }
         }
 
         private void Session_OnDisconnect(object sender, MqttMessageEventArgs args)
         {
-            adapter.Dispose();
-            Task task = Channel.CloseAsync();
+            Task task = Log.LogErrorAsync("Mqtt Channel {0} OnDisconnect.", Channel.Id);
             Task.WhenAll(task);
+            Task closeTask = Channel.CloseAsync();
+            Task.WhenAll(closeTask);
         }
 
         private void Session_OnUnsubscribe(object sender, MqttMessageEventArgs args)
         {
-            UnsubscribeMessage msg = (UnsubscribeMessage)args.Message;
-            foreach (var item in msg.Topics)
-            {                
-                Task task = Task.Factory.StartNew(async () =>
+            try
+            {
+                UnsubscribeMessage msg = (UnsubscribeMessage)args.Message;
+                foreach (var item in msg.Topics)
                 {
-                    MqttUri uri = new MqttUri(item.ToLowerInvariant());
-                    if(await adapter.CanSubscribeAsync(uri.Resource, Channel.IsEncrypted))
+                    Task task = Task.Factory.StartNew(async () =>
                     {
-                        await adapter.UnsubscribeAsync(uri.Resource);
-                    }
-                });
+                        MqttUri uri = new MqttUri(item.ToLowerInvariant());
+                        if (await adapter.CanSubscribeAsync(uri.Resource, Channel.IsEncrypted))
+                        {
+                            await adapter.UnsubscribeAsync(uri.Resource);
+                        }
+                    });
 
+                    Task.WhenAll(task);
+                }
+            }
+            catch(Exception ex)
+            {
+                Task task = Log.LogErrorAsync("Mqtt On_Unsubscribe error {0}", ex.Message);
                 Task.WhenAll(task);
+                OnError?.Invoke(this, new ProtocolAdapterErrorEventArgs(Channel.Id, ex));
             }
         }
 
         private List<string> Session_OnSubscribe(object sender, MqttMessageEventArgs args)
         {
             List<string> list = new List<string>();
-            SubscribeMessage message = args.Message as SubscribeMessage;
 
-            SubscriptionMetadata metadata = new SubscriptionMetadata()
+            try
             {
-                Identity = session.Identity,
-                Indexes = session.Indexes,
-                IsEphemeral = true
-            };
+                
+                SubscribeMessage message = args.Message as SubscribeMessage;
 
-            //List<Task> taskList = new List<Task>();
-
-            //foreach (var item in message.Topics)
-            //{
-            //    Task task = Task.Factory.StartNew(async () =>
-            //    {
-            //        MqttUri uri = new MqttUri(item.Key);
-            //        string resourceUriString = uri.Resource;
-
-            //        if (await adapter.CanSubscribeAsync(resourceUriString, Channel.IsEncrypted))
-            //        {
-            //            string subscriptionUriString = await adapter.SubscribeAsync(resourceUriString, metadata);
-            //            list.Add(resourceUriString);
-            //        }
-            //    });
-
-            //    taskList.Add(task);
-            //}
-
-            //Task.WaitAll(taskList.ToArray());
-
-            foreach (var item in message.Topics)
-            {
-                MqttUri uri = new MqttUri(item.Key);
-                string resourceUriString = uri.Resource;
-
-                Task<bool> t = CanSubscribe(resourceUriString);
-                bool subscribe = t.Result;
-
-                if (subscribe)
+                SubscriptionMetadata metadata = new SubscriptionMetadata()
                 {
-                    Task<string> subTask = Subscribe(resourceUriString, metadata);
-                    string subscriptionUriString = subTask.Result;
-                    //string subscriptionUriString = adapter.SubscribeAsync(resourceUriString, metadata).GetAwaiter().GetResult();
-                    list.Add(resourceUriString);
+                    Identity = session.Identity,
+                    Indexes = session.Indexes,
+                    IsEphemeral = true
+                };
+
+                foreach (var item in message.Topics)
+                {
+                    MqttUri uri = new MqttUri(item.Key);
+                    string resourceUriString = uri.Resource;
+
+                    Task<bool> t = CanSubscribe(resourceUriString);
+                    bool subscribe = t.Result;
+
+                    if (subscribe)
+                    {
+                        Task<string> subTask = Subscribe(resourceUriString, metadata);
+                        string subscriptionUriString = subTask.Result;
+                        list.Add(resourceUriString);
+                    }
                 }
             }
-
+            catch(Exception ex)
+            {
+                Task task = Log.LogErrorAsync("Mqtt On_Subscribe error {0}", ex.Message);
+                Task.WhenAll(task);
+                OnError?.Invoke(this, new ProtocolAdapterErrorEventArgs(Channel.Id, ex));
+                Task closeTask = Channel.CloseAsync();
+                Task.WhenAll(closeTask);
+            }
 
             return list;
         }
@@ -208,8 +214,7 @@ namespace Piraeus.Adapters
                 tcs.SetResult(id);
             });
 
-            return tcs.Task;
-            
+            return tcs.Task;           
         }
 
         private Task<bool> CanSubscribe(string resourceUriString)
@@ -227,27 +232,38 @@ namespace Piraeus.Adapters
 
         private void Session_OnPublish(object sender, MqttMessageEventArgs args)
         {
-            PublishMessage message = args.Message as PublishMessage;
-
-            MqttUri mqttUri = new MqttUri(message.Topic);
-
-            Task task = Task.Factory.StartNew(async () =>
+            try
             {
-                ResourceMetadata metadata = await GraphManager.GetResourceMetadataAsync(mqttUri.Resource);
+                PublishMessage message = args.Message as PublishMessage;
 
-                if (await adapter.CanPublishAsync(mqttUri.Resource, Channel.IsEncrypted))
-                {
-                    EventMessage msg = new EventMessage(mqttUri.ContentType, mqttUri.Resource, ProtocolType.MQTT, message.Encode());
-                    await adapter.PublishAsync(msg, null);
-                    Trace.WriteLine(String.Format("MQTT Publish {0}", publishIndex++));
-                }
-                else
-                {
-                    await Log.LogWarningAsync("Mqtt message cannot be published.");
-                }
-            });
+                MqttUri mqttUri = new MqttUri(message.Topic);
 
-            Task.WhenAll(task);
+                Task task = Task.Factory.StartNew(async () =>
+                {
+                    ResourceMetadata metadata = await GraphManager.GetResourceMetadataAsync(mqttUri.Resource);
+
+                    if (await adapter.CanPublishAsync(mqttUri.Resource, Channel.IsEncrypted))
+                    {
+                        EventMessage msg = new EventMessage(mqttUri.ContentType, mqttUri.Resource, ProtocolType.MQTT, message.Encode());
+                        await adapter.PublishAsync(msg, null);
+                        Trace.WriteLine(String.Format("MQTT Publish {0}", publishIndex++));
+                    }
+                    else
+                    {
+                        await Log.LogWarningAsync("Mqtt message cannot be published because not authorized.");
+                    }
+                });
+
+                Task.WhenAll(task);
+            }
+            catch(Exception ex)
+            {                
+                OnError?.Invoke(this, new ProtocolAdapterErrorEventArgs(Channel.Id, ex));
+                Task logTask = Log.LogErrorAsync("Mqtt On_Publish error {0}", ex.Message);
+                Task.WhenAll(logTask);
+                Task task = Channel.CloseAsync();
+                Task.WhenAll(task);
+            }
         }
 
         #endregion        
@@ -255,13 +271,28 @@ namespace Piraeus.Adapters
         #region Channel Events
         private void Channel_OnOpen(object sender, ChannelOpenEventArgs e)
         {
-            session.IsAuthenticated = Channel.IsAuthenticated;
-
-            if (session.IsAuthenticated)
+            try
             {
-                IdentityDecoder decoder = new IdentityDecoder(session.Config.IdentityClaimType, session.Config.Indexes);
-                session.Identity = decoder.Id;
-                session.Indexes = decoder.Indexes;
+                session.IsAuthenticated = Channel.IsAuthenticated;
+
+                if (session.IsAuthenticated)
+                {
+                    IdentityDecoder decoder = new IdentityDecoder(session.Config.IdentityClaimType, session.Config.Indexes);
+                    session.Identity = decoder.Id;
+                    session.Indexes = decoder.Indexes;
+                }
+
+                adapter = new OrleansAdapter(session.Identity, Channel.TypeId, "MQTT");
+                adapter.OnObserve += Adapter_OnObserve;
+            }
+            catch(Exception ex)
+            {
+                OnError?.Invoke(this, new ProtocolAdapterErrorEventArgs(Channel.Id, ex));
+                Task logTask = Log.LogErrorAsync("Mqtt Channel OnOpen error {0}", ex.Message);
+                Task.WhenAll(logTask);
+
+                Task task = Channel.CloseAsync();
+                Task.WhenAll(task);
             }
         }
 
@@ -306,7 +337,7 @@ namespace Piraeus.Adapters
             }            
             catch (Exception ex)
             {
-                Task task = Log.LogErrorAsync("Mqtt receive error {0}", ex.Message);
+                Task task = Log.LogErrorAsync("Mqtt Channel OnReceive error {0}", ex.Message);
                 Task.WhenAll(task);
                 Task closeTask = Channel.CloseAsync();
                 Task.WhenAll(closeTask);
@@ -315,7 +346,7 @@ namespace Piraeus.Adapters
 
         private async Task Receive(MqttMessage msg)
         {
-            TaskCompletionSource<Task> tcs = new TaskCompletionSource<Task>();
+            TaskCompletionSource<Task> tcs = new TaskCompletionSource<Task>();            
 
             try
             {
@@ -324,14 +355,14 @@ namespace Piraeus.Adapters
 
                 if (message != null)
                 {
-                    await Channel.SendAsync(message.Encode());
-                    Trace.WriteLine(String.Format("MQTT Response {0}", receiveIndex));
+                    await Channel.SendAsync(message.Encode());                   
                 }
             }
             catch(Exception ex)
             {
                 await Log.LogWarningAsync("Message received not processed.");
                 await Log.LogErrorAsync(ex.Message);
+                throw ex;
             }
 
             tcs.SetResult(null);
@@ -341,26 +372,16 @@ namespace Piraeus.Adapters
 
         private void Channel_OnStateChange(object sender, ChannelStateEventArgs e)
         {
-            Task task = Log.LogInfoAsync("Channel {0} state changed to {1}", Channel.Id, e.State);
+            Task task = Log.LogInfoAsync("Mqtt Channel {0} state changed to {1}", Channel.Id, e.State);
             Task.WhenAll(task);
         }
 
-        private void Channel_OnRetry(object sender, ChannelRetryEventArgs e)
-        {
-            Task task = Log.LogInfoAsync("Channel {0} is retrying message.", e.ChannelId);
-            Task.WhenAll(task);
-        }
-
-        private void Channel_OnSent(object sender, ChannelSentEventArgs e)
-        {
-            Task task = Log.LogInfoAsync("Channel {0} sent message {1}", e.ChannelId, e.MessageId);
-            Task.WhenAll(task);
-        }
+       
 
         private void Channel_OnError(object sender, ChannelErrorEventArgs e)
         {           
             OnError(this, new ProtocolAdapterErrorEventArgs(Channel.Id, e.Error));
-            Task task = Log.LogErrorAsync("Channel {0} as error {1}", Channel.Id, e.Error.Message);
+            Task task = Log.LogErrorAsync("Mqtt Channel {0} as error {1}", Channel.Id, e.Error.Message);
             Task.WhenAll(task);
 
             Task closeTask = Channel.CloseAsync();
@@ -371,9 +392,8 @@ namespace Piraeus.Adapters
         {
             Task task = Log.LogAsync("Channel {0} is closed.", e.ChannelId);
             Task.WhenAll(task);
+
             OnClose?.Invoke(this, new ProtocolAdapterCloseEventArgs(e.ChannelId));
-            adapter.Dispose();
-            session.Dispose();
         }
 
         #endregion

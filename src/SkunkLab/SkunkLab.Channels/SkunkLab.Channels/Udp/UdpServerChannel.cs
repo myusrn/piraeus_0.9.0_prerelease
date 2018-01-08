@@ -21,7 +21,6 @@ namespace SkunkLab.Channels.Udp
 
         
         private IPEndPoint remoteEP;
-        //private IPEndPoint localEP;
         private UdpClient client;
         private ChannelState _state;
         private CancellationToken token;
@@ -32,12 +31,11 @@ namespace SkunkLab.Channels.Udp
         public override event EventHandler<ChannelOpenEventArgs> OnOpen;
         public override event EventHandler<ChannelErrorEventArgs> OnError;
         public override event EventHandler<ChannelStateEventArgs> OnStateChange;
-        public override event EventHandler<ChannelRetryEventArgs> OnRetry;
-        public override event EventHandler<ChannelSentEventArgs> OnSent;
-        public override event EventHandler<ChannelObserverEventArgs> OnObserve;
 
 
         public override string Id { get; internal set; }
+
+        public override string TypeId { get { return "UDP"; } }
 
         public override int Port { get; internal set; }
 
@@ -94,37 +92,13 @@ namespace SkunkLab.Channels.Udp
             //We do bind the remote endpoint to call SendAsync to the connected UDP client.
 
             await TaskDone.Done;
-
-            //while (!token.IsCancellationRequested)
-            //{
-            //    try
-            //    {
-            //        UdpReceiveResult result = await client.ReceiveAsync();
-
-            //        if (remoteEP == null)
-            //        {
-            //            remoteEP = result.RemoteEndPoint;
-            //        }
-
-            //        if (result.Buffer.Length > 0)
-            //        {
-            //            OnReceive?.Invoke(this, new ChannelReceivedEventArgs(Id, result.Buffer));
-            //            OnObserve?.Invoke(this, new ChannelObserverEventArgs(null, null, result.Buffer));
-            //        }
-            //    }
-            //    catch(Exception ex)
-            //    {
-            //        await Log.LogErrorAsync("UDP server channel receive error {0}", ex.Message);
-            //        OnError?.Invoke(this, new ChannelErrorEventArgs(Id, ex));
-            //    }
-            //}
+            
         }
 
         public override async Task AddMessageAsync(byte[] message)
         {
             //Raise the event received from the Protocol Adapter on the gateway
             OnReceive?.Invoke(this, new ChannelReceivedEventArgs(Id, message));
-            OnObserve?.Invoke(this, new ChannelObserverEventArgs(null, null, message));
             await TaskDone.Done;
         }
 
@@ -132,20 +106,17 @@ namespace SkunkLab.Channels.Udp
         {
             //nothing to do here because closing the client is closing the listener to all channels 
             //connected to the listener.
-
-            //client.Close();            
+            State = ChannelState.Closed;
+            OnClose?.Invoke(this, new ChannelCloseEventArgs(Id)); //listener is closing
+            await TaskDone.Done;       
         }
 
         protected void Disposing(bool dispose)
         {
             if (dispose & !disposedValue)
             {
-                //if (client != null && IsConnected)
-                //{
-                //    client.Close();
-                //}
-
-                //client = null;
+                //client.Close(); cannot close client because is universal listener.
+                //put need this because of  IChannel interface
                 disposedValue = true;
             }
         }

@@ -37,6 +37,8 @@ namespace SkunkLab.Channels.WebSocket
         public abstract bool IsConnected { get; }
 
         public abstract string Id { get; internal set; }
+
+        public abstract string TypeId { get; }
         public abstract int Port { get; internal set; }
         public abstract ChannelState State { get; internal set; }
 
@@ -51,16 +53,6 @@ namespace SkunkLab.Channels.WebSocket
         public abstract event EventHandler<ChannelOpenEventArgs> OnOpen;
         public abstract event EventHandler<ChannelErrorEventArgs> OnError;
         public abstract event EventHandler<ChannelStateEventArgs> OnStateChange;
-        public abstract event EventHandler<ChannelRetryEventArgs> OnRetry;
-        public abstract event EventHandler<ChannelSentEventArgs> OnSent;
-        public abstract event EventHandler<ChannelObserverEventArgs> OnObserve;
-        //public abstract event ChannelReceivedEventHandler OnReceive;
-        //public abstract event ChannelCloseEventHandler OnClose;
-        //public abstract event ChannelOpenEventHandler OnOpen;
-        //public abstract event ChannelErrorEventHandler OnError;
-        //public abstract event ChannelStateEventHandler OnStateChange;
-        //public abstract event ChannelRetryEventHandler OnRetry;
-        //public abstract event ChannelSentEventHandler OnSent;
 
         public abstract Task AddMessageAsync(byte[] message);
 

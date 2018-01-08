@@ -19,6 +19,255 @@
             Initializes a new instance of the exception class for handling claims.
             </summary>
         </member>
+        <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError">
+            <summary>
+            Error code returned as a property in AdalException
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.Unknown">
+            <summary>
+            Unknown error.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.NonHttpsRedirectNotSupported">
+            <summary>
+            Non https redirect failed
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.InvalidArgument">
+            <summary>
+            Invalid argument.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AuthenticationFailed">
+            <summary>
+            Authentication failed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AuthenticationCanceled">
+            <summary>
+            Authentication canceled.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UnauthorizedResponseExpected">
+            <summary>
+            Unauthorized response expected from resource server.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AuthorityNotInValidList">
+            <summary>
+            'authority' is not in the list of valid addresses.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AuthorityValidationFailed">
+            <summary>
+            Authority validation failed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AssemblyLoadFailed">
+            <summary>
+            Loading required assembly failed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AssemblyNotFound">
+            <summary>
+            Assembly not found.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.InvalidOwnerWindowType">
+            <summary>
+            Invalid owner window type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.MultipleTokensMatched">
+            <summary>
+            MultipleTokensMatched were matched.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.InvalidAuthorityType">
+            <summary>
+            Invalid authority type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.InvalidCredentialType">
+            <summary>
+            Invalid credential type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.InvalidServiceUrl">
+            <summary>
+            Invalid service URL.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.FailedToAcquireTokenSilently">
+            <summary>
+            failed_to_acquire_token_silently.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.CertificateKeySizeTooSmall">
+            <summary>
+            Certificate key size too small.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.IdentityProtocolLoginUrlNull">
+            <summary>
+            Identity protocol login URL Null.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.IdentityProtocolMismatch">
+            <summary>
+            Identity protocol mismatch.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.EmailAddressSuffixMismatch">
+            <summary>
+            Email address suffix mismatch.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.IdentityProviderRequestFailed">
+            <summary>
+            Identity provider request failed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.StsTokenRequestFailed">
+            <summary>
+            STS token request failed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.EncodedTokenTooLong">
+            <summary>
+            Encoded token too long.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.ServiceUnavailable">
+            <summary>
+            Service unavailable.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.ServiceReturnedError">
+            <summary>
+            Service returned error.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.FederatedServiceReturnedError">
+            <summary>
+            Federated service returned error.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.StsMetadataRequestFailed">
+            <summary>
+            STS metadata request failed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.NoDataFromSts">
+            <summary>
+            No data from STS.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UserMismatch">
+            <summary>
+            User Mismatch.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UnknownUserType">
+            <summary>
+            Unknown User Type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UnknownUser">
+            <summary>
+            Unknown User.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UserRealmDiscoveryFailed">
+            <summary>
+            User Realm Discovery Failed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AccessingWsMetadataExchangeFailed">
+            <summary>
+            Accessing WS Metadata Exchange Failed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.ParsingWsMetadataExchangeFailed">
+            <summary>
+            Parsing WS Metadata Exchange Failed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.WsTrustEndpointNotFoundInMetadataDocument">
+            <summary>
+            WS-Trust Endpoint Not Found in Metadata Document.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.ParsingWsTrustResponseFailed">
+            <summary>
+            Parsing WS-Trust Response Failed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.NetworkNotAvailable">
+            <summary>
+            The request could not be preformed because the network is down.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AuthenticationUiFailed">
+            <summary>
+            The request could not be preformed because of an unknown failure in the UI flow.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UserInteractionRequired">
+            <summary>
+            One of two conditions was encountered.
+            1. The PromptBehavior.Never flag was passed and but the constraint could not be honored 
+               because user interaction was required.
+            2. An error occurred during a silent web authentication that prevented the authentication
+               flow from completing in a short enough time frame.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.PasswordRequiredForManagedUserError">
+            <summary>
+            Password is required for managed user.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.GetUserNameFailed">
+            <summary>
+            Failed to get user name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.MissingFederationMetadataUrl">
+            <summary>
+            Federation Metadata Url is missing for federated user.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.FailedToRefreshToken">
+            <summary>
+            Failed to refresh token.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.IntegratedAuthFailed">
+            <summary>
+            Integrated authentication failed. You may try an alternative authentication method.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.DuplicateQueryParameter">
+            <summary>
+            Duplicate query parameter in extraQueryParameters
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.BrokerReponseHashMismatch">
+            <summary>
+            Broker response hash did not match
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.DeviceCertificateNotFound">
+            <summary>
+            Device certificate not found.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.InteractionRequired">
+            <summary>
+            Claims step-up required.
+            </summary>
+        </member>
         <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalException">
             <summary>
             The exception type thrown when an error occurs during token acquisition.
@@ -337,6 +586,179 @@
             <param name="parameters">Parameters needed for interactive flow requesting authorization code. Pass an instance of PlatformParameters.</param>
             <param name="extraQueryParameters">This parameter will be appended as is to the query string in the HTTP authentication request to the authority. The parameter can be null.</param>
             <returns>It contains Access Token, its expiration time, user information.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.GetAuthorizationRequestUrlAsync(System.String,System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier,System.String)">
+            <summary>
+            Gets URL of the authorize endpoint including the query parameters.
+            </summary>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+            <param name="clientId">Identifier of the client requesting the token.</param>
+            <param name="redirectUri">Address to return to upon receiving a response from the authority.</param>
+            <param name="userId">Identifier of the user token is requested for. This parameter can be <see cref="T:Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier"/>.Any.</param>
+            <param name="extraQueryParameters">This parameter will be appended as is to the query string in the HTTP authentication request to the authority. The parameter can be null.</param>
+            <returns>URL of the authorize endpoint including the query parameters.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.GetAuthorizationRequestUrlAsync(System.String,System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier,System.String,System.String)">
+            <summary>
+            Gets URL of the authorize endpoint including the query parameters.
+            </summary>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+            <param name="clientId">Identifier of the client requesting the token.</param>
+            <param name="redirectUri">Address to return to upon receiving a response from the authority.</param>
+            <param name="userId">Identifier of the user token is requested for. This parameter can be <see cref="T:Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier"/>.Any.</param>
+            <param name="extraQueryParameters">This parameter will be appended as is to the query string in the HTTP authentication request to the authority. The parameter can be null.</param>
+            <param name="claims">Additional claims that are needed for authentication. Acquired from the AdalClaimChallengeException. This parameter can be null.</param>
+            <returns>URL of the authorize endpoint including the query parameters.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)">
+            <summary>
+            Acquires security token without asking for user credential.
+            </summary>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+            <param name="clientCredential">The client credential to use for token acquisition.</param>
+            <param name="userId">Identifier of the user token is requested for. This parameter can be <see cref="T:Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier"/>.Any.</param>
+            <returns>It contains Access Token, its expiration time, user information. If acquiring token without user credential is not possible, the method throws AdalException.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.IClientAssertionCertificate,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)">
+            <summary>
+            Acquires security token without asking for user credential.
+            </summary>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+            <param name="clientCertificate">The client certificate to use for token acquisition.</param>
+            <param name="userId">Identifier of the user token is requested for. This parameter can be <see cref="T:Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier"/>.Any.</param>
+            <returns>It contains Access Token, its expiration time, user information. If acquiring token without user credential is not possible, the method throws AdalException.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertion,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)">
+            <summary>
+            Acquires security token without asking for user credential.
+            </summary>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+            <param name="clientAssertion">The client assertion to use for token acquisition.</param>
+            <param name="userId">Identifier of the user token is requested for. This parameter can be <see cref="T:Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier"/>.Any.</param>
+            <returns>It contains Access Token, its expiration time, user information. If acquiring token without user credential is not possible, the method throws AdalException.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenByAuthorizationCodeAsync(System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential)">
+            <summary>
+            Acquires security token from the authority using authorization code previously received.
+            This method does not lookup token cache, but stores the result in it, so it can be looked up using other methods such as <see cref="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)"/>.
+            </summary>
+            <param name="authorizationCode">The authorization code received from service authorization endpoint.</param>
+            <param name="redirectUri">Address to return to upon receiving a response from the authority.</param>
+            <param name="clientCredential">The credential to use for token acquisition.</param>
+            <returns>It contains Access Token, its expiration time, user information.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenByAuthorizationCodeAsync(System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential,System.String)">
+            <summary>
+            Acquires security token from the authority using an authorization code previously received.
+            This method does not lookup token cache, but stores the result in it, so it can be looked up using other methods such as <see cref="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)"/>.
+            </summary>
+            <param name="authorizationCode">The authorization code received from service authorization endpoint.</param>
+            <param name="redirectUri">Address to return to upon receiving a response from the authority.</param>
+            <param name="clientCredential">The credential to use for token acquisition.</param>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token. It can be null if provided earlier to acquire authorizationCode.</param>
+            <returns>It contains Access Token, its expiration time, user information.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenByAuthorizationCodeAsync(System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertion)">
+            <summary>
+            Acquires security token from the authority using an authorization code previously received.
+            This method does not lookup token cache, but stores the result in it, so it can be looked up using other methods such as <see cref="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)"/>.
+            </summary>
+            <param name="authorizationCode">The authorization code received from service authorization endpoint.</param>
+            <param name="redirectUri">The redirect address used for obtaining authorization code.</param>
+            <param name="clientAssertion">The client assertion to use for token acquisition.</param>
+            <returns>It contains Access Token, its expiration time, user information.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenByAuthorizationCodeAsync(System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertion,System.String)">
+            <summary>
+            Acquires security token from the authority using an authorization code previously received.
+            This method does not lookup token cache, but stores the result in it, so it can be looked up using other methods such as <see cref="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)"/>.
+            </summary>
+            <param name="authorizationCode">The authorization code received from service authorization endpoint.</param>
+            <param name="redirectUri">The redirect address used for obtaining authorization code.</param>
+            <param name="clientAssertion">The client assertion to use for token acquisition.</param>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token. It can be null if provided earlier to acquire authorizationCode.</param>
+            <returns>It contains Access Token, its expiration time, user information.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenByAuthorizationCodeAsync(System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.IClientAssertionCertificate)">
+            <summary>
+            Acquires security token from the authority using an authorization code previously received.
+            This method does not lookup token cache, but stores the result in it, so it can be looked up using other methods such as <see cref="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)"/>.
+            </summary>
+            <param name="authorizationCode">The authorization code received from service authorization endpoint.</param>
+            <param name="redirectUri">The redirect address used for obtaining authorization code.</param>
+            <param name="clientCertificate">The client certificate to use for token acquisition.</param>
+            <returns>It contains Access Token, its expiration time, user information.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenByAuthorizationCodeAsync(System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.IClientAssertionCertificate,System.String)">
+            <summary>
+            Acquires security token from the authority using an authorization code previously received.
+            This method does not lookup token cache, but stores the result in it, so it can be looked up using other methods such as <see cref="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)"/>.
+            </summary>
+            <param name="authorizationCode">The authorization code received from service authorization endpoint.</param>
+            <param name="redirectUri">The redirect address used for obtaining authorization code.</param>
+            <param name="clientCertificate">The client certificate to use for token acquisition.</param>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token. It can be null if provided earlier to acquire authorizationCode.</param>
+            <returns>It contains Access Token, its expiration time, user information.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync(System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential,Microsoft.IdentityModel.Clients.ActiveDirectory.UserAssertion)">
+            <summary>
+            Acquires an access token from the authority on behalf of a user. It requires using a user token previously received.
+            </summary>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+            <param name="clientCredential">The client credential to use for token acquisition.</param>
+            <param name="userAssertion">The user assertion (token) to use for token acquisition.</param>
+            <returns>It contains Access Token and the Access Token's expiration time.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync(System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.IClientAssertionCertificate,Microsoft.IdentityModel.Clients.ActiveDirectory.UserAssertion)">
+            <summary>
+            Acquires an access token from the authority on behalf of a user. It requires using a user token previously received.
+            </summary>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+            <param name="clientCertificate">The client certificate to use for token acquisition.</param>
+            <param name="userAssertion">The user assertion (token) to use for token acquisition.</param>
+            <returns>It contains Access Token and the Access Token's expiration time.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync(System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertion,Microsoft.IdentityModel.Clients.ActiveDirectory.UserAssertion)">
+            <summary>
+            Acquires an access token from the authority on behalf of a user. It requires using a user token previously received.
+            </summary>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+            <param name="clientAssertion">The client assertion to use for token acquisition.</param>
+            <param name="userAssertion">The user assertion (token) to use for token acquisition.</param>
+            <returns>It contains Access Token and the Access Token's expiration time.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserAssertion)">
+            <summary>
+            Acquires security token from the authority.
+            </summary>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+            <param name="clientId">Identifier of the client requesting the token.</param>
+            <param name="userAssertion">The assertion to use for token acquisition.</param>
+            <returns>It contains Access Token and the Access Token's expiration time. Refresh Token property will be null for this overload.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync(System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.IClientAssertionCertificate)">
+            <summary>
+            Acquires security token from the authority.
+            </summary>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+            <param name="clientCertificate">The client certificate to use for token acquisition.</param>
+            <returns>It contains Access Token and the Access Token's expiration time. Refresh Token property will be null for this overload.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync(System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertion)">
+            <summary>
+            Acquires security token from the authority.
+            </summary>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+            <param name="clientAssertion">The client assertion to use for token acquisition.</param>
+            <returns>It contains Access Token and the Access Token's expiration time. Refresh Token property will be null for this overload.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync(System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential)">
+            <summary>
+            Acquires security token from the authority.
+            </summary>
+            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+            <param name="clientCredential">The client credential to use for token acquisition.</param>
+            <returns>It contains Access Token and the Access Token's expiration time. Refresh Token property will be null for this overload.</returns>
         </member>
         <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationParameters">
             <summary>
@@ -703,255 +1125,6 @@
             A 32-bit signed integer hash code.
             </returns>
         </member>
-        <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError">
-            <summary>
-            Error code returned as a property in AdalException
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.Unknown">
-            <summary>
-            Unknown error.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.NonHttpsRedirectNotSupported">
-            <summary>
-            Non https redirect failed
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.InvalidArgument">
-            <summary>
-            Invalid argument.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AuthenticationFailed">
-            <summary>
-            Authentication failed.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AuthenticationCanceled">
-            <summary>
-            Authentication canceled.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UnauthorizedResponseExpected">
-            <summary>
-            Unauthorized response expected from resource server.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AuthorityNotInValidList">
-            <summary>
-            'authority' is not in the list of valid addresses.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AuthorityValidationFailed">
-            <summary>
-            Authority validation failed.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AssemblyLoadFailed">
-            <summary>
-            Loading required assembly failed.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AssemblyNotFound">
-            <summary>
-            Assembly not found.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.InvalidOwnerWindowType">
-            <summary>
-            Invalid owner window type.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.MultipleTokensMatched">
-            <summary>
-            MultipleTokensMatched were matched.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.InvalidAuthorityType">
-            <summary>
-            Invalid authority type.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.InvalidCredentialType">
-            <summary>
-            Invalid credential type.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.InvalidServiceUrl">
-            <summary>
-            Invalid service URL.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.FailedToAcquireTokenSilently">
-            <summary>
-            failed_to_acquire_token_silently.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.CertificateKeySizeTooSmall">
-            <summary>
-            Certificate key size too small.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.IdentityProtocolLoginUrlNull">
-            <summary>
-            Identity protocol login URL Null.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.IdentityProtocolMismatch">
-            <summary>
-            Identity protocol mismatch.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.EmailAddressSuffixMismatch">
-            <summary>
-            Email address suffix mismatch.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.IdentityProviderRequestFailed">
-            <summary>
-            Identity provider request failed.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.StsTokenRequestFailed">
-            <summary>
-            STS token request failed.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.EncodedTokenTooLong">
-            <summary>
-            Encoded token too long.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.ServiceUnavailable">
-            <summary>
-            Service unavailable.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.ServiceReturnedError">
-            <summary>
-            Service returned error.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.FederatedServiceReturnedError">
-            <summary>
-            Federated service returned error.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.StsMetadataRequestFailed">
-            <summary>
-            STS metadata request failed.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.NoDataFromSts">
-            <summary>
-            No data from STS.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UserMismatch">
-            <summary>
-            User Mismatch.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UnknownUserType">
-            <summary>
-            Unknown User Type.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UnknownUser">
-            <summary>
-            Unknown User.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UserRealmDiscoveryFailed">
-            <summary>
-            User Realm Discovery Failed.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AccessingWsMetadataExchangeFailed">
-            <summary>
-            Accessing WS Metadata Exchange Failed.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.ParsingWsMetadataExchangeFailed">
-            <summary>
-            Parsing WS Metadata Exchange Failed.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.WsTrustEndpointNotFoundInMetadataDocument">
-            <summary>
-            WS-Trust Endpoint Not Found in Metadata Document.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.ParsingWsTrustResponseFailed">
-            <summary>
-            Parsing WS-Trust Response Failed.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.NetworkNotAvailable">
-            <summary>
-            The request could not be preformed because the network is down.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.AuthenticationUiFailed">
-            <summary>
-            The request could not be preformed because of an unknown failure in the UI flow.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UserInteractionRequired">
-            <summary>
-            One of two conditions was encountered.
-            1. The PromptBehavior.Never flag was passed and but the constraint could not be honored 
-               because user interaction was required.
-            2. An error occurred during a silent web authentication that prevented the authentication
-               flow from completing in a short enough time frame.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.PasswordRequiredForManagedUserError">
-            <summary>
-            Password is required for managed user.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.GetUserNameFailed">
-            <summary>
-            Failed to get user name.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.MissingFederationMetadataUrl">
-            <summary>
-            Federation Metadata Url is missing for federated user.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.FailedToRefreshToken">
-            <summary>
-            Failed to refresh token.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.IntegratedAuthFailed">
-            <summary>
-            Integrated authentication failed. You may try an alternative authentication method.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.DuplicateQueryParameter">
-            <summary>
-            Duplicate query parameter in extraQueryParameters
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.BrokerReponseHashMismatch">
-            <summary>
-            Broker response hash did not match
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.DeviceCertificateNotFound">
-            <summary>
-            Device certificate not found.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.InteractionRequired">
-            <summary>
-            Claims step-up required.
-            </summary>
-        </member>
         <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalErrorMessage">
             <summary>
             The active directory authentication error message.
@@ -1108,6 +1281,201 @@
             Serializes the object to a JSON string
             </summary>
             <returns>Serialized authentication result</returns>
+        </member>
+        <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventHandler">
+            <summary>
+            Delegate to handle navifation errors in the browser control
+            </summary>
+            <param name="sender">object type</param>
+            <param name="e">WebBrowserNavigateErrorEventArgs type</param>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.SilentWebUI.NavigationWaitMiliSecs">
+            <summary>
+            This is how long we allow between completed navigations.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.SilentWebUI.NavigationOverallTimeout">
+            <summary>
+            This is how long all redirect navigations are allowed to run for before a graceful 
+            termination of the entire browser based authentication process is attempted.
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.SilentWebUI.WaitForCompletionOrTimeout(System.Threading.Thread)">
+            <summary>
+            Waits on the UI Thread to complete normally for NavigationOverallTimeout.  
+            After it attempts shutdown the UI thread graceful followed by aborting
+            the thread if a graceful shutdown is not successful.
+            </summary>
+            <param name="uiThread"></param>
+            <returns>Returns true if the UI thread completed on its own before the timeout.  Otherwise false.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.SilentWebUI.OnAuthenticate">
+            <summary>
+            Callers expect the call to show the authentication dialog to be synchronous.  This is easy in the 
+            interactive case as ShowDialog is a synchronous call.  However, ShowDialog will always show 
+            the dialog.  It can not be hidden. So it can not be used in the silent case.  Instead we need
+            to do the equivalent of creating our own modal dialog.  We start a new thread, launch an 
+            invisible window on that thread.  The original calling thread blocks until the secondary
+            UI thread completes.  
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.SilentWindowsFormsAuthenticationDialog.SuppressBrowserSubDialogs">
+            <summary>
+            Make sure that the browser control does not surface any of it's own dialogs.
+            For instance bad certificate or javascript error dialogs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.SilentWindowsFormsAuthenticationDialog.SignalDone(System.Exception)">
+            <summary>
+            This method must only be called from the UI thread.  Since this is the 
+            callers opportunity to call dispose on this object.  Calling
+            Dispose must be done on the same thread on which this object
+            was constructed.
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs">
+            <summary>
+            Represents the event agruments received when web browser navigation fails.
+            This class is public only for COM requirements, but should not be used by the developer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs.#ctor(System.String,System.String,System.Int32,System.Object)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="url">url as a string, as in case of error it could be invalid url</param>
+            <param name="targetFrameName">Name of the target frame that had the failure</param>
+            <param name="statusCode">Error status code</param>
+            <param name="webBrowserActiveXInstance">return object</param>
+        </member>
+        <member name="P:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs.TargetFrameName">
+            <summary>
+            Name of the target frame that had the failure
+            </summary>
+        </member>
+        <member name="P:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs.Url">
+            <summary>
+            url as a string, as in case of error it could be invalid url
+            </summary>
+        </member>
+        <member name="P:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs.StatusCode">
+            <summary>
+            ADAL.Native has code for interpretation of this code to string we don't do it here, as we need to come consideration should we do it or not.
+            </summary>
+        </member>
+        <member name="P:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs.WebBrowserActiveXInstance">
+            <summary>
+            return object
+            </summary>
+        </member>
+        <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase">
+            <summary>
+            Base class for web form
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.ownerWindow">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.#ctor(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="ownerWindow"></param>
+        </member>
+        <member name="P:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.WebBrowser">
+            <summary>
+            Gets Web Browser control used by the dialog.
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.WebBrowserNavigatingHandler(System.Object,System.Windows.Forms.WebBrowserNavigatingEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.WebBrowserNavigateErrorHandler(System.Object,Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.OnClosingUrl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.OnNavigationCanceled(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="statusCode"></param>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.OnAuthenticate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.CreateExceptionForAuthenticationUiFailed(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="statusCode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.DpiHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.DpiHelper.ZoomPercent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog">
+            <summary>
+            The browser dialog used for user authentication
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog.#ctor(System.Object)">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog.OnAuthenticate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog.ShowBrowser">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog.WebBrowserNavigatingHandler(System.Object,System.Windows.Forms.WebBrowserNavigatingEventArgs)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog.OnClosingUrl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog.OnNavigationCanceled(System.Int32)">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.IPlatformParameters">
             <summary>
@@ -1509,201 +1877,6 @@
             <permission cref="T:System.Security.Permissions.SecurityPermission">
                 The immediate caller must have SecurityPermission/UnmanagedCode to use this method
             </permission>
-        </member>
-        <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventHandler">
-            <summary>
-            Delegate to handle navifation errors in the browser control
-            </summary>
-            <param name="sender">object type</param>
-            <param name="e">WebBrowserNavigateErrorEventArgs type</param>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.SilentWebUI.NavigationWaitMiliSecs">
-            <summary>
-            This is how long we allow between completed navigations.
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.SilentWebUI.NavigationOverallTimeout">
-            <summary>
-            This is how long all redirect navigations are allowed to run for before a graceful 
-            termination of the entire browser based authentication process is attempted.
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.SilentWebUI.WaitForCompletionOrTimeout(System.Threading.Thread)">
-            <summary>
-            Waits on the UI Thread to complete normally for NavigationOverallTimeout.  
-            After it attempts shutdown the UI thread graceful followed by aborting
-            the thread if a graceful shutdown is not successful.
-            </summary>
-            <param name="uiThread"></param>
-            <returns>Returns true if the UI thread completed on its own before the timeout.  Otherwise false.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.SilentWebUI.OnAuthenticate">
-            <summary>
-            Callers expect the call to show the authentication dialog to be synchronous.  This is easy in the 
-            interactive case as ShowDialog is a synchronous call.  However, ShowDialog will always show 
-            the dialog.  It can not be hidden. So it can not be used in the silent case.  Instead we need
-            to do the equivalent of creating our own modal dialog.  We start a new thread, launch an 
-            invisible window on that thread.  The original calling thread blocks until the secondary
-            UI thread completes.  
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.SilentWindowsFormsAuthenticationDialog.SuppressBrowserSubDialogs">
-            <summary>
-            Make sure that the browser control does not surface any of it's own dialogs.
-            For instance bad certificate or javascript error dialogs.
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.SilentWindowsFormsAuthenticationDialog.SignalDone(System.Exception)">
-            <summary>
-            This method must only be called from the UI thread.  Since this is the 
-            callers opportunity to call dispose on this object.  Calling
-            Dispose must be done on the same thread on which this object
-            was constructed.
-            </summary>
-            <param name="exception"></param>
-        </member>
-        <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs">
-            <summary>
-            Represents the event agruments received when web browser navigation fails.
-            This class is public only for COM requirements, but should not be used by the developer.
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs.#ctor(System.String,System.String,System.Int32,System.Object)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="url">url as a string, as in case of error it could be invalid url</param>
-            <param name="targetFrameName">Name of the target frame that had the failure</param>
-            <param name="statusCode">Error status code</param>
-            <param name="webBrowserActiveXInstance">return object</param>
-        </member>
-        <member name="P:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs.TargetFrameName">
-            <summary>
-            Name of the target frame that had the failure
-            </summary>
-        </member>
-        <member name="P:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs.Url">
-            <summary>
-            url as a string, as in case of error it could be invalid url
-            </summary>
-        </member>
-        <member name="P:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs.StatusCode">
-            <summary>
-            ADAL.Native has code for interpretation of this code to string we don't do it here, as we need to come consideration should we do it or not.
-            </summary>
-        </member>
-        <member name="P:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs.WebBrowserActiveXInstance">
-            <summary>
-            return object
-            </summary>
-        </member>
-        <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase">
-            <summary>
-            Base class for web form
-            </summary>
-        </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.ownerWindow">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.#ctor(System.Object)">
-            <summary>
-            
-            </summary>
-            <param name="ownerWindow"></param>
-        </member>
-        <member name="P:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.WebBrowser">
-            <summary>
-            Gets Web Browser control used by the dialog.
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.WebBrowserNavigatingHandler(System.Object,System.Windows.Forms.WebBrowserNavigatingEventArgs)">
-            <summary>
-            
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.WebBrowserNavigateErrorHandler(System.Object,Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WebBrowserNavigateErrorEventArgs)">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.OnClosingUrl">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.OnNavigationCanceled(System.Int32)">
-            <summary>
-            
-            </summary>
-            <param name="statusCode"></param>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.OnAuthenticate">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.Dispose(System.Boolean)">
-            <summary>
-            
-            </summary>
-            <param name="disposing"></param>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.CreateExceptionForAuthenticationUiFailed(System.Int32)">
-            <summary>
-            
-            </summary>
-            <param name="statusCode"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.DpiHelper">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialogBase.DpiHelper.ZoomPercent">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog">
-            <summary>
-            The browser dialog used for user authentication
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog.#ctor(System.Object)">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog.OnAuthenticate">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog.ShowBrowser">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog.WebBrowserNavigatingHandler(System.Object,System.Windows.Forms.WebBrowserNavigatingEventArgs)">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog.OnClosingUrl">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.Internal.WindowsFormsWebAuthenticationDialog.OnNavigationCanceled(System.Int32)">
-            <summary>
-            
-            </summary>
         </member>
         <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.Native.AsymmetricPaddingMode">
             <summary>
@@ -2320,202 +2493,6 @@
             Returns ADAL EventSource
             </summary>
         </member>
-        <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions">
-            <summary>
-            Extension class to support confidential client flows.
-            </summary>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.GetAuthorizationRequestUrlAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier,System.String)">
-            <summary>
-            Gets URL of the authorize endpoint including the query parameters.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-            <param name="clientId">Identifier of the client requesting the token.</param>
-            <param name="redirectUri">Address to return to upon receiving a response from the authority.</param>
-            <param name="userId">Identifier of the user token is requested for. This parameter can be <see cref="T:Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier"/>.Any.</param>
-            <param name="extraQueryParameters">This parameter will be appended as is to the query string in the HTTP authentication request to the authority. The parameter can be null.</param>
-            <returns>URL of the authorize endpoint including the query parameters.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.GetAuthorizationRequestUrlAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier,System.String,System.String)">
-            <summary>
-            Gets URL of the authorize endpoint including the query parameters.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-            <param name="clientId">Identifier of the client requesting the token.</param>
-            <param name="redirectUri">Address to return to upon receiving a response from the authority.</param>
-            <param name="userId">Identifier of the user token is requested for. This parameter can be <see cref="T:Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier"/>.Any.</param>
-            <param name="extraQueryParameters">This parameter will be appended as is to the query string in the HTTP authentication request to the authority. The parameter can be null.</param>
-            <param name="claims">Additional claims that are needed for authentication. Acquired from the AdalClaimChallengeException. This parameter can be null.</param>
-            <returns>URL of the authorize endpoint including the query parameters.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenSilentAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)">
-            <summary>
-            Acquires security token without asking for user credential.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-            <param name="clientCredential">The client credential to use for token acquisition.</param>
-            <param name="userId">Identifier of the user token is requested for. This parameter can be <see cref="T:Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier"/>.Any.</param>
-            <returns>It contains Access Token, its expiration time, user information. If acquiring token without user credential is not possible, the method throws AdalException.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenSilentAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.IClientAssertionCertificate,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)">
-            <summary>
-            Acquires security token without asking for user credential.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-            <param name="clientCertificate">The client certificate to use for token acquisition.</param>
-            <param name="userId">Identifier of the user token is requested for. This parameter can be <see cref="T:Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier"/>.Any.</param>
-            <returns>It contains Access Token, its expiration time, user information. If acquiring token without user credential is not possible, the method throws AdalException.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenSilentAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertion,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)">
-            <summary>
-            Acquires security token without asking for user credential.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-            <param name="clientAssertion">The client assertion to use for token acquisition.</param>
-            <param name="userId">Identifier of the user token is requested for. This parameter can be <see cref="T:Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier"/>.Any.</param>
-            <returns>It contains Access Token, its expiration time, user information. If acquiring token without user credential is not possible, the method throws AdalException.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenByAuthorizationCodeAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential)">
-            <summary>
-            Acquires security token from the authority using authorization code previously received.
-            This method does not lookup token cache, but stores the result in it, so it can be looked up using other methods such as <see cref="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)"/>.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="authorizationCode">The authorization code received from service authorization endpoint.</param>
-            <param name="redirectUri">Address to return to upon receiving a response from the authority.</param>
-            <param name="clientCredential">The credential to use for token acquisition.</param>
-            <returns>It contains Access Token, its expiration time, user information.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenByAuthorizationCodeAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential,System.String)">
-            <summary>
-            Acquires security token from the authority using an authorization code previously received.
-            This method does not lookup token cache, but stores the result in it, so it can be looked up using other methods such as <see cref="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)"/>.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="authorizationCode">The authorization code received from service authorization endpoint.</param>
-            <param name="redirectUri">Address to return to upon receiving a response from the authority.</param>
-            <param name="clientCredential">The credential to use for token acquisition.</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token. It can be null if provided earlier to acquire authorizationCode.</param>
-            <returns>It contains Access Token, its expiration time, user information.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenByAuthorizationCodeAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertion)">
-            <summary>
-            Acquires security token from the authority using an authorization code previously received.
-            This method does not lookup token cache, but stores the result in it, so it can be looked up using other methods such as <see cref="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)"/>.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="authorizationCode">The authorization code received from service authorization endpoint.</param>
-            <param name="redirectUri">The redirect address used for obtaining authorization code.</param>
-            <param name="clientAssertion">The client assertion to use for token acquisition.</param>
-            <returns>It contains Access Token, its expiration time, user information.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenByAuthorizationCodeAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertion,System.String)">
-            <summary>
-            Acquires security token from the authority using an authorization code previously received.
-            This method does not lookup token cache, but stores the result in it, so it can be looked up using other methods such as <see cref="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)"/>.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="authorizationCode">The authorization code received from service authorization endpoint.</param>
-            <param name="redirectUri">The redirect address used for obtaining authorization code.</param>
-            <param name="clientAssertion">The client assertion to use for token acquisition.</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token. It can be null if provided earlier to acquire authorizationCode.</param>
-            <returns>It contains Access Token, its expiration time, user information.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenByAuthorizationCodeAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.IClientAssertionCertificate)">
-            <summary>
-            Acquires security token from the authority using an authorization code previously received.
-            This method does not lookup token cache, but stores the result in it, so it can be looked up using other methods such as <see cref="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)"/>.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="authorizationCode">The authorization code received from service authorization endpoint.</param>
-            <param name="redirectUri">The redirect address used for obtaining authorization code.</param>
-            <param name="clientCertificate">The client certificate to use for token acquisition.</param>
-            <returns>It contains Access Token, its expiration time, user information.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenByAuthorizationCodeAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,System.Uri,Microsoft.IdentityModel.Clients.ActiveDirectory.IClientAssertionCertificate,System.String)">
-            <summary>
-            Acquires security token from the authority using an authorization code previously received.
-            This method does not lookup token cache, but stores the result in it, so it can be looked up using other methods such as <see cref="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier)"/>.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="authorizationCode">The authorization code received from service authorization endpoint.</param>
-            <param name="redirectUri">The redirect address used for obtaining authorization code.</param>
-            <param name="clientCertificate">The client certificate to use for token acquisition.</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token. It can be null if provided earlier to acquire authorizationCode.</param>
-            <returns>It contains Access Token, its expiration time, user information.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential,Microsoft.IdentityModel.Clients.ActiveDirectory.UserAssertion)">
-            <summary>
-            Acquires an access token from the authority on behalf of a user. It requires using a user token previously received.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-            <param name="clientCredential">The client credential to use for token acquisition.</param>
-            <param name="userAssertion">The user assertion (token) to use for token acquisition.</param>
-            <returns>It contains Access Token and the Access Token's expiration time.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.IClientAssertionCertificate,Microsoft.IdentityModel.Clients.ActiveDirectory.UserAssertion)">
-            <summary>
-            Acquires an access token from the authority on behalf of a user. It requires using a user token previously received.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-            <param name="clientCertificate">The client certificate to use for token acquisition.</param>
-            <param name="userAssertion">The user assertion (token) to use for token acquisition.</param>
-            <returns>It contains Access Token and the Access Token's expiration time.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertion,Microsoft.IdentityModel.Clients.ActiveDirectory.UserAssertion)">
-            <summary>
-            Acquires an access token from the authority on behalf of a user. It requires using a user token previously received.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-            <param name="clientAssertion">The client assertion to use for token acquisition.</param>
-            <param name="userAssertion">The user assertion (token) to use for token acquisition.</param>
-            <returns>It contains Access Token and the Access Token's expiration time.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.UserAssertion)">
-            <summary>
-            Acquires security token from the authority.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-            <param name="clientId">Identifier of the client requesting the token.</param>
-            <param name="userAssertion">The assertion to use for token acquisition.</param>
-            <returns>It contains Access Token and the Access Token's expiration time. Refresh Token property will be null for this overload.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.IClientAssertionCertificate)">
-            <summary>
-            Acquires security token from the authority.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-            <param name="clientCertificate">The client certificate to use for token acquisition.</param>
-            <returns>It contains Access Token and the Access Token's expiration time. Refresh Token property will be null for this overload.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertion)">
-            <summary>
-            Acquires security token from the authority.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-            <param name="clientAssertion">The client assertion to use for token acquisition.</param>
-            <returns>It contains Access Token and the Access Token's expiration time. Refresh Token property will be null for this overload.</returns>
-        </member>
-        <member name="M:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextConfidentialClientExtensions.AcquireTokenAsync(Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential)">
-            <summary>
-            Acquires security token from the authority.
-            </summary>
-            <param name="ctx">Authentication context instance</param>
-            <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-            <param name="clientCredential">The client credential to use for token acquisition.</param>
-            <returns>It contains Access Token and the Access Token's expiration time. Refresh Token property will be null for this overload.</returns>
-        </member>
         <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContextIntegratedAuthExtensions">
             <summary>
             Extension class to support username/password flow.
@@ -2550,13 +2527,6 @@
             already in the cache.
             </summary>
         </member>
-        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.PromptBehavior.SelectAccount">
-            <summary>
-            Prompt the user to select a user account even if there is a token that meets the requirements
-            already in the cache. This enables an user who has multiple accounts at the Authorization Server to select amongst 
-            the multiple accounts that they might have current sessions for. 
-            </summary>
-        </member>
         <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.PromptBehavior.Never">
             <summary>
             The user will not be prompted for credentials.  If prompting is necessary then the AcquireToken request
@@ -2568,6 +2538,13 @@
             Re-authorizes (through displaying webview) the resource usage, making sure that the resulting access
             token contains updated claims. If user logon cookies are available, the user will not be asked for 
             credentials again and the logon dialog will dismiss automatically.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Clients.ActiveDirectory.PromptBehavior.SelectAccount">
+            <summary>
+            Prompt the user to select a user account even if there is a token that meets the requirements
+            already in the cache. This enables an user who has multiple accounts at the Authorization Server to select amongst 
+            the multiple accounts that they might have current sessions for. 
             </summary>
         </member>
         <member name="T:Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertionCertificate">

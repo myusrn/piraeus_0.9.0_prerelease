@@ -1,4 +1,4 @@
-Build started 1/3/2018 1:59:54 PM.
+Build started 1/7/2018 4:46:06 PM.
 Search paths being used for $(MSBuildExtensionsPath) are C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild;$(MSBuildProgramFiles32)\MSBuild
 Trying to import C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\$(MSBuildToolsVersion)\Microsoft.Common.props using extensions path C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild
 Property reassignment: $(MSBuildProjectExtensionsPath)="C:\_git\core\src\Piraeus\Piraeus.Core\obj\" (previous value: "obj\") at C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Microsoft.Common.props (58,5)
@@ -390,10 +390,10 @@ Task "Delete"
   Deleting file "C:\_git\core\src\Piraeus\Piraeus.Core\bin\Release\Piraeus.Core.pdb".
   Deleting file "C:\_git\core\src\Piraeus\Piraeus.Core\bin\Release\System.Web.Http.WebHost.dll".
   Deleting file "C:\_git\core\src\Piraeus\Piraeus.Core\bin\Release\System.Web.Http.WebHost.xml".
-  Deleting file "C:\_git\core\src\Piraeus\Piraeus.Core\obj\Release\Piraeus.Core.csprojResolveAssemblyReference.cache".
   Deleting file "C:\_git\core\src\Piraeus\Piraeus.Core\obj\Release\Piraeus.Core.csproj.CoreCompileInputs.cache".
   Deleting file "C:\_git\core\src\Piraeus\Piraeus.Core\obj\Release\Piraeus.Core.dll".
   Deleting file "C:\_git\core\src\Piraeus\Piraeus.Core\obj\Release\Piraeus.Core.pdb".
+  Deleting file "C:\_git\core\src\Piraeus\Piraeus.Core\obj\Release\Piraeus.Core.csprojResolveAssemblyReference.cache".
 Done executing task "Delete".
 Using "RemoveDuplicates" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
 Task "RemoveDuplicates"
@@ -645,9 +645,9 @@ Task "ResolveAssemblyReference"
           Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.0\Newtonsoft.Json.winmd", but it didn't exist.
           Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.0\Newtonsoft.Json.dll", but it didn't exist.
           Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.0\Newtonsoft.Json.exe", but it didn't exist.
-          Considered "C:\Program Files (x86)\Microsoft SQL Server\140\SDK\Assemblies\Newtonsoft.Json.winmd", but it didn't exist.
-          Considered "C:\Program Files (x86)\Microsoft SQL Server\140\SDK\Assemblies\Newtonsoft.Json.dll", but it didn't exist.
-          Considered "C:\Program Files (x86)\Microsoft SQL Server\140\SDK\Assemblies\Newtonsoft.Json.exe", but it didn't exist.
+          Considered "C:\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\Newtonsoft.Json.winmd", but it didn't exist.
+          Considered "C:\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\Newtonsoft.Json.dll", but it didn't exist.
+          Considered "C:\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\Newtonsoft.Json.exe", but it didn't exist.
           Considered "C:\Program Files\IIS\Microsoft Web Deploy V3\Newtonsoft.Json.winmd", but it didn't exist.
           Considered "C:\Program Files\IIS\Microsoft Web Deploy V3\Newtonsoft.Json.dll", but it didn't exist.
           Considered "C:\Program Files\IIS\Microsoft Web Deploy V3\Newtonsoft.Json.exe", but it didn't exist.
@@ -723,9 +723,9 @@ Task "ResolveAssemblyReference"
           Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.0\System.Net.Http.Formatting.winmd", but it didn't exist.
           Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.0\System.Net.Http.Formatting.dll", but it didn't exist.
           Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.0\System.Net.Http.Formatting.exe", but it didn't exist.
-          Considered "C:\Program Files (x86)\Microsoft SQL Server\140\SDK\Assemblies\System.Net.Http.Formatting.winmd", but it didn't exist.
-          Considered "C:\Program Files (x86)\Microsoft SQL Server\140\SDK\Assemblies\System.Net.Http.Formatting.dll", but it didn't exist.
-          Considered "C:\Program Files (x86)\Microsoft SQL Server\140\SDK\Assemblies\System.Net.Http.Formatting.exe", but it didn't exist.
+          Considered "C:\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\System.Net.Http.Formatting.winmd", but it didn't exist.
+          Considered "C:\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\System.Net.Http.Formatting.dll", but it didn't exist.
+          Considered "C:\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\System.Net.Http.Formatting.exe", but it didn't exist.
           Considered "C:\Program Files\IIS\Microsoft Web Deploy V3\System.Net.Http.Formatting.winmd", but it didn't exist.
           Considered "C:\Program Files\IIS\Microsoft Web Deploy V3\System.Net.Http.Formatting.dll", but it didn't exist.
           Considered "C:\Program Files\IIS\Microsoft Web Deploy V3\System.Net.Http.Formatting.exe", but it didn't exist.
@@ -808,9 +808,9 @@ Task "ResolveAssemblyReference"
           Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.0\System.Web.Http.winmd", but it didn't exist.
           Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.0\System.Web.Http.dll", but it didn't exist.
           Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.0\System.Web.Http.exe", but it didn't exist.
-          Considered "C:\Program Files (x86)\Microsoft SQL Server\140\SDK\Assemblies\System.Web.Http.winmd", but it didn't exist.
-          Considered "C:\Program Files (x86)\Microsoft SQL Server\140\SDK\Assemblies\System.Web.Http.dll", but it didn't exist.
-          Considered "C:\Program Files (x86)\Microsoft SQL Server\140\SDK\Assemblies\System.Web.Http.exe", but it didn't exist.
+          Considered "C:\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\System.Web.Http.winmd", but it didn't exist.
+          Considered "C:\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\System.Web.Http.dll", but it didn't exist.
+          Considered "C:\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\System.Web.Http.exe", but it didn't exist.
           Considered "C:\Program Files\IIS\Microsoft Web Deploy V3\System.Web.Http.winmd", but it didn't exist.
           Considered "C:\Program Files\IIS\Microsoft Web Deploy V3\System.Web.Http.dll", but it didn't exist.
           Considered "C:\Program Files\IIS\Microsoft Web Deploy V3\System.Web.Http.exe", but it didn't exist.
@@ -2187,4 +2187,4 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:01.10
+Time Elapsed 00:00:04.26

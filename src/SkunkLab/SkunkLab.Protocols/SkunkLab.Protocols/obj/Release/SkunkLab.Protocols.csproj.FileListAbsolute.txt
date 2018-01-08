@@ -16,17 +16,3 @@ C:\_git\core\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocol
 C:\_git\core\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocols.csproj.CoreCompileInputs.cache
 C:\_git\core\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocols.dll
 C:\_git\core\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocols.pdb
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Release\SkunkLab.Protocols.dll.config
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Release\SkunkLab.Protocols.dll
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Release\SkunkLab.Protocols.pdb
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Release\Microsoft.IdentityModel.Logging.dll
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Release\Microsoft.IdentityModel.Tokens.dll
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Release\SkunkLab.Security.dll
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Release\System.IdentityModel.Tokens.Jwt.dll
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Release\System.Net.Http.Formatting.dll
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Release\System.Web.Http.dll
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Release\SkunkLab.Security.pdb
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocols.csproj.CoreCompileInputs.cache
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocols.dll
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocols.pdb
-C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocols.csprojResolveAssemblyReference.cache

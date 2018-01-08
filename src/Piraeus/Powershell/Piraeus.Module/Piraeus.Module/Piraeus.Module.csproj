@@ -70,6 +70,7 @@
     <Reference Include="System.Spatial, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.8.3\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Piraeus.Core.0.5.23\lib\net461\System.Web.Http.dll</HintPath>
     </Reference>
@@ -84,6 +85,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAzureBlobStorageSubscriptionCmdlet.cs" />
+    <Compile Include="AddAzureDataLakeSubscriptionCmdlet.cs" />
+    <Compile Include="AddAzureEventHubSubscriptionCmdlet.cs" />
+    <Compile Include="AddAzureIotHubCommandSubscriptionCmdlet.cs" />
+    <Compile Include="AddAzureIotHubDirectMethodSubscription.cs" />
+    <Compile Include="AddAzureIotHubDeviceSubscriptionCmdlet.cs" />
+    <Compile Include="AddAzureQueueStorageSubscriptionCmdlet.cs" />
+    <Compile Include="AddAzureCosmosDbSubscriptonCmdlet.cs" />
+    <Compile Include="AddAzureServiceBusSubscriptionCmdlet.cs" />
+    <Compile Include="AddAzureWebServiceSubscriptionCmdlet.cs" />
+    <Compile Include="AzureBlobType.cs" />
     <Compile Include="CaplLogicalAndCmdlet.cs" />
     <Compile Include="CaplLogicalOrCmdlet.cs" />
     <Compile Include="CaplMatchCmdlet.cs" />

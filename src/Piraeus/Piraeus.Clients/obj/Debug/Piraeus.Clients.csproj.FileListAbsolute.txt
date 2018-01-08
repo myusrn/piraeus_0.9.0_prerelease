@@ -102,7 +102,6 @@ C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\Piraeus.Clients.pdb
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\BouncyCastle.Crypto.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\Microsoft.IdentityModel.Logging.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\Newtonsoft.Json.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\SkunkLab.Channels.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\SkunkLab.Diagnostics.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\SkunkLab.Protocols.dll
@@ -120,5 +119,10 @@ C:\_git\core\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.csproj.CoreCo
 C:\_git\core\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.pdb
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\SkunkLab.Protocols.dll.config
-C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\Newtonsoft.Json.xml
 C:\_git\core\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.csprojResolveAssemblyReference.cache
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\SkunkLab.Security.dll.config
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Web.Http.xml
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Net.Http.Formatting.xml

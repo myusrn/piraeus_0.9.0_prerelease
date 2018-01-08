@@ -38,9 +38,7 @@ namespace Piraeus.Adapters
         
 
         public override void Init()
-        {
-            adapter = new OrleansAdapter();
-            adapter.OnObserve += Adapter_OnObserve;
+        {            
             Channel.OnOpen += Channel_OnOpen;
             Channel.OnReceive += Channel_OnReceive;
             Channel.OnClose += Channel_OnClose;
@@ -72,6 +70,9 @@ namespace Piraeus.Adapters
 
             MessageUri uri = new MessageUri(e.Message);
             IdentityDecoder decoder = new IdentityDecoder(config.Identity.Client.IdentityClaimType, config.Identity.Client.Indexes);
+
+            adapter = new OrleansAdapter(decoder.Id, "HTTP", "REST");
+            adapter.OnObserve += Adapter_OnObserve;
             HttpRequestMessage request = (HttpRequestMessage)e.Message;
 
             if (request.Method == HttpMethod.Get)
@@ -99,18 +100,7 @@ namespace Piraeus.Adapters
                 });
 
                 Task.WhenAll(t);
-
-                //EventMessage message = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, request.Content.ReadAsByteArrayAsync().Result);
-                //List<KeyValuePair<string, string>> indexList = uri.Indexes == null ? null : new List<KeyValuePair<string, string>>(uri.Indexes);
-
-                //var tcs = new TaskCompletionSource<Task>();
-                //Task t = PublishAsync(decoder.Id, message, indexList);
-                //tcs.SetResult(t);
-
-                //Task task = PublishAsync(decoder.Id, message, indexList);
-                //Task.WhenAll(task);
-                //Task final = Channel.CloseAsync();
-                //Task.WhenAll(final);
+              
             }
         }
 
