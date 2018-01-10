@@ -308,7 +308,7 @@
       <Name>Capl</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\SkunkLab\SkunkLab.Security\SkunkLab.Security\SkunkLab.Security.csproj">
-      <Project>{ea12413c-2396-4435-aad5-97f846fdd9c6}</Project>
+      <Project>{90a2c9bb-d422-44f7-b82f-9758cbacbc25}</Project>
       <Name>SkunkLab.Security</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\SkunkLab.Storage.csproj">

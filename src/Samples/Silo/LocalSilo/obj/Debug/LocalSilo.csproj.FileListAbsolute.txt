@@ -146,4 +146,8 @@ C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.csprojResolveAssembl
 C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.exe
 C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.pdb
+C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\_git\core\src\Samples\Silo\LocalSilo\bin\Debug\OrleansConfiguration.xml
 C:\_git\core\src\Samples\Silo\LocalSilo\obj\Debug\LocalSilo.orleans.g.cs

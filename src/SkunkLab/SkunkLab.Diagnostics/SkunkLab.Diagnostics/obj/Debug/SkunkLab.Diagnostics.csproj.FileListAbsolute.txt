@@ -135,3 +135,4 @@ C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Debug\Sk
 C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\SkunkLab.Diagnostics.csproj.CoreCompileInputs.cache
 C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\SkunkLab.Diagnostics.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\SkunkLab.Diagnostics.pdb
+C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\SkunkLab.Diagnostics.csprojResolveAssemblyReference.cache

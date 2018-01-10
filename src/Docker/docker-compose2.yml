@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  webgateway:
+    image: webgateway
+    depends_on: 
+      - orleans-silo
+  tcpudpgateway:
+    image: tcpudpgateway
+      - orleans-silo
+  orleans-silo:
+    image: orleans-silo

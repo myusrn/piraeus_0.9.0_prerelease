@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SkunkLab.Security.Authentication;
 using System.Configuration;
-using System.Linq;
 using System.Web.Http;
-using SkunkLab.Security.Authentication;
 using WebGateway.Formatters;
 
 namespace WebGateway
@@ -12,24 +9,9 @@ namespace WebGateway
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-
-            // Web API routes
-            //config.MapHttpAttributeRoutes();
-
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
-
             config.MapHttpAttributeRoutes();
-
-            //config.Formatters.Clear();
             config.Formatters.Insert(0, new TextMediaTypeFormatter());
             config.Formatters.Insert(1, new BinaryMediaTypeFormatter());
-            //config.Formatters.Add(new TextMediaTypeFormatter());
-            //config.Formatters.Add(new BinaryMediaTypeFormatter());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

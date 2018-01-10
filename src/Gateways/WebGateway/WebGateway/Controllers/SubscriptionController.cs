@@ -12,6 +12,12 @@ namespace WebGateway.Controllers
 {
     public class SubscriptionController : ApiController
     {
+        public SubscriptionController()
+        {
+            bool started = OrleansClientConfig.TryStart("SubscriptionController");
+            
+        }
+
         [CaplAuthorize(PolicyId = "http://www.skunklab.io/api/management")]
         [HttpGet]
         public async Task<HttpResponseMessage> GetSubscriptionMetadata(string subscriptionUriString)
@@ -21,7 +27,7 @@ namespace WebGateway.Controllers
                 SubscriptionMetadata metadata = await GraphManager.GetSubscriptionMetadataAsync(subscriptionUriString);
                 return Request.CreateResponse<SubscriptionMetadata>(HttpStatusCode.OK, metadata);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }

@@ -11,14 +11,20 @@ namespace WebGateway.Controllers
 {
     public class AccessControlController : ApiController
     {
-        [CaplAuthorize(PolicyId ="http://www.skunklab.io/api/management")]
+        public AccessControlController()
+        {
+            bool started = OrleansClientConfig.TryStart("AccessControlController");
+            
+        }
+
+        [CaplAuthorize(PolicyId = "http://www.skunklab.io/api/management")]
         [HttpGet]
         public async Task<HttpResponseMessage> GetAccessControlPolicy(string policyUriString)
         {
             try
             {
                 AuthorizationPolicy policy = await GraphManager.GetAccessControlPolicyAsync(policyUriString);
-                return Request.CreateResponse<AuthorizationPolicy>(HttpStatusCode.OK, policy, "application/xml");                    
+                return Request.CreateResponse<AuthorizationPolicy>(HttpStatusCode.OK, policy, "application/xml");
             }
             catch (Exception ex)
             {
@@ -27,13 +33,13 @@ namespace WebGateway.Controllers
         }
 
         [CaplAuthorize(PolicyId = "http://www.skunklab.io/api/management")]
-        [HttpPut]        
+        [HttpPut]
         public async Task<HttpResponseMessage> UpsertAccessControlPolicy(AuthorizationPolicy policy)
         {
             try
             {
                 await GraphManager.UpsertAcessControlPolicyAsync(policy.PolicyId.ToString(), policy);
-                return new HttpResponseMessage(HttpStatusCode.OK);               
+                return new HttpResponseMessage(HttpStatusCode.OK);
             }
             catch (Exception ex)
             {

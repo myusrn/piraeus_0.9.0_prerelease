@@ -1,14 +1,12 @@
-﻿using System;
+﻿using SkunkLab.Security.Tokens;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
-using SkunkLab.Security.Authentication;
-using SkunkLab.Security.Tokens;
 
 namespace WebGateway.Controllers
 {
@@ -24,12 +22,12 @@ namespace WebGateway.Controllers
         {
             string codes = ConfigurationManager.AppSettings["managementCodes"];
             string[] items = codes.Split(new char[] { ' ' });
-            foreach(string item in items)
+            foreach (string item in items)
             {
-                if(item.ToLowerInvariant() == code.ToLowerInvariant())
+                if (item.ToLowerInvariant() == code.ToLowerInvariant())
                 {
                     string token = await GetJwtTokenAsync();
-                    
+
                     return Request.CreateResponse<string>(HttpStatusCode.OK, token);
                 }
             }

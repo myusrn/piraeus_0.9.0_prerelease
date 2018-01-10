@@ -1,19 +1,17 @@
-﻿using System;
+﻿using Piraeus.Adapters;
+using Piraeus.Configuration.Settings;
+using SkunkLab.Channels.WebSocket;
+using System;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using Piraeus.Adapters;
-using System.Web;
-using System.Threading;
-using Piraeus.Core.Utilities;
-using SkunkLab.Channels.WebSocket;
-using SkunkLab.Protocols.Coap;
-using SkunkLab.Channels;
-using Piraeus.Configuration.Settings;
-using WebGateway.Formatters;
-using System.Text;
 using System.Net.Http.Formatting;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Http;
+using WebGateway.Formatters;
+using WebGateway.Security;
 
 namespace WebGateway.Controllers
 {
@@ -21,13 +19,16 @@ namespace WebGateway.Controllers
     {
         public ConnectController()
         {
-            config = Piraeus.Configuration.PiraeusConfigManager.Settings;
-            source = new CancellationTokenSource();
+            if (OrleansClientConfig.TryStart("ConnectController"))
+            {
+                config = Piraeus.Configuration.PiraeusConfigManager.Settings;
+                source = new CancellationTokenSource();
+            }
         }
 
         private WebSocketHandler handler;
         private CancellationTokenSource source;
-        private Piraeus.Configuration.Settings.PiraeusConfig  config;
+        private Piraeus.Configuration.Settings.PiraeusConfig config;
         private delegate void HttpResponseObserverHandler(object sender, SkunkLab.Channels.ChannelObserverEventArgs args);
         private event HttpResponseObserverHandler OnMessage;
         private ProtocolAdapter adapter;
@@ -42,16 +43,17 @@ namespace WebGateway.Controllers
         {
             try
             {
+
                 adapter = ProtocolAdapterFactory.Create(config, Request, source.Token);
                 adapter.OnClose += Adapter_OnClose;
                 adapter.Init();
                 return new HttpResponseMessage(HttpStatusCode.Accepted);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
-        }        
+        }
 
         [HttpGet]
         public async Task<HttpResponseMessage> Get()
@@ -61,10 +63,10 @@ namespace WebGateway.Controllers
                 //MessageUri mu = new MessageUri(Request);
                 SkunkLab.Security.Authentication.BasicAuthenticator authn = new SkunkLab.Security.Authentication.BasicAuthenticator();
                 //adapter = ProtocolAdapterFactory.Create(config, Request, source.Token, authn);
-                
+
                 //adapter.OnClose += Adapter_OnClose;
                 //adapter.OnError += Adapter_OnError;
-                
+
 
                 HttpContext context = HttpContext.Current;
 
@@ -74,8 +76,8 @@ namespace WebGateway.Controllers
                     //WebSocketConfig config = new WebSocketConfig();
                     //handler = new WebSocketHandler(config, source.Token);
                     //HttpContext.Current.AcceptWebSocketRequest(handler);
-                   // WebSocketConfig wsc = new WebSocketConfig();
-                   // WebSocketServerChannel wschannel = new WebSocketServerChannel(Request, wsc, source.Token);
+                    // WebSocketConfig wsc = new WebSocketConfig();
+                    // WebSocketServerChannel wschannel = new WebSocketServerChannel(Request, wsc, source.Token);
                     //CoapConfig cc = new CoapConfig(authn, "www.skunklab.io", CoapConfigOptions.NoResponse | CoapConfigOptions.Observe);
 
                     //IChannel channel = ChannelFactory.Create(Request, new WebSocketConfig(), source.Token);
@@ -127,19 +129,19 @@ namespace WebGateway.Controllers
             OnMessage += (o, a) => {
 
                 MediaTypeFormatter formatter = null;
-                if(a.ContentType == "application/octet-stream")
+                if (a.ContentType == "application/octet-stream")
                 {
                     formatter = new BinaryMediaTypeFormatter();
                 }
-                else if(a.ContentType == "text/plain")
+                else if (a.ContentType == "text/plain")
                 {
                     formatter = new TextMediaTypeFormatter();
                 }
-                else if(a.ContentType == "application/xml" || a.ContentType == "text/xml")
+                else if (a.ContentType == "application/xml" || a.ContentType == "text/xml")
                 {
                     formatter = new XmlMediaTypeFormatter();
                 }
-                else if(a.ContentType == "application/json" || a.ContentType == "text/json")
+                else if (a.ContentType == "application/json" || a.ContentType == "text/json")
                 {
                     formatter = new JsonMediaTypeFormatter();
                 }
@@ -149,7 +151,7 @@ namespace WebGateway.Controllers
                 }
 
                 if (a.ContentType != "application/octet-stream")
-                {                    
+                {
                     response = Request.CreateResponse<string>(HttpStatusCode.OK, Encoding.UTF8.GetString(a.Message), formatter);
                 }
                 else

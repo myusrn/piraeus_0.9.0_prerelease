@@ -1,0 +1,4 @@
+2018-01-09-22.21.14.830ZZ
+ERROR starting Orleans silo name=MININT-2T87D76 Exception=
+Exc level 0: Orleans.Runtime.OrleansException: Failed to start Orleans silo 'MININT-2T87D76' as a Secondary node.
+   at Piraeus.SiloHost.OrleansHostWrapper.Run() in C:\_git\core\src\Piraeus\Piraeus.SiloHost\OrleansHostWrapper.cs:line 50

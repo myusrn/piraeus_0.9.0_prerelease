@@ -25,14 +25,6 @@ namespace WebGateway.Security
             }
 
             return policy.Evaluate(identity);
-
-            //ClaimsIdentity identity = Thread.CurrentPrincipal.Identity as ClaimsIdentity;
-            //Rule rule = new Rule();
-            //rule.MatchExpression = new Capl.Authorization.Match(Capl.Authorization.Matching.LiteralMatchExpression.MatchUri, "http://www.skunklab.io/role", true);
-            //rule.Operation = new EvaluationOperation(Capl.Authorization.Operations.EqualOperation.OperationUri, "manage");
-            //AuthorizationPolicy policy = new AuthorizationPolicy(rule, new Uri("http://www.skunklab.io/managepolicy"));
-
-            //return policy.Evaluate(identity);
         }
 
         private void CachePolicy(AuthorizationPolicy policy)
@@ -52,7 +44,7 @@ namespace WebGateway.Security
             Rule rule = new Rule();
             rule.MatchExpression = new Capl.Authorization.Match(Capl.Authorization.Matching.LiteralMatchExpression.MatchUri, claimType, true);
             rule.Operation = new EvaluationOperation(Capl.Authorization.Operations.EqualOperation.OperationUri, value);
-           return new AuthorizationPolicy(rule, new Uri(this.PolicyId));
+            return new AuthorizationPolicy(rule, new Uri(this.PolicyId));
         }
     }
 }

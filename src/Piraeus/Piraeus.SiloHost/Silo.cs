@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using Orleans.Runtime.Configuration;
 
 namespace Piraeus.SiloHost
@@ -8,7 +9,7 @@ namespace Piraeus.SiloHost
         private static OrleansHostWrapper hostWrapper;
 
         public static int Run(string[] args)
-        {
+        {           
             int exitCode = StartSilo(args);
 
             Console.WriteLine("Press Enter to terminate...");
@@ -23,8 +24,18 @@ namespace Piraeus.SiloHost
         private static int StartSilo(string[] args)
         {
             // define the cluster configuration
-            var config = ClusterConfiguration.LocalhostPrimarySilo();
-            config.AddMemoryStorageProvider("store");
+
+            //USE for demo
+            var config = ClusterConfiguration.LocalhostPrimarySilo();           
+            config.AddMemoryStorageProvider("store", 1000);
+
+            //USE for production and clustering
+
+            //var config = new ClusterConfiguration();
+            //config.LoadFromFile("./OrleansConfifguration.xml");
+
+            var siloHost = new Orleans.Runtime.Host.SiloHost(System.Net.Dns.GetHostName(), config);
+
             hostWrapper = new OrleansHostWrapper(config, args);
             return hostWrapper.Run();
         }

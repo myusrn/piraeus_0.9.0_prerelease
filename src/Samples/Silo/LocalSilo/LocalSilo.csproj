@@ -188,7 +188,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -212,14 +214,15 @@
       <Project>{ceb5bd18-eed5-4a35-b2bd-2063f46903a9}</Project>
       <Name>Piraeus.Grains</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\SkunkLab.Security\SkunkLab.Security\SkunkLab.Security.csproj">
-      <Project>{ea12413c-2396-4435-aad5-97f846fdd9c6}</Project>
-      <Name>SkunkLab.Security</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\SkunkLab.Storage.csproj">
       <Project>{738cbf32-00ab-4d4d-ba03-bba55ce1a543}</Project>
       <Name>SkunkLab.Storage</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OrleansConfiguration.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets" Condition="Exists('packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets')" />

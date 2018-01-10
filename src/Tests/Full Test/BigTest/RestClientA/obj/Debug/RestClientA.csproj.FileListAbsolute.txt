@@ -1,2 +1,0 @@
-C:\_git\core\src\Tests\Full Test\BigTest\RestClientA\obj\Debug\RestClientA.csprojResolveAssemblyReference.cache
-C:\_git\core\src\Tests\Full Test\BigTest\RestClientA\obj\Debug\RestClientA.csproj.CoreCompileInputs.cache

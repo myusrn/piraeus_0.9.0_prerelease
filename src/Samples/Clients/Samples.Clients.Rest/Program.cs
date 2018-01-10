@@ -26,7 +26,7 @@ namespace Samples.Clients.Rest
 
 
         static int index;
-        static string endpoint = "http://localhost:4163/api/connect";
+        static string endpoint = "http://localhost:1733/api/connect";
 
         static string resourceA;
         static string resourceB;

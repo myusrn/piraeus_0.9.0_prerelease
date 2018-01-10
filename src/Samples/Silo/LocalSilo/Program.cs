@@ -10,6 +10,7 @@ namespace LocalSilo
     {
         static int Main(string[] args)
         {
+            
             return Piraeus.SiloHost.Silo.Run(args);
         }
     }

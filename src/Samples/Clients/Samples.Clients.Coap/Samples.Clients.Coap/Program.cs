@@ -46,7 +46,7 @@ namespace Samples.Clients.Coap
         static string resourceA = "http://www.skunklab.io/resourcea";
         static string resourceB = "http://www.skunklab.io/resourceb";
 
-        static string endpoint = "ws://localhost:4163/api/connect";
+        static string endpoint = "ws://localhost:1733/api/connect";
 
         static int channelNo;
         static int index;

@@ -1,6 +1,6 @@
 /in:obj\Release\Piraeus.Grains.dll
 /out:C:\_git\core\src\Piraeus\Piraeus.Grains\obj\Release\Piraeus.Grains.orleans.g.cs
-/r:C:\_git\core\src\CAPL\capl\bin\Release\Capl.dll
+/r:C:\_git\core\src\CAPL\Capl\bin\Release\Capl.dll
 /r:C:\_git\core\src\Orleans\packages\DotNetty.Buffers.0.4.7\lib\net45\DotNetty.Buffers.dll
 /r:C:\_git\core\src\Orleans\packages\DotNetty.Codecs.0.4.7\lib\net45\DotNetty.Codecs.dll
 /r:C:\_git\core\src\Orleans\packages\DotNetty.Codecs.Mqtt.0.4.7\lib\net45\DotNetty.Codecs.Mqtt.dll

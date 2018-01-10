@@ -10,7 +10,6 @@ C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\SkunkLab.Diagnos
 C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
 C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\Microsoft.IdentityModel.Tokens.dll
 C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\System.Web.Http.dll
-C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\Newtonsoft.Json.dll
 C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\Microsoft.IdentityModel.Logging.dll
 C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\System.Net.Http.Formatting.dll
 C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\Piraeus.Clients.pdb
@@ -27,4 +26,9 @@ C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\obj\Debug\Samples.Clients.
 C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\obj\Debug\Samples.Clients.Mqtt.exe
 C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\obj\Debug\Samples.Clients.Mqtt.pdb
 C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\obj\Debug\Samples.Clients.Mqtt.exe.config
-C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\Newtonsoft.Json.xml
+C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\SkunkLab.Security.dll.config
+C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\System.Web.Http.xml
+C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\bin\Debug\System.Net.Http.Formatting.xml

@@ -96,3 +96,4 @@ C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csproj.CoreCompileInputs.cache
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.pdb
+C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\BouncyCastle.Crypto.dll

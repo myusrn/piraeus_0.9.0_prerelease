@@ -1,24 +1,28 @@
-﻿using System;
+﻿using Piraeus.Core.Messaging;
+using Piraeus.Core.Metadata;
+using Piraeus.Grains;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Piraeus.Core.Messaging;
-using Piraeus.Core.Metadata;
-using Piraeus.GrainInterfaces;
-using Piraeus.Grains;
 using WebGateway.Security;
 
 namespace WebGateway.Controllers
 {
     public class ResourceController : ApiController
     {
-        
+        public ResourceController()
+        {
+            bool started = OrleansClientConfig.TryStart("ResourceController");
+
+        }
+
         //[CaplAuthorize(PolicyId = "http://www.skunklab.io/api/management")]
         [HttpGet]
         public async Task<HttpResponseMessage> GetResourceList()
-        {            
+        {
             try
             {
                 IEnumerable<string> list = await GraphManager.GetResourceListAsync();
@@ -30,7 +34,7 @@ namespace WebGateway.Controllers
             }
         }
 
-       
+
         //[CaplAuthorize(PolicyId = "http://www.skunklab.io/api/management")]
         [HttpGet]
         public async Task<HttpResponseMessage> GetResourceMetadata(string resourceUriString)
@@ -54,7 +58,7 @@ namespace WebGateway.Controllers
                 CommunicationMetrics metrics = await GraphManager.GetResourceMetricsAsync(resourceUriString);
                 return Request.CreateResponse<CommunicationMetrics>(HttpStatusCode.OK, metrics);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
@@ -66,11 +70,11 @@ namespace WebGateway.Controllers
         {
             try
             {
-               
+
                 await GraphManager.UpsertResourceMetadataAsync(metadata);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
@@ -85,7 +89,7 @@ namespace WebGateway.Controllers
                 string subscriptionUriString = await GraphManager.SubscribeAsync(resourceUriString, metadata);
                 return Request.CreateResponse<string>(HttpStatusCode.OK, subscriptionUriString);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
@@ -115,7 +119,7 @@ namespace WebGateway.Controllers
                 await GraphManager.UnsubscribeAsync(subscriptionUriString.ToLowerInvariant());
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
@@ -130,7 +134,7 @@ namespace WebGateway.Controllers
                 await GraphManager.ClearResourceAsync(resourceUriString);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }

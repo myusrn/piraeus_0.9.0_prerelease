@@ -1,6 +1,6 @@
 /in:obj\Release\Piraeus.GrainInterfaces.dll
 /out:C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Release\Piraeus.GrainInterfaces.orleans.g.cs
-/r:C:\_git\core\src\CAPL\capl\bin\Release\Capl.dll
+/r:C:\_git\core\src\CAPL\Capl\bin\Release\Capl.dll
 /r:C:\_git\core\src\Orleans\packages\Microsoft.CodeAnalysis.CSharp.2.0.0\lib\netstandard1.3\Microsoft.CodeAnalysis.CSharp.dll
 /r:C:\_git\core\src\Orleans\packages\Microsoft.CodeAnalysis.Common.2.0.0\lib\netstandard1.3\Microsoft.CodeAnalysis.dll
 /r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.CSharp.dll

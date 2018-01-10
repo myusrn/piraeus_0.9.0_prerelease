@@ -1,0 +1,46 @@
+2018-01-09-21.42.34.060ZZ
+ERROR starting Orleans silo name=MININT-2T87D76 Exception=
+Exc level 0: System.AggregateException: One or more errors occurred.
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait(TimeSpan timeout)
+   at Orleans.OrleansTaskExtentions.WaitWithThrow(Task task, TimeSpan timeout)
+   at Orleans.Runtime.Silo.DoStart()
+   at Orleans.Runtime.Silo.Start()
+   at Orleans.Runtime.Host.SiloHost.StartOrleansSilo(Boolean catchExceptions)
+Exc level 1: Orleans.Runtime.OrleansMessageRejectionException: Silo S127.0.0.1:11111:253230140 is rejecting message: Request S127.0.0.1:11111:253230140Catalog@S0000000e->S127.0.0.1:22222:0DirectoryService@S0000000a #3: global::Orleans.Runtime.IRemoteGrainDirectory:LookupAsync(). Reason = Exception getting a sending socket to endpoint S127.0.0.1:22222:0
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Orleans.Runtime.GrainDirectory.LocalGrainDirectory.<LookupAsync>d__112.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Orleans.Runtime.Scheduler.SchedulerExtensions.<>c__DisplayClass0_0`1.<<QueueTask>b__0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Orleans.Runtime.Placement.RandomPlacementDirector.<OnSelectActivation>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Orleans.Runtime.Placement.PlacementDirectorsManager.<SelectOrAddActivation>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Orleans.Runtime.Dispatcher.<AddressMessage>d__37.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Orleans.Runtime.Dispatcher.<AsyncSendMessage>d__34.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Orleans.Runtime.MembershipService.MembershipTableFactory.<GetMembershipTable>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Orleans.Runtime.MembershipService.MembershipOracle.<Start>d__30.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Orleans.Runtime.Scheduler.SchedulerExtensions.<>c__DisplayClass1_0.<<QueueTask>b__0>d.MoveNext()

@@ -200,7 +200,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets'))" />
-  <!--  <Error Condition="!Exists('..\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" /> -->
+    <!--  <Error Condition="!Exists('..\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" /> -->
   </Target>
   <!-- <Import Project="..\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\Piraeus.Adapters\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" /> -->
   <!-- <Import Project="..\..\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets" Condition="Exists('..\..\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.Build.1.5.2\build\Microsoft.Orleans.OrleansCodeGenerator.Build.targets')" /> -->

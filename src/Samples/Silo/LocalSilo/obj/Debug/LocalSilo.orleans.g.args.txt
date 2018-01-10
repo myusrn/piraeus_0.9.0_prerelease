@@ -20,7 +20,6 @@
 /r:C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\bin\Debug\Piraeus.GrainInterfaces.dll
 /r:C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Piraeus.Grains.dll
 /r:C:\_git\core\src\Samples\Silo\LocalSilo\packages\Piraeus.SiloHost.0.5.23\lib\net461\Piraeus.SiloHost.dll
-/r:C:\_git\core\src\SkunkLab.Security\SkunkLab.Security\bin\Debug\SkunkLab.Security.dll
 /r:C:\_git\core\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\bin\Debug\SkunkLab.Storage.dll
 /r:C:\_git\core\src\Samples\Silo\LocalSilo\packages\Piraeus.SiloHost.0.5.23\lib\net461\StackExchange.Redis.dll
 /r:C:\_git\core\src\Samples\Silo\LocalSilo\packages\Piraeus.SiloHost.0.5.23\lib\net461\System.AppContext.dll

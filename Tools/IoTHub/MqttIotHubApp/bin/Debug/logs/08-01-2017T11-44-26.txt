@@ -1,2 +1,0 @@
-FileSize  Messages  BatchSize SendTime  SentTime  TaskErrorCount    UnobservedException                               
-29798     1000      25        703       172220    0                 

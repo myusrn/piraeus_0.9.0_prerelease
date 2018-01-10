@@ -1,2 +1,0 @@
-C:\_git\core\Powershell\SkunkLab\main\src\SkunkLab\obj\Debug\SkunkLab.csprojResolveAssemblyReference.cache
-C:\_git\core\Powershell\SkunkLab\main\src\SkunkLab\obj\Debug\SkunkLab.csproj.CoreCompileInputs.cache

@@ -126,3 +126,10 @@ C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\Microsoft.IdentityModel.Token
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Web.Http.xml
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\Microsoft.IdentityModel.Logging.xml
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Net.Http.Formatting.xml
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Net.Http.dll
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Security.Cryptography.Encoding.dll
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Security.Cryptography.Primitives.dll
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Diagnostics.DiagnosticSource.xml

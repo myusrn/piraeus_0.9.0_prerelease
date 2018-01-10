@@ -1,7 +1,0 @@
-C:\Users\malong\Downloads\SkunkLab\Powershell\Services\main\src\RestServices\bin\Debug\RestServices.dll
-C:\Users\malong\Downloads\SkunkLab\Powershell\Services\main\src\RestServices\bin\Debug\RestServices.pdb
-C:\Users\malong\Downloads\SkunkLab\Powershell\Services\main\src\RestServices\bin\Debug\Newtonsoft.Json.dll
-C:\Users\malong\Downloads\SkunkLab\Powershell\Services\main\src\RestServices\bin\Debug\Newtonsoft.Json.xml
-C:\Users\malong\Downloads\SkunkLab\Powershell\Services\main\src\RestServices\obj\Debug\RestServices.dll
-C:\Users\malong\Downloads\SkunkLab\Powershell\Services\main\src\RestServices\obj\Debug\RestServices.pdb
-C:\Users\malong\Downloads\SkunkLab\Powershell\Services\main\src\RestServices\obj\Debug\RestServices.csprojResolveAssemblyReference.cache
