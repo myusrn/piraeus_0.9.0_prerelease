@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Xml.Linq" />
@@ -57,6 +58,10 @@
     <ProjectReference Include="..\..\..\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\SkunkLab.Channels.csproj">
       <Project>{7c69a3ca-29dd-4c33-b70f-f998a6e650b9}</Project>
       <Name>SkunkLab.Channels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\SkunkLab.Diagnostics.csproj">
+      <Project>{c6bbc79c-7f29-4385-8b4b-bd73d01ac4e0}</Project>
+      <Name>SkunkLab.Diagnostics</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\SkunkLab.Protocols.csproj">
       <Project>{7b2c72a0-0dba-4ded-96dc-b6af80a82277}</Project>

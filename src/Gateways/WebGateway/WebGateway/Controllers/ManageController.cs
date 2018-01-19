@@ -7,11 +7,28 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
+using WebGateway.Security;
 
 namespace WebGateway.Controllers
 {
     public class ManageController : ApiController
     {
+        public ManageController()
+        {
+            if (!Orleans.GrainClient.IsInitialized)
+            {
+                bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+                if (!dockerized)
+                {
+                    OrleansClientConfig.TryStart("ManageController");
+                }
+                else
+                {
+                    string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
+                    OrleansClientConfig.TryStart("ManageController", hostname);
+                }
+            }
+        }
         /// <summary>
         /// Return a security token for the Management API
         /// </summary>

@@ -89,7 +89,16 @@ namespace SkunkLab.Protocols.Coap
                 item.Value(message.Code, MediaTypeConverter.ConvertFromMediaType(message.ContentType), message.Payload);
             }
             
-            
+            if(observeQuery.Count() == 0)
+            {
+                var query = container.Where((c) => c.Value.Item1 == Convert.ToBase64String(message.Token));
+                KeyValuePair<ushort, Tuple<string, DateTime, Action<CodeType, string, byte[]>>>[] kvps = query.ToArray();
+                foreach(var kvp in kvps)
+                {
+                    kvp.Value.Item3(message.Code, MediaTypeConverter.ConvertFromMediaType(message.ContentType), message.Payload);
+                    container.Remove(kvp.Key);
+                }
+            }
             //var query = container.Where((c) => c.Value.Item1 == Convert.ToBase64String(message.Token));
 
             //if(observeQuery.Count() == 0 && query.Count() >= 1)

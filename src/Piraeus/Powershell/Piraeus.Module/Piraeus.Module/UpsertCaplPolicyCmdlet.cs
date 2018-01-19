@@ -4,7 +4,7 @@ using Capl.Authorization;
 
 namespace Piraeus.Module
 {
-    [Cmdlet(VerbsCommon.Set, "CaplPolicy")]
+    [Cmdlet(VerbsCommon.Add, "CaplPolicy")]
     public class UpsertCaplPolicyCmdlet : Cmdlet
     {
         [Parameter(HelpMessage = "Url of the service.", Mandatory = true)]

@@ -1,57 +1,76 @@
 ﻿using System;
-using System.Configuration;
 using System.Diagnostics;
 using System.Net;
+using System.Net.Sockets;
 
 namespace TcpUdpGateway.Configuration
 {
-    internal class OrleansClientConfig
+    public class OrleansClientConfig
     {
+        public static bool TryStart(string location, string hostname)
+        {
+            try
+            {
+                if (Orleans.GrainClient.IsInitialized)
+                    return true;
+
+                //IPAddress ip = GetIP(hostname);
+                IPAddress ip = System.Net.Dns.GetHostAddresses(hostname)[0];
+                var config = new Orleans.Runtime.Configuration.ClientConfiguration();
+                config.Gateways.Add(new IPEndPoint(ip, 30000));
+                config.OpenConnectionTimeout = TimeSpan.FromMinutes(4);
+                Orleans.GrainClient.Initialize(config);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceWarning("Failed to intiailize orleans client via hostname");
+                Trace.TraceError(ex.Message);
+            }
+
+            return Orleans.GrainClient.IsInitialized;
+        }
+
         public static bool TryStart(string location)
         {
-
-            if (Orleans.GrainClient.IsInitialized)
-                return true;
-
-            bool started = false;
-            Orleans.Runtime.Configuration.ClientConfiguration config = null;
-            string faultMessage = null;
-            string value = ConfigurationManager.AppSettings["dockerized"];
-            bool dockerized = false;
-
-            if (bool.TryParse(value, out dockerized))
+            try
             {
-                string dockerizedString = dockerized ? "Dockerized" : "Non-dockerized";
-                faultMessage = String.Format("{0} Web Gateway failed to initialize Orleans client in {1}.", dockerizedString, location);
+                if (Orleans.GrainClient.IsInitialized)
+                    return true;
 
-                if (dockerized)
-                {
-                    var hostEntry = Dns.GetHostEntry("orleans-silo");
-                    var ip = hostEntry.AddressList[0];
-                    config = new Orleans.Runtime.Configuration.ClientConfiguration();
-                    config.Gateways.Add(new IPEndPoint(ip, 30000));
-                }
-                else
-                {
-                    config = Orleans.Runtime.Configuration.ClientConfiguration.LocalhostSilo();
-                }
-
-                try
-                {
-                    Orleans.GrainClient.Initialize(config);
-                    started = true;
-                }
-                catch
-                {
-                    Trace.TraceWarning(faultMessage);
-                }
+                var config = Orleans.Runtime.Configuration.ClientConfiguration.LocalhostSilo();
+                Orleans.GrainClient.Initialize(config);
             }
-            else
+            catch (Exception ex)
             {
-                faultMessage = String.Format("Orleans client cannot start because 'dockerized' setting is not configured.");
+                Trace.TraceWarning("Failed to intiailize orleans client via localhost");
+                Trace.TraceError(ex.Message);
             }
 
-            return started;
+            return Orleans.GrainClient.IsInitialized;
+        }
+
+        private static IPAddress GetIP(string hostname)
+        {
+            try
+            {
+                IPHostEntry hostInfo = Dns.GetHostEntry(hostname);
+                for (int index = 0; index < hostInfo.AddressList.Length; index++)
+                {
+                    if (hostInfo.AddressList[index].AddressFamily == AddressFamily.InterNetwork)
+                    {                        
+                        IPAddress address =  hostInfo.AddressList[index];
+                        Console.WriteLine("Hostname {0} with IP {1}", hostname, address.ToString());
+                        return address;
+                    }
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceWarning(String.Format("Failed to get IP from hostname"));
+                throw ex;
+            }
         }
     }
 }

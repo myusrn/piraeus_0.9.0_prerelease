@@ -129,14 +129,6 @@ C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Release\Hyak.Common.x
 C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Release\Microsoft.Azure.Common.xml
 C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Release\Microsoft.Threading.Tasks.xml
 C:\_git\core\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Release\SkunkLab.Diagnostics.csproj.CoreCompileInputs.cache
-C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Release\SkunkLab.Diagnostics.dll.config
-C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Release\SkunkLab.Diagnostics.dll
-C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Release\SkunkLab.Diagnostics.pdb
-C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Release\System.Diagnostics.DiagnosticSource.xml
-C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Release\SkunkLab.Diagnostics.csprojResolveAssemblyReference.cache
-C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Release\SkunkLab.Diagnostics.csproj.CoreCompileInputs.cache
-C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Release\SkunkLab.Diagnostics.dll
-C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Release\SkunkLab.Diagnostics.pdb
 C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\Output\SkunkLab.Diagnostics.dll.config
 C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\Output\SkunkLab.Diagnostics.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\Output\SkunkLab.Diagnostics.pdb
@@ -151,3 +143,10 @@ C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\Output\Syste
 C:\_git\core\src\Docker\TcpUdpGateway\Output\SkunkLab.Diagnostics.dll.config
 C:\_git\core\src\Docker\TcpUdpGateway\Output\SkunkLab.Diagnostics.dll
 C:\_git\core\src\Docker\TcpUdpGateway\Output\SkunkLab.Diagnostics.pdb
+C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Release\SkunkLab.Diagnostics.dll.config
+C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Release\SkunkLab.Diagnostics.dll
+C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Release\SkunkLab.Diagnostics.pdb
+C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Release\SkunkLab.Diagnostics.csprojResolveAssemblyReference.cache
+C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Release\SkunkLab.Diagnostics.csproj.CoreCompileInputs.cache
+C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Release\SkunkLab.Diagnostics.dll
+C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Release\SkunkLab.Diagnostics.pdb

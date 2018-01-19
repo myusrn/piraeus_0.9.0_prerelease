@@ -1,0 +1,11 @@
+C:\_git\core\src\dotnetcore\src\Capl\Capl\obj\Debug\netcoreapp2.0\Capl.csprojResolveAssemblyReference.cache
+C:\_git\core\src\dotnetcore\src\Capl\Capl\obj\Debug\netcoreapp2.0\Capl.csproj.CoreCompileInputs.cache
+C:\_git\core\src\dotnetcore\src\Capl\Capl\obj\Debug\netcoreapp2.0\Capl.AssemblyInfoInputs.cache
+C:\_git\core\src\dotnetcore\src\Capl\Capl\obj\Debug\netcoreapp2.0\Capl.AssemblyInfo.cs
+C:\_git\core\src\dotnetcore\src\Capl\Capl\bin\Debug\netcoreapp2.0\Capl.deps.json
+C:\_git\core\src\dotnetcore\src\Capl\Capl\bin\Debug\netcoreapp2.0\Capl.dll
+C:\_git\core\src\dotnetcore\src\Capl\Capl\bin\Debug\netcoreapp2.0\Capl.pdb
+C:\_git\core\src\dotnetcore\src\Capl\Capl\obj\Debug\netcoreapp2.0\Capl.Properties.Resources.resources
+C:\_git\core\src\dotnetcore\src\Capl\Capl\obj\Debug\netcoreapp2.0\Capl.csproj.GenerateResource.Cache
+C:\_git\core\src\dotnetcore\src\Capl\Capl\obj\Debug\netcoreapp2.0\Capl.dll
+C:\_git\core\src\dotnetcore\src\Capl\Capl\obj\Debug\netcoreapp2.0\Capl.pdb

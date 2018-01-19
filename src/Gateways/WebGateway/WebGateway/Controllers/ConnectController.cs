@@ -2,6 +2,8 @@
 using Piraeus.Configuration.Settings;
 using SkunkLab.Channels.WebSocket;
 using System;
+using System.Configuration;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
@@ -19,14 +21,26 @@ namespace WebGateway.Controllers
     {
         public ConnectController()
         {
-            if (OrleansClientConfig.TryStart("ConnectController"))
+            if (!Orleans.GrainClient.IsInitialized)
             {
-                config = Piraeus.Configuration.PiraeusConfigManager.Settings;
-                source = new CancellationTokenSource();
+                bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+                if (!dockerized)
+                {
+                    OrleansClientConfig.TryStart("ConnectController");
+                }
+                else
+                {
+                    string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
+                    OrleansClientConfig.TryStart("ConnectController", hostname);
+                }
             }
+
+            config = Piraeus.Configuration.PiraeusConfigManager.Settings;
+            source = new CancellationTokenSource();
+
+            Trace.TraceInformation("Orleans grain client initialized {0} is connect controller", Orleans.GrainClient.IsInitialized);
         }
 
-        private WebSocketHandler handler;
         private CancellationTokenSource source;
         private Piraeus.Configuration.Settings.PiraeusConfig config;
         private delegate void HttpResponseObserverHandler(object sender, SkunkLab.Channels.ChannelObserverEventArgs args);

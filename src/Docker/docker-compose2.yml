@@ -10,3 +10,7 @@ services:
       - orleans-silo
   orleans-silo:
     image: orleans-silo
+networks:
+  default:
+    external:
+      name: nat

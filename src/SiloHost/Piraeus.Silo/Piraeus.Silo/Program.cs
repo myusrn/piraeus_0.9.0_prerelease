@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
+using System.Threading;
 
 namespace Piraeus.Silo
 {
@@ -10,7 +8,37 @@ namespace Piraeus.Silo
     {
         static int Main(string[] args)
         {
-            return Piraeus.SiloHost.Silo.Run(args);
+            int code = Piraeus.SiloHost.Silo.Run(args);
+
+            bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+
+            if(!dockerized)
+            {
+                if (code == 0)
+                {
+                    Console.WriteLine("Press any key to terminate...");
+                    Console.ReadLine();
+                }
+            }
+            else
+            {
+                if(code == 0)
+                {
+                    ManualResetEventSlim running = new ManualResetEventSlim();
+                    Console.WriteLine("Orleans silo is running on docker...");
+
+                    Console.CancelKeyPress += (sender, eventArgs) =>
+                    {
+                        running.Set();
+                        eventArgs.Cancel = true;
+                    };
+
+                    running.Wait();
+                }
+            }
+
+            return code;
+
         }
     }
 }

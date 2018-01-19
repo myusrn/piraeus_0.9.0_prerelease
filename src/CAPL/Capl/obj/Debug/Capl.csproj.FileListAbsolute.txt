@@ -7,6 +7,7 @@ C:\_git\core\src\CAPL\Capl\Capl\obj\Debug\Capl.dll
 C:\_git\core\src\CAPL\Capl\Capl\obj\Debug\Capl.pdb
 C:\_git\core\src\CAPL\Capl\bin\Debug\Capl.dll
 C:\_git\core\src\CAPL\Capl\bin\Debug\Capl.pdb
+C:\_git\core\src\CAPL\Capl\obj\Debug\Capl.csprojResolveAssemblyReference.cache
 C:\_git\core\src\CAPL\Capl\obj\Debug\Capl.Properties.Resources.resources
 C:\_git\core\src\CAPL\Capl\obj\Debug\Capl.csproj.GenerateResource.Cache
 C:\_git\core\src\CAPL\Capl\obj\Debug\Capl.csproj.CoreCompileInputs.cache

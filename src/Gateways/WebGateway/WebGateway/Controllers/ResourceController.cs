@@ -3,6 +3,8 @@ using Piraeus.Core.Metadata;
 using Piraeus.Grains;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -15,7 +17,21 @@ namespace WebGateway.Controllers
     {
         public ResourceController()
         {
-            bool started = OrleansClientConfig.TryStart("ResourceController");
+            if (!Orleans.GrainClient.IsInitialized)
+            {
+                bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+                if (!dockerized)
+                {
+                    OrleansClientConfig.TryStart("ManageController");
+                }
+                else
+                {
+                    string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
+                    OrleansClientConfig.TryStart("ManageController", hostname);
+                }
+            }
+
+            Trace.TraceInformation("Orleans grain client initialized {0} is resource controller", Orleans.GrainClient.IsInitialized);
 
         }
 
@@ -46,6 +62,9 @@ namespace WebGateway.Controllers
             }
             catch (Exception ex)
             {
+                Trace.TraceWarning("Failed to get resource metadata.");
+                Trace.TraceError(ex.Message);
+                Trace.TraceError(ex.StackTrace);
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
@@ -76,6 +95,9 @@ namespace WebGateway.Controllers
             }
             catch (Exception ex)
             {
+                Trace.TraceWarning("Failed to upsert resource metadata.");
+                Trace.TraceError(ex.Message);
+                Trace.TraceError(ex.StackTrace);
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
         }

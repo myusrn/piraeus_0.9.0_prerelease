@@ -5,6 +5,8 @@ using SkunkLab.Protocols.Coap;
 using SkunkLab.Security.Tokens;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Threading;
@@ -38,15 +40,15 @@ namespace Samples.Clients.Coap
 
 
         //security configurations       
-        static string audience = "http://www.skunklab.io/";
-        static string issuer = "http://www.skunklab.io/";
-        static string symmetricKey = "SJoPNjLKFR4j1tD5B4xhJStujdvVukWz39DIY3i8abE=";
-        static string nameClaimType = "http://www.skunklab.io/name";
-        static string roleClaimType = "http://www.skunklab.io/role";
-        static string resourceA = "http://www.skunklab.io/resourcea";
-        static string resourceB = "http://www.skunklab.io/resourceb";
+        //static string audience = "http://www.skunklab.io/";
+        //static string issuer = "http://www.skunklab.io/";
+        //static string symmetricKey = "SJoPNjLKFR4j1tD5B4xhJStujdvVukWz39DIY3i8abE=";
+        //static string nameClaimType = "http://www.skunklab.io/name";
+        //static string roleClaimType = "http://www.skunklab.io/role";
+        //static string resourceA = "http://www.skunklab.io/resourcea";
+        //static string resourceB = "http://www.skunklab.io/resourceb";
 
-        static string endpoint = "ws://localhost:1733/api/connect";
+        //static string endpoint = "ws://localhost:1733/api/connect";
 
         static int channelNo;
         static int index;
@@ -57,8 +59,9 @@ namespace Samples.Clients.Coap
         static string observeResource;
         static string role;
         static string clientName;
-
-
+        static PiraeusCoapClient client;
+        static ManualResetEventSlim observeAck;
+        static bool canSend;
 
         static void Main(string[] args)
         {
@@ -80,9 +83,7 @@ namespace Samples.Clients.Coap
             //configure CoAP for the client
             CoapConfig config = new CoapConfig(null, "www.skunklab.io", CoapConfigOptions.NoResponse | CoapConfigOptions.Observe, false, 180.0, 30.0, 1.5, 2, 1, 4.0, 1.0, 100.0);
 
-            //create the CoAP client
-            PiraeusCoapClient client = null;
-
+         
             if (channelNo == 1) //security token is in Authorize http header for Web socket
             {
                 client = new PiraeusCoapClient(config, channel);
@@ -96,9 +97,8 @@ namespace Samples.Clients.Coap
             //observe a resource
             try
             {
-                Task task = client.ObserveAsync(observeResource, ObserveResource);
+                Task task = client.ObserveAsync(observeResource, ObserveResource).ContinueWith(WaitForObserveAck).ContinueWith(SendMessages);
                 Task.WaitAll(task);
-                Console.WriteLine("Observing {0}", observeResource);
             }
             catch (Exception ex)
             {
@@ -106,10 +106,9 @@ namespace Samples.Clients.Coap
                 Console.WriteLine(ex.InnerException.Message);
                 goto endsample;
             }
-
+            
             
 
-            SendMessages(client);
 
             source.Cancel();
 
@@ -122,35 +121,46 @@ namespace Samples.Clients.Coap
 
         private static IChannel GetChannel(int num, string securityToken)
         {
-            if(num == 1)
-            {
-                Console.Write("Enter Web Socket URL or Enter for default ? ");
-                string url = Console.ReadLine();
+            Console.Write("Enter hostname, IP, or Enter for localhost ? ");
+            string hostnameOrIP = Console.ReadLine();
+            IPAddress address = null;
+            bool isIP = IPAddress.TryParse(hostnameOrIP, out address);
+            string authority = isIP ? address.ToString() : String.IsNullOrEmpty(hostnameOrIP) ? "localhost" : hostnameOrIP;
+            
 
-                if (String.IsNullOrEmpty(url))
-                {
-                    return ChannelFactory.Create(new Uri(endpoint), securityToken, "coapv1", new WebSocketConfig(), source.Token);
-                }
-                else
-                {
-                    return ChannelFactory.Create(new Uri(url), securityToken, "coapv1", new WebSocketConfig(), source.Token);
-                }
+            if (num == 1)
+            {
+                int port = Convert.ToInt32(ConfigurationManager.AppSettings["localhostPort"]);
+                string uriString = authority.Contains("localhost") ?
+                                    String.Format("ws://{0}:{1}/api/connect", authority, port) :
+                                    String.Format("ws://{0}/api/connect", authority);
+
+                return ChannelFactory.Create(new Uri(uriString), securityToken, "coapv1", new WebSocketConfig(), source.Token);
+              
             }
             else if (num == 2)
             {
-                Console.Write("Enter TCP remote hostname or Enter for default ? ");
-                string hostname = Console.ReadLine();
-                hostname = String.IsNullOrEmpty(hostname) ? "localhost" : hostname;
-                return ChannelFactory.Create(true, hostname, 5684, 1024, 2048, source.Token);
+
+                IChannel channel = address == null ? 
+                                     ChannelFactory.Create(true, authority, 5684, 1024, 2048, source.Token) :
+                                     ChannelFactory.Create(true, address, 5684, 1024, 2048, source.Token);
+
+                return channel;
             }
             else if(num == 3)
             {
-                Console.Write("Enter UDP remote hostname or Enter for default ? ");
-                string hostname = Console.ReadLine();
-                hostname = String.IsNullOrEmpty(hostname) ? "localhost" : hostname;
-                Console.Write("Enter UDP port for this client to use ? ");
+                Console.Write("Enter UDP local port for this client ? ");
                 int port = Int32.Parse(Console.ReadLine());
-                return ChannelFactory.Create(port, hostname, 5683, source.Token);
+
+                if (address != null)
+                {
+                    IPEndPoint endpoint = new IPEndPoint(address, 5683);
+                    return ChannelFactory.Create(port, endpoint, source.Token);
+                }
+                else
+                {
+                    return ChannelFactory.Create(port, hostnameOrIP, 5683, source.Token);
+                }
             }
 
             return null;
@@ -163,11 +173,20 @@ namespace Samples.Clients.Coap
             Console.ResetColor();
         }
 
+        static void WaitForObserveAck(Task task)
+        {            
+            Console.Write("Waiting for Observe ACK... ");
+            observeAck = new ManualResetEventSlim();
+            observeAck.Wait();
+        }
+
         static void PublishResponse(CodeType code, string contentType, byte[] payload)
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Publish response code {0}", code);
-            Console.ResetColor();
+            // uncomment if you want to see the return codes from requests
+
+            //Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine("Code {0}", code);
+            //Console.ResetColor();
         }
         static void ObserveResource(CodeType code, string contentType, byte[] payload)
         {
@@ -178,14 +197,22 @@ namespace Samples.Clients.Coap
             }
             else
             {
+                canSend = code == CodeType.Valid;
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(code);
+                Console.Write(code);
                 Console.ResetColor();
+                Console.WriteLine();
+                if (code != CodeType.Valid)
+                {
+                    Console.WriteLine("Code type '{0}' will not let you continue.", code.ToString().ToUpperInvariant());
+                }
+
+                observeAck.Set();
             }
             Console.ResetColor();
         }
 
-        static void SendMessages(PiraeusCoapClient client)
+        static void SendMessages(Task task)
         {
             Console.WriteLine();
             Console.Write("Send messages (Y/N) ? ");
@@ -196,7 +223,7 @@ namespace Samples.Clients.Coap
                 Console.Write("Enter number of messages to send ? ");
                 int num = Int32.Parse(Console.ReadLine());
 
-                Console.WriteLine("Enter delay between messages in milliseconds ? ");
+                Console.Write("Enter delay between messages in milliseconds ? ");
                 int delay = Int32.Parse(Console.ReadLine());
 
                 for (int i = 0; i < num; i++)
@@ -214,7 +241,7 @@ namespace Samples.Clients.Coap
                     }
                 }
 
-                SendMessages(client);
+                SendMessages(task);
             }
         }
 
@@ -230,6 +257,9 @@ namespace Samples.Clients.Coap
 
         static string GetSecurityToken()
         {
+            string nameClaimType = ConfigurationManager.AppSettings["nameClaimType"];
+            string roleClaimType = ConfigurationManager.AppSettings["roleClaimType"];
+
             Console.Write("Enter unique client name ? ");
             clientName = Console.ReadLine();
 
@@ -239,14 +269,19 @@ namespace Samples.Clients.Coap
                 new Claim(roleClaimType, role)
             };
 
+            string audience = ConfigurationManager.AppSettings["audience"];
+            string issuer = ConfigurationManager.AppSettings["issuer"];
+            string symmetricKey = ConfigurationManager.AppSettings["symmetricKey"];
+
             return CreateJwt(audience, issuer, claims, symmetricKey, 60.0);
         }
 
         static void SetResources()
         {
-            publishResource = role == "A" ? resourceA : resourceB;
-            observeResource = role == "A" ? resourceB : resourceA;
-
+            string resource1 = ConfigurationManager.AppSettings["resource1"];
+            string resource2 = ConfigurationManager.AppSettings["resource2"];
+            publishResource = role == "A" ? resource1 : resource2;
+            observeResource = role == "A" ? resource2 : resource1;
         }
         
 

@@ -208,14 +208,14 @@ namespace Samples.Clients.Rest
             }
             else if(role == "A")
             {
-                resourceA = "http://www.skunklab.io/resourcea";
-                resourceB = "http://www.skunklab.io/resourceb";
+                resourceA = "http://www.skunklab.io/resource-a";
+                resourceB = "http://www.skunklab.io/resource-b";
                
             }
             else
             {
-                resourceB = "http://www.skunklab.io/resourcea";
-                resourceA = "http://www.skunklab.io/resourceb";
+                resourceB = "http://www.skunklab.io/resource-a";
+                resourceA = "http://www.skunklab.io/resource-b";
             }
            
         }

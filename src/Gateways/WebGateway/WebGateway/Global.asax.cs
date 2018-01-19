@@ -1,6 +1,8 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.Net;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -19,9 +21,26 @@ namespace WebGateway
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            OrleansClientConfig.TryStart("Global.asax");
+            // Create a trace listener for Web forms.
+            WebPageTraceListener gbTraceListener = new WebPageTraceListener();
+            // Add the event log trace listener to the collection.
+            System.Diagnostics.Trace.Listeners.Add(gbTraceListener);
 
-            
+            if (!Orleans.GrainClient.IsInitialized)
+            {
+                bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+                if (!dockerized)
+                {
+                    OrleansClientConfig.TryStart("global.asax");
+                }
+                else
+                {
+                    string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
+                    OrleansClientConfig.TryStart("global.asax", hostname);
+                }
+            }
+
+
         }
     }
 }

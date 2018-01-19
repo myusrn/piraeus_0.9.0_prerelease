@@ -5,7 +5,7 @@ using Piraeus.Core.Metadata;
 
 namespace Piraeus.Module
 {
-    [Cmdlet(VerbsCommon.Set, "PiraeusResourceMetadata")]
+    [Cmdlet(VerbsCommon.Add, "PiraeusResourceMetadata")]
     public class UpsertResourceMetadataCmdlet : Cmdlet
     {
         [Parameter(HelpMessage = "Url of the service.", Mandatory = true)]

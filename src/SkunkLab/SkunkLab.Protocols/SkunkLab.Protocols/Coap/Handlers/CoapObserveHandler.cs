@@ -12,11 +12,12 @@ namespace SkunkLab.Protocols.Coap.Handlers
     {
         public CoapObserveHandler(CoapSession session, CoapMessage message, ICoapRequestDispatch dispatcher = null)
             : base(session, message, dispatcher)
-        {
-            Trace.WriteLine("Calling Observe Authentication");
-            CoapAuthentication.EnsureAuthentication(session, message);
-            Trace.WriteLine("Observe Authentication called");
-            Trace.WriteLine(String.Format("Session authenticated is {0}", session.IsAuthenticated));
+        {   
+                //Trace.WriteLine("Calling Observe Authentication");
+                CoapAuthentication.EnsureAuthentication(session, message);
+                //Trace.WriteLine("Observe Authentication called");
+                //Trace.WriteLine(String.Format("Session authenticated is {0}", session.IsAuthenticated));
+            
         }
 
         public override async Task<CoapMessage> ProcessAsync()

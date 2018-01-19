@@ -1,0 +1,11 @@
+C:\_git\core\src\WebGatewayCore\WebGatewayCore\WebGatewayCore\bin\Debug\netcoreapp2.0\WebGatewayCore.deps.json
+C:\_git\core\src\WebGatewayCore\WebGatewayCore\WebGatewayCore\bin\Debug\netcoreapp2.0\WebGatewayCore.runtimeconfig.json
+C:\_git\core\src\WebGatewayCore\WebGatewayCore\WebGatewayCore\bin\Debug\netcoreapp2.0\WebGatewayCore.runtimeconfig.dev.json
+C:\_git\core\src\WebGatewayCore\WebGatewayCore\WebGatewayCore\bin\Debug\netcoreapp2.0\WebGatewayCore.dll
+C:\_git\core\src\WebGatewayCore\WebGatewayCore\WebGatewayCore\obj\Debug\netcoreapp2.0\WebGatewayCore.csprojResolveAssemblyReference.cache
+C:\_git\core\src\WebGatewayCore\WebGatewayCore\WebGatewayCore\obj\Debug\netcoreapp2.0\WebGatewayCore.csproj.CoreCompileInputs.cache
+C:\_git\core\src\WebGatewayCore\WebGatewayCore\WebGatewayCore\obj\Debug\netcoreapp2.0\WebGatewayCore.AssemblyInfoInputs.cache
+C:\_git\core\src\WebGatewayCore\WebGatewayCore\WebGatewayCore\obj\Debug\netcoreapp2.0\WebGatewayCore.AssemblyInfo.cs
+C:\_git\core\src\WebGatewayCore\WebGatewayCore\WebGatewayCore\bin\Debug\netcoreapp2.0\WebGatewayCore.pdb
+C:\_git\core\src\WebGatewayCore\WebGatewayCore\WebGatewayCore\obj\Debug\netcoreapp2.0\WebGatewayCore.dll
+C:\_git\core\src\WebGatewayCore\WebGatewayCore\WebGatewayCore\obj\Debug\netcoreapp2.0\WebGatewayCore.pdb

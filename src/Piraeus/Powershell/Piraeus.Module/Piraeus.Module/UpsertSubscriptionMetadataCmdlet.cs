@@ -5,7 +5,7 @@ using Piraeus.Core.Metadata;
 
 namespace Piraeus.Module
 {
-    [Cmdlet(VerbsCommon.Set, "PiraeusSubscriptionMetadata")]
+    [Cmdlet(VerbsCommon.Add, "PiraeusSubscriptionMetadata")]
     public class UpsertSubscriptionMetadata : Cmdlet
     {
         [Parameter(HelpMessage = "Url of the service.", Mandatory = true)]
@@ -19,6 +19,9 @@ namespace Piraeus.Module
 
         [Parameter(HelpMessage = "Security identity from claims; required for actively connected subsystems; otherwise omit.", Mandatory = false)]
         public string Identity;
+
+        [Parameter(HelpMessage = "Optional description of the subsription.", Mandatory = false)]
+        public string Descriotion;
 
         [Parameter(HelpMessage = "List of key/value indexes for the subscription.", Mandatory = false)]
         public List<KeyValuePair<string, string>> Indexes;

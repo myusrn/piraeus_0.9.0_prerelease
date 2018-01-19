@@ -1,5 +1,0 @@
-FROM microsoft/windowsservercore
-
-ADD output/ /
-
-ENTRYPOINT Piraeus.Silo.exe

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -14,8 +15,20 @@ namespace WebGateway.Controllers
     {
         public SubscriptionController()
         {
-            bool started = OrleansClientConfig.TryStart("SubscriptionController");
-            
+            if (!Orleans.GrainClient.IsInitialized)
+            {
+                bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+                if (!dockerized)
+                {
+                    OrleansClientConfig.TryStart("SubscriptionController");
+                }
+                else
+                {
+                    string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
+                    OrleansClientConfig.TryStart("SubscriptionController", hostname);
+                }
+            }
+
         }
 
         [CaplAuthorize(PolicyId = "http://www.skunklab.io/api/management")]

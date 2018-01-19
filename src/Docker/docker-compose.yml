@@ -1,30 +1,33 @@
 version: '3.1'
-
 services:
-  tcpudpgateway:
-    image: tcpudpgateway:latest
-    build:
-      context: ./TcpUdpGateway/Output/
-      dockerfile: ./TcpUdpGateway/Dockerfile
-    volumes: 
-      - ./TcpUdpGateway/Output/:/app
-    depends_on: 
-      - orleans-silo
-    ports:
-      - "5000:1883"
   webgateway:
-    image: webgateway:latest
-    build:
-      context: ./Webgateway/Output/
-      dockerfile: ./Webgateway/Dockerfile
-    volumes: 
-      - ./Webgateway/Output/:/app
-    depends_on: 
+    container_name: web-server
+    image: webgateway
+    links:
+      - orleans-silo
+    depends_on:
+      - orleans-silo
+      
+  tcpudpgateway:
+    container_name: tcp-server
+    image: tcpudpgateway
+    ports:
+      - "1883:1883/tcp"
+      - "8883:8883/tcp"
+      - "5683:5683/udp"
+      - "5684:5684/tcp"
+      - "5883:5883/udp"
+    links:
+      - orleans-silo
+    depends_on:
       - orleans-silo
   orleans-silo:
-    image: orleans-silo:latest
-    build:
-      context: ./OrleansSilo/Output/
-      dockerfile: ./OrleansSilo/Dockerfile
-    volumes: 
-      - ./OrleansSilo/Output/:/app
+    container_name: orleans-silo
+    image: orleans-silo
+    ports:
+      - "11111:11111/tcp"
+      - "30000:30000/tcp"
+networks:
+  default:
+    external:
+      name: nat

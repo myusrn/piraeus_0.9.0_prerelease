@@ -3,7 +3,7 @@ using System.Net;
 using System.Reflection;
 using Orleans.Runtime;
 using Orleans.Runtime.Configuration;
-using Orleans.Runtime.Host;
+
 
 namespace Piraeus.SiloHost
 {
@@ -28,25 +28,31 @@ namespace Piraeus.SiloHost
             siloHost.LoadOrleansConfig();
         }
 
+                        
         public int Run()
         {
             if (siloHost == null)
             {
+                Console.WriteLine("Silo host is null.");
                 SiloArgs.PrintUsage();
                 return 1;
             }
 
             try
             {
+                Console.WriteLine("Calling silo initialization");
                 siloHost.InitializeOrleansSilo();
+                Console.WriteLine("Silo initialized {0}", DateTime.UtcNow.ToLongTimeString());
 
                 if (siloHost.StartOrleansSilo())
                 {
+                    Console.WriteLine("Started {0}", DateTime.UtcNow.ToLongTimeString());
                     Console.WriteLine($"Successfully started Orleans silo '{siloHost.Name}' as a {siloHost.Type} node.");
                     return 0;
                 }
                 else
                 {
+                    Console.WriteLine("Silo initialization failed start.");
                     throw new OrleansException($"Failed to start Orleans silo '{siloHost.Name}' as a {siloHost.Type} node.");
                 }
             }
@@ -77,6 +83,7 @@ namespace Piraeus.SiloHost
             }
             return 0;
         }
+
 
         private class SiloArgs
         {

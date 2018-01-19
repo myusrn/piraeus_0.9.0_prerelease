@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
-      <publishTime>01/09/2018 08:24:11</publishTime>
+      <publishTime>01/18/2018 13:42:11</publishTime>
     </File>
     <File Include="Areas/HelpPage/HelpPage.css">
       <publishTime>01/09/2018 08:24:07</publishTime>
@@ -82,22 +82,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/22/2013 08:43:40</publishTime>
     </File>
     <File Include="bin/ApplicationInsights.config">
-      <publishTime>01/09/2018 08:24:11</publishTime>
+      <publishTime>01/18/2018 13:42:11</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>01/10/2018 07:53:04</publishTime>
+      <publishTime>01/19/2018 13:20:36</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>01/10/2018 07:53:04</publishTime>
+      <publishTime>01/19/2018 13:20:36</publishTime>
     </File>
     <File Include="bin/BouncyCastle.Crypto.dll">
       <publishTime>04/26/2016 12:16:00</publishTime>
     </File>
     <File Include="bin/Capl.dll">
-      <publishTime>01/09/2018 10:26:20</publishTime>
+      <publishTime>01/19/2018 13:19:20</publishTime>
     </File>
     <File Include="bin/Capl.pdb">
-      <publishTime>01/09/2018 10:26:20</publishTime>
+      <publishTime>01/19/2018 13:19:20</publishTime>
+    </File>
+    <File Include="bin/Content/SkunkLab-171x199.jpg">
+      <publishTime>01/17/2018 09:46:32</publishTime>
+    </File>
+    <File Include="bin/Content/SkunkLab.jpg">
+      <publishTime>01/09/2018 08:57:46</publishTime>
     </File>
     <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
       <publishTime>09/07/2017 23:16:52</publishTime>
@@ -193,25 +199,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/07/2017 23:17:14</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
-      <publishTime>11/30/2016 16:07:42</publishTime>
+      <publishTime>06/27/2017 12:59:34</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.DependencyCollector.dll">
-      <publishTime>12/07/2016 11:45:42</publishTime>
+      <publishTime>06/28/2017 17:59:20</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
-      <publishTime>12/07/2016 11:50:34</publishTime>
+      <publishTime>06/28/2017 18:05:44</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
-      <publishTime>12/06/2016 15:15:48</publishTime>
+      <publishTime>06/27/2017 15:30:06</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Web.dll">
-      <publishTime>12/07/2016 11:49:10</publishTime>
+      <publishTime>06/28/2017 18:05:42</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.WindowsServer.dll">
-      <publishTime>12/07/2016 11:50:34</publishTime>
+      <publishTime>06/28/2017 18:05:44</publishTime>
     </File>
     <File Include="bin/Microsoft.ApplicationInsights.dll">
-      <publishTime>12/06/2016 15:09:52</publishTime>
+      <publishTime>06/27/2017 15:33:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.TraceListener.dll">
+      <publishTime>09/06/2017 13:04:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.TelemetryCorrelation.dll">
+      <publishTime>06/28/2017 15:05:26</publishTime>
     </File>
     <File Include="bin/Microsoft.Azure.Amqp.dll">
       <publishTime>12/08/2017 16:51:54</publishTime>
@@ -254,6 +266,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>08/15/2017 14:12:32</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CSharp.dll">
+      <publishTime>11/05/2015 20:36:48</publishTime>
     </File>
     <File Include="bin/Microsoft.Data.Edm.dll">
       <publishTime>09/07/2017 23:16:52</publishTime>
@@ -340,46 +355,46 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/25/2017 11:58:38</publishTime>
     </File>
     <File Include="bin/Piraeus.Adapters.dll">
-      <publishTime>01/10/2018 07:52:44</publishTime>
+      <publishTime>01/19/2018 13:19:46</publishTime>
     </File>
     <File Include="bin/Piraeus.Adapters.dll.config">
       <publishTime>01/09/2018 13:25:47</publishTime>
     </File>
     <File Include="bin/Piraeus.Adapters.pdb">
-      <publishTime>01/10/2018 07:52:44</publishTime>
+      <publishTime>01/19/2018 13:19:46</publishTime>
     </File>
     <File Include="bin/Piraeus.Configuration.dll">
-      <publishTime>01/09/2018 10:26:22</publishTime>
+      <publishTime>01/19/2018 13:19:22</publishTime>
     </File>
     <File Include="bin/Piraeus.Configuration.pdb">
-      <publishTime>01/09/2018 10:26:22</publishTime>
+      <publishTime>01/19/2018 13:19:22</publishTime>
     </File>
     <File Include="bin/Piraeus.Core.dll">
-      <publishTime>01/09/2018 10:26:20</publishTime>
+      <publishTime>01/19/2018 13:19:20</publishTime>
     </File>
     <File Include="bin/Piraeus.Core.dll.config">
       <publishTime>01/08/2018 08:48:58</publishTime>
     </File>
     <File Include="bin/Piraeus.Core.pdb">
-      <publishTime>01/09/2018 10:26:20</publishTime>
+      <publishTime>01/19/2018 13:19:20</publishTime>
     </File>
     <File Include="bin/Piraeus.GrainInterfaces.dll">
-      <publishTime>01/10/2018 07:52:35</publishTime>
+      <publishTime>01/19/2018 13:19:33</publishTime>
     </File>
     <File Include="bin/Piraeus.GrainInterfaces.dll.config">
       <publishTime>01/08/2018 10:32:19</publishTime>
     </File>
     <File Include="bin/Piraeus.GrainInterfaces.pdb">
-      <publishTime>01/10/2018 07:52:35</publishTime>
+      <publishTime>01/19/2018 13:19:33</publishTime>
     </File>
     <File Include="bin/Piraeus.Grains.dll">
-      <publishTime>01/10/2018 07:52:43</publishTime>
+      <publishTime>01/19/2018 13:19:44</publishTime>
     </File>
     <File Include="bin/Piraeus.Grains.dll.config">
       <publishTime>01/08/2018 13:35:12</publishTime>
     </File>
     <File Include="bin/Piraeus.Grains.pdb">
-      <publishTime>01/10/2018 07:52:43</publishTime>
+      <publishTime>01/19/2018 13:19:44</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>04/13/2017 16:47:48</publishTime>
@@ -538,49 +553,49 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/07/2017 23:17:14</publishTime>
     </File>
     <File Include="bin/SkunkLab.Channels.dll">
-      <publishTime>01/10/2018 07:52:37</publishTime>
+      <publishTime>01/19/2018 13:19:25</publishTime>
     </File>
     <File Include="bin/SkunkLab.Channels.dll.config">
       <publishTime>01/09/2018 13:25:46</publishTime>
     </File>
     <File Include="bin/SkunkLab.Channels.pdb">
-      <publishTime>01/10/2018 07:52:37</publishTime>
+      <publishTime>01/19/2018 13:19:25</publishTime>
     </File>
     <File Include="bin/SkunkLab.Diagnostics.dll">
-      <publishTime>01/10/2018 07:52:34</publishTime>
+      <publishTime>01/19/2018 13:19:22</publishTime>
     </File>
     <File Include="bin/SkunkLab.Diagnostics.dll.config">
       <publishTime>01/09/2018 06:02:50</publishTime>
     </File>
     <File Include="bin/SkunkLab.Diagnostics.pdb">
-      <publishTime>01/10/2018 07:52:34</publishTime>
+      <publishTime>01/19/2018 13:19:22</publishTime>
     </File>
     <File Include="bin/SkunkLab.Protocols.dll">
-      <publishTime>01/10/2018 07:52:35</publishTime>
+      <publishTime>01/19/2018 13:19:24</publishTime>
     </File>
     <File Include="bin/SkunkLab.Protocols.dll.config">
       <publishTime>01/08/2018 14:20:29</publishTime>
     </File>
     <File Include="bin/SkunkLab.Protocols.pdb">
-      <publishTime>01/10/2018 07:52:35</publishTime>
+      <publishTime>01/19/2018 13:19:24</publishTime>
     </File>
     <File Include="bin/SkunkLab.Security.dll">
-      <publishTime>01/09/2018 10:26:21</publishTime>
+      <publishTime>01/19/2018 13:19:21</publishTime>
     </File>
     <File Include="bin/SkunkLab.Security.dll.config">
       <publishTime>01/08/2018 13:35:12</publishTime>
     </File>
     <File Include="bin/SkunkLab.Security.pdb">
-      <publishTime>01/09/2018 10:26:21</publishTime>
+      <publishTime>01/19/2018 13:19:21</publishTime>
     </File>
     <File Include="bin/SkunkLab.Storage.dll">
-      <publishTime>01/09/2018 10:26:22</publishTime>
+      <publishTime>01/19/2018 13:19:22</publishTime>
     </File>
     <File Include="bin/SkunkLab.Storage.dll.config">
       <publishTime>01/08/2018 11:06:35</publishTime>
     </File>
     <File Include="bin/SkunkLab.Storage.pdb">
-      <publishTime>01/09/2018 10:26:22</publishTime>
+      <publishTime>01/19/2018 13:19:22</publishTime>
     </File>
     <File Include="bin/System.AppContext.dll">
       <publishTime>10/09/2017 08:19:22</publishTime>
@@ -592,7 +607,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2017 08:19:14</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.DiagnosticSource.dll">
-      <publishTime>10/09/2017 08:18:54</publishTime>
+      <publishTime>06/27/2017 11:17:34</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.FileVersionInfo.dll">
       <publishTime>10/09/2017 08:18:58</publishTime>
@@ -703,10 +718,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/30/2017 22:29:00</publishTime>
     </File>
     <File Include="bin/WebGateway.dll">
-      <publishTime>01/10/2018 07:52:50</publishTime>
+      <publishTime>01/19/2018 13:19:56</publishTime>
     </File>
     <File Include="bin/WebGateway.pdb">
-      <publishTime>01/10/2018 07:52:50</publishTime>
+      <publishTime>01/19/2018 13:19:56</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>09/10/2013 18:28:38</publishTime>
@@ -735,6 +750,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/zh-Hant/System.Spatial.resources.dll">
       <publishTime>09/07/2017 23:17:14</publishTime>
     </File>
+    <File Include="Connected Services/Application Insights/ConnectedService.json">
+      <publishTime>01/18/2018 13:42:15</publishTime>
+    </File>
     <File Include="Content/bootstrap.css">
       <publishTime>01/09/2018 08:23:49</publishTime>
     </File>
@@ -743,6 +761,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/Site.css">
       <publishTime>01/09/2018 08:23:36</publishTime>
+    </File>
+    <File Include="Content/SkunkLab-171x199.jpg">
+      <publishTime>01/17/2018 09:46:32</publishTime>
     </File>
     <File Include="Content/SkunkLab.jpg">
       <publishTime>01/09/2018 08:57:46</publishTime>
@@ -763,7 +784,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/09/2018 08:23:49</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/10/2018 07:52:52</publishTime>
+      <publishTime>01/19/2018 13:20:19</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>01/09/2018 08:23:49</publishTime>
@@ -790,13 +811,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/09/2018 08:24:09</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>01/09/2018 09:28:25</publishTime>
+      <publishTime>01/17/2018 10:44:37</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>01/09/2018 08:23:36</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/09/2018 08:23:36</publishTime>
+      <publishTime>01/19/2018 05:25:28</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>01/09/2018 08:23:36</publishTime>
@@ -805,7 +826,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/09/2018 08:23:36</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/10/2018 07:52:51</publishTime>
+      <publishTime>01/19/2018 13:20:17</publishTime>
     </File>
   </ItemGroup>
 </Project>

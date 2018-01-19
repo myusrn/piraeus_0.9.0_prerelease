@@ -1,15 +1,19 @@
-﻿using Piraeus.Configuration;
+﻿using Orleans;
+using Orleans.Runtime.Configuration;
+using Piraeus.Configuration;
 using Piraeus.Configuration.Settings;
 using SkunkLab.Listeners;
 using SkunkLab.Listeners.Tcp;
 using SkunkLab.Listeners.Udp;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
+using TcpUdpGateway.Configuration;
 
 namespace TcpUdpGateway
 {
@@ -21,6 +25,10 @@ namespace TcpUdpGateway
         static Dictionary<int, CancellationTokenSource> sources;
         static PiraeusConfig config;
 
+        private static IClusterClient client;
+        private static bool running;
+
+
         static void Main(string[] args)
         {
             tcpListeners = new Dictionary<int, TcpServerListener>();
@@ -30,15 +38,13 @@ namespace TcpUdpGateway
 
             InitOrleansClient();
 
+
             if (!Orleans.GrainClient.IsInitialized)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
+            {               
                 Console.WriteLine("Orleans client failed to initialize");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("press any key to terminate...");
-                Console.ReadKey();
+                Console.WriteLine("terminating app");
                 return;
-            }
+            }            
 
             int[] tcpPorts = new int[] { 1883, 8883, 5684 };
             int[] udpPorts = new int[] { 5683, 5883 };
@@ -54,13 +60,15 @@ namespace TcpUdpGateway
             }
 
 
+            string hostname = GetLocalHostName();
 
-            tcpListeners.Add(tcpPorts[0], new TcpServerListener(new IPEndPoint(GetIPAddress("localhost"), tcpPorts[0]), config, sources[tcpPorts[0]].Token));
-            tcpListeners.Add(tcpPorts[1], new TcpServerListener(new IPEndPoint(GetIPAddress("localhost"), tcpPorts[1]), config, sources[tcpPorts[1]].Token));
-            tcpListeners.Add(tcpPorts[2], new TcpServerListener(new IPEndPoint(GetIPAddress("localhost"), tcpPorts[2]), config, sources[tcpPorts[2]].Token));
 
-            udpListeners.Add(tcpPorts[0], new UdpServerListener(config, new IPEndPoint(GetIPAddress("localhost"), udpPorts[0]), sources[udpPorts[0]].Token));
-            udpListeners.Add(tcpPorts[1], new UdpServerListener(config, new IPEndPoint(GetIPAddress("localhost"), udpPorts[1]), sources[udpPorts[1]].Token));
+            tcpListeners.Add(tcpPorts[0], new TcpServerListener(new IPEndPoint(GetIPAddress(hostname), tcpPorts[0]), config, sources[tcpPorts[0]].Token));
+            tcpListeners.Add(tcpPorts[1], new TcpServerListener(new IPEndPoint(GetIPAddress(hostname), tcpPorts[1]), config, sources[tcpPorts[1]].Token));
+            tcpListeners.Add(tcpPorts[2], new TcpServerListener(new IPEndPoint(GetIPAddress(hostname), tcpPorts[2]), config, sources[tcpPorts[2]].Token));
+
+            udpListeners.Add(tcpPorts[0], new UdpServerListener(config, new IPEndPoint(GetIPAddress(hostname), udpPorts[0]), sources[udpPorts[0]].Token));
+            udpListeners.Add(tcpPorts[1], new UdpServerListener(config, new IPEndPoint(GetIPAddress(hostname), udpPorts[1]), sources[udpPorts[1]].Token));
 
             KeyValuePair<int, TcpServerListener>[] tcpKvps = tcpListeners.ToArray();
 
@@ -80,7 +88,19 @@ namespace TcpUdpGateway
                 Task.WhenAll(task);
             }
 
-            Console.ReadKey();
+            ManualResetEventSlim done = new ManualResetEventSlim(false);
+            Console.WriteLine("Press any key to terminate.");
+            
+            Console.CancelKeyPress += (sender, eventArgs) =>
+            {
+                
+                done.Set();
+                eventArgs.Cancel = true;
+            };
+
+            done.Wait();
+
+            Console.WriteLine("TCP UDP Gateway is exiting.");
 
         }
 
@@ -128,33 +148,56 @@ namespace TcpUdpGateway
 
         }
 
+
+        static string GetLocalHostName()
+        {
+            bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+            return dockerized ? ConfigurationManager.AppSettings["dockerContainerName"] : "localhost";
+        }
+        
         static void InitOrleansClient()
         {
-
-
-            int max = 3;
+            int max = 8;
             int index = 0;
 
             while (index < max)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Initializing Orleans client...");
-                Console.ResetColor();
+                index++;
 
                 try
                 {
-                    var config = Orleans.Runtime.Configuration.ClientConfiguration.LocalhostSilo();
-                    Orleans.GrainClient.Initialize(config);
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Orleans client started");
-                    Console.ResetColor();
-                    break;
+                    if (!Orleans.GrainClient.IsInitialized)
+                    {
+                        bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+                        if (!dockerized)
+                        {
+                            Console.WriteLine("Identified as localhost deployment");
+                            if (OrleansClientConfig.TryStart("TCPGateway"))
+                                return;
+                            else
+                                Console.WriteLine("Waiting 30 secs before retry {0} or {1}", index, max);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Identified as docker deployment.");
+                            string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
+                            if (OrleansClientConfig.TryStart("TCPGateway", hostname))
+                                return;
+                            else
+                                Console.WriteLine("Waiting 30 secs before retry {0} or {1}", index, max);
+                        }
+                    }
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
-                    index++;
-
+                    Console.WriteLine("Orleans client failed loudly");
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Waiting 30 secs before retry {0} or {1}", index, max);                    
                 }
+
+                Thread.Sleep(30000);
+
             }
         }
 

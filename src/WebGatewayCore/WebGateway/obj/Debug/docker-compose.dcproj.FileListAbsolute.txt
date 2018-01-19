@@ -1,0 +1,1 @@
+C:\_git\core\src\WebGatewayCore\WebGateway\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache

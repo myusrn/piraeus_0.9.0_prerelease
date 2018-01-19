@@ -1,6 +1,7 @@
 ﻿using Piraeus.Grains;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
@@ -15,22 +16,33 @@ namespace WebGateway.Controllers
     {
         public ServiceController()
         {
-            bool started = OrleansClientConfig.TryStart("ServiceController");
+            if (!Orleans.GrainClient.IsInitialized)
+            {
+                bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+                if (!dockerized)
+                {
+                    OrleansClientConfig.TryStart("ServiceController");
+                }
+                else
+                {
+                    string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
+                    OrleansClientConfig.TryStart("ServiceController", hostname);
+                }
+            }
         }
         [HttpPost]
-        public async Task<HttpResponseMessage> ConfigureIdentity(List<Claim> claims = null, string base64Certificate = null)
+        public async Task<HttpResponseMessage> ConfigureIdentity(IdentityConfig config)
         {
             try
             {
                 X509Certificate2 certificate = null;
 
-                if (base64Certificate != null)
+                if (config.Certificate != null)
                 {
-                    byte[] certBytes = Convert.FromBase64String(base64Certificate);
-                    certificate = new X509Certificate2(certBytes);
+                    certificate = new X509Certificate2(config.Certificate);                
                 }
 
-                await GraphManager.SetServiceIdentityAsync(claims, certificate);
+                await GraphManager.SetServiceIdentityAsync(config.Claims, certificate);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
             catch (Exception ex)

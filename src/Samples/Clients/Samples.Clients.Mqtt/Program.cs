@@ -2,10 +2,10 @@
 using SkunkLab.Channels;
 using SkunkLab.Channels.WebSocket;
 using SkunkLab.Protocols.Mqtt;
-using SkunkLab.Security.Tokens;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Configuration;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Threading;
@@ -15,28 +15,7 @@ namespace Samples.Clients.Mqtt
 {
     class Program
     {
-        //static string audience = "http://www.skunklab.io/";
-        //static string issuer = "http://www.skunklab.io/";
-        //static string symmetricKey = "SJoPNjLKFR4j1tD5B4xhJStujdvVukWz39DIY3i8abE=";
-        //static string nameClaimType = "http://www.skunklab.io/name";
-        //static string roleClaimType = "http://www.skunklab.io/role";
-        //static string endpoint = "ws://localhost:4163/api/connect";
-
-        //private static CancellationTokenSource source;
-        //private static bool abSwitch;
-        //private static IChannel channel; //communuications channel
-        //static string resourceA = "http://www.skunklab.io/resourcea";
-        //static string resourceB = "http://www.skunklab.io/resourceb";
-
-        static string audience = "http://www.skunklab.io/";
-        static string issuer = "http://www.skunklab.io/";
-        static string symmetricKey = "SJoPNjLKFR4j1tD5B4xhJStujdvVukWz39DIY3i8abE=";
-        static string nameClaimType = "http://www.skunklab.io/name";
-        static string roleClaimType = "http://www.skunklab.io/role";
-        static string resourceA = "http://www.skunklab.io/resourcea";
-        static string resourceB = "http://www.skunklab.io/resourceb";
-
-        static string endpoint = "ws://localhost:1733/api/connect";
+        
 
         static int channelNo;
         static int index;
@@ -47,6 +26,8 @@ namespace Samples.Clients.Mqtt
         static string observeResource;
         static string role;
         static string clientName;
+        static PiraeusMqttClient client;
+        static ManualResetEventSlim observeAck;
 
 
         static void Main(string[] args)
@@ -65,35 +46,17 @@ namespace Samples.Clients.Mqtt
             channel.OnStateChange += Channel_OnStateChange;
             channel.OnError += Channel_OnError;
             channel.OnClose += Channel_OnClose;
-
-            //source = new CancellationTokenSource();
-
-            //Console.WriteLine("MQTT Client press any key to continue.");
-            //Console.ReadKey();
-
-            //Console.Write("Select a role (A/B) ? ");
-            //abSwitch = Console.ReadLine().ToUpperInvariant() == "A";
-
-            //string token = GetSecurityToken(abSwitch ? "A" : "B");
-
-            //channel = ChannelFactory.Create(new Uri(endpoint), token, "mqtt", new WebSocketConfig(), source.Token);
-            //channel.OnStateChange += Channel_OnStateChange1;
-            //channel.OnClose += Channel_OnClose;
-            //channel.OnError += Channel_OnError;
-
-
-            //string pubResource = abSwitch ? resourceA : resourceB;
-            //string subResource = abSwitch ? resourceB : resourceA;
+                      
 
             MqttConfig config = new MqttConfig();
-            PiraeusMqttClient client = new PiraeusMqttClient(config, channel);
+            client = new PiraeusMqttClient(config, channel);
             client.RegisterTopic(observeResource, ObserveResource);
             ConnectAckCode code = client.ConnectAsync("sessionId", "JWT", securityToken, 90).Result;
             Console.WriteLine("Connected with Ack Code {0}", code);
 
             try
             {
-                Task subTask = client.SubscribeAsync(observeResource, QualityOfServiceLevelType.AtLeastOnce, ObserveResource);
+                Task subTask = client.SubscribeAsync(observeResource, QualityOfServiceLevelType.AtLeastOnce, ObserveResource).ContinueWith(SendMessages);
                 Task.WaitAll(subTask);
 
                 Console.WriteLine("Subscribed to {0}", observeResource);
@@ -105,7 +68,7 @@ namespace Samples.Clients.Mqtt
                 goto endsample;
             }
 
-            SendMessages(client);
+            //SendMessages();
 
             source.Cancel();
 
@@ -114,7 +77,7 @@ namespace Samples.Clients.Mqtt
             Console.ReadKey();            
         }
 
-        static void SendMessages(PiraeusMqttClient client)
+        static void SendMessages(Task task)
         {
             Console.WriteLine();
             Console.Write("Send messages (Y/N) ? ");
@@ -125,7 +88,7 @@ namespace Samples.Clients.Mqtt
                 Console.Write("Enter number of messages to send ? ");
                 int num = Int32.Parse(Console.ReadLine());
 
-                Console.WriteLine("Enter delay between messages in milliseconds ? ");
+                Console.Write("Enter delay between messages in milliseconds ? ");
                 int delay = Int32.Parse(Console.ReadLine());
 
                 for (int i = 0; i < num; i++)
@@ -143,7 +106,7 @@ namespace Samples.Clients.Mqtt
                     }
                 }
 
-                SendMessages(client);
+                SendMessages(task);
             }
         }
 
@@ -168,6 +131,9 @@ namespace Samples.Clients.Mqtt
 
         static string GetSecurityToken()
         {
+            string nameClaimType = ConfigurationManager.AppSettings["nameClaimType"];
+            string roleClaimType = ConfigurationManager.AppSettings["roleClaimType"];
+
             Console.Write("Enter unique client name ? ");
             clientName = Console.ReadLine();
 
@@ -177,13 +143,19 @@ namespace Samples.Clients.Mqtt
                 new Claim(roleClaimType, role)
             };
 
+            string audience = ConfigurationManager.AppSettings["audience"];
+            string issuer = ConfigurationManager.AppSettings["issuer"];
+            string symmetricKey = ConfigurationManager.AppSettings["symmetricKey"];
+
             return CreateJwt(audience, issuer, claims, symmetricKey, 60.0);
         }
 
         static void SetResources()
         {
-            publishResource = role == "A" ? resourceA : resourceB;
-            observeResource = role == "A" ? resourceB : resourceA;
+            string resource1 = ConfigurationManager.AppSettings["resource1"];
+            string resource2 = ConfigurationManager.AppSettings["resource2"];
+            publishResource = role == "A" ? resource1 : resource2;
+            observeResource = role == "A" ? resource2 : resource1;
         }
 
         static void SelectChannel()
@@ -205,32 +177,51 @@ namespace Samples.Clients.Mqtt
                 Console.WriteLine("Try again...");
                 SelectChannel();
             }
+
         }
 
         private static IChannel GetChannel(int num, string securityToken)
         {
+            Console.Write("Enter hostname, IP, or Enter for localhost ? ");
+            string hostnameOrIP = Console.ReadLine();
+            IPAddress address = null;
+            bool isIP = IPAddress.TryParse(hostnameOrIP, out address);
+            string authority = isIP ? address.ToString() : String.IsNullOrEmpty(hostnameOrIP) ? "localhost" : hostnameOrIP;
+
+
             if (num == 1)
             {
-                Console.Write("Enter Web Socket URL or Enter for default ? ");
-                string url = Console.ReadLine();
-                url = String.IsNullOrEmpty(url) ? endpoint : url;
-                return ChannelFactory.Create(new Uri(url), securityToken, "mqtt", new WebSocketConfig(), source.Token);                
+                int port = Convert.ToInt32(ConfigurationManager.AppSettings["localhostPort"]);
+                string uriString = authority.Contains("localhost") ?
+                                    String.Format("ws://{0}:{1}/api/connect", authority, port) :
+                                    String.Format("ws://{0}/api/connect", authority);
+
+                return ChannelFactory.Create(new Uri(uriString), securityToken, "mqtt", new WebSocketConfig(), source.Token);
+
             }
             else if (num == 2)
             {
-                Console.Write("Enter TCP remote hostname or Enter for default ? ");
-                string hostname = Console.ReadLine();
-                hostname = String.IsNullOrEmpty(hostname) ? "localhost" : hostname;
-                return ChannelFactory.Create(true, hostname, 8883, 1024, 2048, source.Token);
+
+                IChannel channel = address == null ?
+                                     ChannelFactory.Create(true, authority, 1883, 1024, 2048, source.Token) :
+                                     ChannelFactory.Create(true, address, 1883, 1024, 2048, source.Token);
+
+                return channel;
             }
             else if (num == 3)
             {
-                Console.Write("Enter UDP remote hostname or Enter for default ? ");
-                string hostname = Console.ReadLine();
-                hostname = String.IsNullOrEmpty(hostname) ? "localhost" : hostname;
-                Console.Write("Enter UDP port for this client to use ? ");
+                Console.Write("Enter UDP local port for this client ? ");
                 int port = Int32.Parse(Console.ReadLine());
-                return ChannelFactory.Create(port, hostname, 5883, source.Token);
+
+                if (address != null)
+                {
+                    IPEndPoint endpoint = new IPEndPoint(address, 5883);
+                    return ChannelFactory.Create(port, endpoint, source.Token);
+                }
+                else
+                {
+                    return ChannelFactory.Create(port, hostnameOrIP, 5683, source.Token);
+                }
             }
 
             return null;
@@ -247,7 +238,9 @@ namespace Samples.Clients.Mqtt
         {
             if (payload != null)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(Encoding.UTF8.GetString(payload));
+                Console.ResetColor();
             }
         }
 

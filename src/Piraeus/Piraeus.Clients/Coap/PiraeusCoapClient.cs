@@ -243,24 +243,24 @@ namespace Piraeus.Clients.Coap
         private void Channel_OnStateChange(object sender, ChannelStateEventArgs args)
         {
             //throw new NotImplementedException();
-            Console.WriteLine("State {0}", args.State);
+            //Console.WriteLine("State {0}", args.State);
         }
 
         private void Channel_OnOpen(object sender, ChannelOpenEventArgs args)
         {
             //throw new NotImplementedException();
-            Console.WriteLine("Opened");
+            //Console.WriteLine("Opened");
         }
 
         private void Channel_OnError(object sender, ChannelErrorEventArgs args)
         {
-            Console.WriteLine(args.Error.Message);
+            //Console.WriteLine(args.Error.Message);
             //throw new NotImplementedException();
         }
 
         private void Channel_OnClose(object sender, ChannelCloseEventArgs args)
         {
-            Console.WriteLine("Closing");
+            //Console.WriteLine("Closing");
             //throw new NotImplementedException();
         }
 
