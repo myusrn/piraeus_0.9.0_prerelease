@@ -4,11 +4,12 @@ import-module C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\
 
 #Login to the Management API
 
-$url = "http://172.21.68.201"
+$url = "http://172.27.6.80"
 #$url = "http://localhost:1733"
 
 #get a security token for the management API
 $token = Get-PiraeusManagementToken -ServiceUrl $url -Key "12345678"
+
 
 
 #The client demos create security tokens based on the selection of a "Role", i.e., "A" or "B"
@@ -25,7 +26,7 @@ $token = Get-PiraeusManagementToken -ServiceUrl $url -Key "12345678"
 
 
 #--------------------------------------------------------------------------
-#--------------- CAPL policy for users in role "B" ------------------------
+#--------------- CAPL policy for users in role "A" ------------------------
 
 #define the claim type to match to determines the client's role
 $matchClaimType = "http://www.skunklab.io/role"
@@ -97,19 +98,11 @@ Add-PiraeusResourceMetadata -ResourceUriString $resource_B -Enabled $true -Requi
 
 
 #Quick check get the resource data and verify what was set
+$data1 = ""
+$data2 = ""
 $data1 = Get-PiraeusResourceMetadata -ResourceUriString $resource_A -ServiceUrl $url -SecurityToken $token
 $data2 = Get-PiraeusResourceMetadata -ResourceUriString $resource_B -ServiceUrl $url -SecurityToken $token
 
 $data1
 $data2
-
-
-
-
-
-
-
- 
-
-
 

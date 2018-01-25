@@ -191,7 +191,6 @@ C:\_git\core\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Debug\ru\System.Spatia
 C:\_git\core\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\_git\core\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Debug\zh-Hant\System.Spatial.resources.dll
 C:\_git\core\src\Gateways\TcpUdpGateway\TcpUdpGateway\obj\Debug\TcpUdpGateway.csprojResolveAssemblyReference.cache
-C:\_git\core\src\Gateways\TcpUdpGateway\TcpUdpGateway\obj\Debug\TcpUdpGateway.exe.config
 C:\_git\core\src\Gateways\TcpUdpGateway\TcpUdpGateway\obj\Debug\TcpUdpGateway.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Gateways\TcpUdpGateway\TcpUdpGateway\obj\Debug\TcpUdpGateway.exe
 C:\_git\core\src\Gateways\TcpUdpGateway\TcpUdpGateway\obj\Debug\TcpUdpGateway.pdb

@@ -1,9 +1,0 @@
-C:\_git\core\src\dotnetcore\src\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Debug\netcoreapp2.0\SkunkLab.Diagnostics.deps.json
-C:\_git\core\src\dotnetcore\src\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Debug\netcoreapp2.0\SkunkLab.Diagnostics.dll
-C:\_git\core\src\dotnetcore\src\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Debug\netcoreapp2.0\SkunkLab.Diagnostics.pdb
-C:\_git\core\src\dotnetcore\src\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\netcoreapp2.0\SkunkLab.Diagnostics.csproj.CoreCompileInputs.cache
-C:\_git\core\src\dotnetcore\src\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\netcoreapp2.0\SkunkLab.Diagnostics.AssemblyInfoInputs.cache
-C:\_git\core\src\dotnetcore\src\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\netcoreapp2.0\SkunkLab.Diagnostics.AssemblyInfo.cs
-C:\_git\core\src\dotnetcore\src\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\netcoreapp2.0\SkunkLab.Diagnostics.dll
-C:\_git\core\src\dotnetcore\src\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\netcoreapp2.0\SkunkLab.Diagnostics.pdb
-C:\_git\core\src\dotnetcore\src\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Debug\netcoreapp2.0\SkunkLab.Diagnostics.csprojResolveAssemblyReference.cache

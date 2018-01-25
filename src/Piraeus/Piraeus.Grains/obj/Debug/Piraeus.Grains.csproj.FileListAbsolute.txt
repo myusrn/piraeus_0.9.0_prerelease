@@ -97,9 +97,6 @@ C:\_git\core\Piraeus.Orleans\Piraeus.Grains\obj\Debug\Piraeus.Grains.pdb
 C:\_git\core\Piraeus.Orleans\Piraeus.Grains\bin\Debug\System.Web.Http.xml
 C:\_git\core\Piraeus.Orleans\Piraeus.Grains\bin\Debug\System.Net.Http.Formatting.xml
 C:\_git\core\Piraeus.Orleans\Piraeus.Grains\obj\Debug\Piraeus.Grains.orleans.g.cs
-C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Runtime.Serialization.Primitives.dll
-C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Security.Cryptography.Encoding.dll
-C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\es\Microsoft.Data.OData.resources.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Microsoft.Azure.Documents.ServiceInterop.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\DocumentDB.Spatial.Sql.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Piraeus.Grains.dll.config
@@ -135,6 +132,7 @@ C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Microsoft.WindowsAzure.Storage
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Mono.Security.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Newtonsoft.Json.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Orleans.dll
+C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\OrleansAzureUtils.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\OrleansCodeGenerator.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\OrleansProviders.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\OrleansRuntime.dll
@@ -167,7 +165,9 @@ C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Net.WebSockets.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Reflection.Metadata.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Runtime.Serialization.Primitives.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Security.Cryptography.Encoding.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Security.Cryptography.Primitives.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Security.Cryptography.X509Certificates.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Spatial.dll
@@ -226,6 +226,7 @@ C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Microsoft.WindowsAzure.Storage
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Microsoft.WindowsAzure.Storage.xml
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Newtonsoft.Json.xml
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Orleans.xml
+C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\OrleansAzureUtils.xml
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\OrleansCodeGenerator.xml
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\OrleansProviders.xml
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\OrleansRuntime.xml
@@ -261,6 +262,7 @@ C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\ru\Microsoft.Data.Edm.resource
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\zh-Hans\Microsoft.Data.Edm.resources.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\zh-Hant\Microsoft.Data.Edm.resources.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\de\Microsoft.Data.OData.resources.dll
+C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\es\Microsoft.Data.OData.resources.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\fr\Microsoft.Data.OData.resources.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\it\Microsoft.Data.OData.resources.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\ja\Microsoft.Data.OData.resources.dll

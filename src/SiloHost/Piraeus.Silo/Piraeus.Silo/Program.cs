@@ -8,33 +8,45 @@ namespace Piraeus.Silo
     {
         static int Main(string[] args)
         {
-            int code = Piraeus.SiloHost.Silo.Run(args);
+            int code = -1;
 
-            bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
-
-            if(!dockerized)
+            try
             {
-                if (code == 0)
+                code = Piraeus.SiloHost.Silo.Run(args);
+
+                bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+                Console.WriteLine("Piraeus silo dockerized {0}", dockerized);
+
+                if (!dockerized)
                 {
-                    Console.WriteLine("Press any key to terminate...");
-                    Console.ReadLine();
+                    if (code == 0)
+                    {
+                        Console.WriteLine("Press any key to terminate...");
+                        Console.ReadLine();
+                    }
+                }
+                else
+                {
+                    if (code == 0)
+                    {
+                        ManualResetEventSlim running = new ManualResetEventSlim();
+                        Console.WriteLine("Orleans silo is running on docker...");
+
+                        Console.CancelKeyPress += (sender, eventArgs) =>
+                        {
+                            running.Set();
+                            eventArgs.Cancel = true;
+                        };
+
+                        Console.WriteLine("Piraeus silo is running and blocking.");
+                        running.Wait();
+                    }
                 }
             }
-            else
+            catch(Exception ex)
             {
-                if(code == 0)
-                {
-                    ManualResetEventSlim running = new ManualResetEventSlim();
-                    Console.WriteLine("Orleans silo is running on docker...");
-
-                    Console.CancelKeyPress += (sender, eventArgs) =>
-                    {
-                        running.Set();
-                        eventArgs.Cancel = true;
-                    };
-
-                    running.Wait();
-                }
+                Console.WriteLine("Piraeus silo threw exception {0}", ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
 
             return code;

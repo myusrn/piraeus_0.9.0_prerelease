@@ -109,7 +109,7 @@ namespace SkunkLab.Storage
         }
 
         private HttpClient GetHttpClient()
-        {
+        {          
             return (HttpClientFactory.Create(new InjectHostHeaderHttpMessageHandler()));
         }
 

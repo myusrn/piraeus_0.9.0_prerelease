@@ -3,7 +3,9 @@ using SkunkLab.Channels.Http;
 using SkunkLab.Security.Tokens;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Threading;
@@ -26,60 +28,53 @@ namespace Samples.Clients.Rest
 
 
         static int index;
-        static string endpoint = "http://localhost:1733/api/connect";
+        static string endpoint;
 
         static string resourceA;
         static string resourceB;
         static CancellationTokenSource source;
         static string contentType;
 
-        static string clientName;
-        static string role;
+    
         static string indexClaimType;
         static string indexClaimValue;
+
+
+        static string publishResource;
+        static string observeResource;
+        static string role;
+        static string clientName;
 
 
         static void Main(string[] args)
         {
             WriteHeader();
-            SelectEndpoint();
-            SelectClientName();
+            
             SelectClientRole();
-            //AddIndexClaim();
-            //SelectContentType();
-            string token = GetSecurityToken(symmetricKey, issuer, audience, 60.0, GetClaims());
+            SelectClientName();
+            SelectEndpoint();
+            SetResources();
+
+            string token = GetSecurityToken();
             source = new CancellationTokenSource();
 
             //create HTTP Observer
-            HttpObserver observer = new HttpObserver(new Uri(resourceB));
+            HttpObserver observer = new HttpObserver(new Uri(observeResource));
             observer.OnNotify += Observer_OnNotify;
 
             //create the REST client
             RestClient client = new RestClient(endpoint, token, new HttpObserver[] { observer }, source.Token);
-            
-
-            
-            
+                        
             Console.WriteLine("Press any key to send a message !");
             Console.ReadKey();
 
             bool sending = true;
             while (sending)
             {
-                List<KeyValuePair<string, string>> indexes = null;
+                //List<KeyValuePair<string, string>> indexes = null;
                 index++;
-                byte[] message = Encoding.UTF8.GetBytes(String.Format("{0} sent message {1}", clientName, index));
-                //Console.Write("Do you want to send with an index (Y/N) ? ");
-                //if(Console.ReadLine().ToLowerInvariant() == "y")
-                //{
-                //    Console.Write("Enter index name ? ");
-                //    string indexName = Console.ReadLine().ToLowerInvariant();
-                //    Console.Write("Enter index value ? ");
-                //    string indexValue = Console.ReadLine().ToLowerInvariant();
-                //    indexes = new List<KeyValuePair<string, string>>(new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(indexName, indexValue) });
-                //}
-
-                Task sendTask = client.SendAsync(resourceA, contentType, message);
+                byte[] message = Encoding.UTF8.GetBytes(String.Format("{0} sent message {1}", clientName, index));                
+                Task sendTask = client.SendAsync(publishResource, contentType, message);
                 Task.WhenAll(sendTask);
                 Console.Write("Do you want to send another message (Y/N) ? ");               
                 sending = Console.ReadLine().ToLowerInvariant() == "y";
@@ -91,10 +86,12 @@ namespace Samples.Clients.Rest
 
         private static void Observer_OnNotify(object sender, SkunkLab.Channels.ObserverEventArgs args)
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("--- OBSERVED MESSAGE ---");
-            Console.WriteLine("{0} message = {1} : content-type {2}", args.ResourceUri, Encoding.UTF8.GetString(args.Message), args.ContentType);
-            Console.ResetColor();
+            if(args.Message != null)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(Encoding.UTF8.GetString(args.Message));
+                Console.ResetColor();
+            }
         }
 
 
@@ -117,10 +114,36 @@ namespace Samples.Clients.Rest
             return claims;
         }
 
-        private static string GetSecurityToken(string key, string issuer, string audience, double lifetimeMinutes, List<Claim> claims)
+        static void SetResources()
         {
-            JsonWebToken token = new JsonWebToken(new Uri(audience), key, issuer, claims, lifetimeMinutes);
-            return token.ToString();
+            string resource1 = ConfigurationManager.AppSettings["resource1"];
+            string resource2 = ConfigurationManager.AppSettings["resource2"];
+            publishResource = role == "A" ? resource1 : resource2;
+            observeResource = role == "A" ? resource2 : resource1;
+        }
+
+        static string GetSecurityToken()
+        {
+            string nameClaimType = ConfigurationManager.AppSettings["nameClaimType"];
+            string roleClaimType = ConfigurationManager.AppSettings["roleClaimType"];            
+
+            List<Claim> claims = new List<Claim>()
+            {
+                new Claim(nameClaimType, clientName),
+                new Claim(roleClaimType, role)
+            };
+
+            string audience = ConfigurationManager.AppSettings["audience"];
+            string issuer = ConfigurationManager.AppSettings["issuer"];
+            string symmetricKey = ConfigurationManager.AppSettings["symmetricKey"];
+
+            return CreateJwt(audience, issuer, claims, symmetricKey, 60.0);
+        }
+
+        public static string CreateJwt(string audience, string issuer, List<Claim> claims, string symmetricKey, double lifetimeMinutes)
+        {
+            SkunkLab.Security.Tokens.JsonWebToken jwt = new SkunkLab.Security.Tokens.JsonWebToken(new Uri(audience), symmetricKey, issuer, claims, lifetimeMinutes);
+            return jwt.ToString();
         }
 
 
@@ -222,18 +245,25 @@ namespace Samples.Clients.Rest
 
         static void SelectEndpoint()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Enter REST endpoint or Enter for default ? ");
             Console.ForegroundColor = ConsoleColor.Green;
-            string url = Console.ReadLine();
-            endpoint = String.IsNullOrEmpty(url) ? endpoint : url;
-            Console.ResetColor();
+            Console.Write("Enter hostname, IP, or Enter for localhost ? ");
+            string hostnameOrIP = Console.ReadLine();
+
+            IPAddress address = null;
+            bool isIP = IPAddress.TryParse(hostnameOrIP, out address);
+            string authority = isIP ? address.ToString() : String.IsNullOrEmpty(hostnameOrIP) ? "localhost" : hostnameOrIP;
+
+            int port = Convert.ToInt32(ConfigurationManager.AppSettings["localhostPort"]);
+            endpoint = authority.Contains("localhost") ?
+                                String.Format("http://{0}:{1}/api/connect", authority, port) :
+                                String.Format("http://{0}/api/connect", authority);
+            
         }
 
         static void SelectClientName()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Enter unique name for this client ? ");
+            Console.Write("Enter unique client name ? ");
             Console.ForegroundColor = ConsoleColor.Green;
             clientName = Console.ReadLine();
             Console.ResetColor();
@@ -242,8 +272,8 @@ namespace Samples.Clients.Rest
 
         static void WriteHeader()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("--- REST Client Sample ---");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("--- REST Client ---");
             Console.WriteLine("press any key to continue...");
             Console.ResetColor();
             Console.ReadKey();

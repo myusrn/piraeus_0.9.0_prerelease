@@ -1,7 +1,0 @@
-2018-01-11-14.49.13.838ZZ
-ERROR starting Orleans silo name=MININT-2T87D76 Exception=
-Exc level 0: System.TimeoutException: Task.WaitWithThrow has timed out after 00:10:00.
-   at Orleans.OrleansTaskExtentions.WaitWithThrow(Task task, TimeSpan timeout)
-   at Orleans.Runtime.Silo.DoStart()
-   at Orleans.Runtime.Silo.Start()
-   at Orleans.Runtime.Host.SiloHost.StartOrleansSilo(Boolean catchExceptions)

@@ -5,6 +5,7 @@ using Piraeus.Core.Metadata;
 
 namespace Piraeus.GrainInterfaces
 {
+    [Serializable]
     public class SubscriptionState
     {
 

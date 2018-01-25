@@ -32,6 +32,7 @@
 /r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll
 /r:C:\_git\core\src\Orleans\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll
 /r:C:\_git\core\src\Orleans\packages\Microsoft.Orleans.Core.1.5.2\lib\net461\Orleans.dll
+/r:C:\_git\core\src\Orleans\packages\Microsoft.Orleans.OrleansAzureUtils.1.5.2\lib\net461\OrleansAzureUtils.dll
 /r:C:\_git\core\src\Orleans\packages\Microsoft.Orleans.OrleansCodeGenerator.1.5.2\lib\net461\OrleansCodeGenerator.dll
 /r:C:\_git\core\src\Orleans\packages\Microsoft.Orleans.OrleansProviders.1.5.2\lib\net461\OrleansProviders.dll
 /r:C:\_git\core\src\Orleans\packages\Microsoft.Orleans.OrleansRuntime.1.5.2\lib\net461\OrleansRuntime.dll

@@ -8,6 +8,10 @@ C:\_git\core\Docker\Orleans-Silo\Output\DocumentDB.Spatial.Sql.dll
 C:\_git\core\Docker\Orleans-Silo\Output\Piraeus.SiloHost.dll.config
 C:\_git\core\Docker\Orleans-Silo\Output\Piraeus.SiloHost.dll
 C:\_git\core\Docker\Orleans-Silo\Output\Piraeus.SiloHost.pdb
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.csprojResolveAssemblyReference.cache
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.csproj.CoreCompileInputs.cache
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.dll
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.pdb
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Microsoft.Azure.Documents.ServiceInterop.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\DocumentDB.Spatial.Sql.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Piraeus.SiloHost.dll.config
@@ -15,6 +19,7 @@ C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Piraeus.SiloHost.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Piraeus.SiloHost.pdb
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Microsoft.WindowsAzure.Storage.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Orleans.dll
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Orleans.Storage.Redis.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\OrleansAzureUtils.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\OrleansCodeGenerator.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\OrleansProviders.dll
@@ -22,6 +27,7 @@ C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\OrleansRuntime.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Piraeus.Core.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Piraeus.GrainInterfaces.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Piraeus.Grains.dll
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\StackExchange.Redis.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Newtonsoft.Json.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\System.Web.Http.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Capl.dll
@@ -60,6 +66,8 @@ C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Microsoft.Extensions.Loggi
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Microsoft.Extensions.Logging.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Microsoft.IdentityModel.Logging.dll
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Orleans.Storage.Redis.pdb
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Orleans.Storage.Redis.dll.config
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Piraeus.Core.pdb
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Piraeus.Core.dll.config
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Piraeus.GrainInterfaces.pdb
@@ -73,6 +81,7 @@ C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\OrleansAzureUtils.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\OrleansCodeGenerator.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\OrleansProviders.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\OrleansRuntime.xml
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\StackExchange.Redis.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Newtonsoft.Json.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\System.Web.Http.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Capl.pdb
@@ -108,8 +117,4 @@ C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Microsoft.Extensions.Loggi
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Microsoft.Extensions.Logging.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Release\Microsoft.IdentityModel.Logging.xml
-C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.csprojResolveAssemblyReference.cache
-C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.csproj.CoreCompileInputs.cache
-C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.dll
-C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.pdb
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\obj\Release\Piraeus.SiloHost.orleans.g.cs

@@ -1,8 +1,0 @@
-version: '3'
-
-services:
-  webgateway:
-    image: webgateway
-    build:
-      context: .
-      dockerfile: WebGateway/Dockerfile

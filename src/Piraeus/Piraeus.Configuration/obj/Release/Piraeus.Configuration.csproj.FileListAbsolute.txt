@@ -10,7 +10,6 @@ C:\_git\core\Docker\TcpUdpGateway\Output\Piraeus.Configuration.dll
 C:\_git\core\Docker\TcpUdpGateway\Output\Piraeus.Configuration.pdb
 C:\_git\core\src\Piraeus\Piraeus.Configuration\bin\Release\Piraeus.Configuration.dll
 C:\_git\core\src\Piraeus\Piraeus.Configuration\bin\Release\Piraeus.Configuration.pdb
-C:\_git\core\src\Piraeus\Piraeus.Configuration\obj\Release\Piraeus.Configuration.csprojResolveAssemblyReference.cache
 C:\_git\core\src\Piraeus\Piraeus.Configuration\obj\Release\Piraeus.Configuration.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Piraeus\Piraeus.Configuration\obj\Release\Piraeus.Configuration.dll
 C:\_git\core\src\Piraeus\Piraeus.Configuration\obj\Release\Piraeus.Configuration.pdb

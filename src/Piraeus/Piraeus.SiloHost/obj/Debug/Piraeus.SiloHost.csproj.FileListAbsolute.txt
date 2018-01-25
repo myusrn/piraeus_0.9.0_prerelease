@@ -5,6 +5,7 @@ C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Piraeus.SiloHost.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Piraeus.SiloHost.pdb
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Microsoft.WindowsAzure.Storage.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Orleans.dll
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Orleans.Storage.Redis.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\OrleansAzureUtils.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\OrleansCodeGenerator.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\OrleansProviders.dll
@@ -12,6 +13,7 @@ C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\OrleansRuntime.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Piraeus.Core.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Piraeus.GrainInterfaces.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Piraeus.Grains.dll
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\StackExchange.Redis.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Newtonsoft.Json.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\System.Web.Http.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Capl.dll
@@ -50,6 +52,8 @@ C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Microsoft.Extensions.Logging
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Microsoft.Extensions.Logging.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Orleans.Storage.Redis.pdb
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Orleans.Storage.Redis.dll.config
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Piraeus.Core.pdb
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Piraeus.Core.dll.config
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Piraeus.GrainInterfaces.pdb
@@ -63,6 +67,7 @@ C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\OrleansAzureUtils.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\OrleansCodeGenerator.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\OrleansProviders.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\OrleansRuntime.xml
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\StackExchange.Redis.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Newtonsoft.Json.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\System.Web.Http.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Capl.pdb

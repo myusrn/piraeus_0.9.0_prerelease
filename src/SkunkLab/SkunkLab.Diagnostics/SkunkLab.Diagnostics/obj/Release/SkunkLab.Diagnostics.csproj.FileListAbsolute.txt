@@ -146,7 +146,6 @@ C:\_git\core\src\Docker\TcpUdpGateway\Output\SkunkLab.Diagnostics.pdb
 C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Release\SkunkLab.Diagnostics.dll.config
 C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Release\SkunkLab.Diagnostics.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\bin\Release\SkunkLab.Diagnostics.pdb
-C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Release\SkunkLab.Diagnostics.csprojResolveAssemblyReference.cache
 C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Release\SkunkLab.Diagnostics.csproj.CoreCompileInputs.cache
 C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Release\SkunkLab.Diagnostics.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Diagnostics\SkunkLab.Diagnostics\obj\Release\SkunkLab.Diagnostics.pdb

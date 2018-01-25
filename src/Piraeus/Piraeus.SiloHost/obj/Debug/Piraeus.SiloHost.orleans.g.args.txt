@@ -4,6 +4,7 @@
 /r:C:\_git\core\src\Piraeus\Piraeus.SiloHost\packages\WindowsAzure.Storage.8.7.0\lib\net45\Microsoft.WindowsAzure.Storage.dll
 /r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll
 /r:C:\_git\core\src\SiloHost\Piraeus.Silo\packages\Microsoft.Orleans.Core.1.5.2\lib\net461\Orleans.dll
+/r:C:\_git\core\src\Orleans.Storage.Redis\Orleans.Storage.Redis\bin\Debug\Orleans.Storage.Redis.dll
 /r:C:\_git\core\src\SiloHost\Piraeus.Silo\packages\Microsoft.Orleans.OrleansAzureUtils.1.5.2\lib\net461\OrleansAzureUtils.dll
 /r:C:\_git\core\src\SiloHost\Piraeus.Silo\packages\Microsoft.Orleans.OrleansCodeGenerator.1.5.2\lib\net461\OrleansCodeGenerator.dll
 /r:C:\_git\core\src\SiloHost\Piraeus.Silo\packages\Microsoft.Orleans.OrleansProviders.1.5.2\lib\net461\OrleansProviders.dll

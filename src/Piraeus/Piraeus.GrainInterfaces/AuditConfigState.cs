@@ -1,5 +1,8 @@
-﻿namespace Piraeus.GrainInterfaces
+﻿using System;
+
+namespace Piraeus.GrainInterfaces
 {
+    [Serializable]
     public class AuditConfigState
     {
         public string ConnectionString { get; set; }

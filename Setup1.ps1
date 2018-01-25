@@ -14,7 +14,7 @@ import-module C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\
 #$url = "http://localhost:1733"
 
 
-$url = "http://172.21.73.197"
+$url = "http://172.27.13.36"
 
 
 $token = Get-PiraeusManagementToken -ServiceUrl $url -Key "12345678"

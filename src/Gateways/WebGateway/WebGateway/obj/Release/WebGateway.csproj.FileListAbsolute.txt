@@ -228,3 +228,5 @@ C:\_git\core\src\Gateways\WebGateway\WebGateway\obj\Release\WebGateway.csprojRes
 C:\_git\core\src\Gateways\WebGateway\WebGateway\obj\Release\WebGateway.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Gateways\WebGateway\WebGateway\obj\Release\WebGateway.dll
 C:\_git\core\src\Gateways\WebGateway\WebGateway\obj\Release\WebGateway.pdb
+C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\OrleansRuntime.dll
+C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\OrleansRuntime.xml

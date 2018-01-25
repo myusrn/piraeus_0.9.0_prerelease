@@ -8,8 +8,7 @@
     </StorageProviders>
     <!-- <SystemStore SystemStoreType="AzureTable" DeploymentId="PiraeusDeployment" DataConnectionString="DefaultEndpointsProtocol=https;AccountName=ACCOUNT_NAME;AccountKey=ACCOUNT_KEY" /> -->
     <SystemStore SystemStoreType="AzureTable" DeploymentId="PiraeusDeployment" DataConnectionString="DefaultEndpointsProtocol=https;AccountName=piraeus;AccountKey=Lfj8VJWQnIv79c2W1v+ptalPxqVOZyWUAV5m08ls/lrPs5/4Cb8xImbRgt3W9qngNeAEIP9Y1nQA6gk2uV2OiQ==;EndpointSuffix=core.windows.net" />
-    
-    
+        
     <Liveness LivenessType ="AzureTable" />
   </Globals>
   <Defaults>

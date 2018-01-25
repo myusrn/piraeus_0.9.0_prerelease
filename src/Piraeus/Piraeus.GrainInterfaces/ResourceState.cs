@@ -7,6 +7,7 @@ using Piraeus.Core.Metadata;
 
 namespace Piraeus.GrainInterfaces
 {
+    [Serializable]
     public class ResourceState
     {
         public ResourceState()

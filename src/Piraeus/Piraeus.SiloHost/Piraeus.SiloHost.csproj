@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrleansHostWrapper3.cs" />
     <Compile Include="OrleansHostWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Silo.cs" />
@@ -76,6 +77,10 @@
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Orleans.Storage.Redis\Orleans.Storage.Redis\Orleans.Storage.Redis.csproj">
+      <Project>{3a5db603-c5dd-4551-90c1-a42dbe60f087}</Project>
+      <Name>Orleans.Storage.Redis</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Piraeus.Core\Piraeus.Core.csproj">
       <Project>{db8ff87b-3c47-429e-be51-29ade3735fce}</Project>
       <Name>Piraeus.Core</Name>
