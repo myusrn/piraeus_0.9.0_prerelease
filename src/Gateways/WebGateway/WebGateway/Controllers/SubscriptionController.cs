@@ -24,9 +24,11 @@ namespace WebGateway.Controllers
                 }
                 else
                 {
-                    string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
-                    OrleansClientConfig.TryStart("SubscriptionController", hostname);
+                    OrleansClientConfig.TryStart("SubscriptionController", System.Environment.GetEnvironmentVariable("GATEWAY_ORLEANS_SILO_DNS_HOSTNAME"));
                 }
+
+                Task task = ServiceIdentityConfig.Configure();
+                Task.WhenAll(task);
             }
 
         }
@@ -46,6 +48,7 @@ namespace WebGateway.Controllers
             }
         }
 
+        [CaplAuthorize(PolicyId = "http://www.skunklab.io/api/management")]
         [HttpGet]
         public async Task<HttpResponseMessage> GetSubscriptionMetrics(string subscriptionUriString)
         {
@@ -74,5 +77,8 @@ namespace WebGateway.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
+
+
+        
     }
 }

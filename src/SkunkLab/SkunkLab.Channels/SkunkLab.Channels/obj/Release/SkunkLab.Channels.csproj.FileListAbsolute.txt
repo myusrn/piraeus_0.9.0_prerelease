@@ -142,6 +142,13 @@ C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\Output\SkunkLab.Di
 C:\_git\core\src\Docker\TcpUdpGateway\Output\SkunkLab.Channels.dll.config
 C:\_git\core\src\Docker\TcpUdpGateway\Output\SkunkLab.Channels.dll
 C:\_git\core\src\Docker\TcpUdpGateway\Output\SkunkLab.Channels.pdb
+C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\src\Docker\TcpUdpGateway\Output\SkunkLab.Channels.dll.config
+C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\src\Docker\TcpUdpGateway\Output\SkunkLab.Channels.dll
+C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\src\Docker\TcpUdpGateway\Output\SkunkLab.Channels.pdb
+C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\src\Docker\TcpUdpGateway\Output\BouncyCastle.Crypto.dll
+C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\src\Docker\TcpUdpGateway\Output\SkunkLab.Diagnostics.dll
+C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\src\Docker\TcpUdpGateway\Output\SkunkLab.Diagnostics.pdb
+C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\src\Docker\TcpUdpGateway\Output\SkunkLab.Diagnostics.dll.config
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Release\SkunkLab.Channels.dll.config
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Release\SkunkLab.Channels.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Release\SkunkLab.Channels.pdb
@@ -153,3 +160,9 @@ C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Release\SkunkL
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Release\SkunkLab.Channels.csproj.CoreCompileInputs.cache
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Release\SkunkLab.Channels.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Release\SkunkLab.Channels.pdb
+C:\_git\core\Docker\TcpUdpGateway\Output\SkunkLab.Channels.dll.config
+C:\_git\core\Docker\TcpUdpGateway\Output\SkunkLab.Channels.dll
+C:\_git\core\Docker\TcpUdpGateway\Output\SkunkLab.Channels.pdb
+C:\_git\core\src\SkunkLab\Docker\TcpUdpGateway\Output\SkunkLab.Channels.dll.config
+C:\_git\core\src\SkunkLab\Docker\TcpUdpGateway\Output\SkunkLab.Channels.dll
+C:\_git\core\src\SkunkLab\Docker\TcpUdpGateway\Output\SkunkLab.Channels.pdb

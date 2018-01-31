@@ -41,12 +41,15 @@ namespace Piraeus.SiloHost
                 config.Globals.LivenessEnabled = true;
                 config.Globals.LivenessType = GlobalConfiguration.LivenessProviderType.AzureTable;               
                 config.Globals.ReminderServiceType = GlobalConfiguration.ReminderServiceProviderType.AzureTable;
+                
 
                 config.Defaults.PropagateActivityId = true;
                 config.Defaults.HostNameOrIPAddress = hostname;
                 config.Defaults.Port = 11111;
                 config.Defaults.ProxyGatewayEndpoint = new IPEndPoint(IPAddress.Any, 30000);
                 config.Defaults.SiloName = hostname;
+
+                ServicePointManager.DefaultConnectionLimit = 12 * Environment.ProcessorCount;
 
                 IDictionary<string, string> properties = GetStorageProviderProperties();
 

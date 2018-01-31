@@ -15,20 +15,39 @@ namespace WebGateway.Controllers
     {
         public ManageController()
         {
-            if (!Orleans.GrainClient.IsInitialized)
+            bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+
+            if (!dockerized)
             {
-                bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+                string codesString = ConfigurationManager.AppSettings["managementCodes"];
+                codes = codesString.Split(new char[] { ' ' });
+            }
+            else
+            {
+                string cstring = System.Environment.GetEnvironmentVariable("MGMT_API_SECURITY_CODE");
+                codes = cstring.Split(new char[] { ' ' });
+            }
+
+
+            if (!Orleans.GrainClient.IsInitialized)
+            {                
                 if (!dockerized)
-                {
-                    OrleansClientConfig.TryStart("ManageController");
+                {                    
+                    OrleansClientConfig.TryStart("ManageController");                    
                 }
                 else
-                {
-                    string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
-                    OrleansClientConfig.TryStart("ManageController", hostname);
+                {                    
+                    OrleansClientConfig.TryStart("ManageController", System.Environment.GetEnvironmentVariable("GATEWAY_ORLEANS_SILO_DNS_HOSTNAME"));                    
                 }
+
+                Task task = ServiceIdentityConfig.Configure();
+                Task.WhenAll(task);
             }
+
+            
         }
+
+        private string[] codes;
         /// <summary>
         /// Return a security token for the Management API
         /// </summary>
@@ -37,19 +56,35 @@ namespace WebGateway.Controllers
         [HttpGet]
         public async Task<HttpResponseMessage> Get(string code)
         {
-            string codes = ConfigurationManager.AppSettings["managementCodes"];
-            string[] items = codes.Split(new char[] { ' ' });
-            foreach (string item in items)
+            //string codes = ConfigurationManager.AppSettings["managementCodes"];
+            //string[] items = codes.Split(new char[] { ' ' });
+            //foreach (string item in items)
+            //{
+            //    if (item.ToLowerInvariant() == code.ToLowerInvariant())
+            //    {
+            //        string token = await GetJwtTokenAsync();
+
+            //        return Request.CreateResponse<string>(HttpStatusCode.OK, token);
+            //    }
+            //}
+
+            try
             {
-                if (item.ToLowerInvariant() == code.ToLowerInvariant())
+                foreach (string codeString in codes)
                 {
-                    string token = await GetJwtTokenAsync();
-
-                    return Request.CreateResponse<string>(HttpStatusCode.OK, token);
+                    if (codeString.ToLowerInvariant() == code.ToLowerInvariant())
+                    {
+                        string token = await GetJwtTokenAsync();
+                        return Request.CreateResponse<string>(HttpStatusCode.OK, token);
+                    }
                 }
-            }
 
-            return Request.CreateResponse<string>(HttpStatusCode.Unauthorized, "Invalid code.");
+                return Request.CreateResponse<string>(HttpStatusCode.Unauthorized, "Invalid code.");
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
         }
 
 
@@ -59,18 +94,45 @@ namespace WebGateway.Controllers
         /// <returns></returns>
         private async Task<string> GetJwtTokenAsync()
         {
-            Uri address = new Uri(ConfigurationManager.AppSettings["audience"]);
-            string key = ConfigurationManager.AppSettings["symmetricKey"];
-            string issuer = ConfigurationManager.AppSettings["issuer"];
+            string audience = null;
+            string issuer = null;
+            string key = null;
+            string nameClaimType = null;
+            string roleClaimType = null;
+            string roleClaimValue = null;
+
+            bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+
+            if(dockerized)
+            {
+                audience = System.Environment.GetEnvironmentVariable("MGMT_API_AUDIENCE");
+                issuer = System.Environment.GetEnvironmentVariable("MGMT_API_ISSUER");
+                key = System.Environment.GetEnvironmentVariable("MGMT_API_SYMMETRICKEY");
+                nameClaimType = System.Environment.GetEnvironmentVariable("MGMT_API_NAME_CLAIM_TYPE");
+                roleClaimType = System.Environment.GetEnvironmentVariable("MGMT_API_ROLE_CLAIM_TYPE");
+                roleClaimValue = System.Environment.GetEnvironmentVariable("MGMT_API_ROLE_CLAIM_VALUE");
+
+            }
+            else
+            {
+                audience = ConfigurationManager.AppSettings["audience"];
+                key = ConfigurationManager.AppSettings["symmetricKey"];
+                issuer = ConfigurationManager.AppSettings["issuer"];
+                nameClaimType = ConfigurationManager.AppSettings["nameClaimType"]; 
+                roleClaimType = ConfigurationManager.AppSettings["roleClaimType"]; 
+                roleClaimValue = ConfigurationManager.AppSettings["roleClaimValue"]; 
+            }
+
+            
             double lifetimeMinutes = 60.0;
 
             List<Claim> claimSet = new List<Claim>()
             {
-                new Claim("http://www.skunklab.io/piraeus/name", Guid.NewGuid().ToString()),
-                new Claim(ConfigurationManager.AppSettings["matchClaimType"], ConfigurationManager.AppSettings["matchClaimValue"])
+                new Claim(nameClaimType, Guid.NewGuid().ToString()),
+                new Claim(roleClaimType, roleClaimValue)
             };
 
-            JsonWebToken jwt = new JsonWebToken(address, key, issuer, claimSet, lifetimeMinutes);
+            JsonWebToken jwt = new JsonWebToken(key, claimSet, lifetimeMinutes, issuer, audience);
 
             return await Task.FromResult<string>(jwt.ToString());
         }

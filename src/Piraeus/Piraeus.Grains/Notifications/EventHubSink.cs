@@ -1,6 +1,8 @@
 ﻿using Microsoft.ServiceBus.Messaging;
 using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
+using SkunkLab.Protocols.Coap;
+using SkunkLab.Protocols.Mqtt;
 using System;
 using System.Collections.Specialized;
 using System.Diagnostics;
@@ -24,6 +26,7 @@ namespace Piraeus.Grains.Notifications
         public EventHubSink(SubscriptionMetadata metadata)
             : base(metadata)
         {
+            auditor = new Auditor();
             uri = new Uri(metadata.NotifyAddress);
             NameValueCollection nvc = HttpUtility.ParseQueryString(uri.Query);
             keyName = nvc["keyname"];
@@ -43,10 +46,18 @@ namespace Piraeus.Grains.Notifications
         public override async Task SendAsync(EventMessage message)
         {
             AuditRecord record = null;
+            byte[] payload = null;
 
             try
             {
-                EventData data = new EventData(message.Message);
+                payload = GetPayload(message);
+                if (payload == null)
+                {
+                    Trace.TraceWarning("Subscription {0} could not write to event hub sink because payload was either null or unknown protocol type.");
+                    return;
+                }
+
+                EventData data = new EventData(payload);
                 data.Properties.Add("Content-Type", message.ContentType);                
 
                 if (String.IsNullOrEmpty(partitionId))
@@ -58,11 +69,11 @@ namespace Piraeus.Grains.Notifications
                     await sender.SendAsync(data);
                 }
 
-                record = new AuditRecord(message.MessageId, String.Format("sb://{0}/{1}", uri.Authority, hubName), "EventHub", "EventHub", message.Message.Length, true, DateTime.UtcNow);
+                record = new AuditRecord(message.MessageId, String.Format("sb://{0}/{1}", uri.Authority, hubName), "EventHub", "EventHub", payload.Length, true, DateTime.UtcNow);
             }
             catch(Exception ex)
             {
-                record = new AuditRecord(message.MessageId, String.Format("sb://{0}", uri.Authority, hubName), "EventHub", "EventHub", message.Message.Length, false, DateTime.UtcNow, ex.Message);
+                record = new AuditRecord(message.MessageId, String.Format("sb://{0}", uri.Authority, hubName), "EventHub", "EventHub", payload.Length, false, DateTime.UtcNow, ex.Message);
                 throw;
             }
             finally
@@ -74,15 +85,31 @@ namespace Piraeus.Grains.Notifications
             }
         }
 
+        private byte[] GetPayload(EventMessage message)
+        {
+            switch (message.Protocol)
+            {
+                case ProtocolType.COAP:
+                    CoapMessage coap = CoapMessage.DecodeMessage(message.Message);
+                    return coap.Payload;
+                case ProtocolType.MQTT:
+                    MqttMessage mqtt = MqttMessage.DecodeMessage(message.Message);
+                    return mqtt.Payload;
+                case ProtocolType.REST:
+                    return message.Message;
+                case ProtocolType.WSN:
+                    return message.Message;
+                default:
+                    return null;
+            }
+        }
         private void Audit(AuditRecord record)
         {
-            if (auditor == null)
+            if (auditor.CanAudit)
             {
-                auditor = new Auditor();
+                Task task = auditor.WriteAuditRecordAsync(record);
+                Task.WhenAll(task);
             }
-
-            Task task = auditor.WriteAuditRecordAsync(record);
-            Task.WhenAll(task);
         }
     }
 }

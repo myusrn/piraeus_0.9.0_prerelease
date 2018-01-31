@@ -91,5 +91,6 @@ namespace Piraeus.Core.Messaging
         public DateTime Timestamp { get; set; }
 
         public bool Audit { get; set; }
+        
     }
 }

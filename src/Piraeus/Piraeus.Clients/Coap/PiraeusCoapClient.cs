@@ -40,7 +40,7 @@ namespace Piraeus.Clients.Coap
             usedToken = true;
         }
 
-        private bool alwaysUseToken;
+        
         private SecurityTokenType tokenType;
         private string securityToken;
         private Dictionary<string, string> observers;
@@ -49,7 +49,7 @@ namespace Piraeus.Clients.Coap
         private CoapSession session;
         private ICoapRequestDispatch dispatcher;
         private List<ushort> pingId;
-        private int index;
+        
         private bool usedToken;
 
         public event System.EventHandler<CoapMessageEventArgs> OnPingResponse;

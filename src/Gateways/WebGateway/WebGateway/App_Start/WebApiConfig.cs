@@ -1,4 +1,5 @@
 ﻿using SkunkLab.Security.Authentication;
+using System;
 using System.Configuration;
 using System.Web.Http;
 using WebGateway.Formatters;
@@ -9,6 +10,26 @@ namespace WebGateway
     {
         public static void Register(HttpConfiguration config)
         {
+            string symmetricKey = null;
+            string issuer = null;
+            string audience = null;
+
+            bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+
+            if(dockerized)
+            {
+                symmetricKey = System.Environment.GetEnvironmentVariable("MGMT_API_SYMMETRICKEY");
+                issuer = System.Environment.GetEnvironmentVariable("MGMT_API_ISSUER");
+                audience = System.Environment.GetEnvironmentVariable("MGMT_API_AUDIENCE");
+            }
+            else
+            {
+                symmetricKey = ConfigurationManager.AppSettings["symmetricKey"];
+                issuer = ConfigurationManager.AppSettings["issuer"];
+                audience = ConfigurationManager.AppSettings["audience"];
+            }
+
+
             config.MapHttpAttributeRoutes();
             config.Formatters.Insert(0, new TextMediaTypeFormatter());
             config.Formatters.Insert(1, new BinaryMediaTypeFormatter());
@@ -18,7 +39,7 @@ namespace WebGateway
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional },
                 constraints: null,
-                handler: new JwtValidationHandler(ConfigurationManager.AppSettings["symmetricKey"], ConfigurationManager.AppSettings["issuer"], ConfigurationManager.AppSettings["audience"])
+                handler: new JwtValidationHandler(symmetricKey, issuer, audience)
             );
 
             config.Routes.MapHttpRoute(
@@ -26,7 +47,7 @@ namespace WebGateway
                     routeTemplate: "api2/{controller}/{action}",
                     defaults: new { id = RouteParameter.Optional },
                     constraints: null,
-                    handler: new JwtValidationHandler(ConfigurationManager.AppSettings["symmetricKey"], ConfigurationManager.AppSettings["issuer"], ConfigurationManager.AppSettings["audience"])
+                    handler: new JwtValidationHandler(symmetricKey, issuer, audience)
                 );
 
             config.Routes.MapHttpRoute(

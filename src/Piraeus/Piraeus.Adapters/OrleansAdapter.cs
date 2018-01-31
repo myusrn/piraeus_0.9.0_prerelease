@@ -21,6 +21,8 @@ namespace Piraeus.Adapters
             this.identity = identity;
             this.channelType = channelType;
             this.protocolType = protocolType;
+            Task task = SetAuditorAsync();
+            Task.WhenAll(task);
 
             container = new Dictionary<string, Tuple<string, string>>();
             ephemeralObservers = new Dictionary<string, IMessageObserver>();
@@ -29,6 +31,7 @@ namespace Piraeus.Adapters
 
         public event EventHandler<ObserveMessageEventArgs> OnObserve;   //signal protocol adapter
 
+        private Auditor auditor;
         private string identity;
         private string channelType;
         private string protocolType;
@@ -37,11 +40,10 @@ namespace Piraeus.Adapters
         private Dictionary<string, IMessageObserver> durableObservers;   //subscription, observer
         private System.Timers.Timer leaseTimer; //timer for leases
         private bool disposedValue = false; // To detect redundant calls
-        private Auditor auditor;
 
-        public override async Task<bool> CanPublishAsync(string resourceUriString, bool channelEncrypted)
+        public override async Task<bool> CanPublishAsync(ResourceMetadata metadata, bool channelEncrypted)
         {
-            ResourceMetadata metadata = await GraphManager.GetResourceMetadataAsync(resourceUriString);
+            //ResourceMetadata metadata = await GraphManager.GetResourceMetadataAsync(resourceUriString);
 
             if (metadata == null)
             {
@@ -219,7 +221,7 @@ namespace Piraeus.Adapters
             }
             finally
             {
-                Audit(record);
+                await AuditAsync(record);
             }
         }
 
@@ -452,18 +454,19 @@ namespace Piraeus.Adapters
             }
         }
 
-        private void Audit(AuditRecord record)
-        {
-            if (auditor == null)
+        private async Task AuditAsync(AuditRecord record = null)
+        {   
+            if (record != null && auditor.CanAudit)
             {
-                auditor = new Auditor();
+                await auditor.WriteAuditRecordAsync(record);
             }
+        }
 
-            if (record != null)
-            {
-                Task task = auditor.WriteAuditRecordAsync(record);
-                Task.WhenAll(task);
-            }
+        private async Task SetAuditorAsync()
+        {
+            string connectionstring = await GraphManager.GetAuditConfigConnectionstringAsync();
+            string tablename = await GraphManager.GetAuditConfigTablenameAsync();
+            auditor = new Auditor(connectionstring, tablename);
         }
         #endregion
     }

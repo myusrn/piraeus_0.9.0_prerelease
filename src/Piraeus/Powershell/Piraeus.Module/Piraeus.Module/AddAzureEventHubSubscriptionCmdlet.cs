@@ -4,7 +4,7 @@ using System.Management.Automation;
 
 namespace Piraeus.Module
 {
-    [Cmdlet(VerbsCommon.Add, "AzureEventHubSubscription")]
+    [Cmdlet(VerbsCommon.Add, "PiraeusEventHubSubscription")]
     public class AddAzureEventHubSubscriptionCmdlet : Cmdlet
     {
         [Parameter(HelpMessage = "Url of the service.", Mandatory = true)]

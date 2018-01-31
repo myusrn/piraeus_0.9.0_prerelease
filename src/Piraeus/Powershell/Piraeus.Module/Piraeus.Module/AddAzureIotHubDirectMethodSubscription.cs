@@ -4,7 +4,7 @@ using System.Management.Automation;
 
 namespace Piraeus.Module
 {
-    [Cmdlet(VerbsCommon.Add, "AzureIotHubDirectMethodSubscription")]
+    [Cmdlet(VerbsCommon.Add, "PiraeusIotHubDirectMethodSubscription")]
     public class AddAzureIotHubDirectMethodSubscription : Cmdlet
     {
         [Parameter(HelpMessage = "Url of the service.", Mandatory = true)]

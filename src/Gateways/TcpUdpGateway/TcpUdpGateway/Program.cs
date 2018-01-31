@@ -19,14 +19,12 @@ namespace TcpUdpGateway
 {
     class Program
     {
-        static CancellationTokenSource source;
+
         static Dictionary<int, TcpServerListener> tcpListeners;
         static Dictionary<int, UdpServerListener> udpListeners;
         static Dictionary<int, CancellationTokenSource> sources;
         static PiraeusConfig config;
 
-        private static IClusterClient client;
-        private static bool running;
 
 
         static void Main(string[] args)
@@ -89,7 +87,7 @@ namespace TcpUdpGateway
             }
 
             ManualResetEventSlim done = new ManualResetEventSlim(false);
-            Console.WriteLine("Press any key to terminate.");
+            
             
             Console.CancelKeyPress += (sender, eventArgs) =>
             {
@@ -98,6 +96,7 @@ namespace TcpUdpGateway
                 eventArgs.Cancel = true;
             };
 
+            Console.WriteLine("TCP-UDP Gateway is ready...");
             done.Wait();
 
             Console.WriteLine("TCP UDP Gateway is exiting.");
@@ -152,7 +151,7 @@ namespace TcpUdpGateway
         static string GetLocalHostName()
         {
             bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
-            return dockerized ? ConfigurationManager.AppSettings["dockerContainerName"] : "localhost";
+            return dockerized ? System.Environment.GetEnvironmentVariable("GATEWAY_TCP_SERVER_DNS_HOSTNAME") : "localhost";
         }
         
         static void InitOrleansClient()
@@ -181,12 +180,14 @@ namespace TcpUdpGateway
                         else
                         {
                             Console.WriteLine("Identified as docker deployment.");
-                            string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
-                            if (OrleansClientConfig.TryStart("TCPGateway", hostname))
+                            if (OrleansClientConfig.TryStart("TCPGateway", System.Environment.GetEnvironmentVariable("GATEWAY_ORLEANS_SILO_DNS_HOSTNAME")))
                                 return;
                             else
                                 Console.WriteLine("Waiting 30 secs before retry {0} or {1}", index, max);
                         }
+
+                        Task task = ServiceIdentityConfig.Configure();
+                        Task.WhenAll(task);
                     }
                 }
                 catch(Exception ex)

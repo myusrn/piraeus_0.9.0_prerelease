@@ -2,6 +2,8 @@
 using Microsoft.Azure.Devices.Client;
 using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
+using SkunkLab.Protocols.Coap;
+using SkunkLab.Protocols.Mqtt;
 using System;
 using System.Collections.Specialized;
 using System.Diagnostics;
@@ -28,6 +30,7 @@ namespace Piraeus.Grains.Notifications
         public IoTHubSink(SubscriptionMetadata metadata)
             : base(metadata)
         {
+            auditor = new Auditor();
             uri = new Uri(metadata.NotifyAddress);
             NameValueCollection nvc = HttpUtility.ParseQueryString(uri.Query);
             string keyName = nvc["keyname"];
@@ -58,9 +61,17 @@ namespace Piraeus.Grains.Notifications
         public override async Task SendAsync(EventMessage message)
         {
             AuditRecord record = null;
+            byte[] payload = null;
 
             try
             {
+                payload = GetPayload(message);
+                if (payload == null)
+                {
+                    Trace.TraceWarning("Subscription {0} could not write to iot hub sink because payload was either null or unknown protocol type.");
+                    return;
+                }
+
                 if (serviceClient != null) //send message to device
                 {
                     if (!String.IsNullOrEmpty(methodName)) //direct method to device
@@ -68,19 +79,19 @@ namespace Piraeus.Grains.Notifications
                         if (message.ContentType == "application/json")
                         {
                             CloudToDeviceMethod method = new CloudToDeviceMethod(methodName);
-                            method.SetPayloadJson(Encoding.UTF8.GetString(message.Message));
+                            method.SetPayloadJson(Encoding.UTF8.GetString(payload));
                             await serviceClient.InvokeDeviceMethodAsync(deviceId, method);
-                            record = new AuditRecord(message.MessageId, String.Format("iothub://{0}", uri.Authority), "IoTHub", "IoTHub", message.Message.Length, true, DateTime.UtcNow);
+                            record = new AuditRecord(message.MessageId, String.Format("iothub://{0}", uri.Authority), "IoTHub", "IoTHub", payload.Length, true, DateTime.UtcNow);
                         }
                         else
                         {
                             Trace.TraceWarning("Cannot send IoTHub device {0} direct message because content-type is not JSON.", deviceId);
-                            record = new AuditRecord(message.MessageId, String.Format("iothub://{0}",uri.Authority), "IoTHub", "IoTHub", message.Message.Length, false, DateTime.UtcNow, String.Format("Cannot send IoTHub device {0} direct message because content-type is not JSON.", deviceId));
+                            record = new AuditRecord(message.MessageId, String.Format("iothub://{0}",uri.Authority), "IoTHub", "IoTHub", payload.Length, false, DateTime.UtcNow, String.Format("Cannot send IoTHub device {0} direct message because content-type is not JSON.", deviceId));
                         }
                     }
                     else //command to device
                     {
-                        Microsoft.Azure.Devices.Message serviceMessage = new Microsoft.Azure.Devices.Message(message.Message);
+                        Microsoft.Azure.Devices.Message serviceMessage = new Microsoft.Azure.Devices.Message(payload);
                         serviceMessage.ContentType = message.ContentType;
                         serviceMessage.MessageId = message.MessageId;
 
@@ -90,12 +101,12 @@ namespace Piraeus.Grains.Notifications
                         }
 
                         await serviceClient.SendAsync(deviceId, serviceMessage);
-                        record = new AuditRecord(message.MessageId, String.Format("iothub://{0}", uri.Authority), "IoTHub", "IoTHub", message.Message.Length, true, DateTime.UtcNow);
+                        record = new AuditRecord(message.MessageId, String.Format("iothub://{0}", uri.Authority), "IoTHub", "IoTHub", payload.Length, true, DateTime.UtcNow);
                     }
                 }
                 else if (deviceClient != null) //this subscription is a device and will send to IoTHub
                 {
-                    Microsoft.Azure.Devices.Client.Message msg = new Microsoft.Azure.Devices.Client.Message(message.Message);
+                    Microsoft.Azure.Devices.Client.Message msg = new Microsoft.Azure.Devices.Client.Message(payload);
                     msg.ContentType = message.ContentType;
                     msg.MessageId = message.MessageId;
                     if (!String.IsNullOrEmpty(propertyName))
@@ -103,16 +114,16 @@ namespace Piraeus.Grains.Notifications
                         msg.Properties.Add(propertyName, propertyValue);
                     }
                     await deviceClient.SendEventAsync(msg);
-                    record = new AuditRecord(message.MessageId, String.Format("iothub://{0}", uri.Authority), "IoTHub", "IoTHub", message.Message.Length, true, DateTime.UtcNow);
+                    record = new AuditRecord(message.MessageId, String.Format("iothub://{0}", uri.Authority), "IoTHub", "IoTHub", payload.Length, true, DateTime.UtcNow);
                 }
                 else
                 {
                     Trace.TraceWarning("IoTHub subscription has neither Service or Device client");
-                    record = new AuditRecord(message.MessageId, String.Format("iothub://{0}", uri.Authority), "IoTHub", "IoTHub", message.Message.Length, false, DateTime.UtcNow, "IoTHub subscription has neither service or device client");
+                    record = new AuditRecord(message.MessageId, String.Format("iothub://{0}", uri.Authority), "IoTHub", "IoTHub", payload.Length, false, DateTime.UtcNow, "IoTHub subscription has neither service or device client");
                 }
             } catch (Exception ex)
             {
-                record = new AuditRecord(message.MessageId, String.Format("iothub://{0}", uri.Authority), "IoTHub", "IoTHub", message.Message.Length, false, DateTime.UtcNow, ex.Message);
+                record = new AuditRecord(message.MessageId, String.Format("iothub://{0}", uri.Authority), "IoTHub", "IoTHub", payload.Length, false, DateTime.UtcNow, ex.Message);
             }
             finally
             {
@@ -123,15 +134,31 @@ namespace Piraeus.Grains.Notifications
             }
         }
 
+        private byte[] GetPayload(EventMessage message)
+        {
+            switch (message.Protocol)
+            {
+                case ProtocolType.COAP:
+                    CoapMessage coap = CoapMessage.DecodeMessage(message.Message);
+                    return coap.Payload;
+                case ProtocolType.MQTT:
+                    MqttMessage mqtt = MqttMessage.DecodeMessage(message.Message);
+                    return mqtt.Payload;
+                case ProtocolType.REST:
+                    return message.Message;
+                case ProtocolType.WSN:
+                    return message.Message;
+                default:
+                    return null;
+            }
+        }
         private void Audit(AuditRecord record)
         {
-            if (auditor == null)
+            if (auditor.CanAudit)
             {
-                auditor = new Auditor();
+                Task task = auditor.WriteAuditRecordAsync(record);
+                Task.WhenAll(task);
             }
-
-            Task task = auditor.WriteAuditRecordAsync(record);
-            Task.WhenAll(task);
         }
     }
 }

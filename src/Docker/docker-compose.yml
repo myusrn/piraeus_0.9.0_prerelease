@@ -1,6 +1,8 @@
 version: '3.1'
 services:
   webgateway:
+    env_file:
+      - gateway-config.env
     container_name: web-server
     image: webgateway
     links:
@@ -10,6 +12,8 @@ services:
       
   tcpudpgateway:
     container_name: tcp-server
+    env_file:
+      - gateway-config.env
     image: tcpudpgateway
     ports:
       - "1883:1883/tcp"
@@ -25,13 +29,15 @@ services:
     container_name: orleans-silo
     image: orleans-silo
     environment:
-      - ORLEANS_DEPLOYMENT_ID=PiraeusDeployment 
-      - ORLEANS_LIVENESS_DATACONNECTIONSTRING=DefaultEndpointsProtocol=https;AccountName=piraeus;AccountKey=Lfj8VJWQnIv79c2W1v+ptalPxqVOZyWUAV5m08ls/lrPs5/4Cb8xImbRgt3W9qngNeAEIP9Y1nQA6gk2uV2OiQ==;EndpointSuffix=core.windows.net
+      - ORLEANS_PROVIDER_DATACONNECTIONSTRING=#YOUR_BLOB_STORAGE_CONNECTIONSTRING_FOR_ORLEANS
+      - ORLEANS_LIVENESS_DATACONNECTIONSTRING=#YOUR_BLOB_STORAGE_CONNECTIONSTRING_FOR_ORLEANS
+      - ORLEANS_AUDIT_DATACONNECTIONSTRING=#YOUR_BLOB_STORAGE_CONNECTIONSTRING_FOR_PIRAEUS
+      - ORLEANS_DEPLOYMENT_ID=PiraeusDeployment      
       - ORLEANS_STORAGE_PROVIDER_TYPE=AzureBlobStore
-      - ORLEANS_STORAGE_CONTAINER_NAME=orleans      
-      - ORLEANS_PROVIDER_DATACONNECTIONSTRING=DefaultEndpointsProtocol=https;AccountName=piraeus;AccountKey=Lfj8VJWQnIv79c2W1v+ptalPxqVOZyWUAV5m08ls/lrPs5/4Cb8xImbRgt3W9qngNeAEIP9Y1nQA6gk2uV2OiQ==;EndpointSuffix=core.windows.net
+      - ORLEANS_STORAGE_CONTAINER_NAME=orleans
       - ORLEANS_MAXMEMORY_STORAGE_GRAINS=1000000
       - ORLEANS_DNS_HOSTNAME=orleans-silo
+      - ORLEANS_AUDIT_TABLENAME=audit
     ports:
       - "11111:11111/tcp"
       - "30000:30000/tcp"

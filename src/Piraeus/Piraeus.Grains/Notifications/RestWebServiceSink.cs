@@ -1,5 +1,8 @@
 ﻿using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
+using Piraeus.GrainInterfaces;
+using SkunkLab.Protocols.Coap;
+using SkunkLab.Protocols.Mqtt;
 using SkunkLab.Security.Tokens;
 using System;
 using System.Collections.Generic;
@@ -20,6 +23,7 @@ namespace Piraeus.Grains.Notifications
         public RestWebServiceSink(SubscriptionMetadata metadata)
             : base(metadata)
         {
+            auditor = new Auditor();
             tokenType = metadata.TokenType;
             symmetricKey = metadata.SymmetricKey;
 
@@ -48,7 +52,7 @@ namespace Piraeus.Grains.Notifications
             }
 
             address = builder.ToString();
-
+            
             Task t1 = SetCertificateAsync();
             Task.WhenAll(t1);
 
@@ -69,7 +73,7 @@ namespace Piraeus.Grains.Notifications
 
 
         private async Task SetCertificateAsync()
-        {
+        {            
             certificate = await GraphManager.GetServiceIdentityCertificateAsync();
         }
 
@@ -123,6 +127,13 @@ namespace Piraeus.Grains.Notifications
 
             try
             {
+                byte[] payload = GetPayload(message);
+                if (payload == null)
+                {
+                    Trace.TraceWarning("Subscription {0} could not write to web service sink because payload was either null or unknown protocol type.");
+                    return;
+                }
+
                 try
                 {
                     request = HttpWebRequest.Create(address) as HttpWebRequest;
@@ -131,14 +142,14 @@ namespace Piraeus.Grains.Notifications
 
                     SetSecurityToken(request);
 
-                    request.ContentLength = message.Message.Length;
+                    request.ContentLength = payload.Length;
                     Stream stream = await request.GetRequestStreamAsync();
-                    await stream.WriteAsync(message.Message, 0, message.Message.Length);
+                    await stream.WriteAsync(payload, 0, payload.Length);
                 }
                 catch (Exception ex)
                 {
                     Trace.TraceError("REST event sink subscription {0} could set request; error {1} ", metadata.SubscriptionUriString, ex.Message);
-                    record = new AuditRecord(message.MessageId, address, "WebService", "HTTP", message.Message.Length, false, DateTime.UtcNow, ex.Message);
+                    record = new AuditRecord(message.MessageId, address, "WebService", "HTTP", payload.Length, false, DateTime.UtcNow, ex.Message);
                     throw;
                 }
 
@@ -149,13 +160,13 @@ namespace Piraeus.Grains.Notifications
                         if (response.StatusCode == HttpStatusCode.Accepted || response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.NoContent)
                         {
                             Trace.TraceInformation("Rest request is success.");
-                            record = new AuditRecord(message.MessageId, address, "WebService", "HTTP", message.Message.Length, true, DateTime.UtcNow);
+                            record = new AuditRecord(message.MessageId, address, "WebService", "HTTP", payload.Length, true, DateTime.UtcNow);
 
                         }
                         else
                         {
                             Trace.TraceInformation("Rest request returned an expected status code.");
-                            record = new AuditRecord(message.MessageId, address, "WebService", "HTTP", message.Message.Length, false, DateTime.UtcNow, String.Format("Rest request returned an expected status code {0}", response.StatusCode));
+                            record = new AuditRecord(message.MessageId, address, "WebService", "HTTP", payload.Length, false, DateTime.UtcNow, String.Format("Rest request returned an expected status code {0}", response.StatusCode));
                         }
                     }
                 }
@@ -163,7 +174,7 @@ namespace Piraeus.Grains.Notifications
                 {
                     string faultMessage = String.Format("subscription '{0}' with status code '{1}' and error message '{2}'", metadata.SubscriptionUriString, we.Status.ToString(), we.Message);
                     Trace.TraceError(faultMessage);
-                    record = new AuditRecord(message.MessageId, address, "WebService", "HTTP", message.Message.Length, false, DateTime.UtcNow, we.Message);
+                    record = new AuditRecord(message.MessageId, address, "WebService", "HTTP", payload.Length, false, DateTime.UtcNow, we.Message);
                     throw;
                 }
             }
@@ -180,15 +191,31 @@ namespace Piraeus.Grains.Notifications
             }
         }
 
+        private byte[] GetPayload(EventMessage message)
+        {
+            switch (message.Protocol)
+            {
+                case ProtocolType.COAP:
+                    CoapMessage coap = CoapMessage.DecodeMessage(message.Message);
+                    return coap.Payload;
+                case ProtocolType.MQTT:
+                    MqttMessage mqtt = MqttMessage.DecodeMessage(message.Message);
+                    return mqtt.Payload;
+                case ProtocolType.REST:
+                    return message.Message;
+                case ProtocolType.WSN:
+                    return message.Message;
+                default:
+                    return null;
+            }
+        }
         private void Audit(AuditRecord record)
         {
-            if (auditor == null)
+            if (auditor.CanAudit)
             {
-                auditor = new Auditor();
+                Task task = auditor.WriteAuditRecordAsync(record);
+                Task.WhenAll(task);
             }
-
-            Task task = auditor.WriteAuditRecordAsync(record);
-            Task.WhenAll(task);
         }
     }
 }

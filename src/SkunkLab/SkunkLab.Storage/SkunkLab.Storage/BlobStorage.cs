@@ -492,7 +492,7 @@ namespace SkunkLab.Storage
         public void Upload(ICloudBlob blob, byte[] buffer, string encryptKeyName = null)
         {
             if(encryptKeyName == null)
-            {
+            {                
                 blob.UploadFromByteArray(buffer, 0, buffer.Length);
             }
             else

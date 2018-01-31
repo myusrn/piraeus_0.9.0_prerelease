@@ -1,0 +1,2 @@
+C:\_git\core\src\Samples\Silo\LocalSilo\obj\Release\LocalSilo.csprojResolveAssemblyReference.cache
+C:\_git\core\src\Samples\Silo\LocalSilo\obj\Release\LocalSilo.csproj.CoreCompileInputs.cache

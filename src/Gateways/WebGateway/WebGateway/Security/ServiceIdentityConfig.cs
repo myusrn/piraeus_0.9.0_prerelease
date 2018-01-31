@@ -1,53 +1,44 @@
-﻿//using Piraeus.Grains;
-//using System;
-//using System.Collections.Generic;
-//using System.Diagnostics;
-//using System.Security.Claims;
-//using System.Security.Cryptography.X509Certificates;
-//using System.Threading.Tasks;
+﻿using Piraeus.Grains;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 
-//namespace WebGateway.Security
-//{
-//    public class ServiceIdentityConfig
-//    {
-//        private static bool configured;
-//        public static bool TryConfig()
-//        {
-//            bool result = false;
+namespace WebGateway.Security
+{
+    public class ServiceIdentityConfig
+    {
+        public static bool IsConfigured;
 
-//            if(configured)
-//            {
-//                return true;
-//            }
+        public static async Task Configure()
+        {
+            if(IsConfigured)
+            {
+                return;
+            }
 
-//            try
-//            {
-//                List<Claim> claims = null;
-//                X509Certificate2 certificate = Piraeus.Configuration.PiraeusConfigManager.Settings.Security.Service.Certificate;
-//                IEnumerable<Claim> claimSet = Piraeus.Configuration.PiraeusConfigManager.Settings.Identity.Service.Claims;
+            if (Orleans.GrainClient.IsInitialized)
+            {
+                List<Claim> claimSet = await GraphManager.GetServiceIdentityClaimsAsync();
+                X509Certificate2 cert = await GraphManager.GetServiceIdentityCertificateAsync();
 
-//                if (claimSet != null)
-//                {
-//                    claims = new List<Claim>(claimSet);
-//                }
+                IsConfigured = cert != null || claimSet != null;
 
-//                Task task = SetVariables(claims, certificate);
-//                Task.WaitAll(task);
+                if (!IsConfigured)
+                {
+                    IEnumerable<Claim> claimArray = Piraeus.Configuration.PiraeusConfigManager.Settings.Identity.Service.Claims;
+                    cert = Piraeus.Configuration.PiraeusConfigManager.Settings.Security.Service.Certificate;
+                    List<Claim> claimList = claimArray != null ? new List<Claim>(claimArray) : null;
+                    await GraphManager.SetServiceIdentityAsync(claimList, cert);
 
-//                result = true;
-//            }
-//            catch (Exception ex)
-//            {
-//                Trace.TraceWarning("Service identity not set with error {0}", ex.Message);
-//            }
+                    IsConfigured = true;
+                }
+            }
 
-//            return result;
-//        }
-
-//        private static async Task SetVariables(List<Claim> claims = null, X509Certificate2 certificate = null)
-//        {
-//            Task task = GraphManager.SetServiceIdentityAsync(claims, certificate);
-//            await Task.WhenAll(task);
-//        }
-//    }
-//}
+            
+        }
+        
+    }
+}

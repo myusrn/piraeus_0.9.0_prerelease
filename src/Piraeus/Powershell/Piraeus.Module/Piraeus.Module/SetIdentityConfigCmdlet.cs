@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Piraeus.Module
 {
-    [Cmdlet(VerbsCommon.Add, "IdentityConfig")]
+    [Cmdlet(VerbsCommon.Add, "PiraeusIdentityConfig")]
     public class SetIdentityConfigCmdlet : Cmdlet
     {
         [Parameter(HelpMessage = "Url of the service.", Mandatory = true)]

@@ -32,79 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\Microsoft.Azure.KeyVault.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\Microsoft.Azure.KeyVault.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\Microsoft.Azure.KeyVault.Cryptography.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.Extensions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\Microsoft.Azure.KeyVault.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.WebKey, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\Microsoft.Azure.KeyVault.WebKey.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Edm, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\Microsoft.Data.Edm.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\Microsoft.Data.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Services.Client, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\Microsoft.Data.Services.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=3.17.0.27603, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Security.0.3.1\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Security.0.3.1\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\Microsoft.Rest.ClientRuntime.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\Microsoft.WindowsAzure.Storage.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="SkunkLab.Diagnostics, Version=0.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\SkunkLab.Diagnostics.dll</HintPath>
-    </Reference>
-    <Reference Include="SkunkLab.Security, Version=0.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Security.0.3.1\lib\net461\SkunkLab.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="SkunkLab.Storage, Version=0.0.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\SkunkLab.Storage.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IdentityModel" />
-    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Security.0.3.1\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Spatial, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Diagnostics.0.3.1\lib\net461\System.Spatial.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Security.0.3.1\lib\net461\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\SkunkLab.Security.0.3.1\lib\net461\System.Web.Http.WebHost.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -130,6 +61,14 @@
     <ProjectReference Include="..\..\..\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\SkunkLab.Channels.csproj">
       <Project>{7c69a3ca-29dd-4c33-b70f-f998a6e650b9}</Project>
       <Name>SkunkLab.Channels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\SkunkLab.Protocols.csproj">
+      <Project>{7b2c72a0-0dba-4ded-96dc-b6af80a82277}</Project>
+      <Name>SkunkLab.Protocols</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SkunkLab\SkunkLab.Security\SkunkLab.Security\SkunkLab.Security.csproj">
+      <Project>{90a2c9bb-d422-44f7-b82f-9758cbacbc25}</Project>
+      <Name>SkunkLab.Security</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

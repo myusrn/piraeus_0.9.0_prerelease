@@ -1,6 +1,8 @@
 ﻿using Microsoft.ServiceBus.Messaging;
 using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
+using SkunkLab.Protocols.Coap;
+using SkunkLab.Protocols.Mqtt;
 using System;
 using System.Collections.Specialized;
 using System.Diagnostics;
@@ -14,6 +16,7 @@ namespace Piraeus.Grains.Notifications
         public ServiceBusTopicSink(SubscriptionMetadata metadata)
             : base(metadata)
         {
+            auditor = new Auditor();
             uri = new Uri(metadata.NotifyAddress);
             NameValueCollection nvc = HttpUtility.ParseQueryString(uri.Query);
             keyName = nvc["keyname"];
@@ -36,12 +39,19 @@ namespace Piraeus.Grains.Notifications
 
             try
             {
+                byte[] payload = GetPayload(message);
+                if (payload == null)
+                {
+                    Trace.TraceWarning("Subscription {0} could not write to service bus sink because payload was either null or unknown protocol type.");
+                    return;
+                }
+
                 if (client == null)
                 {
                     client = TopicClient.CreateFromConnectionString(connectionString, topic);
                 }
 
-                BrokeredMessage brokerMessage = new BrokeredMessage(Convert.ToBase64String(message.Message));
+                BrokeredMessage brokerMessage = new BrokeredMessage(Convert.ToBase64String(payload));
                 brokerMessage.Properties.Add("Content-Type", message.ContentType);
                 brokerMessage.MessageId = message.MessageId;
                 await client.SendAsync(brokerMessage);
@@ -61,15 +71,32 @@ namespace Piraeus.Grains.Notifications
             }
         }
 
+        private byte[] GetPayload(EventMessage message)
+        {
+            switch (message.Protocol)
+            {
+                case ProtocolType.COAP:
+                    CoapMessage coap = CoapMessage.DecodeMessage(message.Message);
+                    return coap.Payload;
+                case ProtocolType.MQTT:
+                    MqttMessage mqtt = MqttMessage.DecodeMessage(message.Message);
+                    return mqtt.Payload;
+                case ProtocolType.REST:
+                    return message.Message;
+                case ProtocolType.WSN:
+                    return message.Message;
+                default:
+                    return null;
+            }
+        }
+
         private void Audit(AuditRecord record)
         {
-            if (auditor == null)
+            if (auditor.CanAudit)
             {
-                auditor = new Auditor();
+                Task task = auditor.WriteAuditRecordAsync(record);
+                Task.WhenAll(task);
             }
-
-            Task task = auditor.WriteAuditRecordAsync(record);
-            Task.WhenAll(task);
         }
 
 

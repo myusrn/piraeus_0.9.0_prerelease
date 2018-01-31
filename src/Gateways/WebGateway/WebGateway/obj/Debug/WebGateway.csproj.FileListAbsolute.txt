@@ -20,6 +20,7 @@ C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Newtonsoft.Json.dll
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Orleans.dll
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\OrleansCodeGenerator.dll
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\OrleansProviders.dll
+C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\OrleansRuntime.dll
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Piraeus.Adapters.dll
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Piraeus.Configuration.dll
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Piraeus.Core.dll
@@ -135,6 +136,7 @@ C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Newtonsoft.Json.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\Orleans.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\OrleansCodeGenerator.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\OrleansProviders.xml
+C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\OrleansRuntime.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Collections.Immutable.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Diagnostics.DiagnosticSource.xml
 C:\_git\core\src\Gateways\WebGateway\WebGateway\bin\System.Reflection.Metadata.xml

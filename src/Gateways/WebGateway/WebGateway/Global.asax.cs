@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Diagnostics;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -35,10 +36,15 @@ namespace WebGateway
                 }
                 else
                 {
-                    string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
-                    OrleansClientConfig.TryStart("global.asax", hostname);
+                    OrleansClientConfig.TryStart("global.asax", System.Environment.GetEnvironmentVariable("GATEWAY_ORLEANS_SILO_DNS_HOSTNAME"));
                 }
+
+                Task task = ServiceIdentityConfig.Configure();
+                Task.WhenAll(task);
             }
+
+            
+            
 
 
         }

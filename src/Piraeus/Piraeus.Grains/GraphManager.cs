@@ -475,14 +475,16 @@ namespace Piraeus.Grains
 
         #region Static Service Identity
 
+        public static IServiceIdentity GetServiceIdentity()
+        {
+            return GrainClient.GrainFactory.GetGrain<IServiceIdentity>("serviceidentity");
+        }
+
         public static async Task SetServiceIdentityAsync(List<Claim> claims = null, X509Certificate2 certificate = null)
         {
             IServiceIdentity identity = GrainClient.GrainFactory.GetGrain<IServiceIdentity>("serviceidentity");
             await identity.AddClaimsAsync(claims);
             await identity.AddCertificateAsync(certificate);
-
-            //IResourceList resourceList = GrainClient.GrainFactory.GetGrain<IResourceList>("resourcelist");
-            //return await resourceList.GetListAsync();
         }
 
         public static async Task<List<Claim>> GetServiceIdentityClaimsAsync()

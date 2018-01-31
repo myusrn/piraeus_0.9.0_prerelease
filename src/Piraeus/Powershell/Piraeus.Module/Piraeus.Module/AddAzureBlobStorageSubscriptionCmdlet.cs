@@ -4,7 +4,7 @@ using System.Management.Automation;
 
 namespace Piraeus.Module
 {
-    [Cmdlet(VerbsCommon.Add, "AzureBlobStorageSubscription")]
+    [Cmdlet(VerbsCommon.Add, "PiraeusBlobStorageSubscription")]
     public class AddAzureBlobStorageSubscriptionCmdlet : Cmdlet
     {
         [Parameter(HelpMessage = "Url of the service.", Mandatory = true)]

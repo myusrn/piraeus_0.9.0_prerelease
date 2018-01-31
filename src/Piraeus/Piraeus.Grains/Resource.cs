@@ -142,6 +142,9 @@ namespace Piraeus.Grains
                 return;  //no subscription to unsubscribe
             }
 
+            //remove the subscription from the resource
+            State.Subscriptions.Remove(subscriptionUriString);
+
             //try to remove from subscriber; access control has verified this is permitted
             //if the subscriber does not have this subscription, no harm, it wasn't durable
             ISubscription subscription = GrainFactory.GetGrain<ISubscription>(subscriptionUriString);
@@ -149,12 +152,10 @@ namespace Piraeus.Grains
 
             if(metadata != null && !string.IsNullOrEmpty(metadata.Identity))
             {
+                await subscription.ClearAsync();
                 ISubscriber subscriber = GrainFactory.GetGrain<ISubscriber>(metadata.Identity);
                 await subscriber.RemoveSubscriptionAsync(subscriptionUriString);
             }
-
-            //remove the subscription from the resource
-            State.Subscriptions.Remove(subscriptionUriString);
         }
 
         public async Task<IEnumerable<string>> GetSubscriptionListAsync()

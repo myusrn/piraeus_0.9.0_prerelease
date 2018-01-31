@@ -1,6 +1,5 @@
 ﻿using Piraeus.Clients.Rest;
 using SkunkLab.Channels.Http;
-using SkunkLab.Security.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -15,35 +14,20 @@ namespace Samples.Clients.Rest
 {
     class Program
     {
-        private static string audience = "http://www.skunklab.io/";
-        private static string issuer = "http://www.skunklab.io/";
-        private static string symmetricKey = "SJoPNjLKFR4j1tD5B4xhJStujdvVukWz39DIY3i8abE=";
-        private static string nameClaimType = "http://www.skunklab.io/name";
-        private static string roleClaimType = "http://www.skunklab.io/role";
+        
 
-        static string CT_TEXT = "text/plain";
-        static string CT_JSON = "application/json";
-        static string CT_XML = "application/xml";
-        static string CT_BYTES = "application/octet-stream";
 
 
         static int index;
         static string endpoint;
 
-        static string resourceA;
-        static string resourceB;
         static CancellationTokenSource source;
-        static string contentType;
-
-    
-        static string indexClaimType;
-        static string indexClaimValue;
-
 
         static string publishResource;
         static string observeResource;
         static string role;
         static string clientName;
+        static RestClient client;
 
 
         static void Main(string[] args)
@@ -51,11 +35,10 @@ namespace Samples.Clients.Rest
             WriteHeader();
             
             SelectClientRole();
-            SelectClientName();
+            string securityToken = GetSecurityToken();  //get the security token with a unique name
+            SetResources(); //setup the resources for pub and observe based on role.
             SelectEndpoint();
-            SetResources();
 
-            string token = GetSecurityToken();
             source = new CancellationTokenSource();
 
             //create HTTP Observer
@@ -63,25 +46,46 @@ namespace Samples.Clients.Rest
             observer.OnNotify += Observer_OnNotify;
 
             //create the REST client
-            RestClient client = new RestClient(endpoint, token, new HttpObserver[] { observer }, source.Token);
-                        
-            Console.WriteLine("Press any key to send a message !");
-            Console.ReadKey();
+            client = new RestClient(endpoint, securityToken, new HttpObserver[] { observer }, source.Token);
 
-            bool sending = true;
-            while (sending)
-            {
-                //List<KeyValuePair<string, string>> indexes = null;
-                index++;
-                byte[] message = Encoding.UTF8.GetBytes(String.Format("{0} sent message {1}", clientName, index));                
-                Task sendTask = client.SendAsync(publishResource, contentType, message);
-                Task.WhenAll(sendTask);
-                Console.Write("Do you want to send another message (Y/N) ? ");               
-                sending = Console.ReadLine().ToLowerInvariant() == "y";
-            }
+            Task stubTask = Task.Delay(1).ContinueWith(SendMessages);
+            Task.WaitAll(stubTask);
 
             source.Cancel();
             Console.WriteLine("press any key to terminate");
+        }
+
+        static void SendMessages(Task task)
+        {
+            Console.WriteLine();
+            Console.Write("Send messages (Y/N) ? ");
+            bool sending = Console.ReadLine().ToLowerInvariant() == "y";
+
+            if (sending)
+            {
+                Console.Write("Enter number of messages to send ? ");
+                int num = Int32.Parse(Console.ReadLine());
+
+                Console.Write("Enter delay between messages in milliseconds ? ");
+                int delay = Int32.Parse(Console.ReadLine());
+
+                for (int i = 0; i < num; i++)
+                {
+                    index++;
+                    //send a message to a resource
+                    string message = String.Format("{0} sent message {1}", clientName, index);
+                    byte[] payload = Encoding.UTF8.GetBytes(message);
+                    Task pubTask = client.SendAsync(publishResource, "text/plain", payload);
+                    Task.WhenAll(pubTask);
+
+                    if (delay > 0)
+                    {
+                        Task.Delay(delay).Wait();
+                    }
+                }
+
+                SendMessages(task);
+            }
         }
 
         private static void Observer_OnNotify(object sender, SkunkLab.Channels.ObserverEventArgs args)
@@ -103,13 +107,8 @@ namespace Samples.Clients.Rest
         private static List<Claim> GetClaims()
         {
             List<Claim> claims = new List<Claim>();
-            claims.Add(new Claim(nameClaimType, Guid.NewGuid().ToString()));
-            claims.Add(new Claim(roleClaimType, role));
-
-            if(indexClaimType != null)
-            {
-                claims.Add(new Claim(indexClaimType, indexClaimValue));
-            }
+            claims.Add(new Claim(ConfigurationManager.AppSettings["nameClaimType"], Guid.NewGuid().ToString()));
+            claims.Add(new Claim(ConfigurationManager.AppSettings["roleClaimType"], role));            
 
             return claims;
         }
@@ -125,7 +124,10 @@ namespace Samples.Clients.Rest
         static string GetSecurityToken()
         {
             string nameClaimType = ConfigurationManager.AppSettings["nameClaimType"];
-            string roleClaimType = ConfigurationManager.AppSettings["roleClaimType"];            
+            string roleClaimType = ConfigurationManager.AppSettings["roleClaimType"];
+
+            Console.Write("Enter unique client name ? ");
+            clientName = Console.ReadLine();
 
             List<Claim> claims = new List<Claim>()
             {
@@ -145,102 +147,24 @@ namespace Samples.Clients.Rest
             SkunkLab.Security.Tokens.JsonWebToken jwt = new SkunkLab.Security.Tokens.JsonWebToken(new Uri(audience), symmetricKey, issuer, claims, lifetimeMinutes);
             return jwt.ToString();
         }
-
+      
 
         #endregion
 
         #region UX Inputs
-        static void SelectContentType()
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Select content type for messages transmitted...");
-            Console.WriteLine("(1) {0}", CT_TEXT);
-            Console.WriteLine("(2) {0}", CT_JSON);
-            Console.WriteLine("(3) {0}", CT_XML);
-            Console.WriteLine("(4) {0}", CT_BYTES);
-            Console.Write("Enter content-type code ? ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            string codeString = Console.ReadLine();
-            Console.ResetColor();
+       
 
-            int val = 0;
-            if(Int32.TryParse(codeString, out val))
-            {
-                if(val > 0 && val < 5)
-                {
-                    if(val == 1)
-                    {
-                        contentType = CT_TEXT;
-                    }
-                    else if(val == 2)
-                    {
-                        contentType = CT_JSON;
-                    }
-                    else if(val == 3)
-                    {
-                        contentType = CT_XML;
-                    }
-                    else
-                    {
-                        contentType = CT_BYTES;
-                    }
-                }
-                else
-                {
-                    SelectContentType();
-                }
-            }
-            else
-            {
-                SelectContentType();
-            }
-        }
+       
+      
 
-        static void AddIndexClaim()
-        {
-            Console.Write("Do you want to add a claim for indexing (Y/N) ? ");
-            if(Console.ReadLine().ToLowerInvariant() == "y")
-            {
-                Console.Write("Enter claim type to index  ? ");
-                indexClaimType = Console.ReadLine();
-                Console.Write("Enter claim value to index ? ");
-                indexClaimValue = Console.ReadLine();                
-            }
-        }
-        static void SelectObserveResource()
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Enter Resource URI to observe messages ? ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            resourceB = Console.ReadLine();
-            Console.ResetColor();
-        }
-                
 
         static void SelectClientRole()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Enter a role for this client (A/B) ? ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            role = Console.ReadLine().ToUpper();
-            Console.ResetColor();
-
-            if (!(role == "A" || role == "B"))
-            {
+            Console.WriteLine();
+            Console.Write("Enter Role for this client (A/B) ? ");
+            role = Console.ReadLine().ToUpperInvariant();
+            if (role != "A" && role != "B")
                 SelectClientRole();
-            }
-            else if(role == "A")
-            {
-                resourceA = "http://www.skunklab.io/resource-a";
-                resourceB = "http://www.skunklab.io/resource-b";
-               
-            }
-            else
-            {
-                resourceB = "http://www.skunklab.io/resource-a";
-                resourceA = "http://www.skunklab.io/resource-b";
-            }
-           
         }
 
         static void SelectEndpoint()

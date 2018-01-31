@@ -1,6 +1,5 @@
 ﻿using Piraeus.Adapters;
 using Piraeus.Configuration.Settings;
-using SkunkLab.Channels.WebSocket;
 using System;
 using System.Configuration;
 using System.Diagnostics;
@@ -25,16 +24,18 @@ namespace WebGateway.Controllers
             {
                 bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
                 if (!dockerized)
-                {
+                {                    
                     OrleansClientConfig.TryStart("ConnectController");
                 }
                 else
                 {
-                    string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
-                    OrleansClientConfig.TryStart("ConnectController", hostname);
+                    OrleansClientConfig.TryStart("ConnectController", System.Environment.GetEnvironmentVariable("GATEWAY_ORLEANS_SILO_DNS_HOSTNAME"));
                 }
-            }
 
+                Task task = ServiceIdentityConfig.Configure();
+                Task.WhenAll(task);
+            }
+                                   
             config = Piraeus.Configuration.PiraeusConfigManager.Settings;
             source = new CancellationTokenSource();
 
@@ -70,32 +71,17 @@ namespace WebGateway.Controllers
         }
 
         [HttpGet]
-        public async Task<HttpResponseMessage> Get()
+        public HttpResponseMessage Get()
         {
             try
             {
-                //MessageUri mu = new MessageUri(Request);
                 SkunkLab.Security.Authentication.BasicAuthenticator authn = new SkunkLab.Security.Authentication.BasicAuthenticator();
-                //adapter = ProtocolAdapterFactory.Create(config, Request, source.Token, authn);
-
-                //adapter.OnClose += Adapter_OnClose;
-                //adapter.OnError += Adapter_OnError;
-
-
+             
                 HttpContext context = HttpContext.Current;
 
                 if (context.IsWebSocketRequest ||
                 context.IsWebSocketRequestUpgrading)
                 {
-                    //WebSocketConfig config = new WebSocketConfig();
-                    //handler = new WebSocketHandler(config, source.Token);
-                    //HttpContext.Current.AcceptWebSocketRequest(handler);
-                    // WebSocketConfig wsc = new WebSocketConfig();
-                    // WebSocketServerChannel wschannel = new WebSocketServerChannel(Request, wsc, source.Token);
-                    //CoapConfig cc = new CoapConfig(authn, "www.skunklab.io", CoapConfigOptions.NoResponse | CoapConfigOptions.Observe);
-
-                    //IChannel channel = ChannelFactory.Create(Request, new WebSocketConfig(), source.Token);
-
                     PiraeusConfig config = Piraeus.Configuration.PiraeusConfigManager.Settings;
 
                     adapter = ProtocolAdapterFactory.Create(config, Request, source.Token);
@@ -133,7 +119,6 @@ namespace WebGateway.Controllers
 
         private void Adapter_OnClose(object sender, ProtocolAdapterCloseEventArgs e)
         {
-            //source.Cancel();
             adapter.Dispose();
         }
 
@@ -173,7 +158,6 @@ namespace WebGateway.Controllers
                     response = Request.CreateResponse<byte[]>(HttpStatusCode.OK, a.Message, formatter);
                 }
 
-                //response = Request.CreateResponse(HttpStatusCode.OK, a.Message, a.ContentType);
                 response.Headers.Add("x-sl-resource", a.ResourceUriString);
                 are.Set();
             };

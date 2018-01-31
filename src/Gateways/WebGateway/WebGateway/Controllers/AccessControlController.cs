@@ -20,7 +20,7 @@ namespace WebGateway.Controllers
                 bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
                 if(!dockerized)
                 {
-                    OrleansClientConfig.TryStart("AccessControlController", "orleans-silo");
+                    OrleansClientConfig.TryStart("AccessControlController");
                 }
                 else
                 {
@@ -29,6 +29,8 @@ namespace WebGateway.Controllers
                 }
 
                 Trace.TraceInformation("Orleans grain client initialized {0} is access control controller", Orleans.GrainClient.IsInitialized);
+                Task task = ServiceIdentityConfig.Configure();
+                Task.WhenAll(task);
             }
             
 

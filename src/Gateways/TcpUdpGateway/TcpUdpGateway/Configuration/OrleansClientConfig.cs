@@ -18,7 +18,7 @@ namespace TcpUdpGateway.Configuration
                 IPAddress ip = System.Net.Dns.GetHostAddresses(hostname)[0];
                 var config = new Orleans.Runtime.Configuration.ClientConfiguration();
                 config.Gateways.Add(new IPEndPoint(ip, 30000));
-                config.OpenConnectionTimeout = TimeSpan.FromMinutes(4);
+                config.OpenConnectionTimeout = TimeSpan.FromMinutes(4);                
                 Orleans.GrainClient.Initialize(config);
             }
             catch (Exception ex)

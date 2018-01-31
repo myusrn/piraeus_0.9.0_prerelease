@@ -26,9 +26,11 @@ namespace WebGateway.Controllers
                 }
                 else
                 {
-                    string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
-                    OrleansClientConfig.TryStart("ManageController", hostname);
+                    OrleansClientConfig.TryStart("ManageController", System.Environment.GetEnvironmentVariable("GATEWAY_ORLEANS_SILO_DNS_HOSTNAME"));
                 }
+
+                Task task = ServiceIdentityConfig.Configure();
+                Task.WhenAll(task);
             }
 
             Trace.TraceInformation("Orleans grain client initialized {0} is resource controller", Orleans.GrainClient.IsInitialized);

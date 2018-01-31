@@ -13,6 +13,10 @@ C:\_git\core\Docker\OrleansSilo\Output\Capl.dll
 C:\_git\core\Docker\OrleansSilo\Output\Capl.pdb
 C:\_git\core\Docker\Orleans-Silo\Output\Capl.dll
 C:\_git\core\Docker\Orleans-Silo\Output\Capl.pdb
+C:\_git\core\src\CAPL\capl\src\Docker\TcpUdpGateway\Output\Capl.dll
+C:\_git\core\src\CAPL\capl\src\Docker\TcpUdpGateway\Output\Capl.pdb
+C:\_git\core\src\CAPL\Capl\src\Docker\Orleans-Silo\Output\Capl.dll
+C:\_git\core\src\CAPL\Capl\src\Docker\Orleans-Silo\Output\Capl.pdb
 C:\_git\core\src\CAPL\Capl\bin\Release\Capl.dll
 C:\_git\core\src\CAPL\Capl\bin\Release\Capl.pdb
 C:\_git\core\src\CAPL\Capl\obj\Release\Capl.Properties.Resources.resources
@@ -20,4 +24,11 @@ C:\_git\core\src\CAPL\Capl\obj\Release\Capl.csproj.GenerateResource.Cache
 C:\_git\core\src\CAPL\Capl\obj\Release\Capl.csproj.CoreCompileInputs.cache
 C:\_git\core\src\CAPL\Capl\obj\Release\Capl.dll
 C:\_git\core\src\CAPL\Capl\obj\Release\Capl.pdb
-C:\_git\core\src\CAPL\Capl\obj\Release\Capl.csprojResolveAssemblyReference.cache
+C:\_git\Docker\TcpUdpGateway\Output\Capl.dll
+C:\_git\Docker\TcpUdpGateway\Output\Capl.pdb
+C:\_git\Docker\Orleans-Silo\Output\Capl.dll
+C:\_git\Docker\Orleans-Silo\Output\Capl.pdb
+C:\_git\core\src\Docker\TcpUdpGateway\Output\Capl.dll
+C:\_git\core\src\Docker\TcpUdpGateway\Output\Capl.pdb
+C:\_git\core\src\Docker\Orleans-Silo\Output\Capl.dll
+C:\_git\core\src\Docker\Orleans-Silo\Output\Capl.pdb

@@ -152,7 +152,7 @@ namespace Piraeus.Clients.Mqtt
             {
                 byte[] message = queue.Dequeue();
                 Task t = channel.SendAsync(message);
-                Task.WaitAll(t);
+                await Task.WhenAll(t);
             }
         }
 

@@ -22,7 +22,7 @@ namespace WebGateway.Security
                 config.DeploymentId = "PiraeusDeployment";
                 config.PropagateActivityId = true;
 
-                var hostEntry = Dns.GetHostEntry("orleans-silo");
+                var hostEntry = Dns.GetHostEntry(System.Environment.GetEnvironmentVariable("GATEWAY_ORLEANS_SILO_DNS_HOSTNAME"));
                 var ip = hostEntry.AddressList[0];
                 Trace.TraceWarning("Host Entry IP Address {0}", ip.ToString());
                 config.Gateways.Add(new IPEndPoint(ip, 30000));

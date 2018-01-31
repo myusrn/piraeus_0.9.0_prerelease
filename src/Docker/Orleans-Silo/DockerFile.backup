@@ -1,4 +1,0 @@
-FROM microsoft/windowsservercore
-WORKDIR /app
-ENTRYPOINT ["Piraeus.Silo.exe"]
-COPY . /app

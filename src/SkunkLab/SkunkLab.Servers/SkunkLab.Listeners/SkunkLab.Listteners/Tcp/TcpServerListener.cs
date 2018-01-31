@@ -83,8 +83,7 @@ namespace SkunkLab.Listeners.Tcp
                     client.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                     client.Client.UseOnlyOverlappedIO = true;
 
-                    Task task = ManageConnection(client);
-                    Task.WhenAll(task);
+                    ManageConnection(client);                    
                 }
                 catch (Exception ex)
                 {
@@ -110,16 +109,17 @@ namespace SkunkLab.Listeners.Tcp
             await TaskDone.Done;
         }
 
-        private async Task ManageConnection(TcpClient client)
+        private void ManageConnection(TcpClient client)
         {
             ProtocolAdapter adapter = ProtocolAdapterFactory.Create(config, authn, client, token);
             dict.Add(adapter.Channel.Id, adapter);
             adapter.OnError += Adapter_OnError;
             adapter.OnClose += Adapter_OnClose;
             adapter.Init();
-            await adapter.Channel.OpenAsync();
-            Task t = adapter.Channel.ReceiveAsync();
-            await Task.WhenAll(t);
+            Task openTask = adapter.Channel.OpenAsync();
+            Task.WhenAll(openTask);
+            Task receiveTask = adapter.Channel.ReceiveAsync();
+            Task.WhenAll(receiveTask);
         }
 
 

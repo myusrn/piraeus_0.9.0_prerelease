@@ -15,7 +15,7 @@ namespace Piraeus.Adapters
 
         public abstract Task UnsubscribeAsync(string resourceUriString);
 
-        public abstract Task<bool> CanPublishAsync(string resourceUriString, bool channelEncrypted);
+        public abstract Task<bool> CanPublishAsync(ResourceMetadata metadata, bool channelEncrypted);
 
         public abstract Task<bool> CanSubscribeAsync(string resourceUriString, bool channelEncrypted);
     }

@@ -9,6 +9,8 @@ using Piraeus.Configuration.Settings;
 using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
 using Piraeus.Core.Utilities;
+using Piraeus.Grains;
+using Piraeus.Grains.Notifications;
 using SkunkLab.Channels;
 using SkunkLab.Diagnostics.Logging;
 using SkunkLab.Security.Identity;
@@ -93,7 +95,8 @@ namespace Piraeus.Adapters
                 byte[] buffer = request.Content.ReadAsByteArrayAsync().Result;
                 Task t = Task.Factory.StartNew(async () =>
                 {
-                    EventMessage message = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, buffer);
+                    ResourceMetadata metadata = await GraphManager.GetResourceMetadataAsync(uri.Resource);
+                    EventMessage message = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, buffer, DateTime.UtcNow, metadata.Audit);
                     List<KeyValuePair<string, string>> indexList = uri.Indexes == null ? null : new List<KeyValuePair<string, string>>(uri.Indexes);
 
                     await PublishAsync(decoder.Id, message, indexList);
@@ -118,10 +121,6 @@ namespace Piraeus.Adapters
         {
             OnClose?.Invoke(this, new ProtocolAdapterCloseEventArgs(Channel.Id));
         }
-
-        
-
-        
 
         #region Adapter event
         private void Adapter_OnObserve(object sender, ObserveMessageEventArgs e)
@@ -183,7 +182,9 @@ namespace Piraeus.Adapters
 
         private async Task PublishAsync(string identity, EventMessage message, List<KeyValuePair<string, string>> indexes = null)
         {
-            if (await adapter.CanPublishAsync(message.ResourceUri, Channel.IsEncrypted))
+            ResourceMetadata metadata = await GraphManager.GetResourceMetadataAsync(message.ResourceUri);
+
+            if (await adapter.CanPublishAsync(metadata, Channel.IsEncrypted))
             {
                 await adapter.PublishAsync(message, indexes);
             }

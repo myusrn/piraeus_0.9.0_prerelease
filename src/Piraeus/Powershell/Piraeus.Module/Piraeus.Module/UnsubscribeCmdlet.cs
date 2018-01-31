@@ -3,7 +3,7 @@ using System.Management.Automation;
 
 namespace Piraeus.Module
 {
-    [Cmdlet(VerbsCommon.New, "PiraeusUnsubscribe")]
+    [Cmdlet(VerbsCommon.Remove, "PiraeusSubscription")]
     public class UnsubscribeCmdlet : Cmdlet
     {
         [Parameter(HelpMessage = "Url of the service.", Mandatory = true)]

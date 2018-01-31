@@ -2,8 +2,8 @@
 {
     public enum AzureBlobType
     {
-        Block,
-        Page,
-        Append
+        Block = 1,
+        Page = 2,
+        Append = 3
     }
 }

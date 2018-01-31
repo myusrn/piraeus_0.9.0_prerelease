@@ -39,12 +39,28 @@ namespace WebGateway.Security
 
         private AuthorizationPolicy CreatePolicy()
         {
-            string claimType = ConfigurationManager.AppSettings["matchClaimType"];
-            string value = ConfigurationManager.AppSettings["matchClaimValue"];
+            string claimType = null;
+            string value = null;
+            bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+
+            if (!dockerized)
+            {
+                claimType = ConfigurationManager.AppSettings["roleClaimType"];
+                value = ConfigurationManager.AppSettings["roleClaimValue"];
+            }
+            else
+            {
+                claimType = System.Environment.GetEnvironmentVariable("MGMT_API_ROLE_CLAIM_TYPE");
+                value = System.Environment.GetEnvironmentVariable("MGMT_API_ROLE_CLAIM_VALUE");
+            }
+
             Rule rule = new Rule();
             rule.MatchExpression = new Capl.Authorization.Match(Capl.Authorization.Matching.LiteralMatchExpression.MatchUri, claimType, true);
             rule.Operation = new EvaluationOperation(Capl.Authorization.Operations.EqualOperation.OperationUri, value);
             return new AuthorizationPolicy(rule, new Uri(this.PolicyId));
         }
+
+
+
     }
 }

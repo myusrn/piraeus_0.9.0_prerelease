@@ -4,7 +4,7 @@ using System.Management.Automation;
 
 namespace Piraeus.Module
 {
-    [Cmdlet(VerbsCommon.Add, "AzureQueueStorageSubscription")]
+    [Cmdlet(VerbsCommon.Add, "PiraeusQueueStorageSubscription")]
     public class AddAzureQueueStorageSubscriptionCmdlet : Cmdlet
     {
         [Parameter(HelpMessage = "Url of the service.", Mandatory = true)]

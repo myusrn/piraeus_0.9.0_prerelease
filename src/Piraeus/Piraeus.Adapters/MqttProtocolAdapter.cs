@@ -2,6 +2,7 @@
 using Piraeus.Core.Messaging;
 using Piraeus.Core.Metadata;
 using Piraeus.Grains;
+using Piraeus.Grains.Notifications;
 using SkunkLab.Channels;
 using SkunkLab.Diagnostics.Logging;
 using SkunkLab.Protocols.Mqtt;
@@ -26,7 +27,8 @@ namespace Piraeus.Adapters
             mqttConfig.IdentityClaimType = config.Identity.Client.IdentityClaimType;
             mqttConfig.Indexes = config.Identity.Client.Indexes;
 
-            session = new MqttSession(mqttConfig);
+            session = new MqttSession(mqttConfig);           
+
             Channel = channel;
             Channel.OnClose += Channel_OnClose;
             Channel.OnError += Channel_OnError;
@@ -39,13 +41,12 @@ namespace Piraeus.Adapters
         public override event System.EventHandler<ProtocolAdapterCloseEventArgs> OnClose;
         public override event System.EventHandler<ChannelObserverEventArgs> OnObserve;
 
+        private Auditor auditor;
         private MqttSession session;
         private bool disposed;
         private OrleansAdapter adapter;
         private PiraeusConfig config;
         private bool forcePerReceiveAuthn;
-
-        private int publishIndex;
 
 
 
@@ -54,6 +55,9 @@ namespace Piraeus.Adapters
 
         public override void Init()
         {
+            Task task = SetupAuditorAsync();
+            Task.WhenAll(task);
+
             forcePerReceiveAuthn = Channel as UdpChannel != null;
             session.OnPublish += Session_OnPublish;
             session.OnSubscribe += Session_OnSubscribe;
@@ -90,9 +94,32 @@ namespace Piraeus.Adapters
         #region Orleans Adapter Events
         private void Adapter_OnObserve(object sender, ObserveMessageEventArgs e)
         {
-            byte[] message = ProtocolTransition.ConvertToMqtt(session, e.Message);
-            Task task = Send(message);
-            Task.WhenAll(task);
+            AuditRecord record = null;
+            int length = 0;
+            try
+            {
+                byte[] message = ProtocolTransition.ConvertToMqtt(session, e.Message);
+                Task task = Send(message);
+                Task.WhenAll(task);
+
+                MqttMessage mm = MqttMessage.DecodeMessage(message);
+                length = mm.Payload.Length;
+                record = new AuditRecord(e.Message.MessageId, session.Identity, this.Channel.TypeId, e.Message.Protocol.ToString(), length, true, DateTime.UtcNow);
+
+            }
+            catch(Exception ex)
+            {
+                record = new AuditRecord(e.Message.MessageId, session.Identity, this.Channel.TypeId, e.Message.Protocol.ToString(), length, true, DateTime.UtcNow, ex.Message);
+
+            }
+            finally
+            {
+               if(record != null && auditor.CanAudit)
+                {
+                    Task task = auditor.WriteAuditRecordAsync(record);
+                    Task.WhenAll(task);
+                }
+            }
         }
 
         private async Task Send(byte[] message)
@@ -242,11 +269,12 @@ namespace Piraeus.Adapters
                 {
                     ResourceMetadata metadata = await GraphManager.GetResourceMetadataAsync(mqttUri.Resource);
 
-                    if (await adapter.CanPublishAsync(mqttUri.Resource, Channel.IsEncrypted))
+                    if (await adapter.CanPublishAsync(metadata, Channel.IsEncrypted))
                     {
-                        EventMessage msg = new EventMessage(mqttUri.ContentType, mqttUri.Resource, ProtocolType.MQTT, message.Encode());
+                        EventMessage msg = new EventMessage(mqttUri.ContentType, mqttUri.Resource, ProtocolType.MQTT, message.Encode(),DateTime.UtcNow, metadata.Audit);
                         await adapter.PublishAsync(msg, null);
-                        Trace.WriteLine(String.Format("MQTT Publish {0}", publishIndex++));
+                        
+                        
                     }
                     else
                     {
@@ -400,7 +428,12 @@ namespace Piraeus.Adapters
 
         #region Private methods
 
-        
+        private async Task SetupAuditorAsync()
+        {
+            string connectionstring = await GraphManager.GetAuditConfigConnectionstringAsync();
+            string tablename = await GraphManager.GetAuditConfigTablenameAsync();
+            auditor = new Auditor(connectionstring, tablename);
+        }
         
         #endregion
 

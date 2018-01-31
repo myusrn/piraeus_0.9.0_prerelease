@@ -1,2 +1,0 @@
-C:\_git\core\src\Samples\Clients\Assets\LocalServer\obj\Debug\LocalServer.csprojResolveAssemblyReference.cache
-C:\_git\core\src\Samples\Clients\Assets\LocalServer\obj\Debug\LocalServer.csproj.CoreCompileInputs.cache

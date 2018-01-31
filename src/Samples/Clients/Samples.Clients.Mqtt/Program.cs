@@ -21,13 +21,11 @@ namespace Samples.Clients.Mqtt
         static int index;
         static IChannel channel;
         static CancellationTokenSource source;
-        static string contentType = "text/plain";
         static string publishResource;
         static string observeResource;
         static string role;
         static string clientName;
         static PiraeusMqttClient client;
-        static ManualResetEventSlim observeAck;
 
 
         static void Main(string[] args)

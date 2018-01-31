@@ -1,7 +1,0 @@
-[2017-12-19 00:01:44.027 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug...	
-[2017-12-19 00:01:48.755 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\BouncyCastle.Crypto.dll
-	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
-[2017-12-19 00:01:49.255 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Capl.dll
-	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
-[2017-12-19 00:01:51.898 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\core\src\SkunkLab\SkunkLab.Servers\Tcp\SkunkLab.Servers.Tcp\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
-	* Assembly contains no types assignable from Orleans.Providers.IProvider.	

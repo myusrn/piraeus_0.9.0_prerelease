@@ -5,7 +5,7 @@ using Piraeus.Core.Metadata;
 
 namespace Piraeus.Module
 {
-    [Cmdlet(VerbsCommon.New, "PiraeusSubscribe")]
+    [Cmdlet(VerbsCommon.Add, "PiraeusSubscription")]
     public class SubscribeCmdlet : Cmdlet
     {
         [Parameter(HelpMessage = "Url of the service.", Mandatory = true)]

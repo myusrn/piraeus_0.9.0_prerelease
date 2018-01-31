@@ -39,10 +39,6 @@ namespace Piraeus.Adapters
         private bool forcePerReceiveAuthn;
 
 
-        
-
-
-
         public override IChannel Channel { get; set; }
 
 

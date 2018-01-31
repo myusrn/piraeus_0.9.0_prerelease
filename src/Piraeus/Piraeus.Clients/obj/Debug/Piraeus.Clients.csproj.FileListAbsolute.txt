@@ -103,11 +103,9 @@ C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\SkunkLab.Channels.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\SkunkLab.Protocols.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\SkunkLab.Security.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Diagnostics.DiagnosticSource.dll
-C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Net.Http.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Security.Cryptography.Algorithms.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Security.Cryptography.Encoding.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Security.Cryptography.Primitives.dll
-C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Security.Cryptography.X509Certificates.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\BouncyCastle.Crypto.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\SkunkLab.Diagnostics.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
@@ -133,3 +131,5 @@ C:\_git\core\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.csprojResolve
 C:\_git\core\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.dll
 C:\_git\core\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.pdb
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\Microsoft.Win32.Primitives.dll
+C:\_git\core\src\Piraeus\Piraeus.Clients\bin\Debug\System.Security.Cryptography.X509Certificates.dll

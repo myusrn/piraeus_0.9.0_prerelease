@@ -18,6 +18,7 @@ C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Newtonsoft.Json.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\System.Web.Http.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Capl.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\SkunkLab.Storage.dll
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\SkunkLab.Protocols.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Microsoft.Azure.Documents.Client.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Microsoft.ServiceBus.dll
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Microsoft.Azure.Devices.Client.dll
@@ -73,6 +74,8 @@ C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\System.Web.Http.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Capl.pdb
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\SkunkLab.Storage.pdb
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\SkunkLab.Storage.dll.config
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\SkunkLab.Protocols.pdb
+C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\SkunkLab.Protocols.dll.config
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Microsoft.Azure.Documents.Client.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Microsoft.ServiceBus.xml
 C:\_git\core\src\Piraeus\Piraeus.SiloHost\bin\Debug\Microsoft.Azure.Devices.Client.xml

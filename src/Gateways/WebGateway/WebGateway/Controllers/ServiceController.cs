@@ -24,10 +24,12 @@ namespace WebGateway.Controllers
                     OrleansClientConfig.TryStart("ServiceController");
                 }
                 else
-                {
-                    string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
-                    OrleansClientConfig.TryStart("ServiceController", hostname);
+                {                  
+                    OrleansClientConfig.TryStart("ServiceController", System.Environment.GetEnvironmentVariable("GATEWAY_ORLEANS_SILO_DNS_HOSTNAME"));
                 }
+
+                Task task = ServiceIdentityConfig.Configure();
+                Task.WhenAll(task);
             }
         }
         [HttpPost]
