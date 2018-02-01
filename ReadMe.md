@@ -1,7 +1,11 @@
----
-subtitle: and real-time distributed systems at the edge of chaos
-title: ./media/image1.jpeg
----
+Welcome to the Skunk Lab
+================
+
+![Skunk](https://pegasusmission.files.wordpress.com/2018/02/skunklab-171x199.jpg)
+
+-----
+
+
 
 Overview
 ================
@@ -15,8 +19,8 @@ We have used the technology with extreme experiments with great success through 
 Getting Started
 ===============
 
-- [Deploying Piraeus in Azure](docs/quickstartazure.md)
-- [Running Client Samples](docs/quickstartclientsample.md)
+- [Deploying Piraeus in Azure](quickstartazure.md)
+- [Running Client Samples](quickstartclientsample.md)
 
 Build from Source
 ===============
