@@ -19,8 +19,8 @@ We have used the technology with extreme experiments with great success through 
 Getting Started
 ===============
 
-- [Deploying Piraeus in Azure](quickstartazure.md)
-- [Running Client Samples](quickstartclientsample.md)
+- [Deploying Piraeus in Azure](https://github.com/skunklab/piraeus_0.9.0_prerelease/blob/master/quickstartazure.md)
+- [Running Client Samples](https://github.com/skunklab/piraeus_0.9.0_prerelease/blob/master/quickstartclientsample.md)
 
 Build from Source
 ===============
