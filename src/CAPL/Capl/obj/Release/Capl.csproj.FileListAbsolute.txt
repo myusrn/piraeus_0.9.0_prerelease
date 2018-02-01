@@ -32,3 +32,8 @@ C:\_git\core\src\Docker\TcpUdpGateway\Output\Capl.dll
 C:\_git\core\src\Docker\TcpUdpGateway\Output\Capl.pdb
 C:\_git\core\src\Docker\Orleans-Silo\Output\Capl.dll
 C:\_git\core\src\Docker\Orleans-Silo\Output\Capl.pdb
+C:\_git\core\src\CAPL\src\Docker\TcpUdpGateway\Output\Capl.dll
+C:\_git\core\src\CAPL\src\Docker\TcpUdpGateway\Output\Capl.pdb
+C:\_git\core\src\CAPL\src\Docker\Orleans-Silo\Output\Capl.dll
+C:\_git\core\src\CAPL\src\Docker\Orleans-Silo\Output\Capl.pdb
+C:\_git\core\src\CAPL\capl\obj\Release\Capl.csprojResolveAssemblyReference.cache

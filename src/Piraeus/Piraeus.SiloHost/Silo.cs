@@ -29,7 +29,8 @@ namespace Piraeus.SiloHost
             // define the cluster configuration   
             ClusterConfiguration config = null;
             string hostname = System.Net.Dns.GetHostName();
-            
+            Console.WriteLine("Host Name {0}", hostname);
+
             if (dockerized)
             {
 
@@ -49,6 +50,18 @@ namespace Piraeus.SiloHost
                 config.Defaults.ProxyGatewayEndpoint = new IPEndPoint(IPAddress.Any, 30000);
                 config.Defaults.SiloName = hostname;
 
+                Console.WriteLine("Variables for Dockerization");
+                Console.WriteLine("Globals CS {0}", config.Globals.DataConnectionString);
+                Console.WriteLine("Globals CS Reminders {0}", config.Globals.DataConnectionStringForReminders);
+                Console.WriteLine("Deployment ID {0}", config.Globals.DeploymentId);
+                Console.WriteLine("Liveness {0}", config.Globals.LivenessEnabled);
+                Console.WriteLine("LivenessType {0}", config.Globals.LivenessType);
+                Console.WriteLine("ReminderServiceType{0}", config.Globals.ReminderServiceType);
+                Console.WriteLine("PropagateActiveId {0}", config.Defaults.PropagateActivityId);
+                Console.WriteLine("HostName {0}", config.Defaults.HostNameOrIPAddress);
+                Console.WriteLine("Port {0}", config.Defaults.Port);
+                Console.WriteLine("ProxyGatewayEndpoint {0}:{1}", config.Defaults.ProxyGatewayEndpoint.Address.ToString(), config.Defaults.ProxyGatewayEndpoint.Port);
+                Console.WriteLine("SiloName {0}", hostname);
                 ServicePointManager.DefaultConnectionLimit = 12 * Environment.ProcessorCount;
 
                 IDictionary<string, string> properties = GetStorageProviderProperties();
@@ -70,17 +83,6 @@ namespace Piraeus.SiloHost
                 {
                     Console.WriteLine("Orleans Storage Provider NAME not understood.");
                     throw new ArgumentOutOfRangeException("Provider name is not recognized for Orleans storage provider.");
-                }
-
-
-                try
-                {
-                    config.LoadFromFile("OrleansConfiguration.xml");
-                    Console.WriteLine("Configuration file loaded.");
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine("Failed to load config file with {0}", ex.Message);
                 }
             }
             else

@@ -97,7 +97,6 @@ C:\_git\core\Piraeus.Orleans\Piraeus.Grains\obj\Debug\Piraeus.Grains.pdb
 C:\_git\core\Piraeus.Orleans\Piraeus.Grains\bin\Debug\System.Web.Http.xml
 C:\_git\core\Piraeus.Orleans\Piraeus.Grains\bin\Debug\System.Net.Http.Formatting.xml
 C:\_git\core\Piraeus.Orleans\Piraeus.Grains\obj\Debug\Piraeus.Grains.orleans.g.cs
-C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Capl.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\DotNetty.Buffers.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\DotNetty.Codecs.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\DotNetty.Codecs.Mqtt.dll
@@ -137,11 +136,6 @@ C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\PInvoke.BCrypt.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\PInvoke.Kernel32.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\PInvoke.NCrypt.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\PInvoke.Windows.Core.dll
-C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Piraeus.Core.dll
-C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Piraeus.GrainInterfaces.dll
-C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\SkunkLab.Protocols.dll
-C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\SkunkLab.Security.dll
-C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\SkunkLab.Storage.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.AppContext.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Collections.Immutable.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.Console.dll
@@ -263,6 +257,14 @@ C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\DocumentDB.Spatial.Sql.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Piraeus.Grains.dll.config
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Piraeus.Grains.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Piraeus.Grains.pdb
+C:\_git\core\src\Piraeus\Piraeus.Grains\obj\Debug\Piraeus.Grains.dll
+C:\_git\core\src\Piraeus\Piraeus.Grains\obj\Debug\Piraeus.Grains.pdb
+C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Capl.dll
+C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Piraeus.Core.dll
+C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Piraeus.GrainInterfaces.dll
+C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\SkunkLab.Protocols.dll
+C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\SkunkLab.Security.dll
+C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\SkunkLab.Storage.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Microsoft.IdentityModel.Tokens.dll
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Microsoft.Azure.KeyVault.dll
@@ -293,6 +295,4 @@ C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Microsoft.IdentityModel.Loggin
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Microsoft.Rest.ClientRuntime.xml
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Microsoft.Rest.ClientRuntime.Azure.xml
 C:\_git\core\src\Piraeus\Piraeus.Grains\bin\Debug\Microsoft.Azure.KeyVault.WebKey.xml
-C:\_git\core\src\Piraeus\Piraeus.Grains\obj\Debug\Piraeus.Grains.dll
-C:\_git\core\src\Piraeus\Piraeus.Grains\obj\Debug\Piraeus.Grains.pdb
 C:\_git\core\src\Piraeus\Piraeus.Grains\obj\Debug\Piraeus.Grains.orleans.g.cs

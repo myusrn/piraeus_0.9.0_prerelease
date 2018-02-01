@@ -3,31 +3,36 @@ subtitle: and real-time distributed systems at the edge of chaos
 title: ./media/image1.jpeg
 ---
 
-What is Piraeus?
+Overview
 ================
 
-Piraeus is a communication technology that allows open-systems to communicate in
-real-time with simplicity. It is a needed generalization that enables
-heterogeneous subsystems to communicate securely with extreme low latency, high
-throughput, and scale, while being economical to operate.
+Piraeus was designed to address a futuristic vision where complex adaptive systems could communicate in real-time with simplicity.  Piraeus simplifies how heterogenous subsystems can interact dynamically and organically using an open systems approach to real-time communications. 
+The technology is linearly scalable, high throughput, economical, and extreme low latency and utilizes Microsoft Orleans to facilate on-the-fly information pathways and enable communications with simplicity and without coupling.
+
+We have used the technology with extreme experiments with great success through our work at The Pegasus Mission.  Demonstrating bidirectional and real-time communications with complex systems, distributed intelligence, and thousands of simultaneous and geographically dispersed users.  
+
 
 Getting Started
 ===============
 
-It is suggested that you follow the getting started guide below in order.
+- [Deploying Piraeus in Azure](docs/quickstartazure.md)
+- [Running Client Samples](docs/quickstartclientsample.md)
 
--   Prerequisites
+Build from Source
+===============
+- Navigate to the /build folder in source.  
+- Open Visual Studio 2017 command prompt.
+- Type build
 
-    -   Visual Studio 2017
 
-    -   Powershell
 
-    -   Docker for Windows with Windows Containers
+Previous Work with Piraeus
+===============
 
-    -   Docker Compose
+- [Pegasus Mission Annual Report 2016](https://pegasusmission.com/2016/12/)
+- Pegasus II - IoT on the Edge of Space [articles](https://pegasusmission.com/2016/05/02/pegasus-ii-news-articles/)
+- Pegasus II - IoT on the Edge of Space [video](https://www.youtube.com/watch?v=S0hP_8CeM2A) 
+- NAE - Chasing the world land speed record [articles](https://pegasusmission.com/2018/01/17/pegasus-nae-articles-2016/)
+- NAE - Chasing the world land speed record [video](https://www.youtube.com/watch?v=ZIlXDsdlIko)
 
--   Local deployment
 
--   Azure deployment
-
--   Running the Samples

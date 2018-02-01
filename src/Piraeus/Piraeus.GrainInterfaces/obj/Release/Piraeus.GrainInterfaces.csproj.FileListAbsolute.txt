@@ -624,3 +624,9 @@ C:\_git\core\src\Docker\TcpUdpGateway\Output\Piraeus.GrainInterfaces.pdb
 C:\_git\core\src\Docker\Orleans-Silo\Output\Piraeus.GrainInterfaces.dll.config
 C:\_git\core\src\Docker\Orleans-Silo\Output\Piraeus.GrainInterfaces.dll
 C:\_git\core\src\Docker\Orleans-Silo\Output\Piraeus.GrainInterfaces.pdb
+C:\_git\core\src\Piraeus\src\Docker\TcpUdpGateway\Output\Piraeus.GrainInterfaces.dll.config
+C:\_git\core\src\Piraeus\src\Docker\TcpUdpGateway\Output\Piraeus.GrainInterfaces.dll
+C:\_git\core\src\Piraeus\src\Docker\TcpUdpGateway\Output\Piraeus.GrainInterfaces.pdb
+C:\_git\core\src\Piraeus\src\Docker\Orleans-Silo\Output\Piraeus.GrainInterfaces.dll.config
+C:\_git\core\src\Piraeus\src\Docker\Orleans-Silo\Output\Piraeus.GrainInterfaces.dll
+C:\_git\core\src\Piraeus\src\Docker\Orleans-Silo\Output\Piraeus.GrainInterfaces.pdb

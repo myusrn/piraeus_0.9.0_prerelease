@@ -16,39 +16,7 @@ namespace Samples.Clients.Coap
 {
     class Program
     {
-        /****************************************************************************
-         * This CoAP client will communicate over Web socket, TCP, or UDP channels 
-         * based on configured resources, authorization policies, and demo TCP/UDP server 
-         * on your local machine.  The sample does not use encrypted channels, e.g. TLSv1.2.
-         * The sample is dependent on security token, which Piraeus uses to authenticate the client and
-         * make deterministic the resources the client send and observe.
-         * 
-         * For this sample the following applies with respect to the channels and security token
-         *    Web Sockets - The client places a JWT security token in the HTTP Authorize header
-         *    TCP - The client encodes the security token in the first CoAP call in the CoAP URI string
-         *    UDP - Same as TCP
-         *
-         * IMPORTANT NOTE:  You should run the LocalDemoSetup script in Powershell prior to running this 
-         * sample to properly configure Piraeus to allow the client to send and receive from resources.
-         * 
-         * When choosing role "A" in this sample, it will the client to send to the Piraeus resource
-         * http://www.skunklab.io/resourcea and receive/observe the resource http://www.skunklab.io/resourceb
-         * When choosing role "B" in this sample, the send/recieve resources are reversed.
-         * 
-         ****************************************************************************************
-         */
-
-
-        //security configurations       
-        //static string audience = "http://www.skunklab.io/";
-        //static string issuer = "http://www.skunklab.io/";
-        //static string symmetricKey = "SJoPNjLKFR4j1tD5B4xhJStujdvVukWz39DIY3i8abE=";
-        //static string nameClaimType = "http://www.skunklab.io/name";
-        //static string roleClaimType = "http://www.skunklab.io/role";
-        //static string resourceA = "http://www.skunklab.io/resourcea";
-        //static string resourceB = "http://www.skunklab.io/resourceb";
-
-        //static string endpoint = "ws://localhost:1733/api/connect";
+               
 
         static int channelNo;
         static int index;
@@ -116,8 +84,6 @@ namespace Samples.Clients.Coap
             Console.WriteLine("client is closed...");
             Console.ReadKey();
         }
-
-       
 
         private static IChannel GetChannel(int num, string securityToken)
         {

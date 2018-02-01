@@ -1,3 +1,3 @@
-docker build -t orleans-silo ./orlean-silo
+docker build -t orleans-silo ./orleans-silo
 docker build -t tcpudpgateway ./tcpudpgateway
-docker built -t webgateway ./webgateway
+docker build -t webgateway ./webgateway

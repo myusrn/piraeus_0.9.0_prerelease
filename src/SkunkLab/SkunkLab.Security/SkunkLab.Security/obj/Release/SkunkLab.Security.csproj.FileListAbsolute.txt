@@ -91,3 +91,9 @@ C:\_git\core\src\SkunkLab\Docker\TcpUdpGateway\Output\SkunkLab.Security.pdb
 C:\_git\core\src\SkunkLab\Docker\Orleans-Silo\Output\SkunkLab.Security.dll.config
 C:\_git\core\src\SkunkLab\Docker\Orleans-Silo\Output\SkunkLab.Security.dll
 C:\_git\core\src\SkunkLab\Docker\Orleans-Silo\Output\SkunkLab.Security.pdb
+C:\_git\core\src\SkunkLab\SkunkLab.Security\src\Docker\TcpUdpGateway\Output\SkunkLab.Security.dll.config
+C:\_git\core\src\SkunkLab\SkunkLab.Security\src\Docker\TcpUdpGateway\Output\SkunkLab.Security.dll
+C:\_git\core\src\SkunkLab\SkunkLab.Security\src\Docker\TcpUdpGateway\Output\SkunkLab.Security.pdb
+C:\_git\core\src\SkunkLab\SkunkLab.Security\src\Docker\Orleans-Silo\Output\SkunkLab.Security.dll.config
+C:\_git\core\src\SkunkLab\SkunkLab.Security\src\Docker\Orleans-Silo\Output\SkunkLab.Security.dll
+C:\_git\core\src\SkunkLab\SkunkLab.Security\src\Docker\Orleans-Silo\Output\SkunkLab.Security.pdb

@@ -42,11 +42,11 @@ namespace Piraeus.SiloHost
             {
                 Console.WriteLine("Calling silo initialization");
                 siloHost.InitializeOrleansSilo();
-                Console.WriteLine("Silo initialized {0}", DateTime.UtcNow.ToLongTimeString());
+                Console.WriteLine("Silo initialized {0} waiting for silo start...", DateTime.UtcNow.ToLongTimeString());
 
                 if (siloHost.StartOrleansSilo())
                 {
-                    Console.WriteLine("Started {0}", DateTime.UtcNow.ToLongTimeString());
+                    Console.WriteLine("Silo Started {0}", DateTime.UtcNow.ToLongTimeString());
                     Console.WriteLine($"Successfully started Orleans silo '{siloHost.Name}' as a {siloHost.Type} node.");
                     return 0;
                 }

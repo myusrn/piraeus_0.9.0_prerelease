@@ -1,4 +1,4 @@
-Build started 1/31/2018 4:44:29 AM.
+Build started 2/1/2018 4:49:33 AM.
 Search paths being used for $(MSBuildExtensionsPath) are C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild;$(MSBuildProgramFiles32)\MSBuild
 Trying to import C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\$(MSBuildToolsVersion)\Microsoft.Common.props using extensions path C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild
 Property reassignment: $(MSBuildProjectExtensionsPath)="C:\_git\core\src\Samples\Clients\Samples.Clients.Mqtt\obj\" (previous value: "obj\") at C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Microsoft.Common.props (58,5)
@@ -12286,4 +12286,4 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:03.61
+Time Elapsed 00:00:04.25

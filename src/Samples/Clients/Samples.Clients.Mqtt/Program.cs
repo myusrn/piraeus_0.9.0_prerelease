@@ -201,8 +201,8 @@ namespace Samples.Clients.Mqtt
             {
 
                 IChannel channel = address == null ?
-                                     ChannelFactory.Create(true, authority, 1883, 1024, 2048, source.Token) :
-                                     ChannelFactory.Create(true, address, 1883, 1024, 2048, source.Token);
+                                     ChannelFactory.Create(true, authority, 8883, 1024, 2048, source.Token) :
+                                     ChannelFactory.Create(true, address, 8883, 1024, 2048, source.Token);
 
                 return channel;
             }
@@ -218,7 +218,7 @@ namespace Samples.Clients.Mqtt
                 }
                 else
                 {
-                    return ChannelFactory.Create(port, hostnameOrIP, 5683, source.Token);
+                    return ChannelFactory.Create(port, hostnameOrIP, 5883, source.Token);
                 }
             }
 
