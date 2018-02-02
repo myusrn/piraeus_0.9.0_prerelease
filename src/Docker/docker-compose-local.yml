@@ -5,6 +5,8 @@ services:
       - gateway-config.env
     container_name: web-server
     image: webgateway
+    ports:
+      - "80:80/tcp"
     links:
       - orleans-silo
     depends_on:
