@@ -15,11 +15,16 @@ Please see [Quick Start Deploying Piraeus in Azure] (quickstartazure.md) prior t
 The following steps will configure Piraeus resources needed to run the sample clients.
 
 - [ ] On your local machine open Powershell ISV and open the file /scripts/SamplesConfig.ps1
+- [ ] You will need to Import the Piraeus Powershell Module. The replace top line in the SamplesConfig.ps1 script that contains "Import-Module" with the full path to the Piraeus.Module.dll located in the  src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release folder. Example below
+```<language>
+Import-Module "c:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release\Piraeus.Module.dll"
+```
+- [ ] 
 - [ ] Replace the following text with the host name or IP address of the VM in Azure running Piraeus, e.g., $url = "http://30.79.69.230"
 ```<language>
 $url = "http://HostNameOrIPAddress" 
 ```
-- [ ] Run the Powershell script in Powershell ISV
+- [ ] Run the Powershell script in Powershell ISV.  This may be initially slow because the Orleans client in the Web Gateway must initialized.
 
 Piraeus is now configured to run the sample clients.
 
@@ -52,5 +57,9 @@ This script has configured the blob storage container to receive any message sen
 **Task 3: Run the Sample Clientsr**
 There are 3 sample clients, which are console applications located in the /src/Samples folder.  Each client takes a "role", i.e. A or B,
 which implies that role "A" can only send to "resource-a" and only receive from "resource-b".  Converse is true for a client in role "B".
+There are 3 protocol clients 
+- [ ] CoAP client /src/Samples/Clients/Samples.Clients.Coap/bin/Release/Samples.Clients.Coap.exe
+- [ ] MQTT client /src/Samples/Clients/Samples.Clients.Mqtt/bin/Release/Samples.Clients.Mqtt.exe
+- [ ] REST client /src/Samples/Clients/Samples.Clients.Rest/bin/Release/Samples.Clients.Rest.exe
 
 You can check the blob storage storage and see the messages sent from any client in role "A".
