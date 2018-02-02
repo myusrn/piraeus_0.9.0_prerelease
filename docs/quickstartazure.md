@@ -23,7 +23,7 @@ The following steps will create the resources in Azure needed to run Piraeus in 
 
 **Task 2: Configure the Piraeus Virtual Machine Host in Azure**
 
-This task configures the VM by install Docker Compose and an External Virtual Switch in Hyper-V.
+This task configures the VM by installing Docker Compose and an External Virtual Switch in Hyper-V.
 
 - [ ] Login (RDP) into the VM once it is provisioned in Azure and open Powershell As Administrator.
 - [ ] Run the following command in Powershell to install Docker Compose.
@@ -45,7 +45,7 @@ This task will allow you to download the Docker images onto your Azure VM.
     docker pull skunklab/tcpudpgateway
     docker pull skunklab/webgateway
 ```
-- [ ] Type the following command in Powershell to very you have the images
+- [ ] Type the following command in Powershell to verify you have the images
 ```<language>
     docker images
 ```
@@ -67,7 +67,7 @@ This task will allow you to configure the deployment.
 - [ ] Save the file as "docker-compose.yml" in the same folder that the Powershell command prompt is pointing.
 - [ ] Go to the folder /src/docker in the source code and copy the contents of the gateway-config.env file.
 - [ ] Open notepad in the Azure VM and paste in the copied contents.
-- [ ] Save the file as "gateway-config.env" in the same folder that Powershell command prompt is pointing.
+- [ ] Save the file as "gateway-config.env" in the same folder that the Powershell command prompt is pointing to.
 
 **Task 5:  Deploy**
 
@@ -76,10 +76,11 @@ This task will allow you to configure the deployment.
   ```<language>
     docker-compose up -d
 ```
--[ ] The deployment should take approx. 2 minutes.  You can type "docker logs orleans-silo" in Powershell to check the progress.  Once you the orleans-silo logs print "...running and blocking." The silo has started correctly.
+-[ ] The deployment should take approx. 2 minutes.  You can type "docker logs orleans-silo" in Powershell to check the progress.  Once  the orleans-silo logs print "...running and blocking.", the silo has started correctly.
 
 - [ ] You check the deployment by opening a browser and navigating to the public ip address of the VM.
--[ ] Remember to copy either the IP address or hostname of the VM to connect to it to run the samples.
+
+- [ ] Remember to copy either the IP address or hostname of the VM to connect to it to run the samples.
 
 
 Please see [Quick Start Running Client Sample] (https://github.com/skunklab/piraeus_0.9.0_prerelease/blob/master/quickstartclientsample.md) for running the client samples.
