@@ -11,7 +11,7 @@
 #9. Run docker-compose and deploy
 #10. Restart the VM required in enable External Virtual Switch
 
-#Note:  The Web gateway image is large; making the initial deployment 15-20 minutes.  
+#Note:  The Web gateway image is large; making the initial deployment 15-22 minutes.  
 #Note:  When the VM is running you can open a browser go to http://ipaddress of the VM.
 #       Check the "running" indicator on the weg gateway's home page
 #       You are ready to run the sample!
