@@ -1,12 +1,12 @@
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-		"sampleStorageAccountName" {
+    "parameters": { 
+        "sampleStorageAccountName": {
 		    "defaultValue": "SAMPLE STORAGE ACCT NAME",
 			"type": "string"
-		},
-		"virtualMachineName": {
+		},	
+        "virtualMachineName": {
             "type": "string"
         },
         "virtualMachineSize": {
@@ -73,7 +73,7 @@
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
 		"configExtensionName":"CustomScriptExtension",
 		"diagnosticsStorageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]",
-		"orleansStorageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]"
+		"orleansStorageAccountName": "[concat('orleans', uniqueString(resourceGroup().id))]"
     },
     "resources": [
         {
@@ -128,7 +128,7 @@
             }
         },
         {
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "name": "[variables('diagnosticsStorageAccountName')]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2015-06-15",
             "location": "[resourceGroup().location]",
@@ -147,15 +147,6 @@
         },
 		{
             "name": "[parameters('sampleStorageAccountName')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2015-06-15",
-            "location": "[resourceGroup().location]",
-            "properties": {
-                "accountType": "[parameters('diagnosticsStorageAccountType')]"
-            }
-        },
-		{
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2015-06-15",
             "location": "[resourceGroup().location]",

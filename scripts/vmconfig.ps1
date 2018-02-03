@@ -21,6 +21,11 @@ Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 Install-Module AzureRM -AllowClobber -Force
 Import-Module AzureRM
 
+#create a folder for files
+cd \
+mkdir piraeus
+cd piraeus
+
 
 #storage connections string for later use with YML file
 $connectionstring1 = "DefaultEndpointsProtocol=https;AccountName=" + $store1 + ";AccountKey=" + $key1 
@@ -57,7 +62,7 @@ New-AzureStorageContainer -Name "orleans" -Context $context
 
 #Configure the YML file
 $argsList = "$connectionstring1 $connectionstring2"
-$scriptPath = ".\ymlconfig.ps1"
+$scriptPath = ".\ymlupdate.ps1"
 Invoke-Expression "$scriptPath $argsList"
 
 
