@@ -28,8 +28,12 @@ cd piraeus
 
 
 #storage connections string for later use with YML file
-$connectionstring1 = "DefaultEndpointsProtocol=https;AccountName=" + $store1 + ";AccountKey=" + $key1 
-$connectionstring2 = "DefaultEndpointsProtocol=https;AccountName=" + $store2 + ";AccountKey=" + $key2 
+#$connectionstring1 = "DefaultEndpointsProtocol=https;AccountName=" + $store1 + ";AccountKey=" + $key1 
+#$connectionstring2 = "DefaultEndpointsProtocol=https;AccountName=" + $store2 + ";AccountKey=" + $key2 
+
+
+
+
 
 #yml file location
 $ymlFileUrl = "https://raw.githubusercontent.com/skunklab/piraeus_0.9.0_prerelease/master/src/Docker/docker-compose-azure.yml"
@@ -39,7 +43,7 @@ $envFileUrl = "https://raw.githubusercontent.com/skunklab/piraeus_0.9.0_prerelea
 
 
 #script to configure yml file
-$psYmlConfigFileUrl = "https://raw.githubusercontent.com/skunklab/piraeus_0.9.0_prerelease/master/scripts/ymlupdate.ps1"
+#$psYmlConfigFileUrl = "https://raw.githubusercontent.com/skunklab/piraeus_0.9.0_prerelease/master/scripts/ymlupdate.ps1"
 
 
 #Install Docker Compose
@@ -47,22 +51,42 @@ Invoke-WebRequest "https://github.com/docker/compose/releases/download/1.18.0/do
 
 
 #Download docker-compose.yml file
-Invoke-WebRequest -Uri $ymlFileUrl -OutFile "docker-compose.yml"
+Invoke-WebRequest -Uri $ymlFileUrl -UseBasicParsing -OutFile "docker-compose.yml" 
 
 #Download gateway-config.env file
-Invoke-WebRequest -Uri $envFileUrl -OutFile "gateway-config.env"
+Invoke-WebRequest -Uri $envFileUrl -UseBasicParsing -OutFile "gateway-config.env" 
 
 
 #Download PS file to configure yml file
 Invoke-WebRequest -Uri $psYmlConfigFileUrl -OutFile "ymlconfig.ps1"
 
+
+function UpdateYmlAndStore
+{
+    Param ([string]$acctName, [string]$storeKey, [string]$matchString, $containerName)
+
+    $connectionString = "DefaultEndpointsProtocol=https;AccountName=" + $acctName + ";AccountKey=" + $storeKey
+
+    $path = "docker-compose.yml"
+
+    (Get-Content $path) -replace $matchString,$connectionString | out-file $path
+
+    $context = New-AzureStorageContext -StorageAccountName $acctName -StorageAccountKey $storeKey -Protocol Https
+    New-AzureStorageContainer -Name $containerName -Context $context
+}
+
+
+UpdateYmlAndStore -acctName $store1 -storeKey $key1 -matchString "#ORLEANS_BLOB_STORAGE_CONNECTIONSTRING" -containerName "orleans"
+UpdateYmlAndStore -acctName $store2 -storeKey $key2 -matchString "#AUDIT_BLOB_STORAGE_CONNECTIONSTRING" -containerName "resource-a"
+
+
 #Add the storage account container for orleans grain state
-$context = New-AzureStorageContext -StorageAccountName $store1 -StorageAccountKey $key1 -Protocol Https
-New-AzureStorageContainer -Name "orleans" -Context $context
+#$context = New-AzureStorageContext -StorageAccountName $store1 -StorageAccountKey $key1 -Protocol Https
+#New-AzureStorageContainer -Name "orleans" -Context $context
 
 #Add the storage account container for the sample
-$context = New-AzureStorageContext -StorageAccountName $store2 -StorageAccountKey $key2 -Protocol Https
-New-AzureStorageContainer -Name "resource-a" -Context $context
+#$context = New-AzureStorageContext -StorageAccountName $store2 -StorageAccountKey $key2 -Protocol Https
+#New-AzureStorageContainer -Name "resource-a" -Context $context
 
 #Configure the YML file
 $argsList = "$connectionstring1 $connectionstring2"
