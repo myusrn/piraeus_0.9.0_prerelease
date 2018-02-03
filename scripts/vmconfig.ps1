@@ -1,19 +1,22 @@
 ﻿param([string]$store1, [string]$key1, [string]$store2, [string]$key2)
 
-#1. Install Docker Compose
-#2. Download YML and ENV files from Git repository
-#3. Download PS script to configure YML file
-#4. Run PS script and configure YML file
-#5. Install External Virtual Switch in Hyper-V
-#6. Pull docker images for Piraeus 
-#	a. The orleans-silo and tcpudpgateway download quickly
-#	b. The webgateway images is contain a large layer for ASPNET, which is why the install is relatively lengthy)
-#7. Run Docker Compose
-#8. Restarts VM (necessary to reset the External Virtual Switch added)
+#1. Install Azure Powershell Module
+#2. Create folder "piraeus" to store files
+#3. Download the docker-compose file
+#4. Download the environment variable file used with docker compose file
+#5. Create container in Orleans blob storage account and set the storage connnection string in docker-compose.yml file
+#6. Create container in Sample blob storage account and set the storage connection string in docker-compose.yml file
+#7. Install External Virtual Switch in Hyper-V
+#8. Pull docker images from respository skunklab/orleans-silo, skunklab/tcpudpgateway, skunklab/webgateway
+#9. Run docker-compose and deploy
+#10. Restart the VM required in enable External Virtual Switch
 
-#On restart Piraeus will be running in approx. 2 minutes
-#Navigate to the Web Gateway http://ipaddress and it will indicate whether it is running
+#Note:  The Web gateway image is large; making the initial deployment 15-20 minutes.  
+#Note:  When the VM is running you can open a browser go to http://ipaddress of the VM.
+#       Check the "running" indicator on the weg gateway's home page
+#       You are ready to run the sample!
 
+#Dare Mighty Things :-)
 
 
 #Install the Azure Powershell Module 
@@ -27,23 +30,12 @@ mkdir piraeus
 cd piraeus
 
 
-#storage connections string for later use with YML file
-#$connectionstring1 = "DefaultEndpointsProtocol=https;AccountName=" + $store1 + ";AccountKey=" + $key1 
-#$connectionstring2 = "DefaultEndpointsProtocol=https;AccountName=" + $store2 + ";AccountKey=" + $key2 
-
-
-
-
 
 #yml file location
 $ymlFileUrl = "https://raw.githubusercontent.com/skunklab/piraeus_0.9.0_prerelease/master/src/Docker/docker-compose-azure.yml"
 
 #env file location
 $envFileUrl = "https://raw.githubusercontent.com/skunklab/piraeus_0.9.0_prerelease/master/src/Docker/gateway-config.env"
-
-
-#script to configure yml file
-#$psYmlConfigFileUrl = "https://raw.githubusercontent.com/skunklab/piraeus_0.9.0_prerelease/master/scripts/ymlupdate.ps1"
 
 
 #Install Docker Compose
@@ -56,9 +48,6 @@ Invoke-WebRequest -Uri $ymlFileUrl -UseBasicParsing -OutFile "docker-compose.yml
 #Download gateway-config.env file
 Invoke-WebRequest -Uri $envFileUrl -UseBasicParsing -OutFile "gateway-config.env" 
 
-
-#Download PS file to configure yml file
-Invoke-WebRequest -Uri $psYmlConfigFileUrl -OutFile "ymlconfig.ps1"
 
 
 function UpdateYmlAndStore
@@ -76,23 +65,11 @@ function UpdateYmlAndStore
 }
 
 
-UpdateYmlAndStore -acctName $store1 -storeKey $key1 -matchString "#ORLEANS_BLOB_STORAGE_CONNECTIONSTRING" -containerName "orleans"
-UpdateYmlAndStore -acctName $store2 -storeKey $key2 -matchString "#AUDIT_BLOB_STORAGE_CONNECTIONSTRING" -containerName "resource-a"
-
-
 #Add the storage account container for orleans grain state
-#$context = New-AzureStorageContext -StorageAccountName $store1 -StorageAccountKey $key1 -Protocol Https
-#New-AzureStorageContainer -Name "orleans" -Context $context
+UpdateYmlAndStore -acctName $store1 -storeKey $key1 -matchString "#ORLEANS_BLOB_STORAGE_CONNECTIONSTRING" -containerName "orleans"
 
 #Add the storage account container for the sample
-#$context = New-AzureStorageContext -StorageAccountName $store2 -StorageAccountKey $key2 -Protocol Https
-#New-AzureStorageContainer -Name "resource-a" -Context $context
-
-#Configure the YML file
-$argsList = "$connectionstring1 $connectionstring2"
-$scriptPath = ".\ymlconfig.ps1"
-Invoke-Expression "$scriptPath $argsList"
-
+UpdateYmlAndStore -acctName $store2 -storeKey $key2 -matchString "#AUDIT_BLOB_STORAGE_CONNECTIONSTRING" -containerName "resource-a"
 
 #Install External Virtual Switch
 New-VMSwitch -name ExternalSwitch  -NetAdapterName "Ethernet 3" -AllowManagementOS $true
@@ -102,13 +79,8 @@ docker pull skunklab/orleans-silo
 docker pull skunklab/tcpudpgateway
 docker pull skunklab/webgateway
 
-
 #Run docker compose
 docker-compose up -d
 
-#Restart the VM
+#Restart the VM - enables external virtual switch
 Restart-Computer
-
-
-
-
