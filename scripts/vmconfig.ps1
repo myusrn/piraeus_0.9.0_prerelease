@@ -60,9 +60,13 @@ Invoke-WebRequest -Uri $psYmlConfigFileUrl -OutFile "ymlconfig.ps1"
 $context = New-AzureStorageContext -StorageAccountName $store1 -StorageAccountKey $key1 -Protocol Https
 New-AzureStorageContainer -Name "orleans" -Context $context
 
+#Add the storage account container for the sample
+$context = New-AzureStorageContext -StorageAccountName $store2 -StorageAccountKey $key2 -Protocol Https
+New-AzureStorageContainer -Name "resource-a" -Context $context
+
 #Configure the YML file
 $argsList = "$connectionstring1 $connectionstring2"
-$scriptPath = ".\ymlupdate.ps1"
+$scriptPath = ".\ymlconfig.ps1"
 Invoke-Expression "$scriptPath $argsList"
 
 
