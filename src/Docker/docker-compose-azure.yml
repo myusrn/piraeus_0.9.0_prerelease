@@ -5,6 +5,7 @@ services:
       - gateway-config.env
     container_name: web-server
     image: skunklab/webgateway
+    restart: always
     ports:
       - "80:80/tcp"
     links:
@@ -17,6 +18,7 @@ services:
     env_file:
       - gateway-config.env
     image: skunklab/tcpudpgateway
+    restart: always
     ports:
       - "1883:1883/tcp"
       - "8883:8883/tcp"
@@ -30,6 +32,7 @@ services:
   orleans-silo:
     container_name: orleans-silo
     image: skunklab/orleans-silo
+    restart: always
     environment:
       - ORLEANS_PROVIDER_DATACONNECTIONSTRING=#ORLEANS_BLOB_STORAGE_CONNECTIONSTRING
       - ORLEANS_LIVENESS_DATACONNECTIONSTRING=#ORLEANS_BLOB_STORAGE_CONNECTIONSTRING
