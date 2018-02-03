@@ -3,4 +3,6 @@ docker pull skunklab/orleans-silo
 docker pull skunklab/tcpudpgateway
 docker pull skunklab/webgateway
 New-VMSwitch -name ExternalSwitch  -NetAdapterName "Ethernet 3" -AllowManagementOS $true
+Restart-Computer
+
 
