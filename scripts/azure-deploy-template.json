@@ -3,8 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": { 
         "sampleStorageAccountName": {
-		    "defaultValue": "SAMPLE STORAGE ACCT NAME",
-			"type": "string"
+			"type": "string",
+			"metadata": {
+		  "description": "Storage account name you can remember to use with the Sample."
+		}
 		},	
         "virtualMachineName": {
             "type": "string"

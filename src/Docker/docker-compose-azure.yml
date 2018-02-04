@@ -19,6 +19,8 @@ services:
       - gateway-config.env
     image: skunklab/tcpudpgateway
     restart: always
+    volumes:
+       - c:\piraeus:c:\app\logs
     ports:
       - "1883:1883/tcp"
       - "8883:8883/tcp"
@@ -33,6 +35,8 @@ services:
     container_name: orleans-silo
     image: skunklab/orleans-silo
     restart: always
+    volumes:
+       - c:\piraeus:c:\app\logs
     environment:
       - ORLEANS_PROVIDER_DATACONNECTIONSTRING=#ORLEANS_BLOB_STORAGE_CONNECTIONSTRING
       - ORLEANS_LIVENESS_DATACONNECTIONSTRING=#ORLEANS_BLOB_STORAGE_CONNECTIONSTRING

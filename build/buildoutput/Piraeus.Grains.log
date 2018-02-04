@@ -1,4 +1,4 @@
-Build started 2/1/2018 4:42:45 AM.
+Build started 2/4/2018 7:29:00 AM.
 Search paths being used for $(MSBuildExtensionsPath) are C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild;$(MSBuildProgramFiles32)\MSBuild
 Property reassignment: $(DefineCommonItemSchemas)="false" (previous value: "true") at C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\Microsoft\VisualStudio\Managed\Microsoft.Managed.DesignTime.targets (12,5)
 Property reassignment: $(DefineCommonCapabilities)="false" (previous value: "true") at C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\Microsoft\VisualStudio\Managed\Microsoft.Managed.DesignTime.targets (13,5)
@@ -24174,4 +24174,4 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:14.06
+Time Elapsed 00:00:09.86

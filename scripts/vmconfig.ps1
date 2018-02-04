@@ -29,6 +29,11 @@ cd \
 mkdir piraeus
 cd piraeus
 
+$Acl = Get-Acl "C:\piraeus"
+$Ar = New-Object  system.security.accesscontrol.filesystemaccessrule("Authenticated Users","FullControl","Allow")
+$Acl.SetAccessRule($Ar)
+Set-Acl "C:\piraeus" $Acl
+
 
 
 #yml file location

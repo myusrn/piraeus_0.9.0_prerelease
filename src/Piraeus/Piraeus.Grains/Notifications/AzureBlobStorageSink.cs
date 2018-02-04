@@ -64,7 +64,7 @@ namespace Piraeus.Grains.Notifications
             else
             {
                 string connectionString = String.Format("BlobEndpoint={0};SharedAccessSignature={1}", container != "$Root" ? uri.ToString().Replace(uri.LocalPath, "") : uri.ToString(), metadata.SymmetricKey);
-                storage = BlobStorage.New(connectionString,1000,5120000);
+                storage = BlobStorage.New(connectionString,10000,1000);
             }
         }
 

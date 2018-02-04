@@ -1,6 +1,6 @@
 ﻿
 #IMPORTANT:  Import the Piraeus Powershell Module
-import-module #FULL PATH to Piraeus.Module.dll  located in src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release\Piraeus.Module.dll
+import-module c:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release\Piraeus.Module.dll
 
 #Login to the Management API
 
@@ -8,7 +8,7 @@ import-module #FULL PATH to Piraeus.Module.dll  located in src\Piraeus\Powershel
 #If running in Azure use the hostname or IP address of the virtual machine
 #If running locally, type "docker inspect webgateway" to obtain the IP address of the web gateway
 
-$url = "http://HostNameOrIPAddress"  #Replace with Host name or IP address of the Piraeus Web Gateway
+$url = "http://52.184.167.66"  #Replace with Host name or IP address of the Piraeus Web Gateway
 
 
 #get a security token for the management API
