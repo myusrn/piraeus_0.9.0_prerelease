@@ -35,7 +35,7 @@ in the Azure portal. You will need to supply the following 3 items in the templa
 You will not need to login the virtual machine as the network and VM will be configured and running
 Piraeus in Azure.  After you finish the template and begin the deployment, it will take approx. 15-22 mintues to complete.
 
-You can then follow:  [Quick Start Client Sample] (https://github.com/skunklab/piraeus_0.9.0_prerelease/blob/master/quickstartclientsample.md) to run the client samples.
+You can then follow:  [Quick Start Client Sample](https://github.com/skunklab/piraeus_0.9.0_prerelease/blob/master/quickstartclientsample.md) to run the client samples.
 
 
 **Build From Source**
