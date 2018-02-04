@@ -19,9 +19,9 @@ $token = Get-PiraeusManagementToken -ServiceUrl $url -Key "12345678"
 
 
 $resource_A = "http://www.skunklab.io/resource-a"
+$containerName="resource-a"
 
-$hostname="BLOB_STORAGE_HOSTNAME"  #If the blob storage endpint is "https://piraeusstore.blob.core.windows.net/" use "piraeusstore" as the hostname
-$containerName="BLOB_STORAGE_CONTAINER"
-$blobConnectionString="BLOB_STORAGE_CONNECTION_STRING"
+$storageAcct="BLOB_STORAGE_ACCT"  #If the blob storage endpint is "https://pirstore.blob.core.windows.net/" use "pirstore" as the hostname
+$storageKey="BLOB_STORAGE_KEY"  #Security key to blob storage account
 
-Add-PiraeusBlobStorageSubscription -ServiceUrl $url -SecurityToken $token -ResourceUriString $resource_A  -BlobType Block -Host $hostname -Container $containerName -Key $blobConnectionString 
+Add-PiraeusBlobStorageSubscription -ServiceUrl $url -SecurityToken $token -ResourceUriString $resource_A  -BlobType Block -Host $hostname -Container $containerName -Key $key 

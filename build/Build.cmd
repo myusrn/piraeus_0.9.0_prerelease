@@ -180,7 +180,7 @@ nuget restore -PackagesDirectory "..\..\..\Nuget\packages"
 msbuild Samples.Clients.Rest.csproj /t:Clean,Rebuild,restore /p:configuration=Debug
 msbuild Samples.Clients.Rest.csproj /t:Clean,Rebuild,restore /p:Configuration=Release /fl1 /fl2 /fl3 /flp1:logfile=..\..\..\..\build\BuildOutput\Samples.Clients.Rest.log /flp2:logfile=..\..\..\..\build\BuildOutput\Samples.Clients.Rest_errors.log;errorsonly /flp3:logfile=..\..\..\..\build\BuildOutput\Samples.Clients.Rest_warnings.log;warningsonly
 
-cd ..\..\..\..\build
+cd ..\..\..\..\build\
 
 powershell -command .\builddocker.ps1
 

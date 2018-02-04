@@ -33,16 +33,19 @@ namespace Piraeus.Grains.Notifications
             {
                 connectionstring = System.Environment.GetEnvironmentVariable("ORLEANS_AUDIT_DATACONNECTIONSTRING");
                 this.tablename = System.Environment.GetEnvironmentVariable("ORLEANS_AUDIT_TABLENAME");                
-            }            
+            }
 
             //audit config is not set...exit
-            if (connectionstring == null)            
+            if (connectionstring == null)
+            {
+                Trace.TraceWarning("Auditor not configurable.");
                 return Task.CompletedTask;
-
+            }
             try
             {
                 storage = TableStorage.New(connectionstring);
                 CanAudit = true;
+                Trace.TraceInformation("Auditor initialized.");
             }
             catch(Exception ex)
             {
@@ -57,7 +60,16 @@ namespace Piraeus.Grains.Notifications
         {
             if (storage != null && record != null)
             {
-                await storage.WriteAsync(tablename, record);
+                try
+                {
+                    await storage.WriteAsync(tablename, record);
+                }
+                catch(Exception ex)
+                {
+                    Trace.TraceWarning("Auditor failed to write record.");
+                    Trace.TraceError("Auditor error {0}", ex.Message);
+                    Trace.TraceError("Auditor stacktrace {0}", ex.StackTrace);
+                }
             }
         }
 
@@ -65,7 +77,16 @@ namespace Piraeus.Grains.Notifications
         {
             if (storage != null && record != null)
             {
-                storage.Write(tablename, record);
+                try
+                {
+                    storage.Write(tablename, record);
+                }
+                catch(Exception ex)
+                {
+                    Trace.TraceWarning("Auditor failed to write record.");
+                    Trace.TraceError("Auditor error {0}", ex.Message);
+                    Trace.TraceError("Auditor stacktrace {0}", ex.StackTrace);
+                }
             }
         }
     }

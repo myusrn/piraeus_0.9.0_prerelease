@@ -8,20 +8,21 @@
 		  "description": "Storage account name you can remember to use with the Sample."
 		}
 		},	
-        "virtualMachineName": {
-            "type": "string"
-        },
-        "virtualMachineSize": {
-		    "defaultValue": "Standard_D4s_v3",
-            "type": "string"
-        },
-        "adminUsername": {
+		"adminUsername": {
 		    "defaultValue": "azureuser",
             "type": "string"
         },	
 		"adminPassword": {
             "type": "securestring"
         },		
+        "virtualMachineName": {
+            "defaultValue": "pirvm",
+            "type": "string"
+        },
+        "virtualMachineSize": {
+		    "defaultValue": "Standard_D4s_v3",
+            "type": "string"
+        },        
         "virtualNetworkName": {
 		    "defaultValue": "piraeusvnet",
             "type": "string"

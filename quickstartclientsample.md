@@ -6,55 +6,17 @@ Please see [Quick Start Deploying Piraeus in Azure] (quickstartazure.md) prior t
 ---------------
 **Tasks**
 - Configure Piraeus with Powershell
--   Configure Blob Storage Receiver
 -  Run the Sample Clients
 
 ###
 **Task 1: Configure Piraeus with Powershell **
+This brief [video](https://skunklabio.files.wordpress.com/2018/02/sampleconfigscripts.mp4) will guide you through the steps needed to configure the samples.
+Following the steps below.
 
-The following steps will configure Piraeus resources needed to run the sample clients.
+- [ ] Configure samples with Powershell 
+- [ ] Add Azure blob storage receiver via Powershell.
 
-- [ ] On your local machine open Powershell ISV and open the file /scripts/SamplesConfig.ps1
-- [ ] You will need to Import the Piraeus Powershell Module. The replace top line in the SamplesConfig.ps1 script that contains "Import-Module" with the full path to the Piraeus.Module.dll located in the  src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release folder. Example below
-```<language>
-Import-Module "c:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release\Piraeus.Module.dll"
-```
-- [ ] 
-- [ ] Replace the following text with the host name or IP address of the VM in Azure running Piraeus, e.g., $url = "http://30.79.69.230"
-```<language>
-$url = "http://HostNameOrIPAddress" 
-```
-- [ ] Run the Powershell script in Powershell ISV.  This may be initially slow because the Orleans client in the Web Gateway must initialized.
-
-Piraeus is now configured to run the sample clients.
-
-**Task 2: Configure Blob Storage Receiver**
-
-This task uses Powershell to configure a Blob Storage Receiver with the sample clients.  
-
-- [ ] Using the storage account created for "CONNECTION_STRING_B" in the Quick start, add a new container named "resource-a".
-- [ ] Open the Powershell script /scripts/SampleConfigureBlobStorageReceiver.ps1 in Powershell ISV
-- [ ] Replace the following text with the host name or IP address of the VM in Azure running Piraeus, e.g., $url = "http://30.79.69.230"
-```<language>
-$url = "http://HostNameOrIPAddress" 
-```
-- [ ] Replace the following text with the host name of the blob storage account, e.g., use the text "piraeusstore" if the endpoint is "https://piraeusstore.blob.core.windows.net/"
-```<language>
-$hostname="BLOB_STORAGE_HOSTNAME"
-```
-- [ ] Replace the following text with the container name you created, i.e., "resource-a".
-```<language>
-$containerName="BLOB_STORAGE_CONTAINER"
-```
-- [ ] Replace the following text with storage account connection string related to "CONNECTION_STRING_B"
-```<language>
-$blobConnectionString="BLOB_STORAGE_CONNECTION_STRING"
-```
-- [ ] Run the Powershell script in Powershell ISV
-
-This script has configured the blob storage container to receive any message sent to "resource-a" by any client.
-
-**Task 3: Run the Sample Clientsr**
+**Task 3: Run the Sample Clients**
 There are 3 sample clients, which are console applications located in the /src/Samples folder.  Each client takes a "role", i.e. A or B,
 which implies that role "A" can only send to "resource-a" and only receive from "resource-b".  Converse is true for a client in role "B".
 There are 3 protocol clients 

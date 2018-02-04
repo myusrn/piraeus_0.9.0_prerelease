@@ -281,7 +281,7 @@ namespace SkunkLab.Channels.Tcp
                 {
                     await stream.WriteAsync(buffer, 0, buffer.Length);
                     await stream.FlushAsync();
-                    await Log.LogInfoAsync("Channel {0} tcp server channel sent message.");
+                    await Log.LogInfoAsync("Channel {0} tcp server channel sent message.", Id);
                 }
                 else
                 {
