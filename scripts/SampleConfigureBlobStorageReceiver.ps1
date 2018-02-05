@@ -24,4 +24,4 @@ $containerName="resource-a"
 $storageAcct="BLOB_STORAGE_ACCT"  #If the blob storage endpint is "https://pirstore.blob.core.windows.net/" use "pirstore" as the hostname
 $storageKey="BLOB_STORAGE_KEY"  #Security key to blob storage account
 
-Add-PiraeusBlobStorageSubscription -ServiceUrl $url -SecurityToken $token -ResourceUriString $resource_A  -BlobType Block -Host $hostname -Container $containerName -Key $key 
+Add-PiraeusBlobStorageSubscription -ServiceUrl $url -SecurityToken $token -ResourceUriString $resource_A  -BlobType Block -Host $storageAcct -Container $containerName -Key $storageKey 

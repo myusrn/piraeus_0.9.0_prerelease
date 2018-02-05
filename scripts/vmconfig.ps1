@@ -5,7 +5,7 @@
 # 3.  Set ACL on folder to allow 'Authenticated Users' (needed for docker volumes)
 # 4.  Download and install docker compose
 # 5.  Download docker-compose YAML file
-# 6.  Downlaod docker environment variables file
+# 6.  Download docker environment variables file
 # 7.  Update environment variables file for Orleans grain store (storage acct + key)
 # 8.  Update environment variables file for sample storage acct (storage acct + key)
 # 9.  Install External Virtual Switch in Hyper-V host
