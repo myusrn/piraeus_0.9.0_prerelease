@@ -1,7 +1,7 @@
 nQuick Start Running Client Sample
 ===========
 
-Please see [Quick Start Deploying Piraeus in Azure] (quickstartazure.md) prior to performing this quick start.
+Please see [Quick Start Deploying Piraeus in Azure](quickstartazure.md) prior to performing this quick start.
 
 ---------------
 **Tasks**
