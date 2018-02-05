@@ -1,15 +1,17 @@
 ﻿param([string]$store1, [string]$key1, [string]$store2, [string]$key2)
 
-#1. Install Azure Powershell Module
-#2. Create folder "piraeus" to store files
-#3. Download the docker-compose file
-#4. Download the environment variable file used with docker compose file
-#5. Create container in Orleans blob storage account and set the storage connnection string in docker-compose.yml file
-#6. Create container in Sample blob storage account and set the storage connection string in docker-compose.yml file
-#7. Install External Virtual Switch in Hyper-V
-#8. Pull docker images from respository skunklab/orleans-silo, skunklab/tcpudpgateway, skunklab/webgateway
-#9. Run docker-compose and deploy
-#10. Restart the VM required in enable External Virtual Switch
+# 1.  Install Azure Powershell Module
+# 2.  Create c:\piraeus folder
+# 3.  Set ACL on folder to allow 'Authenticated Users' (needed for docker volumes)
+# 4.  Download and install docker compose
+# 5.  Download docker-compose YAML file
+# 6.  Downlaod docker environment variables file
+# 7.  Update environment variables file for Orleans grain store (storage acct + key)
+# 8.  Update environment variables file for sample storage acct (storage acct + key)
+# 9.  Install External Virtual Switch in Hyper-V host
+#10.  Pull the 3 Piraeus docker images
+#11.  Run Docker Compose
+#12.  Restart the VM (require to set Docker with the External Virtual Switch)
 
 #Note:  The Web gateway image is large; making the initial deployment 15-22 minutes.  
 #Note:  When the VM is running you can open a browser go to http://ipaddress of the VM.
