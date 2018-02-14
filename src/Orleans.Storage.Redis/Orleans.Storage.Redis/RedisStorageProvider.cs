@@ -55,7 +55,15 @@ namespace Orleans.Storage.Redis
 
             string key = grainReference.ToKeyString();
             Dictionary<string, object> dict = database.Get<Dictionary<string, object>>(key);
-            grainState.State = dict;
+
+            if (dict == null)
+            {
+                dict = new Dictionary<string, object>();
+            }
+            else
+            {
+                grainState.State = dict;
+            }
 
             return Task.CompletedTask;
         }
@@ -70,6 +78,16 @@ namespace Orleans.Storage.Redis
 
             var key = grainReference.ToKeyString();
             Dictionary<string, object> state = grainState.State as Dictionary<string, object>;
+
+            if (state == null)
+            {
+                state = new Dictionary<string, object>();
+            }
+            else
+            {
+                database.Set(key, state);
+            }
+
             database.Set(key, state);           
 
             return Task.CompletedTask;
