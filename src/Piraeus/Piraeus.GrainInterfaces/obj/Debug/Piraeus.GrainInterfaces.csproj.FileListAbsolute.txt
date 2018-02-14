@@ -202,4 +202,3 @@ C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Debug\Piraeus.GrainInterfac
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Debug\Piraeus.GrainInterfaces.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Debug\Piraeus.GrainInterfaces.dll
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Debug\Piraeus.GrainInterfaces.pdb
-C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Debug\Piraeus.GrainInterfaces.orleans.g.cs

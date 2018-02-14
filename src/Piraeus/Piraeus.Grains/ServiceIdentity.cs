@@ -36,10 +36,10 @@ namespace Piraeus.Grains
                     return Task.CompletedTask;
                 }
 
-                State.Claims = new List<Claim>();
+                State.Claims = new List<KeyValuePair<string,string>>();
                 for(int i=0;i<ctypes.Length;i++)
                 {
-                    State.Claims.Add(new Claim(ctypes[i], cvalues[i]));
+                    State.Claims.Add(new KeyValuePair<string,string>(ctypes[i], cvalues[i]));
                 }
             }
 
@@ -48,7 +48,7 @@ namespace Piraeus.Grains
                 //get the certificate from the store/location by thumbprint
                 X509Certificate2 cert = GetLocalCertificate(store, location, thumbprint);
                 if (cert != null)
-                    State.Certificate = cert;
+                    State.Certificate = cert.RawData;
             }
 
             return Task.CompletedTask;
@@ -60,28 +60,25 @@ namespace Piraeus.Grains
         }
 
 
-        public Task<X509Certificate2> GetCertificateAsync()
+        public Task<byte[]> GetCertificateAsync()
         {
-            return Task.FromResult<X509Certificate2>(State.Certificate);
+            return Task.FromResult<byte[]>(State.Certificate);
         }
 
-        public Task<List<Claim>> GetClaimsAsync()
+        public Task<List<KeyValuePair<string,string>>> GetClaimsAsync()
         {
-            return Task.FromResult<List<Claim>>(State.Claims);
+            return Task.FromResult<List<KeyValuePair<string,string>>>(State.Claims);
         }
 
-        public Task AddCertificateAsync(X509Certificate2 certificate)
+        public Task AddCertificateAsync(byte[] certificate)
         {
             State.Certificate = certificate;
             return Task.CompletedTask;
         }
 
-        public Task AddClaimsAsync(List<Claim> claims)
-        {
-            TaskCompletionSource<Task> tcs = new TaskCompletionSource<Task>();
-            State.Claims = claims;
-            tcs.SetResult(null);
-            return tcs.Task;
+        public Task AddClaimsAsync(List<KeyValuePair<string,string>> claims)
+        {            
+            return Task.CompletedTask;
         }
 
         private X509Certificate2 GetLocalCertificate(string store, string location, string thumbprint)

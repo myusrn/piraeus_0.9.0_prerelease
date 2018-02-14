@@ -8,8 +8,8 @@ namespace Piraeus.GrainInterfaces
     [Serializable]
     public class ServiceIdentityState
     {
-        public X509Certificate2 Certificate { get; set; }
+        public byte[] Certificate { get; set; }
 
-        public List<Claim> Claims { get; set; }
+        public List<KeyValuePair<string,string>> Claims { get; set; }
     }
 }
