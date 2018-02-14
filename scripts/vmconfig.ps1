@@ -1,6 +1,4 @@
-﻿param([string]$store1, [string]$key1, [string]$store2, [string]$key2)
-
-# 1.  Install Azure Powershell Module
+﻿# 1.  Install Azure Powershell Module
 # 2.  Create c:\piraeus folder
 # 3.  Set ACL on folder to allow 'Authenticated Users' (needed for docker volumes)
 # 4.  Download and install docker compose
@@ -79,7 +77,7 @@ UpdateYmlAndStore -acctName $store1 -storeKey $key1 -matchString "#ORLEANS_BLOB_
 UpdateYmlAndStore -acctName $store2 -storeKey $key2 -matchString "#AUDIT_BLOB_STORAGE_CONNECTIONSTRING" -containerName "resource-a"
 
 #Install External Virtual Switch
-New-VMSwitch -name ExternalSwitch  -NetAdapterName "Ethernet 3" -AllowManagementOS $true
+#New-VMSwitch -name ExternalSwitch  -NetAdapterName "Ethernet 3" -AllowManagementOS $true
 
 #Pull docker images for Piraeus 
 docker pull skunklab/orleans-silo
@@ -90,4 +88,4 @@ docker pull skunklab/webgateway
 docker-compose up -d
 
 #Restart the VM - enables external virtual switch
-Restart-Computer
+#Restart-Computer
