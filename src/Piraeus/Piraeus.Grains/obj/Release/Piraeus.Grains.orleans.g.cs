@@ -307,8 +307,8 @@ namespace Piraeus.GrainInterfaces
             global::Piraeus.GrainInterfaces.ServiceIdentityState input = ((global::Piraeus.GrainInterfaces.ServiceIdentityState)original);
             global::Piraeus.GrainInterfaces.ServiceIdentityState result = new global::Piraeus.GrainInterfaces.ServiceIdentityState();
             context.@RecordCopy(original, result);
-            result.@Certificate = (global::System.Security.Cryptography.X509Certificates.X509Certificate2)global::Orleans.Serialization.SerializationManager.@DeepCopyInner(input.@Certificate, context);
-            result.@Claims = (global::System.Collections.Generic.List<global::System.Security.Claims.Claim>)global::Orleans.Serialization.SerializationManager.@DeepCopyInner(input.@Claims, context);
+            result.@Certificate = (global::System.Byte[])global::Orleans.Serialization.SerializationManager.@DeepCopyInner(input.@Certificate, context);
+            result.@Claims = (global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.String>>)global::Orleans.Serialization.SerializationManager.@DeepCopyInner(input.@Claims, context);
             return result;
         }
 
@@ -316,8 +316,8 @@ namespace Piraeus.GrainInterfaces
         public static void Serializer(global::System.Object untypedInput, global::Orleans.Serialization.ISerializationContext context, global::System.Type expected)
         {
             global::Piraeus.GrainInterfaces.ServiceIdentityState input = (global::Piraeus.GrainInterfaces.ServiceIdentityState)untypedInput;
-            global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@Certificate, context, typeof (global::System.Security.Cryptography.X509Certificates.X509Certificate2));
-            global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@Claims, context, typeof (global::System.Collections.Generic.List<global::System.Security.Claims.Claim>));
+            global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@Certificate, context, typeof (global::System.Byte[]));
+            global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@Claims, context, typeof (global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.String>>));
         }
 
         [global::Orleans.CodeGeneration.DeserializerMethodAttribute]
@@ -325,8 +325,8 @@ namespace Piraeus.GrainInterfaces
         {
             global::Piraeus.GrainInterfaces.ServiceIdentityState result = new global::Piraeus.GrainInterfaces.ServiceIdentityState();
             context.@RecordObject(result);
-            result.@Certificate = (global::System.Security.Cryptography.X509Certificates.X509Certificate2)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Security.Cryptography.X509Certificates.X509Certificate2), context);
-            result.@Claims = (global::System.Collections.Generic.List<global::System.Security.Claims.Claim>)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Collections.Generic.List<global::System.Security.Claims.Claim>), context);
+            result.@Certificate = (global::System.Byte[])global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Byte[]), context);
+            result.@Claims = (global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.String>>)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.String>>), context);
             return (global::Piraeus.GrainInterfaces.ServiceIdentityState)result;
         }
     }

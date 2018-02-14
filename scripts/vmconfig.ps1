@@ -77,7 +77,7 @@ UpdateYmlAndStore -acctName $store1 -storeKey $key1 -matchString "#ORLEANS_BLOB_
 UpdateYmlAndStore -acctName $store2 -storeKey $key2 -matchString "#AUDIT_BLOB_STORAGE_CONNECTIONSTRING" -containerName "resource-a"
 
 #Install External Virtual Switch
-#New-VMSwitch -name ExternalSwitch  -NetAdapterName "Ethernet 3" -AllowManagementOS $true
+New-VMSwitch -name ExternalSwitch  -NetAdapterName "Ethernet 3" -AllowManagementOS $true
 
 #Pull docker images for Piraeus 
 docker pull skunklab/orleans-silo
@@ -88,4 +88,4 @@ docker pull skunklab/webgateway
 docker-compose up -d
 
 #Restart the VM - enables external virtual switch
-#Restart-Computer
+Restart-Computer

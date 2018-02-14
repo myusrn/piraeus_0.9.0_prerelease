@@ -483,8 +483,22 @@ namespace Piraeus.Grains
         public static async Task SetServiceIdentityAsync(List<Claim> claims = null, X509Certificate2 certificate = null)
         {
             IServiceIdentity identity = GrainClient.GrainFactory.GetGrain<IServiceIdentity>("serviceidentity");
-            await identity.AddClaimsAsync(claims);
-            await identity.AddCertificateAsync(certificate);
+
+            if(claims != null)
+            {
+                List<KeyValuePair<string, string>> claimList = new List<KeyValuePair<string, string>>();
+                foreach(var item in claims)
+                {
+                    claimList.Add(new KeyValuePair<string, string>(item.Type, item.Value));
+                }
+
+                await identity.AddClaimsAsync(claimList);
+            }
+
+            if (certificate != null)
+            {
+                await identity.AddCertificateAsync(certificate.RawData);
+            }
         }
 
         public static async Task<List<Claim>> GetServiceIdentityClaimsAsync()

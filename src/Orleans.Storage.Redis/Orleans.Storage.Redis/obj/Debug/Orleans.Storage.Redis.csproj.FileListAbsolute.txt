@@ -76,7 +76,7 @@ C:\_git\core\src\Orleans.Storage.Redis\Orleans.Storage.Redis\bin\Debug\StackExch
 C:\_git\core\src\Orleans.Storage.Redis\Orleans.Storage.Redis\bin\Debug\System.Collections.Immutable.xml
 C:\_git\core\src\Orleans.Storage.Redis\Orleans.Storage.Redis\bin\Debug\System.Diagnostics.DiagnosticSource.xml
 C:\_git\core\src\Orleans.Storage.Redis\Orleans.Storage.Redis\bin\Debug\System.Reflection.Metadata.xml
-C:\_git\core\src\Orleans.Storage.Redis\Orleans.Storage.Redis\obj\Debug\Orleans.Storage.Redis.csprojResolveAssemblyReference.cache
 C:\_git\core\src\Orleans.Storage.Redis\Orleans.Storage.Redis\obj\Debug\Orleans.Storage.Redis.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Orleans.Storage.Redis\Orleans.Storage.Redis\obj\Debug\Orleans.Storage.Redis.dll
 C:\_git\core\src\Orleans.Storage.Redis\Orleans.Storage.Redis\obj\Debug\Orleans.Storage.Redis.pdb
+C:\_git\core\src\Orleans.Storage.Redis\Orleans.Storage.Redis\obj\Debug\Orleans.Storage.Redis.csprojResolveAssemblyReference.cache

@@ -307,8 +307,8 @@ namespace Piraeus.GrainInterfaces
             global::Piraeus.GrainInterfaces.ServiceIdentityState input = ((global::Piraeus.GrainInterfaces.ServiceIdentityState)original);
             global::Piraeus.GrainInterfaces.ServiceIdentityState result = new global::Piraeus.GrainInterfaces.ServiceIdentityState();
             context.@RecordCopy(original, result);
-            result.@Certificate = (global::System.Security.Cryptography.X509Certificates.X509Certificate2)global::Orleans.Serialization.SerializationManager.@DeepCopyInner(input.@Certificate, context);
-            result.@Claims = (global::System.Collections.Generic.List<global::System.Security.Claims.Claim>)global::Orleans.Serialization.SerializationManager.@DeepCopyInner(input.@Claims, context);
+            result.@Certificate = (global::System.Byte[])global::Orleans.Serialization.SerializationManager.@DeepCopyInner(input.@Certificate, context);
+            result.@Claims = (global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.String>>)global::Orleans.Serialization.SerializationManager.@DeepCopyInner(input.@Claims, context);
             return result;
         }
 
@@ -316,8 +316,8 @@ namespace Piraeus.GrainInterfaces
         public static void Serializer(global::System.Object untypedInput, global::Orleans.Serialization.ISerializationContext context, global::System.Type expected)
         {
             global::Piraeus.GrainInterfaces.ServiceIdentityState input = (global::Piraeus.GrainInterfaces.ServiceIdentityState)untypedInput;
-            global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@Certificate, context, typeof (global::System.Security.Cryptography.X509Certificates.X509Certificate2));
-            global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@Claims, context, typeof (global::System.Collections.Generic.List<global::System.Security.Claims.Claim>));
+            global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@Certificate, context, typeof (global::System.Byte[]));
+            global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@Claims, context, typeof (global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.String>>));
         }
 
         [global::Orleans.CodeGeneration.DeserializerMethodAttribute]
@@ -325,8 +325,8 @@ namespace Piraeus.GrainInterfaces
         {
             global::Piraeus.GrainInterfaces.ServiceIdentityState result = new global::Piraeus.GrainInterfaces.ServiceIdentityState();
             context.@RecordObject(result);
-            result.@Certificate = (global::System.Security.Cryptography.X509Certificates.X509Certificate2)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Security.Cryptography.X509Certificates.X509Certificate2), context);
-            result.@Claims = (global::System.Collections.Generic.List<global::System.Security.Claims.Claim>)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Collections.Generic.List<global::System.Security.Claims.Claim>), context);
+            result.@Certificate = (global::System.Byte[])global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Byte[]), context);
+            result.@Claims = (global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.String>>)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.String>>), context);
             return (global::Piraeus.GrainInterfaces.ServiceIdentityState)result;
         }
     }
@@ -1621,9 +1621,9 @@ namespace Piraeus.GrainInterfaces
                             return "GetCertificateAsync";
                         case 1994790479:
                             return "GetClaimsAsync";
-                        case -2116859751:
+                        case -470715099:
                             return "AddCertificateAsync";
-                        case -981358703:
+                        case 1369459598:
                             return "AddClaimsAsync";
                         default:
                             throw new global::System.NotImplementedException("interfaceId=" + 2087181860 + ",methodId=" + @methodId);
@@ -1641,24 +1641,24 @@ namespace Piraeus.GrainInterfaces
             }
         }
 
-        public global::System.Threading.Tasks.Task<global::System.Security.Cryptography.X509Certificates.X509Certificate2> @GetCertificateAsync()
+        public global::System.Threading.Tasks.Task<global::System.Byte[]> @GetCertificateAsync()
         {
-            return base.@InvokeMethodAsync<global::System.Security.Cryptography.X509Certificates.X509Certificate2>(334151400, null);
+            return base.@InvokeMethodAsync<global::System.Byte[]>(334151400, null);
         }
 
-        public global::System.Threading.Tasks.Task<global::System.Collections.Generic.List<global::System.Security.Claims.Claim>> @GetClaimsAsync()
+        public global::System.Threading.Tasks.Task<global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.String>>> @GetClaimsAsync()
         {
-            return base.@InvokeMethodAsync<global::System.Collections.Generic.List<global::System.Security.Claims.Claim>>(1994790479, null);
+            return base.@InvokeMethodAsync<global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.String>>>(1994790479, null);
         }
 
-        public global::System.Threading.Tasks.Task @AddCertificateAsync(global::System.Security.Cryptography.X509Certificates.X509Certificate2 @certificate)
+        public global::System.Threading.Tasks.Task @AddCertificateAsync(global::System.Byte[] @certificate)
         {
-            return base.@InvokeMethodAsync<global::System.Object>(-2116859751, new global::System.Object[]{@certificate});
+            return base.@InvokeMethodAsync<global::System.Object>(-470715099, new global::System.Object[]{@certificate});
         }
 
-        public global::System.Threading.Tasks.Task @AddClaimsAsync(global::System.Collections.Generic.List<global::System.Security.Claims.Claim> @claims)
+        public global::System.Threading.Tasks.Task @AddClaimsAsync(global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.String>> @claims)
         {
-            return base.@InvokeMethodAsync<global::System.Object>(-981358703, new global::System.Object[]{@claims});
+            return base.@InvokeMethodAsync<global::System.Object>(1369459598, new global::System.Object[]{@claims});
         }
     }
 
@@ -1681,10 +1681,10 @@ namespace Piraeus.GrainInterfaces
                             return ((global::Piraeus.GrainInterfaces.IServiceIdentity)@grain).@GetCertificateAsync().@Box();
                         case 1994790479:
                             return ((global::Piraeus.GrainInterfaces.IServiceIdentity)@grain).@GetClaimsAsync().@Box();
-                        case -2116859751:
-                            return ((global::Piraeus.GrainInterfaces.IServiceIdentity)@grain).@AddCertificateAsync((global::System.Security.Cryptography.X509Certificates.X509Certificate2)arguments[0]).@Box();
-                        case -981358703:
-                            return ((global::Piraeus.GrainInterfaces.IServiceIdentity)@grain).@AddClaimsAsync((global::System.Collections.Generic.List<global::System.Security.Claims.Claim>)arguments[0]).@Box();
+                        case -470715099:
+                            return ((global::Piraeus.GrainInterfaces.IServiceIdentity)@grain).@AddCertificateAsync((global::System.Byte[])arguments[0]).@Box();
+                        case 1369459598:
+                            return ((global::Piraeus.GrainInterfaces.IServiceIdentity)@grain).@AddClaimsAsync((global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.String>>)arguments[0]).@Box();
                         default:
                             throw new global::System.NotImplementedException("interfaceId=" + 2087181860 + ",methodId=" + methodId);
                     }
