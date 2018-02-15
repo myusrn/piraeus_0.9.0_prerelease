@@ -1,4 +1,6 @@
-﻿# 1.  Install Azure Powershell Module
+﻿ -param([string]$store1, [string]$key1, [string]$store2, [string]$key2)
+
+# 1.  Install Azure Powershell Module
 # 2.  Create c:\piraeus folder
 # 3.  Set ACL on folder to allow 'Authenticated Users' (needed for docker volumes)
 # 4.  Download and install docker compose
@@ -6,10 +8,9 @@
 # 6.  Download docker environment variables file
 # 7.  Update environment variables file for Orleans grain store (storage acct + key)
 # 8.  Update environment variables file for sample storage acct (storage acct + key)
-# 9.  Install External Virtual Switch in Hyper-V host
-#10.  Pull the 3 Piraeus docker images
-#11.  Run Docker Compose
-#12.  Restart the VM (require to set Docker with the External Virtual Switch)
+# 9.  Pull the 3 Piraeus docker images
+#10.  Run Docker Compose
+
 
 #Note:  The Web gateway image is large; making the initial deployment 15-22 minutes.  
 #Note:  When the VM is running you can open a browser go to http://ipaddress of the VM.
