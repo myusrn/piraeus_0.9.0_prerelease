@@ -337,3 +337,8 @@ C:\_git\core\src\Gateways\TcpUdpGateway\src\Docker\TcpUdpGateway\Output\Document
 C:\_git\core\src\Gateways\TcpUdpGateway\src\Docker\TcpUdpGateway\Output\TcpUdpGateway.exe.config
 C:\_git\core\src\Gateways\TcpUdpGateway\src\Docker\TcpUdpGateway\Output\TcpUdpGateway.exe
 C:\_git\core\src\Gateways\TcpUdpGateway\src\Docker\TcpUdpGateway\Output\TcpUdpGateway.pdb
+C:\_git\Docker\TcpUdpGateway\Output\Microsoft.Azure.Documents.ServiceInterop.dll
+C:\_git\Docker\TcpUdpGateway\Output\DocumentDB.Spatial.Sql.dll
+C:\_git\Docker\TcpUdpGateway\Output\TcpUdpGateway.exe.config
+C:\_git\Docker\TcpUdpGateway\Output\TcpUdpGateway.exe
+C:\_git\Docker\TcpUdpGateway\Output\TcpUdpGateway.pdb

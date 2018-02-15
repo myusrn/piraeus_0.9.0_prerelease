@@ -86,3 +86,9 @@ C:\_git\core\src\Piraeus\src\Docker\TcpUdpGateway\Output\Piraeus.Core.pdb
 C:\_git\core\src\Piraeus\src\Docker\Orleans-Silo\Output\Piraeus.Core.dll.config
 C:\_git\core\src\Piraeus\src\Docker\Orleans-Silo\Output\Piraeus.Core.dll
 C:\_git\core\src\Piraeus\src\Docker\Orleans-Silo\Output\Piraeus.Core.pdb
+C:\Docker\TcpUdpGateway\Output\Piraeus.Core.dll.config
+C:\Docker\TcpUdpGateway\Output\Piraeus.Core.dll
+C:\Docker\TcpUdpGateway\Output\Piraeus.Core.pdb
+C:\Docker\Orleans-Silo\Output\Piraeus.Core.dll.config
+C:\Docker\Orleans-Silo\Output\Piraeus.Core.dll
+C:\Docker\Orleans-Silo\Output\Piraeus.Core.pdb

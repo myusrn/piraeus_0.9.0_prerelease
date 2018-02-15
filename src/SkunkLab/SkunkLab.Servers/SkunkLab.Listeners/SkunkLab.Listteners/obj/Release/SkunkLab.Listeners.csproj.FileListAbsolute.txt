@@ -516,3 +516,8 @@ C:\_git\core\src\SkunkLab\SkunkLab.Servers\SkunkLab.Listeners\src\Docker\TcpUdpG
 C:\_git\core\src\SkunkLab\SkunkLab.Servers\SkunkLab.Listeners\src\Docker\TcpUdpGateway\Output\SkunkLab.Listeners.dll.config
 C:\_git\core\src\SkunkLab\SkunkLab.Servers\SkunkLab.Listeners\src\Docker\TcpUdpGateway\Output\SkunkLab.Listeners.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Servers\SkunkLab.Listeners\src\Docker\TcpUdpGateway\Output\SkunkLab.Listeners.pdb
+C:\_git\core\Docker\TcpUdpGateway\Output\Microsoft.Azure.Documents.ServiceInterop.dll
+C:\_git\core\Docker\TcpUdpGateway\Output\DocumentDB.Spatial.Sql.dll
+C:\_git\core\Docker\TcpUdpGateway\Output\SkunkLab.Listeners.dll.config
+C:\_git\core\Docker\TcpUdpGateway\Output\SkunkLab.Listeners.dll
+C:\_git\core\Docker\TcpUdpGateway\Output\SkunkLab.Listeners.pdb

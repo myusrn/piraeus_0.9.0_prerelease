@@ -578,3 +578,8 @@ C:\_git\core\src\Piraeus\src\Docker\TcpUdpGateway\Output\DocumentDB.Spatial.Sql.
 C:\_git\core\src\Piraeus\src\Docker\TcpUdpGateway\Output\Piraeus.Adapters.dll.config
 C:\_git\core\src\Piraeus\src\Docker\TcpUdpGateway\Output\Piraeus.Adapters.dll
 C:\_git\core\src\Piraeus\src\Docker\TcpUdpGateway\Output\Piraeus.Adapters.pdb
+C:\Docker\TcpUdpGateway\Output\Microsoft.Azure.Documents.ServiceInterop.dll
+C:\Docker\TcpUdpGateway\Output\DocumentDB.Spatial.Sql.dll
+C:\Docker\TcpUdpGateway\Output\Piraeus.Adapters.dll.config
+C:\Docker\TcpUdpGateway\Output\Piraeus.Adapters.dll
+C:\Docker\TcpUdpGateway\Output\Piraeus.Adapters.pdb

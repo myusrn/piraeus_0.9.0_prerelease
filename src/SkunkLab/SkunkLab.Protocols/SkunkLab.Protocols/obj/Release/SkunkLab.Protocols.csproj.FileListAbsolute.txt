@@ -108,3 +108,9 @@ C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\Skun
 C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocols.csproj.CoreCompileInputs.cache
 C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocols.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Release\SkunkLab.Protocols.pdb
+C:\_git\Docker\TcpUdpGateway\Output\SkunkLab.Protocols.dll.config
+C:\_git\Docker\TcpUdpGateway\Output\SkunkLab.Protocols.dll
+C:\_git\Docker\TcpUdpGateway\Output\SkunkLab.Protocols.pdb
+C:\_git\Docker\Orleans-Silo\Output\SkunkLab.Protocols.dll.config
+C:\_git\Docker\Orleans-Silo\Output\SkunkLab.Protocols.dll
+C:\_git\Docker\Orleans-Silo\Output\SkunkLab.Protocols.pdb

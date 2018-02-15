@@ -1,5 +1,5 @@
 @echo off
-set @version=0.9.0
+set @version=0.9.1
 set @prerelease=prerelease
 
 @echo off 
@@ -183,10 +183,5 @@ msbuild Samples.Clients.Rest.csproj /t:Clean,Rebuild,restore /p:Configuration=Re
 cd ..\..\..\..\build\
 
 powershell -command .\builddocker.ps1
-
-REM cd ..\..\..\Docker\TcpUdpGateway
-REM powershell -command .\buildoutput.ps1
-REM cd ..\Orleans-Silo
-REM powershell -command .\buildoutput.ps1
 
 :ENDLINE

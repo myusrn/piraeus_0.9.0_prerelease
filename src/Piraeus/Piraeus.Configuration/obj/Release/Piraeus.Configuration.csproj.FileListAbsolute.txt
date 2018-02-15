@@ -21,3 +21,5 @@ C:\_git\core\src\Docker\TcpUdpGateway\Output\Piraeus.Configuration.dll
 C:\_git\core\src\Docker\TcpUdpGateway\Output\Piraeus.Configuration.pdb
 C:\_git\core\src\Piraeus\src\Docker\TcpUdpGateway\Output\Piraeus.Configuration.dll
 C:\_git\core\src\Piraeus\src\Docker\TcpUdpGateway\Output\Piraeus.Configuration.pdb
+C:\Docker\TcpUdpGateway\Output\Piraeus.Configuration.dll
+C:\Docker\TcpUdpGateway\Output\Piraeus.Configuration.pdb

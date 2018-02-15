@@ -3,7 +3,7 @@
   <Globals>
     <StorageProviders>
       <Provider Name="store" ContainerName="orleans" Type="Orleans.Storage.AzureBlobStorage" DataConnectionString="[STORAGE_CONNECTION_STRING]" />
-      <!-- <Provider Name="store" Type="Orleans.Storage.RedisStorage" DataConnectionString="HOST.redis.cache.windows.net,ssl=True,password=PASSWORD"/> -->      
+      <!-- <Provider Name="store" Type="Orleans.Storage.Redis.RedisStorageProvider" DataConnectionString="HOST.redis.cache.windows.net,ssl=True,password=PASSWORD"/> -->      
     </StorageProviders>
     <SystemStore SystemStoreType="AzureTable" DeploymentId="PiraeusDeployment" DataConnectionString="[STORAGE_CONNECTION_STRING]" />
       <Liveness LivenessType ="AzureTable" />
