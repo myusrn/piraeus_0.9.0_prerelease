@@ -629,7 +629,6 @@ C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Release\Piraeus.GrainInterf
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Release\Piraeus.GrainInterfaces.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Release\Piraeus.GrainInterfaces.dll
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Release\Piraeus.GrainInterfaces.pdb
-C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Release\Piraeus.GrainInterfaces.orleans.g.cs
 C:\Docker\TcpUdpGateway\Output\Piraeus.GrainInterfaces.dll.config
 C:\Docker\TcpUdpGateway\Output\Piraeus.GrainInterfaces.dll
 C:\Docker\TcpUdpGateway\Output\Piraeus.GrainInterfaces.pdb
@@ -642,3 +641,4 @@ C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\Output\OrleansRuntime.dll
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\Output\OrleansCodeGenerator.xml
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\Output\OrleansProviders.xml
 C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\Output\OrleansRuntime.xml
+C:\_git\core\src\Piraeus\Piraeus.GrainInterfaces\obj\Release\Piraeus.GrainInterfaces.orleans.g.cs
