@@ -46,6 +46,7 @@ $envFileUrl = "https://raw.githubusercontent.com/skunklab/piraeus_0.9.0_prerelea
 
 
 #Install Docker Compose
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Invoke-WebRequest "https://github.com/docker/compose/releases/download/1.18.0/docker-compose-Windows-x86_64.exe" -UseBasicParsing -OutFile $Env:ProgramFiles\docker\docker-compose.exe
 
 
