@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Clients.Coap", "Samples.Clients.Coap\Samples.Clients.Coap.csproj", "{8D8D8BC6-B148-48E2-8A48-50712F7E9DBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Clients.Coap", "Samples.Clients.Coap.csproj", "{8D8D8BC6-B148-48E2-8A48-50712F7E9DBC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piraeus.Clients", "..\..\..\Piraeus\Piraeus.Clients\Piraeus.Clients.csproj", "{E41C1AA8-8160-4D4C-8462-E9EC011560EC}"
 EndProject
