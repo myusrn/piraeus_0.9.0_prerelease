@@ -97,3 +97,15 @@ C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csproj.CoreCompileInputs.cache
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.dll
 C:\_git\core\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.pdb
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Channels.dll.config
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Channels.dll
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Channels.pdb
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\BouncyCastle.Crypto.dll
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Diagnostics.dll
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Diagnostics.pdb
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Diagnostics.dll.config
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csprojResolveAssemblyReference.cache
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csproj.CoreCompileInputs.cache
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csproj.CopyComplete
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.dll
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.pdb

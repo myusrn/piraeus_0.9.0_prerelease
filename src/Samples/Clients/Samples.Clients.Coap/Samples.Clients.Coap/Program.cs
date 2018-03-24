@@ -74,14 +74,11 @@ namespace Samples.Clients.Coap
                 Console.WriteLine(ex.InnerException.Message);
                 goto endsample;
             }
-            
-            
-
 
             source.Cancel();
 
             endsample:
-            Console.WriteLine("client is closed...");
+            Console.WriteLine("client is closed...press any key to terminate");
             Console.ReadKey();
         }
 

@@ -66,12 +66,10 @@ namespace Samples.Clients.Mqtt
                 goto endsample;
             }
 
-            //SendMessages();
-
             source.Cancel();
 
             endsample:
-            Console.WriteLine("client is closed...");
+            Console.WriteLine("client is closed...press any key to terminate");
             Console.ReadKey();            
         }
 
@@ -110,7 +108,7 @@ namespace Samples.Clients.Mqtt
 
         static void WriteHeader()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("--- MQTT Client ---");
             Console.WriteLine("press any key to continue...");
             Console.WriteLine();

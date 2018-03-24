@@ -172,3 +172,15 @@ C:\_git\core\src\SkunkLab\SkunkLab.Channels\src\Docker\TcpUdpGateway\Output\Skun
 C:\_git\Docker\TcpUdpGateway\Output\SkunkLab.Channels.dll.config
 C:\_git\Docker\TcpUdpGateway\Output\SkunkLab.Channels.dll
 C:\_git\Docker\TcpUdpGateway\Output\SkunkLab.Channels.pdb
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Release\SkunkLab.Channels.dll.config
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Release\SkunkLab.Channels.dll
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Release\SkunkLab.Channels.pdb
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Release\BouncyCastle.Crypto.dll
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Release\SkunkLab.Diagnostics.dll
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Release\SkunkLab.Diagnostics.pdb
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Release\SkunkLab.Diagnostics.dll.config
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Release\SkunkLab.Channels.csprojResolveAssemblyReference.cache
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Release\SkunkLab.Channels.csproj.CoreCompileInputs.cache
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Release\SkunkLab.Channels.csproj.CopyComplete
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Release\SkunkLab.Channels.dll
+d:\src\repos\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Release\SkunkLab.Channels.pdb

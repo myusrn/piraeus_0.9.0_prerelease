@@ -47,12 +47,23 @@ namespace Samples.Clients.Rest
 
             //create the REST client
             client = new RestClient(endpoint, securityToken, new HttpObserver[] { observer }, source.Token);
-
-            Task stubTask = Task.Delay(1).ContinueWith(SendMessages);
-            Task.WaitAll(stubTask);
+          
+            try
+            {
+                Task stubTask = Task.Delay(1).ContinueWith(SendMessages);
+                Task.WaitAll(stubTask);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.InnerException.Message);
+                goto endsample;
+            }
 
             source.Cancel();
-            Console.WriteLine("press any key to terminate");
+
+            endsample:
+            Console.WriteLine("client is closed...press any key to terminate");
+            Console.ReadKey();
         }
 
         static void SendMessages(Task task)
@@ -169,9 +180,10 @@ namespace Samples.Clients.Rest
 
         static void SelectEndpoint()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Enter hostname, IP, or Enter for localhost ? ");
             string hostnameOrIP = Console.ReadLine();
+            Console.ResetColor();
 
             IPAddress address = null;
             bool isIP = IPAddress.TryParse(hostnameOrIP, out address);
@@ -186,11 +198,8 @@ namespace Samples.Clients.Rest
 
         static void SelectClientName()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Enter unique client name ? ");
-            Console.ForegroundColor = ConsoleColor.Green;
             clientName = Console.ReadLine();
-            Console.ResetColor();
         }
 
 
@@ -199,6 +208,7 @@ namespace Samples.Clients.Rest
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("--- REST Client ---");
             Console.WriteLine("press any key to continue...");
+            Console.WriteLine();
             Console.ResetColor();
             Console.ReadKey();
         }
