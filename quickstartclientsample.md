@@ -6,17 +6,17 @@ Please see [Quick Start Deploying Piraeus in Azure] (quickstartazure.md) prior t
 ---------------
 **Tasks**
 - Configure Piraeus with Powershell
--  Run the Sample Clients
+- Run the Sample Clients
 
 
-**Task 1: Configure Piraeus with Powershell **
+**Task 1: Configure Piraeus with Powershell**  
 This brief [video](https://skunklabio.files.wordpress.com/2018/02/sampleconfigscripts.mp4) will guide you through the steps needed to configure the samples.
 Following the steps below.
 
 - [ ] Configure samples with Powershell 
 - [ ] Add Azure blob storage receiver via Powershell.
 
-**Task 2: Run the Sample Clients**
+**Task 2: Run the Sample Clients**  
 There are 3 sample clients, which are console applications located in the /src/Samples folder.  Each client takes a "role", i.e. A or B,
 which implies that role "A" can only send to "resource-a" and only receive from "resource-b".  Converse is true for a client in role "B".
 There are 3 protocol clients 
